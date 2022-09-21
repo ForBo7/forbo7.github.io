@@ -1,5 +1,5 @@
 ---
-title: "Coming Soon"
+title: "About"
 ---
 
-# ⏳⌛️
+About this site
