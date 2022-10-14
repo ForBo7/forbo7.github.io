@@ -1,0 +1,9 @@
+# TODO: Add estimated time reading.
+toc: true
+# TODO: Tweak ToC depth
+toc-depth: 3
+number-sections: false
+reference-location: margin
+date-format: "dddd, DD MMMM YYYY | YYYY-MM-DD"
+# TODO: Reading time isn't appearing.
+reading-time: true

@@ -1,0 +1,18 @@
+---
+title: Site Patch Notes
+subtitle: Patches upon patches upon patches
+description: Does that end up becoming the [Ship of Thesius](https://en.wikipedia.org/wiki/Ship_of_Theseus)?
+comments: false
+---
+
+# Version 2.0.0.0
+
+* blah
+* blah
+* blah
+
+{{< pagebreak >}}
+
+:::{.callout-note}
+Patchnotes are unavailable prior to site version 2.
+:::

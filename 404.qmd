@@ -1,0 +1,8 @@
+---
+title: 👀
+subtitle: I've looked everywhere and the page you're looking for doesn't exist. 😕
+description: Celebrate your accomplishment with the comment section below! 🎉
+toc: false
+---
+
+_Alternatively_, head on over to the [ForBlog](forblog/index.qmd), play in the [App Playground](web_apps/index.qmd), or you know, head to home sweet [home](index.qmd)

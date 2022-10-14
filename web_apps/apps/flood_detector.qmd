@@ -1,0 +1,18 @@
+---
+# Hide title when only the page itself?
+title: "Flood Classifier"
+image: ../../forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.jpg
+description: "How well can you classify floods?"
+author: "Salman Naqvi"
+date: "2022-09-20"
+categories: [Image Classification]
+---
+
+[//]: # (TODO: Add if-else so a message appears in the case the app no longer exists.)
+
+:::{.column-screen}
+<script type="module"
+src="https://gradio.s3-us-west-2.amazonaws.com/3.3.1/gradio.js">
+</script>
+<gradio-app space="ForBo7/FloodDetector"></gradio-app>
+:::

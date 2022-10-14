@@ -1,0 +1,55 @@
+# TODO: Add date format.
+website:
+  title: "ForBo7 by Salman Naqvi"
+  site-url: https://forbo7.github.io/
+  # TODO: Favicon does not appear on home page.
+  favicon: favicon.ico
+  # TODO: Do I need to put the image path in quotes?
+  image: images/profile.png
+  # TODO: Page navigation is not working. Enable this for ForBlog and playground only.
+  page-navigation: true
+  # TODO: Enable this for ForBlog only.
+  reader-mode: false
+  navbar:
+    # Currently have set pinnned to true because it isn't smooth.
+    pinned: True
+    left:
+      # TODO: Replace icons with emoji?
+      - icon: house-fill
+        text: Home
+        href: index.qmd
+      - icon: newspaper
+        text: ForBlog
+        href: forblog/index.qmd
+      - icon: sliders2-vertical
+        text: App Playground
+        href: web_apps/index.qmd
+      - icon: person-fill
+        text: About
+        href: about.qmd
+  page-footer:
+    left: "[INSERT LICENSE HERE] | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."
+    right:
+      - icon: github
+        href: https://github.com/ForBo7
+      - icon: twitter
+        href: https://twitter.com/ForBo7_
+      - icon: brush
+        href: https://www.artstation.com/forbo7
+      - icon: envelope
+        href: mailto:salmananaqvii+forblog@gmail.com
+  twitter-card:
+    creator: "@ForBo7"
+  comments:
+    giscus:
+      repo: ForBo7/forbo7.github.io
+      repo-id: R_kgDOICXnAA
+      category: Giscus Comments
+      category-id: DIC_kwDOICXnAM4CR8YX
+      mapping: title
+      reactions-enabled: true
+      loading: lazy
+      input-position: top
+      theme: transparent_dark
+
+#    background: light

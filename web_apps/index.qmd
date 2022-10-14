@@ -1,0 +1,26 @@
+---
+title: App Playground
+comments: false
+listing:
+  - id: apps
+    contents: apps
+    sort:
+      - "title desc"
+      - "date desc"
+    categories: true
+    sort-ui: [date, author]
+    filter-ui: [title, date, auther]
+    type: grid
+    grid-columns: 3
+    grid-item-border: true
+    grid-item-align: left
+    date-format: "dddd, DD MMMM YYYY | YYYY-MM-DD"
+format:
+  html:
+    page-layout: full
+
+---
+
+Here you can view various apps and gizmos I've created. Have a play through some of them let me know what you think!
+
+More apps coming soon.

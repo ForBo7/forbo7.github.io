@@ -1,0 +1,11 @@
+{
+  "hash": "00b0c0b9a5fab875cfc20e0a9a3f1d2c",
+  "result": {
+    "markdown": "---\ntitle: A test landing page.\nformat:\n  html:\n    page-layout: full\nlisting:\n  - id: index2-posts\n    contents: forblog/posts\n    # type: grid\n  - id: index2-apps\n    contents: web_apps/apps\n    # type: grid\n---\n\n```{css echo=FALSE}\n.column {\ntext-align: center;\n}\n```\n\n\n:::: {.columns}\n\n::: {#index2-posts.column width=\"50%\"}\n\n<!-- content\n\nx\n\ncontent -->\n:::\n\n::: {#index2-apps.column width=\"50%\"}\n\n<!-- y\n\ncontent\n\ny -->\n:::\n\n::::\n\n",
+    "supporting": [
+      "index2_files/figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

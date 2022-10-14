@@ -1,5 +1,62 @@
 ---
-title: "About"
+title: "Salman Naqvi"
+about:
+  id: about-forbo7
+  template: trestles
+  image: images/profile.png
+  image-shape: rounded
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:salmananaqvii+forblog@gmail.com
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/ForBo7_
+    - icon: github
+      text: GitHub
+      href: https://github.com/ForBo7
+    - icon: brush
+      text: Artstation
+      href: https://www.artstation.com/forbo7
+comments: false
+page-layout: full
 ---
 
-About this site
+_Greetings! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries._
+
+# Current Status
+
+**Undergraduate in Bachelors of Science in Artificial Intelligence** | Pak-Austria Fachhochule: Institute of Applied Sciences and Technology | Haripur, Pakistan
+
+# Notable Experience
+
+**Physics Teaching Assistant** | Beaconhouse College Program Potohar Campus | September 2020 — May 2021 | Islamabad, Pakistan
+
+**Mathematics Teaching Assistant** | Beaconhouse College Program Potohar Campus | September 2020 — May 2021 | Islamabad, Pakistan
+
+**Concert Marketing — Raised \$8,400** | Beaconhouse College Program Potohar Campus | January 2020 | Islamabad, Pakistan
+
+**Bronze Medal — Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest 2018 | Islamabad, Pakistan
+
+# Education
+
+**Cambridge Assessment International Examinations Advanced Level** | 2 A*s, 1 A, 1 B | High School | September 2019 — August 2021
+
+**Cambridge Assessment International Examinations International General Certificate of Secondary Education** | 3 A*s, 4 As, 1 B | Middle School | August 2015 – August 2019
+
+**International Baccaleureate Primary Years Program** | Primary School | August 2009 – June 2015
+
+# Countries
+
+## Lived in
+
+**Pakistan** (9 years) | **Saudi Arabia** (6 years) | **United Kingdom** (5 years)
+
+## Been to
+
+<!-- TODO: Use footnotes instead of asterisks. -->
+<!-- TODO: Arrange with bars? (X|Y|Z) -->
+
+**Egypt*** | **England** | **France** | **Greece** | **Italy** | **Jordan*** | **Lebanon*** | **Malaysia** | **Pakistan** | **Qatar*** | **Saudi Arabia** | **Sri Lanka** | **Switzerland** | **Tanzania** | **Thailand** | **Turkey** | **UAE** | **Wales**
+
+<span style="font-size:10px">*Transit destinations; I count them still because I was technically within the country's border.</span>

@@ -1,0 +1,34 @@
+---
+title: Welcome to ForBlog by ForBo7
+comments: false
+listing:
+  - id: posts
+    contents: posts
+    sort: 
+      - "date desc"
+      - "title asc"
+    # TODO: Set categories appearance.  
+    categories: true
+    sort-ui: [date, author]
+    filter-ui: [title, date, author]
+    # TODO: Feeds/RSS?
+    type: default
+    page-size: 6
+    image-align: left
+    date-format: "dddd, DD MMMM YYYY | YYYY-MM-DD"
+    fields: [title, subtitle, author, description, date, image, reading-time]
+format:
+  html:
+    page-layout: full
+---
+
+
+
+Here you can experience my various ventures into learning, as well as read about various topics and ideas that dwell in my mind.
+
+<br></br>
+
+:::{#posts}
+:::
+
+

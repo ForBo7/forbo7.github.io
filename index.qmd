@@ -1,5 +1,86 @@
 ---
-title: "Coming Soon"
+title: Welcome to the world of ForBo7
+comments: False
+format:
+  html:
+    page-layout: full
+listing:
+  - id: landing-posts
+    contents: forblog/posts
+    type: default
+    max-items: 3
+    sort: 
+      - "date desc"
+      - "title asc"
+  - id: landing-apps
+    contents: web_apps/apps
+    type: grid
+    max-items: 2
+    grid-columns: 3
+    sort: 
+      - "date desc"
+      - "title asc"
+about:
+  id: about-forbo7
+  template: jolla
+  image: images/profile.png
+  image-shape: round
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/ForBo7_
+    - icon: github
+      text: GitHub
+      href: https://github.com/ForBo7
+    - icon: brush
+      text: Artstation
+      href: https://www.artstation.com/forbo7
+    - icon: envelope
+      text: Email
+      href: mailto:salmananaqvii+forblog@gmail.com
 ---
 
-# ⌛️⏳⌛️⏳
+:::{#about-forbo7}
+I'm a curious individual who dabbles in AI, does 3D CG, loves learning, and
+is a scitech geek and space nerd. I've also been to 17 countries.
+
+Read more about me [here](about.qmd).
+:::
+
+:::::{.grid}
+
+::::{.g-col-12 .g-col-md-6}
+
+## ForBlog
+:::{#landing-posts}
+:::
+Click [here](forblog/index.qmd) to check out the latest on the ForBlog.
+
+::::
+
+::::{.g-col-12 .g-col-md-6}
+
+## Playground
+:::{#landing-apps}
+:::
+Click [here](web_apps/index.qmd) to play more in the playground.
+::::
+
+:::::
+
+<!-- :::::{.columns}
+
+::::{.column width="55%"}
+## ForBlog
+:::{#landing-posts}
+:::
+Click [here](forblog/index.qmd) to check out the latest on the ForBlog.
+::::
+
+::::{.column width="45%"}
+## App Playground
+:::{#landing-apps}
+:::
+Click [here](web_apps/index.qmd) to play more in the playground.
+::::
+::::: -->
