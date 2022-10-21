@@ -2,10 +2,8 @@
 
 format:
   html:
-    theme:
-      - simplex
-      - custom.scss
-    # css: styles.css
+    theme: [custom.scss, simplex]
+    css: styles.css
     toc: false
     smooth-scroll: true
     format:
@@ -13,3 +11,5 @@ format:
         link-external-icon: true
         link-external-newwindow: true
         link-external-filter: '^(?:http:|https:)\/\/forbo7\.github\.io\/'
+        # Link color not working.
+        linkcolor: rebeccapurple
