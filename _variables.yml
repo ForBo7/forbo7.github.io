@@ -1,6 +1,16 @@
-# Variables don't seem to be working.
-license: TBD
+site_version: 2.0.0.0
 
 contact:
-  email: salmananaqvii+forblog@gmail.com
-  phone: +92 309 073 9230
+  email: "[salmananaqvii+forblog@gmail.com](mailto:salmananaqvii+forblog@gmail.com)"
+
+links:
+  twitter: https://twitter.com/ForBo7_
+  github: https://github.com/ForBo7
+  artstation: https://www.artstation.com/forbo7
+
+licenses:
+  forblog: "[ForBlog](https://forbo7.github.io/forblog.html) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
+  app_playground: "[App Playground](https://forbo7.github.io/web_apps.html) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)"
+  ForFolio: "ForFolio © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html)"
+
+footer_text: " | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."

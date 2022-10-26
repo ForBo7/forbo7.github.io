@@ -26,6 +26,7 @@ about:
   image: images/profile.png
   image-shape: round
   links:
+      # Variables don't work here.
     - icon: twitter
       text: Twitter
       href: https://twitter.com/ForBo7_
@@ -45,6 +46,8 @@ I'm a curious individual who dabbles in AI, does 3D CG, loves learning, and
 is a scitech geek and space nerd. I've also been to 17 countries.
 
 Read more about me [here](about.qmd).
+
+You can contact me at {{< var contact.email >}}.
 :::
 
 :::::{.grid}

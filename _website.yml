@@ -1,13 +1,12 @@
 # TODO: Add date format.
+# TODO: Separate this file into further yaml files?
 website:
   title: "ForBo7 by Salman Naqvi"
   site-url: https://forbo7.github.io/
-  # TODO: Favicon does not appear on home page.
   favicon: favicon.ico
-  # TODO: Do I need to put the image path in quotes?
   image: images/profile.png
   # TODO: Page navigation is not working. Enable this for ForBlog and playground only.
-  page-navigation: true
+  page-navigation: false
   # TODO: Enable this for ForBlog only.
   reader-mode: false
   navbar:
@@ -28,7 +27,7 @@ website:
         text: About me
         href: about.qmd
   page-footer:
-    left: "[INSERT LICENSE HERE] | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."
+    left: "[ForBo7 by Salman Naqvi](https://forbo7.github.io/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."
     right:
       - icon: github
         href: https://github.com/ForBo7
@@ -51,5 +50,3 @@ website:
       loading: lazy
       input-position: top
       theme: transparent_dark
-
-#    background: light

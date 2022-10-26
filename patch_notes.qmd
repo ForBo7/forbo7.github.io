@@ -1,18 +1,31 @@
 ---
 title: Site Patch Notes
-subtitle: Patches upon patches upon patches
-description: Does that end up becoming the [Ship of Thesius](https://en.wikipedia.org/wiki/Ship_of_Theseus)?
+subtitle: Patches upon patches upon patches...
+description: Does that end up being the [Ship of Thesius](https://en.wikipedia.org/wiki/Ship_of_Theseus)?
 comments: false
 ---
 
-# Version 2.0.0.0
-
-* blah
-* blah
-* blah
-
-{{< pagebreak >}}
-
-:::{.callout-note}
-Patchnotes are unavailable prior to site version 2.
+:::{.callout-note appearance="simple"}
+Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 :::
+
+## Version 2.0.0.0 | [INSERT RELEASE DATE HERE]
+
+* Site is now entirely remade in [Quarto](https://quarto.org).
+* UI overhaul.
+* New favicon.
+* New Home page.
+* New About Me page.
+* ForBlog is no longer the main landing page.
+* Redesigned ForBlog home page.
+* New ForBlog post layout.
+* ForBlog posts can now be filtered.
+* Added a ForBlog only search bar.
+* App playground has been added; a place where I can host my various creations.
+* The ability for the ForBlog to be included in an RSS feed has been removed for the meantime.
+
+
+## Version 1.0.0.0 | 15 May 2022
+
+* Initial release.
+* Site is built on [fastpages](https://github.com/fastai/fastpages), by [fastai](https://fast.ai).

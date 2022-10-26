@@ -22,11 +22,11 @@ comments: false
 page-layout: full
 ---
 
-_Greetings! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries._
+_Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries._
 
 # Current Status
 
-**Undergraduate in Bachelors of Science in Artificial Intelligence** | Pak-Austria Fachhochule: Institute of Applied Sciences and Technology | Haripur, Pakistan
+Gap Year
 
 # Notable Experience
 
@@ -37,6 +37,24 @@ _Greetings! I’m a curious individual who dabbles in AI, does 3D CG, loves lear
 **Concert Marketing — Raised \$8,400** | Beaconhouse College Program Potohar Campus | January 2020 | Islamabad, Pakistan
 
 **Bronze Medal — Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest 2018 | Islamabad, Pakistan
+
+# Skills
+
+**Programming** | Tool of choice: Python
+
+**3D Computer Graphics** | Tool of choice: Blender
+
+**Teaching** | Can teach in a logical manner that fosters understanding and the solidification of concepts.
+
+**English** | Can use the language to a very high degree of complexity. I have better proficiency than most native speakers.
+
+# Known Languages
+
+**English** | Better than most native speakers.
+
+**Urdu** | Good speaking and listening competency. Fair writing and reading competency.
+
+**Japanese** | Currently learning.
 
 # Education
 
@@ -55,8 +73,8 @@ _Greetings! I’m a curious individual who dabbles in AI, does 3D CG, loves lear
 ## Been to
 
 <!-- TODO: Use footnotes instead of asterisks. -->
-<!-- TODO: Arrange with bars? (X|Y|Z) -->
+<!-- Need to figure out how to make all footnotes reference the same footnote -->
 
 **Egypt*** | **England** | **France** | **Greece** | **Italy** | **Jordan*** | **Lebanon*** | **Malaysia** | **Pakistan** | **Qatar*** | **Saudi Arabia** | **Sri Lanka** | **Switzerland** | **Tanzania** | **Thailand** | **Turkey** | **UAE** | **Wales**
 
-<span style="font-size:10px">*Transit destinations; I count them still because I was technically within the country's border.</span>
+<span style="font-size:8px">*Transit destinations; I count them still because I was technically within the country's border.</span>

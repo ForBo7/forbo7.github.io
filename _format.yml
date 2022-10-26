@@ -13,3 +13,5 @@ format:
         link-external-filter: '^(?:http:|https:)\/\/forbo7\.github\.io\/'
         # Link color not working.
         linkcolor: rebeccapurple
+        # Global callout appearance not working.
+        callout-appearance: simple
