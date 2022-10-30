@@ -7,43 +7,45 @@ date: "2022-05-27"
 categories: [Approaching AI]
 ---
 
-_This article is pending a review._
+[//]: # (TODO: Insert images.)
 
-<!-- TODO: Rotate this image? -->
-![](../images/1_how_to_approach_creating_ai_models/thumbnail.jpg){fig-alt="Cogs and gears." width=50%}
+_This article was rewritten on [INSERT DATE HERE]._
 
-<!-- {fig-alt="Cogs and gears."} -->
+![](../images/1_how_to_approach_creating_ai_models/thumbnail.jpg){fig-alt="Cogs and gears."}
 
 ## Introduction
 
-How you approach making your model is crucial. Articial Intelligence is not 
-about creating models; it is only a tiny part of it. It is 80% problem 
-solving and 20% implementing (I would not be suprised if it actually 
-followed the 80-20 rule[^1]).
+How you approach making models is crucial. The way AI methods are used in
+today's landscape is very different. AI methods are created to solve small,
+atomic problems. And we've got most of the methods to handle these small tasks
+hammered down. Therefore, applied AI is not about creating models; it's only a
+small part of it. It's 80% problem solving and 20% implementing (I would not be
+surprised if it actually followed the 80-20 rule[^1]).
 
-It is like the scientific method in a sense. Sure, you can create a really 
-accurate, well functioning experiment. But what use is it if you do not 
-approach conducting the experiment and analyzing the results in a well 
-defined manner?
+Think of AI methods as a tool; think of it as a pencil. You can use pencils to
+draw, take notes, poke holes, and much more. There are also dozens of
+pencils out there. But what point is there in using any of those pencils if
+you don't even know how to properly use a pencil in the first place? The art
+of creating pencils has already been perfected too.
 
-One highly successful approach is the _Drivetrain Approach_, created by 
-fast.ai course creater Jeremy Howard along with his collegues Margit Zwemer and 
-Mike Loukides. Their official blogpost on this approach goes into much 
-detail and can be read in full [here](https://www.oreilly.com/radar/drivetrain-approach-data-products/).
-The goal of this approach is to not use data just to generate more data 
-(that is in the form of predictions), but to use data to also generate 
-actionable outcomes.
+One highly successful approach is the _Drivetrain Approach_, created by
+Jeremy Howard — who's widely known for his fastai course and library —, Margit
+Zwemer, and Mike Loukides.
 
-Over here, I'll be providing a short overview of my understanding of this 
-approach (from the fast.ai course) and will be applying it to the final 
-project I did in the 
-University of Helsinki's and Reaktor's [Elements of AI](https://www.elementsofai.com) 
-course (I highly highly recommend this course; it gives a really good primer 
-into AI).
+The goal of the _Drivetrain Approach_ is to not just use data to generate
+more data — data that is in the form of predictions. But rather to use data
+to also generate actionable outcomes.
+
+The official blogpost goes into much more depth [here](https://www.orielly.com/radar/drivetrain-approach-data-products/).
+
+In this post, I'll be providing a short overview of my understanding of this
+approach by applying it to the [Elements of AI](https://www.elementsofai.com)
+course's final project (this online course was created by the University of
+Helsinki and Reaktor).
 
 ## Overview of the Drivetrain Approach
 
-There are four main steps to this process:
+There are four main steps to this approach:
 
 - Define the objective
 - Consider your possible actions
@@ -52,82 +54,104 @@ There are four main steps to this process:
 
 ### Define the objective
 
-Write out what you are really trying to achieve. What is your goal?
+Write out what you are really trying to achieve. What is your goal? Writing
+it out puts it in a tangible manner.
 
 ### Consider your actions
 
 Think about what actions you can take to achieve your objective. 
 
-Also think about what would happen if you did those actions. What would 
-happen if did _x_? Would _y_ really be a good idea? What if _z_ worked 
-really well? What if _z_ worked really bad?
+Also think about what would happen if you did those actions.
+
+What would happen if I did _x_? Would _y_ really be a good idea? What if _z_
+worked out **too** well? Will _x_ lead to _y_? What would happen if _x_
+turned out poorly?
 
 ### Consider your data
 
-Think about the data you already have and how it can be used. Think about 
-any further data that is needed and how it could be collected.
+Think about the data you already have and how it could be used.
 
-### Create the model
+Think about any further data that is needed and how it could be collected.
 
-Created models that produce the best actions that in turn produce the best 
-results in terms of your objective.
+### Create the models
+
+Create models. But create models that produce actions. Actions that produce
+the best results for your objective.
 
 ## Endangered Language Chatbot
 
-The final project of the Elements of AI course asked me to come up with my 
-own AI method that would solve a problem, and how it would. I ended up 
-creating an overview for how a chatbot could be created to preserve 
-endangered languages.
+The final project of the Elements of AI course asked me to come up with my
+own AI method that would solve a problem, and how it would do so.
 
-Now that I think of it, what the project asked me to do is one sort of 
-approach to creating AI methods, though more on the why side. You can view my 
-project overview 
-[here](https://github.com/ForBo7/Endangered-Language-Chatbot).
+The problem I tackled was the endangerment of languages. The solution I came
+up with was to create a chatbot that could converse in these endangered
+languages. I created an overview of how this could be done.
+
+The overview can be read [here](https://github.com/ForBo7/Endangered-Language-Chatbot).
+
+Let's tackle this problem through the _Drivetrain Approach_.
 
 ### Define the objective
 
-The objective of creating such a chatbot is to preserve languages that are 
-endangered or extinct. This would help preserve different histories and 
-cultures, as well as humanity's diversity.
+The objective is to preserve languages that are in danger of going extinct.
+Through preserving languages, histories and cultures can be
+preserved.
 
 ### Consider your actions
 
-Probably, a new sort of NLP architecture would have to be created primarily 
-due to the lack of data there would be for these languages.
+One way this could be done is to create a chatbot that could converse in
+endangered languages. However, this would be a monumental task considering
+the amount of data needed to achieve this.
 
-Alternatively, existing methods could be applied, but there would be varying 
-degrees of success depending on how much data is available for a language.
+Another action that could be taken is to create an information retrieval (IR)
+system of sorts. A corpus of written text of the language could be provided,
+from which insights about the language's history, culture, and way of
+conversing could be gained. In turn the language is preserved.
+
+The latter action may be easier to achieve.
 
 ### Consider your data
 
-The main source of data for training such models would corpuses of text. 
-However, this itself is a problem since many endangered or extinct languages 
-do not have enough written text that would achieve the level of performance 
-required to have somewhat of a good conversation with the bot. Further 
-troubles arise for those languages that are speech only; you would need to 
-have audio recordings, which would be extremely difficult for a language 
-that is endangered or nigh impossible for those that are extinct.
+The obvious source of data would be a corpora of text.
 
-The main solution to these problems that comes to mind is literal manpower 
-and brute force. That is, humans would have to manually create masses of 
-text or speech that the model can then be trained on to "learn" the langauge.
+However, a major problem arises for those languages which are only spoken.
+Audio recordings of conversations would have to be made which would take a
+lot of time and effort. This would be especially difficult for those
+languages where very few speakers remain.
+
+Even if a language does have written text, gathering enough text for the
+language can also be a problem: the language may not have much written text.
+This may especially be the case for endangered languages. Again, one
+solution is to manually create texts — using an NLP method to create these
+texts is not viable.
+
+In short, for some languages, there may be no choice other than to manually
+create the data that would be fed into the system — this manual creation
+also has the chance to skew the performance of the model.
 
 ### Create the model
 
-Create a model that speaks as accurately as a native of the endangered 
-language so that any person interacting with the chatbot gets a vivid idea 
-of the language, its culture, and its people.
+Either a chatbot needs to be created that speaks as accurately as a native
+speaker, or an IR system needs to be created that gives meaningful, correct
+insights into a language and its associated culture.
+
+This step may either be easy or hard, depending on the language. Most NLP or
+IR systems have been built on a few, select languages. Perhaps this step may
+be easy for those languages that are similar to languages on which NLP or IR
+systems have already been built on. It will most likely be harder for those
+languages which are not.
 
 ## Conclusion
 
-This concludes my understanding and explanation of one such approach to 
-creating models, along with an attempted example. Approaches are crucial: 
-you can have all the best tools and the most accurate models in the world, 
-but they are worthless if not correctly approached, used, and applied.
+This concludes my understanding of the _Drivetrain Approach_, through an
+example.
 
-If you have any comments, suggestions, or corrections, please do post them down 
-in the comment section below!
+Approaches are crucial: you can have state-of-the-art tools, but they are
+useless if not correctly applied. The approach you take can either make it
+or break it. Putting it into a concrete, organized, tangible manner goes a
+long way.
 
-**Footnotes**
+If you have any comments, questions, suggestions, feedback, criticisms, or
+corrections, please do post them down in the comment section below!
 
 [^1]: [The 80/20 Rule, also known as the Pareto Principle](https://en.wikipedia.org/wiki/Pareto_principle)
