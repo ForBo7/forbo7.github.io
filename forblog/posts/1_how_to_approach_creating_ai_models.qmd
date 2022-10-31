@@ -7,11 +7,9 @@ date: "2022-05-27"
 categories: [Approaching AI]
 ---
 
-[//]: # (TODO: Insert images.)
+_This article was rewritten on **Monday, 31 October 2022**._
 
-_This article was rewritten on [INSERT DATE HERE]._
-
-![](../images/1_how_to_approach_creating_ai_models/thumbnail.jpg){fig-alt="Cogs and gears."}
+![](../images/1_how_to_approach_creating_ai_models/thumbnail.jpg){fig-alt="A picture showing cogs and gears."}
 
 ## Introduction
 
@@ -36,7 +34,7 @@ The goal of the _Drivetrain Approach_ is to not just use data to generate
 more data — data that is in the form of predictions. But rather to use data
 to also generate actionable outcomes.
 
-The official blogpost goes into much more depth [here](https://www.orielly.com/radar/drivetrain-approach-data-products/).
+The official blogpost goes into much more depth [here](https://www.oreilly.com/radar/drivetrain-approach-data-products/).
 
 In this post, I'll be providing a short overview of my understanding of this
 approach by applying it to the [Elements of AI](https://www.elementsofai.com)
@@ -51,6 +49,9 @@ There are four main steps to this approach:
 - Consider your possible actions
 - Consider your data
 - Create the models
+
+![[Image Source](https://www.oreilly.
+com/radar/drivetrain-approach-data-products/)](../images/1_how_to_approach_creating_ai_models/drivetrain_approach.png){fig-alt="A diagram depicting the DrivetrainApproach as a flow chart."}
 
 ### Define the objective
 
@@ -128,6 +129,8 @@ texts is not viable.
 In short, for some languages, there may be no choice other than to manually
 create the data that would be fed into the system — this manual creation
 also has the chance to skew the performance of the model.
+
+![Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? [Image Source](https://ich.unesco.org/en/USL/whistled-language-00658)](../images/1_how_to_approach_creating_ai_models/whistle_language.jpg){fig-alt="An elderly man blowing a whistle."}
 
 ### Create the model
 
