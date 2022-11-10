@@ -1,0 +1,17 @@
+---
+title: "Bear Classifier"
+image: ../../forblog/images/2_bear_classifier_model/thumbnail.jpg
+description: "Can you spot a black bear in a black night?"
+author: "Salman Naqvi"
+date: "2022-04-30"
+categories: [Image Classification]
+---
+
+_This webapp was remade on **Tuesday, 8 November 2022**._
+
+:::{.column-screen}
+<script type="module"
+src="https://gradio.s3-us-west-2.amazonaws.com/3.3.1/gradio.js">
+</script>
+<gradio-app space="ForBo7/BearDetector"></gradio-app>
+:::
