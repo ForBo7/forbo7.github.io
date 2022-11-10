@@ -5,19 +5,16 @@ description: "A straight to the point guide about reading a confusion matrix."
 author: "Salman Naqvi"
 date: "2022-06-03"
 categories: [Analyzing Models]
-number-sections: true
+number-sections: false
 ---
 
-<!-- TODO: Style numbered sections. -->
-
-_This article is pending a review._
+_This article was updated on **Thursday, 10 November 2022**._
 
 ![](../images/3_the_confusion_matrix/thumbnail.jpg){fig-alt="A meme from the Matrix film."}
 
-Confusion matrices help us model designers view what mistakes our model has 
-made.
+Confusion matrices help model designers view what mistakes a model has made.
 
-I'll be approaching this with logical examples.
+In this post, I'll be telling you how to easily read such matrices.
 
 Jump to @sec-case2 for an ultra concise rundown.
 
@@ -31,7 +28,7 @@ Ignore the "Actual" and "Predicted" labels for now.
 
 Let's compare grizzly bears to black bears.
 
-All comparisons begin at the bottom, and with the columns.
+All comparisons begin at the bottom, with the columns.
 
 First, highlight the grizzly bear column.
 
@@ -47,24 +44,24 @@ Now find the common entry in the highlighted column and row.
 
 This common entry is our required information.
 
-All entries in the main diagonal are correct 
-classifications. All other entries are incorrect classifications.
+All entries in the diagonal going from the top left to the bottom right (blue) are correct classifications. All other entries are incorrect classifications.
 
-Our common entry does not lay in the main diagonal. Therefore we are looking 
+Our common entry does not lie in the main diagonal. Therefore, we are looking
 at incorrect classifications.
 
 We have compared grizzly bears to black bears. Therefore, from this 
 deduction, **three grizzly bears have been incorrectly classified as black 
 bears**.
 
-{% include info.html text="There is a difference between comparing grizzly 
-bears to black bears and black bears to grizzly bears.
-<br><br>
-Comparing grizzly bears to black bears means, 'How many grizzly bears were 
-misclassified as black bears?'
-<br><br>
-Comparing black bears to grizzly bears means, 'How many black bears were 
-misclassified as grizzly bears?'" %}
+::: {.callout-note appearance="simple"}
+## Note
+
+**There is a difference between comparing grizzly bears to black bears and black bears to grizzly bears.**
+
+Comparing grizzly bears to black bears means, "How many grizzly bears were misclassified as black bears?"
+
+Comparing black bears to grizzly bears means, "How many black bears were misclassified as grizzly bears?"
+:::
 
 ## Case 2: Ultra Concise {#sec-case2}
 
@@ -82,7 +79,7 @@ Highlight the common entry.
 
 ![](../images/3_the_confusion_matrix/confusion_matrix_1_6.png){width=65%}
 
-Zero grizzly bears were misclassified as black bears.
+Zero black bears were misclassified as grizzly bears.
 
 ## Case 3: Correct Classifications
 
@@ -95,7 +92,7 @@ Highlight the teddy bear column.
 
 Highlight the teddy bear row.
 
-![](../images/3_the_confusion_matrix/confusion_matrix_1_8.png){width=65}
+![](../images/3_the_confusion_matrix/confusion_matrix_1_8.png){width=65%}
 
 Highlight the common entry.
 
@@ -121,5 +118,4 @@ You learn by doing!
 
 
 
-If you have any questions, comments, suggestions, or corrections, please do 
-post them down in the comment section below!
+If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!
