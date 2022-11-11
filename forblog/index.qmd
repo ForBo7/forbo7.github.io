@@ -15,7 +15,7 @@ listing:
     type: default
     page-size: 6
     image-align: left
-    date-format: "dddd, DD MMMM YYYY | YYYY-MM-DD"
+    date-format: "DD MMMM YYYY"
     fields: [title, subtitle, author, description, date, image, reading-time]
 format:
   html:

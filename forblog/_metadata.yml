@@ -3,7 +3,7 @@ toc: true
 toc-depth: 3
 number-sections: false
 reference-location: margin
-date-format: "dddd, DD MMMM YYYY | YYYY-MM-DD"
+date-format: "dddd, DD MMMM YYYY"
 reading-time: true
 website:
   reader-mode: true
