@@ -15,7 +15,7 @@ listing:
   - id: landing-apps
     contents: web_apps/apps
     type: grid
-    max-items: 2
+    max-items: 6
     grid-columns: 3
     sort: 
       - "date desc"
