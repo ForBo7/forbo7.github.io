@@ -33,6 +33,9 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/ForBo7
+    - icon: clipboard-data
+      text: Kaggle
+      href: https://www.kaggle.com/forbo7
     - icon: brush
       text: Artstation
       href: https://www.artstation.com/forbo7

@@ -15,6 +15,9 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/ForBo7
+    - icon: clipboard-data
+      text: Kaggle
+      href: https://www.kaggle.com/forbo7
     - icon: brush
       text: Artstation
       href: https://www.artstation.com/forbo7
@@ -24,9 +27,7 @@ page-layout: full
 
 _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries._
 
-# Current Status
-
-Gap Year
+:::{.panel-tabset}
 
 # Notable Experience
 
@@ -48,19 +49,20 @@ Gap Year
 
 **English** | Can use the language to a very high degree of complexity. I have better proficiency than most native speakers.
 
-# Known Languages
+# Current Status
 
-**English** | Better than most native speakers.
+Gap Year
 
-**Urdu** | Good speaking and listening competency. Fair writing and reading competency.
+:::
 
-**Japanese** | Currently learning.
+:::{.panel-tabset}
 
 # Education
 
-**Cambridge Assessment International Examinations Advanced Level** | 2 A*s, 1 A, 1 B | High School | September 2019 — August 2021
+**Cambridge Assessment International Examinations Advanced Level** | **2 A\*s, 1 A, 1 B** | High School | September 2019 — August 2021
 
-**Cambridge Assessment International Examinations International General Certificate of Secondary Education** | 3 A*s, 4 As, 1 B | Middle School | August 2015 – August 2019
+**Cambridge Assessment International Examinations International General Certificate of Secondary Education** | **3 A\*s, 4 As, 1 B** | Middle School | August
+2015 – August 2019
 
 **International Baccaleureate Primary Years Program** | Primary School | August 2009 – June 2015
 
@@ -78,3 +80,13 @@ Gap Year
 **Egypt*** | **England** | **France** | **Greece** | **Italy** | **Jordan*** | **Lebanon*** | **Malaysia** | **Pakistan** | **Qatar*** | **Saudi Arabia** | **Sri Lanka** | **Switzerland** | **Tanzania** | **Thailand** | **Turkey** | **UAE** | **Wales**
 
 <span style="font-size:8px">*Transit destinations; I count them still because I was technically within the country's border.</span>
+
+# Known Languages
+
+**English** | Better than most native speakers.
+
+**Urdu** | Good speaking and listening competency. Fair writing and reading competency.
+
+**Japanese** | Currently learning.
+
+:::
