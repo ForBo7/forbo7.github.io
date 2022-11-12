@@ -11,7 +11,7 @@ listing:
     categories: true
     sort-ui: [date, author]
     filter-ui: [title, date, author]
-    # TODO: Feeds/RSS?
+    feed: true
     type: default
     page-size: 6
     image-align: left

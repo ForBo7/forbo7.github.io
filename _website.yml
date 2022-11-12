@@ -3,6 +3,7 @@
 website:
   title: "ForBo7 by Salman Naqvi"
   site-url: https://forbo7.github.io/
+  description: "The world of ForBo7!"
   favicon: favicon.ico
   image: images/profile.png
   # TODO: Page navigation is not working. Enable this for ForBlog and playground only.
@@ -26,17 +27,24 @@ website:
       - icon: file-person
         text: About me
         href: about.qmd
+    right:
+      - icon: rss
+        href: _site/forblog/index.xml
   page-footer:
-    left: "[ForBo7 by Salman Naqvi](https://forbo7.github.io/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."
+    left: "[ForBo7 by Salman Naqvi](https://forbo7.github.io/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/)"
     right:
       - icon: github
         href: https://github.com/ForBo7
+      - icon: clipboard-data
+        href: https://www.kaggle.com/forbo7
       - icon: twitter
         href: https://twitter.com/ForBo7_
       - icon: brush
         href: https://www.artstation.com/forbo7
       - icon: envelope
         href: mailto:salmananaqvii+forblog@gmail.com
+      - icon: rss
+        href: _site/forblog/index.xml
   twitter-card:
     creator: "@ForBo7"
   comments:
