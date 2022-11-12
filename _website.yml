@@ -33,18 +33,18 @@ website:
   page-footer:
     left: "[ForBo7 by Salman Naqvi](https://forbo7.github.io/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/)"
     right:
+      - icon: rss
+        href: _site/forblog/index.xml
+      - icon: envelope
+        href: mailto:salmananaqvii+forblog@gmail.com
+      - icon: twitter
+        href: https://twitter.com/ForBo7_
       - icon: github
         href: https://github.com/ForBo7
       - icon: clipboard-data
         href: https://www.kaggle.com/forbo7
-      - icon: twitter
-        href: https://twitter.com/ForBo7_
       - icon: brush
         href: https://www.artstation.com/forbo7
-      - icon: envelope
-        href: mailto:salmananaqvii+forblog@gmail.com
-      - icon: rss
-        href: _site/forblog/index.xml
   twitter-card:
     creator: "@ForBo7"
   comments:
