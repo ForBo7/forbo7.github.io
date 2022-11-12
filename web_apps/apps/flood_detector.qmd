@@ -1,7 +1,7 @@
 ---
 # Hide title when only the page itself?
 title: "Flood Classifier"
-image: ../../forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.jpg
+image: ../../forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png
 description: "How well can you classify floods?"
 author: "Salman Naqvi"
 date: "2022-09-20"
