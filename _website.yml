@@ -31,7 +31,7 @@ website:
       - icon: rss
         href: _site/forblog/index.xml
   page-footer:
-    left: "[ForBo7 by Salman Naqvi](https://forbo7.github.io/) and the name 'ForBlog' © 2022 \n by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/)"
+    left: "[ForBo7 by Salman Naqvi](https://forbo7.github.io/) © 2022 and ForBlog™ \n by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/)"
     right:
       - icon: envelope
         href: mailto:salmananaqvii+forblog@gmail.com

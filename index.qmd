@@ -46,11 +46,11 @@ about:
 
 :::{#about-forbo7}
 I'm a curious individual who dabbles in AI, does 3D CG, loves learning, and
-is a scitech geek and space nerd. I've also been to 17 countries.
+is a scitech geek and space nerd. I've also been to 18 countries.
 
 Read more about me [here](about.qmd).
 
-You can contact me at {{< var contact.email >}}.
+Contact me with one of the fancy buttons below!
 :::
 
 :::::{.grid}
