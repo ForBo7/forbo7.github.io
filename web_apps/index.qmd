@@ -29,4 +29,7 @@ More apps coming soon.
 :::{#apps}
 :::
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2xVvE7qoX9_zjpMzCcid5EczzKi2ahhx3GfcKdKIF5-qlQw/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe2xVvE7qoX9_zjpMzCcid5EczzKi2ahhx3GfcKdKIF5-qlQw/viewform?embedded=true" width="600" height="500"
+frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+[Click here](../unsubscribe.qmd) to unsubscribe from the App Playground.

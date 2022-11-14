@@ -4,7 +4,8 @@ website:
   title: "ForBo7 by Salman Naqvi"
   site-url: https://forbo7.github.io/
   description: "The world of ForBo7!"
-  favicon: favicon.ico
+#  favicon: favicon.ico
+  favicon: logo.png
   image: images/profile.png
   # TODO: Page navigation is not working. Enable this for ForBlog and playground only.
   page-navigation: false
@@ -12,6 +13,7 @@ website:
   reader-mode: false
   navbar:
     # Currently have set pinnned to true because it isn't smooth.
+#    logo: logo.png
     pinned: True
     left:
       # TODO: Replace icons with emoji?
@@ -31,7 +33,8 @@ website:
       - icon: rss
         href: _site/forblog/index.xml
   page-footer:
-    left: "[ForBo7 by Salman Naqvi](https://forbo7.github.io/) © 2022 and ForBlog™ \n by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/)"
+    left: "[ForBo7 by Salman Naqvi](index.qmd) © 2022 and ForBlog™ \n by [Salman Naqvi](about.qmd) | [Site Version 
+    2.0.0.0](patch_notes.qmd) | [Site Feedback](feedback.qmd) | Website made by me!"
     right:
       - icon: envelope
         href: mailto:salmananaqvii+forblog@gmail.com

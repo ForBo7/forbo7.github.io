@@ -30,4 +30,7 @@ Here you can experience my various ventures into learning, as well as read about
 :::{#posts}
 :::
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfjkZ_LRy1pXna0cDuvfH9lflySyxTaBAMozJTfKtwWG0m5bA/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfjkZ_LRy1pXna0cDuvfH9lflySyxTaBAMozJTfKtwWG0m5bA/viewform?embedded=true" width="600" height="500"
+frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+[Click here](../unsubscribe.qmd) to unsubscribe from the ForBlog.
