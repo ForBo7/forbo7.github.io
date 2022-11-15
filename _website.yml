@@ -12,11 +12,10 @@ website:
   # TODO: Enable this for ForBlog only.
   reader-mode: false
   navbar:
-    # Currently have set pinnned to true because it isn't smooth.
+    # Currently have set pinned to true because it isn't smooth.
 #    logo: logo.png
     pinned: True
     left:
-      # TODO: Replace icons with emoji?
       - icon: house
         text: Home
         href: index.qmd
