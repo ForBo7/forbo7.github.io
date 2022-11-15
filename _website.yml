@@ -1,11 +1,11 @@
 # TODO: Add date format.
 # TODO: Separate this file into further yaml files?
 website:
-  title: "ForBo7 by Salman Naqvi"
+  title: "ForBo7 is Salman Naqvi"
   site-url: https://forbo7.github.io/
   description: "The world of ForBo7!"
-#  favicon: favicon.ico
-  favicon: logo.png
+  favicon: favicon.ico
+#  favicon: logo.png
   image: images/profile.png
   # TODO: Page navigation is not working. Enable this for ForBlog and playground only.
   page-navigation: false
