@@ -1,7 +1,7 @@
 # TODO: Add date format.
 # TODO: Separate this file into further yaml files?
 website:
-  title: "ForBo7 is Salman Naqvi"
+  title: "ForBo7 // Salman Naqvi"
   site-url: https://forbo7.github.io/
   description: "The world of ForBo7!"
   favicon: favicon.ico
