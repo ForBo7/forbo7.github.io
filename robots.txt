@@ -1,1 +1,1 @@
-Sitemap: https://github.com/ForBo7/forbo7.github.io/sitemap.xml
+Sitemap: https://forbo7.github.io/sitemap.xml

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Salman Naqvi">
+<meta name="description" content="There’s more to AI than just creating models.">
+
+<title>ForBo7 // Salman Naqvi - How to Approach Creating AI Models</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="ForBo7 // Salman Naqvi - How to Approach Creating AI Models">
+<meta name="twitter:description" content="There's more to AI than just creating models.">
+<meta name="twitter:image" content="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/thumbnail.jpg">
+<meta name="twitter:creator" content="@ForBo7">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ForBo7 // Salman Naqvi</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../forblog/index.html"><i class="bi bi-newspaper" role="img">
+</i> 
+ <span class="menu-text">ForBlog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../web_apps/index.html"><i class="bi bi-sliders2" role="img">
+</i> 
+ <span class="menu-text">App Playground</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"><i class="bi bi-file-person" role="img">
+</i> 
+ <span class="menu-text">About me</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../_site/forblog/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#overview-of-the-drivetrain-approach" id="toc-overview-of-the-drivetrain-approach" class="nav-link" data-scroll-target="#overview-of-the-drivetrain-approach">Overview of the Drivetrain Approach</a>
+  <ul>
+  <li><a href="#define-the-objective" id="toc-define-the-objective" class="nav-link" data-scroll-target="#define-the-objective">Define the objective</a></li>
+  <li><a href="#consider-your-actions" id="toc-consider-your-actions" class="nav-link" data-scroll-target="#consider-your-actions">Consider your actions</a></li>
+  <li><a href="#consider-your-data" id="toc-consider-your-data" class="nav-link" data-scroll-target="#consider-your-data">Consider your data</a></li>
+  <li><a href="#create-the-models" id="toc-create-the-models" class="nav-link" data-scroll-target="#create-the-models">Create the models</a></li>
+  </ul></li>
+  <li><a href="#endangered-language-chatbot" id="toc-endangered-language-chatbot" class="nav-link" data-scroll-target="#endangered-language-chatbot">Endangered Language Chatbot</a>
+  <ul>
+  <li><a href="#define-the-objective-1" id="toc-define-the-objective-1" class="nav-link" data-scroll-target="#define-the-objective-1">Define the objective</a></li>
+  <li><a href="#consider-your-actions-1" id="toc-consider-your-actions-1" class="nav-link" data-scroll-target="#consider-your-actions-1">Consider your actions</a></li>
+  <li><a href="#consider-your-data-1" id="toc-consider-your-data-1" class="nav-link" data-scroll-target="#consider-your-data-1">Consider your data</a></li>
+  <li><a href="#create-the-model" id="toc-create-the-model" class="nav-link" data-scroll-target="#create-the-model">Create the model</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How to Approach Creating AI Models</h1>
+<p class="subtitle lead">Putting the Drive into the Train</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Approaching AI</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    There’s more to AI than just creating models.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Salman Naqvi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Friday, 27 May 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><em>This article was rewritten on <strong>Monday, 31 October 2022</strong>.</em></p>
+<p><img src="../images/1_how_to_approach_creating_ai_models/thumbnail.jpg" class="img-fluid" alt="A picture showing cogs and gears."></p>
+<section id="introduction" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<div class="page-columns page-full"><p>How you approach making models is crucial. The way AI methods are used in today’s landscape is very different. AI methods are created to solve small, atomic problems. And we’ve got most of the methods to handle these small tasks hammered down. Therefore, applied AI is not about creating models; it’s only a small part of it. It’s 80% problem solving and 20% implementing (I would not be surprised if it actually followed the 80-20 rule<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>).</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://en.wikipedia.org/wiki/Pareto_principle">The 80/20 Rule, also known as the Pareto Principle</a></p></li></div></div>
+<p>Think of AI methods as a tool; think of it as a pencil. You can use pencils to draw, take notes, poke holes, and much more. There are also dozens of pencils out there. But what point is there in using any of those pencils if you don’t even know how to properly use a pencil in the first place? The art of creating pencils has already been perfected too.</p>
+<p>One highly successful approach is the <em>Drivetrain Approach</em>, created by Jeremy Howard — who’s widely known for his fastai course and library —, Margit Zwemer, and Mike Loukides.</p>
+<p>The goal of the <em>Drivetrain Approach</em> is to not just use data to generate more data — data that is in the form of predictions. But rather to use data to also generate actionable outcomes.</p>
+<p>The official blogpost goes into much more depth <a href="https://www.oreilly.com/radar/drivetrain-approach-data-products/">here</a>.</p>
+<p>In this post, I’ll be providing a short overview of my understanding of this approach by applying it to the <a href="https://www.elementsofai.com">Elements of AI</a> course’s final project (this online course was created by the University of Helsinki and Reaktor).</p>
+</section>
+<section id="overview-of-the-drivetrain-approach" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-the-drivetrain-approach">Overview of the Drivetrain Approach</h2>
+<p>There are four main steps to this approach:</p>
+<ul>
+<li>Define the objective</li>
+<li>Consider your possible actions</li>
+<li>Consider your data</li>
+<li>Create the models</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/1_how_to_approach_creating_ai_models/drivetrain_approach.png" class="img-fluid figure-img" alt="A diagram depicting the DrivetrainApproach as a flow chart."></p>
+<p></p><figcaption class="figure-caption"><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption><p></p>
+</figure>
+</div>
+<section id="define-the-objective" class="level3">
+<h3 class="anchored" data-anchor-id="define-the-objective">Define the objective</h3>
+<p>Write out what you are really trying to achieve. What is your goal? Writing it out puts it in a tangible manner.</p>
+</section>
+<section id="consider-your-actions" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-actions">Consider your actions</h3>
+<p>Think about what actions you can take to achieve your objective.</p>
+<p>Also think about what would happen if you did those actions.</p>
+<p>What would happen if I did <em>x</em>? Would <em>y</em> really be a good idea? What if <em>z</em> worked out <strong>too</strong> well? Will <em>x</em> lead to <em>y</em>? What would happen if <em>x</em> turned out poorly?</p>
+</section>
+<section id="consider-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-data">Consider your data</h3>
+<p>Think about the data you already have and how it could be used.</p>
+<p>Think about any further data that is needed and how it could be collected.</p>
+</section>
+<section id="create-the-models" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-models">Create the models</h3>
+<p>Create models. But create models that produce actions. Actions that produce the best results for your objective.</p>
+</section>
+</section>
+<section id="endangered-language-chatbot" class="level2">
+<h2 class="anchored" data-anchor-id="endangered-language-chatbot">Endangered Language Chatbot</h2>
+<p>The final project of the Elements of AI course asked me to come up with my own AI method that would solve a problem, and how it would do so.</p>
+<p>The problem I tackled was the endangerment of languages. The solution I came up with was to create a chatbot that could converse in these endangered languages. I created an overview of how this could be done.</p>
+<p>The overview can be read <a href="https://github.com/ForBo7/Endangered-Language-Chatbot">here</a>.</p>
+<p>Let’s tackle this problem through the <em>Drivetrain Approach</em>.</p>
+<section id="define-the-objective-1" class="level3">
+<h3 class="anchored" data-anchor-id="define-the-objective-1">Define the objective</h3>
+<p>The objective is to preserve languages that are in danger of going extinct. Through preserving languages, histories and cultures can be preserved.</p>
+</section>
+<section id="consider-your-actions-1" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-actions-1">Consider your actions</h3>
+<p>One way this could be done is to create a chatbot that could converse in endangered languages. However, this would be a monumental task considering the amount of data needed to achieve this.</p>
+<p>Another action that could be taken is to create an information retrieval (IR) system of sorts. A corpus of written text of the language could be provided, from which insights about the language’s history, culture, and way of conversing could be gained. In turn the language is preserved.</p>
+<p>The latter action may be easier to achieve.</p>
+</section>
+<section id="consider-your-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-data-1">Consider your data</h3>
+<p>The obvious source of data would be a corpora of text.</p>
+<p>However, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.</p>
+<p>Even if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.</p>
+<p>In short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/1_how_to_approach_creating_ai_models/whistle_language.jpg" class="img-fluid figure-img" alt="An elderly man blowing a whistle."></p>
+<p></p><figcaption class="figure-caption">Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="create-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-model">Create the model</h3>
+<p>Either a chatbot needs to be created that speaks as accurately as a native speaker, or an IR system needs to be created that gives meaningful, correct insights into a language and its associated culture.</p>
+<p>This step may either be easy or hard, depending on the language. Most NLP or IR systems have been built on a few, select languages. Perhaps this step may be easy for those languages that are similar to languages on which NLP or IR systems have already been built on. It will most likely be harder for those languages which are not.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This concludes my understanding of the <em>Drivetrain Approach</em>, through an example.</p>
+<p>Approaches are crucial: you can have state-of-the-art tools, but they are useless if not correctly applied. The approach you take can either make it or break it. Putting it into a concrete, organized, tangible manner goes a long way.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="transparent_dark" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://forbo7.github.io/index.html">ForBo7 // Salman Naqvi</a> © 2022 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.0.0.0</a> | <a href="feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:salmananaqvii+forblog@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/ForBo7_">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ForBo7">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.kaggle.com/forbo7">
+      <i class="bi bi-clipboard-data" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.artstation.com/forbo7">
+      <i class="bi bi-brush" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../_site/forblog/index.xml">
+      <i class="bi bi-rss" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

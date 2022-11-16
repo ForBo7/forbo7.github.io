@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Salman Naqvi">
+<meta name="description" content="A rundown of the creation of my flood classifier.">
+
+<title>ForBo7 // Salman Naqvi - Detecting Floods for Disaster Relief</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="ForBo7 // Salman Naqvi - Detecting Floods for Disaster Relief">
+<meta name="twitter:description" content="A rundown of the creation of my flood classifier.">
+<meta name="twitter:image" content="https://forbo7.github.io/forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png">
+<meta name="twitter:creator" content="@ForBo7">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1024">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ForBo7 // Salman Naqvi</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../forblog/index.html"><i class="bi bi-newspaper" role="img">
+</i> 
+ <span class="menu-text">ForBlog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../web_apps/index.html"><i class="bi bi-sliders2" role="img">
+</i> 
+ <span class="menu-text">App Playground</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"><i class="bi bi-file-person" role="img">
+</i> 
+ <span class="menu-text">About me</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../_site/forblog/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sort-data." id="toc-sort-data." class="nav-link active" data-scroll-target="#sort-data.">Sort data.</a></li>
+  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data">Load data</a></li>
+  <li><a href="#instantiate-and-train-model" id="toc-instantiate-and-train-model" class="nav-link" data-scroll-target="#instantiate-and-train-model">Instantiate and Train Model</a></li>
+  <li><a href="#visualizing-mistakes" id="toc-visualizing-mistakes" class="nav-link" data-scroll-target="#visualizing-mistakes">Visualizing Mistakes</a></li>
+  <li><a href="#model-inference" id="toc-model-inference" class="nav-link" data-scroll-target="#model-inference">Model Inference</a></li>
+  <li><a href="#improving-the-model." id="toc-improving-the-model." class="nav-link" data-scroll-target="#improving-the-model.">Improving the model.</a></li>
+  <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Detecting Floods for Disaster Relief</h1>
+<p class="subtitle lead">How good are you at detecting floods?</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Creating Models</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A rundown of the creation of my flood classifier.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Salman Naqvi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Monday, 12 September 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>You can find this notebook on Kaggle <a href="https://www.kaggle.com/code/forbo7/flood-classifier">here</a>.</strong></p>
+<p><em>This article was updated on <strong>Friday, 11 November 2022</strong>.</em></p>
+<!-- TODO: Rotate image. -->
+<p><img src="../images/5_detecting_floods_for_disaster_relief/thumbnail.png" class="img-fluid" alt="An image of a house on top of a pinnacle of rock surrounded by water."></p>
+<p>The model that will be created in this notebook can detect whether an area shown in an image is flooded or not. The idea for creating this model has been spurred from the recent floodings in Pakistan.</p>
+<p>Such models can prove useful in flood relief, helping to detect which areas need immediate focus.</p>
+<p>The dataset used to train this model is <strong>Louisiana flood 2016</strong>, uploaded by Kaggle user <strong>Rahul T P</strong>, which you can view <a href="https://www.kaggle.com/datasets/rahultp97/louisiana-flood-2016">here</a>.</p>
+<p>The fastai library, a high level PyTorch library, has been used.</p>
+<p>One of the points of this notebook is to showcase how simple it is to create powerful models. That said, this notebook is <strong>not</strong> a tutorial or guide.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:05.493309Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:05.492447Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.742561Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.741405Z&quot;}" data-papermill="{&quot;duration&quot;:3.270399,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.745299&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:05.474900&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="sort-data." class="level2">
+<h2 class="anchored" data-anchor-id="sort-data.">Sort data.</h2>
+<p>The data in the dataset needs to be organized into <em>train</em> and <em>valid</em> folders. Each will contain the same subfolders, <em>0</em> and <em>1</em>, which will be used to label the data. A label of <code>0</code> indicates the area shown in the image is not flooded, while a label of <code>1</code> indicates the area shown in the image is flooded.</p>
+<p>The images in the dataset itself has been organized as follows:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;If no underscore is in the file name, the image shows the area before or after the flood.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;If an underscore is in the file name, the image shows the area during the flood:</p>
+<ul>
+<li>If a zero follows the underscore, the area was not flooded.</li>
+<li>If a one follows the underscore, the area was flooded.</li>
+</ul>
+<p>Creating the necessary paths.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:08.829498Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:08.828333Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.834978Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.833986Z&quot;}" data-papermill="{&quot;duration&quot;:0.021492,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.838729&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:08.817237&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>working_path <span class="op">=</span> Path.cwd()<span class="op">;</span> <span class="bu">print</span>(working_path)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>folders <span class="op">=</span> (<span class="st">'train'</span>, <span class="st">'valid'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> (<span class="st">'0'</span>, <span class="st">'1'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/kaggle/working</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:08.860991Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:08.859510Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.944909Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.943807Z&quot;}" data-papermill="{&quot;duration&quot;:0.099093,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.947775&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:08.848682&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>input_path <span class="op">=</span> Path(<span class="st">'/kaggle/input'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>train_image_paths <span class="op">=</span> <span class="bu">sorted</span>(input_path.rglob(<span class="st">'train/*.png'</span>))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>valid_image_paths <span class="op">=</span> <span class="bu">sorted</span>(input_path.rglob(<span class="st">'test/*.png'</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(train_image_paths), <span class="bu">len</span>(valid_image_paths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>(270, 52)</code></pre>
+</div>
+</div>
+<p>Creating the necessary directories.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:08.990714Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:08.990359Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.996844Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.995770Z&quot;}" data-papermill="{&quot;duration&quot;:0.019674,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.998954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:08.979280&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> folder <span class="kw">in</span> folders:</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> (working_path<span class="op">/</span>folder).exists():</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        (working_path<span class="op">/</span>folder).mkdir()</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> label <span class="kw">in</span> labels:</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> (working_path<span class="op">/</span>folder<span class="op">/</span>label).exists():</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>            (working_path<span class="op">/</span>folder<span class="op">/</span>label).mkdir()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Move images to new directories.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:09.042253Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:09.041352Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.002238Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.001094Z&quot;}" data-papermill="{&quot;duration&quot;:2.974352,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.004531&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:09.030179&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> image_path <span class="kw">in</span> train_image_paths:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">'_1'</span> <span class="kw">in</span> image_path.stem:</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> (working_path<span class="op">/</span><span class="st">'train'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span>image_path.name).<span class="bu">open</span>(mode<span class="op">=</span><span class="st">'xb'</span>) <span class="im">as</span> f:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                f.write(image_path.read_bytes())</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> (working_path<span class="op">/</span><span class="st">'train'</span><span class="op">/</span><span class="st">'0'</span><span class="op">/</span>image_path.name).<span class="bu">open</span>(mode<span class="op">=</span><span class="st">'xb'</span>) <span class="im">as</span> f:</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                f.write(image_path.read_bytes())</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">FileExistsError</span>:</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Training images have already been moved."</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Training images moved."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training images moved.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.028069Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.026523Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.395600Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.394388Z&quot;}" data-papermill="{&quot;duration&quot;:0.382827,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.398173&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.015346&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> image_path <span class="kw">in</span> valid_image_paths:</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="st">'_1'</span> <span class="kw">in</span> image_path.stem:</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> (working_path<span class="op">/</span><span class="st">'valid'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span>image_path.name).<span class="bu">open</span>(mode<span class="op">=</span><span class="st">'xb'</span>) <span class="im">as</span> f:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                f.write(image_path.read_bytes())</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> (working_path<span class="op">/</span><span class="st">'valid'</span><span class="op">/</span><span class="st">'0'</span><span class="op">/</span>image_path.name).<span class="bu">open</span>(mode<span class="op">=</span><span class="st">'xb'</span>) <span class="im">as</span> f:</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                f.write(image_path.read_bytes())</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">FileExistsError</span>:</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Testing images have already been moved."</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Testing images moved."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Testing images moved.</code></pre>
+</div>
+</div>
+<p>Check that images have been moved.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.442516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.441495Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.452149Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.450721Z&quot;}" data-papermill="{&quot;duration&quot;:0.024352,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.454314&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.429962&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>training_images <span class="op">=</span> get_image_files(working_path<span class="op">/</span><span class="st">'train'</span>)<span class="op">;</span> <span class="bu">print</span>(<span class="bu">len</span>(training_images))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>270</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.477823Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.477117Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.688255Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.687359Z&quot;}" data-papermill="{&quot;duration&quot;:0.226811,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.691568&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.464757&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Image.<span class="bu">open</span>(training_images[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.719927Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.719594Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.728327Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.727274Z&quot;}" data-papermill="{&quot;duration&quot;:0.025912,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.730913&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.705001&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>validation_images <span class="op">=</span> get_image_files(working_path<span class="op">/</span><span class="st">'valid'</span>)<span class="op">;</span> <span class="bu">print</span>(<span class="bu">len</span>(validation_images))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>52</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.760100Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.759783Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.880274Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.879306Z&quot;}" data-papermill="{&quot;duration&quot;:0.139112,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.884616&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.745504&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Image.<span class="bu">open</span>(validation_images[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="load-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-data">Load data</h2>
+<p>Create the training and validation dataloaders through fastai’s quick and easy <code>DataBlock</code> class.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.985360Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.985000Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:16.619229Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:16.618265Z&quot;}" data-papermill="{&quot;duration&quot;:3.654376,&quot;end_time&quot;:&quot;2022-09-11T07:18:16.621871&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.967495&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>dataloaders <span class="op">=</span> DataBlock(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    blocks <span class="op">=</span> (ImageBlock, CategoryBlock),</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    get_items <span class="op">=</span> get_image_files,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    splitter <span class="op">=</span> GrandparentSplitter(),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    get_y <span class="op">=</span> parent_label,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    item_tfms <span class="op">=</span> [Resize(<span class="dv">192</span>, method<span class="op">=</span><span class="st">'squish'</span>)]</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>).dataloaders(working_path, bs<span class="op">=</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check that data has been loaded correctly.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:16.690449Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:16.689337Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:17.569325Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:17.568486Z&quot;}" data-papermill="{&quot;duration&quot;:0.904393,&quot;end_time&quot;:&quot;2022-09-11T07:18:17.576236&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:16.671843&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dataloaders.show_batch(max_n<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="instantiate-and-train-model" class="level2">
+<h2 class="anchored" data-anchor-id="instantiate-and-train-model">Instantiate and Train Model</h2>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:17.666206Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:17.665830Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:58.064050Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:58.062950Z&quot;}" data-papermill="{&quot;duration&quot;:40.424136,&quot;end_time&quot;:&quot;2022-09-11T07:18:58.066398&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:17.642262&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>learner <span class="op">=</span> vision_learner(dataloaders, resnet18, metrics<span class="op">=</span>error_rate)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>learner.fine_tune(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"bdd89b090c3944d5a5462767fc8bf29d","version_major":2,"version_minor":0}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.919323</td>
+      <td>1.118264</td>
+      <td>0.365385</td>
+      <td>00:09</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.490039</td>
+      <td>0.628054</td>
+      <td>0.250000</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.367996</td>
+      <td>0.411558</td>
+      <td>0.192308</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.266664</td>
+      <td>0.472146</td>
+      <td>0.192308</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.203069</td>
+      <td>0.256436</td>
+      <td>0.115385</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.158453</td>
+      <td>0.127106</td>
+      <td>0.076923</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.124499</td>
+      <td>0.095927</td>
+      <td>0.038462</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.098409</td>
+      <td>0.089279</td>
+      <td>0.038462</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.079600</td>
+      <td>0.093277</td>
+      <td>0.038462</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.064886</td>
+      <td>0.090372</td>
+      <td>0.038462</td>
+      <td>00:02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>Nice! A relatively low error rate for no tweaking.</p>
+</section>
+<section id="visualizing-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-mistakes">Visualizing Mistakes</h2>
+<p>We have to see how the model is getting confuzzled.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:58.241827Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:58.241361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:59.575155Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:59.573757Z&quot;}" data-papermill="{&quot;duration&quot;:1.361381,&quot;end_time&quot;:&quot;2022-09-11T07:18:59.579075&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:58.217694&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>interp <span class="op">=</span> ClassificationInterpretation.from_learner(learner)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>interp.plot_confusion_matrix()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-15-output-5.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Only a couple of mistakes. Let’s see what they are.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:59.724320Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:59.723919Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:00.338604Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:00.337405Z&quot;}" data-papermill="{&quot;duration&quot;:0.648114,&quot;end_time&quot;:&quot;2022-09-11T07:19:00.341972&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:59.693858&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>interp.plot_top_losses(<span class="dv">5</span>, nrows<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-16-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Nothing has been mislabeled, but the first one is especially tricky to determine, even for human eyes.</p>
+</section>
+<section id="model-inference" class="level2">
+<h2 class="anchored" data-anchor-id="model-inference">Model Inference</h2>
+<p>Let’s test the model on some images of the recent flooding in Pakistan.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.558615Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.558198Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:00.565882Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:00.565018Z&quot;}" data-papermill="{&quot;duration&quot;:0.038169,&quot;end_time&quot;:&quot;2022-09-11T07:19:00.567989&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.529820&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> infer_image(image_path):</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    display(Image.<span class="bu">open</span>(image_path))</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    label, _, probabilities <span class="op">=</span> learner.predict(PILImage(PILImage.create(image_path)))</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> label <span class="op">==</span> <span class="st">'0'</span>:</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"The area shown in the image is not flooded with probability </span><span class="sc">{</span>probabilities[<span class="dv">0</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%."</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> label <span class="op">==</span> <span class="st">'1'</span>:</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"The area shown in the image is flooded with probability </span><span class="sc">{</span>probabilities[<span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%."</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Unknown label assigned to image."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.622862Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.622520Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:00.688753Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:00.687512Z&quot;}" data-papermill="{&quot;duration&quot;:0.096393,&quot;end_time&quot;:&quot;2022-09-11T07:19:00.690854&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.594461&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'1.jpeg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is not flooded with probability 65.65%.</code></pre>
+</div>
+</div>
+<p>Not bad!</p>
+<p>Let’s try it on another image.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.808329Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.807968Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:02.432693Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:02.431630Z&quot;}" data-papermill="{&quot;duration&quot;:1.658645,&quot;end_time&quot;:&quot;2022-09-11T07:19:02.435988&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.777343&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'2.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.90%.</code></pre>
+</div>
+</div>
+<p>The label for this image is kind of meaningless. This is an image of a vast area of land, so certain areas could be flooded, while others are not. That said, it could be used to determine whether there is flooding in the image.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:03.158164Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:03.157795Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:03.326060Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:03.324479Z&quot;}" data-papermill="{&quot;duration&quot;:0.313347,&quot;end_time&quot;:&quot;2022-09-11T07:19:03.329205&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:03.015858&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'3.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.99%.</code></pre>
+</div>
+</div>
+<p>The model performed really well in this case: the input image is shown at a different angle. The images in the training set only show areas from a top-down view.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:03.915708Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:03.915118Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:04.297396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:04.296252Z&quot;}" data-papermill="{&quot;duration&quot;:0.532781,&quot;end_time&quot;:&quot;2022-09-11T07:19:04.300294&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:03.767513&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'4.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is not flooded with probability 64.56%.</code></pre>
+</div>
+</div>
+<p>Over here, the limitations of the current state of the model can be seen. The model is not performing well on images where the view is more parallel to the ground, since the images in the training set are all top-down.</p>
+<p>Let’s do two more images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:05.417373Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:05.416795Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:05.473225Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:05.471793Z&quot;}" data-papermill="{&quot;duration&quot;:0.252769,&quot;end_time&quot;:&quot;2022-09-11T07:19:05.475284&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:05.222515&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'5.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.94%.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:05.835986Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:05.835396Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:06.151206Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:06.150029Z&quot;}" data-papermill="{&quot;duration&quot;:0.504279,&quot;end_time&quot;:&quot;2022-09-11T07:19:06.154063&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:05.649784&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'6.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 100.00%.</code></pre>
+</div>
+</div>
+<p>The model is working well with images of different sizes too, and has given this image a very high, correct confidence.</p>
+</section>
+<section id="improving-the-model." class="level2">
+<h2 class="anchored" data-anchor-id="improving-the-model.">Improving the model.</h2>
+<p>Let’s see if we can get the model’s performance to improve on the following image through augmenting the training set.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:07.793911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:07.793281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:08.090600Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:08.089689Z&quot;}" data-papermill="{&quot;duration&quot;:0.526936,&quot;end_time&quot;:&quot;2022-09-11T07:19:08.109805&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:07.582869&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Image.<span class="bu">open</span>(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'4.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:09.399017Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:09.398632Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:12.073251Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:12.072257Z&quot;}" data-papermill="{&quot;duration&quot;:3.737701,&quot;end_time&quot;:&quot;2022-09-11T07:19:12.075717&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:08.338016&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>augmented_dataloaders <span class="op">=</span> DataBlock(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    blocks <span class="op">=</span> (ImageBlock, CategoryBlock),</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    get_items <span class="op">=</span> get_image_files,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    splitter <span class="op">=</span> GrandparentSplitter(),</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    get_y <span class="op">=</span> parent_label,</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    item_tfms <span class="op">=</span> RandomResizedCrop(<span class="dv">192</span>, min_scale<span class="op">=</span><span class="fl">0.5</span>),</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    batch_tfms<span class="op">=</span>aug_transforms()</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>).dataloaders(working_path, bs<span class="op">=</span><span class="dv">32</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:12.539701Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:12.539118Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:13.438651Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:13.437466Z&quot;}" data-papermill="{&quot;duration&quot;:1.134797,&quot;end_time&quot;:&quot;2022-09-11T07:19:13.443352&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:12.308555&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>augmented_dataloaders.show_batch(max_n<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:14.119021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:14.118453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:42.786631Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:42.785492Z&quot;}" data-papermill="{&quot;duration&quot;:28.901784,&quot;end_time&quot;:&quot;2022-09-11T07:19:42.788960&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:13.887176&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>augmented_learner <span class="op">=</span> vision_learner(augmented_dataloaders, resnet18, metrics<span class="op">=</span>error_rate)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>augmented_learner.fine_tune(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1.161182</td>
+      <td>0.835870</td>
+      <td>0.365385</td>
+      <td>00:02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.442552</td>
+      <td>0.686252</td>
+      <td>0.288462</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.417739</td>
+      <td>0.411907</td>
+      <td>0.153846</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.346400</td>
+      <td>0.316388</td>
+      <td>0.057692</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.306782</td>
+      <td>0.213407</td>
+      <td>0.076923</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.251947</td>
+      <td>0.199586</td>
+      <td>0.076923</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.209951</td>
+      <td>0.141818</td>
+      <td>0.057692</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.188433</td>
+      <td>0.116713</td>
+      <td>0.057692</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.169689</td>
+      <td>0.125078</td>
+      <td>0.057692</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.151843</td>
+      <td>0.131188</td>
+      <td>0.057692</td>
+      <td>00:02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>Let’s try the new model out.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:43.735511Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:43.733929Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:44.110452Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:44.109223Z&quot;}" data-papermill="{&quot;duration&quot;:0.619631,&quot;end_time&quot;:&quot;2022-09-11T07:19:44.113360&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:43.493729&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>display(Image.<span class="bu">open</span>(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'4.jpg'</span>))</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>label, _, probabilities <span class="op">=</span> augmented_learner.predict(PILImage(PILImage.create(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'4.jpg'</span>)))</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> label <span class="op">==</span> <span class="st">'0'</span>:</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"The area shown in the image is not flooded with probability </span><span class="sc">{</span>probabilities[<span class="dv">0</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%."</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> label <span class="op">==</span> <span class="st">'1'</span>:</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"The area shown in the image is flooded with probability </span><span class="sc">{</span>probabilities[<span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%."</span>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Unknown label assigned to image."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.91%.</code></pre>
+</div>
+</div>
+<p>Dang, impressive! The correct label <em>and</em> with excellent confidence!</p>
+<p>Before we get too excited though, we should check the performance on the model with the previous images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:45.714022Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:45.713440Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:45.727793Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:45.726862Z&quot;}" data-papermill="{&quot;duration&quot;:0.283643,&quot;end_time&quot;:&quot;2022-09-11T07:19:45.729947&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:45.446304&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>test_dataloader <span class="op">=</span> learner.dls.test_dl([image_path <span class="cf">for</span> image_path <span class="kw">in</span> <span class="bu">sorted</span>((input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span>).rglob(<span class="st">'*.*'</span>))])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:46.267204Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:46.266630Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:47.016009Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:47.014674Z&quot;}" data-papermill="{&quot;duration&quot;:1.030615,&quot;end_time&quot;:&quot;2022-09-11T07:19:47.018653&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:45.988038&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>probabilities, _, labels <span class="op">=</span> augmented_learner.get_preds(dl<span class="op">=</span>test_dataloader, with_decoded<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:47.597219Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:47.594938Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:48.299583Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:48.298350Z&quot;}" data-papermill="{&quot;duration&quot;:1.000961,&quot;end_time&quot;:&quot;2022-09-11T07:19:48.303699&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:47.302738&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Images are numbered horizontally."</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>test_dataloader.show_batch()</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> probability, label, image_number <span class="kw">in</span> <span class="bu">zip</span>(probabilities, labels, <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">7</span>)):</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> label <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Image </span><span class="sc">{</span>image_number<span class="sc">}</span><span class="ss"> is flooded with a probability of </span><span class="sc">{</span>probability[<span class="dv">1</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%."</span>)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> label <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Image </span><span class="sc">{</span>image_number<span class="sc">}</span><span class="ss"> is not flooded with a probability of </span><span class="sc">{</span>probability[<span class="dv">0</span>]<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%."</span>)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Image </span><span class="sc">{</span>image_number<span class="sc">}</span><span class="ss"> has been assigned an unknown label."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Images are numbered horizontally.
+Image 1 is flooded with a probability of 95.94%.
+Image 2 is flooded with a probability of 99.92%.
+Image 3 is flooded with a probability of 91.34%.
+Image 4 is flooded with a probability of 99.71%.
+Image 5 is flooded with a probability of 100.00%.
+Image 6 is flooded with a probability of 100.00%.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Drastically improved probabilities! A little augmentation can go a long way.</p>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<p>This model was trained on only 270 images and minimal code. Accessbility and abstraction to the field of machine learning has come a long, long way. Given the right data and the right pretrained model, a powerful model can be produced in less than an hour, if not half.</p>
+<p>This is important: in disasters such as floods, the time taken to produce the logistics required for relief can be drastically reduced. It is also important because the barrier of entry to this field is dramatically lowered; more people can create powerful models, in turn producing better solutions.</p>
+<p>However, there could be some improvements and additions made to the model:</p>
+<ul>
+<li><p>Include a third class to the model. Images that are not flooded, but show signs of having been flooded would be assigned this class. The dataset used for this model includes such images.</p></li>
+<li><p>Train the model on images that include a variety of geographic locations and dwellings. The current dataset only contains images taken in a lush, green area with plenty of trees; infrastructure looks a certain way; the color of the floodwater is also dependent on the surroundings. All this makes the model good a prediciting whether an image is flooded for images with certain features.</p></li>
+</ul>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"0b036af8f5864002a70a4fd8c6462ddf":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_bb3246298e1645e0989b903f9ea95641","placeholder":"​","style":"IPY_MODEL_46581c10f2c547bd832908fc9f97bb98","value":"100%"}},"2785f8fa14dc4989b52d236721cf70f1":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_bfa308f3da83427ea398b6907b64895c","max":46830571,"min":0,"orientation":"horizontal","style":"IPY_MODEL_e05763b263a3490e8cdae5e87a39c9c0","value":46830571}},"461e6dae01874baba2ac8fe506e7636c":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"46581c10f2c547bd832908fc9f97bb98":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"bb3246298e1645e0989b903f9ea95641":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"bdd89b090c3944d5a5462767fc8bf29d":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_0b036af8f5864002a70a4fd8c6462ddf","IPY_MODEL_2785f8fa14dc4989b52d236721cf70f1","IPY_MODEL_e19c46d4b44f409689b535cf924039d2"],"layout":"IPY_MODEL_e954e34c5b1e423cb4cfcc730bd4b726"}},"bfa308f3da83427ea398b6907b64895c":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"d869e9ceaaa842c592c4493a9336ceb2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"e05763b263a3490e8cdae5e87a39c9c0":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"e19c46d4b44f409689b535cf924039d2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_461e6dae01874baba2ac8fe506e7636c","placeholder":"​","style":"IPY_MODEL_d869e9ceaaa842c592c4493a9336ceb2","value":" 44.7M/44.7M [00:03&lt;00:00, 16.4MB/s]"}},"e954e34c5b1e423cb4cfcc730bd4b726":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="transparent_dark" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://forbo7.github.io/index.html">ForBo7 // Salman Naqvi</a> © 2022 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.0.0.0</a> | <a href="feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:salmananaqvii+forblog@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/ForBo7_">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ForBo7">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.kaggle.com/forbo7">
+      <i class="bi bi-clipboard-data" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.artstation.com/forbo7">
+      <i class="bi bi-brush" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../_site/forblog/index.xml">
+      <i class="bi bi-rss" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

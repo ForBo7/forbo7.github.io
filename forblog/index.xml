@@ -1,0 +1,1982 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>ForBo7 // Salman Naqvi</title>
+<link>https://forbo7.github.io/forblog/index.html</link>
+<atom:link href="https://forbo7.github.io/forblog/index.xml" rel="self" type="application/rss+xml"/>
+<description>The world of ForBo7!</description>
+<image>
+<url>https://forbo7.github.io/images/profile.png</url>
+<title>ForBo7 // Salman Naqvi</title>
+<link>https://forbo7.github.io/forblog/index.html</link>
+<height>144</height>
+<width>144</width>
+</image>
+<generator>quarto-1.2.269</generator>
+<lastBuildDate>Tue, 04 Oct 2022 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>AI in a Nutshell</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><em>This blog post was updated on <strong>Saturday, 12 November 2022</strong>.</em></p>
+<p><img src="https://forbo7.github.io/forblog/images/6_ai_in_a_nutshell/thumbnail.png" class="img-fluid" alt="A circuit board inside a walnut."></p>
+<p>Artificial Intelligence. Machine Learning. Neural Networks. Deep Learning. Fancy Words. Deceptively Simple. All really the same.</p>
+<p>The basic workflow to create such a system is below.</p>
+<div class="grid">
+<div class="g-col-4">
+
+</div>
+<div class="g-col-4">
+<div class="cell" data-fig-width="2">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TB
+    A[Function] -- fits --&gt; B[Data]
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-4">
+
+</div>
+</div>
+<p>Very simple, eh? Of course, it’s a very high level abstraction, but this high level view will make this seemingly complex topic very simple.</p>
+<p>First, what’s the main thing modern AI methods try to do? They try to make predictions about certain things.</p>
+<p>So a <strong>function</strong> of sorts is needed to achieve this. A function that can make these predictions. Think of a function as a machine. You put something into the machine and then, with whatever was input, the machine then produces an output.</p>
+<p>The machine that we will be working with has two input slots: one slot is for <strong>training</strong> and the other slot is for predictions.</p>
+<p>To create a function that produces predictions, we need to tell the function what sort of predictions it needs to make.</p>
+<p>To do that, we can pour some data into the <strong>training</strong> slot. This data will tell the function what sort of predictions to output. This process is known as <strong>fitting</strong> the function to the data.</p>
+<p>To fit the function onto data, you <strong>train</strong> the function.</p>
+<section id="simple-case-quadratic-function" class="level2">
+<h2 class="anchored" data-anchor-id="simple-case-quadratic-function">Simple Case: Quadratic Function</h2>
+<p><em>Gasp!</em> A quadratic?? What’s this nonsense!</p>
+<p>A quadratic is a very simple equation. When shown on a graph, it looks like this.</p>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We’ll be using this equation to demonstrate a very simple example.</p>
+<p>The basic workflow for fitting a function to data is below.</p>
+<div class="grid">
+<div class="g-col-2">
+
+</div>
+<div class="g-col-8">
+<div class="cell" data-fig-width="3.5">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart TB
+    B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-2">
+
+</div>
+</div>
+<p>It can seem like a lot at first glance; quite a few new terms too.</p>
+<p>We’ll break this down by going over the very simple example.</p>
+<p>Let’s say we have the following data points that describe, say, the speed of an object with respect to time. We want to predict what the speed of an object would be outside these data points.</p>
+<p>The horizontal axis is time and the vertical axis is the object’s speed.</p>
+<div class="cell" data-tags="[]" data-execution_count="7">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We can see that the data looks like the quadratic function shown above! Therefore, we could use the quadratic to predict what the speed of the object would be after 2.0 s and before -2.0 s.</p>
+<p>A quadratic equation includes three numbers which we will call <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c">. These three numbers affect or control how our quadratic function will end up looking. <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> are our <strong>parameters</strong>.</p>
+<p>Let’s let <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> all equal <img src="https://latex.codecogs.com/png.latex?1"> to begin with.</p>
+<div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Hmm, not a very good fit.</p>
+<p>Let’s try another set of values for the parameters: <img src="https://latex.codecogs.com/png.latex?2">, <img src="https://latex.codecogs.com/png.latex?1">, <img src="https://latex.codecogs.com/png.latex?1.5">.</p>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Looking much better now!</p>
+<p>Let’s see what <img src="https://latex.codecogs.com/png.latex?2">, <img src="https://latex.codecogs.com/png.latex?0">, and <img src="https://latex.codecogs.com/png.latex?1.5"> gives us.</p>
+<div class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Eyeballing this is difficult. A certain set of parameters we use may be good by looking at the resulting graph, but in reality, it may not be.</p>
+<p>What we need is something that can tell us how good our function is; something that tells us whether the changes we are making are actually good or not. To do this, we can calculate a number called the <strong>loss</strong>. The smaller the loss, the better the function is.</p>
+<p>There are many different ways loss can be calculated. The way we will be doing it is known as <strong>mean absolute error (MAE)</strong>. In simple terms, it tells us how far off each prediction is from the actual value. For example, if we have a MAE of 1, this means that, on average, each prediction we make is 1 unit off from the real value.</p>
+<p>In our case, a MAE of 1 would mean that each prediction is on average 1 m/s off from the real value.</p>
+<p>Let’s repeat what we did above, but this time, we’ll also see what the MAE is.</p>
+<div class="cell" data-execution_count="12">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Again, this means that on average, each prediction we will make is 2.61 m/s off from the real value.</p>
+<div class="cell" data-execution_count="13">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>That’s a big jump!</p>
+<div class="cell" data-execution_count="14">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Hmm, things got worse.</p>
+<p>Doing this process by hand is very tedious. How do we know if the new set of parameters we are using would improve the function? There needs to be a way to automate this so we don’t have to sit down and do this by hand.</p>
+<p>What we can do is update the parameters based on the loss. This would in turn create new parameters that would decrease the loss.</p>
+<div class="grid">
+<div class="g-col-4">
+
+</div>
+<div class="g-col-4">
+<div class="cell" data-fig-width="2.2">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart TB
+    A[Loss] -- Updates ---&gt; B[Parameters] -- Updates ---&gt; A
+</pre>
+<div id="mermaid-tooltip-3" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-4">
+
+</div>
+</div>
+<p>Let’s give <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> an arbitrary set of parameters <img src="https://latex.codecogs.com/png.latex?1.1">, <img src="https://latex.codecogs.com/png.latex?1.1">, and <img src="https://latex.codecogs.com/png.latex?1.1">.</p>
+<p>Now let’s create a quadratic with this set of parameters and calculate its mean absolute error.</p>
+<div class="cell" data-execution_count="16">
+<div class="cell-output cell-output-display">
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Code Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The MAE is 2.42.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Now comes the next step: how do we update the parameters based on this loss we have calculated?</p>
+<p>To do this, we calculate a new set of quantities known as the gradients. Each parameter has its own gradient.</p>
+<p>Let’s say <img src="https://latex.codecogs.com/png.latex?a"> has the value of <img src="https://latex.codecogs.com/png.latex?1">. If <img src="https://latex.codecogs.com/png.latex?a"> has a gradient of value <img src="https://latex.codecogs.com/png.latex?0.5">, this would mean that if we increase <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1">, the loss would increase by <img src="https://latex.codecogs.com/png.latex?0.5">. Therefore, if we <em>decrease</em> <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1">, this would mean the loss would decrease by <img src="https://latex.codecogs.com/png.latex?0.5">, which is what we want!</p>
+<p>Read over this once more and it’ll make sense!</p>
+<p>Let’s quickly go over the inverse: if <img src="https://latex.codecogs.com/png.latex?a"> has a gradient of value <img src="https://latex.codecogs.com/png.latex?-0.5">, increasing <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1"> would decrease the loss by <img src="https://latex.codecogs.com/png.latex?0.5"> — again, this is what we want! Similarly, decreasing <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1"> would increase the loss by <img src="https://latex.codecogs.com/png.latex?0.5">.</p>
+<p>The gradients are calculated from the loss. Then the gradients, the current parameters, and along with another value, the parameters are updated to new values. The “another value” is known as the <strong>learning rate</strong>. The learning rate controls how much the gradients update the parameters.</p>
+<div class="grid">
+<div class="g-col-2">
+
+</div>
+<div class="g-col-8">
+<div class="cell" data-fig-width="5">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">flowchart TB
+    A[Gradients]
+    B[Current Parameters]
+    C[Learning Rate]
+    D[Magical Box]
+    E[Updated Paramters]
+    A &amp; B &amp; C ---&gt; D ---&gt; E
+</pre>
+<div id="mermaid-tooltip-4" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-2">
+
+</div>
+</div>
+<p>Lets see this tangibly.</p>
+<div class="cell" data-execution_count="17">
+<div class="cell-output cell-output-display">
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Code Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The gradients for each parameter respectively are [-1.35, -0.03, -0.5].</p>
+</div>
+</div>
+</div>
+</div>
+<p>Okay, let’s break this down. The gradient for the first parameter <img src="https://latex.codecogs.com/png.latex?a"> is <img src="https://latex.codecogs.com/png.latex?-1.35">. This tells us that if we increase the parameter <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1">, our loss will decrease by <img src="https://latex.codecogs.com/png.latex?-1.35">. Similary, if we increase the parameter <img src="https://latex.codecogs.com/png.latex?b"> by <img src="https://latex.codecogs.com/png.latex?1">, this will result in the loss being decreased by <img src="https://latex.codecogs.com/png.latex?-0.03">. The same logic holds for <img src="https://latex.codecogs.com/png.latex?c">.</p>
+<p>Let’s now update the parameters. Remember, the current set of parameters, their gradients, and the learning rate all update the current set of parameters to new values.</p>
+<div class="cell" data-execution_count="18">
+<div class="cell-output cell-output-display">
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Code Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The new parameters are [1.11, 1.1, 1.11].</p>
+</div>
+</div>
+</div>
+</div>
+<p>We can now repeat the process as many times as desired. Let’s do it 4 times.</p>
+<div class="cell" data-execution_count="19">
+<div class="cell-output cell-output-stdout">
+<pre><code>Pass: 0; Loss: 2.4010409560416095
+Pass: 1; Loss: 1.9847692009423128
+Pass: 2; Loss: 1.498316818239171
+Pass: 3; Loss: 1.171195547258246</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Code Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The MAE after 4 passes is 1.17.</p>
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-19-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+<p>And there you go! An even better fitting quadratic!</p>
+<p>Let’s see what the object’s speed is at 1 second.</p>
+<div class="cell" data-execution_count="20">
+<div class="cell-output cell-output-display">
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Code Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The object’s velocity at 1 seconds is 5.65 m/s.</p>
+</div>
+</div>
+</div>
+</div>
+<p>That roughly seems right!</p>
+<p>Let’s see what the object’s speed would be at 3 seconds.</p>
+<div class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Code Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The object’s velocity at 1 seconds is 30.31 m/s.</p>
+</div>
+</div>
+</div>
+</div>
+<p>And now, the diagram below should make sense!</p>
+<div class="grid">
+<div class="g-col-2">
+
+</div>
+<div class="g-col-8">
+<div class="cell" data-fig-width="3.5">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">flowchart TB
+    B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
+</pre>
+<div id="mermaid-tooltip-5" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<div class="g-col-2">
+
+</div>
+</div>
+</section>
+<section id="the-cool-case-relus" class="level2">
+<h2 class="anchored" data-anchor-id="the-cool-case-relus">The Cool Case: ReLUs</h2>
+<p>The quadratic example above is a nice, simple way to get a grasp of things. However, you may be wondering, “What if the data doesn’t follow a quadratic shape? What do we do then?”</p>
+<p>And that’s a good question! What if our data doesn’t follow any sort of mathematical shape? What if we don’t even know the shape the data will follow? How do we know what function to use in that case?</p>
+<p>There is a solution to that! There is an easy way to create a function that bends and twists itself to fit the data; an “unbound” function of sorts, as I like to call it.</p>
+<p>This can be achieved by using another equation known as the <strong>ReLU</strong>. Another fancy word that can make you sound like a professional, while also being really simple. ReLU is short for <strong>Rectified Linear Unit</strong>.</p>
+<p>The ReLU takes any value that is less than 0, and converts to 0.</p>
+<p>Let’s see this.</p>
+<p>Take the following line. It has both positive and negative values on the vertical axis.</p>
+<div class="cell" data-execution_count="22">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>When we use a ReLU, all negative values are converted to zero.</p>
+<div class="cell" data-execution_count="23">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Let’s return to our original data.</p>
+<div class="cell" data-execution_count="24">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Now a single ReLU won’t work as seen below.</p>
+<div class="cell" data-execution_count="25">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Even after we try to fit it.</p>
+<div class="cell" data-execution_count="26">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>But look at what happens when two ReLUs are, literally, added together!</p>
+<div class="cell" data-execution_count="27">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<!-- - Seed 22; 196 passes; lr=0.01
+- Seed 33; 49 passes; lr=0.1
+- Seed 16; 20 passes; lr=0.5 -->
+<p>Pretty neat, hey?</p>
+<p>Let’s add a third ReLU to the mix.</p>
+<!-- #| output: false
+- Seed 16; 35 passes; lr=0.5
+- Seed 33: 35 passes; lr=0.1
+- Seed 10: 45 passes; lr=0.1
+- Seed 33; 50 passes; lr=0.05
+- Seed 38, 196 passes; lr=0.01 -->
+<div class="cell" data-execution_count="31">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>You can see here how the function is adapting to the shape of the data.</p>
+<p>With some extra experimentation, I was able to get the loss down to 1.08!</p>
+<div class="cell" data-execution_count="32">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>That said, it’s not too much of a difference when compared to two ReLUs.</p>
+<p>What if we add 5 more to the mix, for a total of 8?</p>
+<div class="cell" data-execution_count="35">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Nice! The MAE has gone below 1!</p>
+<p>It’s even beat the quadratic function from before! With some expermimenting, I had managed to get the quadratic’s loss down to 1.03.</p>
+<div class="cell" data-execution_count="36">
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<!-- - Seed 16; 36 passes; lr=0.1
+- Seed 42; 37 passes; lr=0.5 -->
+<p>Let’s use the model that has 8 ReLUs to predict what the object’s velocity would be at 1 second.</p>
+<div class="cell" data-execution_count="39">
+<div class="cell-output cell-output-display">
+<div class="callout-tip callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Code Output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The object’s speed at 1 s is 4.9 m/s.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Hmm, yes, that is a bit off. But that is fine because overall, the function is a lot more accurate for all the datapoints.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>See how easy this stuff all is? All those fancy terms makes this feel complex when in reality, it’s all really simple.</p>
+<p>Why not now go and venture off to learn more and implement your own models!</p>
+<p>Below are two free courses I can recommend:</p>
+<ul>
+<li><p><a href="https://www.elementsofai.com">Elements of AI</a></p>
+<p>A great primer into AI. The course goes over the history, the implementations, and the implications of this field, all without needing the knowledge of programming or complex mathematics.</p></li>
+<li><p><a href="https://course.fast.ai">Practical Deep Learning for Coders</a></p>
+<p>This course is different from other AI courses you’ll find. How? Because instead of starting off with the nitty gritty basics, you begin by actually implementing your own simple image classifier (a model that can tell what thing is in an image). You’ll be surprised at how simple it is to implement models with minimal code, and how little you need to know to get started (hint: you only really need high-school maths).</p></li>
+</ul>
+<p><strong>If you have any questions, comments, suggestions, or feedback, please do post them down in the comment section below!</strong></p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>This article was inspired by the <a href="https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work/notebook">How does a neural net really work</a> Kaggle Notebook by <a href="https://www.kaggle.com/jhoward">Jeremy Howard</a>, and lesson 3 of <a href="https://course.fast.ai/Lessons/lesson3.html">Practical Deep Learning for Coders</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Creating Models</category>
+  <guid>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</guid>
+  <pubDate>Tue, 04 Oct 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/6_ai_in_a_nutshell/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Detecting Floods for Disaster Relief</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><strong>You can find this notebook on Kaggle <a href="https://www.kaggle.com/code/forbo7/flood-classifier">here</a>.</strong></p>
+<p><em>This article was updated on <strong>Friday, 11 November 2022</strong>.</em></p>
+<!-- TODO: Rotate image. -->
+<p><img src="https://forbo7.github.io/forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png" class="img-fluid" alt="An image of a house on top of a pinnacle of rock surrounded by water."></p>
+<p>The model that will be created in this notebook can detect whether an area shown in an image is flooded or not. The idea for creating this model has been spurred from the recent floodings in Pakistan.</p>
+<p>Such models can prove useful in flood relief, helping to detect which areas need immediate focus.</p>
+<p>The dataset used to train this model is <strong>Louisiana flood 2016</strong>, uploaded by Kaggle user <strong>Rahul T P</strong>, which you can view <a href="https://www.kaggle.com/datasets/rahultp97/louisiana-flood-2016">here</a>.</p>
+<p>The fastai library, a high level PyTorch library, has been used.</p>
+<p>One of the points of this notebook is to showcase how simple it is to create powerful models. That said, this notebook is <strong>not</strong> a tutorial or guide.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:05.493309Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:05.492447Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.742561Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.741405Z&quot;}" data-papermill="{&quot;duration&quot;:3.270399,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.745299&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:05.474900&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;">from</span> fastai.vision.<span class="bu" style="color: null;">all</span> <span class="im" style="color: #00769E;">import</span> <span class="op" style="color: #5E5E5E;">*</span></span></code></pre></div>
+</div>
+<section id="sort-data." class="level2">
+<h2 class="anchored" data-anchor-id="sort-data.">Sort data.</h2>
+<p>The data in the dataset needs to be organized into <em>train</em> and <em>valid</em> folders. Each will contain the same subfolders, <em>0</em> and <em>1</em>, which will be used to label the data. A label of <code>0</code> indicates the area shown in the image is not flooded, while a label of <code>1</code> indicates the area shown in the image is flooded.</p>
+<p>The images in the dataset itself has been organized as follows:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;If no underscore is in the file name, the image shows the area before or after the flood.</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;If an underscore is in the file name, the image shows the area during the flood:</p>
+<ul>
+<li>If a zero follows the underscore, the area was not flooded.</li>
+<li>If a one follows the underscore, the area was flooded.</li>
+</ul>
+<p>Creating the necessary paths.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:08.829498Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:08.828333Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.834978Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.833986Z&quot;}" data-papermill="{&quot;duration&quot;:0.021492,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.838729&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:08.817237&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">working_path <span class="op" style="color: #5E5E5E;">=</span> Path.cwd()<span class="op" style="color: #5E5E5E;">;</span> <span class="bu" style="color: null;">print</span>(working_path)</span>
+<span id="cb2-2">folders <span class="op" style="color: #5E5E5E;">=</span> (<span class="st" style="color: #20794D;">'train'</span>, <span class="st" style="color: #20794D;">'valid'</span>)</span>
+<span id="cb2-3">labels <span class="op" style="color: #5E5E5E;">=</span> (<span class="st" style="color: #20794D;">'0'</span>, <span class="st" style="color: #20794D;">'1'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/kaggle/working</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:08.860991Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:08.859510Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.944909Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.943807Z&quot;}" data-papermill="{&quot;duration&quot;:0.099093,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.947775&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:08.848682&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">input_path <span class="op" style="color: #5E5E5E;">=</span> Path(<span class="st" style="color: #20794D;">'/kaggle/input'</span>)</span>
+<span id="cb4-2">train_image_paths <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">sorted</span>(input_path.rglob(<span class="st" style="color: #20794D;">'train/*.png'</span>))</span>
+<span id="cb4-3">valid_image_paths <span class="op" style="color: #5E5E5E;">=</span> <span class="bu" style="color: null;">sorted</span>(input_path.rglob(<span class="st" style="color: #20794D;">'test/*.png'</span>))</span>
+<span id="cb4-4"><span class="bu" style="color: null;">len</span>(train_image_paths), <span class="bu" style="color: null;">len</span>(valid_image_paths)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>(270, 52)</code></pre>
+</div>
+</div>
+<p>Creating the necessary directories.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:08.990714Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:08.990359Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:08.996844Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:08.995770Z&quot;}" data-papermill="{&quot;duration&quot;:0.019674,&quot;end_time&quot;:&quot;2022-09-11T07:18:08.998954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:08.979280&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="cf" style="color: #003B4F;">for</span> folder <span class="kw" style="color: #003B4F;">in</span> folders:</span>
+<span id="cb6-2">    <span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> (working_path<span class="op" style="color: #5E5E5E;">/</span>folder).exists():</span>
+<span id="cb6-3">        (working_path<span class="op" style="color: #5E5E5E;">/</span>folder).mkdir()</span>
+<span id="cb6-4">    <span class="cf" style="color: #003B4F;">for</span> label <span class="kw" style="color: #003B4F;">in</span> labels:</span>
+<span id="cb6-5">        <span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> (working_path<span class="op" style="color: #5E5E5E;">/</span>folder<span class="op" style="color: #5E5E5E;">/</span>label).exists():</span>
+<span id="cb6-6">            (working_path<span class="op" style="color: #5E5E5E;">/</span>folder<span class="op" style="color: #5E5E5E;">/</span>label).mkdir()</span></code></pre></div>
+</div>
+<p>Move images to new directories.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:09.042253Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:09.041352Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.002238Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.001094Z&quot;}" data-papermill="{&quot;duration&quot;:2.974352,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.004531&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:09.030179&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="cf" style="color: #003B4F;">try</span>:</span>
+<span id="cb7-2">    <span class="cf" style="color: #003B4F;">for</span> image_path <span class="kw" style="color: #003B4F;">in</span> train_image_paths:</span>
+<span id="cb7-3">        <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">'_1'</span> <span class="kw" style="color: #003B4F;">in</span> image_path.stem:</span>
+<span id="cb7-4">            <span class="cf" style="color: #003B4F;">with</span> (working_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'train'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span>image_path.name).<span class="bu" style="color: null;">open</span>(mode<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'xb'</span>) <span class="im" style="color: #00769E;">as</span> f:</span>
+<span id="cb7-5">                f.write(image_path.read_bytes())</span>
+<span id="cb7-6">        <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb7-7">            <span class="cf" style="color: #003B4F;">with</span> (working_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'train'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'0'</span><span class="op" style="color: #5E5E5E;">/</span>image_path.name).<span class="bu" style="color: null;">open</span>(mode<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'xb'</span>) <span class="im" style="color: #00769E;">as</span> f:</span>
+<span id="cb7-8">                f.write(image_path.read_bytes())</span>
+<span id="cb7-9"><span class="cf" style="color: #003B4F;">except</span> <span class="pp" style="color: #AD0000;">FileExistsError</span>:</span>
+<span id="cb7-10">    <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Training images have already been moved."</span>)</span>
+<span id="cb7-11"><span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb7-12">    <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Training images moved."</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Training images moved.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.028069Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.026523Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.395600Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.394388Z&quot;}" data-papermill="{&quot;duration&quot;:0.382827,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.398173&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.015346&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="cf" style="color: #003B4F;">try</span>:</span>
+<span id="cb9-2">    <span class="cf" style="color: #003B4F;">for</span> image_path <span class="kw" style="color: #003B4F;">in</span> valid_image_paths:</span>
+<span id="cb9-3">        <span class="cf" style="color: #003B4F;">if</span> <span class="st" style="color: #20794D;">'_1'</span> <span class="kw" style="color: #003B4F;">in</span> image_path.stem:</span>
+<span id="cb9-4">            <span class="cf" style="color: #003B4F;">with</span> (working_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'valid'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span>image_path.name).<span class="bu" style="color: null;">open</span>(mode<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'xb'</span>) <span class="im" style="color: #00769E;">as</span> f:</span>
+<span id="cb9-5">                f.write(image_path.read_bytes())</span>
+<span id="cb9-6">        <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb9-7">            <span class="cf" style="color: #003B4F;">with</span> (working_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'valid'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'0'</span><span class="op" style="color: #5E5E5E;">/</span>image_path.name).<span class="bu" style="color: null;">open</span>(mode<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'xb'</span>) <span class="im" style="color: #00769E;">as</span> f:</span>
+<span id="cb9-8">                f.write(image_path.read_bytes())</span>
+<span id="cb9-9"><span class="cf" style="color: #003B4F;">except</span> <span class="pp" style="color: #AD0000;">FileExistsError</span>:</span>
+<span id="cb9-10">    <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Testing images have already been moved."</span>)</span>
+<span id="cb9-11"><span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb9-12">    <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Testing images moved."</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Testing images moved.</code></pre>
+</div>
+</div>
+<p>Check that images have been moved.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.442516Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.441495Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.452149Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.450721Z&quot;}" data-papermill="{&quot;duration&quot;:0.024352,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.454314&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.429962&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">training_images <span class="op" style="color: #5E5E5E;">=</span> get_image_files(working_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'train'</span>)<span class="op" style="color: #5E5E5E;">;</span> <span class="bu" style="color: null;">print</span>(<span class="bu" style="color: null;">len</span>(training_images))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>270</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.477823Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.477117Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.688255Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.687359Z&quot;}" data-papermill="{&quot;duration&quot;:0.226811,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.691568&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.464757&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">Image.<span class="bu" style="color: null;">open</span>(training_images[<span class="dv" style="color: #AD0000;">0</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.719927Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.719594Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.728327Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.727274Z&quot;}" data-papermill="{&quot;duration&quot;:0.025912,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.730913&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.705001&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">validation_images <span class="op" style="color: #5E5E5E;">=</span> get_image_files(working_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'valid'</span>)<span class="op" style="color: #5E5E5E;">;</span> <span class="bu" style="color: null;">print</span>(<span class="bu" style="color: null;">len</span>(validation_images))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>52</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.760100Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.759783Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.880274Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.879306Z&quot;}" data-papermill="{&quot;duration&quot;:0.139112,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.884616&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.745504&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">Image.<span class="bu" style="color: null;">open</span>(validation_images[<span class="op" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">1</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="load-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-data">Load data</h2>
+<p>Create the training and validation dataloaders through fastai’s quick and easy <code>DataBlock</code> class.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.985360Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.985000Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:16.619229Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:16.618265Z&quot;}" data-papermill="{&quot;duration&quot;:3.654376,&quot;end_time&quot;:&quot;2022-09-11T07:18:16.621871&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.967495&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">dataloaders <span class="op" style="color: #5E5E5E;">=</span> DataBlock(</span>
+<span id="cb17-2">    blocks <span class="op" style="color: #5E5E5E;">=</span> (ImageBlock, CategoryBlock),</span>
+<span id="cb17-3">    get_items <span class="op" style="color: #5E5E5E;">=</span> get_image_files,</span>
+<span id="cb17-4">    splitter <span class="op" style="color: #5E5E5E;">=</span> GrandparentSplitter(),</span>
+<span id="cb17-5">    get_y <span class="op" style="color: #5E5E5E;">=</span> parent_label,</span>
+<span id="cb17-6">    item_tfms <span class="op" style="color: #5E5E5E;">=</span> [Resize(<span class="dv" style="color: #AD0000;">192</span>, method<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'squish'</span>)]</span>
+<span id="cb17-7">).dataloaders(working_path, bs<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">32</span>)</span></code></pre></div>
+</div>
+<p>Check that data has been loaded correctly.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:16.690449Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:16.689337Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:17.569325Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:17.568486Z&quot;}" data-papermill="{&quot;duration&quot;:0.904393,&quot;end_time&quot;:&quot;2022-09-11T07:18:17.576236&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:16.671843&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">dataloaders.show_batch(max_n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">8</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="instantiate-and-train-model" class="level2">
+<h2 class="anchored" data-anchor-id="instantiate-and-train-model">Instantiate and Train Model</h2>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:17.666206Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:17.665830Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:58.064050Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:58.062950Z&quot;}" data-papermill="{&quot;duration&quot;:40.424136,&quot;end_time&quot;:&quot;2022-09-11T07:18:58.066398&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:17.642262&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">learner <span class="op" style="color: #5E5E5E;">=</span> vision_learner(dataloaders, resnet18, metrics<span class="op" style="color: #5E5E5E;">=</span>error_rate)</span>
+<span id="cb19-2">learner.fine_tune(<span class="dv" style="color: #AD0000;">9</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"bdd89b090c3944d5a5462767fc8bf29d","version_major":2,"version_minor":0}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.919323</td>
+      <td>1.118264</td>
+      <td>0.365385</td>
+      <td>00:09</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.490039</td>
+      <td>0.628054</td>
+      <td>0.250000</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.367996</td>
+      <td>0.411558</td>
+      <td>0.192308</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.266664</td>
+      <td>0.472146</td>
+      <td>0.192308</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.203069</td>
+      <td>0.256436</td>
+      <td>0.115385</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.158453</td>
+      <td>0.127106</td>
+      <td>0.076923</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.124499</td>
+      <td>0.095927</td>
+      <td>0.038462</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.098409</td>
+      <td>0.089279</td>
+      <td>0.038462</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.079600</td>
+      <td>0.093277</td>
+      <td>0.038462</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.064886</td>
+      <td>0.090372</td>
+      <td>0.038462</td>
+      <td>00:02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>Nice! A relatively low error rate for no tweaking.</p>
+</section>
+<section id="visualizing-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-mistakes">Visualizing Mistakes</h2>
+<p>We have to see how the model is getting confuzzled.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:58.241827Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:58.241361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:59.575155Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:59.573757Z&quot;}" data-papermill="{&quot;duration&quot;:1.361381,&quot;end_time&quot;:&quot;2022-09-11T07:18:59.579075&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:58.217694&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1">interp <span class="op" style="color: #5E5E5E;">=</span> ClassificationInterpretation.from_learner(learner)</span>
+<span id="cb21-2">interp.plot_confusion_matrix()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-15-output-5.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Only a couple of mistakes. Let’s see what they are.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:59.724320Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:59.723919Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:00.338604Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:00.337405Z&quot;}" data-papermill="{&quot;duration&quot;:0.648114,&quot;end_time&quot;:&quot;2022-09-11T07:19:00.341972&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:59.693858&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">interp.plot_top_losses(<span class="dv" style="color: #AD0000;">5</span>, nrows<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-16-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Nothing has been mislabeled, but the first one is especially tricky to determine, even for human eyes.</p>
+</section>
+<section id="model-inference" class="level2">
+<h2 class="anchored" data-anchor-id="model-inference">Model Inference</h2>
+<p>Let’s test the model on some images of the recent flooding in Pakistan.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.558615Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.558198Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:00.565882Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:00.565018Z&quot;}" data-papermill="{&quot;duration&quot;:0.038169,&quot;end_time&quot;:&quot;2022-09-11T07:19:00.567989&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.529820&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="kw" style="color: #003B4F;">def</span> infer_image(image_path):</span>
+<span id="cb23-2">    display(Image.<span class="bu" style="color: null;">open</span>(image_path))</span>
+<span id="cb23-3">    label, _, probabilities <span class="op" style="color: #5E5E5E;">=</span> learner.predict(PILImage(PILImage.create(image_path)))</span>
+<span id="cb23-4">    <span class="cf" style="color: #003B4F;">if</span> label <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'0'</span>:</span>
+<span id="cb23-5">        <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"The area shown in the image is not flooded with probability </span><span class="sc" style="color: #5E5E5E;">{</span>probabilities[<span class="dv" style="color: #AD0000;">0</span>]<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span><span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">%."</span>)</span>
+<span id="cb23-6">    <span class="cf" style="color: #003B4F;">elif</span> label <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'1'</span>:</span>
+<span id="cb23-7">        <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"The area shown in the image is flooded with probability </span><span class="sc" style="color: #5E5E5E;">{</span>probabilities[<span class="dv" style="color: #AD0000;">1</span>]<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span><span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">%."</span>)</span>
+<span id="cb23-8">    <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb23-9">        <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Unknown label assigned to image."</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.622862Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.622520Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:00.688753Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:00.687512Z&quot;}" data-papermill="{&quot;duration&quot;:0.096393,&quot;end_time&quot;:&quot;2022-09-11T07:19:00.690854&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.594461&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">infer_image(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1.jpeg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is not flooded with probability 65.65%.</code></pre>
+</div>
+</div>
+<p>Not bad!</p>
+<p>Let’s try it on another image.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.808329Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.807968Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:02.432693Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:02.431630Z&quot;}" data-papermill="{&quot;duration&quot;:1.658645,&quot;end_time&quot;:&quot;2022-09-11T07:19:02.435988&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.777343&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">infer_image(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'2.jpg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.90%.</code></pre>
+</div>
+</div>
+<p>The label for this image is kind of meaningless. This is an image of a vast area of land, so certain areas could be flooded, while others are not. That said, it could be used to determine whether there is flooding in the image.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:03.158164Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:03.157795Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:03.326060Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:03.324479Z&quot;}" data-papermill="{&quot;duration&quot;:0.313347,&quot;end_time&quot;:&quot;2022-09-11T07:19:03.329205&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:03.015858&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">infer_image(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'3.jpg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.99%.</code></pre>
+</div>
+</div>
+<p>The model performed really well in this case: the input image is shown at a different angle. The images in the training set only show areas from a top-down view.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:03.915708Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:03.915118Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:04.297396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:04.296252Z&quot;}" data-papermill="{&quot;duration&quot;:0.532781,&quot;end_time&quot;:&quot;2022-09-11T07:19:04.300294&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:03.767513&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">infer_image(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'4.jpg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is not flooded with probability 64.56%.</code></pre>
+</div>
+</div>
+<p>Over here, the limitations of the current state of the model can be seen. The model is not performing well on images where the view is more parallel to the ground, since the images in the training set are all top-down.</p>
+<p>Let’s do two more images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:05.417373Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:05.416795Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:05.473225Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:05.471793Z&quot;}" data-papermill="{&quot;duration&quot;:0.252769,&quot;end_time&quot;:&quot;2022-09-11T07:19:05.475284&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:05.222515&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">infer_image(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'5.jpg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.94%.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:05.835986Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:05.835396Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:06.151206Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:06.150029Z&quot;}" data-papermill="{&quot;duration&quot;:0.504279,&quot;end_time&quot;:&quot;2022-09-11T07:19:06.154063&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:05.649784&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1">infer_image(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'6.jpg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 100.00%.</code></pre>
+</div>
+</div>
+<p>The model is working well with images of different sizes too, and has given this image a very high, correct confidence.</p>
+</section>
+<section id="improving-the-model." class="level2">
+<h2 class="anchored" data-anchor-id="improving-the-model.">Improving the model.</h2>
+<p>Let’s see if we can get the model’s performance to improve on the following image through augmenting the training set.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:07.793911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:07.793281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:08.090600Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:08.089689Z&quot;}" data-papermill="{&quot;duration&quot;:0.526936,&quot;end_time&quot;:&quot;2022-09-11T07:19:08.109805&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:07.582869&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1">Image.<span class="bu" style="color: null;">open</span>(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'4.jpg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:09.399017Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:09.398632Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:12.073251Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:12.072257Z&quot;}" data-papermill="{&quot;duration&quot;:3.737701,&quot;end_time&quot;:&quot;2022-09-11T07:19:12.075717&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:08.338016&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb37" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1">augmented_dataloaders <span class="op" style="color: #5E5E5E;">=</span> DataBlock(</span>
+<span id="cb37-2">    blocks <span class="op" style="color: #5E5E5E;">=</span> (ImageBlock, CategoryBlock),</span>
+<span id="cb37-3">    get_items <span class="op" style="color: #5E5E5E;">=</span> get_image_files,</span>
+<span id="cb37-4">    splitter <span class="op" style="color: #5E5E5E;">=</span> GrandparentSplitter(),</span>
+<span id="cb37-5">    get_y <span class="op" style="color: #5E5E5E;">=</span> parent_label,</span>
+<span id="cb37-6">    item_tfms <span class="op" style="color: #5E5E5E;">=</span> RandomResizedCrop(<span class="dv" style="color: #AD0000;">192</span>, min_scale<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.5</span>),</span>
+<span id="cb37-7">    batch_tfms<span class="op" style="color: #5E5E5E;">=</span>aug_transforms()</span>
+<span id="cb37-8">).dataloaders(working_path, bs<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">32</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:12.539701Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:12.539118Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:13.438651Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:13.437466Z&quot;}" data-papermill="{&quot;duration&quot;:1.134797,&quot;end_time&quot;:&quot;2022-09-11T07:19:13.443352&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:12.308555&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1">augmented_dataloaders.show_batch(max_n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">8</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:14.119021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:14.118453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:42.786631Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:42.785492Z&quot;}" data-papermill="{&quot;duration&quot;:28.901784,&quot;end_time&quot;:&quot;2022-09-11T07:19:42.788960&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:13.887176&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1">augmented_learner <span class="op" style="color: #5E5E5E;">=</span> vision_learner(augmented_dataloaders, resnet18, metrics<span class="op" style="color: #5E5E5E;">=</span>error_rate)</span>
+<span id="cb39-2">augmented_learner.fine_tune(<span class="dv" style="color: #AD0000;">9</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1.161182</td>
+      <td>0.835870</td>
+      <td>0.365385</td>
+      <td>00:02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.442552</td>
+      <td>0.686252</td>
+      <td>0.288462</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.417739</td>
+      <td>0.411907</td>
+      <td>0.153846</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.346400</td>
+      <td>0.316388</td>
+      <td>0.057692</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.306782</td>
+      <td>0.213407</td>
+      <td>0.076923</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.251947</td>
+      <td>0.199586</td>
+      <td>0.076923</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.209951</td>
+      <td>0.141818</td>
+      <td>0.057692</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.188433</td>
+      <td>0.116713</td>
+      <td>0.057692</td>
+      <td>00:03</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.169689</td>
+      <td>0.125078</td>
+      <td>0.057692</td>
+      <td>00:02</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.151843</td>
+      <td>0.131188</td>
+      <td>0.057692</td>
+      <td>00:02</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>Let’s try the new model out.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:43.735511Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:43.733929Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:44.110452Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:44.109223Z&quot;}" data-papermill="{&quot;duration&quot;:0.619631,&quot;end_time&quot;:&quot;2022-09-11T07:19:44.113360&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:43.493729&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1">display(Image.<span class="bu" style="color: null;">open</span>(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'4.jpg'</span>))</span>
+<span id="cb40-2">label, _, probabilities <span class="op" style="color: #5E5E5E;">=</span> augmented_learner.predict(PILImage(PILImage.create(input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'1'</span><span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'4.jpg'</span>)))</span>
+<span id="cb40-3"><span class="cf" style="color: #003B4F;">if</span> label <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'0'</span>:</span>
+<span id="cb40-4">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"The area shown in the image is not flooded with probability </span><span class="sc" style="color: #5E5E5E;">{</span>probabilities[<span class="dv" style="color: #AD0000;">0</span>]<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span><span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">%."</span>)</span>
+<span id="cb40-5"><span class="cf" style="color: #003B4F;">elif</span> label <span class="op" style="color: #5E5E5E;">==</span> <span class="st" style="color: #20794D;">'1'</span>:</span>
+<span id="cb40-6">    <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"The area shown in the image is flooded with probability </span><span class="sc" style="color: #5E5E5E;">{</span>probabilities[<span class="dv" style="color: #AD0000;">1</span>]<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span><span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">%."</span>)</span>
+<span id="cb40-7"><span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb40-8">    <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Unknown label assigned to image."</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The area shown in the image is flooded with probability 99.91%.</code></pre>
+</div>
+</div>
+<p>Dang, impressive! The correct label <em>and</em> with excellent confidence!</p>
+<p>Before we get too excited though, we should check the performance on the model with the previous images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:45.714022Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:45.713440Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:45.727793Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:45.726862Z&quot;}" data-papermill="{&quot;duration&quot;:0.283643,&quot;end_time&quot;:&quot;2022-09-11T07:19:45.729947&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:45.446304&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1">test_dataloader <span class="op" style="color: #5E5E5E;">=</span> learner.dls.test_dl([image_path <span class="cf" style="color: #003B4F;">for</span> image_path <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">sorted</span>((input_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'floodclassifiertestset'</span>).rglob(<span class="st" style="color: #20794D;">'*.*'</span>))])</span></code></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:46.267204Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:46.266630Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:47.016009Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:47.014674Z&quot;}" data-papermill="{&quot;duration&quot;:1.030615,&quot;end_time&quot;:&quot;2022-09-11T07:19:47.018653&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:45.988038&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1">probabilities, _, labels <span class="op" style="color: #5E5E5E;">=</span> augmented_learner.get_preds(dl<span class="op" style="color: #5E5E5E;">=</span>test_dataloader, with_decoded<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:47.597219Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:47.594938Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:48.299583Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:48.298350Z&quot;}" data-papermill="{&quot;duration&quot;:1.000961,&quot;end_time&quot;:&quot;2022-09-11T07:19:48.303699&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:47.302738&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"Images are numbered horizontally."</span>)</span>
+<span id="cb44-2">test_dataloader.show_batch()</span>
+<span id="cb44-3"><span class="cf" style="color: #003B4F;">for</span> probability, label, image_number <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">zip</span>(probabilities, labels, <span class="bu" style="color: null;">range</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">7</span>)):</span>
+<span id="cb44-4">    <span class="cf" style="color: #003B4F;">if</span> label <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">1</span>:</span>
+<span id="cb44-5">        <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"Image </span><span class="sc" style="color: #5E5E5E;">{</span>image_number<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> is flooded with a probability of </span><span class="sc" style="color: #5E5E5E;">{</span>probability[<span class="dv" style="color: #AD0000;">1</span>]<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span><span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">%."</span>)</span>
+<span id="cb44-6">    <span class="cf" style="color: #003B4F;">elif</span> label <span class="op" style="color: #5E5E5E;">==</span> <span class="dv" style="color: #AD0000;">0</span>:</span>
+<span id="cb44-7">        <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"Image </span><span class="sc" style="color: #5E5E5E;">{</span>image_number<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> is not flooded with a probability of </span><span class="sc" style="color: #5E5E5E;">{</span>probability[<span class="dv" style="color: #AD0000;">0</span>]<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">100</span><span class="sc" style="color: #5E5E5E;">:.2f}</span><span class="ss" style="color: #20794D;">%."</span>)</span>
+<span id="cb44-8">    <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb44-9">        <span class="bu" style="color: null;">print</span>(<span class="ss" style="color: #20794D;">f"Image </span><span class="sc" style="color: #5E5E5E;">{</span>image_number<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> has been assigned an unknown label."</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Images are numbered horizontally.
+Image 1 is flooded with a probability of 95.94%.
+Image 2 is flooded with a probability of 99.92%.
+Image 3 is flooded with a probability of 91.34%.
+Image 4 is flooded with a probability of 99.71%.
+Image 5 is flooded with a probability of 100.00%.
+Image 6 is flooded with a probability of 100.00%.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Drastically improved probabilities! A little augmentation can go a long way.</p>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<p>This model was trained on only 270 images and minimal code. Accessbility and abstraction to the field of machine learning has come a long, long way. Given the right data and the right pretrained model, a powerful model can be produced in less than an hour, if not half.</p>
+<p>This is important: in disasters such as floods, the time taken to produce the logistics required for relief can be drastically reduced. It is also important because the barrier of entry to this field is dramatically lowered; more people can create powerful models, in turn producing better solutions.</p>
+<p>However, there could be some improvements and additions made to the model:</p>
+<ul>
+<li><p>Include a third class to the model. Images that are not flooded, but show signs of having been flooded would be assigned this class. The dataset used for this model includes such images.</p></li>
+<li><p>Train the model on images that include a variety of geographic locations and dwellings. The current dataset only contains images taken in a lush, green area with plenty of trees; infrastructure looks a certain way; the color of the floodwater is also dependent on the surroundings. All this makes the model good a prediciting whether an image is flooded for images with certain features.</p></li>
+</ul>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Creating Models</category>
+  <guid>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</guid>
+  <pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Data Quality is Important | Car Classifier</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><em>This article was updated on <strong>Thursday, 10 November 2022</strong>.</em></p>
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/thumbnail.jpg" class="img-fluid" alt="A parking lot filled with cars."></p>
+<p>I recently created a car classifier that classified cars into their respective brands.</p>
+<p>Despite having almost 5000 images in my training set, I ended up trying out over a hundred layers in my model, and twenty epochs. Even then, I had an error rate of 17.4%.</p>
+<p>The culprit? My dataset.</p>
+<p>I scraped 5000 images of cars (500 for each company) from DuckDuckGo. Naturally, as expected, the data quality is not so good.</p>
+<p>Why? Below are some potential reasons:</p>
+<ul>
+<li>Noncar images present in dataset</li>
+<li>Cars of incorrect company present in dataset</li>
+<li>F1 cars present in dataset</li>
+<li>A large variety of cars from different time periods present in dataset</li>
+<li>Different companys’ cars look similar</li>
+<li>Modded cars present in dataset</li>
+<li>Concept cars present in dataset</li>
+<li>Multiple cars present in a single image</li>
+<li>Certain angles of cars appear more than others</li>
+<li>Cars appear in certain backgrounds more than others</li>
+<li>The search term <code>{car_brand} car</code> could be skewing results</li>
+</ul>
+<p>I could have absolutely achieved better results with fewer layers and fewer epochs if I trained the model on better quality data — or manually combed through the 5000 images 💀. However, I did use fastai’s GUI for data cleaning. This GUI sorts images by their loss which helps to determine if certain images should be relabeled or deleted.</p>
+<p>Below is the confusion matrix for this model.</p>
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/confusion_matrix.png" class="img-fluid" style="width:65.0%" alt="A confusion matrix of the model."></p>
+<p>It can be seen that this model “confuses” between quite a few different brands: Ford and Chevrolet, Chevrolet and Ford, Jaguar and Aston Martin, Renault and Ford.</p>
+<p>But <strong>why</strong> is data quality important? Because without good data, the model will not be able to “see” things the way they actually are, and in turn end up making worse predictions and not generalize to other data.</p>
+<p>Let’s say you did not know how, say, a toaster looked like. So I taught you by showing you pictures of a kettle. Then to test you, I showed you a set of pictures depicting various kitchen appliances and told you to find the toaster. You would not be able to.</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_1.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_2.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_1.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_2.jpg" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_3.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_4.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_3.jpg" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_4.jpg" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>Extending upon this example, say I showed you toasters only from the last two years and from two brands only. You would not be able to identify toasters older than two years, and toasters from other brands to much success.</p>
+<p>Obviously, humans are smarter and can infer. AI methods can only infer to a certain degree, mainly based on what is in their dataset. This talk does start to become more philosophical.</p>
+<p>The point of this post is to emphasize the importance of data quality and different aspects to consider as to why data quality may not be good. You can have the best architecture in the world, but it is useless if you do not have good data.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+
+ ]]></description>
+  <category>Data</category>
+  <category>Analyzing Models</category>
+  <guid>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</guid>
+  <pubDate>Sat, 04 Jun 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/4_data_quality_is_important/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>A No Nonsense Guide to Reading a Confusion Matrix</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><em>This article was updated on <strong>Thursday, 10 November 2022</strong>.</em></p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/thumbnail.jpg" class="img-fluid" alt="A meme from the Matrix film."></p>
+<p>Confusion matrices help model designers view what mistakes a model has made.</p>
+<p>In this post, I’ll be telling you how to easily read such matrices.</p>
+<p>Jump to Section&nbsp;2 for an ultra concise rundown.</p>
+<p>Ready? Here we go.</p>
+<section id="case-1-introduction" class="level2">
+<h2 class="anchored" data-anchor-id="case-1-introduction">Case 1: Introduction</h2>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1.png" class="img-fluid" style="width:65.0%"></p>
+<p>Ignore the “Actual” and “Predicted” labels for now.</p>
+<p>Let’s compare grizzly bears to black bears.</p>
+<p>All comparisons begin at the bottom, with the columns.</p>
+<p>First, highlight the grizzly bear column.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_1.png" class="img-fluid" style="width:65.0%"></p>
+<p>Next, highlight the black bear row.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_2.png" class="img-fluid" style="width:65.0%"></p>
+<p>Now find the common entry in the highlighted column and row.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_3.png" class="img-fluid" style="width:65.0%"></p>
+<p>This common entry is our required information.</p>
+<p>All entries in the diagonal going from the top left to the bottom right (blue) are correct classifications. All other entries are incorrect classifications.</p>
+<p>Our common entry does not lie in the main diagonal. Therefore, we are looking at incorrect classifications.</p>
+<p>We have compared grizzly bears to black bears. Therefore, from this deduction, <strong>three grizzly bears have been incorrectly classified as black bears</strong>.</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>There is a difference between comparing grizzly bears to black bears and black bears to grizzly bears.</strong></p>
+<p>Comparing grizzly bears to black bears means, “How many grizzly bears were misclassified as black bears?”</p>
+<p>Comparing black bears to grizzly bears means, “How many black bears were misclassified as grizzly bears?”</p>
+</div>
+</div>
+</section>
+<section id="sec-case2" class="level2">
+<h2 class="anchored" data-anchor-id="sec-case2">Case 2: Ultra Concise</h2>
+<p>Let’s compare black bears to grizzly bears.</p>
+<p>Highlight the black bear column.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_4.png" class="img-fluid" style="width:65.0%"></p>
+<p>Highlight the grizzly bear row.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_5.png" class="img-fluid" style="width:65.0%"></p>
+<p>Highlight the common entry.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_6.png" class="img-fluid" style="width:65.0%"></p>
+<p>Zero black bears were misclassified as grizzly bears.</p>
+</section>
+<section id="case-3-correct-classifications" class="level2">
+<h2 class="anchored" data-anchor-id="case-3-correct-classifications">Case 3: Correct Classifications</h2>
+<p>Let’s see how many teddy bears were correctly classified. We are essentially comparing teddy bears to teddy bears.</p>
+<p>Highlight the teddy bear column.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_7.png" class="img-fluid" style="width:65.0%"></p>
+<p>Highlight the teddy bear row.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_8.png" class="img-fluid" style="width:65.0%"></p>
+<p>Highlight the common entry.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_9.png" class="img-fluid" style="width:65.0%"></p>
+<p>Fifty three teddy bears were correctly classified as teddy bears.</p>
+</section>
+<section id="exercise-do-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-do-it-yourself">Exercise: Do It Yourself</h2>
+<p>Below is a confusion matrix of a car classifier that classifies cars into their brand.</p>
+<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_2.png" class="img-fluid" style="width:65.0%"></p>
+<p>You learn by doing!</p>
+<ul>
+<li>How many Lamborghinis were correctly classified?</li>
+<li>How many Jaguars were incorrectly classified?</li>
+<li>How many Chevrolets were misclassified as Fords?</li>
+<li>How many Fords were misclassified as Chevrolets?</li>
+<li>Which two car brands did the model have the most trouble differentiating between?</li>
+</ul>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Analyzing Models</category>
+  <guid>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</guid>
+  <pubDate>Fri, 03 Jun 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>My first AI model</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><em>This article was updated on <strong>Tuesday, 1 November 2022</strong>.</em></p>
+<p><img src="https://forbo7.github.io/forblog/images/2_bear_classifier_model/thumbnail.jpg" class="img-fluid" alt="A bear waving hello."></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This is my first attempt at creating an AI model: an image classifier. This classifier can tell whether a grizzly bear, black bear, or teddy bear is in an image.</p>
+<p>You can visit the classifier <a href="https://forbo7.github.io/web_apps/apps/bear_detector.html">here</a> to test it out for yourself!</p>
+</section>
+<section id="load-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># No need to fret! fastai is specifically designed to be used with import *.</span></span>
+<span id="cb1-2"><span class="im" style="color: #00769E;">from</span> fastbook <span class="im" style="color: #00769E;">import</span> <span class="op" style="color: #5E5E5E;">*</span></span>
+<span id="cb1-3"><span class="im" style="color: #00769E;">from</span> fastai.vision.<span class="bu" style="color: null;">all</span> <span class="im" style="color: #00769E;">import</span> <span class="op" style="color: #5E5E5E;">*</span></span></code></pre></div>
+</div>
+</section>
+<section id="download-image-files" class="level2">
+<h2 class="anchored" data-anchor-id="download-image-files">Download image files</h2>
+<p>Specify the bear images we wish to download.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">bear_types <span class="op" style="color: #5E5E5E;">=</span> (<span class="st" style="color: #20794D;">'grizzly'</span>, <span class="st" style="color: #20794D;">'black'</span>, <span class="st" style="color: #20794D;">'teddy'</span>,)</span>
+<span id="cb2-2">path <span class="op" style="color: #5E5E5E;">=</span> Path(<span class="st" style="color: #20794D;">'bears'</span>)</span></code></pre></div>
+</div>
+<p>Download 200 of each bear (<code>search_images_ddg</code> defaults to 200 URLs) and assign them to a specific directory.</p>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> path.exists():</span>
+<span id="cb3-2">    path.mkdir()</span>
+<span id="cb3-3">    <span class="cf" style="color: #003B4F;">for</span> bear_type <span class="kw" style="color: #003B4F;">in</span> bear_types:</span>
+<span id="cb3-4">        destination <span class="op" style="color: #5E5E5E;">=</span> (path <span class="op" style="color: #5E5E5E;">/</span> bear_type)</span>
+<span id="cb3-5">        destination.mkdir(exist_ok<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span>
+<span id="cb3-6">        urls <span class="op" style="color: #5E5E5E;">=</span> search_images_ddg(<span class="ss" style="color: #20794D;">f"</span><span class="sc" style="color: #5E5E5E;">{</span>bear_type<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;"> bear"</span>)</span>
+<span id="cb3-7">        download_iamges(destination, urls<span class="op" style="color: #5E5E5E;">=</span>urls)</span></code></pre></div>
+</div>
+<p>Check if our folder has the image files.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">fns <span class="op" style="color: #5E5E5E;">=</span> get_image_files(path)</span>
+<span id="cb4-2">fns</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>(#802) [Path('bears/grizzly/00000238.jpg'),Path('bears/grizzly/00000047.jpg'),Path('bears/grizzly/00000199.jpg'),Path('bears/grizzly/00000237.jpg'),Path('bears/grizzly/00000055.jpg'),Path('bears/grizzly/00000000.png'),Path('bears/grizzly/00000235.jpg'),Path('bears/grizzly/00000159.jpg'),Path('bears/grizzly/00000268.jpg'),Path('bears/grizzly/00000266.jpg')...]</code></pre>
+</div>
+</div>
+<p>Check for corrupt images.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">corrupt_images <span class="op" style="color: #5E5E5E;">=</span> verify_images(fns)</span>
+<span id="cb6-2">corrupt_images</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>(#0) []</code></pre>
+</div>
+</div>
+<p>Remove corrupt images.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">corrupt_images.<span class="bu" style="color: null;">map</span>(pathlib.Path.unlink)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>(#0) []</code></pre>
+</div>
+</div>
+</section>
+<section id="load-image-files" class="level2">
+<h2 class="anchored" data-anchor-id="load-image-files">Load image files</h2>
+<p>The DataBlock API for creates the necessary <code>DataLoaders</code> for us.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">bears <span class="op" style="color: #5E5E5E;">=</span> DataBlock(</span>
+<span id="cb10-2">    blocks<span class="op" style="color: #5E5E5E;">=</span>(ImageBlock, CategoryBlock),</span>
+<span id="cb10-3">    get_items<span class="op" style="color: #5E5E5E;">=</span>get_image_files,</span>
+<span id="cb10-4">    splitter<span class="op" style="color: #5E5E5E;">=</span>RandomSplitter(valid_pct<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.2</span>, seed<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">42</span>),</span>
+<span id="cb10-5">    get_y<span class="op" style="color: #5E5E5E;">=</span>parent_label,</span>
+<span id="cb10-6">    item_tfms<span class="op" style="color: #5E5E5E;">=</span>Resize(<span class="dv" style="color: #AD0000;">128</span>),</span>
+<span id="cb10-7">)</span></code></pre></div>
+</div>
+<p>The <code>blocks</code> parameter allows us to specify the independent and dependent variables.</p>
+<p>The <code>get_items</code> parameter tells fastai how to obtain our data. We use the <code>get_image_files</code> function to obtain our images.</p>
+<p>The <code>splitter</code> parameter allows us to tell fastai how to split our data into training and validation sets. Since our data is one big set, we use the <code>RandomSplitter</code> class and tell it to use 20% of our data as the validation set. We specify a seed so the same split occurs each time.</p>
+<p>The <code>get_y</code> parameter obtains our labels. The <code>parent_label</code> function simply gets the name of the folder a file is in. Since we have organized our bear images into different folders, this will nicely handle our target labels.</p>
+<p>The <code>item_tfms</code> parameter allows us to specify a transform to apply to our data. Since we want all our images to be of the same size, we use the <code>Resize()</code> class.</p>
+<p>We now have a DataBlock object from which can load the data.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">dataloaders <span class="op" style="color: #5E5E5E;">=</span> bears.dataloaders(path)</span></code></pre></div>
+</div>
+<p>Let us view a few images in the validation set.</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">dataloaders.valid.show_batch(max_n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, nrows<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="data-augmentation" class="level2">
+<h2 class="anchored" data-anchor-id="data-augmentation">Data Augmentation</h2>
+<p>Data augmentation refers to creating random variations to our input data. This produces new data points based on the existing data points. This allows each data point to look different, without changing their meaning.</p>
+<p>Typical examples of image augmentation include rotation, flipping, perspective warping, brightness changing, and contrast changing.</p>
+<section id="cropping" class="level3">
+<h3 class="anchored" data-anchor-id="cropping">Cropping</h3>
+<p>The validation set images shown above are cropped. We achieved this by specifying the <code>Resize</code> argument when defining the <code>DataBlock</code>. <code>Resize</code> crops images to the size specified.</p>
+<p>Cropping results in detail being lost.</p>
+<p>Alternatively, we can squish or stretch images, or pad them to a desired size.</p>
+</section>
+<section id="squishingstretching" class="level3">
+<h3 class="anchored" data-anchor-id="squishingstretching">Squishing/Stretching</h3>
+<p>The problem with squishing or stretching images is that the model will learn to “see” images the way they are not supposed to be.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">bears <span class="op" style="color: #5E5E5E;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;">=</span>Resize(<span class="dv" style="color: #AD0000;">128</span>, ResizeMethod.Squish))</span>
+<span id="cb13-2">dataloaders <span class="op" style="color: #5E5E5E;">=</span> bears.dataloaders(path)</span>
+<span id="cb13-3">dataloaders.valid.show_batch(max_n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, nrows<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="padding" class="level3">
+<h3 class="anchored" data-anchor-id="padding">Padding</h3>
+<p>By padding, the image is surrounded typically by black, meaningless pixels. This results in extra, wasted computation.</p>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">bears <span class="op" style="color: #5E5E5E;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;">=</span>Resize(<span class="dv" style="color: #AD0000;">128</span>, ResizeMethod.Pad, pad_mode<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'zeros'</span>))</span>
+<span id="cb14-2">dataloaders <span class="op" style="color: #5E5E5E;">=</span> bears.dataloaders(path)</span>
+<span id="cb14-3">dataloaders.valid.show_batch(max_n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, nrows<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The best approach is to take random crops of different parts of the same image. This makes sure that the model does not miss out on any details whilst letting it “know” how an object fully looks like.</p>
+<p>Below, we have <code>unique=True</code> so that the same image is repeated with different variations.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">bears <span class="op" style="color: #5E5E5E;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;">=</span>RandomResizedCrop(<span class="dv" style="color: #AD0000;">128</span>, min_scale<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.3</span>))</span>
+<span id="cb15-2">dataloaders <span class="op" style="color: #5E5E5E;">=</span> bears.dataloaders(path)</span>
+<span id="cb15-3">dataloaders.train.show_batch(max_n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">4</span>, nrows<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>, unique<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>fastai comes with a function that applies a variety of augmentations to images. This can allow a model to “see” and recognize images in a variety of scenarios.</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">bears <span class="op" style="color: #5E5E5E;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;">=</span>Resize(<span class="dv" style="color: #AD0000;">128</span>), batch_tfms<span class="op" style="color: #5E5E5E;">=</span>aug_transforms(mult<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>))</span>
+<span id="cb16-2">dataloaders  <span class="op" style="color: #5E5E5E;">=</span> bears.dataloaders(path)</span>
+<span id="cb16-3">dataloaders.train.show_batch(max_n<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">8</span>, nrows<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">2</span>, unique<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>I have not used <code>RandomResizedCrop</code> here so that the different augmentations can be seen more clearly. <code>RandomResizedCrop</code> will be used when the model is trained.</p>
+<p><code>batch_tfms</code> tells fastai that we want to use these transforms on a batch.</p>
+</section>
+</section>
+<section id="training-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="training-the-model">Training the model</h2>
+<p>We do not have a lot of data. Only 200 images of each bear at most. Therefore, we will augment our images not only to get more data, but so that the model can recognize data in a variety of situations.</p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">bears <span class="op" style="color: #5E5E5E;">=</span> bears.new(</span>
+<span id="cb17-2">    item_tfms<span class="op" style="color: #5E5E5E;">=</span>RandomResizedCrop(<span class="dv" style="color: #AD0000;">224</span>, min_scale<span class="op" style="color: #5E5E5E;">=</span><span class="fl" style="color: #AD0000;">0.5</span>),</span>
+<span id="cb17-3">    batch_tfms<span class="op" style="color: #5E5E5E;">=</span>aug_transforms(),</span>
+<span id="cb17-4">)</span>
+<span id="cb17-5">dataloaders <span class="op" style="color: #5E5E5E;">=</span> bears.dataloaders(path)</span></code></pre></div>
+</div>
+<p>We will now create our learner and fine-tune it.</p>
+<p>We will be using the ResNet18 architecture (which is a convolutional neural network, or CNN for short). Error rate will be the metric.</p>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">learn <span class="op" style="color: #5E5E5E;">=</span> cnn_learner(dataloaders, resnet18, metrics<span class="op" style="color: #5E5E5E;">=</span>error_rate)</span>
+<span id="cb18-2">learn.fine_tune(<span class="dv" style="color: #AD0000;">4</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"5e2ebba3dfc945c9be0edd07e1196ebe","version_major":2,"version_minor":0}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.985666</td>
+      <td>0.104632</td>
+      <td>0.025000</td>
+      <td>00:20</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.132230</td>
+      <td>0.073527</td>
+      <td>0.012500</td>
+      <td>00:22</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.106222</td>
+      <td>0.054833</td>
+      <td>0.018750</td>
+      <td>00:22</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.087129</td>
+      <td>0.058497</td>
+      <td>0.012500</td>
+      <td>00:20</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.069890</td>
+      <td>0.058845</td>
+      <td>0.018750</td>
+      <td>00:19</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p>Our model only has a 1.9% error rate! Not bad! Though it seems if I had done an extra epoch, the error rate may have gone down to 1.3%, judging by the previous epochs’ error rates.</p>
+</section>
+<section id="visualizing-mistakes" class="level2">
+<h2 class="anchored" data-anchor-id="visualizing-mistakes">Visualizing mistakes</h2>
+<p>We can visualize the mistakes the model is making by a confusion matrix.</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">interp <span class="op" style="color: #5E5E5E;">=</span> ClassificationInterpretation.from_learner(learn)</span>
+<span id="cb20-2">interp.plot_confusion_matrix()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>3 grizzly bears were misclassified as black bears.</p>
+<p>Let us see where the errors are occurring, so we can determine if they are due to a dataset problem or a model problem.</p>
+<p>To do this, we will sort images by their loss.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1">interp.plot_top_losses(<span class="dv" style="color: #AD0000;">5</span>, nrows<span class="op" style="color: #5E5E5E;">=</span><span class="dv" style="color: #AD0000;">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h2>
+<p>The intuitive approach to data cleaning is to do it before training the model. However, a trained model can help us clean the data. For example, we can see some mislabaled bears in the above cases.</p>
+<p>fastai includes a GUI for data cleaning. This GUI allows you to choose a category/label and its associated training and validation sets. It then shows you images in order of highest-loss first, from which you can select images for removal or relabeling.</p>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">cleaner <span class="op" style="color: #5E5E5E;">=</span> ImageClassifierCleaner(learn)</span>
+<span id="cb22-2">cleaner</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"7d3bc1c4ea394fceadf6ccbf4febb422","version_major":2,"version_minor":0}
+</script>
+</div>
+</div>
+<p><code>ImageClassifierCleaner</code> does not actually delete or relabel. It just returns the indices that are to be deleted or relabeled.</p>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="co" style="color: #5E5E5E;"># Delete images selected for deletion.</span></span>
+<span id="cb23-2"><span class="cf" style="color: #003B4F;">for</span> index <span class="kw" style="color: #003B4F;">in</span> cleaner.delete():</span>
+<span id="cb23-3">    cleaner.fns[index].unlink()</span>
+<span id="cb23-4"></span>
+<span id="cb23-5"><span class="co" style="color: #5E5E5E;"># Relabel images selected for relabeling.</span></span>
+<span id="cb23-6"><span class="cf" style="color: #003B4F;">for</span> index, category <span class="kw" style="color: #003B4F;">in</span> cleaner.change():</span>
+<span id="cb23-7">    shutil.move(<span class="bu" style="color: null;">str</span>(cleaner.fns[index]), path<span class="op" style="color: #5E5E5E;">/</span>category)</span></code></pre></div>
+</div>
+<p>We can now retrain and better performance should be expected.</p>
+</section>
+<section id="saving-the-model" class="level2">
+<h2 class="anchored" data-anchor-id="saving-the-model">Saving the model</h2>
+<p>A model consists of two parts: the architecture and the parameters.</p>
+<p>When we use the <code>export()</code> method, both of these are saved.</p>
+<p>This method also saves the definition of our <code>DataLoaders</code>. This is done so that we do not have to redefine how to transform our data when the model is used in production.</p>
+<p>fastai uses our validation set <code>DataLoader</code> by default, so the data augmentation will not be applied, which is generally what is wanted.</p>
+<p>The <code>export()</code> method creates a file named “export.pkl”.</p>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">learn.export()</span></code></pre></div>
+</div>
+<p>Let us check that the file exists.</p>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1">path <span class="op" style="color: #5E5E5E;">=</span> Path()</span>
+<span id="cb25-2">path.ls(file_exts<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'.pkl'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>(#1) [Path('export.pkl')]</code></pre>
+</div>
+</div>
+<p>If you wish to deploy an app, this is the file you will need.</p>
+</section>
+<section id="loading-the-model-for-inference" class="level2">
+<h2 class="anchored" data-anchor-id="loading-the-model-for-inference">Loading the model for inference</h2>
+<p>Now obviously we do not need to load the model as we already have the <code>learner</code> variable. But I shall do so anyways.</p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1">learn_inf <span class="op" style="color: #5E5E5E;">=</span> load_learner(path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'export.pkl'</span>)</span></code></pre></div>
+</div>
+<p>We generally do inference for a single image at a time.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">learn_inf.predict(<span class="st" style="color: #20794D;">'images/grizzly.jpg'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<pre><code>('grizzly', TensorBase(1), TensorBase([1.4230e-06, 1.0000e+00, 3.9502e-08]))</code></pre>
+</div>
+</div>
+<p>Three things have been returned: the predicted category, the index of the predicted category, and the probabilities of each category.</p>
+<p>The order of each category is based on the order of the <em>vocabulary</em> of the <code>DataLoaders</code>; that is, the stored tuple of all possible categories.</p>
+<p>The <code>DataLoaders</code> can be accessed as an attribute of the <code>Learner</code>.</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">learn_inf.dataloaders.vocab</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>['black', 'grizzly', 'teddy']</code></pre>
+</div>
+</div>
+</section>
+<section id="why-cnns-work-so-well" class="level2">
+<h2 class="anchored" data-anchor-id="why-cnns-work-so-well">Why CNNs work so well</h2>
+<p>The ResNet18 architecture is a sort of CNN. Below is my understanding as to why CNNs work so well.</p>
+<p>A neural network is comprised of many layers. Each layer is comprised of many neurons. In a CNN, each neuron in the same layer is given the exact same weights, while being given different input data. This allows all neurons in a layer to fire upon detecting the same pattern.</p>
+<p>Because of this, CNNs can become really good at detecting objects in various patterns, orientations, shapes, positions, and so on.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Well then, that wraps up my first deep learning model! I have to say, it is much easier than I thought it would be to implement a model. You do not need to go into the nitty gritty details of artificial intelligence. A high level understanding can suffice in the beginning. It is like playing a sport: you do not need to understand the physics to be able to play it.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Creating Models</category>
+  <guid>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</guid>
+  <pubDate>Sat, 28 May 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/2_bear_classifier_model/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>How to Approach Creating AI Models</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><em>This article was rewritten on <strong>Monday, 31 October 2022</strong>.</em></p>
+<p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/thumbnail.jpg" class="img-fluid" alt="A picture showing cogs and gears."></p>
+<section id="introduction" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<div class="page-columns page-full"><p>How you approach making models is crucial. The way AI methods are used in today’s landscape is very different. AI methods are created to solve small, atomic problems. And we’ve got most of the methods to handle these small tasks hammered down. Therefore, applied AI is not about creating models; it’s only a small part of it. It’s 80% problem solving and 20% implementing (I would not be surprised if it actually followed the 80-20 rule<sup>1</sup>).</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://en.wikipedia.org/wiki/Pareto_principle">The 80/20 Rule, also known as the Pareto Principle</a></p></li></div></div>
+<p>Think of AI methods as a tool; think of it as a pencil. You can use pencils to draw, take notes, poke holes, and much more. There are also dozens of pencils out there. But what point is there in using any of those pencils if you don’t even know how to properly use a pencil in the first place? The art of creating pencils has already been perfected too.</p>
+<p>One highly successful approach is the <em>Drivetrain Approach</em>, created by Jeremy Howard — who’s widely known for his fastai course and library —, Margit Zwemer, and Mike Loukides.</p>
+<p>The goal of the <em>Drivetrain Approach</em> is to not just use data to generate more data — data that is in the form of predictions. But rather to use data to also generate actionable outcomes.</p>
+<p>The official blogpost goes into much more depth <a href="https://www.oreilly.com/radar/drivetrain-approach-data-products/">here</a>.</p>
+<p>In this post, I’ll be providing a short overview of my understanding of this approach by applying it to the <a href="https://www.elementsofai.com">Elements of AI</a> course’s final project (this online course was created by the University of Helsinki and Reaktor).</p>
+</section>
+<section id="overview-of-the-drivetrain-approach" class="level2">
+<h2 class="anchored" data-anchor-id="overview-of-the-drivetrain-approach">Overview of the Drivetrain Approach</h2>
+<p>There are four main steps to this approach:</p>
+<ul>
+<li>Define the objective</li>
+<li>Consider your possible actions</li>
+<li>Consider your data</li>
+<li>Create the models</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/drivetrain_approach.png" class="img-fluid figure-img" alt="A diagram depicting the DrivetrainApproach as a flow chart."></p>
+<p></p><figcaption class="figure-caption"><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption><p></p>
+</figure>
+</div>
+<section id="define-the-objective" class="level3">
+<h3 class="anchored" data-anchor-id="define-the-objective">Define the objective</h3>
+<p>Write out what you are really trying to achieve. What is your goal? Writing it out puts it in a tangible manner.</p>
+</section>
+<section id="consider-your-actions" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-actions">Consider your actions</h3>
+<p>Think about what actions you can take to achieve your objective.</p>
+<p>Also think about what would happen if you did those actions.</p>
+<p>What would happen if I did <em>x</em>? Would <em>y</em> really be a good idea? What if <em>z</em> worked out <strong>too</strong> well? Will <em>x</em> lead to <em>y</em>? What would happen if <em>x</em> turned out poorly?</p>
+</section>
+<section id="consider-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-data">Consider your data</h3>
+<p>Think about the data you already have and how it could be used.</p>
+<p>Think about any further data that is needed and how it could be collected.</p>
+</section>
+<section id="create-the-models" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-models">Create the models</h3>
+<p>Create models. But create models that produce actions. Actions that produce the best results for your objective.</p>
+</section>
+</section>
+<section id="endangered-language-chatbot" class="level2">
+<h2 class="anchored" data-anchor-id="endangered-language-chatbot">Endangered Language Chatbot</h2>
+<p>The final project of the Elements of AI course asked me to come up with my own AI method that would solve a problem, and how it would do so.</p>
+<p>The problem I tackled was the endangerment of languages. The solution I came up with was to create a chatbot that could converse in these endangered languages. I created an overview of how this could be done.</p>
+<p>The overview can be read <a href="https://github.com/ForBo7/Endangered-Language-Chatbot">here</a>.</p>
+<p>Let’s tackle this problem through the <em>Drivetrain Approach</em>.</p>
+<section id="define-the-objective-1" class="level3">
+<h3 class="anchored" data-anchor-id="define-the-objective-1">Define the objective</h3>
+<p>The objective is to preserve languages that are in danger of going extinct. Through preserving languages, histories and cultures can be preserved.</p>
+</section>
+<section id="consider-your-actions-1" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-actions-1">Consider your actions</h3>
+<p>One way this could be done is to create a chatbot that could converse in endangered languages. However, this would be a monumental task considering the amount of data needed to achieve this.</p>
+<p>Another action that could be taken is to create an information retrieval (IR) system of sorts. A corpus of written text of the language could be provided, from which insights about the language’s history, culture, and way of conversing could be gained. In turn the language is preserved.</p>
+<p>The latter action may be easier to achieve.</p>
+</section>
+<section id="consider-your-data-1" class="level3">
+<h3 class="anchored" data-anchor-id="consider-your-data-1">Consider your data</h3>
+<p>The obvious source of data would be a corpora of text.</p>
+<p>However, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.</p>
+<p>Even if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.</p>
+<p>In short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/whistle_language.jpg" class="img-fluid figure-img" alt="An elderly man blowing a whistle."></p>
+<p></p><figcaption class="figure-caption">Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="create-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="create-the-model">Create the model</h3>
+<p>Either a chatbot needs to be created that speaks as accurately as a native speaker, or an IR system needs to be created that gives meaningful, correct insights into a language and its associated culture.</p>
+<p>This step may either be easy or hard, depending on the language. Most NLP or IR systems have been built on a few, select languages. Perhaps this step may be easy for those languages that are similar to languages on which NLP or IR systems have already been built on. It will most likely be harder for those languages which are not.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>This concludes my understanding of the <em>Drivetrain Approach</em>, through an example.</p>
+<p>Approaches are crucial: you can have state-of-the-art tools, but they are useless if not correctly applied. The approach you take can either make it or break it. Putting it into a concrete, organized, tangible manner goes a long way.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+
+ ]]></description>
+  <category>Approaching AI</category>
+  <guid>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</guid>
+  <pubDate>Fri, 27 May 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>
