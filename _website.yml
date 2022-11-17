@@ -34,7 +34,7 @@ website:
   page-footer:
     left: "[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2022 and ForBlog™ \n by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site 
     Version 
-    2.0.0.0](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/site_feedback.html) | Website made by me!"
+    2.0.0.0](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
     right:
       - icon: envelope
         href: mailto:salmananaqvii+forblog@gmail.com
