@@ -18,14 +18,14 @@
     "href": "index.html#forblog",
     "title": "Welcome to the world of ForBo7",
     "section": "ForBlog",
-    "text": "ForBlog\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\nSep 12, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n\nJun 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items\n\n\nClick here to check out the latest on the ForBlog."
+    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\nSep 12, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n\nJun 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#playground",
     "href": "index.html#playground",
     "title": "Welcome to the world of ForBo7",
     "section": "Playground",
-    "text": "Playground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nApr 30, 2022\n\n\n\n\n\n\n\n\nNo matching items\n\n\nClick here to play more in the playground."
+    "text": "Playground\nClick here to play more in the playground.\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nApr 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "web_apps/apps/bear_detector.html",
@@ -68,6 +68,13 @@
     "title": "Site Patch Notes",
     "section": "",
     "text": "Detailed patchnotes are unavailable prior to site version 2.0.0.0."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.1.0-17-november-2022",
+    "href": "patch_notes.html#version-2.0.1.0-17-november-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.1.0 | 17 November 2022",
+    "text": "Version 2.0.1.0 | 17 November 2022\n\nFixed a bunch of broken links.\nFixed RSS buttons.\nShifted links on the landing page."
   },
   {
     "objectID": "patch_notes.html#version-2.0.0.0-16-november-2022",
