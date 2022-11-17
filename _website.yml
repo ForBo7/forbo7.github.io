@@ -5,7 +5,7 @@ website:
   site-url: https://forbo7.github.io/
   description: "The world of ForBo7!"
   favicon: favicon.ico
-#  favicon: logo.png
+#  favicon: cover.png
   image: images/profile.png
   # TODO: Page navigation is not working. Enable this for ForBlog and playground only.
   page-navigation: false
@@ -13,7 +13,7 @@ website:
   reader-mode: false
   navbar:
     # Currently have set pinned to true because it isn't smooth.
-#    logo: logo.png
+#    logo: cover.png
     pinned: True
     left:
       - icon: house
@@ -50,6 +50,7 @@ website:
         href: forblog/index.xml
   twitter-card:
     creator: "@ForBo7"
+  open-graph: true
   comments:
     giscus:
       repo: ForBo7/forbo7.github.io
