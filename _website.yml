@@ -50,7 +50,9 @@ website:
         href: forblog/index.xml
   twitter-card:
     creator: "@ForBo7"
-  open-graph: true
+    image: cover.png
+  open-graph:
+    image: cover.png
   comments:
     giscus:
       repo: ForBo7/forbo7.github.io
