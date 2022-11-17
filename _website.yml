@@ -30,7 +30,7 @@ website:
         href: about.qmd
     right:
       - icon: rss
-        href: _site/forblog/index.xml
+        href: forblog/index.xml
   page-footer:
     left: "[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2022 and ForBlog™ \n by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site 
     Version 
@@ -47,7 +47,7 @@ website:
       - icon: brush
         href: https://www.artstation.com/forbo7
       - icon: rss
-        href: _site/forblog/index.xml
+        href: forblog/index.xml
   twitter-card:
     creator: "@ForBo7"
   comments:
