@@ -50,8 +50,11 @@ website:
         href: forblog/index.xml
   twitter-card:
     creator: "@ForBo7"
+    description: "The world of ForBo7!"
     image: cover.png
   open-graph:
+    # Seems like I have to explicitly state the options for OpenGraph to work.
+    description: "The world of ForBo7!"
     image: cover.png
   comments:
     giscus:
