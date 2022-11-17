@@ -10,7 +10,9 @@ Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 :::
 
 ## Version 2.0.1.1 | 17 November 2022
+
 * Fixed broken site feedback link.
+* Updated site version references.
 
 ## Version 2.0.1.0 | 17 November 2022
 
