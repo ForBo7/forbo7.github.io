@@ -54,39 +54,18 @@ Contact me with one of the fancy buttons below!
 :::
 
 :::::{.grid}
-
 ::::{.g-col-12 .g-col-md-6}
-
 ## ForBlog
-:::{#landing-posts}
-:::
 Click [here](forblog/index.qmd) to check out the latest on the ForBlog.
 
+:::{#landing-posts}
+:::
 ::::
-
 ::::{.g-col-12 .g-col-md-6}
-
 ## Playground
+Click [here](web_apps/index.qmd) to play more in the playground.
+
 :::{#landing-apps}
 :::
-Click [here](web_apps/index.qmd) to play more in the playground.
 ::::
-
 :::::
-
-<!-- :::::{.columns}
-
-::::{.column width="55%"}
-## ForBlog
-:::{#landing-posts}
-:::
-Click [here](forblog/index.qmd) to check out the latest on the ForBlog.
-::::
-
-::::{.column width="45%"}
-## App Playground
-:::{#landing-apps}
-:::
-Click [here](web_apps/index.qmd) to play more in the playground.
-::::
-::::: -->
