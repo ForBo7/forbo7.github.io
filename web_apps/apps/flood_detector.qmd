@@ -5,6 +5,9 @@ image: ../../forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png
 description: "How well can you classify floods?"
 author: "Salman Naqvi"
 date: "2022-09-20"
+open-graph:
+  description: "How well can you classify floods?"
+  image: ../../forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png
 categories: [Image Classification]
 ---
 
