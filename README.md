@@ -32,4 +32,14 @@ site you want to implement yourself? Check the URL of the page, and look up the 
 
 ## Feedback
 
-If you would like to submit feedback about my site, you can do so at [this](https://forbo7.github.io/feedback.html) link. 
+If you would like to submit feedback about my site, you can do so at [this](https://forbo7.github.io/feedback.html) link.
+
+## Licenses
+
+[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2022 and ForBlog™ by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site
+Version 2.0.1.2](https://forbo7.github.io/patch_notes.html)
+
+[ForBlog](https://forbo7.github.io/forblog/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
+
+[App Playground](https://forbo7.github.io/web_apps/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC
+BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
