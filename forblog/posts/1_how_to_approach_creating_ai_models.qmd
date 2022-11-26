@@ -5,6 +5,9 @@ description: "There's more to AI than just creating models."
 author: "Salman Naqvi"
 date: "2022-05-27"
 categories: [Approaching AI]
+open-graph:
+    description: "Putting the Drive into the Train"
+    image: ../images/1_how_to_approach_creating_ai_models/thumbnail.png
 ---
 
 _This article was rewritten on **Monday, 31 October 2022**._

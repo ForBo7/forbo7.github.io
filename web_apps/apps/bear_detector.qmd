@@ -5,6 +5,9 @@ description: "Can you spot a black bear in a black night?"
 author: "Salman Naqvi"
 date: "2022-04-30"
 categories: [Image Classification]
+open-graph:
+    description: "Can you spot a black bear in a black night?"
+    image: ../../forblog/images/2_bear_classifier_model/thumbnail.jpg
 ---
 
 _This webapp was remade on **Tuesday, 8 November 2022**._
