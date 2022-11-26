@@ -29,6 +29,9 @@ website:
         text: About me
         href: about.qmd
     right:
+      - icon: code-slash
+        text: site-source
+        href: https://github.com/ForBo7/forbo7.github.io
       - icon: rss
         href: forblog/index.xml
   page-footer:

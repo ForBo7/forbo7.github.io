@@ -50,7 +50,7 @@ is a scitech geek and space nerd. I've also been to 18 countries.
 
 Read more about me [here](about.qmd).
 
-Contact me with one of the fancy buttons below!
+Feel free to contact me with one of the fancy buttons below!
 :::
 
 :::::{.grid}
