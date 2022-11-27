@@ -58,10 +58,8 @@ website:
     creator: "@ForBo7"
     site: "@ForBo7"
   open-graph:
-    title: "ForBo7 // Salman Naqvi"
     description: "The world of ForBo7!"
     image: cover.png
-    site-name: "ForBo7 // Salman Naqvi"
   comments:
     giscus:
       repo: ForBo7/forbo7.github.io

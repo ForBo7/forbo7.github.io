@@ -19,5 +19,9 @@ website:
         href: https://www.artstation.com/forbo7
       - icon: envelope
         href: mailto:salmananaqvii+forblog@gmail.com
+twitter-card:
+  card-style: summary_large_image
+  creator: "@ForBo7"
+  site: "@ForBo7"
 
 # TODO: Try a word cloud for categories listing.
