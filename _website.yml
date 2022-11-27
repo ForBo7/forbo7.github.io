@@ -50,11 +50,9 @@ website:
         href: https://www.artstation.com/forbo7
       - icon: rss
         href: forblog/index.xml
-#  twitter-card:
-#    creator: "@ForBo7_"
-#    description: "The world of ForBo7!"
-#    image: cover.png
-#    card-style: summary_large_image
+  twitter-card:
+    creator: "@ForBo7_"
+    card-style: summary_large_image
   open-graph:
     # Seems like I have to explicitly state the options for OpenGraph to work.
     description: "The world of ForBo7!"
