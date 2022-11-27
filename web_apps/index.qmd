@@ -22,6 +22,8 @@ format:
     page-layout: full
 open-graph:
   description: "Here you can view various apps and gizmos I've created. Have a play through some of them let me know what you think!"
+twitter-card:
+  description: "Here you can view various apps and gizmos I've created. Have a play through some of them let me know what you think!"
 ---
 
 Here you can view various apps and gizmos I've created. Have a play through some of them let me know what you think!

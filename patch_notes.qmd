@@ -3,11 +3,19 @@ title: Site Patch Notes
 subtitle: Patches upon patches upon patches...
 description: Does that end up being the [Ship of Thesius](https://en.wikipedia.org/wiki/Ship_of_Theseus)?
 comments: false
+open-graph:
+  description: Patches upon patches upon patches...
+twitter-card:
+  description: Patches upon patches upon patches...
 ---
 
 :::{.callout-note appearance="simple"}
 Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 :::
+
+## Version 2.0.3.0 | 27 November 2022
+
+* Fully implemented Twitter Cards
 
 ## Version 2.0.2.0 | 26 November 2022
 

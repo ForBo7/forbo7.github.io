@@ -23,6 +23,8 @@ format:
     page-layout: full
 open-graph:
   description: "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits."
+twitter-card:
+  description: "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits."
 ---
 
 Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.

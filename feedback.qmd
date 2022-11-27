@@ -3,6 +3,10 @@ title: Site Feedback
 subtitle: You feed it back into the site.
 page-layout: full
 comments: false
+open-graph:
+  description: You feed it back into the site.
+twitter-card:
+  description: You feed it back into the site.
 ---
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLjkhl1pPBhEArBEvXykpfxwaZ2IeCSBnfydLEhBUt9nesOw/viewform?embedded=true" width="600" height="680"

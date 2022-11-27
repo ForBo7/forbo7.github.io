@@ -8,6 +8,9 @@ categories: [Data, Analyzing Models]
 open-graph:
   description: "Most of the time, data matters more than the model."
   image: ../images/4_data_quality_is_important/thumbnail.png
+twitter-card:
+  description: "Most of the time, data matters more than the model."
+  image: ../images/4_data_quality_is_important/thumbnail.png
 ---
 
 _This article was updated on **Thursday, 10 November 2022**._

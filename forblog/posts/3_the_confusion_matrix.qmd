@@ -9,6 +9,9 @@ number-sections: false
 open-graph:
   description: "A straight to the point guide about reading a confusion matrix."
   image: ../images/3_the_confusion_matrix/thumbnail.png
+twitter-card:
+  description: "A straight to the point guide about reading a confusion matrix."
+  image: ../images/3_the_confusion_matrix/thumbnail.png
 ---
 
 _This article was updated on **Thursday, 10 November 2022**._
