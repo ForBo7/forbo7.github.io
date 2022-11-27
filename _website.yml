@@ -50,7 +50,13 @@ website:
         href: https://www.artstation.com/forbo7
       - icon: rss
         href: forblog/index.xml
-  twitter-card: true
+  twitter-card:
+    title: haha
+    description: lol
+    image: cover.png
+    card-style: summary_large_image
+    creator: @ForBo7
+    site: @ForBo7
   open-graph:
     description: "The world of ForBo7!"
     image: cover.png
