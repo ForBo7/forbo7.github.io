@@ -51,10 +51,10 @@ website:
       - icon: rss
         href: forblog/index.xml
   twitter-card: true
-  open-graph:
-    # Seems like I have to explicitly state the options for OpenGraph to work.
-    description: "The world of ForBo7!"
-    image: cover.png
+  open-graph: true
+#    # Seems like I have to explicitly state the options for OpenGraph to work.
+#    description: "The world of ForBo7!"
+#    image: cover.png
   comments:
     giscus:
       repo: ForBo7/forbo7.github.io
