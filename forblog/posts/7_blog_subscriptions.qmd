@@ -7,8 +7,11 @@ author:
   - Salman Naqvi
 date: 2022-11-XX
 categories: [Quarto, Blogging]
+toc: false
 draft: true
 ---
+
+::::{.panel-tabset}
 
 ## Option 1: Predefined services
 
@@ -99,6 +102,13 @@ Further expanding on this, if your site has multiple feeds, the form could also 
 Check out [Salman Naqvi's ForBlog]() to see embedded forms in action!
 
 ## Option 3: HTML & JS
+
+Perhaps you already know some HTML and JS, or even only JS, but still don't have an alternative address and want to get started. Instead of creating the front
+end with HTML, try using the [Quarto HTML Forms](https://github.com/jlgraves-ubc/forms) extension by [Jonathan Graves](https://github.com/jlgraves-ubc).
+With this extension, you are able to implement HTML forms with Quarto. However, you still need to handle the backend with JavaScript. If you're interested
+in implementing it in this way, you probably already know how to. If you don't there are plenty of guides out there 😉.
+
+::::
 
 ## Acknowledgements
 
