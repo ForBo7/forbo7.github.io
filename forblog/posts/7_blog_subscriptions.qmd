@@ -5,24 +5,30 @@ description: TBD
 author:
   - Isaac Flath
   - Salman Naqvi
-date: 2022-11-XX
+date: 2022-12-XX
 categories: [Quarto, Blogging]
 toc: false
 draft: true
 ---
 
+Intro goes here.
+
 ::::{.panel-tabset}
 
-## Option 1: Predefined services
+# Predefined Services
+
+## Option 1
 
 ### Live example
 
 Check out [Isaac Flath's blog]() to see the MailChimp widget in action!
 
-## Option 2: The Manual, Simple Way
+# The Manual Way
+
+## Option 2
 
 Perhaps you don't have an alternative address. Or perhaps you just want something simple to get started with. There's still a way to implement blog
-subscriptions! It's more manual, and gets the job done: embedding online forms (e.g., Google Forms, Microsoft Forms, etc.).
+subscriptions! It requires more manual effort, but gets the job done: embedding online forms (e.g., Google Forms, Microsoft Forms, etc.).
 
 It involves embedding a form in your website, collecting responses in a spreadsheet, creating a mailing list from that spreadsheet, and composing and
 sending an email to the created list.
@@ -41,9 +47,15 @@ On Google Forms, you have an option to implement email checking with the followi
 
 _[INSERT SCREENSHOT HERE OF SUCH CHECKING]_
 
+:::{.callout-note appearance="simple"}
+You may want to allow responses to be edited after submission, create a confirmation message, and disable a link to submit another response.
+
+In Google Forms, these options can be toggled under the 'Settings' tab.
+:::
+
 ### Step 2: Obtain the embed snippet.
 
-Obtain the HTML snippet which you can paste into your website.
+Obtain the HTML snippet which you can paste into your website's source.
 
 Press send.
 
@@ -57,7 +69,7 @@ Copy the snippet.
 
 ### Step 3: Embed the embed
 
-Paste the snippet where ever you want to put the form on your site!
+Paste the snippet whereever you want to put the form on your site!
 
 _[INSERT SCREENSHOT OF SNIPPET IN AN ACTUAL QMD FILE]_
 
@@ -76,12 +88,15 @@ Head to the responses tab of your form.
 
 _[INSERT SCREENSHOT OF RESPONSES TAB]_
 
-From here, you can take any emails received in put them into a mailing list in your email service of choice. **At the same time,** check the responses of
-your unsubscribe form and tally them against the responses received in your subscribe form. Remove any emails that need to be removed.
+Google Forms will have generated a spreadsheet containing emails addresses you have received. You can take these addresses and creating a mailing list in
+the email service of your choice.
+
+**At the same time,** check the responses in your unsubscribe form and tally them against the responses received in your subscribe form. Remove any email
+addresses that need to be removed.
 
 ### Step 6: Compose and send!
 
-Now simple compose the email how you would like to and hit that send button!
+Now compose the email how you would like to, and hit that send button!
 
 :::{.callout-warning appearance="simple"}
 # Before you hit that send button!
@@ -90,23 +105,27 @@ Make sure you include a clearly visible link in your email that would allow reci
 
 ### Step 0: Extras
 
-:::{.callout-tip appearance="simple}
+:::{.callout-tip appearance="simple"}
 You could combine the subscribe and unsubscribe forms into a single form so it would be easier to manage. The form would initially ask if a user would like
 to subscribe or unsubscribe. Based on their input, the form would take them to the appropriate section.
 
-Further expanding on this, if your site has multiple feeds, the form could also ask which feed the user would like to subscribe or unsubscribe from.
+Further expanding on this, if your site has multiple feeds, the form could also ask which feed the user would like to subscribe to or unsubscribe from.
 :::
 
 ### Live example
 
 Check out [Salman Naqvi's ForBlog]() to see embedded forms in action!
 
-## Option 3: HTML & JS
+# HTML & JS
 
-Perhaps you already know some HTML and JS, or even only JS, but still don't have an alternative address and want to get started. Instead of creating the front
-end with HTML, try using the [Quarto HTML Forms](https://github.com/jlgraves-ubc/forms) extension by [Jonathan Graves](https://github.com/jlgraves-ubc).
-With this extension, you are able to implement HTML forms with Quarto. However, you still need to handle the backend with JavaScript. If you're interested
-in implementing it in this way, you probably already know how to. If you don't there are plenty of guides out there 😉.
+## Option 3
+
+Perhaps you know some HTML and JS, or even only JS, and don't have an alternative address. Instead of creating the frontend with HTML, try using the [Quarto
+HTML Forms](https://github.com/jlgraves-ubc/forms) extension by [Jonathan Graves](https://github.com/jlgraves-ubc).
+
+This extension allows you to implement HTML forms through [Quarto Shortcodes]() and YAML Options. However, you still will need to handle the backend with
+JavaScript and perhaps a few other technologies. If you're interested in implementing it this way, you probably already know how to. If not, there are
+plenty of great guides online!.
 
 ::::
 
