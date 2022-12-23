@@ -16,8 +16,237 @@
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.2.269</generator>
-<lastBuildDate>Tue, 04 Oct 2022 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.2.280</generator>
+<lastBuildDate>Fri, 23 Dec 2022 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Adding Subscriptions to a Quarto Site</title>
+  <dc:creator>Isaac Flath</dc:creator>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/7_blog_subscriptions.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/thumbnail.png" class="img-fluid"></p>
+<p>The <a href="https://quarto.org/docs/websites/website-blog.html#subscriptions">Quarto Documenation</a> covers how to implement website subscriptions at a surface level. This guide goes into the details on how one could do so, with three different options. <strong>That said</strong>, this guide can also be helpful for sites that do not use Quarto.</p>
+<p>The three ways this guide will cover:</p>
+<ul>
+<li><p><strong>Readymade Services</strong></p>
+<p>These are services that handle and automate everything for you. MailChimp is mentioned in the Quarto Docs as one option, but is not covered in this guide as it appears they are depracting the RSS email feed function which is necessary. Instead, we have found MailerLite to be a suitable alternative that is easy to setup and use.</p></li>
+<li><p><strong>Online Forms</strong></p>
+<p>Though more manual, it’s good for just getting started or if you do not have an alternative address — many services like MailerLite require you to include a physical address in your emails. This options will dive into embedding forms, and gathering emails from there.</p></li>
+<li><p><strong>HTML/JS</strong></p>
+<p>For when you want to handle the frontend and the backend.</p></li>
+</ul>
+<p>Switch between the tabs below to view the steps for each option.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true">Services</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false">Online Forms</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" aria-controls="tabset-1-3" aria-selected="false">HTML &amp; JS</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
+<p>The first thing we need to do is create a MailerLite Campaign. That is what will actually send the email.</p>
+<section id="quarto-setup" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-setup">Quarto Setup</h3>
+<p>Make sure RSS feeds are enabled on your blog. Instructions for how to do this are in <a href="https://quarto.org/docs/websites/website-blog.html#rss-feed">the Quarto Documentation</a>.</p>
+</section>
+<section id="mailerlite-campaign-setup" class="level3">
+<h3 class="anchored" data-anchor-id="mailerlite-campaign-setup">MailerLite Campaign Setup</h3>
+<p><a href="https://www.mailerlite.com/signup">Create a MailerLite account</a></p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite1_signup.png" class="img-fluid"></p>
+<p>Once you have an account and are logged in, <a href="https://dashboard.mailerlite.com/campaigns/create">create an RSS Campaign</a>.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite2_NewCampaign.png" class="img-fluid"></p>
+<p>As you complete the Campaign creation process there are a few key options to look out for.</p>
+<p>As you progress through the signup form you will need to fill in some information and, including the URL of your RSS feed. It should be a URL that ends with <code>.xml</code>.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite3_RssFeedUrl.png" class="img-fluid"></p>
+<p>I recommend setting the email to only be sent when you have new blog posts. This ensures that an email is only sent if you’ve published a new post. Otherwise, an email is sent on a regular interval with the latest posts regardless of whether there is new content.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite4_NewPostsOnly.png" class="img-fluid"></p>
+<p>On the content page, choose start from scratch (free tier) or select a template (paid) and design your email that will go out.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite5_EmailDesign.png" class="img-fluid"></p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you create an RSS campaign there are templates that can be used in the content tab for designing this email. These are paid features that you get for free for the first 30 days. Only use the templates if you intend to pay as they are not included in the free plan.</p>
+</div>
+</div>
+<p>Select All Active Subscribers to send to.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite6_CampaignRecipients.png" class="img-fluid"></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advanced Subscriber Settings
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can create individual subscriber groups to have different campaigns go to different groups to give subscribers more options. <a href="https://isaac-flath.tech/blog.html">Example here</a>.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite7_Groups.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Continue through to schedule your campaign!</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite8_Schedule.png" class="img-fluid"></p>
+</section>
+<section id="create-subscribe.html" class="level3">
+<h3 class="anchored" data-anchor-id="create-subscribe.html">Create subscribe.html</h3>
+<p>Now that the campaign is set up and will go out to all subscribers, we need to create the widget that allows users to subscribe to the blog. In other words we need a way for users to sign up! In Quarto, this is defined in the <code>subscribe.html</code> file. First, we need to use MailerLite to create the contents.</p>
+<p>In MailerLite this is called an <code>embedded form</code>. We can use their GUI to <a href="https://dashboard.mailerlite.com/forms/create?type=embedded">Create an embedded form</a>.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite9_NewForm.png" class="img-fluid"></p>
+<p>Once we start the form we can use the GUI form editor to design what we want the form to look like.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite11_FormDesign.png" class="img-fluid"></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I recommend leaving it with the default design for now, you can always come back and re-style it later if you don’t like how it looks on your blog. But it’s much easier to get something working then improve upon it once it’s working than to try to make something perfect the first time through!</p>
+</div>
+</div>
+<p>Once you created the form it will take you to that forms <code>Overview</code> page. Scroll down to look for the <code>Embed form into your website</code> section. In that section select <code>HTML Code</code> and copy the code provided.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/mailerlite/MailerLite12_FormHtml.png" class="img-fluid"></p>
+<p>Paste this code into a <code>subscribe.html</code> file at the top level of your blog’s directory.</p>
+</section>
+<section id="modify-_quarto.yml" class="level3">
+<h3 class="anchored" data-anchor-id="modify-_quarto.yml">Modify _quarto.yml</h3>
+<p>Add the <code>subscribe.html</code> file to your <code>_quarto.yml</code> file by adding it to the <code>margin-header</code> attribute. This option will look like this in your <code>_quarto.yml</code> file.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><span class="fu" style="color: #4758AB;">website</span><span class="kw" style="color: #003B4F;">:</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;">  # (additional metadata excluded for brevity)</span></span>
+<span id="cb1-3"><span class="at" style="color: #657422;">  </span><span class="fu" style="color: #4758AB;">margin-header</span><span class="kw" style="color: #003B4F;">:</span><span class="at" style="color: #657422;"> subscribe.html</span></span></code></pre></div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>That is all it takes to get subscriptions working on your blog with MailerLite! Everything you just set up is editable so if you don’t like how the email or the subscription widget looks, you can go in and edit your templates.</p>
+</section>
+<section id="live-example" class="level3">
+<h3 class="anchored" data-anchor-id="live-example">Live example</h3>
+<p>Check out <a href="https://isaac-flath.tech">Isaac Flath’s blog</a> to see the MailerLite widget in action!</p>
+</section>
+</div>
+<div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
+<p>Perhaps you don’t have an alternative address. Or perhaps you just want something simple to get started with. There’s still a way to implement blog subscriptions! It requires more manual effort, but gets the job done: embedding online forms (e.g., Google Forms, Microsoft Forms, etc.).</p>
+<p>It involves embedding a form in your website, collecting responses from it, creating a mailing list from those responses, and then composing and sending an email with the list.</p>
+<p>The example in the steps below use Google Forms, though it would be very similar to Microsoft Forms. The steps below should also generally apply to any other online forms service.</p>
+<section id="step-1-create-the-form." class="level3">
+<h3 class="anchored" data-anchor-id="step-1-create-the-form.">Step 1: Create the form.</h3>
+<p>Using your online form provider of choice, create your form! A simple form would include a text box for inputting an email, with a simple check to see if the entered email is valid.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/1.png" class="img-fluid"></p>
+<p>On Google Forms, you have an option to implement email checking with the following option.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/2.png" class="img-fluid"></p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/3.png" class="img-fluid"></p>
+<div class="callout-note callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>You may want to allow responses to be edited after submission, create a confirmation message, and disable a link to submit another response.</p>
+<p>In Google Forms, these options can be toggled under the ‘Settings’ tab.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-obtain-the-embed-snippet." class="level3">
+<h3 class="anchored" data-anchor-id="step-2-obtain-the-embed-snippet.">Step 2: Obtain the embed snippet.</h3>
+<p>Obtain the HTML snippet which you can paste into your website’s source.</p>
+<p>To do this, press send…</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/4.png" class="img-fluid"></p>
+<p>…go to the embed tab…</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/5.png" class="img-fluid"></p>
+<p>…and copy the snippet.</p>
+</section>
+<section id="step-3-embed-the-embed" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-embed-the-embed">Step 3: Embed the embed</h3>
+<p>Paste the snippet whereever you want to put the form on your site!</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/6.png" class="img-fluid"></p>
+<p>You can adjust the size of the embed by tweaking these values.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/7.png" class="img-fluid"></p>
+</section>
+<section id="step-4-unsubscribing." class="level3">
+<h3 class="anchored" data-anchor-id="step-4-unsubscribing.">Step 4: Unsubscribing.</h3>
+<p>Repeat steps 1-3 above and create a form that would allow subscribers to unsubscribe from receiving notifications. Make sure this form is clearly accessible in your site.</p>
+</section>
+<section id="step-5-gathering-emails." class="level3">
+<h3 class="anchored" data-anchor-id="step-5-gathering-emails.">Step 5: Gathering emails.</h3>
+<p>Head to the responses tab of your form.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/8.png" class="img-fluid"></p>
+<p>You can take these email addresses and create a mailing list in the email service of your choice.</p>
+<p>You can also download a CSV file containing the responses.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/9.png" class="img-fluid"></p>
+<p>Alternatively, you can also create a spreadsheet by clicking on the spreadsheet icon.</p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/10.png" class="img-fluid"></p>
+<p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/11.png" class="img-fluid"></p>
+<p><strong>At the same time,</strong> check the responses in your unsubscribe form and tally them against the responses received in your subscribe form. Remove any email addresses that need to be removed.</p>
+</section>
+<section id="step-6-compose-and-send" class="level3">
+<h3 class="anchored" data-anchor-id="step-6-compose-and-send">Step 6: Compose and send!</h3>
+<p>Now compose the email how you would like to, and hit that send button!</p>
+<div class="callout-warning callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Before you hit that send button!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Make sure you include a clearly visible link in your email that would allow recipients to unsubscribe.</p>
+</div>
+</div>
+</section>
+<section id="step-0-extras" class="level3">
+<h3 class="anchored" data-anchor-id="step-0-extras">Step 0: Extras</h3>
+<div class="callout-tip callout callout-style-simple">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>You could combine the subscribe and unsubscribe forms into a single form so it would be easier to manage. The form would initially ask if a user would like to subscribe or unsubscribe. Based on their input, the form would take them to the appropriate section.</p>
+<p>Further expanding on this, if your site has multiple feeds, the form could also ask which feed the user would like to subscribe to or unsubscribe from.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="live-example-1" class="level3">
+<h3 class="anchored" data-anchor-id="live-example-1">Live example</h3>
+<p>Check out <a href="https://forbo7.github.io/forblog/">Salman Naqvi’s ForBlog</a> to see embedded forms in action!</p>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" aria-labelledby="tabset-1-3-tab">
+<section id="option-3" class="level2">
+<h2 class="anchored" data-anchor-id="option-3">Option 3</h2>
+<p>Perhaps you know some HTML and JS, or even only JS, and don’t have an alternative address. Instead of creating the frontend with HTML, try using the <a href="https://github.com/jlgraves-ubc/forms">Quarto HTML Forms</a> extension by <a href="https://github.com/jlgraves-ubc">Jonathan Graves</a>.</p>
+<p>This extension allows you to implement HTML forms through <a href="">Quarto Shortcodes</a> and YAML Options. However, you still will need to handle the backend with JavaScript and perhaps a few other technologies. If you’re interested in implementing it this way, you probably already know how to. If not, there are plenty of great guides online!.</p>
+</section>
+</div>
+</div>
+</div>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to Isaac Flath for collaborating with me on this guide! You can view his blog, works, and contact <a href="https://isaac-flath.tech">here</a>.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Quarto</category>
+  <category>Collaboration</category>
+  <guid>https://forbo7.github.io/forblog/posts/7_blog_subscriptions.html</guid>
+  <pubDate>Fri, 23 Dec 2022 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/7_blog_subscriptions/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>AI in a Nutshell</title>
   <dc:creator>Salman Naqvi</dc:creator>

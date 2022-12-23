@@ -1,5 +1,20 @@
 [
   {
+    "listing": "/testing_page.html",
+    "items": [
+      "/forblog/posts/7_blog_subscriptions.html",
+      "/forblog/posts/6_ai_in_a_nutshell.html",
+      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
+      "/forblog/posts/4_data_quality_is_important.html",
+      "/forblog/posts/3_the_confusion_matrix.html",
+      "/forblog/posts/2_bear_classifier_model.html",
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
+    ]
+  },
+  {
     "listing": "/web_apps/index.html",
     "items": [
       "/web_apps/apps/coming_soon.html",
@@ -8,42 +23,30 @@
     ]
   },
   {
-    "listing": "/testing_page.html",
-    "items": [
-      "/forblog/posts/6_ai_in_a_nutshell.html",
-      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
-      "/forblog/posts/4_data_quality_is_important.html",
-      "/forblog/posts/3_the_confusion_matrix.html",
-      "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
-    ]
-  },
-  {
-    "listing": "/index.html",
-    "items": [
-      "/forblog/posts/6_ai_in_a_nutshell.html",
-      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
-      "/forblog/posts/4_data_quality_is_important.html",
-      "/forblog/posts/3_the_confusion_matrix.html",
-      "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
-    ]
-  },
-  {
     "listing": "/forblog/index.html",
     "items": [
+      "/forblog/posts/7_blog_subscriptions.html",
       "/forblog/posts/6_ai_in_a_nutshell.html",
       "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
       "/forblog/posts/4_data_quality_is_important.html",
       "/forblog/posts/3_the_confusion_matrix.html",
       "/forblog/posts/2_bear_classifier_model.html",
       "/forblog/posts/1_how_to_approach_creating_ai_models.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/forblog/posts/7_blog_subscriptions.html",
+      "/forblog/posts/6_ai_in_a_nutshell.html",
+      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
+      "/forblog/posts/4_data_quality_is_important.html",
+      "/forblog/posts/3_the_confusion_matrix.html",
+      "/forblog/posts/2_bear_classifier_model.html",
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
     ]
   }
 ]

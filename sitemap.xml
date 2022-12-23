@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://forbo7.github.io/web_apps/index.html</loc>
-    <lastmod>2022-12-09T12:37:21.400Z</lastmod>
-  </url>
-  <url>
-    <loc>https://forbo7.github.io/web_apps/apps/coming_soon.html</loc>
-    <lastmod>2022-12-09T12:37:22.144Z</lastmod>
-  </url>
-  <url>
-    <loc>https://forbo7.github.io/web_apps/apps/flood_detector.html</loc>
-    <lastmod>2022-12-09T12:37:22.552Z</lastmod>
-  </url>
-  <url>
-    <loc>https://forbo7.github.io/web_apps/apps/bear_detector.html</loc>
-    <lastmod>2022-12-09T12:37:22.952Z</lastmod>
-  </url>
-  <url>
-    <loc>https://forbo7.github.io/unsubscribe.html</loc>
-    <lastmod>2022-12-09T12:37:23.344Z</lastmod>
-  </url>
-  <url>
-    <loc>https://forbo7.github.io/testing_page.html</loc>
-    <lastmod>2022-12-09T12:37:24.972Z</lastmod>
+    <loc>https://forbo7.github.io/patch_notes.html</loc>
+    <lastmod>2022-12-23T15:41:26.306Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/about.html</loc>
-    <lastmod>2022-12-09T12:37:25.400Z</lastmod>
+    <lastmod>2022-12-23T15:41:26.726Z</lastmod>
   </url>
   <url>
-    <loc>https://forbo7.github.io/index.html</loc>
-    <lastmod>2022-12-09T12:37:27.460Z</lastmod>
+    <loc>https://forbo7.github.io/unsubscribe.html</loc>
+    <lastmod>2022-12-23T15:41:27.090Z</lastmod>
   </url>
   <url>
-    <loc>https://forbo7.github.io/patch_notes.html</loc>
-    <lastmod>2022-12-09T12:37:27.852Z</lastmod>
+    <loc>https://forbo7.github.io/testing_page.html</loc>
+    <lastmod>2022-12-23T15:41:28.654Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/feedback.html</loc>
-    <lastmod>2022-12-09T12:37:28.204Z</lastmod>
+    <lastmod>2022-12-23T15:41:28.990Z</lastmod>
   </url>
   <url>
-    <loc>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</loc>
-    <lastmod>2022-12-09T12:37:28.628Z</lastmod>
+    <loc>https://forbo7.github.io/web_apps/index.html</loc>
+    <lastmod>2022-12-23T15:41:29.454Z</lastmod>
   </url>
   <url>
-    <loc>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</loc>
-    <lastmod>2022-12-09T12:37:29.100Z</lastmod>
+    <loc>https://forbo7.github.io/web_apps/apps/bear_detector.html</loc>
+    <lastmod>2022-12-23T15:41:29.786Z</lastmod>
   </url>
   <url>
-    <loc>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</loc>
-    <lastmod>2022-12-09T12:37:29.820Z</lastmod>
+    <loc>https://forbo7.github.io/web_apps/apps/flood_detector.html</loc>
+    <lastmod>2022-12-23T15:41:30.126Z</lastmod>
   </url>
   <url>
-    <loc>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</loc>
-    <lastmod>2022-12-09T12:37:30.428Z</lastmod>
-  </url>
-  <url>
-    <loc>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</loc>
-    <lastmod>2022-12-09T12:37:31.920Z</lastmod>
+    <loc>https://forbo7.github.io/web_apps/apps/coming_soon.html</loc>
+    <lastmod>2022-12-23T15:41:30.462Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</loc>
-    <lastmod>2022-12-09T12:37:32.348Z</lastmod>
+    <lastmod>2022-12-23T15:41:30.850Z</lastmod>
+  </url>
+  <url>
+    <loc>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</loc>
+    <lastmod>2022-12-23T15:41:31.274Z</lastmod>
+  </url>
+  <url>
+    <loc>https://forbo7.github.io/forblog/posts/7_blog_subscriptions.html</loc>
+    <lastmod>2022-12-23T15:41:31.778Z</lastmod>
+  </url>
+  <url>
+    <loc>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</loc>
+    <lastmod>2022-12-23T15:41:32.722Z</lastmod>
+  </url>
+  <url>
+    <loc>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</loc>
+    <lastmod>2022-12-23T15:41:33.106Z</lastmod>
+  </url>
+  <url>
+    <loc>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</loc>
+    <lastmod>2022-12-23T15:41:33.662Z</lastmod>
+  </url>
+  <url>
+    <loc>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</loc>
+    <lastmod>2022-12-23T15:41:34.298Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/index.html</loc>
-    <lastmod>2022-12-09T12:37:34.288Z</lastmod>
+    <lastmod>2022-12-23T15:41:36.218Z</lastmod>
+  </url>
+  <url>
+    <loc>https://forbo7.github.io/index.html</loc>
+    <lastmod>2022-12-23T15:41:38.098Z</lastmod>
   </url>
 </urlset>

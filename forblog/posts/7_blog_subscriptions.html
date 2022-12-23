@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
+<meta name="generator" content="quarto-1.2.280">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Isaac Flath">
 <meta name="author" content="Salman Naqvi">
-<meta name="description" content="TBD">
+<meta name="description" content="A no nonsense, to the point guide to implementing subscriptions in your Quarto site.">
 
-<title>ForBo7 // Salman Naqvi - TBD</title>
+<title>ForBo7 // Salman Naqvi - Adding Subscriptions to a Quarto Site</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,6 +23,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -65,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="ForBo7 // Salman Naqvi - TBD">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Adding Subscriptions to a Quarto Site">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/cover.png">
 <meta property="og:site-name" content="ForBo7 // Salman Naqvi">
@@ -145,17 +208,17 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">TBD</h1>
-<p class="subtitle lead">TBD</p>
+<h1 class="title">Adding Subscriptions to a Quarto Site</h1>
+<p class="subtitle lead">Subscribable Subscriptions</p>
   <div class="quarto-categories">
     <div class="quarto-category">Quarto</div>
-    <div class="quarto-category">Blogging</div>
+    <div class="quarto-category">Collaboration</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    TBD
+    A no nonsense, to the point guide to implementing subscriptions in your Quarto site.
   </div>
 </div>
 
@@ -173,7 +236,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">Friday, 23 December 2022</p>
     </div>
   </div>
   
@@ -183,31 +246,123 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Intro goes here.</p>
+<p><img src="../images/7_blog_subscriptions/thumbnail.png" class="img-fluid"></p>
+<p>The <a href="https://quarto.org/docs/websites/website-blog.html#subscriptions">Quarto Documenation</a> covers how to implement website subscriptions at a surface level. This guide goes into the details on how one could do so, with three different options. <strong>That said</strong>, this guide can also be helpful for sites that do not use Quarto.</p>
+<p>The three ways this guide will cover:</p>
+<ul>
+<li><p><strong>Readymade Services</strong></p>
+<p>These are services that handle and automate everything for you. MailChimp is mentioned in the Quarto Docs as one option, but is not covered in this guide as it appears they are depracting the RSS email feed function which is necessary. Instead, we have found MailerLite to be a suitable alternative that is easy to setup and use.</p></li>
+<li><p><strong>Online Forms</strong></p>
+<p>Though more manual, it’s good for just getting started or if you do not have an alternative address — many services like MailerLite require you to include a physical address in your emails. This options will dive into embedding forms, and gathering emails from there.</p></li>
+<li><p><strong>HTML/JS</strong></p>
+<p>For when you want to handle the frontend and the backend.</p></li>
+</ul>
+<p>Switch between the tabs below to view the steps for each option.</p>
 <div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Predefined Services</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">The Manual Way</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">HTML &amp; JS</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Services</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Online Forms</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">HTML &amp; JS</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<section id="option-1" class="level2">
-<h2 class="anchored" data-anchor-id="option-1">Option 1</h2>
+<p>The first thing we need to do is create a MailerLite Campaign. That is what will actually send the email.</p>
+<section id="quarto-setup" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-setup">Quarto Setup</h3>
+<p>Make sure RSS feeds are enabled on your blog. Instructions for how to do this are in <a href="https://quarto.org/docs/websites/website-blog.html#rss-feed">the Quarto Documentation</a>.</p>
+</section>
+<section id="mailerlite-campaign-setup" class="level3">
+<h3 class="anchored" data-anchor-id="mailerlite-campaign-setup">MailerLite Campaign Setup</h3>
+<p><a href="https://www.mailerlite.com/signup">Create a MailerLite account</a></p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite1_signup.png" class="img-fluid"></p>
+<p>Once you have an account and are logged in, <a href="https://dashboard.mailerlite.com/campaigns/create">create an RSS Campaign</a>.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite2_NewCampaign.png" class="img-fluid"></p>
+<p>As you complete the Campaign creation process there are a few key options to look out for.</p>
+<p>As you progress through the signup form you will need to fill in some information and, including the URL of your RSS feed. It should be a URL that ends with <code>.xml</code>.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite3_RssFeedUrl.png" class="img-fluid"></p>
+<p>I recommend setting the email to only be sent when you have new blog posts. This ensures that an email is only sent if you’ve published a new post. Otherwise, an email is sent on a regular interval with the latest posts regardless of whether there is new content.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite4_NewPostsOnly.png" class="img-fluid"></p>
+<p>On the content page, choose start from scratch (free tier) or select a template (paid) and design your email that will go out.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite5_EmailDesign.png" class="img-fluid"></p>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you create an RSS campaign there are templates that can be used in the content tab for designing this email. These are paid features that you get for free for the first 30 days. Only use the templates if you intend to pay as they are not included in the free plan.</p>
+</div>
+</div>
+<p>Select All Active Subscribers to send to.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite6_CampaignRecipients.png" class="img-fluid"></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Advanced Subscriber Settings
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can create individual subscriber groups to have different campaigns go to different groups to give subscribers more options. <a href="https://isaac-flath.tech/blog.html">Example here</a>.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite7_Groups.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Continue through to schedule your campaign!</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite8_Schedule.png" class="img-fluid"></p>
+</section>
+<section id="create-subscribe.html" class="level3">
+<h3 class="anchored" data-anchor-id="create-subscribe.html">Create subscribe.html</h3>
+<p>Now that the campaign is set up and will go out to all subscribers, we need to create the widget that allows users to subscribe to the blog. In other words we need a way for users to sign up! In Quarto, this is defined in the <code>subscribe.html</code> file. First, we need to use MailerLite to create the contents.</p>
+<p>In MailerLite this is called an <code>embedded form</code>. We can use their GUI to <a href="https://dashboard.mailerlite.com/forms/create?type=embedded">Create an embedded form</a>.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite9_NewForm.png" class="img-fluid"></p>
+<p>Once we start the form we can use the GUI form editor to design what we want the form to look like.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite11_FormDesign.png" class="img-fluid"></p>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I recommend leaving it with the default design for now, you can always come back and re-style it later if you don’t like how it looks on your blog. But it’s much easier to get something working then improve upon it once it’s working than to try to make something perfect the first time through!</p>
+</div>
+</div>
+<p>Once you created the form it will take you to that forms <code>Overview</code> page. Scroll down to look for the <code>Embed form into your website</code> section. In that section select <code>HTML Code</code> and copy the code provided.</p>
+<p><img src="../images/7_blog_subscriptions/mailerlite/MailerLite12_FormHtml.png" class="img-fluid"></p>
+<p>Paste this code into a <code>subscribe.html</code> file at the top level of your blog’s directory.</p>
+</section>
+<section id="modify-_quarto.yml" class="level3">
+<h3 class="anchored" data-anchor-id="modify-_quarto.yml">Modify _quarto.yml</h3>
+<p>Add the <code>subscribe.html</code> file to your <code>_quarto.yml</code> file by adding it to the <code>margin-header</code> attribute. This option will look like this in your <code>_quarto.yml</code> file.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">  # (additional metadata excluded for brevity)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">margin-header</span><span class="kw">:</span><span class="at"> subscribe.html</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>That is all it takes to get subscriptions working on your blog with MailerLite! Everything you just set up is editable so if you don’t like how the email or the subscription widget looks, you can go in and edit your templates.</p>
+</section>
 <section id="live-example" class="level3">
 <h3 class="anchored" data-anchor-id="live-example">Live example</h3>
-<p>Check out <a href="">Isaac Flath’s blog</a> to see the MailChimp widget in action!</p>
-</section>
+<p>Check out <a href="https://isaac-flath.tech">Isaac Flath’s blog</a> to see the MailerLite widget in action!</p>
 </section>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<section id="option-2" class="level2">
-<h2 class="anchored" data-anchor-id="option-2">Option 2</h2>
 <p>Perhaps you don’t have an alternative address. Or perhaps you just want something simple to get started with. There’s still a way to implement blog subscriptions! It requires more manual effort, but gets the job done: embedding online forms (e.g., Google Forms, Microsoft Forms, etc.).</p>
-<p>It involves embedding a form in your website, collecting responses in a spreadsheet, creating a mailing list from that spreadsheet, and composing and sending an email to the created list.</p>
+<p>It involves embedding a form in your website, collecting responses from it, creating a mailing list from those responses, and then composing and sending an email with the list.</p>
 <p>The example in the steps below use Google Forms, though it would be very similar to Microsoft Forms. The steps below should also generally apply to any other online forms service.</p>
 <section id="step-1-create-the-form." class="level3">
 <h3 class="anchored" data-anchor-id="step-1-create-the-form.">Step 1: Create the form.</h3>
 <p>Using your online form provider of choice, create your form! A simple form would include a text box for inputting an email, with a simple check to see if the entered email is valid.</p>
-<p><em>[INSERT SCREENSHOT HERE OF SUCH FORM]</em></p>
+<p><img src="../images/7_blog_subscriptions/manual/1.png" class="img-fluid"></p>
 <p>On Google Forms, you have an option to implement email checking with the following option.</p>
-<p><em>[INSERT SCREENSHOT HERE OF SUCH CHECKING]</em></p>
+<p><img src="../images/7_blog_subscriptions/manual/2.png" class="img-fluid"></p>
+<p><img src="../images/7_blog_subscriptions/manual/3.png" class="img-fluid"></p>
 <div class="callout-note callout callout-style-simple">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -223,18 +378,18 @@ ul.task-list li input[type="checkbox"] {
 <section id="step-2-obtain-the-embed-snippet." class="level3">
 <h3 class="anchored" data-anchor-id="step-2-obtain-the-embed-snippet.">Step 2: Obtain the embed snippet.</h3>
 <p>Obtain the HTML snippet which you can paste into your website’s source.</p>
-<p>Press send.</p>
-<p><em>[INSERT SCREENSHOT OF SEND BUTTON]</em></p>
-<p>Go to the embed tab.</p>
-<p><em>[INSERT SCREENSHOT OF EMBED TAB]</em></p>
-<p>Copy the snippet.</p>
+<p>To do this, press send…</p>
+<p><img src="../images/7_blog_subscriptions/manual/4.png" class="img-fluid"></p>
+<p>…go to the embed tab…</p>
+<p><img src="../images/7_blog_subscriptions/manual/5.png" class="img-fluid"></p>
+<p>…and copy the snippet.</p>
 </section>
 <section id="step-3-embed-the-embed" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-embed-the-embed">Step 3: Embed the embed</h3>
 <p>Paste the snippet whereever you want to put the form on your site!</p>
-<p><em>[INSERT SCREENSHOT OF SNIPPET IN AN ACTUAL QMD FILE]</em></p>
+<p><img src="../images/7_blog_subscriptions/manual/6.png" class="img-fluid"></p>
 <p>You can adjust the size of the embed by tweaking these values.</p>
-<p><em>[INSERT SCREENSHOT OF VALUES HIGHLIGHTED]</em></p>
+<p><img src="../images/7_blog_subscriptions/manual/7.png" class="img-fluid"></p>
 </section>
 <section id="step-4-unsubscribing." class="level3">
 <h3 class="anchored" data-anchor-id="step-4-unsubscribing.">Step 4: Unsubscribing.</h3>
@@ -243,8 +398,13 @@ ul.task-list li input[type="checkbox"] {
 <section id="step-5-gathering-emails." class="level3">
 <h3 class="anchored" data-anchor-id="step-5-gathering-emails.">Step 5: Gathering emails.</h3>
 <p>Head to the responses tab of your form.</p>
-<p><em>[INSERT SCREENSHOT OF RESPONSES TAB]</em></p>
-<p>Google Forms will have generated a spreadsheet containing emails addresses you have received. You can take these addresses and creating a mailing list in the email service of your choice.</p>
+<p><img src="../images/7_blog_subscriptions/manual/8.png" class="img-fluid"></p>
+<p>You can take these email addresses and create a mailing list in the email service of your choice.</p>
+<p>You can also download a CSV file containing the responses.</p>
+<p><img src="../images/7_blog_subscriptions/manual/9.png" class="img-fluid"></p>
+<p>Alternatively, you can also create a spreadsheet by clicking on the spreadsheet icon.</p>
+<p><img src="../images/7_blog_subscriptions/manual/10.png" class="img-fluid"></p>
+<p><img src="../images/7_blog_subscriptions/manual/11.png" class="img-fluid"></p>
 <p><strong>At the same time,</strong> check the responses in your unsubscribe form and tally them against the responses received in your subscribe form. Remove any email addresses that need to be removed.</p>
 </section>
 <section id="step-6-compose-and-send" class="level3">
@@ -280,8 +440,7 @@ Before you hit that send button!
 </section>
 <section id="live-example-1" class="level3">
 <h3 class="anchored" data-anchor-id="live-example-1">Live example</h3>
-<p>Check out <a href="">Salman Naqvi’s ForBlog</a> to see embedded forms in action!</p>
-</section>
+<p>Check out <a href="https://forbo7.github.io/forblog/">Salman Naqvi’s ForBlog</a> to see embedded forms in action!</p>
 </section>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
@@ -295,7 +454,7 @@ Before you hit that send button!
 </div>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>Thanks to Isaac Flath for collaborating with me on this guide! You can view his blog, works, and contact here (blog link)[].</p>
+<p>Thanks to Isaac Flath for collaborating with me on this guide! You can view his blog, works, and contact <a href="https://isaac-flath.tech">here</a>.</p>
 
 
 </section>
