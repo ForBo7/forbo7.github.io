@@ -10,11 +10,11 @@ date: 2022-12-23
 categories: [Quarto, Collaboration]
 toc: false
 open-graph:
-  - description: A no nonsense, to the point guide to implementing subscriptions in your Quarto site.
-  - image: ../images/7_blog_subscriptions/thumbnail.png
+  description: A no nonsense, to the point guide to implementing subscriptions in your Quarto site.
+  image: ../images/7_blog_subscriptions/thumbnail.png
 twitter-card:
-  - description: A no nonsense, to the point guide to implementing subscriptions in your Quarto site.
-  - image: ../images/7_blog_subscriptions/thumbnail.png
+  description: A no nonsense, to the point guide to implementing subscriptions in your Quarto site.
+  image: ../images/7_blog_subscriptions/thumbnail.png
 ---
 
 ![](../images/7_blog_subscriptions/thumbnail.png)
