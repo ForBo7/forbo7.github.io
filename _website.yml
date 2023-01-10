@@ -23,10 +23,13 @@ website:
         text: ForBlog
         href: forblog/index.qmd
       - icon: sliders2
-        text: App Playground
+        text: Playground
         href: web_apps/index.qmd
+      - icon: book
+        text: Dictionary
+        href: dictionary/index.qmd
       - icon: file-person
-        text: About me
+        text: About
         href: about.qmd
     right:
       - icon: code-slash

@@ -1,0 +1,17 @@
+---
+title: "Error Rate"
+description: "A type of [metric](metric.qmd). It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better."
+---
+
+---
+
+It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.
+
+$$
+\frac{\text{number of incorrect predictions}}{\text{number of total predictions}}
+$$
+
+::: {.callout-note collapse="true" appearance="simple"}
+# Note
+Error rate is also 1 - [accuracy](accuracy.qmd).
+:::

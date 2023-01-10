@@ -1,0 +1,37 @@
+---
+title: Mean Squared Error (MSE)
+description: "A type of [metric](metric.qmd). It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better."
+---
+
+---
+
+It is calculated by:
+
+1. First taking the difference between each respective predicted and actual value.
+1. Then the squaring all obtained values.
+1. And finally taking the average.
+
+Let's say we have a set of predicted values $1, 2, 3, 4$. The set of actual values is $1, 4, 3, 3$
+
+1. $1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1$
+1. $(0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1$
+1. $\frac{0 + 4 + 0 + 1}{4} = \frac{5}{4} = 1.25$
+
+This tells us, that on average, our set of predicted values is $1.25$ units off from the actual values.
+
+**In a nutshell, you take the mean of the square of the differences between the predicted and actual values.**
+
+---
+
+The main difference between [MAE](mae_mean_absolute_error.qmd) and MSE is that MSE penalizes smaller differences more heavily.
+
+---
+
+:::{.callout-note collapse="true" appearance="simple"}
+
+# Note
+
+The reason the square value is taken is due to the averaging step. Let's say the first predicted value is off from the first actual value by $-3$ units. And let's say that the second predicted value is off from the second actual value by $3$ units.
+
+If we didn't take the square, the average would be zero $\left( \frac{-3 + 3}{2} = \frac{0}{2} = 0 \right)$. This is incorrect as both values are off from the actual value.
+:::

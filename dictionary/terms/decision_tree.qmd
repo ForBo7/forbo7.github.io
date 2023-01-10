@@ -1,0 +1,29 @@
+---
+title: Decision Tree
+description: "A type of [model](model.qmd) that acts like an if-else statement."
+---
+
+---
+
+A split is made for each feature in the data. If the feature of a certain data sample is larger than or less than the split for that respective feature, the next appropriate split is made.
+
+
+Below is an example determining whether a car is fast or slow.
+```{mermaid}
+flowchart TB
+  A([Weight < 2000kg])
+  B([Is Engine Powerful])
+  C([Is Windy Day])
+  D1([Car Is Fast])
+  E1([Car Is Slow])
+  D2([Car Is Fast])
+  E2([Car Is Slow])
+
+
+  A -- Yes --> B
+  A -- No --> C
+  B -- Yes --> D1
+  B -- No --> E1
+  C -- Yes --> E2
+  C -- No --> D2
+```

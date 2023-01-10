@@ -1,0 +1,14 @@
+---
+title: Bagging
+description: "An [ensembling](ensemble.qmd) technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement."
+---
+
+---
+
+"with replacement" means that if a model, for examples, randomly chooses row number 5, another model can also randomly choose row number 5.
+
+:::{.callout-note appearance="simple" collapse="true"}
+# Note
+
+Through this technique, each model ends up training on roughly 63% of the entire dataset.
+:::

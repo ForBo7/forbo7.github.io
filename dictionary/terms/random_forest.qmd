@@ -1,0 +1,4 @@
+---
+title: Random Forest
+description: "The name given to a [bagged](bagging.qmd) [ensemble](ensemble.qmd) of [decision trees](decision_tree.qmd)."
+---

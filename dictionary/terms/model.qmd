@@ -1,0 +1,15 @@
+---
+title: Model
+description: A mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.
+---
+
+<!-- A model, _models_, or _mimicks_ a real life phenomenon. This can be done though representing different features of the phenomenon as numbers. These features can then be multiplied with other numbers to control how much of an affect those numbers have on the phenomenon. After each feature has been multiplied with a number, all features are summed up. The result of the summation is the quantity you wish to predict.
+
+Let's say we're trying to predict the speed of a car. Different features can affect a car's speed, the weight of the empty car, the number of passengers in the car, the type of engine, the type of tyres, and more.
+
+The numerical value of the weight of the car can simply be the weight of the car.
+The numerical value of the number of passengers is also simply be the number of passengers.
+For the type of engine, lets say there are 3 types of engine. We can assign the first type of engine a value of 1, the second type a value of 2, and the third type a value of 3.
+We can apply the same logic for the type of tyre. -->
+
+

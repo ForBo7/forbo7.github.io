@@ -1,0 +1,6 @@
+---
+title: Architecture
+description: A [model](model.qmd) that is used as a template or a starting point for another model.
+---
+
+

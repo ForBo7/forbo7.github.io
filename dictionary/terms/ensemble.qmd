@@ -1,0 +1,14 @@
+---
+title: Ensemble
+description: "A collection of models whos' predictions are averaged to obtain the final prediction."
+---
+
+---
+
+The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others' errors.
+
+There are different methods for ensembling.
+
+:::{.callout-note appearance="simple" collapse="true"}
+Ensembling only works when all models are independent of each other. That is, the models do not depend on one another.
+:::

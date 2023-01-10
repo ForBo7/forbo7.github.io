@@ -1,0 +1,43 @@
+---
+title: Root Mean Squared Logarithmic Error (RMSLE)
+description: "A type of [metric](metric.qmd). It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better."
+---
+
+---
+
+It is calculated by:
+
+1. First taking the logarithm of all predicted values.
+1. Taking the logarithm of all actual values.
+1. Then taking the difference between each respective predicted and actual value.
+1. Next squaring all obtained values.
+1. Taking the averge.
+1. And lastly taking the square root.
+
+Let's say we have a set of predicted values $1, 2, 3, 4$. The set of actual values is $1, 4, 3, 3$
+
+1. $\ln(1), \ln(2), \ln(3), \ln(4) \approx 0, 0.69, 1.10, 1.39$
+1. $\ln(1), \ln(4), \ln(3), \ln(3) \approx 0, 1.39, 1.10, 1.10$
+1. $0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29$
+1. $(0)^2, (-0.70)^2, (0)^2, (0.29)^2 \approx 0, 0.49, 0, 0.08$
+1. $\frac{0 + 0.49 + 0 + 0.08}{4} = \frac{0.57}{4}$
+1. $\sqrt{\frac{0.57}{4}} \approx 0.38$
+
+This tells us, that on average, our set of predicted values is $0.38$ units off from the actual values.
+
+**In a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.**
+
+---
+
+The main difference between [RMSE](root_mean_squared_error_rmse.qmd) and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.
+
+---
+
+:::{.callout-note collapse="true" appearance="simple"}
+
+# Note
+
+The reason the square value is taken is due to the averaging step. Let's say the first predicted value is off from the first actual value by $-3$ units. And let's say that the second predicted value is off from the second actual value by $3$ units.
+
+If we didn't take the square, the average would be zero $\left( \frac{-3 + 3}{2} = \frac{0}{2} = 0 \right)$. This is incorrect as both values are off from the actual value.
+:::

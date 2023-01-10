@@ -1,0 +1,17 @@
+---
+title: Accuracy
+description: "A type of [metric](metric.qmd). It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better."
+---
+
+---
+
+It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.
+
+$$
+\frac{\text{number of correct predictions}}{\text{number of total predictions}}
+$$
+
+::: {.callout-note collapse="true" appearance="simple"}
+# Note
+Accuracy is also 1 - [error rate](error_rate.qmd).
+:::

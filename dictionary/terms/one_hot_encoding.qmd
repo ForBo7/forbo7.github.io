@@ -1,0 +1,8 @@
+---
+title: One Hot Encoding
+description: "A data processing technique where each class in a categorical feature is given its own column that contains true and false values."
+---
+
+---
+
+Let's say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true.

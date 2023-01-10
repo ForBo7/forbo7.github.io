@@ -1,0 +1,17 @@
+---
+title: OneR Classifier
+description: "The simplest type of [decision tree](decision_tree.qmd). The tree only contains a single split."
+---
+
+---
+
+Below is an example determining whether a car is fast or slow.
+```{mermaid}
+flowchart TB
+  A([Weight < 2000kg])
+  B([Car Is Fast])
+  C([Car Is Slow])
+
+  A -- Yes --> B
+  A -- No --> C
+```

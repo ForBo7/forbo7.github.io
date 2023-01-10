@@ -1,0 +1,8 @@
+---
+title: "Metric"
+description: "A measure of performance of a model. It is used by humans to judge the performance of the model."
+---
+
+---
+
+Examples of metrics are, but not limited to, [accuracy](accuracy.qmd), [error rate](error_rate.qmd), [MAE](mae_mean_absolute_error.qmd), and [MSE](mse_mean_squared_error.qmd)

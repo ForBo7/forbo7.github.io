@@ -1,0 +1,4 @@
+---
+title: Tabular Model
+description: A [model](model.qmd) trained on [tabular data](tabular_data.qmd). It is used to predict a specified column in the data.
+---

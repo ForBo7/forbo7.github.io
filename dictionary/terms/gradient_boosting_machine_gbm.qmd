@@ -1,0 +1,20 @@
+---
+title: Gradient Boosting Machine (GBM)
+description: "An [ensembling](ensemble.qmd) technique where instead of averaging the predictions of all [models](model.qmd), each successive [model](model.qmd) predicts the error of the previous [model](model.qmd). The errors are then summed to obtain the final prediction."
+---
+
+---
+
+1. The first [model](model.qmd) produces a prediction.
+1. The difference between this prediction and the actual value is obtained.
+1. The difference is now set as the target.
+1. The next [model](model.qmd) now attempts to predict this difference.
+1. Repeat steps 2-4 for as many [models](model.qmd) as desired.
+1. Sum all obtained differences.
+
+:::{.callout-note appearance="simple" collapse="true"}
+
+# Note
+
+While this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set.
+:::
