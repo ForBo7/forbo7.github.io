@@ -1,6 +1,6 @@
 ---
 title: The AI Dictionary
-margin-header: "[The AI Dictionary](https://forbo7.github.io/dictionary/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
+margin-header: "[The AI Dictionary](https://forbo7.github.io/dictionary/) © 2022 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1) | This dictionary is currently under soft launch."
 listing:
   - id: terms
     contents: terms
@@ -24,7 +24,7 @@ I often find explanations online to be more complicated than they need to be. He
 
 Click terms to jump to other relevant terms and view expanded definitions.
 
-Comment for corrections and improvements.
+Do let me know of any corrections and improvements!
 
 :::{#terms}
 :::
