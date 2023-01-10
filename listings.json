@@ -48,5 +48,30 @@
       "/web_apps/apps/flood_detector.html",
       "/web_apps/apps/bear_detector.html"
     ]
+  },
+  {
+    "listing": "/dictionary/index.html",
+    "items": [
+      "/dictionary/terms/accuracy.html",
+      "/dictionary/terms/architecture.html",
+      "/dictionary/terms/bagging.html",
+      "/dictionary/terms/decision_tree.html",
+      "/dictionary/terms/ensemble.html",
+      "/dictionary/terms/error_rate.html",
+      "/dictionary/terms/gradient_boosting_machine_gbm.html",
+      "/dictionary/terms/loss.html",
+      "/dictionary/terms/mean_absolute_error_mae.html",
+      "/dictionary/terms/mean_squared_error_mse.html",
+      "/dictionary/terms/metric.html",
+      "/dictionary/terms/model.html",
+      "/dictionary/terms/one_hot_encoding.html",
+      "/dictionary/terms/oner_classifier.html",
+      "/dictionary/terms/random_forest.html",
+      "/dictionary/terms/root_mean_squared_error_rmse.html",
+      "/dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+      "/dictionary/terms/tabular_data.html",
+      "/dictionary/terms/tabular_model.html",
+      "/dictionary/terms/neuron.html"
+    ]
   }
 ]

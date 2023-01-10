@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="A meaasure of performance of a model. It is used by the model to improve itself.">
 
-<title>ForBo7 // Salman Naqvi - Salman Naqvi</title>
+<title>ForBo7 // Salman Naqvi - Loss</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +24,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -60,8 +62,8 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="ForBo7 // Salman Naqvi - Salman Naqvi">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Loss">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/cover.png">
 <meta property="og:site-name" content="ForBo7 // Salman Naqvi">
@@ -84,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
   </div>
@@ -94,27 +96,27 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../../index.html"><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./forblog/index.html"><i class="bi bi-newspaper" role="img">
+    <a class="nav-link" href="../../forblog/index.html"><i class="bi bi-newspaper" role="img">
 </i> 
  <span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./web_apps/index.html"><i class="bi bi-sliders2" role="img">
+    <a class="nav-link" href="../../web_apps/index.html"><i class="bi bi-sliders2" role="img">
 </i> 
  <span class="menu-text">Playground</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dictionary/index.html"><i class="bi bi-book" role="img">
+    <a class="nav-link" href="../../dictionary/index.html"><i class="bi bi-book" role="img">
 </i> 
  <span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"><i class="bi bi-file-person" role="img">
+    <a class="nav-link" href="../../about.html"><i class="bi bi-file-person" role="img">
 </i> 
  <span class="menu-text">About</span></a>
   </li>  
@@ -126,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./forblog/index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../forblog/index.xml"><i class="bi bi-rss" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -142,98 +144,34 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-trestles column-page">
-  <div class="about-entity">
-    <img src="images/profile.png" class="about-image
-  rounded " style="width: 20em;">
+<main class="content column-page" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Salman Naqvi</h1>
+<h1 class="title">Loss</h1>
 </div>
+
+<div>
+  <div class="description">
+    A meaasure of performance of a model. It is used by the model to improve itself.
+  </div>
+</div>
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
+  
+
 </header>
-    <div class="about-links">
-  <a href="mailto:salmananaqvii+forblog@gmail.com" class="about-link">
-    <i class="bi bi-envelope"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-  <a href="https://twitter.com/ForBo7_" class="about-link">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">Twitter</span>
-  </a>
-  <a href="https://github.com/ForBo7" class="about-link">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="https://www.kaggle.com/forbo7" class="about-link">
-    <i class="bi bi-clipboard-data"></i>
-     <span class="about-link-text">Kaggle</span>
-  </a>
-  <a href="https://www.artstation.com/forbo7" class="about-link">
-    <i class="bi bi-brush"></i>
-     <span class="about-link-text">Artstation</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents"><main class="content column-page" id="quarto-document-content">
-<p><em>Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries.</em></p>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Notable Experience</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Skills</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Current Status</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p><strong>1000+ AI Community Administrator</strong> | Makerspace: Data Tools | Discord</p>
-<p><strong>Physics Teaching Assistant</strong> | Beaconhouse College Program Potohar Campus | September 2020 — May 2021 | Islamabad, Pakistan</p>
-<p><strong>Mathematics Teaching Assistant</strong> | Beaconhouse College Program Potohar Campus | September 2020 — May 2021 | Islamabad, Pakistan</p>
-<p><strong>Concert Marketing — Raised $8,400</strong> | Beaconhouse College Program Potohar Campus | January 2020 | Islamabad, Pakistan</p>
-<p><strong>Bronze Medal — Honorable Distinction Award</strong> | 15th International Kangaroo Linguistic Contest 2018 | Islamabad, Pakistan</p>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p><strong>Programming</strong> | Tool of choice: Python</p>
-<p><strong>3D Computer Graphics</strong> | Tool of choice: Blender</p>
-<p><strong>Teaching</strong> | Can teach in a logical manner that fosters understanding and the solidification of concepts.</p>
-<p><strong>English</strong> | Can use the language to a very high degree of complexity. I have better proficiency than most native speakers.</p>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<p><strong>1000+ AI Community Administrator</strong> | Makerspace: Data Tools | Discord</p>
-<p>Gap Year</p>
-</div>
-</div>
-</div>
-<div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Education</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Countries</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Known Languages</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<p><strong>8.5/9.0</strong> | <strong>IELTS</strong></p>
-<p><strong>2 A*s, 1 A, 1 B</strong> | <strong>High School</strong> | CAIE A Level (Cambridge Assessment International Examinations Advanced Level) | September 2019 — August 2021</p>
-<p><strong>3 A*s, 4 As, 1 B</strong> | <strong>Middle School</strong> | CAIE IGCSE (Cambridge Assessment International Examinations International General Certificate of Secondary Education) | August 2015 — August 2019</p>
-<p><strong>International Baccaleureate Primary Years Program</strong> | Primary School | August 2009 – June 2015</p>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<section id="lived-in" class="level2">
-<h2 data-anchor-id="lived-in">Lived in</h2>
-<p><strong>United Kingdom</strong> (5 years) | <strong>Saudi Arabia</strong> (6 years) | <strong>Pakistan</strong> (9 years)</p>
-</section>
-<section id="been-to" class="level2">
-<h2 data-anchor-id="been-to">Been to</h2>
-<!-- TODO: Use footnotes instead of asterisks. -->
-<!-- Need to figure out how to make all footnotes reference the same footnote -->
-<p><strong>Egypt</strong>* | <strong>England</strong> | <strong>France</strong> | <strong>Greece</strong> | <strong>Italy</strong> | <strong>Jordan</strong>* | <strong>Lebanon</strong>* | <strong>Malaysia</strong> | <strong>Pakistan</strong> | <strong>Qatar</strong>* | <strong>Saudi Arabia</strong> | <strong>Sri Lanka</strong> | <strong>Switzerland</strong> | <strong>Tanzania</strong> | <strong>Thailand</strong> | <strong>Turkey</strong> | <strong>UAE</strong> | <strong>Wales</strong></p>
-<p><span style="font-size:8px">*Transit destinations; I count them still because I was technically within the country’s border.</span></p>
-</section>
-</div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<p><strong>English</strong> | Better than most native speakers.</p>
-<p><strong>Urdu</strong> | Good speaking and listening competency. Fair writing and reading competency.</p>
-<p><strong>Japanese</strong> | Currently learning.</p>
-</div>
-</div>
-</div>
 
 
-</main></div>
-</div>
- <!-- /main -->
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -254,6 +192,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     target: function(trigger) {
       return trigger.previousElementSibling;
@@ -360,6 +305,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="transparent_dark" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -397,7 +344,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="./forblog/index.xml">
+    <a class="nav-link" href="../../forblog/index.xml">
       <i class="bi bi-rss" role="img">
 </i> 
     </a>
@@ -409,5 +356,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

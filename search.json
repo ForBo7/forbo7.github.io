@@ -425,5 +425,103 @@
     "title": "Welcome to the world of ForBo7",
     "section": "Playground",
     "text": "Playground\nClick here to play more in the playground.\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nApr 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "dictionary/terms/mean_absolute_error_mae.html",
+    "href": "dictionary/terms/mean_absolute_error_mae.html",
+    "title": "Mean Absolute Error (MAE)",
+    "section": "",
+    "text": "It is calculated by: 1. First taking the difference between each respective predicted and actual value. 1. Then removing all negative signs — this is known as taking the absolute value. 1. And finally taking the average.\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\(|0|, |-2|, |0|, |1| = 0, 2, 0, 1\\)\n\\(\\frac{0 + 2 + 0 + 1}{4} = \\frac{2}{4} = 0.5\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.5\\) units off from the actual values.\nIn a nutshell, you take the mean of the absolute differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the absolute value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the absolute value, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/decision_tree.html",
+    "href": "dictionary/terms/decision_tree.html",
+    "title": "Decision Tree",
+    "section": "",
+    "text": "A split is made for each feature in the data. If the feature of a certain data sample is larger than or less than the split for that respective feature, the next appropriate split is made.\nBelow is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Is Engine Powerful])\n  C([Is Windy Day])\n  D1([Car Is Fast])\n  E1([Car Is Slow])\n  D2([Car Is Fast])\n  E2([Car Is Slow])\n\n\n  A -- Yes --> B\n  A -- No --> C\n  B -- Yes --> D1\n  B -- No --> E1\n  C -- Yes --> E2\n  C -- No --> D2"
+  },
+  {
+    "objectID": "dictionary/terms/one_hot_encoding.html",
+    "href": "dictionary/terms/one_hot_encoding.html",
+    "title": "One Hot Encoding",
+    "section": "",
+    "text": "Let’s say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true."
+  },
+  {
+    "objectID": "dictionary/terms/metric.html",
+    "href": "dictionary/terms/metric.html",
+    "title": "Metric",
+    "section": "",
+    "text": "Examples of metrics are, but not limited to, accuracy, error rate, MAE, and MSE"
+  },
+  {
+    "objectID": "dictionary/terms/oner_classifier.html",
+    "href": "dictionary/terms/oner_classifier.html",
+    "title": "OneR Classifier",
+    "section": "",
+    "text": "Below is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Car Is Fast])\n  C([Car Is Slow])\n\n  A -- Yes --> B\n  A -- No --> C"
+  },
+  {
+    "objectID": "dictionary/terms/error_rate.html",
+    "href": "dictionary/terms/error_rate.html",
+    "title": "Error Rate",
+    "section": "",
+    "text": "It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of incorrect predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nError rate is also 1 - accuracy."
+  },
+  {
+    "objectID": "dictionary/terms/bagging.html",
+    "href": "dictionary/terms/bagging.html",
+    "title": "Bagging",
+    "section": "",
+    "text": "“with replacement” means that if a model, for examples, randomly chooses row number 5, another model can also randomly choose row number 5.\n\n\n\n\n\n\nNote\n\n\n\n\n\nThrough this technique, each model ends up training on roughly 63% of the entire dataset."
+  },
+  {
+    "objectID": "dictionary/terms/mean_squared_error_mse.html",
+    "href": "dictionary/terms/mean_squared_error_mse.html",
+    "title": "Mean Squared Error (MSE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nAnd finally taking the average.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.25\\) units off from the actual values.\nIn a nutshell, you take the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/accuracy.html",
+    "href": "dictionary/terms/accuracy.html",
+    "title": "Accuracy",
+    "section": "",
+    "text": "It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of correct predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nAccuracy is also 1 - error rate."
+  },
+  {
+    "objectID": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "href": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "title": "Root Mean Squared Logarithmic Error (RMSLE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the logarithm of all predicted values.\nTaking the logarithm of all actual values.\nThen taking the difference between each respective predicted and actual value.\nNext squaring all obtained values.\nTaking the averge.\nAnd lastly taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(\\ln(1), \\ln(2), \\ln(3), \\ln(4) \\approx 0, 0.69, 1.10, 1.39\\)\n\\(\\ln(1), \\ln(4), \\ln(3), \\ln(3) \\approx 0, 1.39, 1.10, 1.10\\)\n\\(0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29\\)\n\\((0)^2, (-0.70)^2, (0)^2, (0.29)^2 \\approx 0, 0.49, 0, 0.08\\)\n\\(\\frac{0 + 0.49 + 0 + 0.08}{4} = \\frac{0.57}{4}\\)\n\\(\\sqrt{\\frac{0.57}{4}} \\approx 0.38\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.38\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between RMSE and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/root_mean_squared_error_rmse.html",
+    "href": "dictionary/terms/root_mean_squared_error_rmse.html",
+    "title": "Root Mean Squared Error (RMSE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nTaking the average.\nAnd finally taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\\(\\sqrt{1.25} \\approx 1.12\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.12\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MSE and RMSE is that RMSE undoes the squaring step by taking the square root.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/ensemble.html",
+    "href": "dictionary/terms/ensemble.html",
+    "title": "Ensemble",
+    "section": "",
+    "text": "The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others’ errors.\nThere are different methods for ensembling.\n\n\n\n\n\n\nEnsembling only works when all models are independent of each other. That is, the models do not depend on one another."
+  },
+  {
+    "objectID": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "href": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "title": "Gradient Boosting Machine (GBM)",
+    "section": "",
+    "text": "The first model produces a prediction.\nThe difference between this prediction and the actual value is obtained.\nThe difference is now set as the target.\nThe next model now attempts to predict this difference.\nRepeat steps 2-4 for as many models as desired.\nSum all obtained differences.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nWhile this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set."
+  },
+  {
+    "objectID": "dictionary/index.html",
+    "href": "dictionary/index.html",
+    "title": "The AI Dictionary",
+    "section": "",
+    "text": "I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.\nClick terms to jump to other relevant terms and view expanded definitions.\nComment for corrections and improvements.\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nAccuracy\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better.\n\n\n\n\n \n\n\n\n\n\n\nArchitecture\n\n\n\n\n\nA model that is used as a template or a starting point for another model.\n\n\n\n\n \n\n\n\n\n\n\nBagging\n\n\n\n\n\nAn ensembling technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement.\n\n\n\n\n \n\n\n\n\n\n\nDecision Tree\n\n\n\n\n\nA type of model that acts like an if-else statement.\n\n\n\n\n \n\n\n\n\n\n\nEnsemble\n\n\n\n\n\nA collection of models whos’ predictions are averaged to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nError Rate\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better.\n\n\n\n\n \n\n\n\n\n\n\nGradient Boosting Machine (GBM)\n\n\n\n\n\nAn ensembling technique where instead of averaging the predictions of all models, each successive model predicts the error of the previous model. The errors are then summed to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nLoss\n\n\n\n\n\nA meaasure of performance of a model. It is used by the model to improve itself.\n\n\n\n\n \n\n\n\n\n\n\nMean Absolute Error (MAE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MAE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMean Squared Error (MSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMetric\n\n\n\n\n\nA measure of performance of a model. It is used by humans to judge the performance of the model.\n\n\n\n\n \n\n\n\n\n\n\nModel\n\n\n\n\n\nA mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.\n\n\n\n\n \n\n\n\n\n\n\nOne Hot Encoding\n\n\n\n\n\nA data processing technique where each class in a categorical feature is given its own column that contains true and false values.\n\n\n\n\n \n\n\n\n\n\n\nOneR Classifier\n\n\n\n\n\nThe simplest type of decision tree. The tree only contains a single split.\n\n\n\n\n \n\n\n\n\n\n\nRandom Forest\n\n\n\n\n\nThe name given to a bagged ensemble of decision trees.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Error (RMSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Logarithmic Error (RMSLE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better.\n\n\n\n\n \n\n\n\n\n\n\nTabular Data\n\n\n\n\n\nData in the form of a table.\n\n\n\n\n \n\n\n\n\n\n\nTabular Model\n\n\n\n\n\nA model trained on tabular data. It is used to predict a specified column in the data.\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
   }
 ]
