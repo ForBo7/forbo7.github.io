@@ -1,4 +1,4 @@
 ---
 title: "Loss"
-description: "A meaasure of performance of a model. It is used by the model to improve itself."
+description: "A meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better."
 ---

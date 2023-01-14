@@ -1,0 +1,4 @@
+---
+title: Numericalization
+description: "A process where numbers are assigned to each [token](tokenization.qmd). Occurs after [tokenization](tokenization.qmd)."
+---

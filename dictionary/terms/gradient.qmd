@@ -1,0 +1,12 @@
+---
+title: Gradient
+description: "A numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the [learning rate](learning_rate.qmd)."
+---
+
+---
+
+The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the [learning rate](learning_rate.qmd).
+
+A positive gradient tells us that increasing the parameters will increase the [loss](loss.qmd). On the other hand, decreasing the parameters will decrease the [loss](loss.qmd).
+
+A negative gradient tells us that decreasing the parameters will increase the [loss](loss.qmd) On the other hand, increasing the parameters will decrease the [loss](loss.qmd).

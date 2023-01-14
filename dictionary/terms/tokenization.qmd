@@ -1,0 +1,11 @@
+---
+title: Tokenization
+description: "Splitting a [document](document.qmd) into its component words."
+---
+
+---
+
+:::{.callout-note appearance="simple" collapse="true"}
+# Note
+If a word is too long or very uncommon, the word itself may be split. Take the word "supercalifragilisticexpialidocious" as an example. It could be split into "super", "cali", "fragilistic", "expi", "ali", and "docious".
+:::

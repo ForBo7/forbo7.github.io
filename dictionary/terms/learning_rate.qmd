@@ -1,0 +1,18 @@
+---
+title: Learning Rate
+description: "A numerical value which controls how much the [gradients](gradients.qmd) update the parameters of a model."
+---
+
+---
+
+The learning rate controls how much the [gradients](gradients.qmd) adjust the parameters by multiplying the learning rate and [gradients](gradients.qmd) together.
+
+:::{.callout-note appearance="simple" collapse="true"}
+
+# Note
+
+A learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.
+
+A learning rate that is too low can cause the training system to take a very long time to reach the optimal weights.
+
+:::
