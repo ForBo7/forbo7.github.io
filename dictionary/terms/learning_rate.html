@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.">
+<meta name="description" content="A numerical value which controls how much the gradients update the parameters of a model.">
 
-<title>ForBo7 // Salman Naqvi - Loss</title>
+<title>ForBo7 // Salman Naqvi - Learning Rate</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="ForBo7 // Salman Naqvi - Loss">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Learning Rate">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/cover.png">
 <meta property="og:site-name" content="ForBo7 // Salman Naqvi">
@@ -148,12 +148,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Loss</h1>
+<h1 class="title">Learning Rate</h1>
 </div>
 
 <div>
   <div class="description">
-    A meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.
+    A numerical value which controls how much the <a href="gradients.qmd">gradients</a> update the parameters of a model.
   </div>
 </div>
 
@@ -168,6 +168,25 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<hr>
+<p>The learning rate controls how much the <a href="gradients.qmd">gradients</a> adjust the parameters by multiplying the learning rate and <a href="gradients.qmd">gradients</a> together.</p>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.</p>
+<p>A learning rate that is too low can cause the training system to take a very long time to reach the optimal weights.</p>
+</div>
+</div>
+</div>
 
 
 

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.">
+<meta name="description" content="A numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the learning rate.">
 
-<title>ForBo7 // Salman Naqvi - Loss</title>
+<title>ForBo7 // Salman Naqvi - Gradient</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,7 +63,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="ForBo7 // Salman Naqvi - Loss">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Gradient">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/cover.png">
 <meta property="og:site-name" content="ForBo7 // Salman Naqvi">
@@ -148,12 +148,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Loss</h1>
+<h1 class="title">Gradient</h1>
 </div>
 
 <div>
   <div class="description">
-    A meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.
+    A numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the <a href="../../dictionary/terms/learning_rate.html">learning rate</a>.
   </div>
 </div>
 
@@ -168,6 +168,10 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<hr>
+<p>The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the <a href="../../dictionary/terms/learning_rate.html">learning rate</a>.</p>
+<p>A positive gradient tells us that increasing the parameters will increase the <a href="../../dictionary/terms/loss.html">loss</a>. On the other hand, decreasing the parameters will decrease the <a href="../../dictionary/terms/loss.html">loss</a>.</p>
+<p>A negative gradient tells us that decreasing the parameters will increase the <a href="../../dictionary/terms/loss.html">loss</a> On the other hand, increasing the parameters will decrease the <a href="../../dictionary/terms/loss.html">loss</a>.</p>
 
 
 

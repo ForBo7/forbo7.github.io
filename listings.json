@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/testing_page.html",
+    "listing": "/index.html",
     "items": [
       "/forblog/posts/7_blog_subscriptions.html",
       "/forblog/posts/6_ai_in_a_nutshell.html",
@@ -23,19 +23,37 @@
     ]
   },
   {
-    "listing": "/forblog/index.html",
+    "listing": "/dictionary/index.html",
     "items": [
-      "/forblog/posts/7_blog_subscriptions.html",
-      "/forblog/posts/6_ai_in_a_nutshell.html",
-      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
-      "/forblog/posts/4_data_quality_is_important.html",
-      "/forblog/posts/3_the_confusion_matrix.html",
-      "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
+      "/dictionary/terms/accuracy.html",
+      "/dictionary/terms/architecture.html",
+      "/dictionary/terms/bagging.html",
+      "/dictionary/terms/decision_tree.html",
+      "/dictionary/terms/document.html",
+      "/dictionary/terms/ensemble.html",
+      "/dictionary/terms/error_rate.html",
+      "/dictionary/terms/gradient.html",
+      "/dictionary/terms/gradient_boosting_machine_gbm.html",
+      "/dictionary/terms/learning_rate.html",
+      "/dictionary/terms/loss.html",
+      "/dictionary/terms/mean_absolute_error_mae.html",
+      "/dictionary/terms/mean_squared_error_mse.html",
+      "/dictionary/terms/metric.html",
+      "/dictionary/terms/model.html",
+      "/dictionary/terms/numericalization.html",
+      "/dictionary/terms/one_hot_encoding.html",
+      "/dictionary/terms/oner_classifier.html",
+      "/dictionary/terms/random_forest.html",
+      "/dictionary/terms/root_mean_squared_error_rmse.html",
+      "/dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+      "/dictionary/terms/tabular_data.html",
+      "/dictionary/terms/tabular_model.html",
+      "/dictionary/terms/tokenization.html",
+      "/dictionary/terms/neuron.html"
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/testing_page.html",
     "items": [
       "/forblog/posts/7_blog_subscriptions.html",
       "/forblog/posts/6_ai_in_a_nutshell.html",
@@ -50,28 +68,15 @@
     ]
   },
   {
-    "listing": "/dictionary/index.html",
+    "listing": "/forblog/index.html",
     "items": [
-      "/dictionary/terms/accuracy.html",
-      "/dictionary/terms/architecture.html",
-      "/dictionary/terms/bagging.html",
-      "/dictionary/terms/decision_tree.html",
-      "/dictionary/terms/ensemble.html",
-      "/dictionary/terms/error_rate.html",
-      "/dictionary/terms/gradient_boosting_machine_gbm.html",
-      "/dictionary/terms/loss.html",
-      "/dictionary/terms/mean_absolute_error_mae.html",
-      "/dictionary/terms/mean_squared_error_mse.html",
-      "/dictionary/terms/metric.html",
-      "/dictionary/terms/model.html",
-      "/dictionary/terms/one_hot_encoding.html",
-      "/dictionary/terms/oner_classifier.html",
-      "/dictionary/terms/random_forest.html",
-      "/dictionary/terms/root_mean_squared_error_rmse.html",
-      "/dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
-      "/dictionary/terms/tabular_data.html",
-      "/dictionary/terms/tabular_model.html",
-      "/dictionary/terms/neuron.html"
+      "/forblog/posts/7_blog_subscriptions.html",
+      "/forblog/posts/6_ai_in_a_nutshell.html",
+      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
+      "/forblog/posts/4_data_quality_is_important.html",
+      "/forblog/posts/3_the_confusion_matrix.html",
+      "/forblog/posts/2_bear_classifier_model.html",
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
     ]
   }
 ]
