@@ -31,6 +31,8 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 
 # Notable Experience
 
+**Placed in Top 12% of Contestants** | Playground Series Season 3, Episode 2 | Tabular Classification with a Stroke Prediction Dataset | 17 January 2023 | Kaggle
+
 **1000+ AI Community Administrator** | Makerspace: Data Tools | Discord
 
 **Physics Teaching Assistant** | Beaconhouse College Program Potohar Campus | September 2020 — May 2021 | Islamabad, Pakistan
@@ -43,9 +45,9 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 
 # Skills
 
-**Programming** | Tool of choice: Python
+**Programming** | Python | Jupyter | fastai | PyTorch | Scikit Learn | Pandas | NumPy
 
-**3D Computer Graphics** | Tool of choice: Blender
+**3D Computer Graphics** | Blender
 
 **Teaching** | Can teach in a logical manner that fosters understanding and the solidification of concepts.
 
