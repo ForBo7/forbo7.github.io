@@ -17,7 +17,98 @@
 <width>144</width>
 </image>
 <generator>quarto-1.2.313</generator>
-<lastBuildDate>Fri, 23 Dec 2022 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 26 Jan 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" class="img-fluid" alt="A picture of a snake that has taken a bite out of an apple, and whose tail is a burning torch."></p>
+<p>If you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.</p>
+<p>It’s a bit annoying and a little tedious, but here we go.</p>
+<section id="requirements" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="requirements"><span class="header-section-number">1</span> Requirements</h2>
+<ul>
+<li>Have an M-Series chip</li>
+<li>Have at least PyTorch 1.12</li>
+<li>Have at least macOS Monterey 12.3</li>
+</ul>
+</section>
+<section id="installing-pytorch" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="installing-pytorch"><span class="header-section-number">2</span> Installing PyTorch</h2>
+<p>Install PyTorch as you usually would. Just make sure it’s PyTorch 1.12.</p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># Installing with Pip.</span></span>
+<span id="cb1-2"><span class="ex" style="color: null;">$</span> pip3 install torch torchvision torchaudio</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="co" style="color: #5E5E5E;"># Installing using Conda.</span></span>
+<span id="cb1-5"><span class="ex" style="color: null;">$</span> conda install pytorch torchvision torchaudio <span class="at" style="color: #657422;">-c</span> pytorch</span></code></pre></div>
+<p>By using these commands, the latest version of the library is installed so there is no need to specify the version number.</p>
+<p>However, if you have an existing installation, you can run the following Pip command instead.</p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;">$</span> pip3 install <span class="at" style="color: #657422;">--upgrade</span> torch torchvision torchaudio</span></code></pre></div>
+</section>
+<section id="import-pytorch" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="import-pytorch"><span class="header-section-number">3</span> Import PyTorch</h2>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;">import</span> torch</span></code></pre></div>
+</section>
+<section id="check-requirements-are-met" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="check-requirements-are-met"><span class="header-section-number">4</span> Check Requirements are Met</h2>
+<p>Below is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> torch.backends.mps.is_available():</span>
+<span id="cb4-2">    <span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> torch.backends.mps.is_built():</span>
+<span id="cb4-3">        <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"MPS not available because the current PyTorch install was not built with MPS enabled."</span>)</span>
+<span id="cb4-4">    <span class="cf" style="color: #003B4F;">else</span>:</span>
+<span id="cb4-5">        <span class="bu" style="color: null;">print</span>(<span class="st" style="color: #20794D;">"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine."</span>)</span></code></pre></div>
+<p>If neither of the two above messages print, you’re good to go!</p>
+</section>
+<section id="the-annoying-part-enabling-the-gpu" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="the-annoying-part-enabling-the-gpu"><span class="header-section-number">5</span> The Annoying Part: Enabling the GPU</h2>
+<p>As far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.</p>
+<p>There are different ways you can do this.</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="co" style="color: #5E5E5E;"># Use a string.</span></span>
+<span id="cb5-2">t <span class="op" style="color: #5E5E5E;">=</span> torch.tensor([<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">3</span>], device<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'mps'</span>)</span>
+<span id="cb5-3"></span>
+<span id="cb5-4"><span class="co" style="color: #5E5E5E;"># Store as a variable.</span></span>
+<span id="cb5-5">device<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'mps'</span></span>
+<span id="cb5-6">t <span class="op" style="color: #5E5E5E;">=</span> torch.tensor([<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">3</span>], device<span class="op" style="color: #5E5E5E;">=</span>device)</span>
+<span id="cb5-7"></span>
+<span id="cb5-8"><span class="co" style="color: #5E5E5E;"># Convert existing objects.</span></span>
+<span id="cb5-9">t <span class="op" style="color: #5E5E5E;">=</span> torch.tensor([<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">2</span>, <span class="dv" style="color: #AD0000;">3</span>])</span>
+<span id="cb5-10">t.to(device)</span></code></pre></div>
+<p>Though the above operations have been performed on tensors, they can also be performed on models.</p>
+</section>
+<section id="points-to-note" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="points-to-note"><span class="header-section-number">6</span> Points to Note</h2>
+<ul>
+<li><p>GPU enabled means operations are done on the GPU.</p></li>
+<li><p>A GPU enabled tensor can only perform operations with another GPU enabled tensor.</p></li>
+<li><p>As of writing this, GPU support is still in its early stages. So certain features are unsupported and further optimizations await.</p></li>
+</ul>
+</section>
+<section id="relevant-links" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="relevant-links"><span class="header-section-number">7</span> Relevant Links</h2>
+<p>Relevant links:</p>
+<ul>
+<li><p>Performance gains (note that nightly builds are no longer needed): <a href="">https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/</a></p></li>
+<li><p>Installing PyTorch: <a href="">https://pytorch.org/get-started/locally/</a></p></li>
+<li><p>Docs on using GPU: <a href="">https://pytorch.org/docs/stable/notes/mps.html</a></p></li>
+</ul>
+</section>
+<section id="closing-words" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="closing-words">Closing Words</h2>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>PyTorch</category>
+  <guid>https://forbo7.github.io/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html</guid>
+  <pubDate>Thu, 26 Jan 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Adding Subscriptions to a Quarto Site</title>
   <dc:creator>Isaac Flath</dc:creator>

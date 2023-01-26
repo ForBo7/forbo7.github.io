@@ -130,7 +130,7 @@
     "href": "forblog/index.html",
     "title": "Welcome to ForBlog by ForBo7",
     "section": "",
-    "text": "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\n23 December 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\n04 October 2022\n\n\nSalman Naqvi\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\n12 September 2022\n\n\nSalman Naqvi\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n\n04 June 2022\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide to Reading a Confusion Matrix\n\n\nAre you confused yet?\n\n\nA straight to the point guide about reading a confusion matrix.\n\n\n\n\n\n\n03 June 2022\n\n\nSalman Naqvi\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nMy first AI model\n\n\nCan you bare reading through this bear classifier?\n\n\nA rundown on my first attempt at creating model.\n\n\n\n\n\n\n28 May 2022\n\n\nSalman Naqvi\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nHow to Approach Creating AI Models\n\n\nPutting the Drive into the Train\n\n\nThere’s more to AI than just creating models.\n\n\n\n\n\n\n27 May 2022\n\n\nSalman Naqvi\n\n\n4 min\n\n\n\n\n\n\nNo matching items\n\n\n  \n\n\n\nLoading…\n\nClick here to unsubscribe from the ForBlog."
+    "text": "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\n26 January 2023\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\n23 December 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\n04 October 2022\n\n\nSalman Naqvi\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\n12 September 2022\n\n\nSalman Naqvi\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n\n04 June 2022\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide to Reading a Confusion Matrix\n\n\nAre you confused yet?\n\n\nA straight to the point guide about reading a confusion matrix.\n\n\n\n\n\n\n03 June 2022\n\n\nSalman Naqvi\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nMy first AI model\n\n\nCan you bare reading through this bear classifier?\n\n\nA rundown on my first attempt at creating model.\n\n\n\n\n\n\n28 May 2022\n\n\nSalman Naqvi\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nHow to Approach Creating AI Models\n\n\nPutting the Drive into the Train\n\n\nThere’s more to AI than just creating models.\n\n\n\n\n\n\n27 May 2022\n\n\nSalman Naqvi\n\n\n4 min\n\n\n\n\n\n\nNo matching items\n\n\n  \n\n\n\nLoading…\n\nClick here to unsubscribe from the ForBlog."
   },
   {
     "objectID": "forblog/posts/7_blog_subscriptions.html",
@@ -285,6 +285,69 @@
     "title": "A No Nonsense Guide to Reading a Confusion Matrix",
     "section": "Exercise: Do It Yourself",
     "text": "Exercise: Do It Yourself\nBelow is a confusion matrix of a car classifier that classifies cars into their brand.\n\nYou learn by doing!\n\nHow many Lamborghinis were correctly classified?\nHow many Jaguars were incorrectly classified?\nHow many Chevrolets were misclassified as Fords?\nHow many Fords were misclassified as Chevrolets?\nWhich two car brands did the model have the most trouble differentiating between?\n\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "",
+    "text": "If you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.\nIt’s a bit annoying and a little tedious, but here we go."
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#requirements",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#requirements",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "1 Requirements",
+    "text": "1 Requirements\n\nHave an M-Series chip\nHave at least PyTorch 1.12\nHave at least macOS Monterey 12.3"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#installing-pytorch",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#installing-pytorch",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "2 Installing PyTorch",
+    "text": "2 Installing PyTorch\nInstall PyTorch as you usually would. Just make sure it’s PyTorch 1.12.\n# Installing with Pip.\n$ pip3 install torch torchvision torchaudio\n\n# Installing using Conda.\n$ conda install pytorch torchvision torchaudio -c pytorch\nBy using these commands, the latest version of the library is installed so there is no need to specify the version number.\nHowever, if you have an existing installation, you can run the following Pip command instead.\n$ pip3 install --upgrade torch torchvision torchaudio"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#import-pytorch",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#import-pytorch",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "3 Import PyTorch",
+    "text": "3 Import PyTorch\nimport torch"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "4 Check Requirements are Met",
+    "text": "4 Check Requirements are Met\nBelow is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.\nif not torch.backends.mps.is_available():\n    if not torch.backends.mps.is_built():\n        print(\"MPS not available because the current PyTorch install was not built with MPS enabled.\")\n    else:\n        print(\"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine.\")\nIf neither of the two above messages print, you’re good to go!"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "5 The Annoying Part: Enabling the GPU",
+    "text": "5 The Annoying Part: Enabling the GPU\nAs far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.\nThere are different ways you can do this.\n# Use a string.\nt = torch.tensor([1, 2, 3], device='mps')\n\n# Store as a variable.\ndevice='mps'\nt = torch.tensor([1, 2, 3], device=device)\n\n# Convert existing objects.\nt = torch.tensor([1, 2, 3])\nt.to(device)\nThough the above operations have been performed on tensors, they can also be performed on models."
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#points-to-note",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#points-to-note",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "6 Points to Note",
+    "text": "6 Points to Note\n\nGPU enabled means operations are done on the GPU.\nA GPU enabled tensor can only perform operations with another GPU enabled tensor.\nAs of writing this, GPU support is still in its early stages. So certain features are unsupported and further optimizations await."
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "7 Relevant Links",
+    "text": "7 Relevant Links\nRelevant links:\n\nPerformance gains (note that nightly builds are no longer needed): https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/\nInstalling PyTorch: https://pytorch.org/get-started/locally/\nDocs on using GPU: https://pytorch.org/docs/stable/notes/mps.html"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#closing-words",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#closing-words",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "Closing Words",
+    "text": "Closing Words\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
   },
   {
     "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html",
@@ -445,7 +508,7 @@
     "href": "index.html#forblog",
     "title": "Welcome to the world of ForBo7",
     "section": "ForBlog",
-    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\nSep 12, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items"
+    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\nJan 26, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#playground",
@@ -515,7 +578,7 @@
     "href": "testing_page.html",
     "title": "Testing Page",
     "section": "",
-    "text": "ForBlog\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\nSep 12, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPlayground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "ForBlog\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\nJan 26, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPlayground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "feedback.html",
