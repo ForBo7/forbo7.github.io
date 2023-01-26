@@ -45,7 +45,7 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 
 # Skills
 
-**Programming** | Python | Jupyter | fastai | PyTorch | Scikit Learn | Pandas | NumPy
+**Programming** | Python | Jupyter | nbdev | Quarto | fastai | PyTorch | Scikit Learn | Pandas | NumPy
 
 **3D Computer Graphics** | Blender
 
