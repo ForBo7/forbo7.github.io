@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#check-requirements-are-met" id="toc-check-requirements-are-met" class="nav-link" data-scroll-target="#check-requirements-are-met"><span class="toc-section-number">4</span>  Check Requirements are Met</a></li>
   <li><a href="#the-annoying-part-enabling-the-gpu" id="toc-the-annoying-part-enabling-the-gpu" class="nav-link" data-scroll-target="#the-annoying-part-enabling-the-gpu"><span class="toc-section-number">5</span>  The Annoying Part: Enabling the GPU</a></li>
   <li><a href="#points-to-note" id="toc-points-to-note" class="nav-link" data-scroll-target="#points-to-note"><span class="toc-section-number">6</span>  Points to Note</a></li>
-  <li><a href="#relevant-links" id="toc-relevant-links" class="nav-link" data-scroll-target="#relevant-links"><span class="toc-section-number">7</span>  Relevant Links</a></li>
+  <li><a href="#relevant-links" id="toc-relevant-links" class="nav-link" data-scroll-target="#relevant-links">Relevant Links</a></li>
   <li><a href="#closing-words" id="toc-closing-words" class="nav-link" data-scroll-target="#closing-words">Closing Words</a></li>
   </ul>
 </nav>
@@ -263,6 +263,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p><em>This blog post was updated on <strong>Saturday, 28 January 2023</strong>.</em></p>
 <p><img src="../images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" class="img-fluid" alt="A picture of a snake that has taken a bite out of an apple, and whose tail is a burning torch."></p>
 <p>If you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.</p>
 <p>It’s a bit annoying and a little tedious, but here we go.</p>
@@ -288,32 +289,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="import-pytorch" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="import-pytorch"><span class="header-section-number">3</span> Import PyTorch</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="check-requirements-are-met" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="check-requirements-are-met"><span class="header-section-number">4</span> Check Requirements are Met</h2>
 <p>Below is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-overflow-wrap code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> torch.backends.mps.is_available():</span>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> torch.backends.mps.is_available():</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> torch.backends.mps.is_built():</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"MPS not available because the current PyTorch install was not built with MPS enabled."</span>)</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>If neither of the two above messages print, you’re good to go!</p>
 </section>
 <section id="the-annoying-part-enabling-the-gpu" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="the-annoying-part-enabling-the-gpu"><span class="header-section-number">5</span> The Annoying Part: Enabling the GPU</h2>
 <p>As far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.</p>
 <p>There are different ways you can do this.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a string.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], device<span class="op">=</span><span class="st">'mps'</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Store as a variable.</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>device<span class="op">=</span><span class="st">'mps'</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], device<span class="op">=</span>device)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert existing objects.</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>t.to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Use a string.</strong></p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], device<span class="op">=</span><span class="st">'mps'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<blockquote class="blockquote">
+<p><code>tensor([1, 2, 3], device='mps:0')</code></p>
+</blockquote>
+</div>
+</div>
+<p><strong>Store as a variable.</strong></p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>device<span class="op">=</span><span class="st">'mps'</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], device<span class="op">=</span>device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<blockquote class="blockquote">
+<p><code>tensor([1, 2, 3], device='mps:0')</code></p>
+</blockquote>
+</div>
+</div>
+<p><strong>Convert existing objects.</strong></p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> torch.tensor([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>t.to(device)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="9">
+<blockquote class="blockquote">
+<p><code>tensor([1, 2, 3], device='mps:0')</code></p>
+</blockquote>
+</div>
+</div>
+<p>Note that converting existing objects creates a copy and does not modify the original.</p>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>t</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="11">
+<blockquote class="blockquote">
+<p><code>tensor([1, 2, 3])</code></p>
+</blockquote>
+</div>
+</div>
 <p>Though the above operations have been performed on tensors, they can also be performed on models.</p>
 </section>
 <section id="points-to-note" class="level2" data-number="6">
@@ -324,13 +365,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>As of writing this, GPU support is still in its early stages. So certain features are unsupported and further optimizations await.</p></li>
 </ul>
 </section>
-<section id="relevant-links" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="relevant-links"><span class="header-section-number">7</span> Relevant Links</h2>
+<section id="relevant-links" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="relevant-links">Relevant Links</h2>
 <p>Relevant links:</p>
 <ul>
-<li><p>Performance gains (note that nightly builds are no longer needed): <a href="">https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/</a></p></li>
-<li><p>Installing PyTorch: <a href="">https://pytorch.org/get-started/locally/</a></p></li>
-<li><p>Docs on using GPU: <a href="">https://pytorch.org/docs/stable/notes/mps.html</a></p></li>
+<li><p>Installing PyTorch: <a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p></li>
+<li><p>Docs on using GPU: <a href="https://pytorch.org/docs/stable/notes/mps.html">https://pytorch.org/docs/stable/notes/mps.html</a></p></li>
+<li><p>Performance gains (note that nightly builds are no longer needed): <a href="https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/">https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/</a></p></li>
 </ul>
 </section>
 <section id="closing-words" class="level2 unnumbered">

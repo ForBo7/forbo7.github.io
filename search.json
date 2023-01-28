@@ -291,7 +291,7 @@
     "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
     "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
     "section": "",
-    "text": "If you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.\nIt’s a bit annoying and a little tedious, but here we go."
+    "text": "This blog post was updated on Saturday, 28 January 2023.\nIf you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.\nIt’s a bit annoying and a little tedious, but here we go."
   },
   {
     "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#requirements",
@@ -312,21 +312,21 @@
     "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#import-pytorch",
     "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
     "section": "3 Import PyTorch",
-    "text": "3 Import PyTorch\nimport torch"
+    "text": "3 Import PyTorch\n\nimport torch"
   },
   {
     "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
     "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
     "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
     "section": "4 Check Requirements are Met",
-    "text": "4 Check Requirements are Met\nBelow is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.\nif not torch.backends.mps.is_available():\n    if not torch.backends.mps.is_built():\n        print(\"MPS not available because the current PyTorch install was not built with MPS enabled.\")\n    else:\n        print(\"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine.\")\nIf neither of the two above messages print, you’re good to go!"
+    "text": "4 Check Requirements are Met\nBelow is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.\n\nif not torch.backends.mps.is_available():\n    if not torch.backends.mps.is_built():\n        print(\"MPS not available because the current PyTorch install was not built with MPS enabled.\")\n    else:\n        print(\"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine.\")\n\nIf neither of the two above messages print, you’re good to go!"
   },
   {
     "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
     "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
     "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
     "section": "5 The Annoying Part: Enabling the GPU",
-    "text": "5 The Annoying Part: Enabling the GPU\nAs far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.\nThere are different ways you can do this.\n# Use a string.\nt = torch.tensor([1, 2, 3], device='mps')\n\n# Store as a variable.\ndevice='mps'\nt = torch.tensor([1, 2, 3], device=device)\n\n# Convert existing objects.\nt = torch.tensor([1, 2, 3])\nt.to(device)\nThough the above operations have been performed on tensors, they can also be performed on models."
+    "text": "5 The Annoying Part: Enabling the GPU\nAs far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.\nThere are different ways you can do this.\nUse a string.\n\nt = torch.tensor([1, 2, 3], device='mps')\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nStore as a variable.\n\ndevice='mps'\nt = torch.tensor([1, 2, 3], device=device)\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nConvert existing objects.\n\nt = torch.tensor([1, 2, 3])\nt.to(device)\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nNote that converting existing objects creates a copy and does not modify the original.\n\nt\n\n\n\n\ntensor([1, 2, 3])\n\n\n\nThough the above operations have been performed on tensors, they can also be performed on models."
   },
   {
     "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#points-to-note",
@@ -339,8 +339,8 @@
     "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
     "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
     "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "7 Relevant Links",
-    "text": "7 Relevant Links\nRelevant links:\n\nPerformance gains (note that nightly builds are no longer needed): https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/\nInstalling PyTorch: https://pytorch.org/get-started/locally/\nDocs on using GPU: https://pytorch.org/docs/stable/notes/mps.html"
+    "section": "Relevant Links",
+    "text": "Relevant Links\nRelevant links:\n\nInstalling PyTorch: https://pytorch.org/get-started/locally/\nDocs on using GPU: https://pytorch.org/docs/stable/notes/mps.html\nPerformance gains (note that nightly builds are no longer needed): https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/"
   },
   {
     "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#closing-words",
