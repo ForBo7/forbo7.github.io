@@ -15,6 +15,8 @@ twitter-card:
   image: ../images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png
 ---
 
+_This blog post was updated on **Saturday, 28 January 2023**._
+
 ![](../images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png){fig-alt="A picture of a snake that has taken a bite out of an apple, and whose tail is a burning torch."}
 
 If you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here's how to make use of its GPU in PyTorch for increased performance.
@@ -47,7 +49,7 @@ $ pip3 install --upgrade torch torchvision torchaudio
 
 ## Import PyTorch
 
-```python
+```{python}
 import torch
 ```
 
@@ -55,7 +57,7 @@ import torch
 
 Below is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.
 
-```{.python .code-overflow-wrap}
+```{python .code-overflow-wrap}
 if not torch.backends.mps.is_available():
     if not torch.backends.mps.is_built():
         print("MPS not available because the current PyTorch install was not built with MPS enabled.")
@@ -70,17 +72,65 @@ As far as I know, you must explicitly enable the use of the GPU for whatever mod
 
 There are different ways you can do this.
 
-```python
-# Use a string.
-t = torch.tensor([1, 2, 3], device='mps')
+```{python}
+#| echo: false
+from IPython.display import Markdown
+```
 
-# Store as a variable.
+**Use a string.**
+```{python}
+t = torch.tensor([1, 2, 3], device='mps')
+```
+```{python}
+#| echo: false
+Markdown(
+  f"""
+  > `{t}`
+  """
+)
+```
+
+**Store as a variable.**
+```{python}
 device='mps'
 t = torch.tensor([1, 2, 3], device=device)
+```
+```{python}
+#| echo: false
+Markdown(
+  f"""
+  > `{t}`
+  """
+)
+```
 
-# Convert existing objects.
+
+**Convert existing objects.** 
+```{python}
+#| output: false
 t = torch.tensor([1, 2, 3])
 t.to(device)
+```
+```{python}
+#| echo: false
+Markdown(
+  f"""
+  > `{t.to(device)}` 
+  """
+)
+```
+Note that converting existing objects creates a copy and does not modify the original.
+```{python}
+#| output: false
+t
+```
+```{python}
+#| echo: false
+Markdown(
+  f"""
+  > `{t}` 
+  """
+)
 ```
 
 Though the above operations have been performed on tensors, they can also be performed on models.
@@ -93,14 +143,14 @@ Though the above operations have been performed on tensors, they can also be per
 
 - As of writing this, GPU support is still in its early stages. So certain features are unsupported and further optimizations await.
 
-## Relevant Links
+## Relevant Links {.unnumbered}
 Relevant links:
 
-* Performance gains (note that nightly builds are no longer needed): [https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/]()
+* Installing PyTorch: [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) 
 
-* Installing PyTorch: [https://pytorch.org/get-started/locally/]() 
+* Docs on using GPU: [https://pytorch.org/docs/stable/notes/mps.html](https://pytorch.org/docs/stable/notes/mps.html)
 
-* Docs on using GPU: [https://pytorch.org/docs/stable/notes/mps.html]()
+* Performance gains (note that nightly builds are no longer needed): [https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/](https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/)
 
 ## Closing Words {.unnumbered}
 
