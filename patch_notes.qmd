@@ -13,6 +13,10 @@ twitter-card:
 Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 :::
 
+## Version 2.0.3.1 | 28 January 2023
+
+* Changed comment section theme.
+
 ## Version 2.0.3.0 | 27 November 2022
 
 * Fully implemented Twitter Cards
