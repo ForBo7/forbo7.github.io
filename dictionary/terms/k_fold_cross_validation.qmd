@@ -1,0 +1,10 @@
+---
+title: K-Fold Cross Validation
+description: "An [ensembling](ensemble.qmd) technique where [models](model.qmd) are trained on a different set percent of the dataset. For example each [model](model.qmd) is trained on a different 80% of the dataset."
+---
+
+---
+
+Another way to think of it is that the dataset is split into $K$ pieces. Then each [model](model.qmd) is trained on a different set of $K-1$ pieces.
+
+For example, let's say that the dataset is split into 5 pieces. Then each [model](model.qmd) is trained on a different set of 4 pieces.
