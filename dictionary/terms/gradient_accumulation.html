@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the learning rate.">
+<meta name="description" content="A technique for running or fitting large models on a not-so-powerful GPU.">
 
-<title>ForBo7 // Salman Naqvi - Gradient</title>
+<title>ForBo7 // Salman Naqvi - Gradient Accumulation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,9 +61,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="ForBo7 // Salman Naqvi - Gradient">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Gradient Accumulation">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/cover.png">
 <meta property="og:site-name" content="ForBo7 // Salman Naqvi">
@@ -148,12 +149,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Gradient</h1>
+<h1 class="title">Gradient Accumulation</h1>
 </div>
 
 <div>
   <div class="description">
-    A numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the <a href="../../dictionary/terms/learning_rate.html">learning rate</a>.
+    A technique for running or fitting large models on a not-so-powerful GPU.
   </div>
 </div>
 
@@ -169,9 +170,35 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <hr>
-<p>The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the <a href="../../dictionary/terms/learning_rate.html">learning rate</a>.</p>
-<p>A positive gradient tells us that increasing the parameters will increase the <a href="../../dictionary/terms/loss.html">loss</a>. On the other hand, decreasing the parameters will decrease the <a href="../../dictionary/terms/loss.html">loss</a>.</p>
-<p>A negative gradient tells us that decreasing the parameters will increase the <a href="../../dictionary/terms/loss.html">loss</a> On the other hand, increasing the parameters will decrease the <a href="../../dictionary/terms/loss.html">loss</a>.</p>
+<p>Let’s say you want to use a batch size of 64, but the model doesn’t fit with that size on your GPU.</p>
+<ol type="1">
+<li>First determine the largest possible batch size that can fit on your GPU. Let’s say it’s 16. It <em>may</em> be better to use batch sizes that are a power of 2.</li>
+<li>Calculate the gradients for <span class="math inline">\(X\)</span> batches without updating the parameters.
+<ul>
+<li><span class="math inline">\(X\)</span> is your desired batch size divided by the batch size you are using.</li>
+<li>Desired batch size is 64; batch size we are using is 16.</li>
+<li><span class="math inline">\(64 ÷ 16 = 4\)</span></li>
+<li><span class="math inline">\(X\)</span> is 4. This is because the size of 4 batches, in this case, sums to 64.</li>
+</ul></li>
+<li>Next, sum all respective gradients —&nbsp;hence the term ‘gradient accumulation’.</li>
+<li>Now update your parameters based on these summed gradients. This will have the same effect as if you used a batch size of 64.</li>
+</ol>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Using a smaller batch size to fit a larger model onto your GPU isn’t optimal. A smaller batch size means you would have to tweak your optimal hyperparameters, such as the learning rate. Your loss would also become less accurate since it is being calculated on a smaller group of items.</p>
+</div>
+</div>
+</div>
 
 
 
