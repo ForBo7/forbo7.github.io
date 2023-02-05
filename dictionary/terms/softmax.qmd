@@ -1,0 +1,60 @@
+---
+title: Softmax
+description: "A function that calculates the probabilities of a set of predictions."
+---
+
+---
+
+Let's say that we have a [model](model.qmd) that tells us what sort of vehicle is in a picture. It outputs the following predictions.
+
+| Vehicle     | Prediction   |
+| ---------   | ------------ |
+| `car`       | $-4.89$      |
+| `bus`       | $2.60$       |
+| `truck`     | $0.59$       |
+| `motorbike` | $-2.07$      |
+| `bicycle`   | $-4.57$      |
+: {tbl-colwidths="[25,75]"}
+
+These predictions aren't very meaningful to us as humans. So what we can do is convert these predictions into probabilities. The steps to do this are below.
+
+**1.** Take the exponent of each prediction to base $e$. So for the `car` category, $e^{-4.89} \approx 7.52 \cdot 10^{-3}$.
+
+The results of the calculations below are displayed with 3 significant figures.
+
+| Vehicle     | Prediction   | $e^{\text{prediction}}$ |
+| ---------   | ------------ | ----------------------- |
+| `car`       | $-4.89$      | $7.52 \cdot 10^{-3}$    |
+| `bus`       | $2.60$       | $13.4$                  |
+| `truck`     | $0.59$       | $1.80$                  |
+| `motorbike` | $-2.07$      | $0.126$                 |
+| `bicycle`   | $-4.57$      | $0.010$                 |
+: {tbl-colwidths="[25,25,50]"}
+
+**2.** Sum all the calculated values.
+
+| Vehicle     | Prediction   | $e^{\text{prediction}}$ | $\text{sum of} e^{\text{prediction}}$ |
+| ---------   | ------------ | ----------------------- | ------------------------------------- |
+| `car`       | $-4.89$      | $7.52 \cdot 10^{-3}$    | $15.4$                                |
+| `bus`       | $2.60$       | $13.4$                  | $15.4$                                |
+| `truck`     | $0.59$       | $1.80$                  | $15.4$                                |
+| `motorbike` | $-2.07$      | $0.126$                 | $15.4$                                |
+| `bicycle`   | $-4.57$      | $0.010$                 | $15.4$                                |
+: {tbl-colwidths="[25,25,25,25]"}
+
+**3.** For each respective category, divide $e^{\text{prediction}}$ by $\text{sum of} e^{\text{prediction}}$. This is your probability. So the probability of the vehicle in the picture being a car is
+
+$$
+\frac{7.52 \cdot 10^{-3}}{15.4} \approx 4.88 \cdot 10^{-4} = 0.000488 = 0.0488 \% 
+$$
+
+| Vehicle     | Prediction   | $e^{\text{prediction}}$ | $\text{sum of} e^{\text{prediction}}$ | $\frac{e^{\text{prediction}}}{\text{sum of}e^{\text{prediction}}}$ |
+| ---------   | ------------ | ----------------------- | ------------------------------------- | ------------------------------------------------------------------ |
+| `car`       | $-4.89$      | $7.52 \cdot 10^{-3}$    | $15.4$                                | $4.88 \cdot 10^{-4}$                                               |
+| `bus`       | $2.60$       | $13.4$                  | $15.4$                                | $0.874$                                                            |
+| `truck`     | $0.59$       | $1.80$                  | $15.4$                                | $0.117$                                                            |
+| `motorbike` | $-2.07$      | $0.126$                 | $15.4$                                | $8.19 \cdot 10^{-3}$                                               |
+| `bicycle`   | $-4.57$      | $0.010$                 | $15.4$                                | $6.72 \cdot 10^{-4}$                                               |
+: {tbl-colwidths="[20,20,20,20,20]"}
+
+From the table above, it can be seen that the vehicle in the picture is most likely a bus with probability $87.4\%$.
