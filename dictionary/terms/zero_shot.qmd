@@ -1,4 +1,4 @@
 ---
 title: Zero-shot
-description: A prefix given to a pretrained model that can be used without finetuning.
+description: A prefix given to a pretrained [model](model.qmd) that can be used without finetuning.
 ---

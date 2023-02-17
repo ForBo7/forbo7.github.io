@@ -1,6 +1,6 @@
 ---
 title: Named Entity Recognition (NER)
-description: "A NLP classification task where a sentence is broken into its components, and the model attempts to assign each component to a specific entity (e.g., person, place, organization)."
+description: "A NLP classification task where a sentence is broken into its components, and the [model](model.qmd) attempts to assign each component to a specific entity (e.g., person, place, organization)."
 ---
 
 ---
