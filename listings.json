@@ -19,6 +19,7 @@
       "/dictionary/terms/mean_squared_error_mse.html",
       "/dictionary/terms/metric.html",
       "/dictionary/terms/model.html",
+      "/dictionary/terms/named_entity_recognition.html",
       "/dictionary/terms/numericalization.html",
       "/dictionary/terms/one_hot_encoding.html",
       "/dictionary/terms/oner_classifier.html",
@@ -29,6 +30,7 @@
       "/dictionary/terms/tabular_data.html",
       "/dictionary/terms/tabular_model.html",
       "/dictionary/terms/tokenization.html",
+      "/dictionary/terms/zero_shot.html",
       "/dictionary/terms/neuron.html"
     ]
   },
