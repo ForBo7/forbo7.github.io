@@ -1,5 +1,68 @@
 [
   {
+    "objectID": "patch_notes.html",
+    "href": "patch_notes.html",
+    "title": "Site Patch Notes",
+    "section": "",
+    "text": "Detailed patchnotes are unavailable prior to site version 2.0.0.0."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.3.1-28-january-2023",
+    "href": "patch_notes.html#version-2.0.3.1-28-january-2023",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.3.1 | 28 January 2023",
+    "text": "Version 2.0.3.1 | 28 January 2023\n\nChanged comment section theme."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.3.0-27-november-2022",
+    "href": "patch_notes.html#version-2.0.3.0-27-november-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.3.0 | 27 November 2022",
+    "text": "Version 2.0.3.0 | 27 November 2022\n\nFully implemented Twitter Cards"
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.2.0-26-november-2022",
+    "href": "patch_notes.html#version-2.0.2.0-26-november-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.2.0 | 26 November 2022",
+    "text": "Version 2.0.2.0 | 26 November 2022\n\nFully implemented Open Graph\nAdded button for direct link to site’s source code.\nTweaked landing page description."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.1.2-17-november-2022",
+    "href": "patch_notes.html#version-2.0.1.2-17-november-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.1.2 | 17 November 2022",
+    "text": "Version 2.0.1.2 | 17 November 2022\n\nFixed broken license link."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.1.1-17-november-2022",
+    "href": "patch_notes.html#version-2.0.1.1-17-november-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.1.1 | 17 November 2022",
+    "text": "Version 2.0.1.1 | 17 November 2022\n\nFixed broken site feedback link.\nUpdated site version references."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.1.0-17-november-2022",
+    "href": "patch_notes.html#version-2.0.1.0-17-november-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.1.0 | 17 November 2022",
+    "text": "Version 2.0.1.0 | 17 November 2022\n\nFixed a bunch of broken links.\nFixed RSS buttons.\nShifted links on the landing page."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.0.0.0-16-november-2022",
+    "href": "patch_notes.html#version-2.0.0.0-16-november-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 2.0.0.0 | 16 November 2022",
+    "text": "Version 2.0.0.0 | 16 November 2022\n\nCreated, erm, site patch notes.\nSite is now entirely remade in Quarto.\nUI overhaul.\nForBlog is no longer the main landing page.\nApp playground has been added; a place where I can host my various creations.\n\nNew…\n\nfavicon.\nabout me page.\nlanding page.\nForBlog home page.\nForBlog post layout.\nglobal search bar.\n\nAdded…\n\na ForBlog only search bar.\nForBlog post filters.\nForBlog and App Playground subscriptions.\na form for site feedback.\ncopyright licences.\nnew fancy buttons."
+  },
+  {
+    "objectID": "patch_notes.html#version-1.0.0.0-15-may-2022",
+    "href": "patch_notes.html#version-1.0.0.0-15-may-2022",
+    "title": "Site Patch Notes",
+    "section": "Version 1.0.0.0 | 15 May 2022",
+    "text": "Version 1.0.0.0 | 15 May 2022\n\nInitial release.\nSite is built on fastpages, by fastai."
+  },
+  {
     "objectID": "unsubscribe.html",
     "href": "unsubscribe.html",
     "title": "Unsubscribe from ForBlog and App Playground Notifications",
@@ -7,116 +70,46 @@
     "text": "Loading…"
   },
   {
-    "objectID": "dictionary/index.html",
-    "href": "dictionary/index.html",
-    "title": "The AI Dictionary",
+    "objectID": "web_apps/index.html",
+    "href": "web_apps/index.html",
+    "title": "App Playground",
     "section": "",
-    "text": "I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.\nClick terms to jump to other relevant terms and view expanded definitions.\nDo let me know of any corrections and improvements!\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nAccuracy\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better.\n\n\n\n\n \n\n\n\n\n\n\nArchitecture\n\n\n\n\n\nA model that is used as a template or a starting point for another model.\n\n\n\n\n \n\n\n\n\n\n\nBagging\n\n\n\n\n\nAn ensembling technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement.\n\n\n\n\n \n\n\n\n\n\n\nDecision Tree\n\n\n\n\n\nA type of model that acts like an if-else statement.\n\n\n\n\n \n\n\n\n\n\n\nDocument\n\n\n\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on.\n\n\n\n\n \n\n\n\n\n\n\nEnsemble\n\n\n\n\n\nA collection of models whos’ predictions are averaged to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nError Rate\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better.\n\n\n\n\n \n\n\n\n\n\n\nGradient\n\n\n\n\n\nA numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the learning rate.\n\n\n\n\n \n\n\n\n\n\n\nGradient Accumulation\n\n\n\n\n\nA technique for running or fitting large models on a not-so-powerful GPU.\n\n\n\n\n \n\n\n\n\n\n\nGradient Boosting Machine (GBM)\n\n\n\n\n\nAn ensembling technique where instead of averaging the predictions of all models, each successive model predicts the error of the previous model. The errors are then summed to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nK-Fold Cross Validation\n\n\n\n\n\nAn ensembling technique where models are trained on a different set percent of the dataset. For example each model is trained on a different 80% of the dataset.\n\n\n\n\n \n\n\n\n\n\n\nLearning Rate\n\n\n\n\n\nA numerical value which controls how much the gradients update the parameters of a model.\n\n\n\n\n \n\n\n\n\n\n\nLoss\n\n\n\n\n\nA meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.\n\n\n\n\n \n\n\n\n\n\n\nMean Absolute Error (MAE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MAE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMean Squared Error (MSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMetric\n\n\n\n\n\nA measure of performance of a model. It is used by humans to judge the performance of the model.\n\n\n\n\n \n\n\n\n\n\n\nModel\n\n\n\n\n\nA mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.\n\n\n\n\n \n\n\n\n\n\n\nNamed Entity Recognition (NER)\n\n\n\n\n\nA NLP classification task where a sentence is broken into its components, and the model attempts to assign each component to a specific entity (e.g., person, place, organization).\n\n\n\n\n \n\n\n\n\n\n\nNumericalization\n\n\n\n\n\nA process where numbers are assigned to each token. Occurs after tokenization.\n\n\n\n\n \n\n\n\n\n\n\nOne Hot Encoding\n\n\n\n\n\nA data processing technique where each class in a categorical feature is given its own column that contains true and false values.\n\n\n\n\n \n\n\n\n\n\n\nOneR Classifier\n\n\n\n\n\nThe simplest type of decision tree. The tree only contains a single split.\n\n\n\n\n \n\n\n\n\n\n\nRandom Forest\n\n\n\n\n\nThe name given to a bagged ensemble of decision trees.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Error (RMSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Logarithmic Error (RMSLE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better.\n\n\n\n\n \n\n\n\n\n\n\nSoftmax\n\n\n\n\n\nA function that calculates the probabilities of a set of predictions.\n\n\n\n\n \n\n\n\n\n\n\nTabular Data\n\n\n\n\n\nData in the form of a table.\n\n\n\n\n \n\n\n\n\n\n\nTabular Model\n\n\n\n\n\nA model trained on tabular data. It is used to predict a specified column in the data.\n\n\n\n\n \n\n\n\n\n\n\nTokenization\n\n\n\n\n\nSplitting a document into its component words.\n\n\n\n\n \n\n\n\n\n\n\nZero-shot\n\n\n\n\n\nA prefix given to a pretrained model that can be used without finetuning.\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+    "text": "Here you can view various apps and gizmos I’ve created. Have a play through some of them let me know what you think!\nMore apps coming soon.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\n\nImage Classification\n\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nTuesday, 20 September 2022 | 2022-09-20\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\n\nImage Classification\n\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nSaturday, 30 April 2022 | 2022-04-30\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\nLoading…\n\nClick here to unsubscribe from the App Playground."
   },
   {
-    "objectID": "dictionary/terms/named_entity_recognition.html",
-    "href": "dictionary/terms/named_entity_recognition.html",
-    "title": "Named Entity Recognition (NER)",
+    "objectID": "web_apps/apps/coming_soon.html",
+    "href": "web_apps/apps/coming_soon.html",
+    "title": "More apps coming soon…",
     "section": "",
-    "text": "Take the sentence “Tim went to the Moon.” as an example. The sentence would first be broken into ‘Tim’, ‘went’, ‘to’, the’, ‘Moon’. The model could then give ‘Tim’ the label of ‘person’, and ‘Moon’ the label of ‘location’."
+    "text": "I never told you how soon…\n\n\n\nThis image was generated by Dall-E 2!"
   },
   {
-    "objectID": "dictionary/terms/learning_rate.html",
-    "href": "dictionary/terms/learning_rate.html",
-    "title": "Learning Rate",
+    "objectID": "web_apps/apps/bear_detector.html",
+    "href": "web_apps/apps/bear_detector.html",
+    "title": "Bear Classifier",
     "section": "",
-    "text": "The learning rate controls how much the gradients adjust the parameters by multiplying the learning rate and gradients together.\n\n\n\n\n\n\nNote\n\n\n\n\n\nA learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.\nA learning rate that is too low can cause the training system to take a very long time to reach the optimal weights."
+    "text": "This webapp was remade on Tuesday, 8 November 2022."
   },
   {
-    "objectID": "dictionary/terms/gradient.html",
-    "href": "dictionary/terms/gradient.html",
-    "title": "Gradient",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Salman Naqvi",
     "section": "",
-    "text": "The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the learning rate.\nA positive gradient tells us that increasing the parameters will increase the loss. On the other hand, decreasing the parameters will decrease the loss.\nA negative gradient tells us that decreasing the parameters will increase the loss On the other hand, increasing the parameters will decrease the loss."
+    "text": "Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries."
   },
   {
-    "objectID": "dictionary/terms/gradient_boosting_machine_gbm.html",
-    "href": "dictionary/terms/gradient_boosting_machine_gbm.html",
-    "title": "Gradient Boosting Machine (GBM)",
-    "section": "",
-    "text": "The first model produces a prediction.\nThe difference between this prediction and the actual value is obtained.\nThe difference is now set as the target.\nThe next model now attempts to predict this difference.\nRepeat steps 2-4 for as many models as desired.\nSum all obtained differences.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nWhile this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set."
+    "objectID": "about.html#lived-in",
+    "href": "about.html#lived-in",
+    "title": "Salman Naqvi",
+    "section": "Lived in",
+    "text": "Lived in\nUnited Kingdom (5 years) | Saudi Arabia (6 years) | Pakistan (9 years)"
   },
   {
-    "objectID": "dictionary/terms/softmax.html",
-    "href": "dictionary/terms/softmax.html",
-    "title": "Softmax",
-    "section": "",
-    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\nVehicle\nPrediction\n\n\n\n\ncar\n\\(-4.89\\)\n\n\nbus\n\\(2.60\\)\n\n\ntruck\n\\(0.59\\)\n\n\nmotorbike\n\\(-2.07\\)\n\n\nbicycle\n\\(-4.57\\)\n\n\n\nThese predictions aren’t very meaningful to us as humans. So what we can do is convert these predictions into probabilities. The steps to do this are below.\n1. Take the exponent of each prediction to base \\(e\\). So for the car category, \\(e^{-4.89} \\approx 7.52 \\cdot 10^{-3}\\).\nThe results of the calculations below are displayed with 3 significant figures.\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\n\n\n2. Sum all the calculated values.\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\n\n\n3. For each respective category, divide \\(e^{\\text{prediction}}\\) by \\(\\text{sum of} e^{\\text{prediction}}\\). This is your probability. So the probability of the vehicle in the picture being a car is\n\\[\n\\frac{7.52 \\cdot 10^{-3}}{15.4} \\approx 4.88 \\cdot 10^{-4} = 0.000488 = 0.0488 \\%\n\\]\n\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\\(\\frac{e^{\\text{prediction}}}{\\text{sum of}e^{\\text{prediction}}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\\(0.874\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\\(0.117\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nFrom the table above, it can be seen that the vehicle in the picture is most likely a bus with probability \\(87.4\\%\\)."
-  },
-  {
-    "objectID": "dictionary/terms/error_rate.html",
-    "href": "dictionary/terms/error_rate.html",
-    "title": "Error Rate",
-    "section": "",
-    "text": "It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of incorrect predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nError rate is also 1 - accuracy."
-  },
-  {
-    "objectID": "dictionary/terms/tokenization.html",
-    "href": "dictionary/terms/tokenization.html",
-    "title": "Tokenization",
-    "section": "",
-    "text": "Note\n\n\n\n\n\nIf a word is too long or very uncommon, the word itself may be split. Take the word “supercalifragilisticexpialidocious” as an example. It could be split into “super”, “cali”, “fragilistic”, “expi”, “ali”, and “docious”."
-  },
-  {
-    "objectID": "dictionary/terms/ensemble.html",
-    "href": "dictionary/terms/ensemble.html",
-    "title": "Ensemble",
-    "section": "",
-    "text": "The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others’ errors.\nThere are different methods for ensembling.\n\n\n\n\n\n\nEnsembling only works when all models are independent of each other. That is, the models do not depend on one another."
-  },
-  {
-    "objectID": "dictionary/terms/gradient_accumulation.html",
-    "href": "dictionary/terms/gradient_accumulation.html",
-    "title": "Gradient Accumulation",
-    "section": "",
-    "text": "Let’s say you want to use a batch size of 64, but the model doesn’t fit with that size on your GPU.\n\nFirst determine the largest possible batch size that can fit on your GPU. Let’s say it’s 16. It may be better to use batch sizes that are a power of 2.\nCalculate the gradients for \\(X\\) batches without updating the parameters.\n\n\\(X\\) is your desired batch size divided by the batch size you are using.\nDesired batch size is 64; batch size we are using is 16.\n\\(64 ÷ 16 = 4\\)\n\\(X\\) is 4. This is because the size of 4 batches, in this case, sums to 64.\n\nNext, sum all respective gradients — hence the term ‘gradient accumulation’.\nNow update your parameters based on these summed gradients. This will have the same effect as if you used a batch size of 64.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUsing a smaller batch size to fit a larger model onto your GPU isn’t optimal. A smaller batch size means you would have to tweak your optimal hyperparameters, such as the learning rate. Your loss would also become less accurate since it is being calculated on a smaller group of items."
-  },
-  {
-    "objectID": "dictionary/terms/bagging.html",
-    "href": "dictionary/terms/bagging.html",
-    "title": "Bagging",
-    "section": "",
-    "text": "“with replacement” means that if a model, for examples, randomly chooses row number 5, another model can also randomly choose row number 5.\n\n\n\n\n\n\nNote\n\n\n\n\n\nThrough this technique, each model ends up training on roughly 63% of the entire dataset."
-  },
-  {
-    "objectID": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
-    "href": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
-    "title": "Root Mean Squared Logarithmic Error (RMSLE)",
-    "section": "",
-    "text": "It is calculated by:\n\nFirst taking the logarithm of all predicted values.\nTaking the logarithm of all actual values.\nThen taking the difference between each respective predicted and actual value.\nNext squaring all obtained values.\nTaking the averge.\nAnd lastly taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(\\ln(1), \\ln(2), \\ln(3), \\ln(4) \\approx 0, 0.69, 1.10, 1.39\\)\n\\(\\ln(1), \\ln(4), \\ln(3), \\ln(3) \\approx 0, 1.39, 1.10, 1.10\\)\n\\(0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29\\)\n\\((0)^2, (-0.70)^2, (0)^2, (0.29)^2 \\approx 0, 0.49, 0, 0.08\\)\n\\(\\frac{0 + 0.49 + 0 + 0.08}{4} = \\frac{0.57}{4}\\)\n\\(\\sqrt{\\frac{0.57}{4}} \\approx 0.38\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.38\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between RMSE and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
-  },
-  {
-    "objectID": "dictionary/terms/metric.html",
-    "href": "dictionary/terms/metric.html",
-    "title": "Metric",
-    "section": "",
-    "text": "Examples of metrics are, but not limited to, accuracy, error rate, MAE, and MSE"
-  },
-  {
-    "objectID": "dictionary/terms/mean_absolute_error_mae.html",
-    "href": "dictionary/terms/mean_absolute_error_mae.html",
-    "title": "Mean Absolute Error (MAE)",
-    "section": "",
-    "text": "It is calculated by: 1. First taking the difference between each respective predicted and actual value. 1. Then removing all negative signs — this is known as taking the absolute value. 1. And finally taking the average.\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\(|0|, |-2|, |0|, |1| = 0, 2, 0, 1\\)\n\\(\\frac{0 + 2 + 0 + 1}{4} = \\frac{2}{4} = 0.5\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.5\\) units off from the actual values.\nIn a nutshell, you take the mean of the absolute differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the absolute value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the absolute value, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
-  },
-  {
-    "objectID": "dictionary/terms/one_hot_encoding.html",
-    "href": "dictionary/terms/one_hot_encoding.html",
-    "title": "One Hot Encoding",
-    "section": "",
-    "text": "Let’s say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true."
-  },
-  {
-    "objectID": "dictionary/terms/k_fold_cross_validation.html",
-    "href": "dictionary/terms/k_fold_cross_validation.html",
-    "title": "K-Fold Cross Validation",
-    "section": "",
-    "text": "Another way to think of it is that the dataset is split into \\(K\\) pieces. Then each model is trained on a different set of \\(K-1\\) pieces.\nFor example, let’s say that the dataset is split into 5 pieces. Then each model is trained on a different set of 4 pieces."
+    "objectID": "about.html#been-to",
+    "href": "about.html#been-to",
+    "title": "Salman Naqvi",
+    "section": "Been to",
+    "text": "Been to\n\n\nEgypt* | England | France | Greece | Italy | Jordan* | Lebanon* | Malaysia | Pakistan | Qatar* | Saudi Arabia | Sri Lanka | Switzerland | Tanzania | Thailand | Turkey | UAE | Wales\n*Transit destinations; I count them still because I was technically within the country’s border."
   },
   {
     "objectID": "dictionary/terms/decision_tree.html",
@@ -126,25 +119,39 @@
     "text": "A split is made for each feature in the data. If the feature of a certain data sample is larger than or less than the split for that respective feature, the next appropriate split is made.\nBelow is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Is Engine Powerful])\n  C([Is Windy Day])\n  D1([Car Is Fast])\n  E1([Car Is Slow])\n  D2([Car Is Fast])\n  E2([Car Is Slow])\n\n\n  A -- Yes --> B\n  A -- No --> C\n  B -- Yes --> D1\n  B -- No --> E1\n  C -- Yes --> E2\n  C -- No --> D2"
   },
   {
-    "objectID": "dictionary/terms/mean_squared_error_mse.html",
-    "href": "dictionary/terms/mean_squared_error_mse.html",
-    "title": "Mean Squared Error (MSE)",
+    "objectID": "dictionary/terms/softmax.html",
+    "href": "dictionary/terms/softmax.html",
+    "title": "Softmax",
     "section": "",
-    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nAnd finally taking the average.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.25\\) units off from the actual values.\nIn a nutshell, you take the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\nVehicle\nPrediction\n\n\n\n\ncar\n\\(-4.89\\)\n\n\nbus\n\\(2.60\\)\n\n\ntruck\n\\(0.59\\)\n\n\nmotorbike\n\\(-2.07\\)\n\n\nbicycle\n\\(-4.57\\)\n\n\n\nThese predictions aren’t very meaningful to us as humans. So what we can do is convert these predictions into probabilities. The steps to do this are below.\n1. Take the exponent of each prediction to base \\(e\\). So for the car category, \\(e^{-4.89} \\approx 7.52 \\cdot 10^{-3}\\).\nThe results of the calculations below are displayed with 3 significant figures.\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\n\n\n2. Sum all the calculated values.\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\n\n\n3. For each respective category, divide \\(e^{\\text{prediction}}\\) by \\(\\text{sum of} e^{\\text{prediction}}\\). This is your probability. So the probability of the vehicle in the picture being a car is\n\\[\n\\frac{7.52 \\cdot 10^{-3}}{15.4} \\approx 4.88 \\cdot 10^{-4} = 0.000488 = 0.0488 \\%\n\\]\n\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\\(\\frac{e^{\\text{prediction}}}{\\text{sum of}e^{\\text{prediction}}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\\(0.874\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\\(0.117\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nFrom the table above, it can be seen that the vehicle in the picture is most likely a bus with probability \\(87.4\\%\\)."
   },
   {
-    "objectID": "dictionary/terms/accuracy.html",
-    "href": "dictionary/terms/accuracy.html",
-    "title": "Accuracy",
+    "objectID": "dictionary/terms/bagging.html",
+    "href": "dictionary/terms/bagging.html",
+    "title": "Bagging",
     "section": "",
-    "text": "It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of correct predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nAccuracy is also 1 - error rate."
+    "text": "“with replacement” means that if a model, for examples, randomly chooses row number 5, another model can also randomly choose row number 5.\n\n\n\n\n\n\nNote\n\n\n\n\n\nThrough this technique, each model ends up training on roughly 63% of the entire dataset."
   },
   {
-    "objectID": "dictionary/terms/oner_classifier.html",
-    "href": "dictionary/terms/oner_classifier.html",
-    "title": "OneR Classifier",
+    "objectID": "dictionary/terms/tokenization.html",
+    "href": "dictionary/terms/tokenization.html",
+    "title": "Tokenization",
     "section": "",
-    "text": "Below is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Car Is Fast])\n  C([Car Is Slow])\n\n  A -- Yes --> B\n  A -- No --> C"
+    "text": "Note\n\n\n\n\n\nIf a word is too long or very uncommon, the word itself may be split. Take the word “supercalifragilisticexpialidocious” as an example. It could be split into “super”, “cali”, “fragilistic”, “expi”, “ali”, and “docious”."
+  },
+  {
+    "objectID": "dictionary/terms/named_entity_recognition.html",
+    "href": "dictionary/terms/named_entity_recognition.html",
+    "title": "Named Entity Recognition (NER)",
+    "section": "",
+    "text": "Take the sentence “Tim went to the Moon.” as an example. The sentence would first be broken into ‘Tim’, ‘went’, ‘to’, the’, ‘Moon’. The model could then give ‘Tim’ the label of ‘person’, and ‘Moon’ the label of ‘location’."
+  },
+  {
+    "objectID": "dictionary/terms/ensemble.html",
+    "href": "dictionary/terms/ensemble.html",
+    "title": "Ensemble",
+    "section": "",
+    "text": "The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others’ errors.\nThere are different methods for ensembling.\n\n\n\n\n\n\nEnsembling only works when all models are independent of each other. That is, the models do not depend on one another."
   },
   {
     "objectID": "dictionary/terms/root_mean_squared_error_rmse.html",
@@ -154,165 +161,130 @@
     "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nTaking the average.\nAnd finally taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\\(\\sqrt{1.25} \\approx 1.12\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.12\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MSE and RMSE is that RMSE undoes the squaring step by taking the square root.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
   },
   {
-    "objectID": "forblog/index.html",
-    "href": "forblog/index.html",
-    "title": "Welcome to ForBlog by ForBo7",
+    "objectID": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "href": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "title": "Root Mean Squared Logarithmic Error (RMSLE)",
     "section": "",
-    "text": "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\n26 January 2023\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\n23 December 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\n04 October 2022\n\n\nSalman Naqvi\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\n12 September 2022\n\n\nSalman Naqvi\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n\n04 June 2022\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide to Reading a Confusion Matrix\n\n\nAre you confused yet?\n\n\nA straight to the point guide about reading a confusion matrix.\n\n\n\n\n\n\n03 June 2022\n\n\nSalman Naqvi\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nMy first AI model\n\n\nCan you bare reading through this bear classifier?\n\n\nA rundown on my first attempt at creating model.\n\n\n\n\n\n\n28 May 2022\n\n\nSalman Naqvi\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nHow to Approach Creating AI Models\n\n\nPutting the Drive into the Train\n\n\nThere’s more to AI than just creating models.\n\n\n\n\n\n\n27 May 2022\n\n\nSalman Naqvi\n\n\n4 min\n\n\n\n\n\n\nNo matching items\n\n\n  \n\n\n\nLoading…\n\nClick here to unsubscribe from the ForBlog."
+    "text": "It is calculated by:\n\nFirst taking the logarithm of all predicted values.\nTaking the logarithm of all actual values.\nThen taking the difference between each respective predicted and actual value.\nNext squaring all obtained values.\nTaking the averge.\nAnd lastly taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(\\ln(1), \\ln(2), \\ln(3), \\ln(4) \\approx 0, 0.69, 1.10, 1.39\\)\n\\(\\ln(1), \\ln(4), \\ln(3), \\ln(3) \\approx 0, 1.39, 1.10, 1.10\\)\n\\(0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29\\)\n\\((0)^2, (-0.70)^2, (0)^2, (0.29)^2 \\approx 0, 0.49, 0, 0.08\\)\n\\(\\frac{0 + 0.49 + 0 + 0.08}{4} = \\frac{0.57}{4}\\)\n\\(\\sqrt{\\frac{0.57}{4}} \\approx 0.38\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.38\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between RMSE and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
   },
   {
-    "objectID": "forblog/posts/7_blog_subscriptions.html",
-    "href": "forblog/posts/7_blog_subscriptions.html",
-    "title": "Adding Subscriptions to a Quarto Site",
+    "objectID": "dictionary/terms/gradient.html",
+    "href": "dictionary/terms/gradient.html",
+    "title": "Gradient",
     "section": "",
-    "text": "The Quarto Documenation covers how to implement website subscriptions at a surface level. This guide goes into the details on how one could do so, with three different options. That said, this guide can also be helpful for sites that do not use Quarto.\nThe three ways this guide will cover:\nSwitch between the tabs below to view the steps for each option."
+    "text": "The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the learning rate.\nA positive gradient tells us that increasing the parameters will increase the loss. On the other hand, decreasing the parameters will decrease the loss.\nA negative gradient tells us that decreasing the parameters will increase the loss On the other hand, increasing the parameters will decrease the loss."
   },
   {
-    "objectID": "forblog/posts/7_blog_subscriptions.html#option-3",
-    "href": "forblog/posts/7_blog_subscriptions.html#option-3",
-    "title": "Adding Subscriptions to a Quarto Site",
-    "section": "Option 3",
-    "text": "Option 3\nPerhaps you know some HTML and JS, or even only JS, and don’t have an alternative address. Instead of creating the frontend with HTML, try using the Quarto HTML Forms extension by Jonathan Graves.\nThis extension allows you to implement HTML forms through Quarto Shortcodes and YAML Options. However, you still will need to handle the backend with JavaScript and perhaps a few other technologies. If you’re interested in implementing it this way, you probably already know how to. If not, there are plenty of great guides online!."
-  },
-  {
-    "objectID": "forblog/posts/7_blog_subscriptions.html#acknowledgements",
-    "href": "forblog/posts/7_blog_subscriptions.html#acknowledgements",
-    "title": "Adding Subscriptions to a Quarto Site",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nThanks to Isaac Flath for collaborating with me on this guide! You can view his blog, works, and contact here."
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html",
-    "href": "forblog/posts/2_bear_classifier_model.html",
-    "title": "My first AI model",
+    "objectID": "dictionary/terms/k_fold_cross_validation.html",
+    "href": "dictionary/terms/k_fold_cross_validation.html",
+    "title": "K-Fold Cross Validation",
     "section": "",
-    "text": "This article was updated on Tuesday, 1 November 2022."
+    "text": "Another way to think of it is that the dataset is split into \\(K\\) pieces. Then each model is trained on a different set of \\(K-1\\) pieces.\nFor example, let’s say that the dataset is split into 5 pieces. Then each model is trained on a different set of 4 pieces."
   },
   {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#introduction",
-    "href": "forblog/posts/2_bear_classifier_model.html#introduction",
-    "title": "My first AI model",
-    "section": "Introduction",
-    "text": "Introduction\nThis is my first attempt at creating an AI model: an image classifier. This classifier can tell whether a grizzly bear, black bear, or teddy bear is in an image.\nYou can visit the classifier here to test it out for yourself!"
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#load-libraries",
-    "href": "forblog/posts/2_bear_classifier_model.html#load-libraries",
-    "title": "My first AI model",
-    "section": "Load libraries",
-    "text": "Load libraries\n\n# No need to fret! fastai is specifically designed to be used with import *.\nfrom fastbook import *\nfrom fastai.vision.all import *"
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#download-image-files",
-    "href": "forblog/posts/2_bear_classifier_model.html#download-image-files",
-    "title": "My first AI model",
-    "section": "Download image files",
-    "text": "Download image files\nSpecify the bear images we wish to download.\n\nbear_types = ('grizzly', 'black', 'teddy',)\npath = Path('bears')\n\nDownload 200 of each bear (search_images_ddg defaults to 200 URLs) and assign them to a specific directory.\n\nif not path.exists():\n    path.mkdir()\n    for bear_type in bear_types:\n        destination = (path / bear_type)\n        destination.mkdir(exist_ok=True)\n        urls = search_images_ddg(f\"{bear_type} bear\")\n        download_iamges(destination, urls=urls)\n\nCheck if our folder has the image files.\n\nfns = get_image_files(path)\nfns\n\n(#802) [Path('bears/grizzly/00000238.jpg'),Path('bears/grizzly/00000047.jpg'),Path('bears/grizzly/00000199.jpg'),Path('bears/grizzly/00000237.jpg'),Path('bears/grizzly/00000055.jpg'),Path('bears/grizzly/00000000.png'),Path('bears/grizzly/00000235.jpg'),Path('bears/grizzly/00000159.jpg'),Path('bears/grizzly/00000268.jpg'),Path('bears/grizzly/00000266.jpg')...]\n\n\nCheck for corrupt images.\n\ncorrupt_images = verify_images(fns)\ncorrupt_images\n\n(#0) []\n\n\nRemove corrupt images.\n\ncorrupt_images.map(pathlib.Path.unlink)\n\n(#0) []"
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#load-image-files",
-    "href": "forblog/posts/2_bear_classifier_model.html#load-image-files",
-    "title": "My first AI model",
-    "section": "Load image files",
-    "text": "Load image files\nThe DataBlock API for creates the necessary DataLoaders for us.\n\nbears = DataBlock(\n    blocks=(ImageBlock, CategoryBlock),\n    get_items=get_image_files,\n    splitter=RandomSplitter(valid_pct=0.2, seed=42),\n    get_y=parent_label,\n    item_tfms=Resize(128),\n)\n\nThe blocks parameter allows us to specify the independent and dependent variables.\nThe get_items parameter tells fastai how to obtain our data. We use the get_image_files function to obtain our images.\nThe splitter parameter allows us to tell fastai how to split our data into training and validation sets. Since our data is one big set, we use the RandomSplitter class and tell it to use 20% of our data as the validation set. We specify a seed so the same split occurs each time.\nThe get_y parameter obtains our labels. The parent_label function simply gets the name of the folder a file is in. Since we have organized our bear images into different folders, this will nicely handle our target labels.\nThe item_tfms parameter allows us to specify a transform to apply to our data. Since we want all our images to be of the same size, we use the Resize() class.\nWe now have a DataBlock object from which can load the data.\n\ndataloaders = bears.dataloaders(path)\n\nLet us view a few images in the validation set.\n\ndataloaders.valid.show_batch(max_n=4, nrows=1)"
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#data-augmentation",
-    "href": "forblog/posts/2_bear_classifier_model.html#data-augmentation",
-    "title": "My first AI model",
-    "section": "Data Augmentation",
-    "text": "Data Augmentation\nData augmentation refers to creating random variations to our input data. This produces new data points based on the existing data points. This allows each data point to look different, without changing their meaning.\nTypical examples of image augmentation include rotation, flipping, perspective warping, brightness changing, and contrast changing.\n\nCropping\nThe validation set images shown above are cropped. We achieved this by specifying the Resize argument when defining the DataBlock. Resize crops images to the size specified.\nCropping results in detail being lost.\nAlternatively, we can squish or stretch images, or pad them to a desired size.\n\n\nSquishing/Stretching\nThe problem with squishing or stretching images is that the model will learn to “see” images the way they are not supposed to be.\n\nbears = bears.new(item_tfms=Resize(128, ResizeMethod.Squish))\ndataloaders = bears.dataloaders(path)\ndataloaders.valid.show_batch(max_n=4, nrows=1)\n\n\n\n\n\n\nPadding\nBy padding, the image is surrounded typically by black, meaningless pixels. This results in extra, wasted computation.\n\nbears = bears.new(item_tfms=Resize(128, ResizeMethod.Pad, pad_mode='zeros'))\ndataloaders = bears.dataloaders(path)\ndataloaders.valid.show_batch(max_n=4, nrows=1)\n\n\n\n\nThe best approach is to take random crops of different parts of the same image. This makes sure that the model does not miss out on any details whilst letting it “know” how an object fully looks like.\nBelow, we have unique=True so that the same image is repeated with different variations.\n\nbears = bears.new(item_tfms=RandomResizedCrop(128, min_scale=0.3))\ndataloaders = bears.dataloaders(path)\ndataloaders.train.show_batch(max_n=4, nrows=1, unique=True)\n\n\n\n\nfastai comes with a function that applies a variety of augmentations to images. This can allow a model to “see” and recognize images in a variety of scenarios.\n\nbears = bears.new(item_tfms=Resize(128), batch_tfms=aug_transforms(mult=2))\ndataloaders  = bears.dataloaders(path)\ndataloaders.train.show_batch(max_n=8, nrows=2, unique=True)\n\n\n\n\nI have not used RandomResizedCrop here so that the different augmentations can be seen more clearly. RandomResizedCrop will be used when the model is trained.\nbatch_tfms tells fastai that we want to use these transforms on a batch."
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#training-the-model",
-    "href": "forblog/posts/2_bear_classifier_model.html#training-the-model",
-    "title": "My first AI model",
-    "section": "Training the model",
-    "text": "Training the model\nWe do not have a lot of data. Only 200 images of each bear at most. Therefore, we will augment our images not only to get more data, but so that the model can recognize data in a variety of situations.\n\nbears = bears.new(\n    item_tfms=RandomResizedCrop(224, min_scale=0.5),\n    batch_tfms=aug_transforms(),\n)\ndataloaders = bears.dataloaders(path)\n\nWe will now create our learner and fine-tune it.\nWe will be using the ResNet18 architecture (which is a convolutional neural network, or CNN for short). Error rate will be the metric.\n\nlearn = cnn_learner(dataloaders, resnet18, metrics=error_rate)\nlearn.fine_tune(4)\n\nDownloading: \"https://download.pytorch.org/models/resnet18-f37072fd.pth\" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth\n\n\n\n\n\n\n\n  \n    \n      epoch\n      train_loss\n      valid_loss\n      error_rate\n      time\n    \n  \n  \n    \n      0\n      0.985666\n      0.104632\n      0.025000\n      00:20\n    \n  \n\n\n\n\n\n  \n    \n      epoch\n      train_loss\n      valid_loss\n      error_rate\n      time\n    \n  \n  \n    \n      0\n      0.132230\n      0.073527\n      0.012500\n      00:22\n    \n    \n      1\n      0.106222\n      0.054833\n      0.018750\n      00:22\n    \n    \n      2\n      0.087129\n      0.058497\n      0.012500\n      00:20\n    \n    \n      3\n      0.069890\n      0.058845\n      0.018750\n      00:19\n    \n  \n\n\n\nOur model only has a 1.9% error rate! Not bad! Though it seems if I had done an extra epoch, the error rate may have gone down to 1.3%, judging by the previous epochs’ error rates."
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#visualizing-mistakes",
-    "href": "forblog/posts/2_bear_classifier_model.html#visualizing-mistakes",
-    "title": "My first AI model",
-    "section": "Visualizing mistakes",
-    "text": "Visualizing mistakes\nWe can visualize the mistakes the model is making by a confusion matrix.\n\ninterp = ClassificationInterpretation.from_learner(learn)\ninterp.plot_confusion_matrix()\n\n\n\n\n\n\n\n3 grizzly bears were misclassified as black bears.\nLet us see where the errors are occurring, so we can determine if they are due to a dataset problem or a model problem.\nTo do this, we will sort images by their loss.\n\ninterp.plot_top_losses(5, nrows=1)"
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#data-cleaning",
-    "href": "forblog/posts/2_bear_classifier_model.html#data-cleaning",
-    "title": "My first AI model",
-    "section": "Data cleaning",
-    "text": "Data cleaning\nThe intuitive approach to data cleaning is to do it before training the model. However, a trained model can help us clean the data. For example, we can see some mislabaled bears in the above cases.\nfastai includes a GUI for data cleaning. This GUI allows you to choose a category/label and its associated training and validation sets. It then shows you images in order of highest-loss first, from which you can select images for removal or relabeling.\n\ncleaner = ImageClassifierCleaner(learn)\ncleaner\n\n\n\n\n\n\n\n\n\n\nImageClassifierCleaner does not actually delete or relabel. It just returns the indices that are to be deleted or relabeled.\n\n# Delete images selected for deletion.\nfor index in cleaner.delete():\n    cleaner.fns[index].unlink()\n\n# Relabel images selected for relabeling.\nfor index, category in cleaner.change():\n    shutil.move(str(cleaner.fns[index]), path/category)\n\nWe can now retrain and better performance should be expected."
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#saving-the-model",
-    "href": "forblog/posts/2_bear_classifier_model.html#saving-the-model",
-    "title": "My first AI model",
-    "section": "Saving the model",
-    "text": "Saving the model\nA model consists of two parts: the architecture and the parameters.\nWhen we use the export() method, both of these are saved.\nThis method also saves the definition of our DataLoaders. This is done so that we do not have to redefine how to transform our data when the model is used in production.\nfastai uses our validation set DataLoader by default, so the data augmentation will not be applied, which is generally what is wanted.\nThe export() method creates a file named “export.pkl”.\n\nlearn.export()\n\nLet us check that the file exists.\n\npath = Path()\npath.ls(file_exts='.pkl')\n\n(#1) [Path('export.pkl')]\n\n\nIf you wish to deploy an app, this is the file you will need."
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#loading-the-model-for-inference",
-    "href": "forblog/posts/2_bear_classifier_model.html#loading-the-model-for-inference",
-    "title": "My first AI model",
-    "section": "Loading the model for inference",
-    "text": "Loading the model for inference\nNow obviously we do not need to load the model as we already have the learner variable. But I shall do so anyways.\n\nlearn_inf = load_learner(path/'export.pkl')\n\nWe generally do inference for a single image at a time.\n\nlearn_inf.predict('images/grizzly.jpg')\n\n\n\n\n('grizzly', TensorBase(1), TensorBase([1.4230e-06, 1.0000e+00, 3.9502e-08]))\n\n\nThree things have been returned: the predicted category, the index of the predicted category, and the probabilities of each category.\nThe order of each category is based on the order of the vocabulary of the DataLoaders; that is, the stored tuple of all possible categories.\nThe DataLoaders can be accessed as an attribute of the Learner.\n\nlearn_inf.dataloaders.vocab\n\n['black', 'grizzly', 'teddy']"
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#why-cnns-work-so-well",
-    "href": "forblog/posts/2_bear_classifier_model.html#why-cnns-work-so-well",
-    "title": "My first AI model",
-    "section": "Why CNNs work so well",
-    "text": "Why CNNs work so well\nThe ResNet18 architecture is a sort of CNN. Below is my understanding as to why CNNs work so well.\nA neural network is comprised of many layers. Each layer is comprised of many neurons. In a CNN, each neuron in the same layer is given the exact same weights, while being given different input data. This allows all neurons in a layer to fire upon detecting the same pattern.\nBecause of this, CNNs can become really good at detecting objects in various patterns, orientations, shapes, positions, and so on."
-  },
-  {
-    "objectID": "forblog/posts/2_bear_classifier_model.html#conclusion",
-    "href": "forblog/posts/2_bear_classifier_model.html#conclusion",
-    "title": "My first AI model",
-    "section": "Conclusion",
-    "text": "Conclusion\nWell then, that wraps up my first deep learning model! I have to say, it is much easier than I thought it would be to implement a model. You do not need to go into the nitty gritty details of artificial intelligence. A high level understanding can suffice in the beginning. It is like playing a sport: you do not need to understand the physics to be able to play it.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
-  },
-  {
-    "objectID": "forblog/posts/4_data_quality_is_important.html",
-    "href": "forblog/posts/4_data_quality_is_important.html",
-    "title": "Data Quality is Important | Car Classifier",
+    "objectID": "dictionary/terms/metric.html",
+    "href": "dictionary/terms/metric.html",
+    "title": "Metric",
     "section": "",
-    "text": "This article was updated on Thursday, 10 November 2022.\n\nI recently created a car classifier that classified cars into their respective brands.\nDespite having almost 5000 images in my training set, I ended up trying out over a hundred layers in my model, and twenty epochs. Even then, I had an error rate of 17.4%.\nThe culprit? My dataset.\nI scraped 5000 images of cars (500 for each company) from DuckDuckGo. Naturally, as expected, the data quality is not so good.\nWhy? Below are some potential reasons:\n\nNoncar images present in dataset\nCars of incorrect company present in dataset\nF1 cars present in dataset\nA large variety of cars from different time periods present in dataset\nDifferent companys’ cars look similar\nModded cars present in dataset\nConcept cars present in dataset\nMultiple cars present in a single image\nCertain angles of cars appear more than others\nCars appear in certain backgrounds more than others\nThe search term {car_brand} car could be skewing results\n\nI could have absolutely achieved better results with fewer layers and fewer epochs if I trained the model on better quality data — or manually combed through the 5000 images 💀. However, I did use fastai’s GUI for data cleaning. This GUI sorts images by their loss which helps to determine if certain images should be relabeled or deleted.\nBelow is the confusion matrix for this model.\n\nIt can be seen that this model “confuses” between quite a few different brands: Ford and Chevrolet, Chevrolet and Ford, Jaguar and Aston Martin, Renault and Ford.\nBut why is data quality important? Because without good data, the model will not be able to “see” things the way they actually are, and in turn end up making worse predictions and not generalize to other data.\nLet’s say you did not know how, say, a toaster looked like. So I taught you by showing you pictures of a kettle. Then to test you, I showed you a set of pictures depicting various kitchen appliances and told you to find the toaster. You would not be able to.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExtending upon this example, say I showed you toasters only from the last two years and from two brands only. You would not be able to identify toasters older than two years, and toasters from other brands to much success.\nObviously, humans are smarter and can infer. AI methods can only infer to a certain degree, mainly based on what is in their dataset. This talk does start to become more philosophical.\nThe point of this post is to emphasize the importance of data quality and different aspects to consider as to why data quality may not be good. You can have the best architecture in the world, but it is useless if you do not have good data.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+    "text": "Examples of metrics are, but not limited to, accuracy, error rate, MAE, and MSE"
   },
   {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html",
-    "href": "forblog/posts/3_the_confusion_matrix.html",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "objectID": "dictionary/terms/accuracy.html",
+    "href": "dictionary/terms/accuracy.html",
+    "title": "Accuracy",
     "section": "",
-    "text": "This article was updated on Thursday, 10 November 2022.\nConfusion matrices help model designers view what mistakes a model has made.\nIn this post, I’ll be telling you how to easily read such matrices.\nJump to Section 2 for an ultra concise rundown.\nReady? Here we go."
+    "text": "It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of correct predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nAccuracy is also 1 - error rate."
   },
   {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
-    "href": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Case 1: Introduction",
-    "text": "Case 1: Introduction\n\nIgnore the “Actual” and “Predicted” labels for now.\nLet’s compare grizzly bears to black bears.\nAll comparisons begin at the bottom, with the columns.\nFirst, highlight the grizzly bear column.\n\nNext, highlight the black bear row.\n\nNow find the common entry in the highlighted column and row.\n\nThis common entry is our required information.\nAll entries in the diagonal going from the top left to the bottom right (blue) are correct classifications. All other entries are incorrect classifications.\nOur common entry does not lie in the main diagonal. Therefore, we are looking at incorrect classifications.\nWe have compared grizzly bears to black bears. Therefore, from this deduction, three grizzly bears have been incorrectly classified as black bears.\n\n\n\n\n\n\nNote\n\n\n\nThere is a difference between comparing grizzly bears to black bears and black bears to grizzly bears.\nComparing grizzly bears to black bears means, “How many grizzly bears were misclassified as black bears?”\nComparing black bears to grizzly bears means, “How many black bears were misclassified as grizzly bears?”"
+    "objectID": "dictionary/terms/gradient_accumulation.html",
+    "href": "dictionary/terms/gradient_accumulation.html",
+    "title": "Gradient Accumulation",
+    "section": "",
+    "text": "Let’s say you want to use a batch size of 64, but the model doesn’t fit with that size on your GPU.\n\nFirst determine the largest possible batch size that can fit on your GPU. Let’s say it’s 16. It may be better to use batch sizes that are a power of 2.\nCalculate the gradients for \\(X\\) batches without updating the parameters.\n\n\\(X\\) is your desired batch size divided by the batch size you are using.\nDesired batch size is 64; batch size we are using is 16.\n\\(64 ÷ 16 = 4\\)\n\\(X\\) is 4. This is because the size of 4 batches, in this case, sums to 64.\n\nNext, sum all respective gradients — hence the term ‘gradient accumulation’.\nNow update your parameters based on these summed gradients. This will have the same effect as if you used a batch size of 64.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUsing a smaller batch size to fit a larger model onto your GPU isn’t optimal. A smaller batch size means you would have to tweak your optimal hyperparameters, such as the learning rate. Your loss would also become less accurate since it is being calculated on a smaller group of items."
   },
   {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
-    "href": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Case 2: Ultra Concise",
-    "text": "Case 2: Ultra Concise\nLet’s compare black bears to grizzly bears.\nHighlight the black bear column.\n\nHighlight the grizzly bear row.\n\nHighlight the common entry.\n\nZero black bears were misclassified as grizzly bears."
+    "objectID": "dictionary/terms/cross_entropy_loss.html",
+    "href": "dictionary/terms/cross_entropy_loss.html",
+    "title": "Cross Entropy Loss",
+    "section": "",
+    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\n\nbus\n1\n\\(2.60\\)\n\n\ntruck\n0\n\\(0.59\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\n\n\nActuals is a one hot encoded column that tells us what is the correct vehicle in the picture.\nTo convert these predictions into loss, first take the softmax of each prediction.\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nNext take the logarithm of each softmax value.\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\n\n\nMultiply the actuals with the computed logarithms.\n\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\\(\\text{Actuals} \\cdot \\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\\(0\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\\(0\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\\(0\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\\(0\\)\n\n\n\nSum the the results of the multiplications.\n\\[\n0 + -1.35 + 0 + 0 + 0 = -1.35\n\\]\nAnd there you have your loss!"
   },
   {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
-    "href": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Case 3: Correct Classifications",
-    "text": "Case 3: Correct Classifications\nLet’s see how many teddy bears were correctly classified. We are essentially comparing teddy bears to teddy bears.\nHighlight the teddy bear column.\n\nHighlight the teddy bear row.\n\nHighlight the common entry.\n\nFifty three teddy bears were correctly classified as teddy bears."
+    "objectID": "dictionary/terms/error_rate.html",
+    "href": "dictionary/terms/error_rate.html",
+    "title": "Error Rate",
+    "section": "",
+    "text": "It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of incorrect predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nError rate is also 1 - accuracy."
   },
   {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
-    "href": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Exercise: Do It Yourself",
-    "text": "Exercise: Do It Yourself\nBelow is a confusion matrix of a car classifier that classifies cars into their brand.\n\nYou learn by doing!\n\nHow many Lamborghinis were correctly classified?\nHow many Jaguars were incorrectly classified?\nHow many Chevrolets were misclassified as Fords?\nHow many Fords were misclassified as Chevrolets?\nWhich two car brands did the model have the most trouble differentiating between?\n\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+    "objectID": "dictionary/terms/mean_squared_error_mse.html",
+    "href": "dictionary/terms/mean_squared_error_mse.html",
+    "title": "Mean Squared Error (MSE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nAnd finally taking the average.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.25\\) units off from the actual values.\nIn a nutshell, you take the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/oner_classifier.html",
+    "href": "dictionary/terms/oner_classifier.html",
+    "title": "OneR Classifier",
+    "section": "",
+    "text": "Below is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Car Is Fast])\n  C([Car Is Slow])\n\n  A -- Yes --> B\n  A -- No --> C"
+  },
+  {
+    "objectID": "dictionary/terms/one_hot_encoding.html",
+    "href": "dictionary/terms/one_hot_encoding.html",
+    "title": "One Hot Encoding",
+    "section": "",
+    "text": "Let’s say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true."
+  },
+  {
+    "objectID": "dictionary/terms/mean_absolute_error_mae.html",
+    "href": "dictionary/terms/mean_absolute_error_mae.html",
+    "title": "Mean Absolute Error (MAE)",
+    "section": "",
+    "text": "It is calculated by: 1. First taking the difference between each respective predicted and actual value. 1. Then removing all negative signs — this is known as taking the absolute value. 1. And finally taking the average.\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\(|0|, |-2|, |0|, |1| = 0, 2, 0, 1\\)\n\\(\\frac{0 + 2 + 0 + 1}{4} = \\frac{2}{4} = 0.5\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.5\\) units off from the actual values.\nIn a nutshell, you take the mean of the absolute differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the absolute value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the absolute value, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/learning_rate.html",
+    "href": "dictionary/terms/learning_rate.html",
+    "title": "Learning Rate",
+    "section": "",
+    "text": "The learning rate controls how much the gradients adjust the parameters by multiplying the learning rate and gradients together.\n\n\n\n\n\n\nNote\n\n\n\n\n\nA learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.\nA learning rate that is too low can cause the training system to take a very long time to reach the optimal weights."
+  },
+  {
+    "objectID": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "href": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "title": "Gradient Boosting Machine (GBM)",
+    "section": "",
+    "text": "The first model produces a prediction.\nThe difference between this prediction and the actual value is obtained.\nThe difference is now set as the target.\nThe next model now attempts to predict this difference.\nRepeat steps 2-4 for as many models as desired.\nSum all obtained differences.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nWhile this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set."
+  },
+  {
+    "objectID": "dictionary/index.html",
+    "href": "dictionary/index.html",
+    "title": "The AI Dictionary",
+    "section": "",
+    "text": "I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.\nClick terms to jump to other relevant terms and view expanded definitions.\nDo let me know of any corrections and improvements!\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nAccuracy\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better.\n\n\n\n\n \n\n\n\n\n\n\nArchitecture\n\n\n\n\n\nA model that is used as a template or a starting point for another model.\n\n\n\n\n \n\n\n\n\n\n\nBagging\n\n\n\n\n\nAn ensembling technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement.\n\n\n\n\n \n\n\n\n\n\n\nCross Entropy Loss\n\n\n\n\n\nA technique for calculating the loss for categorical models with multiple categories.\n\n\n\n\n \n\n\n\n\n\n\nDecision Tree\n\n\n\n\n\nA type of model that acts like an if-else statement.\n\n\n\n\n \n\n\n\n\n\n\nDocument\n\n\n\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on.\n\n\n\n\n \n\n\n\n\n\n\nEnsemble\n\n\n\n\n\nA collection of models whos’ predictions are averaged to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nError Rate\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better.\n\n\n\n\n \n\n\n\n\n\n\nGradient\n\n\n\n\n\nA numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the learning rate.\n\n\n\n\n \n\n\n\n\n\n\nGradient Accumulation\n\n\n\n\n\nA technique for running or fitting large models on a not-so-powerful GPU.\n\n\n\n\n \n\n\n\n\n\n\nGradient Boosting Machine (GBM)\n\n\n\n\n\nAn ensembling technique where instead of averaging the predictions of all models, each successive model predicts the error of the previous model. The errors are then summed to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nK-Fold Cross Validation\n\n\n\n\n\nAn ensembling technique where models are trained on a different set percent of the dataset. For example each model is trained on a different 80% of the dataset.\n\n\n\n\n \n\n\n\n\n\n\nLearning Rate\n\n\n\n\n\nA numerical value which controls how much the gradients update the parameters of a model.\n\n\n\n\n \n\n\n\n\n\n\nLoss\n\n\n\n\n\nA meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.\n\n\n\n\n \n\n\n\n\n\n\nMean Absolute Error (MAE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MAE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMean Squared Error (MSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMetric\n\n\n\n\n\nA measure of performance of a model. It is used by humans to judge the performance of the model.\n\n\n\n\n \n\n\n\n\n\n\nModel\n\n\n\n\n\nA mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.\n\n\n\n\n \n\n\n\n\n\n\nNamed Entity Recognition (NER)\n\n\n\n\n\nA NLP classification task where a sentence is broken into its components, and the model attempts to assign each component to a specific entity (e.g., person, place, organization).\n\n\n\n\n \n\n\n\n\n\n\nNumericalization\n\n\n\n\n\nA process where numbers are assigned to each token. Occurs after tokenization.\n\n\n\n\n \n\n\n\n\n\n\nOne Hot Encoding\n\n\n\n\n\nA data processing technique where each class in a categorical feature is given its own column that contains true and false values.\n\n\n\n\n \n\n\n\n\n\n\nOneR Classifier\n\n\n\n\n\nThe simplest type of decision tree. The tree only contains a single split.\n\n\n\n\n \n\n\n\n\n\n\nRandom Forest\n\n\n\n\n\nThe name given to a bagged ensemble of decision trees.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Error (RMSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Logarithmic Error (RMSLE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better.\n\n\n\n\n \n\n\n\n\n\n\nSoftmax\n\n\n\n\n\nA function that calculates the probabilities of a set of predictions.\n\n\n\n\n \n\n\n\n\n\n\nTabular Data\n\n\n\n\n\nData in the form of a table.\n\n\n\n\n \n\n\n\n\n\n\nTabular Model\n\n\n\n\n\nA model trained on tabular data. It is used to predict a specified column in the data.\n\n\n\n\n \n\n\n\n\n\n\nTokenization\n\n\n\n\n\nSplitting a document into its component words.\n\n\n\n\n \n\n\n\n\n\n\nZero-shot\n\n\n\n\n\nA prefix given to a pretrained model that can be used without finetuning.\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to the world of ForBo7",
+    "section": "",
+    "text": "I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries.\nRead more about me here.\nFeel free to contact me with one of the fancy buttons below!\n \n  \n   \n  \n    \n     Twitter\n  \n  \n    \n     GitHub\n  \n  \n    \n     Kaggle\n  \n  \n    \n     Artstation\n  \n  \n    \n     Email"
+  },
+  {
+    "objectID": "index.html#forblog",
+    "href": "index.html#forblog",
+    "title": "Welcome to the world of ForBo7",
+    "section": "ForBlog",
+    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\nJan 26, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#playground",
+    "href": "index.html#playground",
+    "title": "Welcome to the world of ForBo7",
+    "section": "Playground",
+    "text": "Playground\nClick here to play more in the playground.\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nApr 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
@@ -413,6 +385,139 @@
     "text": "Conclusion\nThis concludes my understanding of the Drivetrain Approach, through an example.\nApproaches are crucial: you can have state-of-the-art tools, but they are useless if not correctly applied. The approach you take can either make it or break it. Putting it into a concrete, organized, tangible manner goes a long way.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
   },
   {
+    "objectID": "forblog/posts/4_data_quality_is_important.html",
+    "href": "forblog/posts/4_data_quality_is_important.html",
+    "title": "Data Quality is Important | Car Classifier",
+    "section": "",
+    "text": "This article was updated on Thursday, 10 November 2022.\n\nI recently created a car classifier that classified cars into their respective brands.\nDespite having almost 5000 images in my training set, I ended up trying out over a hundred layers in my model, and twenty epochs. Even then, I had an error rate of 17.4%.\nThe culprit? My dataset.\nI scraped 5000 images of cars (500 for each company) from DuckDuckGo. Naturally, as expected, the data quality is not so good.\nWhy? Below are some potential reasons:\n\nNoncar images present in dataset\nCars of incorrect company present in dataset\nF1 cars present in dataset\nA large variety of cars from different time periods present in dataset\nDifferent companys’ cars look similar\nModded cars present in dataset\nConcept cars present in dataset\nMultiple cars present in a single image\nCertain angles of cars appear more than others\nCars appear in certain backgrounds more than others\nThe search term {car_brand} car could be skewing results\n\nI could have absolutely achieved better results with fewer layers and fewer epochs if I trained the model on better quality data — or manually combed through the 5000 images 💀. However, I did use fastai’s GUI for data cleaning. This GUI sorts images by their loss which helps to determine if certain images should be relabeled or deleted.\nBelow is the confusion matrix for this model.\n\nIt can be seen that this model “confuses” between quite a few different brands: Ford and Chevrolet, Chevrolet and Ford, Jaguar and Aston Martin, Renault and Ford.\nBut why is data quality important? Because without good data, the model will not be able to “see” things the way they actually are, and in turn end up making worse predictions and not generalize to other data.\nLet’s say you did not know how, say, a toaster looked like. So I taught you by showing you pictures of a kettle. Then to test you, I showed you a set of pictures depicting various kitchen appliances and told you to find the toaster. You would not be able to.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExtending upon this example, say I showed you toasters only from the last two years and from two brands only. You would not be able to identify toasters older than two years, and toasters from other brands to much success.\nObviously, humans are smarter and can infer. AI methods can only infer to a certain degree, mainly based on what is in their dataset. This talk does start to become more philosophical.\nThe point of this post is to emphasize the importance of data quality and different aspects to consider as to why data quality may not be good. You can have the best architecture in the world, but it is useless if you do not have good data.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html",
+    "href": "forblog/posts/2_bear_classifier_model.html",
+    "title": "My first AI model",
+    "section": "",
+    "text": "This article was updated on Tuesday, 1 November 2022."
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#introduction",
+    "href": "forblog/posts/2_bear_classifier_model.html#introduction",
+    "title": "My first AI model",
+    "section": "Introduction",
+    "text": "Introduction\nThis is my first attempt at creating an AI model: an image classifier. This classifier can tell whether a grizzly bear, black bear, or teddy bear is in an image.\nYou can visit the classifier here to test it out for yourself!"
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#load-libraries",
+    "href": "forblog/posts/2_bear_classifier_model.html#load-libraries",
+    "title": "My first AI model",
+    "section": "Load libraries",
+    "text": "Load libraries\n\n# No need to fret! fastai is specifically designed to be used with import *.\nfrom fastbook import *\nfrom fastai.vision.all import *"
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#download-image-files",
+    "href": "forblog/posts/2_bear_classifier_model.html#download-image-files",
+    "title": "My first AI model",
+    "section": "Download image files",
+    "text": "Download image files\nSpecify the bear images we wish to download.\n\nbear_types = ('grizzly', 'black', 'teddy',)\npath = Path('bears')\n\nDownload 200 of each bear (search_images_ddg defaults to 200 URLs) and assign them to a specific directory.\n\nif not path.exists():\n    path.mkdir()\n    for bear_type in bear_types:\n        destination = (path / bear_type)\n        destination.mkdir(exist_ok=True)\n        urls = search_images_ddg(f\"{bear_type} bear\")\n        download_iamges(destination, urls=urls)\n\nCheck if our folder has the image files.\n\nfns = get_image_files(path)\nfns\n\n(#802) [Path('bears/grizzly/00000238.jpg'),Path('bears/grizzly/00000047.jpg'),Path('bears/grizzly/00000199.jpg'),Path('bears/grizzly/00000237.jpg'),Path('bears/grizzly/00000055.jpg'),Path('bears/grizzly/00000000.png'),Path('bears/grizzly/00000235.jpg'),Path('bears/grizzly/00000159.jpg'),Path('bears/grizzly/00000268.jpg'),Path('bears/grizzly/00000266.jpg')...]\n\n\nCheck for corrupt images.\n\ncorrupt_images = verify_images(fns)\ncorrupt_images\n\n(#0) []\n\n\nRemove corrupt images.\n\ncorrupt_images.map(pathlib.Path.unlink)\n\n(#0) []"
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#load-image-files",
+    "href": "forblog/posts/2_bear_classifier_model.html#load-image-files",
+    "title": "My first AI model",
+    "section": "Load image files",
+    "text": "Load image files\nThe DataBlock API for creates the necessary DataLoaders for us.\n\nbears = DataBlock(\n    blocks=(ImageBlock, CategoryBlock),\n    get_items=get_image_files,\n    splitter=RandomSplitter(valid_pct=0.2, seed=42),\n    get_y=parent_label,\n    item_tfms=Resize(128),\n)\n\nThe blocks parameter allows us to specify the independent and dependent variables.\nThe get_items parameter tells fastai how to obtain our data. We use the get_image_files function to obtain our images.\nThe splitter parameter allows us to tell fastai how to split our data into training and validation sets. Since our data is one big set, we use the RandomSplitter class and tell it to use 20% of our data as the validation set. We specify a seed so the same split occurs each time.\nThe get_y parameter obtains our labels. The parent_label function simply gets the name of the folder a file is in. Since we have organized our bear images into different folders, this will nicely handle our target labels.\nThe item_tfms parameter allows us to specify a transform to apply to our data. Since we want all our images to be of the same size, we use the Resize() class.\nWe now have a DataBlock object from which can load the data.\n\ndataloaders = bears.dataloaders(path)\n\nLet us view a few images in the validation set.\n\ndataloaders.valid.show_batch(max_n=4, nrows=1)"
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#data-augmentation",
+    "href": "forblog/posts/2_bear_classifier_model.html#data-augmentation",
+    "title": "My first AI model",
+    "section": "Data Augmentation",
+    "text": "Data Augmentation\nData augmentation refers to creating random variations to our input data. This produces new data points based on the existing data points. This allows each data point to look different, without changing their meaning.\nTypical examples of image augmentation include rotation, flipping, perspective warping, brightness changing, and contrast changing.\n\nCropping\nThe validation set images shown above are cropped. We achieved this by specifying the Resize argument when defining the DataBlock. Resize crops images to the size specified.\nCropping results in detail being lost.\nAlternatively, we can squish or stretch images, or pad them to a desired size.\n\n\nSquishing/Stretching\nThe problem with squishing or stretching images is that the model will learn to “see” images the way they are not supposed to be.\n\nbears = bears.new(item_tfms=Resize(128, ResizeMethod.Squish))\ndataloaders = bears.dataloaders(path)\ndataloaders.valid.show_batch(max_n=4, nrows=1)\n\n\n\n\n\n\nPadding\nBy padding, the image is surrounded typically by black, meaningless pixels. This results in extra, wasted computation.\n\nbears = bears.new(item_tfms=Resize(128, ResizeMethod.Pad, pad_mode='zeros'))\ndataloaders = bears.dataloaders(path)\ndataloaders.valid.show_batch(max_n=4, nrows=1)\n\n\n\n\nThe best approach is to take random crops of different parts of the same image. This makes sure that the model does not miss out on any details whilst letting it “know” how an object fully looks like.\nBelow, we have unique=True so that the same image is repeated with different variations.\n\nbears = bears.new(item_tfms=RandomResizedCrop(128, min_scale=0.3))\ndataloaders = bears.dataloaders(path)\ndataloaders.train.show_batch(max_n=4, nrows=1, unique=True)\n\n\n\n\nfastai comes with a function that applies a variety of augmentations to images. This can allow a model to “see” and recognize images in a variety of scenarios.\n\nbears = bears.new(item_tfms=Resize(128), batch_tfms=aug_transforms(mult=2))\ndataloaders  = bears.dataloaders(path)\ndataloaders.train.show_batch(max_n=8, nrows=2, unique=True)\n\n\n\n\nI have not used RandomResizedCrop here so that the different augmentations can be seen more clearly. RandomResizedCrop will be used when the model is trained.\nbatch_tfms tells fastai that we want to use these transforms on a batch."
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#training-the-model",
+    "href": "forblog/posts/2_bear_classifier_model.html#training-the-model",
+    "title": "My first AI model",
+    "section": "Training the model",
+    "text": "Training the model\nWe do not have a lot of data. Only 200 images of each bear at most. Therefore, we will augment our images not only to get more data, but so that the model can recognize data in a variety of situations.\n\nbears = bears.new(\n    item_tfms=RandomResizedCrop(224, min_scale=0.5),\n    batch_tfms=aug_transforms(),\n)\ndataloaders = bears.dataloaders(path)\n\nWe will now create our learner and fine-tune it.\nWe will be using the ResNet18 architecture (which is a convolutional neural network, or CNN for short). Error rate will be the metric.\n\nlearn = cnn_learner(dataloaders, resnet18, metrics=error_rate)\nlearn.fine_tune(4)\n\nDownloading: \"https://download.pytorch.org/models/resnet18-f37072fd.pth\" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth\n\n\n\n\n\n\n\n  \n    \n      epoch\n      train_loss\n      valid_loss\n      error_rate\n      time\n    \n  \n  \n    \n      0\n      0.985666\n      0.104632\n      0.025000\n      00:20\n    \n  \n\n\n\n\n\n  \n    \n      epoch\n      train_loss\n      valid_loss\n      error_rate\n      time\n    \n  \n  \n    \n      0\n      0.132230\n      0.073527\n      0.012500\n      00:22\n    \n    \n      1\n      0.106222\n      0.054833\n      0.018750\n      00:22\n    \n    \n      2\n      0.087129\n      0.058497\n      0.012500\n      00:20\n    \n    \n      3\n      0.069890\n      0.058845\n      0.018750\n      00:19\n    \n  \n\n\n\nOur model only has a 1.9% error rate! Not bad! Though it seems if I had done an extra epoch, the error rate may have gone down to 1.3%, judging by the previous epochs’ error rates."
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#visualizing-mistakes",
+    "href": "forblog/posts/2_bear_classifier_model.html#visualizing-mistakes",
+    "title": "My first AI model",
+    "section": "Visualizing mistakes",
+    "text": "Visualizing mistakes\nWe can visualize the mistakes the model is making by a confusion matrix.\n\ninterp = ClassificationInterpretation.from_learner(learn)\ninterp.plot_confusion_matrix()\n\n\n\n\n\n\n\n3 grizzly bears were misclassified as black bears.\nLet us see where the errors are occurring, so we can determine if they are due to a dataset problem or a model problem.\nTo do this, we will sort images by their loss.\n\ninterp.plot_top_losses(5, nrows=1)"
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#data-cleaning",
+    "href": "forblog/posts/2_bear_classifier_model.html#data-cleaning",
+    "title": "My first AI model",
+    "section": "Data cleaning",
+    "text": "Data cleaning\nThe intuitive approach to data cleaning is to do it before training the model. However, a trained model can help us clean the data. For example, we can see some mislabaled bears in the above cases.\nfastai includes a GUI for data cleaning. This GUI allows you to choose a category/label and its associated training and validation sets. It then shows you images in order of highest-loss first, from which you can select images for removal or relabeling.\n\ncleaner = ImageClassifierCleaner(learn)\ncleaner\n\n\n\n\n\n\n\n\n\n\nImageClassifierCleaner does not actually delete or relabel. It just returns the indices that are to be deleted or relabeled.\n\n# Delete images selected for deletion.\nfor index in cleaner.delete():\n    cleaner.fns[index].unlink()\n\n# Relabel images selected for relabeling.\nfor index, category in cleaner.change():\n    shutil.move(str(cleaner.fns[index]), path/category)\n\nWe can now retrain and better performance should be expected."
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#saving-the-model",
+    "href": "forblog/posts/2_bear_classifier_model.html#saving-the-model",
+    "title": "My first AI model",
+    "section": "Saving the model",
+    "text": "Saving the model\nA model consists of two parts: the architecture and the parameters.\nWhen we use the export() method, both of these are saved.\nThis method also saves the definition of our DataLoaders. This is done so that we do not have to redefine how to transform our data when the model is used in production.\nfastai uses our validation set DataLoader by default, so the data augmentation will not be applied, which is generally what is wanted.\nThe export() method creates a file named “export.pkl”.\n\nlearn.export()\n\nLet us check that the file exists.\n\npath = Path()\npath.ls(file_exts='.pkl')\n\n(#1) [Path('export.pkl')]\n\n\nIf you wish to deploy an app, this is the file you will need."
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#loading-the-model-for-inference",
+    "href": "forblog/posts/2_bear_classifier_model.html#loading-the-model-for-inference",
+    "title": "My first AI model",
+    "section": "Loading the model for inference",
+    "text": "Loading the model for inference\nNow obviously we do not need to load the model as we already have the learner variable. But I shall do so anyways.\n\nlearn_inf = load_learner(path/'export.pkl')\n\nWe generally do inference for a single image at a time.\n\nlearn_inf.predict('images/grizzly.jpg')\n\n\n\n\n('grizzly', TensorBase(1), TensorBase([1.4230e-06, 1.0000e+00, 3.9502e-08]))\n\n\nThree things have been returned: the predicted category, the index of the predicted category, and the probabilities of each category.\nThe order of each category is based on the order of the vocabulary of the DataLoaders; that is, the stored tuple of all possible categories.\nThe DataLoaders can be accessed as an attribute of the Learner.\n\nlearn_inf.dataloaders.vocab\n\n['black', 'grizzly', 'teddy']"
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#why-cnns-work-so-well",
+    "href": "forblog/posts/2_bear_classifier_model.html#why-cnns-work-so-well",
+    "title": "My first AI model",
+    "section": "Why CNNs work so well",
+    "text": "Why CNNs work so well\nThe ResNet18 architecture is a sort of CNN. Below is my understanding as to why CNNs work so well.\nA neural network is comprised of many layers. Each layer is comprised of many neurons. In a CNN, each neuron in the same layer is given the exact same weights, while being given different input data. This allows all neurons in a layer to fire upon detecting the same pattern.\nBecause of this, CNNs can become really good at detecting objects in various patterns, orientations, shapes, positions, and so on."
+  },
+  {
+    "objectID": "forblog/posts/2_bear_classifier_model.html#conclusion",
+    "href": "forblog/posts/2_bear_classifier_model.html#conclusion",
+    "title": "My first AI model",
+    "section": "Conclusion",
+    "text": "Conclusion\nWell then, that wraps up my first deep learning model! I have to say, it is much easier than I thought it would be to implement a model. You do not need to go into the nitty gritty details of artificial intelligence. A high level understanding can suffice in the beginning. It is like playing a sport: you do not need to understand the physics to be able to play it.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html",
+    "href": "forblog/posts/3_the_confusion_matrix.html",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "",
+    "text": "This article was updated on Thursday, 10 November 2022.\nConfusion matrices help model designers view what mistakes a model has made.\nIn this post, I’ll be telling you how to easily read such matrices.\nJump to Section 2 for an ultra concise rundown.\nReady? Here we go."
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
+    "href": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Case 1: Introduction",
+    "text": "Case 1: Introduction\n\nIgnore the “Actual” and “Predicted” labels for now.\nLet’s compare grizzly bears to black bears.\nAll comparisons begin at the bottom, with the columns.\nFirst, highlight the grizzly bear column.\n\nNext, highlight the black bear row.\n\nNow find the common entry in the highlighted column and row.\n\nThis common entry is our required information.\nAll entries in the diagonal going from the top left to the bottom right (blue) are correct classifications. All other entries are incorrect classifications.\nOur common entry does not lie in the main diagonal. Therefore, we are looking at incorrect classifications.\nWe have compared grizzly bears to black bears. Therefore, from this deduction, three grizzly bears have been incorrectly classified as black bears.\n\n\n\n\n\n\nNote\n\n\n\nThere is a difference between comparing grizzly bears to black bears and black bears to grizzly bears.\nComparing grizzly bears to black bears means, “How many grizzly bears were misclassified as black bears?”\nComparing black bears to grizzly bears means, “How many black bears were misclassified as grizzly bears?”"
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
+    "href": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Case 2: Ultra Concise",
+    "text": "Case 2: Ultra Concise\nLet’s compare black bears to grizzly bears.\nHighlight the black bear column.\n\nHighlight the grizzly bear row.\n\nHighlight the common entry.\n\nZero black bears were misclassified as grizzly bears."
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
+    "href": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Case 3: Correct Classifications",
+    "text": "Case 3: Correct Classifications\nLet’s see how many teddy bears were correctly classified. We are essentially comparing teddy bears to teddy bears.\nHighlight the teddy bear column.\n\nHighlight the teddy bear row.\n\nHighlight the common entry.\n\nFifty three teddy bears were correctly classified as teddy bears."
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
+    "href": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Exercise: Do It Yourself",
+    "text": "Exercise: Do It Yourself\nBelow is a confusion matrix of a car classifier that classifies cars into their brand.\n\nYou learn by doing!\n\nHow many Lamborghinis were correctly classified?\nHow many Jaguars were incorrectly classified?\nHow many Chevrolets were misclassified as Fords?\nHow many Fords were misclassified as Chevrolets?\nWhich two car brands did the model have the most trouble differentiating between?\n\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+  },
+  {
     "objectID": "forblog/posts/5_detecting_floods_for_disaster_relief.html",
     "href": "forblog/posts/5_detecting_floods_for_disaster_relief.html",
     "title": "Detecting Floods for Disaster Relief",
@@ -504,109 +609,32 @@
     "text": "Acknowledgements\nThis article was inspired by the How does a neural net really work Kaggle Notebook by Jeremy Howard, and lesson 3 of Practical Deep Learning for Coders."
   },
   {
-    "objectID": "web_apps/index.html",
-    "href": "web_apps/index.html",
-    "title": "App Playground",
+    "objectID": "forblog/posts/7_blog_subscriptions.html",
+    "href": "forblog/posts/7_blog_subscriptions.html",
+    "title": "Adding Subscriptions to a Quarto Site",
     "section": "",
-    "text": "Here you can view various apps and gizmos I’ve created. Have a play through some of them let me know what you think!\nMore apps coming soon.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\n\nImage Classification\n\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nTuesday, 20 September 2022 | 2022-09-20\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\n\nImage Classification\n\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nSaturday, 30 April 2022 | 2022-04-30\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\nLoading…\n\nClick here to unsubscribe from the App Playground."
+    "text": "The Quarto Documenation covers how to implement website subscriptions at a surface level. This guide goes into the details on how one could do so, with three different options. That said, this guide can also be helpful for sites that do not use Quarto.\nThe three ways this guide will cover:\nSwitch between the tabs below to view the steps for each option."
   },
   {
-    "objectID": "web_apps/apps/coming_soon.html",
-    "href": "web_apps/apps/coming_soon.html",
-    "title": "More apps coming soon…",
+    "objectID": "forblog/posts/7_blog_subscriptions.html#option-3",
+    "href": "forblog/posts/7_blog_subscriptions.html#option-3",
+    "title": "Adding Subscriptions to a Quarto Site",
+    "section": "Option 3",
+    "text": "Option 3\nPerhaps you know some HTML and JS, or even only JS, and don’t have an alternative address. Instead of creating the frontend with HTML, try using the Quarto HTML Forms extension by Jonathan Graves.\nThis extension allows you to implement HTML forms through Quarto Shortcodes and YAML Options. However, you still will need to handle the backend with JavaScript and perhaps a few other technologies. If you’re interested in implementing it this way, you probably already know how to. If not, there are plenty of great guides online!."
+  },
+  {
+    "objectID": "forblog/posts/7_blog_subscriptions.html#acknowledgements",
+    "href": "forblog/posts/7_blog_subscriptions.html#acknowledgements",
+    "title": "Adding Subscriptions to a Quarto Site",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThanks to Isaac Flath for collaborating with me on this guide! You can view his blog, works, and contact here."
+  },
+  {
+    "objectID": "forblog/index.html",
+    "href": "forblog/index.html",
+    "title": "Welcome to ForBlog by ForBo7",
     "section": "",
-    "text": "I never told you how soon…\n\n\n\nThis image was generated by Dall-E 2!"
-  },
-  {
-    "objectID": "web_apps/apps/bear_detector.html",
-    "href": "web_apps/apps/bear_detector.html",
-    "title": "Bear Classifier",
-    "section": "",
-    "text": "This webapp was remade on Tuesday, 8 November 2022."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to the world of ForBo7",
-    "section": "",
-    "text": "I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries.\nRead more about me here.\nFeel free to contact me with one of the fancy buttons below!\n \n  \n   \n  \n    \n     Twitter\n  \n  \n    \n     GitHub\n  \n  \n    \n     Kaggle\n  \n  \n    \n     Artstation\n  \n  \n    \n     Email"
-  },
-  {
-    "objectID": "index.html#forblog",
-    "href": "index.html#forblog",
-    "title": "Welcome to the world of ForBo7",
-    "section": "ForBlog",
-    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\nJan 26, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\nOct 4, 2022\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#playground",
-    "href": "index.html#playground",
-    "title": "Welcome to the world of ForBo7",
-    "section": "Playground",
-    "text": "Playground\nClick here to play more in the playground.\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nApr 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "patch_notes.html",
-    "href": "patch_notes.html",
-    "title": "Site Patch Notes",
-    "section": "",
-    "text": "Detailed patchnotes are unavailable prior to site version 2.0.0.0."
-  },
-  {
-    "objectID": "patch_notes.html#version-2.0.3.1-28-january-2023",
-    "href": "patch_notes.html#version-2.0.3.1-28-january-2023",
-    "title": "Site Patch Notes",
-    "section": "Version 2.0.3.1 | 28 January 2023",
-    "text": "Version 2.0.3.1 | 28 January 2023\n\nChanged comment section theme."
-  },
-  {
-    "objectID": "patch_notes.html#version-2.0.3.0-27-november-2022",
-    "href": "patch_notes.html#version-2.0.3.0-27-november-2022",
-    "title": "Site Patch Notes",
-    "section": "Version 2.0.3.0 | 27 November 2022",
-    "text": "Version 2.0.3.0 | 27 November 2022\n\nFully implemented Twitter Cards"
-  },
-  {
-    "objectID": "patch_notes.html#version-2.0.2.0-26-november-2022",
-    "href": "patch_notes.html#version-2.0.2.0-26-november-2022",
-    "title": "Site Patch Notes",
-    "section": "Version 2.0.2.0 | 26 November 2022",
-    "text": "Version 2.0.2.0 | 26 November 2022\n\nFully implemented Open Graph\nAdded button for direct link to site’s source code.\nTweaked landing page description."
-  },
-  {
-    "objectID": "patch_notes.html#version-2.0.1.2-17-november-2022",
-    "href": "patch_notes.html#version-2.0.1.2-17-november-2022",
-    "title": "Site Patch Notes",
-    "section": "Version 2.0.1.2 | 17 November 2022",
-    "text": "Version 2.0.1.2 | 17 November 2022\n\nFixed broken license link."
-  },
-  {
-    "objectID": "patch_notes.html#version-2.0.1.1-17-november-2022",
-    "href": "patch_notes.html#version-2.0.1.1-17-november-2022",
-    "title": "Site Patch Notes",
-    "section": "Version 2.0.1.1 | 17 November 2022",
-    "text": "Version 2.0.1.1 | 17 November 2022\n\nFixed broken site feedback link.\nUpdated site version references."
-  },
-  {
-    "objectID": "patch_notes.html#version-2.0.1.0-17-november-2022",
-    "href": "patch_notes.html#version-2.0.1.0-17-november-2022",
-    "title": "Site Patch Notes",
-    "section": "Version 2.0.1.0 | 17 November 2022",
-    "text": "Version 2.0.1.0 | 17 November 2022\n\nFixed a bunch of broken links.\nFixed RSS buttons.\nShifted links on the landing page."
-  },
-  {
-    "objectID": "patch_notes.html#version-2.0.0.0-16-november-2022",
-    "href": "patch_notes.html#version-2.0.0.0-16-november-2022",
-    "title": "Site Patch Notes",
-    "section": "Version 2.0.0.0 | 16 November 2022",
-    "text": "Version 2.0.0.0 | 16 November 2022\n\nCreated, erm, site patch notes.\nSite is now entirely remade in Quarto.\nUI overhaul.\nForBlog is no longer the main landing page.\nApp playground has been added; a place where I can host my various creations.\n\nNew…\n\nfavicon.\nabout me page.\nlanding page.\nForBlog home page.\nForBlog post layout.\nglobal search bar.\n\nAdded…\n\na ForBlog only search bar.\nForBlog post filters.\nForBlog and App Playground subscriptions.\na form for site feedback.\ncopyright licences.\nnew fancy buttons."
-  },
-  {
-    "objectID": "patch_notes.html#version-1.0.0.0-15-may-2022",
-    "href": "patch_notes.html#version-1.0.0.0-15-may-2022",
-    "title": "Site Patch Notes",
-    "section": "Version 1.0.0.0 | 15 May 2022",
-    "text": "Version 1.0.0.0 | 15 May 2022\n\nInitial release.\nSite is built on fastpages, by fastai."
+    "text": "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\n26 January 2023\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\n23 December 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\n04 October 2022\n\n\nSalman Naqvi\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\n12 September 2022\n\n\nSalman Naqvi\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n\n04 June 2022\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide to Reading a Confusion Matrix\n\n\nAre you confused yet?\n\n\nA straight to the point guide about reading a confusion matrix.\n\n\n\n\n\n\n03 June 2022\n\n\nSalman Naqvi\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nMy first AI model\n\n\nCan you bare reading through this bear classifier?\n\n\nA rundown on my first attempt at creating model.\n\n\n\n\n\n\n28 May 2022\n\n\nSalman Naqvi\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nHow to Approach Creating AI Models\n\n\nPutting the Drive into the Train\n\n\nThere’s more to AI than just creating models.\n\n\n\n\n\n\n27 May 2022\n\n\nSalman Naqvi\n\n\n4 min\n\n\n\n\n\n\nNo matching items\n\n\n  \n\n\n\nLoading…\n\nClick here to unsubscribe from the ForBlog."
   },
   {
     "objectID": "testing_page.html",
@@ -621,26 +649,5 @@
     "title": "Site Feedback",
     "section": "",
     "text": "Loading…"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Salman Naqvi",
-    "section": "",
-    "text": "Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries."
-  },
-  {
-    "objectID": "about.html#lived-in",
-    "href": "about.html#lived-in",
-    "title": "Salman Naqvi",
-    "section": "Lived in",
-    "text": "Lived in\nUnited Kingdom (5 years) | Saudi Arabia (6 years) | Pakistan (9 years)"
-  },
-  {
-    "objectID": "about.html#been-to",
-    "href": "about.html#been-to",
-    "title": "Salman Naqvi",
-    "section": "Been to",
-    "text": "Been to\n\n\nEgypt* | England | France | Greece | Italy | Jordan* | Lebanon* | Malaysia | Pakistan | Qatar* | Saudi Arabia | Sri Lanka | Switzerland | Tanzania | Thailand | Turkey | UAE | Wales\n*Transit destinations; I count them still because I was technically within the country’s border."
   }
 ]
