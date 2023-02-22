@@ -1,0 +1,60 @@
+---
+title: Cross Entropy Loss
+description: "A technique for calculating the [loss](loss.qmd) for categorical [models](model.qmd) with multiple categories."
+---
+
+---
+
+Let's say that we have a [model](model.qmd) that tells us what sort of vehicle is in a picture. It outputs the following predictions.
+
+| Vehicle     | Actuals | Prediction |
+| ----------- | ------- | ---------- |
+| `car`       | 0       | $-4.89$    |
+| `bus`       | 1       | $2.60$     |
+| `truck`     | 0       | $0.59$     |
+| `motorbike` | 0       | $-2.07$    |
+| `bicycle`   | 0       | $-4.57$    |
+: {tbl-colwidths="[25,25,50]"}
+
+Actuals is a [one hot encoded](one_hot_encoding.qmd) column that tells us what is the correct vehicle in the picture.
+
+To convert these predictions into [loss](loss.qmd), first take the [softmax](softmax.qmd) of each prediction.
+
+| Vehicle     | Actuals | Prediction | Softmax              |
+| ----------- | ------- | ---------- | -------------------- |
+| `car`       | 0       | $-4.89$    | $4.88 \cdot 10^{-4}$ |
+| `bus`       | 1       | $2.60$     | $0.874$              |
+| `truck`     | 0       | $0.59$     | $0.117$              |
+| `motorbike` | 0       | $-2.07$    | $8.19 \cdot 10^{-3}$ |
+| `bicycle`   | 0       | $-4.57$    | $6.72 \cdot 10^{-4}$ |
+: {tbl-colwidths="[25,25,25,25]"}
+
+Next take the logarithm of each softmax value.
+
+| Vehicle     | Actuals | Prediction | Softmax              | $\ln(\text{Softmax})$ |
+| ----------- | ------- | ---------- | -------------------- | --------------------- |
+| `car`       | 0       | $-4.89$    | $4.88 \cdot 10^{-4}$ | $-7.63$               |
+| `bus`       | 1       | $2.60$     | $0.874$              | $-1.35$               |
+| `truck`     | 0       | $0.59$     | $0.117$              | $-2.14$               |
+| `motorbike` | 0       | $-2.07$    | $8.19 \cdot 10^{-3}$ | $-4.81$               |
+| `bicycle`   | 0       | $-4.57$    | $6.72 \cdot 10^{-4}$ | $-7.31$               |
+: {tbl-colwidths="[20,20,20,20,20]"}
+
+Multiply the actuals with the computed logarithms.
+
+| Vehicle     | Actuals | Prediction | Softmax              | $\ln(\text{Softmax})$ | $\text{Actuals} \cdot \ln(\text{Softmax})$ |
+| ----------- | ------- | ---------- | -------------------- | --------------------- | ------------------------------------------ |
+| `car`       | 0       | $-4.89$    | $4.88 \cdot 10^{-4}$ | $-7.63$               | $0$                                        |
+| `bus`       | 1       | $2.60$     | $0.874$              | $-1.35$               | $-1.35$                                    |
+| `truck`     | 0       | $0.59$     | $0.117$              | $-2.14$               | $0$                                        |
+| `motorbike` | 0       | $-2.07$    | $8.19 \cdot 10^{-3}$ | $-4.81$               | $0$                                        |
+| `bicycle`   | 0       | $-4.57$    | $6.72 \cdot 10^{-4}$ | $-7.31$               | $0$                                        |
+: {tbl-colwidths="[16,16,16,16,16,20]"}
+
+Sum the the results of the multiplications.
+
+$$
+0 + -1.35 + 0 + 0 + 0 = -1.35
+$$
+
+And there you have your loss!
