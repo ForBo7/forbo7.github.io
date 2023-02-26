@@ -15,7 +15,9 @@
       "/dictionary/terms/bagging.html",
       "/dictionary/terms/cross_entropy_loss.html",
       "/dictionary/terms/decision_tree.html",
+      "/dictionary/terms/decoder.html",
       "/dictionary/terms/document.html",
+      "/dictionary/terms/encoder.html",
       "/dictionary/terms/ensemble.html",
       "/dictionary/terms/error_rate.html",
       "/dictionary/terms/gradient.html",
@@ -39,6 +41,7 @@
       "/dictionary/terms/tabular_data.html",
       "/dictionary/terms/tabular_model.html",
       "/dictionary/terms/tokenization.html",
+      "/dictionary/terms/transformer.html",
       "/dictionary/terms/zero_shot.html",
       "/dictionary/terms/neuron.html"
     ]
