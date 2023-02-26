@@ -196,24 +196,24 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="../images/9_transformers_explained/thumbnail.png" class="img-fluid" alt="A picture of Transformers — the ones that transform from a robot into cars — posing as English alphabets."></p>
 <section id="at-a-high-view" class="level2">
 <h2 class="anchored" data-anchor-id="at-a-high-view">At a High View</h2>
-<p>Simply put, a transformer is a type of architecture used for NLP tasks that to fills-in-the-blanks or autocompletes.</p>
+<p>Simply put, a transformer is a type of architecture used for Natural Language Processing (NLP) tasks that either fills-in-the-blanks or autocompletes.</p>
 <p>Transformers consist of either an encoder, decoder, or both. Encoders and decoders contain attention layers.</p>
-<p>Language models need numbers to work. To give text a numerical representation, text is broken down into smaller pieces. To keep this explanation simple, these pieces are words.</p>
+<p>Language models need numbers to work. To give text a numerical representation, it is broken down into smaller pieces. To keep this explanation simple, these pieces are words.</p>
 </section>
 <section id="encoders" class="level2">
 <h2 class="anchored" data-anchor-id="encoders">Encoders</h2>
 <p>Encoder-only transformers are good for “understanding” text, such as classifying sentences by sentiment or figuring out what parts of a sentence refers, for example, to a person or location.</p>
-<p>When training encoders, words are given a numerical representation by the <strong>attention layers</strong> also considering adjacent words. The goal of training encoders is to predict words omitted from text (e.g., “I … hungry.”). This is how encoders can “understand” text.</p>
+<p>When training encoders, words are given a numerical representation by the attention layers considering adjacent words. The goal of training encoders is to predict words omitted from text (e.g., “I … hungry.”). This is how encoders can “understand” text.</p>
 </section>
 <section id="decoders" class="level2">
 <h2 class="anchored" data-anchor-id="decoders">Decoders</h2>
 <p>Decoder-only transformers are good for text generation. An example is the autocomplete feature on a smartphone’s keyboard.</p>
-<p>Decoders similary give text a numerical representation, except that the attention layers consider only the words to the left, if working with English for example. The goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). Each time a word is generated, that word is used in generating the proceeding words. This is how decoders can generate text.</p>
+<p>Decoders similary give text a numerical representation, except that the attention layers consider only the previous words. The goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). All generated words are used in conjunction to generate the next word.</p>
 </section>
 <section id="encoders-and-decoders" class="level2">
 <h2 class="anchored" data-anchor-id="encoders-and-decoders">Encoders and Decoders</h2>
 <p>Transformers that use both encoders and decoders are known as encoder-decoder models or sequence-to-sequence models. Such models are good for translation and summarization.</p>
-<p>Encoder-decoder models are trained by first letting the encoder give the input text a numerical representation. Next, this representation is input to the decoder which is used to generate text as described above. The encoder part of the model provides the “understanding”, while the decoder part of the model generates based off of this “understanding”. This is how such models are able to translate and summarize.</p>
+<p>Encoder-decoder models are trained by first letting the encoder give the input text a numerical representation. Next, this representation is input to the decoder which generates text as described above. The encoder part of the model provides the “understanding”, while the decoder part of the model generates based off of this “understanding”.</p>
 </section>
 <section id="closing-words" class="level2">
 <h2 class="anchored" data-anchor-id="closing-words">Closing Words</h2>
