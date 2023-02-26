@@ -1,6 +1,6 @@
 ---
 title: Transformers, Simply Explained
-subtitles: Autobots or Decepticons?
+subtitle: Autobots or Decepticons?
 description: All transformers really do is fill in the blanks and autocomplete.
 image: ../images/9_transformers_explained/thumbnail.png
 author: Salman Naqvi
