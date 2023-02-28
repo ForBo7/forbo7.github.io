@@ -184,7 +184,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Saturday, 25 February 2023</p>
+      <p class="date">Tuesday, 28 February 2023</p>
     </div>
   </div>
   
@@ -197,19 +197,23 @@ ul.task-list li input[type="checkbox"] {
 <p><img src="../images/9_transformers_explained/thumbnail.png" class="img-fluid" alt="A picture of Transformers — the ones that transform from a robot into cars — posing as English alphabets."></p>
 <section id="at-a-high-view" class="level2">
 <h2 class="anchored" data-anchor-id="at-a-high-view">At a High View</h2>
+<p>Transformers are all the rage right now. They’re what’s powering the current wave of chat bots. Here’s a high level view of how transformers work, so you know how these bots really work.</p>
 <p>Simply put, a transformer is a type of architecture used for Natural Language Processing (NLP) tasks that either fills-in-the-blanks or autocompletes.</p>
 <p>Transformers consist of either an encoder, decoder, or both. Encoders and decoders contain attention layers.</p>
-<p>Language models need numbers to work. To give text a numerical representation, it is broken down into smaller pieces. To keep this explanation simple, these pieces are words.</p>
+<p>Language models need numbers to work. Text is given a numerical representation after breaking it down into smaller pieces. To keep this explanation simple, these pieces are words.</p>
+<p>The numerical representation given to a word describes the word itself and its relation to the surrounding words.</p>
 </section>
 <section id="encoders" class="level2">
 <h2 class="anchored" data-anchor-id="encoders">Encoders</h2>
 <p>Encoder-only transformers are good for “understanding” text, such as classifying sentences by sentiment or figuring out what parts of a sentence refers, for example, to a person or location.</p>
-<p>When training encoders, words are given a numerical representation by the attention layers considering adjacent words. The goal of training encoders is to predict words omitted from text (e.g., “I … hungry.”). This is how encoders can “understand” text.</p>
+<p>When training encoders, words are given a numerical representation by the attention layers considering adjacent words. For example, let’s say we have the sentence, “I am really hungry.”. The attention layers consider the words ‘am’ and ‘hungry’ when giving the word ‘really’ a numerical representation.</p>
+<p>The goal of training encoders is to predict words omitted from text (e.g., “I … really hungry.”). This is how encoders can “understand” text.</p>
 </section>
 <section id="decoders" class="level2">
 <h2 class="anchored" data-anchor-id="decoders">Decoders</h2>
 <p>Decoder-only transformers are good for text generation. An example is the autocomplete feature on a smartphone’s keyboard.</p>
-<p>Decoders similary give text a numerical representation, except that the attention layers consider only the previous words. The goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). All generated words are used in conjunction to generate the next word.</p>
+<p>Decoders similary give text a numerical representation, except that the attention layers consider only the previous words. When giving ‘am’ a numerical representation from “I am hungry.”, the attention layers will only consider the word ‘I’. When giving ‘hungry’ a numerical representation, the attention layers will consider the words ‘I’ and ‘am’.</p>
+<p>The goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). All generated words are used in conjunction to generate the next word.</p>
 </section>
 <section id="encoders-and-decoders" class="level2">
 <h2 class="anchored" data-anchor-id="encoders-and-decoders">Encoders and Decoders</h2>

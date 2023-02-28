@@ -17,7 +17,54 @@
 <width>144</width>
 </image>
 <generator>quarto-1.2.335</generator>
-<lastBuildDate>Thu, 26 Jan 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Feb 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Transformers, Simply Explained</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/9_transformers_explained/thumbnail.png" class="img-fluid" alt="A picture of Transformers — the ones that transform from a robot into cars — posing as English alphabets."></p>
+<section id="at-a-high-view" class="level2">
+<h2 class="anchored" data-anchor-id="at-a-high-view">At a High View</h2>
+<p>Transformers are all the rage right now. They’re what’s powering the current wave of chat bots. Here’s a high level view of how transformers work, so you know how these bots really work.</p>
+<p>Simply put, a transformer is a type of architecture used for Natural Language Processing (NLP) tasks that either fills-in-the-blanks or autocompletes.</p>
+<p>Transformers consist of either an encoder, decoder, or both. Encoders and decoders contain attention layers.</p>
+<p>Language models need numbers to work. Text is given a numerical representation after breaking it down into smaller pieces. To keep this explanation simple, these pieces are words.</p>
+<p>The numerical representation given to a word describes the word itself and its relation to the surrounding words.</p>
+</section>
+<section id="encoders" class="level2">
+<h2 class="anchored" data-anchor-id="encoders">Encoders</h2>
+<p>Encoder-only transformers are good for “understanding” text, such as classifying sentences by sentiment or figuring out what parts of a sentence refers, for example, to a person or location.</p>
+<p>When training encoders, words are given a numerical representation by the attention layers considering adjacent words. For example, let’s say we have the sentence, “I am really hungry.”. The attention layers consider the words ‘am’ and ‘hungry’ when giving the word ‘really’ a numerical representation.</p>
+<p>The goal of training encoders is to predict words omitted from text (e.g., “I … really hungry.”). This is how encoders can “understand” text.</p>
+</section>
+<section id="decoders" class="level2">
+<h2 class="anchored" data-anchor-id="decoders">Decoders</h2>
+<p>Decoder-only transformers are good for text generation. An example is the autocomplete feature on a smartphone’s keyboard.</p>
+<p>Decoders similary give text a numerical representation, except that the attention layers consider only the previous words. When giving ‘am’ a numerical representation from “I am hungry.”, the attention layers will only consider the word ‘I’. When giving ‘hungry’ a numerical representation, the attention layers will consider the words ‘I’ and ‘am’.</p>
+<p>The goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). All generated words are used in conjunction to generate the next word.</p>
+</section>
+<section id="encoders-and-decoders" class="level2">
+<h2 class="anchored" data-anchor-id="encoders-and-decoders">Encoders and Decoders</h2>
+<p>Transformers that use both encoders and decoders are known as encoder-decoder models or sequence-to-sequence models. Such models are good for translation and summarization.</p>
+<p>Encoder-decoder models are trained by first letting the encoder give the input text a numerical representation. Next, this representation is input to the decoder which generates text as described above. The encoder part of the model provides the “understanding”, while the decoder part of the model generates based off of this “understanding”.</p>
+</section>
+<section id="closing-words" class="level2">
+<h2 class="anchored" data-anchor-id="closing-words">Closing Words</h2>
+<p>And there you have it! It’s as simple as that!</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</guid>
+  <pubDate>Tue, 28 Feb 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/9_transformers_explained/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch</title>
   <dc:creator>Salman Naqvi</dc:creator>
