@@ -51,7 +51,7 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 
 **Teaching** | Can teach in a logical manner that fosters understanding and the solidification of concepts.
 
-**English** | Can use the language to a very high degree of complexity. I have better proficiency than most native speakers.
+**English** | Can use the language to a very high degree of complexity.
 
 # Current Status
 
@@ -91,7 +91,7 @@ Education) | August 2015 — August 2019
 
 # Known Languages
 
-**English** | Better than most native speakers.
+**English** | Native level fluency.
 
 **Urdu** | Good speaking and listening competency. Fair writing and reading competency.
 
