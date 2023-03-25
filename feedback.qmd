@@ -9,5 +9,5 @@ twitter-card:
   description: You feed it back into the site.
 ---
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLjkhl1pPBhEArBEvXykpfxwaZ2IeCSBnfydLEhBUt9nesOw/viewform?embedded=true" width="600" height="680"
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLjkhl1pPBhEArBEvXykpfxwaZ2IeCSBnfydLEhBUt9nesOw/viewform?embedded=true" width="100%" height="700vh"
 frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
