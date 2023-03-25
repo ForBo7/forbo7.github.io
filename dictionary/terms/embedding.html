@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Splitting a document into its component words.">
+<meta name="description" content="A table, or matrix, where each row represents an item and each column describes the items in some way. The real magic of embeddings happen when you combine two embeddings together in some way to obtain further information.">
 
-<title>ForBo7 // Salman Naqvi - Tokenization</title>
+<title>ForBo7 // Salman Naqvi - Embedding</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -61,9 +61,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="ForBo7 // Salman Naqvi - Tokenization">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Embedding">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/cover.png">
 <meta property="og:site-name" content="ForBo7 // Salman Naqvi">
@@ -148,12 +149,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tokenization</h1>
+<h1 class="title">Embedding</h1>
 </div>
 
 <div>
   <div class="description">
-    Splitting a <a href="../../dictionary/terms/document.html">document</a> into its component words.
+    A table, or <a href="../../dictionary/terms/matrix.html">matrix</a>, where each row represents an item and each column describes the items in some way. The real magic of embeddings happen when you combine two embeddings together in some way to obtain further information.
   </div>
 </div>
 
@@ -169,22 +170,151 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 <hr>
+<p>An example of how two embeddings can be combined together is shown below.</p>
+<p>Let’s say we have an embedding of users, where each column represents a feature about movies. Users like certain features of movies, and a value between -1 and 1 represents this.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>User</th>
+<th>Long Duration</th>
+<th>Sci-Fi</th>
+<th>Fantasy</th>
+<th>Animated</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Billy</td>
+<td>-0.9</td>
+<td>0.3</td>
+<td>0.2</td>
+<td>0.8</td>
+<td>0.25</td>
+</tr>
+<tr class="even">
+<td>Bob</td>
+<td>-0.85</td>
+<td>1</td>
+<td>-0.25</td>
+<td>0</td>
+<td>0.75</td>
+</tr>
+<tr class="odd">
+<td>Joe</td>
+<td>0.9</td>
+<td>0.85</td>
+<td>0.95</td>
+<td>0.35</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Now let’s say we have an embedding of movies, where each column represents a feature about movies.</p>
+<table class="table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 21%">
+<col style="width: 9%">
+<col style="width: 11%">
+<col style="width: 13%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Movie</th>
+<th>Long Duration</th>
+<th>Sci-Fi</th>
+<th>Fantasy</th>
+<th>Animated</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>The Lord of the Rings</td>
+<td>1</td>
+<td>-1</td>
+<td>1</td>
+<td>-0.5</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Cars</td>
+<td>-0.9</td>
+<td>-1</td>
+<td>0.8</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Interstellar</td>
+<td>0.75</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.3</td>
+</tr>
+</tbody>
+</table>
+<p>We want to find out which movie would be the best for <em>Billy</em> to watch. To do so, let’s take the <a href="../../dictionary/terms/dot_product.html">dot product</a> between <em>Billy</em> and each of the respective movies.</p>
 <div class="callout-note callout callout-style-simple callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Note
+Billy &amp; The Lord of the Rings
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If a word is too long or very uncommon, the word itself may be split. Take the word “supercalifragilisticexpialidocious” as an example. It could be split into “super”, “cali”, “fragilistic”, “expi”, “ali”, and “docious”.</p>
+<p><span class="math display">\[
+(-0.9 \cdot 1) + (0.3 \cdot -1) + (0.2 \cdot 1) + (0.8 \cdot -0.5) + (0.25 \cdot 1) = -1.15
+\]</span></p>
 </div>
 </div>
 </div>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Billy &amp; Cars
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+(-0.9 \cdot -0.9) + (0.3 \cdot -1) + (0.2 \cdot 0.8) + (0.8 \cdot 1) + (0.25 \cdot 0) = 1.47
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout-note callout callout-style-simple callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Billy &amp; Interstellar
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+(-0.9 \cdot 0.75) + (0.3 \cdot 1) + (0.2 \cdot 0) + (0.8 \cdot 0) + (0.25 \cdot 0.3) = -0.3
+\]</span></p>
+</div>
+</div>
+</div>
+<p>We have obtained the values <span class="math inline">\(-1.15\)</span>, <span class="math inline">\(1.47\)</span>, and <span class="math inline">\(-0.3\)</span> for each of the movies respectively. From this, we can deduce that <em>Cars</em> ($1.47) is probably the best movie for Billy to watch, based on his taste.</p>
+<p>After similarly calculating the dot product between Joe and each of the movies, we get the following respective values: <span class="math inline">\(1.82\)</span>, <span class="math inline">\(-0.55\)</span>, <span class="math inline">\(1.82\)</span>. This tells us that both <em>The Lord of the Rings</em> and <em>Interstellar</em> are equally the best movies for Joe to watch.</p>
+<p>As for Bob, it would be <em>Interstellar</em>.</p>
 
 
 
