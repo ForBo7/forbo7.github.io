@@ -1,0 +1,24 @@
+---
+title: Vector
+description: "A table of values that has either a single row or a single column. See also [matrix](matrix.qmd)."
+---
+
+---
+
+The order of a vector is row by column.
+
+Below is a $1 \times 3$ column vector.
+$$
+\begin{bmatrix}
+1 \\
+2 \\
+3 \\
+\end{bmatrix}
+$$
+
+Below is a $3 \times 1$ row vector.
+$$
+\begin{bmatrix}
+1 & 2 & 3
+\end{bmatrix}
+$$

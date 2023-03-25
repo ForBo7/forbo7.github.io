@@ -1,0 +1,25 @@
+---
+title: Matrix
+description: "A table of values. See also [vector](vector.qmd)"
+---
+
+---
+
+The order of a matrix is row by column.
+
+Below is $3 \times 2$ matrix.
+$$
+\begin{bmatrix}
+1 & 2 \\
+3 & 4 \\
+5 & 6 \\
+\end{bmatrix}
+$$
+
+Below is $2 \times 3$ matrix.
+$$
+\begin{bmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+$$
+\end{bmatrix}

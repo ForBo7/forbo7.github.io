@@ -1,0 +1,4 @@
+---
+title: Weight Decay
+description: "A technique for making sure your weights do not grow too large, and in turn overfit the data."
+---

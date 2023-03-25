@@ -1,0 +1,53 @@
+---
+title: Embedding
+description: "A table, or [matrix](matrix.qmd), where each row represents an item and each column describes the items in some way. The real magic of embeddings happen when you combine two embeddings together in some way to obtain further information."
+---
+
+---
+
+An example of how two embeddings can be combined together is shown below.
+
+Let's say we have an embedding of users, where each column represents a feature about movies. Users like certain features of movies, and a value between -1 and 1 represents this.
+
+| User  | Long Duration | Sci-Fi | Fantasy | Animated | Action |
+| ----- | ------------- | ------ | ------- | -------- | ------ |
+| Billy | -0.9          | 0.3    | 0.2     | 0.8      | 0.25   |
+| Bob   | -0.85         | 1      | -0.25   | 0        | 0.75   |
+| Joe   | 0.9           | 0.85   | 0.95    | 0.35     | 1      |
+
+Now let's say we have an embedding of movies, where each column represents a feature about movies.
+
+| Movie                 | Long Duration | Sci-Fi | Fantasy | Animated | Action |
+| --------------------- | ------------- | ------ | ------- | -------- | ------ |
+| The Lord of the Rings | 1             | -1     | 1       | -0.5     | 1      |
+| Cars                  | -0.9          | -1     | 0.8     | 1        | 0      |  
+| Interstellar          | 0.75          | 1      | 0       | 0        | 0.3    |
+
+We want to find out which movie would be the best for _Billy_ to watch. To do so, let's take the [dot product](dot_product.qmd) between _Billy_ and each of the respective movies.
+
+:::{.callout-note collapse="true" appearance="simple"}
+# Billy & The Lord of the Rings
+$$
+(-0.9 \cdot 1) + (0.3 \cdot -1) + (0.2 \cdot 1) + (0.8 \cdot -0.5) + (0.25 \cdot 1) = -1.15
+$$
+:::
+
+:::{.callout-note collapse="true" appearance="simple"}
+# Billy & Cars
+$$
+(-0.9 \cdot -0.9) + (0.3 \cdot -1) + (0.2 \cdot 0.8) + (0.8 \cdot 1) + (0.25 \cdot 0) = 1.47
+$$
+:::
+
+:::{.callout-note collapse="true" appearance="simple"}
+# Billy & Interstellar
+$$
+(-0.9 \cdot 0.75) + (0.3 \cdot 1) + (0.2 \cdot 0) + (0.8 \cdot 0) + (0.25 \cdot 0.3) = -0.3
+$$
+:::
+
+We have obtained the values $-1.15$, $1.47$, and $-0.3$ for each of the movies respectively. From this, we can deduce that _Cars_ ($1.47) is probably the best movie for Billy to watch, based on his taste.
+
+After similarly calculating the dot product between Joe and each of the movies, we get the following respective values: $1.82$, $-0.55$, $1.82$. This tells us that both _The Lord of the Rings_ and _Interstellar_ are equally the best movies for Joe to watch.
+
+As for Bob, it would be _Interstellar_.
