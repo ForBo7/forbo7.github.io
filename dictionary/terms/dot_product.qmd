@@ -1,6 +1,6 @@
 ---
 title: Dot Product
-description: "The operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as [linear combination](linear_combination.qmd)."
+description: "The operation given to the process of taking the product of each corresponding element in a [vector](vector.qmd), and summing all products. Also known as [linear combination](linear_combination.qmd)."
 ---
 
 ---
