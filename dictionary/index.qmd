@@ -25,7 +25,7 @@ I often find explanations online to be more complicated than they need to be. He
 
 Click terms to view expanded definitions.
 
-Do let me know of any corrections and improvements!
+Do let me know of any corrections and improvements, and of any terms you would like added!
 
 :::{#terms}
 :::
