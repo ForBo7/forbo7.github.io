@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to the world of ForBo7",
+    "section": "",
+    "text": "I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries.\nRead more about me here.\nFeel free to contact me with one of the fancy buttons below!\n \n  \n   \n  \n    \n     Twitter\n  \n  \n    \n     GitHub\n  \n  \n    \n     Kaggle\n  \n  \n    \n     Artstation\n  \n  \n    \n     Email"
+  },
+  {
+    "objectID": "index.html#forblog",
+    "href": "index.html#forblog",
+    "title": "Welcome to the world of ForBo7",
+    "section": "ForBlog",
+    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n  \n\n\n\n\nTransformers, Simply Explained\n\n\nAutobots or Decepticons?\n\n\nAll transformers really do is fill in the blanks and autocomplete.\n\n\n\n\n\n\nFeb 28, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\nJan 26, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#playground",
+    "href": "index.html#playground",
+    "title": "Welcome to the world of ForBo7",
+    "section": "Playground",
+    "text": "Playground\nClick here to play more in the playground.\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nApr 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "unsubscribe.html",
+    "href": "unsubscribe.html",
+    "title": "Unsubscribe from ForBlog and App Playground Notifications",
+    "section": "",
+    "text": "Loading…"
+  },
+  {
     "objectID": "forblog/posts/5_detecting_floods_for_disaster_relief.html",
     "href": "forblog/posts/5_detecting_floods_for_disaster_relief.html",
     "title": "Detecting Floods for Disaster Relief",
@@ -56,102 +84,39 @@
     "text": "Takeaways\nThis model was trained on only 270 images and minimal code. Accessbility and abstraction to the field of machine learning has come a long, long way. Given the right data and the right pretrained model, a powerful model can be produced in less than an hour, if not half.\nThis is important: in disasters such as floods, the time taken to produce the logistics required for relief can be drastically reduced. It is also important because the barrier of entry to this field is dramatically lowered; more people can create powerful models, in turn producing better solutions.\nHowever, there could be some improvements and additions made to the model:\n\nInclude a third class to the model. Images that are not flooded, but show signs of having been flooded would be assigned this class. The dataset used for this model includes such images.\nTrain the model on images that include a variety of geographic locations and dwellings. The current dataset only contains images taken in a lush, green area with plenty of trees; infrastructure looks a certain way; the color of the floodwater is also dependent on the surroundings. All this makes the model good a prediciting whether an image is flooded for images with certain features.\n\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
   },
   {
-    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html",
-    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html",
-    "title": "How to Approach Creating AI Models",
-    "section": "",
-    "text": "This article was rewritten on Monday, 31 October 2022."
+    "objectID": "forblog/posts/9_transformers_explained.html#at-a-high-view",
+    "href": "forblog/posts/9_transformers_explained.html#at-a-high-view",
+    "title": "Transformers, Simply Explained",
+    "section": "At a High View",
+    "text": "At a High View\nTransformers are all the rage right now. They’re what’s powering the current wave of chat bots. Here’s a high level view of how transformers work, so you know how these bots really work.\nSimply put, a transformer is a type of architecture used for Natural Language Processing (NLP) tasks that either fills-in-the-blanks or autocompletes.\nTransformers consist of either an encoder, decoder, or both. Encoders and decoders contain attention layers.\nLanguage models need numbers to work. Text is given a numerical representation after breaking it down into smaller pieces. To keep this explanation simple, these pieces are words.\nThe numerical representation given to a word describes the word itself and its relation to the surrounding words."
   },
   {
-    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#introduction",
-    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#introduction",
-    "title": "How to Approach Creating AI Models",
-    "section": "Introduction",
-    "text": "Introduction\nHow you approach making models is crucial. The way AI methods are used in today’s landscape is very different. AI methods are created to solve small, atomic problems. And we’ve got most of the methods to handle these small tasks hammered down. Therefore, applied AI is not about creating models; it’s only a small part of it. It’s 80% problem solving and 20% implementing (I would not be surprised if it actually followed the 80-20 rule1).1 The 80/20 Rule, also known as the Pareto Principle\nThink of AI methods as a tool; think of it as a pencil. You can use pencils to draw, take notes, poke holes, and much more. There are also dozens of pencils out there. But what point is there in using any of those pencils if you don’t even know how to properly use a pencil in the first place? The art of creating pencils has already been perfected too.\nOne highly successful approach is the Drivetrain Approach, created by Jeremy Howard — who’s widely known for his fastai course and library —, Margit Zwemer, and Mike Loukides.\nThe goal of the Drivetrain Approach is to not just use data to generate more data — data that is in the form of predictions. But rather to use data to also generate actionable outcomes.\nThe official blogpost goes into much more depth here.\nIn this post, I’ll be providing a short overview of my understanding of this approach by applying it to the Elements of AI course’s final project (this online course was created by the University of Helsinki and Reaktor)."
+    "objectID": "forblog/posts/9_transformers_explained.html#encoders",
+    "href": "forblog/posts/9_transformers_explained.html#encoders",
+    "title": "Transformers, Simply Explained",
+    "section": "Encoders",
+    "text": "Encoders\nEncoder-only transformers are good for “understanding” text, such as classifying sentences by sentiment or figuring out what parts of a sentence refers, for example, to a person or location.\nWhen training encoders, words are given a numerical representation by the attention layers considering adjacent words. For example, let’s say we have the sentence, “I am really hungry.”. The attention layers consider the words ‘am’ and ‘hungry’ when giving the word ‘really’ a numerical representation.\nThe goal of training encoders is to predict words omitted from text (e.g., “I … really hungry.”). This is how encoders can “understand” text."
   },
   {
-    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#overview-of-the-drivetrain-approach",
-    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#overview-of-the-drivetrain-approach",
-    "title": "How to Approach Creating AI Models",
-    "section": "Overview of the Drivetrain Approach",
-    "text": "Overview of the Drivetrain Approach\nThere are four main steps to this approach:\n\nDefine the objective\nConsider your possible actions\nConsider your data\nCreate the models\n\n\n\n\nImage Source\n\n\n\nDefine the objective\nWrite out what you are really trying to achieve. What is your goal? Writing it out puts it in a tangible manner.\n\n\nConsider your actions\nThink about what actions you can take to achieve your objective.\nAlso think about what would happen if you did those actions.\nWhat would happen if I did x? Would y really be a good idea? What if z worked out too well? Will x lead to y? What would happen if x turned out poorly?\n\n\nConsider your data\nThink about the data you already have and how it could be used.\nThink about any further data that is needed and how it could be collected.\n\n\nCreate the models\nCreate models. But create models that produce actions. Actions that produce the best results for your objective."
+    "objectID": "forblog/posts/9_transformers_explained.html#decoders",
+    "href": "forblog/posts/9_transformers_explained.html#decoders",
+    "title": "Transformers, Simply Explained",
+    "section": "Decoders",
+    "text": "Decoders\nDecoder-only transformers are good for text generation. An example is the autocomplete feature on a smartphone’s keyboard.\nDecoders similary give text a numerical representation, except that the attention layers consider only the previous words. When giving ‘am’ a numerical representation from “I am hungry.”, the attention layers will only consider the word ‘I’. When giving ‘hungry’ a numerical representation, the attention layers will consider the words ‘I’ and ‘am’.\nThe goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). All generated words are used in conjunction to generate the next word."
   },
   {
-    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#endangered-language-chatbot",
-    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#endangered-language-chatbot",
-    "title": "How to Approach Creating AI Models",
-    "section": "Endangered Language Chatbot",
-    "text": "Endangered Language Chatbot\nThe final project of the Elements of AI course asked me to come up with my own AI method that would solve a problem, and how it would do so.\nThe problem I tackled was the endangerment of languages. The solution I came up with was to create a chatbot that could converse in these endangered languages. I created an overview of how this could be done.\nThe overview can be read here.\nLet’s tackle this problem through the Drivetrain Approach.\n\nDefine the objective\nThe objective is to preserve languages that are in danger of going extinct. Through preserving languages, histories and cultures can be preserved.\n\n\nConsider your actions\nOne way this could be done is to create a chatbot that could converse in endangered languages. However, this would be a monumental task considering the amount of data needed to achieve this.\nAnother action that could be taken is to create an information retrieval (IR) system of sorts. A corpus of written text of the language could be provided, from which insights about the language’s history, culture, and way of conversing could be gained. In turn the language is preserved.\nThe latter action may be easier to achieve.\n\n\nConsider your data\nThe obvious source of data would be a corpora of text.\nHowever, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.\nEven if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.\nIn short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.\n\n\n\nKuş dili, a whistled language spoken in Turkey. How would such a language be preserved? Image Source\n\n\n\n\nCreate the model\nEither a chatbot needs to be created that speaks as accurately as a native speaker, or an IR system needs to be created that gives meaningful, correct insights into a language and its associated culture.\nThis step may either be easy or hard, depending on the language. Most NLP or IR systems have been built on a few, select languages. Perhaps this step may be easy for those languages that are similar to languages on which NLP or IR systems have already been built on. It will most likely be harder for those languages which are not."
+    "objectID": "forblog/posts/9_transformers_explained.html#encoders-and-decoders",
+    "href": "forblog/posts/9_transformers_explained.html#encoders-and-decoders",
+    "title": "Transformers, Simply Explained",
+    "section": "Encoders and Decoders",
+    "text": "Encoders and Decoders\nTransformers that use both encoders and decoders are known as encoder-decoder models or sequence-to-sequence models. Such models are good for translation and summarization.\nEncoder-decoder models are trained by first letting the encoder give the input text a numerical representation. Next, this representation is input to the decoder which generates text as described above. The encoder part of the model provides the “understanding”, while the decoder part of the model generates based off of this “understanding”."
   },
   {
-    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#conclusion",
-    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#conclusion",
-    "title": "How to Approach Creating AI Models",
-    "section": "Conclusion",
-    "text": "Conclusion\nThis concludes my understanding of the Drivetrain Approach, through an example.\nApproaches are crucial: you can have state-of-the-art tools, but they are useless if not correctly applied. The approach you take can either make it or break it. Putting it into a concrete, organized, tangible manner goes a long way.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "",
-    "text": "This blog post was updated on Saturday, 28 January 2023.\nIf you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.\nIt’s a bit annoying and a little tedious, but here we go."
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#requirements",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#requirements",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "1 Requirements",
-    "text": "1 Requirements\n\nHave an M-Series chip\nHave at least PyTorch 1.12\nHave at least macOS Monterey 12.3"
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#installing-pytorch",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#installing-pytorch",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "2 Installing PyTorch",
-    "text": "2 Installing PyTorch\nInstall PyTorch as you usually would. Just make sure it’s PyTorch 1.12.\n# Installing with Pip.\n$ pip3 install torch torchvision torchaudio\n\n# Installing using Conda.\n$ conda install pytorch torchvision torchaudio -c pytorch\nBy using these commands, the latest version of the library is installed so there is no need to specify the version number.\nHowever, if you have an existing installation, you can run the following Pip command instead.\n$ pip3 install --upgrade torch torchvision torchaudio"
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#import-pytorch",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#import-pytorch",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "3 Import PyTorch",
-    "text": "3 Import PyTorch\n\nimport torch"
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "4 Check Requirements are Met",
-    "text": "4 Check Requirements are Met\nBelow is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.\n\nif not torch.backends.mps.is_available():\n    if not torch.backends.mps.is_built():\n        print(\"MPS not available because the current PyTorch install was not built with MPS enabled.\")\n    else:\n        print(\"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine.\")\n\nIf neither of the two above messages print, you’re good to go!"
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "5 The Annoying Part: Enabling the GPU",
-    "text": "5 The Annoying Part: Enabling the GPU\nAs far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.\nThere are different ways you can do this.\nUse a string.\n\nt = torch.tensor([1, 2, 3], device='mps')\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nStore as a variable.\n\ndevice='mps'\nt = torch.tensor([1, 2, 3], device=device)\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nConvert existing objects.\n\nt = torch.tensor([1, 2, 3])\nt.to(device)\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nNote that converting existing objects creates a copy and does not modify the original.\n\nt\n\n\n\n\ntensor([1, 2, 3])\n\n\n\nThough the above operations have been performed on tensors, they can also be performed on models."
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#points-to-note",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#points-to-note",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "6 Points to Note",
-    "text": "6 Points to Note\n\nGPU enabled means operations are done on the GPU.\nA GPU enabled tensor can only perform operations with another GPU enabled tensor.\nAs of writing this, GPU support is still in its early stages. So certain features are unsupported and further optimizations await."
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
-    "section": "Relevant Links",
-    "text": "Relevant Links\nRelevant links:\n\nInstalling PyTorch: https://pytorch.org/get-started/locally/\nDocs on using GPU: https://pytorch.org/docs/stable/notes/mps.html\nPerformance gains (note that nightly builds are no longer needed): https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/"
-  },
-  {
-    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#closing-words",
-    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#closing-words",
-    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "objectID": "forblog/posts/9_transformers_explained.html#closing-words",
+    "href": "forblog/posts/9_transformers_explained.html#closing-words",
+    "title": "Transformers, Simply Explained",
     "section": "Closing Words",
-    "text": "Closing Words\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+    "text": "Closing Words\nAnd there you have it! It’s as simple as that!\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
   },
   {
     "objectID": "forblog/posts/2_bear_classifier_model.html",
@@ -245,81 +210,74 @@
     "text": "Conclusion\nWell then, that wraps up my first deep learning model! I have to say, it is much easier than I thought it would be to implement a model. You do not need to go into the nitty gritty details of artificial intelligence. A high level understanding can suffice in the beginning. It is like playing a sport: you do not need to understand the physics to be able to play it.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
   },
   {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "",
+    "text": "This blog post was updated on Saturday, 28 January 2023.\nIf you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.\nIt’s a bit annoying and a little tedious, but here we go."
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#requirements",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#requirements",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "1 Requirements",
+    "text": "1 Requirements\n\nHave an M-Series chip\nHave at least PyTorch 1.12\nHave at least macOS Monterey 12.3"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#installing-pytorch",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#installing-pytorch",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "2 Installing PyTorch",
+    "text": "2 Installing PyTorch\nInstall PyTorch as you usually would. Just make sure it’s PyTorch 1.12.\n# Installing with Pip.\n$ pip3 install torch torchvision torchaudio\n\n# Installing using Conda.\n$ conda install pytorch torchvision torchaudio -c pytorch\nBy using these commands, the latest version of the library is installed so there is no need to specify the version number.\nHowever, if you have an existing installation, you can run the following Pip command instead.\n$ pip3 install --upgrade torch torchvision torchaudio"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#import-pytorch",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#import-pytorch",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "3 Import PyTorch",
+    "text": "3 Import PyTorch\n\nimport torch"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#check-requirements-are-met",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "4 Check Requirements are Met",
+    "text": "4 Check Requirements are Met\nBelow is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.\n\nif not torch.backends.mps.is_available():\n    if not torch.backends.mps.is_built():\n        print(\"MPS not available because the current PyTorch install was not built with MPS enabled.\")\n    else:\n        print(\"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine.\")\n\nIf neither of the two above messages print, you’re good to go!"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#the-annoying-part-enabling-the-gpu",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "5 The Annoying Part: Enabling the GPU",
+    "text": "5 The Annoying Part: Enabling the GPU\nAs far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.\nThere are different ways you can do this.\nUse a string.\n\nt = torch.tensor([1, 2, 3], device='mps')\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nStore as a variable.\n\ndevice='mps'\nt = torch.tensor([1, 2, 3], device=device)\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nConvert existing objects.\n\nt = torch.tensor([1, 2, 3])\nt.to(device)\n\n\n\n\ntensor([1, 2, 3], device='mps:0')\n\n\n\nNote that converting existing objects creates a copy and does not modify the original.\n\nt\n\n\n\n\ntensor([1, 2, 3])\n\n\n\nThough the above operations have been performed on tensors, they can also be performed on models."
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#points-to-note",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#points-to-note",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "6 Points to Note",
+    "text": "6 Points to Note\n\nGPU enabled means operations are done on the GPU.\nA GPU enabled tensor can only perform operations with another GPU enabled tensor.\nAs of writing this, GPU support is still in its early stages. So certain features are unsupported and further optimizations await."
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#relevant-links",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "Relevant Links",
+    "text": "Relevant Links\nRelevant links:\n\nInstalling PyTorch: https://pytorch.org/get-started/locally/\nDocs on using GPU: https://pytorch.org/docs/stable/notes/mps.html\nPerformance gains (note that nightly builds are no longer needed): https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/"
+  },
+  {
+    "objectID": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#closing-words",
+    "href": "forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html#closing-words",
+    "title": "A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch",
+    "section": "Closing Words",
+    "text": "Closing Words\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+  },
+  {
     "objectID": "forblog/posts/4_data_quality_is_important.html",
     "href": "forblog/posts/4_data_quality_is_important.html",
     "title": "Data Quality is Important | Car Classifier",
     "section": "",
     "text": "This article was updated on Thursday, 10 November 2022.\n\nI recently created a car classifier that classified cars into their respective brands.\nDespite having almost 5000 images in my training set, I ended up trying out over a hundred layers in my model, and twenty epochs. Even then, I had an error rate of 17.4%.\nThe culprit? My dataset.\nI scraped 5000 images of cars (500 for each company) from DuckDuckGo. Naturally, as expected, the data quality is not so good.\nWhy? Below are some potential reasons:\n\nNoncar images present in dataset\nCars of incorrect company present in dataset\nF1 cars present in dataset\nA large variety of cars from different time periods present in dataset\nDifferent companys’ cars look similar\nModded cars present in dataset\nConcept cars present in dataset\nMultiple cars present in a single image\nCertain angles of cars appear more than others\nCars appear in certain backgrounds more than others\nThe search term {car_brand} car could be skewing results\n\nI could have absolutely achieved better results with fewer layers and fewer epochs if I trained the model on better quality data — or manually combed through the 5000 images 💀. However, I did use fastai’s GUI for data cleaning. This GUI sorts images by their loss which helps to determine if certain images should be relabeled or deleted.\nBelow is the confusion matrix for this model.\n\nIt can be seen that this model “confuses” between quite a few different brands: Ford and Chevrolet, Chevrolet and Ford, Jaguar and Aston Martin, Renault and Ford.\nBut why is data quality important? Because without good data, the model will not be able to “see” things the way they actually are, and in turn end up making worse predictions and not generalize to other data.\nLet’s say you did not know how, say, a toaster looked like. So I taught you by showing you pictures of a kettle. Then to test you, I showed you a set of pictures depicting various kitchen appliances and told you to find the toaster. You would not be able to.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nExtending upon this example, say I showed you toasters only from the last two years and from two brands only. You would not be able to identify toasters older than two years, and toasters from other brands to much success.\nObviously, humans are smarter and can infer. AI methods can only infer to a certain degree, mainly based on what is in their dataset. This talk does start to become more philosophical.\nThe point of this post is to emphasize the importance of data quality and different aspects to consider as to why data quality may not be good. You can have the best architecture in the world, but it is useless if you do not have good data.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
-  },
-  {
-    "objectID": "forblog/posts/9_transformers_explained.html#at-a-high-view",
-    "href": "forblog/posts/9_transformers_explained.html#at-a-high-view",
-    "title": "Transformers, Simply Explained",
-    "section": "At a High View",
-    "text": "At a High View\nTransformers are all the rage right now. They’re what’s powering the current wave of chat bots. Here’s a high level view of how transformers work, so you know how these bots really work.\nSimply put, a transformer is a type of architecture used for Natural Language Processing (NLP) tasks that either fills-in-the-blanks or autocompletes.\nTransformers consist of either an encoder, decoder, or both. Encoders and decoders contain attention layers.\nLanguage models need numbers to work. Text is given a numerical representation after breaking it down into smaller pieces. To keep this explanation simple, these pieces are words.\nThe numerical representation given to a word describes the word itself and its relation to the surrounding words."
-  },
-  {
-    "objectID": "forblog/posts/9_transformers_explained.html#encoders",
-    "href": "forblog/posts/9_transformers_explained.html#encoders",
-    "title": "Transformers, Simply Explained",
-    "section": "Encoders",
-    "text": "Encoders\nEncoder-only transformers are good for “understanding” text, such as classifying sentences by sentiment or figuring out what parts of a sentence refers, for example, to a person or location.\nWhen training encoders, words are given a numerical representation by the attention layers considering adjacent words. For example, let’s say we have the sentence, “I am really hungry.”. The attention layers consider the words ‘am’ and ‘hungry’ when giving the word ‘really’ a numerical representation.\nThe goal of training encoders is to predict words omitted from text (e.g., “I … really hungry.”). This is how encoders can “understand” text."
-  },
-  {
-    "objectID": "forblog/posts/9_transformers_explained.html#decoders",
-    "href": "forblog/posts/9_transformers_explained.html#decoders",
-    "title": "Transformers, Simply Explained",
-    "section": "Decoders",
-    "text": "Decoders\nDecoder-only transformers are good for text generation. An example is the autocomplete feature on a smartphone’s keyboard.\nDecoders similary give text a numerical representation, except that the attention layers consider only the previous words. When giving ‘am’ a numerical representation from “I am hungry.”, the attention layers will only consider the word ‘I’. When giving ‘hungry’ a numerical representation, the attention layers will consider the words ‘I’ and ‘am’.\nThe goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). All generated words are used in conjunction to generate the next word."
-  },
-  {
-    "objectID": "forblog/posts/9_transformers_explained.html#encoders-and-decoders",
-    "href": "forblog/posts/9_transformers_explained.html#encoders-and-decoders",
-    "title": "Transformers, Simply Explained",
-    "section": "Encoders and Decoders",
-    "text": "Encoders and Decoders\nTransformers that use both encoders and decoders are known as encoder-decoder models or sequence-to-sequence models. Such models are good for translation and summarization.\nEncoder-decoder models are trained by first letting the encoder give the input text a numerical representation. Next, this representation is input to the decoder which generates text as described above. The encoder part of the model provides the “understanding”, while the decoder part of the model generates based off of this “understanding”."
-  },
-  {
-    "objectID": "forblog/posts/9_transformers_explained.html#closing-words",
-    "href": "forblog/posts/9_transformers_explained.html#closing-words",
-    "title": "Transformers, Simply Explained",
-    "section": "Closing Words",
-    "text": "Closing Words\nAnd there you have it! It’s as simple as that!\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
-  },
-  {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html",
-    "href": "forblog/posts/3_the_confusion_matrix.html",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "",
-    "text": "This article was updated on Thursday, 10 November 2022.\nConfusion matrices help model designers view what mistakes a model has made.\nIn this post, I’ll be telling you how to easily read such matrices.\nJump to Section 2 for an ultra concise rundown.\nReady? Here we go."
-  },
-  {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
-    "href": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Case 1: Introduction",
-    "text": "Case 1: Introduction\n\nIgnore the “Actual” and “Predicted” labels for now.\nLet’s compare grizzly bears to black bears.\nAll comparisons begin at the bottom, with the columns.\nFirst, highlight the grizzly bear column.\n\nNext, highlight the black bear row.\n\nNow find the common entry in the highlighted column and row.\n\nThis common entry is our required information.\nAll entries in the diagonal going from the top left to the bottom right (blue) are correct classifications. All other entries are incorrect classifications.\nOur common entry does not lie in the main diagonal. Therefore, we are looking at incorrect classifications.\nWe have compared grizzly bears to black bears. Therefore, from this deduction, three grizzly bears have been incorrectly classified as black bears.\n\n\n\n\n\n\nNote\n\n\n\nThere is a difference between comparing grizzly bears to black bears and black bears to grizzly bears.\nComparing grizzly bears to black bears means, “How many grizzly bears were misclassified as black bears?”\nComparing black bears to grizzly bears means, “How many black bears were misclassified as grizzly bears?”"
-  },
-  {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
-    "href": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Case 2: Ultra Concise",
-    "text": "Case 2: Ultra Concise\nLet’s compare black bears to grizzly bears.\nHighlight the black bear column.\n\nHighlight the grizzly bear row.\n\nHighlight the common entry.\n\nZero black bears were misclassified as grizzly bears."
-  },
-  {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
-    "href": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Case 3: Correct Classifications",
-    "text": "Case 3: Correct Classifications\nLet’s see how many teddy bears were correctly classified. We are essentially comparing teddy bears to teddy bears.\nHighlight the teddy bear column.\n\nHighlight the teddy bear row.\n\nHighlight the common entry.\n\nFifty three teddy bears were correctly classified as teddy bears."
-  },
-  {
-    "objectID": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
-    "href": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
-    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
-    "section": "Exercise: Do It Yourself",
-    "text": "Exercise: Do It Yourself\nBelow is a confusion matrix of a car classifier that classifies cars into their brand.\n\nYou learn by doing!\n\nHow many Lamborghinis were correctly classified?\nHow many Jaguars were incorrectly classified?\nHow many Chevrolets were misclassified as Fords?\nHow many Fords were misclassified as Chevrolets?\nWhich two car brands did the model have the most trouble differentiating between?\n\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
   },
   {
     "objectID": "forblog/posts/6_ai_in_a_nutshell.html",
@@ -357,6 +315,76 @@
     "text": "Acknowledgements\nThis article was inspired by the How does a neural net really work Kaggle Notebook by Jeremy Howard, and lesson 3 of Practical Deep Learning for Coders."
   },
   {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html",
+    "href": "forblog/posts/3_the_confusion_matrix.html",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "",
+    "text": "This article was updated on Thursday, 10 November 2022.\nConfusion matrices help model designers view what mistakes a model has made.\nIn this post, I’ll be telling you how to easily read such matrices.\nJump to Section 2 for an ultra concise rundown.\nReady? Here we go."
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
+    "href": "forblog/posts/3_the_confusion_matrix.html#case-1-introduction",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Case 1: Introduction",
+    "text": "Case 1: Introduction\n\nIgnore the “Actual” and “Predicted” labels for now.\nLet’s compare grizzly bears to black bears.\nAll comparisons begin at the bottom, with the columns.\nFirst, highlight the grizzly bear column.\n\nNext, highlight the black bear row.\n\nNow find the common entry in the highlighted column and row.\n\nThis common entry is our required information.\nAll entries in the diagonal going from the top left to the bottom right (blue) are correct classifications. All other entries are incorrect classifications.\nOur common entry does not lie in the main diagonal. Therefore, we are looking at incorrect classifications.\nWe have compared grizzly bears to black bears. Therefore, from this deduction, three grizzly bears have been incorrectly classified as black bears.\n\n\n\n\n\n\nNote\n\n\n\nThere is a difference between comparing grizzly bears to black bears and black bears to grizzly bears.\nComparing grizzly bears to black bears means, “How many grizzly bears were misclassified as black bears?”\nComparing black bears to grizzly bears means, “How many black bears were misclassified as grizzly bears?”"
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
+    "href": "forblog/posts/3_the_confusion_matrix.html#sec-case2",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Case 2: Ultra Concise",
+    "text": "Case 2: Ultra Concise\nLet’s compare black bears to grizzly bears.\nHighlight the black bear column.\n\nHighlight the grizzly bear row.\n\nHighlight the common entry.\n\nZero black bears were misclassified as grizzly bears."
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
+    "href": "forblog/posts/3_the_confusion_matrix.html#case-3-correct-classifications",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Case 3: Correct Classifications",
+    "text": "Case 3: Correct Classifications\nLet’s see how many teddy bears were correctly classified. We are essentially comparing teddy bears to teddy bears.\nHighlight the teddy bear column.\n\nHighlight the teddy bear row.\n\nHighlight the common entry.\n\nFifty three teddy bears were correctly classified as teddy bears."
+  },
+  {
+    "objectID": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
+    "href": "forblog/posts/3_the_confusion_matrix.html#exercise-do-it-yourself",
+    "title": "A No Nonsense Guide to Reading a Confusion Matrix",
+    "section": "Exercise: Do It Yourself",
+    "text": "Exercise: Do It Yourself\nBelow is a confusion matrix of a car classifier that classifies cars into their brand.\n\nYou learn by doing!\n\nHow many Lamborghinis were correctly classified?\nHow many Jaguars were incorrectly classified?\nHow many Chevrolets were misclassified as Fords?\nHow many Fords were misclassified as Chevrolets?\nWhich two car brands did the model have the most trouble differentiating between?\n\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+  },
+  {
+    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html",
+    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html",
+    "title": "How to Approach Creating AI Models",
+    "section": "",
+    "text": "This article was rewritten on Monday, 31 October 2022."
+  },
+  {
+    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#introduction",
+    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#introduction",
+    "title": "How to Approach Creating AI Models",
+    "section": "Introduction",
+    "text": "Introduction\nHow you approach making models is crucial. The way AI methods are used in today’s landscape is very different. AI methods are created to solve small, atomic problems. And we’ve got most of the methods to handle these small tasks hammered down. Therefore, applied AI is not about creating models; it’s only a small part of it. It’s 80% problem solving and 20% implementing (I would not be surprised if it actually followed the 80-20 rule1).1 The 80/20 Rule, also known as the Pareto Principle\nThink of AI methods as a tool; think of it as a pencil. You can use pencils to draw, take notes, poke holes, and much more. There are also dozens of pencils out there. But what point is there in using any of those pencils if you don’t even know how to properly use a pencil in the first place? The art of creating pencils has already been perfected too.\nOne highly successful approach is the Drivetrain Approach, created by Jeremy Howard — who’s widely known for his fastai course and library —, Margit Zwemer, and Mike Loukides.\nThe goal of the Drivetrain Approach is to not just use data to generate more data — data that is in the form of predictions. But rather to use data to also generate actionable outcomes.\nThe official blogpost goes into much more depth here.\nIn this post, I’ll be providing a short overview of my understanding of this approach by applying it to the Elements of AI course’s final project (this online course was created by the University of Helsinki and Reaktor)."
+  },
+  {
+    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#overview-of-the-drivetrain-approach",
+    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#overview-of-the-drivetrain-approach",
+    "title": "How to Approach Creating AI Models",
+    "section": "Overview of the Drivetrain Approach",
+    "text": "Overview of the Drivetrain Approach\nThere are four main steps to this approach:\n\nDefine the objective\nConsider your possible actions\nConsider your data\nCreate the models\n\n\n\n\nImage Source\n\n\n\nDefine the objective\nWrite out what you are really trying to achieve. What is your goal? Writing it out puts it in a tangible manner.\n\n\nConsider your actions\nThink about what actions you can take to achieve your objective.\nAlso think about what would happen if you did those actions.\nWhat would happen if I did x? Would y really be a good idea? What if z worked out too well? Will x lead to y? What would happen if x turned out poorly?\n\n\nConsider your data\nThink about the data you already have and how it could be used.\nThink about any further data that is needed and how it could be collected.\n\n\nCreate the models\nCreate models. But create models that produce actions. Actions that produce the best results for your objective."
+  },
+  {
+    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#endangered-language-chatbot",
+    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#endangered-language-chatbot",
+    "title": "How to Approach Creating AI Models",
+    "section": "Endangered Language Chatbot",
+    "text": "Endangered Language Chatbot\nThe final project of the Elements of AI course asked me to come up with my own AI method that would solve a problem, and how it would do so.\nThe problem I tackled was the endangerment of languages. The solution I came up with was to create a chatbot that could converse in these endangered languages. I created an overview of how this could be done.\nThe overview can be read here.\nLet’s tackle this problem through the Drivetrain Approach.\n\nDefine the objective\nThe objective is to preserve languages that are in danger of going extinct. Through preserving languages, histories and cultures can be preserved.\n\n\nConsider your actions\nOne way this could be done is to create a chatbot that could converse in endangered languages. However, this would be a monumental task considering the amount of data needed to achieve this.\nAnother action that could be taken is to create an information retrieval (IR) system of sorts. A corpus of written text of the language could be provided, from which insights about the language’s history, culture, and way of conversing could be gained. In turn the language is preserved.\nThe latter action may be easier to achieve.\n\n\nConsider your data\nThe obvious source of data would be a corpora of text.\nHowever, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.\nEven if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.\nIn short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.\n\n\n\nKuş dili, a whistled language spoken in Turkey. How would such a language be preserved? Image Source\n\n\n\n\nCreate the model\nEither a chatbot needs to be created that speaks as accurately as a native speaker, or an IR system needs to be created that gives meaningful, correct insights into a language and its associated culture.\nThis step may either be easy or hard, depending on the language. Most NLP or IR systems have been built on a few, select languages. Perhaps this step may be easy for those languages that are similar to languages on which NLP or IR systems have already been built on. It will most likely be harder for those languages which are not."
+  },
+  {
+    "objectID": "forblog/posts/1_how_to_approach_creating_ai_models.html#conclusion",
+    "href": "forblog/posts/1_how_to_approach_creating_ai_models.html#conclusion",
+    "title": "How to Approach Creating AI Models",
+    "section": "Conclusion",
+    "text": "Conclusion\nThis concludes my understanding of the Drivetrain Approach, through an example.\nApproaches are crucial: you can have state-of-the-art tools, but they are useless if not correctly applied. The approach you take can either make it or break it. Putting it into a concrete, organized, tangible manner goes a long way.\nIf you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!"
+  },
+  {
     "objectID": "forblog/posts/7_blog_subscriptions.html",
     "href": "forblog/posts/7_blog_subscriptions.html",
     "title": "Adding Subscriptions to a Quarto Site",
@@ -383,6 +411,237 @@
     "title": "Welcome to ForBlog by ForBo7",
     "section": "",
     "text": "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n  \n\n\n\n\nTransformers, Simply Explained\n\n\nAutobots or Decepticons?\n\n\nAll transformers really do is fill in the blanks and autocomplete.\n\n\n\n\n\n\n28 February 2023\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\n26 January 2023\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\n23 December 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n6 min\n\n\n\n\n\n\n  \n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n\n04 October 2022\n\n\nSalman Naqvi\n\n\n8 min\n\n\n\n\n\n\n  \n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n\n12 September 2022\n\n\nSalman Naqvi\n\n\n3 min\n\n\n\n\n\n\n  \n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n\n04 June 2022\n\n\nSalman Naqvi\n\n\n2 min\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide to Reading a Confusion Matrix\n\n\nAre you confused yet?\n\n\nA straight to the point guide about reading a confusion matrix.\n\n\n\n\n\n\n03 June 2022\n\n\nSalman Naqvi\n\n\n1 min\n\n\n\n\n\n\n  \n\n\n\n\nMy first AI model\n\n\nCan you bare reading through this bear classifier?\n\n\nA rundown on my first attempt at creating model.\n\n\n\n\n\n\n28 May 2022\n\n\nSalman Naqvi\n\n\n5 min\n\n\n\n\n\n\n  \n\n\n\n\nHow to Approach Creating AI Models\n\n\nPutting the Drive into the Train\n\n\nThere’s more to AI than just creating models.\n\n\n\n\n\n\n27 May 2022\n\n\nSalman Naqvi\n\n\n4 min\n\n\n\n\n\n\nNo matching items\n\n\n  \n\n\n\nLoading…\n\nClick here to unsubscribe from the ForBlog."
+  },
+  {
+    "objectID": "web_apps/index.html",
+    "href": "web_apps/index.html",
+    "title": "App Playground",
+    "section": "",
+    "text": "Here you can view various apps and gizmos I’ve created. Have a play through some of them let me know what you think!\nMore apps coming soon.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\n\nImage Classification\n\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nTuesday, 20 September 2022 | 2022-09-20\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\n\nImage Classification\n\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nSaturday, 30 April 2022 | 2022-04-30\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\nLoading…\n\nClick here to unsubscribe from the App Playground."
+  },
+  {
+    "objectID": "web_apps/apps/coming_soon.html",
+    "href": "web_apps/apps/coming_soon.html",
+    "title": "More apps coming soon…",
+    "section": "",
+    "text": "I never told you how soon…\n\n\n\nThis image was generated by Dall-E 2!"
+  },
+  {
+    "objectID": "web_apps/apps/bear_detector.html",
+    "href": "web_apps/apps/bear_detector.html",
+    "title": "Bear Classifier",
+    "section": "",
+    "text": "This webapp was remade on Tuesday, 8 November 2022."
+  },
+  {
+    "objectID": "dictionary/index.html",
+    "href": "dictionary/index.html",
+    "title": "The AI Dictionary",
+    "section": "",
+    "text": "I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.\nClick terms to view expanded definitions.\nDo let me know of any corrections and improvements, and of any terms you would like added!\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nAccuracy\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better.\n\n\n\n\n \n\n\n\n\n\n\nArchitecture\n\n\n\n\n\nA model that is used as a template or a starting point for another model.\n\n\n\n\n \n\n\n\n\n\n\nBagging\n\n\n\n\n\nAn ensembling technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement.\n\n\n\n\n \n\n\n\n\n\n\nCross Entropy Loss\n\n\n\n\n\nA technique for calculating the loss for categorical models with multiple categories.\n\n\n\n\n \n\n\n\n\n\n\nDecision Tree\n\n\n\n\n\nA type of model that acts like an if-else statement.\n\n\n\n\n \n\n\n\n\n\n\nDecoder (Transformers)\n\n\n\n\n\nA compoent of a trasnformer that is used for generating text. An example is the autocomplete feature on a smartphone’s keyboard.\n\n\n\n\n \n\n\n\n\n\n\nDocument\n\n\n\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as sequence.\n\n\n\n\n \n\n\n\n\n\n\nDot Product\n\n\n\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as linear combination.\n\n\n\n\n \n\n\n\n\n\n\nEmbedding\n\n\n\n\n\nA table, or matrix, where each row represents an item and each column describes the items in some way. The real magic of embeddings happen when you combine two embeddings together in some way to obtain further information.\n\n\n\n\n \n\n\n\n\n\n\nEncoder (Transformers)\n\n\n\n\n\nA component of a transformer that is used for “understanding” text. Encoders are typically used for classifying sentences by sentiment and figuring out what parts of a sentence refers, for example, to a person or location.\n\n\n\n\n \n\n\n\n\n\n\nEnsemble\n\n\n\n\n\nA collection of models whos’ predictions are averaged to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nError Rate\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better.\n\n\n\n\n \n\n\n\n\n\n\nGradient\n\n\n\n\n\nA numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the learning rate.\n\n\n\n\n \n\n\n\n\n\n\nGradient Accumulation\n\n\n\n\n\nA technique for running or fitting large models on a not-so-powerful GPU.\n\n\n\n\n \n\n\n\n\n\n\nGradient Boosting Machine (GBM)\n\n\n\n\n\nAn ensembling technique where instead of averaging the predictions of all models, each successive model predicts the error of the previous model. The errors are then summed to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nK-Fold Cross Validation\n\n\n\n\n\nAn ensembling technique where models are trained on a different set percent of the dataset. For example each model is trained on a different 80% of the dataset.\n\n\n\n\n \n\n\n\n\n\n\nLearning Rate\n\n\n\n\n\nA numerical value which controls how much the gradients update the parameters of a model.\n\n\n\n\n \n\n\n\n\n\n\nLinear Combination\n\n\n\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as dot product.\n\n\n\n\n \n\n\n\n\n\n\nLoss\n\n\n\n\n\nA meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.\n\n\n\n\n \n\n\n\n\n\n\nMatrix\n\n\n\n\n\nA table of values. See also vector\n\n\n\n\n \n\n\n\n\n\n\nMean Absolute Error (MAE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MAE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMean Squared Error (MSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMetric\n\n\n\n\n\nA measure of performance of a model. It is used by humans to judge the performance of the model.\n\n\n\n\n \n\n\n\n\n\n\nModel\n\n\n\n\n\nA mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.\n\n\n\n\n \n\n\n\n\n\n\nNamed Entity Recognition (NER)\n\n\n\n\n\nA NLP classification task where a sentence is broken into its components, and the model attempts to assign each component to a specific entity (e.g., person, place, organization).\n\n\n\n\n \n\n\n\n\n\n\nNumericalization\n\n\n\n\n\nA process where numbers are assigned to each token. Occurs after tokenization.\n\n\n\n\n \n\n\n\n\n\n\nOne Hot Encoding\n\n\n\n\n\nA data processing technique where each class in a categorical feature is given its own column that contains true and false values.\n\n\n\n\n \n\n\n\n\n\n\nOneR Classifier\n\n\n\n\n\nThe simplest type of decision tree. The tree only contains a single split.\n\n\n\n\n \n\n\n\n\n\n\nRandom Forest\n\n\n\n\n\nThe name given to a bagged ensemble of decision trees.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Error (RMSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Logarithmic Error (RMSLE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better.\n\n\n\n\n \n\n\n\n\n\n\nSequence\n\n\n\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as document.\n\n\n\n\n \n\n\n\n\n\n\nSoftmax\n\n\n\n\n\nA function that calculates the probabilities of a set of predictions.\n\n\n\n\n \n\n\n\n\n\n\nTabular Data\n\n\n\n\n\nData in the form of a table.\n\n\n\n\n \n\n\n\n\n\n\nTabular Model\n\n\n\n\n\nA model trained on tabular data. It is used to predict a specified column in the data.\n\n\n\n\n \n\n\n\n\n\n\nTokenization\n\n\n\n\n\nSplitting a document into its component words.\n\n\n\n\n \n\n\n\n\n\n\nTransformer\n\n\n\n\n\nThe name given to a Natural Language Processing (NLP) architecture that, in a nutshell, either fills-in-the-blanks or autocompletes text. Transformers consist of either an encoder, decoder, or both.\n\n\n\n\n \n\n\n\n\n\n\nVector\n\n\n\n\n\nA table of values that has either a single row or a single column. See also matrix.\n\n\n\n\n \n\n\n\n\n\n\nWeight Decay\n\n\n\n\n\nA technique for making sure your weights do not grow too large, and in turn overfit the data.\n\n\n\n\n \n\n\n\n\n\n\nZero-shot\n\n\n\n\n\nA prefix given to a pretrained model that can be used without finetuning.\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "dictionary/terms/dot_product.html",
+    "href": "dictionary/terms/dot_product.html",
+    "title": "Dot Product",
+    "section": "",
+    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]"
+  },
+  {
+    "objectID": "dictionary/terms/embedding.html",
+    "href": "dictionary/terms/embedding.html",
+    "title": "Embedding",
+    "section": "",
+    "text": "An example of how two embeddings can be combined together is shown below.\nLet’s say we have an embedding of users, where each column represents a feature about movies. Users like certain features of movies, and a value between -1 and 1 represents this.\n\n\n\nUser\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nBilly\n-0.9\n0.3\n0.2\n0.8\n0.25\n\n\nBob\n-0.85\n1\n-0.25\n0\n0.75\n\n\nJoe\n0.9\n0.85\n0.95\n0.35\n1\n\n\n\nNow let’s say we have an embedding of movies, where each column represents a feature about movies.\n\n\n\n\n\n\n\n\n\n\n\nMovie\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nThe Lord of the Rings\n1\n-1\n1\n-0.5\n1\n\n\nCars\n-0.9\n-1\n0.8\n1\n0\n\n\nInterstellar\n0.75\n1\n0\n0\n0.3\n\n\n\nWe want to find out which movie would be the best for Billy to watch. To do so, let’s take the dot product between Billy and each of the respective movies.\n\n\n\n\n\n\nBilly & The Lord of the Rings\n\n\n\n\n\n\\[\n(-0.9 \\cdot 1) + (0.3 \\cdot -1) + (0.2 \\cdot 1) + (0.8 \\cdot -0.5) + (0.25 \\cdot 1) = -1.15\n\\]\n\n\n\n\n\n\n\n\n\nBilly & Cars\n\n\n\n\n\n\\[\n(-0.9 \\cdot -0.9) + (0.3 \\cdot -1) + (0.2 \\cdot 0.8) + (0.8 \\cdot 1) + (0.25 \\cdot 0) = 1.47\n\\]\n\n\n\n\n\n\n\n\n\nBilly & Interstellar\n\n\n\n\n\n\\[\n(-0.9 \\cdot 0.75) + (0.3 \\cdot 1) + (0.2 \\cdot 0) + (0.8 \\cdot 0) + (0.25 \\cdot 0.3) = -0.3\n\\]\n\n\n\nWe have obtained the values \\(-1.15\\), \\(1.47\\), and \\(-0.3\\) for each of the movies respectively. From this, we can deduce that Cars ($1.47) is probably the best movie for Billy to watch, based on his taste.\nAfter similarly calculating the dot product between Joe and each of the movies, we get the following respective values: \\(1.82\\), \\(-0.55\\), \\(1.82\\). This tells us that both The Lord of the Rings and Interstellar are equally the best movies for Joe to watch.\nAs for Bob, it would be Interstellar."
+  },
+  {
+    "objectID": "dictionary/terms/cross_entropy_loss.html",
+    "href": "dictionary/terms/cross_entropy_loss.html",
+    "title": "Cross Entropy Loss",
+    "section": "",
+    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\n\nbus\n1\n\\(2.60\\)\n\n\ntruck\n0\n\\(0.59\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\n\n\nActuals is a one hot encoded column that tells us what is the correct vehicle in the picture.\nTo convert these predictions into loss, first take the softmax of each prediction.\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nNext take the logarithm of each softmax value.\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\n\n\nMultiply the actuals with the computed logarithms.\n\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\\(\\text{Actuals} \\cdot \\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\\(0\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\\(0\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\\(0\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\\(0\\)\n\n\n\nSum the the results of the multiplications.\n\\[\n0 + -1.35 + 0 + 0 + 0 = -1.35\n\\]\nAnd there you have your loss!"
+  },
+  {
+    "objectID": "dictionary/terms/decoder.html",
+    "href": "dictionary/terms/decoder.html",
+    "title": "Decoder (Transformers)",
+    "section": "",
+    "text": "To learn more about decoders, you can read this to the point rundown."
+  },
+  {
+    "objectID": "dictionary/terms/k_fold_cross_validation.html",
+    "href": "dictionary/terms/k_fold_cross_validation.html",
+    "title": "K-Fold Cross Validation",
+    "section": "",
+    "text": "Another way to think of it is that the dataset is split into \\(K\\) pieces. Then each model is trained on a different set of \\(K-1\\) pieces.\nFor example, let’s say that the dataset is split into 5 pieces. Then each model is trained on a different set of 4 pieces."
+  },
+  {
+    "objectID": "dictionary/terms/accuracy.html",
+    "href": "dictionary/terms/accuracy.html",
+    "title": "Accuracy",
+    "section": "",
+    "text": "It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of correct predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nAccuracy is also 1 - error rate."
+  },
+  {
+    "objectID": "dictionary/terms/linear_combination.html",
+    "href": "dictionary/terms/linear_combination.html",
+    "title": "Linear Combination",
+    "section": "",
+    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]"
+  },
+  {
+    "objectID": "dictionary/terms/metric.html",
+    "href": "dictionary/terms/metric.html",
+    "title": "Metric",
+    "section": "",
+    "text": "Examples of metrics are, but not limited to, accuracy, error rate, MAE, and MSE"
+  },
+  {
+    "objectID": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "href": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "title": "Gradient Boosting Machine (GBM)",
+    "section": "",
+    "text": "The first model produces a prediction.\nThe difference between this prediction and the actual value is obtained.\nThe difference is now set as the target.\nThe next model now attempts to predict this difference.\nRepeat steps 2-4 for as many models as desired.\nSum all obtained differences.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nWhile this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set."
+  },
+  {
+    "objectID": "dictionary/terms/mean_absolute_error_mae.html",
+    "href": "dictionary/terms/mean_absolute_error_mae.html",
+    "title": "Mean Absolute Error (MAE)",
+    "section": "",
+    "text": "It is calculated by: 1. First taking the difference between each respective predicted and actual value. 1. Then removing all negative signs — this is known as taking the absolute value. 1. And finally taking the average.\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\(|0|, |-2|, |0|, |1| = 0, 2, 0, 1\\)\n\\(\\frac{0 + 2 + 0 + 1}{4} = \\frac{2}{4} = 0.5\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.5\\) units off from the actual values.\nIn a nutshell, you take the mean of the absolute differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the absolute value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the absolute value, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/encoder.html",
+    "href": "dictionary/terms/encoder.html",
+    "title": "Encoder (Transformers)",
+    "section": "",
+    "text": "To learn more about decoders, you can read this to the point rundown."
+  },
+  {
+    "objectID": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "href": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "title": "Root Mean Squared Logarithmic Error (RMSLE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the logarithm of all predicted values.\nTaking the logarithm of all actual values.\nThen taking the difference between each respective predicted and actual value.\nNext squaring all obtained values.\nTaking the averge.\nAnd lastly taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(\\ln(1), \\ln(2), \\ln(3), \\ln(4) \\approx 0, 0.69, 1.10, 1.39\\)\n\\(\\ln(1), \\ln(4), \\ln(3), \\ln(3) \\approx 0, 1.39, 1.10, 1.10\\)\n\\(0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29\\)\n\\((0)^2, (-0.70)^2, (0)^2, (0.29)^2 \\approx 0, 0.49, 0, 0.08\\)\n\\(\\frac{0 + 0.49 + 0 + 0.08}{4} = \\frac{0.57}{4}\\)\n\\(\\sqrt{\\frac{0.57}{4}} \\approx 0.38\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.38\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between RMSE and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/oner_classifier.html",
+    "href": "dictionary/terms/oner_classifier.html",
+    "title": "OneR Classifier",
+    "section": "",
+    "text": "Below is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Car Is Fast])\n  C([Car Is Slow])\n\n  A -- Yes --> B\n  A -- No --> C"
+  },
+  {
+    "objectID": "dictionary/terms/tokenization.html",
+    "href": "dictionary/terms/tokenization.html",
+    "title": "Tokenization",
+    "section": "",
+    "text": "Note\n\n\n\n\n\nIf a word is too long or very uncommon, the word itself may be split. Take the word “supercalifragilisticexpialidocious” as an example. It could be split into “super”, “cali”, “fragilistic”, “expi”, “ali”, and “docious”."
+  },
+  {
+    "objectID": "dictionary/terms/gradient.html",
+    "href": "dictionary/terms/gradient.html",
+    "title": "Gradient",
+    "section": "",
+    "text": "The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the learning rate.\nA positive gradient tells us that increasing the parameters will increase the loss. On the other hand, decreasing the parameters will decrease the loss.\nA negative gradient tells us that decreasing the parameters will increase the loss On the other hand, increasing the parameters will decrease the loss."
+  },
+  {
+    "objectID": "dictionary/terms/ensemble.html",
+    "href": "dictionary/terms/ensemble.html",
+    "title": "Ensemble",
+    "section": "",
+    "text": "The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others’ errors.\nThere are different methods for ensembling.\n\n\n\n\n\n\nEnsembling only works when all models are independent of each other. That is, the models do not depend on one another."
+  },
+  {
+    "objectID": "dictionary/terms/softmax.html",
+    "href": "dictionary/terms/softmax.html",
+    "title": "Softmax",
+    "section": "",
+    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\nVehicle\nPrediction\n\n\n\n\ncar\n\\(-4.89\\)\n\n\nbus\n\\(2.60\\)\n\n\ntruck\n\\(0.59\\)\n\n\nmotorbike\n\\(-2.07\\)\n\n\nbicycle\n\\(-4.57\\)\n\n\n\nThese predictions aren’t very meaningful to us as humans. So what we can do is convert these predictions into probabilities. The steps to do this are below.\n1. Take the exponent of each prediction to base \\(e\\). So for the car category, \\(e^{-4.89} \\approx 7.52 \\cdot 10^{-3}\\).\nThe results of the calculations below are displayed with 3 significant figures.\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\n\n\n2. Sum all the calculated values.\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\n\n\n3. For each respective category, divide \\(e^{\\text{prediction}}\\) by \\(\\text{sum of} e^{\\text{prediction}}\\). This is your probability. So the probability of the vehicle in the picture being a car is\n\\[\n\\frac{7.52 \\cdot 10^{-3}}{15.4} \\approx 4.88 \\cdot 10^{-4} = 0.000488 = 0.0488 \\%\n\\]\n\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\\(\\frac{e^{\\text{prediction}}}{\\text{sum of}e^{\\text{prediction}}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\\(0.874\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\\(0.117\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nFrom the table above, it can be seen that the vehicle in the picture is most likely a bus with probability \\(87.4\\%\\)."
+  },
+  {
+    "objectID": "dictionary/terms/vector.html",
+    "href": "dictionary/terms/vector.html",
+    "title": "Vector",
+    "section": "",
+    "text": "The order of a vector is row by column.\nBelow is a \\(1 \\times 3\\) column vector. \\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\]\nBelow is a \\(3 \\times 1\\) row vector. \\[\n\\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}\n\\]"
+  },
+  {
+    "objectID": "dictionary/terms/gradient_accumulation.html",
+    "href": "dictionary/terms/gradient_accumulation.html",
+    "title": "Gradient Accumulation",
+    "section": "",
+    "text": "Let’s say you want to use a batch size of 64, but the model doesn’t fit with that size on your GPU.\n\nFirst determine the largest possible batch size that can fit on your GPU. Let’s say it’s 16. It may be better to use batch sizes that are a power of 2.\nCalculate the gradients for \\(X\\) batches without updating the parameters.\n\n\\(X\\) is your desired batch size divided by the batch size you are using.\nDesired batch size is 64; batch size we are using is 16.\n\\(64 ÷ 16 = 4\\)\n\\(X\\) is 4. This is because the size of 4 batches, in this case, sums to 64.\n\nNext, sum all respective gradients — hence the term ‘gradient accumulation’.\nNow update your parameters based on these summed gradients. This will have the same effect as if you used a batch size of 64.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUsing a smaller batch size to fit a larger model onto your GPU isn’t optimal. A smaller batch size means you would have to tweak your optimal hyperparameters, such as the learning rate. Your loss would also become less accurate since it is being calculated on a smaller group of items."
+  },
+  {
+    "objectID": "dictionary/terms/decision_tree.html",
+    "href": "dictionary/terms/decision_tree.html",
+    "title": "Decision Tree",
+    "section": "",
+    "text": "A split is made for each feature in the data. If the feature of a certain data sample is larger than or less than the split for that respective feature, the next appropriate split is made.\nBelow is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Is Engine Powerful])\n  C([Is Windy Day])\n  D1([Car Is Fast])\n  E1([Car Is Slow])\n  D2([Car Is Fast])\n  E2([Car Is Slow])\n\n\n  A -- Yes --> B\n  A -- No --> C\n  B -- Yes --> D1\n  B -- No --> E1\n  C -- Yes --> E2\n  C -- No --> D2"
+  },
+  {
+    "objectID": "dictionary/terms/error_rate.html",
+    "href": "dictionary/terms/error_rate.html",
+    "title": "Error Rate",
+    "section": "",
+    "text": "It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of incorrect predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nError rate is also 1 - accuracy."
+  },
+  {
+    "objectID": "dictionary/terms/learning_rate.html",
+    "href": "dictionary/terms/learning_rate.html",
+    "title": "Learning Rate",
+    "section": "",
+    "text": "The learning rate controls how much the gradients adjust the parameters by multiplying the learning rate and gradients together.\n\n\n\n\n\n\nNote\n\n\n\n\n\nA learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.\nA learning rate that is too low can cause the training system to take a very long time to reach the optimal weights."
+  },
+  {
+    "objectID": "dictionary/terms/transformer.html",
+    "href": "dictionary/terms/transformer.html",
+    "title": "Transformer",
+    "section": "",
+    "text": "To learn more about transformers, you can read this to the point rundown."
+  },
+  {
+    "objectID": "dictionary/terms/bagging.html",
+    "href": "dictionary/terms/bagging.html",
+    "title": "Bagging",
+    "section": "",
+    "text": "“with replacement” means that if a model, for examples, randomly chooses row number 5, another model can also randomly choose row number 5.\n\n\n\n\n\n\nNote\n\n\n\n\n\nThrough this technique, each model ends up training on roughly 63% of the entire dataset."
+  },
+  {
+    "objectID": "dictionary/terms/matrix.html",
+    "href": "dictionary/terms/matrix.html",
+    "title": "Matrix",
+    "section": "",
+    "text": "The order of a matrix is row by column.\nBelow is \\(3 \\times 2\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 \\\\\n3 & 4 \\\\\n5 & 6 \\\\\n\\end{bmatrix}\n\\]\nBelow is \\(2 \\times 3\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 & 3 \\\\\n4 & 5 & 6 \\\\\n\\] \\end{bmatrix}"
+  },
+  {
+    "objectID": "dictionary/terms/named_entity_recognition.html",
+    "href": "dictionary/terms/named_entity_recognition.html",
+    "title": "Named Entity Recognition (NER)",
+    "section": "",
+    "text": "Take the sentence “Tim went to the Moon.” as an example. The sentence would first be broken into ‘Tim’, ‘went’, ‘to’, the’, ‘Moon’. The model could then give ‘Tim’ the label of ‘person’, and ‘Moon’ the label of ‘location’."
+  },
+  {
+    "objectID": "dictionary/terms/one_hot_encoding.html",
+    "href": "dictionary/terms/one_hot_encoding.html",
+    "title": "One Hot Encoding",
+    "section": "",
+    "text": "Let’s say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true."
+  },
+  {
+    "objectID": "dictionary/terms/mean_squared_error_mse.html",
+    "href": "dictionary/terms/mean_squared_error_mse.html",
+    "title": "Mean Squared Error (MSE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nAnd finally taking the average.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.25\\) units off from the actual values.\nIn a nutshell, you take the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
+  },
+  {
+    "objectID": "dictionary/terms/root_mean_squared_error_rmse.html",
+    "href": "dictionary/terms/root_mean_squared_error_rmse.html",
+    "title": "Root Mean Squared Error (RMSE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nTaking the average.\nAnd finally taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\\(\\sqrt{1.25} \\approx 1.12\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.12\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MSE and RMSE is that RMSE undoes the squaring step by taking the square root.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
   },
   {
     "objectID": "patch_notes.html",
@@ -469,214 +728,11 @@
     "text": "Version 1.0.0.0 | 15 May 2022\n\nInitial release.\nSite is built on fastpages, by fastai."
   },
   {
-    "objectID": "dictionary/terms/mean_squared_error_mse.html",
-    "href": "dictionary/terms/mean_squared_error_mse.html",
-    "title": "Mean Squared Error (MSE)",
+    "objectID": "feedback.html",
+    "href": "feedback.html",
+    "title": "Site Feedback",
     "section": "",
-    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nAnd finally taking the average.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.25\\) units off from the actual values.\nIn a nutshell, you take the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
-  },
-  {
-    "objectID": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
-    "href": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
-    "title": "Root Mean Squared Logarithmic Error (RMSLE)",
-    "section": "",
-    "text": "It is calculated by:\n\nFirst taking the logarithm of all predicted values.\nTaking the logarithm of all actual values.\nThen taking the difference between each respective predicted and actual value.\nNext squaring all obtained values.\nTaking the averge.\nAnd lastly taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(\\ln(1), \\ln(2), \\ln(3), \\ln(4) \\approx 0, 0.69, 1.10, 1.39\\)\n\\(\\ln(1), \\ln(4), \\ln(3), \\ln(3) \\approx 0, 1.39, 1.10, 1.10\\)\n\\(0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29\\)\n\\((0)^2, (-0.70)^2, (0)^2, (0.29)^2 \\approx 0, 0.49, 0, 0.08\\)\n\\(\\frac{0 + 0.49 + 0 + 0.08}{4} = \\frac{0.57}{4}\\)\n\\(\\sqrt{\\frac{0.57}{4}} \\approx 0.38\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.38\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between RMSE and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
-  },
-  {
-    "objectID": "dictionary/terms/error_rate.html",
-    "href": "dictionary/terms/error_rate.html",
-    "title": "Error Rate",
-    "section": "",
-    "text": "It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of incorrect predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nError rate is also 1 - accuracy."
-  },
-  {
-    "objectID": "dictionary/terms/accuracy.html",
-    "href": "dictionary/terms/accuracy.html",
-    "title": "Accuracy",
-    "section": "",
-    "text": "It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of correct predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNote\n\n\n\n\n\nAccuracy is also 1 - error rate."
-  },
-  {
-    "objectID": "dictionary/terms/vector.html",
-    "href": "dictionary/terms/vector.html",
-    "title": "Vector",
-    "section": "",
-    "text": "The order of a vector is row by column.\nBelow is a \\(1 \\times 3\\) column vector. \\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\]\nBelow is a \\(3 \\times 1\\) row vector. \\[\n\\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}\n\\]"
-  },
-  {
-    "objectID": "dictionary/terms/matrix.html",
-    "href": "dictionary/terms/matrix.html",
-    "title": "Matrix",
-    "section": "",
-    "text": "The order of a matrix is row by column.\nBelow is \\(3 \\times 2\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 \\\\\n3 & 4 \\\\\n5 & 6 \\\\\n\\end{bmatrix}\n\\]\nBelow is \\(2 \\times 3\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 & 3 \\\\\n4 & 5 & 6 \\\\\n\\] \\end{bmatrix}"
-  },
-  {
-    "objectID": "dictionary/terms/tokenization.html",
-    "href": "dictionary/terms/tokenization.html",
-    "title": "Tokenization",
-    "section": "",
-    "text": "Note\n\n\n\n\n\nIf a word is too long or very uncommon, the word itself may be split. Take the word “supercalifragilisticexpialidocious” as an example. It could be split into “super”, “cali”, “fragilistic”, “expi”, “ali”, and “docious”."
-  },
-  {
-    "objectID": "dictionary/terms/gradient_accumulation.html",
-    "href": "dictionary/terms/gradient_accumulation.html",
-    "title": "Gradient Accumulation",
-    "section": "",
-    "text": "Let’s say you want to use a batch size of 64, but the model doesn’t fit with that size on your GPU.\n\nFirst determine the largest possible batch size that can fit on your GPU. Let’s say it’s 16. It may be better to use batch sizes that are a power of 2.\nCalculate the gradients for \\(X\\) batches without updating the parameters.\n\n\\(X\\) is your desired batch size divided by the batch size you are using.\nDesired batch size is 64; batch size we are using is 16.\n\\(64 ÷ 16 = 4\\)\n\\(X\\) is 4. This is because the size of 4 batches, in this case, sums to 64.\n\nNext, sum all respective gradients — hence the term ‘gradient accumulation’.\nNow update your parameters based on these summed gradients. This will have the same effect as if you used a batch size of 64.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nUsing a smaller batch size to fit a larger model onto your GPU isn’t optimal. A smaller batch size means you would have to tweak your optimal hyperparameters, such as the learning rate. Your loss would also become less accurate since it is being calculated on a smaller group of items."
-  },
-  {
-    "objectID": "dictionary/terms/learning_rate.html",
-    "href": "dictionary/terms/learning_rate.html",
-    "title": "Learning Rate",
-    "section": "",
-    "text": "The learning rate controls how much the gradients adjust the parameters by multiplying the learning rate and gradients together.\n\n\n\n\n\n\nNote\n\n\n\n\n\nA learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.\nA learning rate that is too low can cause the training system to take a very long time to reach the optimal weights."
-  },
-  {
-    "objectID": "dictionary/terms/encoder.html",
-    "href": "dictionary/terms/encoder.html",
-    "title": "Encoder (Transformers)",
-    "section": "",
-    "text": "To learn more about decoders, you can read this to the point rundown."
-  },
-  {
-    "objectID": "dictionary/terms/dot_product.html",
-    "href": "dictionary/terms/dot_product.html",
-    "title": "Dot Product",
-    "section": "",
-    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]"
-  },
-  {
-    "objectID": "dictionary/terms/oner_classifier.html",
-    "href": "dictionary/terms/oner_classifier.html",
-    "title": "OneR Classifier",
-    "section": "",
-    "text": "Below is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Car Is Fast])\n  C([Car Is Slow])\n\n  A -- Yes --> B\n  A -- No --> C"
-  },
-  {
-    "objectID": "dictionary/terms/cross_entropy_loss.html",
-    "href": "dictionary/terms/cross_entropy_loss.html",
-    "title": "Cross Entropy Loss",
-    "section": "",
-    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\n\nbus\n1\n\\(2.60\\)\n\n\ntruck\n0\n\\(0.59\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\n\n\nActuals is a one hot encoded column that tells us what is the correct vehicle in the picture.\nTo convert these predictions into loss, first take the softmax of each prediction.\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nNext take the logarithm of each softmax value.\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\n\n\nMultiply the actuals with the computed logarithms.\n\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\\(\\text{Actuals} \\cdot \\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\\(0\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\\(0\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\\(0\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\\(0\\)\n\n\n\nSum the the results of the multiplications.\n\\[\n0 + -1.35 + 0 + 0 + 0 = -1.35\n\\]\nAnd there you have your loss!"
-  },
-  {
-    "objectID": "dictionary/terms/softmax.html",
-    "href": "dictionary/terms/softmax.html",
-    "title": "Softmax",
-    "section": "",
-    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\nVehicle\nPrediction\n\n\n\n\ncar\n\\(-4.89\\)\n\n\nbus\n\\(2.60\\)\n\n\ntruck\n\\(0.59\\)\n\n\nmotorbike\n\\(-2.07\\)\n\n\nbicycle\n\\(-4.57\\)\n\n\n\nThese predictions aren’t very meaningful to us as humans. So what we can do is convert these predictions into probabilities. The steps to do this are below.\n1. Take the exponent of each prediction to base \\(e\\). So for the car category, \\(e^{-4.89} \\approx 7.52 \\cdot 10^{-3}\\).\nThe results of the calculations below are displayed with 3 significant figures.\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\n\n\n2. Sum all the calculated values.\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\n\n\n3. For each respective category, divide \\(e^{\\text{prediction}}\\) by \\(\\text{sum of} e^{\\text{prediction}}\\). This is your probability. So the probability of the vehicle in the picture being a car is\n\\[\n\\frac{7.52 \\cdot 10^{-3}}{15.4} \\approx 4.88 \\cdot 10^{-4} = 0.000488 = 0.0488 \\%\n\\]\n\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\\(\\frac{e^{\\text{prediction}}}{\\text{sum of}e^{\\text{prediction}}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\\(0.874\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\\(0.117\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nFrom the table above, it can be seen that the vehicle in the picture is most likely a bus with probability \\(87.4\\%\\)."
-  },
-  {
-    "objectID": "dictionary/terms/bagging.html",
-    "href": "dictionary/terms/bagging.html",
-    "title": "Bagging",
-    "section": "",
-    "text": "“with replacement” means that if a model, for examples, randomly chooses row number 5, another model can also randomly choose row number 5.\n\n\n\n\n\n\nNote\n\n\n\n\n\nThrough this technique, each model ends up training on roughly 63% of the entire dataset."
-  },
-  {
-    "objectID": "dictionary/terms/transformer.html",
-    "href": "dictionary/terms/transformer.html",
-    "title": "Transformer",
-    "section": "",
-    "text": "To learn more about transformers, you can read this to the point rundown."
-  },
-  {
-    "objectID": "dictionary/terms/k_fold_cross_validation.html",
-    "href": "dictionary/terms/k_fold_cross_validation.html",
-    "title": "K-Fold Cross Validation",
-    "section": "",
-    "text": "Another way to think of it is that the dataset is split into \\(K\\) pieces. Then each model is trained on a different set of \\(K-1\\) pieces.\nFor example, let’s say that the dataset is split into 5 pieces. Then each model is trained on a different set of 4 pieces."
-  },
-  {
-    "objectID": "dictionary/terms/named_entity_recognition.html",
-    "href": "dictionary/terms/named_entity_recognition.html",
-    "title": "Named Entity Recognition (NER)",
-    "section": "",
-    "text": "Take the sentence “Tim went to the Moon.” as an example. The sentence would first be broken into ‘Tim’, ‘went’, ‘to’, the’, ‘Moon’. The model could then give ‘Tim’ the label of ‘person’, and ‘Moon’ the label of ‘location’."
-  },
-  {
-    "objectID": "dictionary/terms/metric.html",
-    "href": "dictionary/terms/metric.html",
-    "title": "Metric",
-    "section": "",
-    "text": "Examples of metrics are, but not limited to, accuracy, error rate, MAE, and MSE"
-  },
-  {
-    "objectID": "dictionary/terms/linear_combination.html",
-    "href": "dictionary/terms/linear_combination.html",
-    "title": "Linear Combination",
-    "section": "",
-    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]"
-  },
-  {
-    "objectID": "dictionary/terms/root_mean_squared_error_rmse.html",
-    "href": "dictionary/terms/root_mean_squared_error_rmse.html",
-    "title": "Root Mean Squared Error (RMSE)",
-    "section": "",
-    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nTaking the average.\nAnd finally taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\\(\\sqrt{1.25} \\approx 1.12\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.12\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MSE and RMSE is that RMSE undoes the squaring step by taking the square root.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
-  },
-  {
-    "objectID": "dictionary/terms/ensemble.html",
-    "href": "dictionary/terms/ensemble.html",
-    "title": "Ensemble",
-    "section": "",
-    "text": "The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others’ errors.\nThere are different methods for ensembling.\n\n\n\n\n\n\nEnsembling only works when all models are independent of each other. That is, the models do not depend on one another."
-  },
-  {
-    "objectID": "dictionary/terms/mean_absolute_error_mae.html",
-    "href": "dictionary/terms/mean_absolute_error_mae.html",
-    "title": "Mean Absolute Error (MAE)",
-    "section": "",
-    "text": "It is calculated by: 1. First taking the difference between each respective predicted and actual value. 1. Then removing all negative signs — this is known as taking the absolute value. 1. And finally taking the average.\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\(|0|, |-2|, |0|, |1| = 0, 2, 0, 1\\)\n\\(\\frac{0 + 2 + 0 + 1}{4} = \\frac{2}{4} = 0.5\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.5\\) units off from the actual values.\nIn a nutshell, you take the mean of the absolute differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nThe reason the absolute value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the absolute value, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value."
-  },
-  {
-    "objectID": "dictionary/terms/decision_tree.html",
-    "href": "dictionary/terms/decision_tree.html",
-    "title": "Decision Tree",
-    "section": "",
-    "text": "A split is made for each feature in the data. If the feature of a certain data sample is larger than or less than the split for that respective feature, the next appropriate split is made.\nBelow is an example determining whether a car is fast or slow.\n\n\n\n\nflowchart TB\n  A([Weight < 2000kg])\n  B([Is Engine Powerful])\n  C([Is Windy Day])\n  D1([Car Is Fast])\n  E1([Car Is Slow])\n  D2([Car Is Fast])\n  E2([Car Is Slow])\n\n\n  A -- Yes --> B\n  A -- No --> C\n  B -- Yes --> D1\n  B -- No --> E1\n  C -- Yes --> E2\n  C -- No --> D2"
-  },
-  {
-    "objectID": "dictionary/terms/embedding.html",
-    "href": "dictionary/terms/embedding.html",
-    "title": "Embedding",
-    "section": "",
-    "text": "An example of how two embeddings can be combined together is shown below.\nLet’s say we have an embedding of users, where each column represents a feature about movies. Users like certain features of movies, and a value between -1 and 1 represents this.\n\n\n\nUser\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nBilly\n-0.9\n0.3\n0.2\n0.8\n0.25\n\n\nBob\n-0.85\n1\n-0.25\n0\n0.75\n\n\nJoe\n0.9\n0.85\n0.95\n0.35\n1\n\n\n\nNow let’s say we have an embedding of movies, where each column represents a feature about movies.\n\n\n\n\n\n\n\n\n\n\n\nMovie\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nThe Lord of the Rings\n1\n-1\n1\n-0.5\n1\n\n\nCars\n-0.9\n-1\n0.8\n1\n0\n\n\nInterstellar\n0.75\n1\n0\n0\n0.3\n\n\n\nWe want to find out which movie would be the best for Billy to watch. To do so, let’s take the dot product between Billy and each of the respective movies.\n\n\n\n\n\n\nBilly & The Lord of the Rings\n\n\n\n\n\n\\[\n(-0.9 \\cdot 1) + (0.3 \\cdot -1) + (0.2 \\cdot 1) + (0.8 \\cdot -0.5) + (0.25 \\cdot 1) = -1.15\n\\]\n\n\n\n\n\n\n\n\n\nBilly & Cars\n\n\n\n\n\n\\[\n(-0.9 \\cdot -0.9) + (0.3 \\cdot -1) + (0.2 \\cdot 0.8) + (0.8 \\cdot 1) + (0.25 \\cdot 0) = 1.47\n\\]\n\n\n\n\n\n\n\n\n\nBilly & Interstellar\n\n\n\n\n\n\\[\n(-0.9 \\cdot 0.75) + (0.3 \\cdot 1) + (0.2 \\cdot 0) + (0.8 \\cdot 0) + (0.25 \\cdot 0.3) = -0.3\n\\]\n\n\n\nWe have obtained the values \\(-1.15\\), \\(1.47\\), and \\(-0.3\\) for each of the movies respectively. From this, we can deduce that Cars ($1.47) is probably the best movie for Billy to watch, based on his taste.\nAfter similarly calculating the dot product between Joe and each of the movies, we get the following respective values: \\(1.82\\), \\(-0.55\\), \\(1.82\\). This tells us that both The Lord of the Rings and Interstellar are equally the best movies for Joe to watch.\nAs for Bob, it would be Interstellar."
-  },
-  {
-    "objectID": "dictionary/terms/gradient_boosting_machine_gbm.html",
-    "href": "dictionary/terms/gradient_boosting_machine_gbm.html",
-    "title": "Gradient Boosting Machine (GBM)",
-    "section": "",
-    "text": "The first model produces a prediction.\nThe difference between this prediction and the actual value is obtained.\nThe difference is now set as the target.\nThe next model now attempts to predict this difference.\nRepeat steps 2-4 for as many models as desired.\nSum all obtained differences.\n\n\n\n\n\n\n\nNote\n\n\n\n\n\nWhile this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set."
-  },
-  {
-    "objectID": "dictionary/terms/gradient.html",
-    "href": "dictionary/terms/gradient.html",
-    "title": "Gradient",
-    "section": "",
-    "text": "The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the learning rate.\nA positive gradient tells us that increasing the parameters will increase the loss. On the other hand, decreasing the parameters will decrease the loss.\nA negative gradient tells us that decreasing the parameters will increase the loss On the other hand, increasing the parameters will decrease the loss."
-  },
-  {
-    "objectID": "dictionary/terms/decoder.html",
-    "href": "dictionary/terms/decoder.html",
-    "title": "Decoder (Transformers)",
-    "section": "",
-    "text": "To learn more about decoders, you can read this to the point rundown."
-  },
-  {
-    "objectID": "dictionary/terms/one_hot_encoding.html",
-    "href": "dictionary/terms/one_hot_encoding.html",
-    "title": "One Hot Encoding",
-    "section": "",
-    "text": "Let’s say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true."
-  },
-  {
-    "objectID": "dictionary/index.html",
-    "href": "dictionary/index.html",
-    "title": "The AI Dictionary",
-    "section": "",
-    "text": "I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.\nClick terms to view expanded definitions.\nDo let me know of any corrections and improvements!\n\n\n    \n      \n      \n    \n\n\n\n\n\n\nAccuracy\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better.\n\n\n\n\n \n\n\n\n\n\n\nArchitecture\n\n\n\n\n\nA model that is used as a template or a starting point for another model.\n\n\n\n\n \n\n\n\n\n\n\nBagging\n\n\n\n\n\nAn ensembling technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement.\n\n\n\n\n \n\n\n\n\n\n\nCross Entropy Loss\n\n\n\n\n\nA technique for calculating the loss for categorical models with multiple categories.\n\n\n\n\n \n\n\n\n\n\n\nDecision Tree\n\n\n\n\n\nA type of model that acts like an if-else statement.\n\n\n\n\n \n\n\n\n\n\n\nDecoder (Transformers)\n\n\n\n\n\nA compoent of a trasnformer that is used for generating text. An example is the autocomplete feature on a smartphone’s keyboard.\n\n\n\n\n \n\n\n\n\n\n\nDocument\n\n\n\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as sequence.\n\n\n\n\n \n\n\n\n\n\n\nDot Product\n\n\n\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as linear combination.\n\n\n\n\n \n\n\n\n\n\n\nEmbedding\n\n\n\n\n\nA table, or matrix, where each row represents an item and each column describes the items in some way. The real magic of embeddings happen when you combine two embeddings together in some way to obtain further information.\n\n\n\n\n \n\n\n\n\n\n\nEncoder (Transformers)\n\n\n\n\n\nA component of a transformer that is used for “understanding” text. Encoders are typically used for classifying sentences by sentiment and figuring out what parts of a sentence refers, for example, to a person or location.\n\n\n\n\n \n\n\n\n\n\n\nEnsemble\n\n\n\n\n\nA collection of models whos’ predictions are averaged to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nError Rate\n\n\n\n\n\nA type of metric. It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better.\n\n\n\n\n \n\n\n\n\n\n\nGradient\n\n\n\n\n\nA numerical value which adjusts the parameters of a model. How much it adjusts is controlled by the learning rate.\n\n\n\n\n \n\n\n\n\n\n\nGradient Accumulation\n\n\n\n\n\nA technique for running or fitting large models on a not-so-powerful GPU.\n\n\n\n\n \n\n\n\n\n\n\nGradient Boosting Machine (GBM)\n\n\n\n\n\nAn ensembling technique where instead of averaging the predictions of all models, each successive model predicts the error of the previous model. The errors are then summed to obtain the final prediction.\n\n\n\n\n \n\n\n\n\n\n\nK-Fold Cross Validation\n\n\n\n\n\nAn ensembling technique where models are trained on a different set percent of the dataset. For example each model is trained on a different 80% of the dataset.\n\n\n\n\n \n\n\n\n\n\n\nLearning Rate\n\n\n\n\n\nA numerical value which controls how much the gradients update the parameters of a model.\n\n\n\n\n \n\n\n\n\n\n\nLinear Combination\n\n\n\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as dot product.\n\n\n\n\n \n\n\n\n\n\n\nLoss\n\n\n\n\n\nA meaasure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.\n\n\n\n\n \n\n\n\n\n\n\nMatrix\n\n\n\n\n\nA table of values. See also vector\n\n\n\n\n \n\n\n\n\n\n\nMean Absolute Error (MAE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MAE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMean Squared Error (MSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nMetric\n\n\n\n\n\nA measure of performance of a model. It is used by humans to judge the performance of the model.\n\n\n\n\n \n\n\n\n\n\n\nModel\n\n\n\n\n\nA mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.\n\n\n\n\n \n\n\n\n\n\n\nNamed Entity Recognition (NER)\n\n\n\n\n\nA NLP classification task where a sentence is broken into its components, and the model attempts to assign each component to a specific entity (e.g., person, place, organization).\n\n\n\n\n \n\n\n\n\n\n\nNumericalization\n\n\n\n\n\nA process where numbers are assigned to each token. Occurs after tokenization.\n\n\n\n\n \n\n\n\n\n\n\nOne Hot Encoding\n\n\n\n\n\nA data processing technique where each class in a categorical feature is given its own column that contains true and false values.\n\n\n\n\n \n\n\n\n\n\n\nOneR Classifier\n\n\n\n\n\nThe simplest type of decision tree. The tree only contains a single split.\n\n\n\n\n \n\n\n\n\n\n\nRandom Forest\n\n\n\n\n\nThe name given to a bagged ensemble of decision trees.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Error (RMSE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSE, the better.\n\n\n\n\n \n\n\n\n\n\n\nRoot Mean Squared Logarithmic Error (RMSLE)\n\n\n\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better.\n\n\n\n\n \n\n\n\n\n\n\nSequence\n\n\n\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as document.\n\n\n\n\n \n\n\n\n\n\n\nSoftmax\n\n\n\n\n\nA function that calculates the probabilities of a set of predictions.\n\n\n\n\n \n\n\n\n\n\n\nTabular Data\n\n\n\n\n\nData in the form of a table.\n\n\n\n\n \n\n\n\n\n\n\nTabular Model\n\n\n\n\n\nA model trained on tabular data. It is used to predict a specified column in the data.\n\n\n\n\n \n\n\n\n\n\n\nTokenization\n\n\n\n\n\nSplitting a document into its component words.\n\n\n\n\n \n\n\n\n\n\n\nTransformer\n\n\n\n\n\nThe name given to a Natural Language Processing (NLP) architecture that, in a nutshell, either fills-in-the-blanks or autocompletes text. Transformers consist of either an encoder, decoder, or both.\n\n\n\n\n \n\n\n\n\n\n\nVector\n\n\n\n\n\nA table of values that has either a single row or a single column. See also matrix.\n\n\n\n\n \n\n\n\n\n\n\nWeight Decay\n\n\n\n\n\nA technique for making sure your weights do not grow too large, and in turn overfit the data.\n\n\n\n\n \n\n\n\n\n\n\nZero-shot\n\n\n\n\n\nA prefix given to a pretrained model that can be used without finetuning.\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\nNo matching items"
+    "text": "Loading…"
   },
   {
     "objectID": "about.html",
@@ -700,66 +756,10 @@
     "text": "Been to\n\n\nEgypt* | England | France | Greece | Italy | Jordan* | Lebanon* | Malaysia | Pakistan | Qatar* | Saudi Arabia | Sri Lanka | Switzerland | Tanzania | Thailand | Turkey | UAE | Wales\n*Transit destinations; I count them still because I was technically within the country’s border."
   },
   {
-    "objectID": "feedback.html",
-    "href": "feedback.html",
-    "title": "Site Feedback",
-    "section": "",
-    "text": "Loading…"
-  },
-  {
     "objectID": "testing_page.html",
     "href": "testing_page.html",
     "title": "Testing Page",
     "section": "",
     "text": "ForBlog\n\n\n\n\n  \n\n\n\n\nTransformers, Simply Explained\n\n\nAutobots or Decepticons?\n\n\nAll transformers really do is fill in the blanks and autocomplete.\n\n\n\n\n\n\nFeb 28, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\nJan 26, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPlayground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "web_apps/index.html",
-    "href": "web_apps/index.html",
-    "title": "App Playground",
-    "section": "",
-    "text": "Here you can view various apps and gizmos I’ve created. Have a play through some of them let me know what you think!\nMore apps coming soon.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\n\nImage Classification\n\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nTuesday, 20 September 2022 | 2022-09-20\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\n\nImage Classification\n\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nSaturday, 30 April 2022 | 2022-04-30\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\nLoading…\n\nClick here to unsubscribe from the App Playground."
-  },
-  {
-    "objectID": "web_apps/apps/coming_soon.html",
-    "href": "web_apps/apps/coming_soon.html",
-    "title": "More apps coming soon…",
-    "section": "",
-    "text": "I never told you how soon…\n\n\n\nThis image was generated by Dall-E 2!"
-  },
-  {
-    "objectID": "web_apps/apps/bear_detector.html",
-    "href": "web_apps/apps/bear_detector.html",
-    "title": "Bear Classifier",
-    "section": "",
-    "text": "This webapp was remade on Tuesday, 8 November 2022."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to the world of ForBo7",
-    "section": "",
-    "text": "I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries.\nRead more about me here.\nFeel free to contact me with one of the fancy buttons below!\n \n  \n   \n  \n    \n     Twitter\n  \n  \n    \n     GitHub\n  \n  \n    \n     Kaggle\n  \n  \n    \n     Artstation\n  \n  \n    \n     Email"
-  },
-  {
-    "objectID": "index.html#forblog",
-    "href": "index.html#forblog",
-    "title": "Welcome to the world of ForBo7",
-    "section": "ForBlog",
-    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n  \n\n\n\n\nTransformers, Simply Explained\n\n\nAutobots or Decepticons?\n\n\nAll transformers really do is fill in the blanks and autocomplete.\n\n\n\n\n\n\nFeb 28, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n\nJan 26, 2023\n\n\nSalman Naqvi\n\n\n\n\n\n\n  \n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n\nDec 23, 2022\n\n\nIsaac Flath, Salman Naqvi\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#playground",
-    "href": "index.html#playground",
-    "title": "Welcome to the world of ForBo7",
-    "section": "Playground",
-    "text": "Playground\nClick here to play more in the playground.\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nApr 30, 2022\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "unsubscribe.html",
-    "href": "unsubscribe.html",
-    "title": "Unsubscribe from ForBlog and App Playground Notifications",
-    "section": "",
-    "text": "Loading…"
   }
 ]
