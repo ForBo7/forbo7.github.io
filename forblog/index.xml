@@ -17,7 +17,806 @@
 <width>144</width>
 </image>
 <generator>quarto-1.2.475</generator>
-<lastBuildDate>Tue, 28 Feb 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 13 Apr 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>My Musings Through Stable Diffusion</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/11_musings_through_stable_diffusion.html</link>
+  <description><![CDATA[ 
+
+
+
+<blockquote class="blockquote">
+<p><strong>Quick tip:</strong> Click or tap the images to view them up close.</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
+</figure>
+</div>
+<p>I recently begun <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
+<p>In the first lesson, we play around with diffusers using the <a href="https://huggingface.co/docs/diffusers/index">Hugging Face Diffusers</a> library. Below are things I have noticed; my musings.</p>
+<section id="steps" class="level2">
+<h2 class="anchored" data-anchor-id="steps">Steps</h2>
+<p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p></p><figcaption class="figure-caption">A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption><p></p>
+</figure>
+</div>
+<p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p></p><figcaption class="figure-caption">The gif itself has artefacts due to compression…</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="This image displays all images in the gif above in a grid."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
+</figure>
+</div>
+<p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
+</section>
+<section id="when-it-doesnt-work-well" class="level2">
+<h2 class="anchored" data-anchor-id="when-it-doesnt-work-well">When It Doesn’t Work Well</h2>
+<p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p></p><figcaption class="figure-caption">A grasshopper riding a bunny.</figcaption><p></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+</figure>
+</div>
+<p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
+</figure>
+</div>
+</section>
+<section id="cfg-classifier-free-guidance" class="level2">
+<h2 class="anchored" data-anchor-id="cfg-classifier-free-guidance">CFG (Classifier Free Guidance)</h2>
+<p>Or simply known as guidance, CFG is a value which tells the diffuser how much it should stick to the prompt.</p>
+<p>A lower guidance leads to more varied and random images that are loosely related to the prompt. A higher guidance produces more relevant images.</p>
+<p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p></p><figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption><p></p>
+</figure>
+</div>
+<p>The image above shows rows with increasing levels of guidance (1, 2.5, 5, 7.5, 10, 25, 50). 7.5 is the sweetspot.</p>
+</section>
+<section id="negative-prompts" class="level2">
+<h2 class="anchored" data-anchor-id="negative-prompts">Negative Prompts</h2>
+<p>The best way to think about negative prompts is that a negative prompt <em>guides</em> a diffuser away from generating a certain entity.</p>
+<p>Take the image below as an example.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p></p><figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption><p></p>
+</figure>
+</div>
+<p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p></p><figcaption class="figure-caption">Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="image-to-image" class="level2">
+<h2 class="anchored" data-anchor-id="image-to-image">Image to Image</h2>
+<p>Instead of starting from noise, one can make a diffuser begin from an existing image. The diffuser follows the image as guide and doesn’t match it 1 to 1.</p>
+<p>I quickly mocked up the following image.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
+</figure>
+</div>
+<p>I input it to a diffuser with a prompt, and it output the following.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p></p><figcaption class="figure-caption">A bench under a tree in a park</figcaption><p></p>
+</figure>
+</div>
+<p>I then further generated another image from this one.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p></p><figcaption class="figure-caption">A low poly 3D render of a bench under a tree in a park</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="further-adapting-a-diffuser" class="level2">
+<h2 class="anchored" data-anchor-id="further-adapting-a-diffuser">Further Adapting a Diffuser</h2>
+<p>There are two ways one can further customize a diffuser to produce desired images: textual inversion and dreambooth.</p>
+<section id="textual-inversion" class="level3">
+<h3 class="anchored" data-anchor-id="textual-inversion">Textual Inversion</h3>
+<p>A diffuser contains a text encoder. This encoder is responsible for parsing the prompt and giving it a mathematical representation.</p>
+<p>A text encoder can only parse according to its vocabulary. If it encounters words not in its vocabulary, the diffuser will be unable to produce an image relevant to the prompt.</p>
+<p>In a nutshell, textual inversion adds new words to the vocabulary of the text encoder so it can parse prompts with those new words.</p>
+<p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p></p><figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="dreambooth" class="level3">
+<h3 class="anchored" data-anchor-id="dreambooth">Dreambooth</h3>
+<p>Dreambooth is more akin to traditional fine-tuning methods. A diffuser is further trained on images one supplies to it.</p>
+</section>
+</section>
+<section id="so-end-my-musings" class="level2">
+<h2 class="anchored" data-anchor-id="so-end-my-musings">So End my Musings</h2>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Diffusion</category>
+  <guid>https://forbo7.github.io/forblog/posts/11_musings_through_stable_diffusion.html</guid>
+  <pubDate>Thu, 13 Apr 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Stable Diffusion, Summarized</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/12_stable_diffusion_summarized.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="img-fluid"></p>
+<p>Here, I explain the workings of stable diffusion at a high level.</p>
+<section id="components" class="level2">
+<h2 class="anchored" data-anchor-id="components">Components</h2>
+<p>A diffuser contains four main components</p>
+<ul>
+<li>The text encoder</li>
+<li>The image encoder</li>
+<li>The autoencoder (VAE autoencoder)</li>
+<li>The neural network (U-net)</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart TB
+    A{{Diffuser}}
+    B([U-net])
+    C([VAE Autoencoder])
+    D([Text Encoder])
+    E([Image Encoder])
+
+    A --&gt; D &amp; E &amp; C &amp; B
+</pre>
+<div id="mermaid-tooltip-1" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="training" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="training">Training</h2>
+<p>I’ll explain the training process in terms of a single image.</p>
+<p>When all components shown above are put into their respective places, the overall training process looks like this.</p>
+<div class="column-screen-inset">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
+    subgraph A [Feature Vector Creation]
+        id1([Text Encoder])
+        id2([Image Encoder])
+    end
+
+    subgraph B [Image Compression]
+        id3([VAE Autoencoder])
+    end
+
+    subgraph C [Noise Removal]
+        id4([U-net])
+    end
+
+    subgraph D [Image Decompression]
+        id5([VAE Autoencoder])
+    end
+
+    id7[Input Image Description] &amp; id6[Input Image] --&gt; A --&gt; id9[Feature Vector]
+    id6 --noise added to image--&gt; B --&gt; id10[Noisy Latent]
+    id9 &amp; id10 --&gt; C --&gt; id11[Less Noisy Latent] --&gt;  C
+    id11 --&gt; D --&gt; id8[Generated Image]
+</pre>
+<div id="mermaid-tooltip-2" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<p>Let’s break it down.</p>
+<section id="feature-vector-creation" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="feature-vector-creation">Feature Vector Creation</h3>
+<div class="column-body-outset-right">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart TB
+    subgraph B [ ]
+        direction LR
+        id1[Input Image]
+        id2[Input Image Description]
+        subgraph A [Feature Vector Creation]
+            id3([Text Encoder])
+            id4([Image Encoder])
+        end
+        id2 &amp; id1 --&gt; A --&gt; id11[Feature Vector]
+    end
+    style B fill:#FFF, stroke:#333,stroke-width:3px
+
+    subgraph C [ ]
+        direction LR
+        id5[Input Image]
+        id7[Input Image Descripton]
+        id5 --&gt; id6
+        id7 --&gt; id8
+        subgraph D [Feature Vector Creation]
+            id6([Image Encoder])
+            id8([Text Encoder])
+            id6 &amp; id8 --&gt; id9[CLIP Embedding]
+        end
+        id9 --&gt; id10[Feature Vector]
+    end
+    style C fill:#FFF, stroke:#333,stroke-width:3px
+
+    B --&gt; C
+    B --&gt; C
+    B --&gt; C
+</pre>
+<div id="mermaid-tooltip-3" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<p>We start with an image and its description. The image encoder takes the image and produces a feature vector — a vector with numerical values that describe the image in some way. The text encoder takes the image’s description and similarly produces a feature vector.</p>
+<p>These two feature vectors are then stored in what’s known as a CLIP embedding. An embedding is simply a table where each row is an item and each column describes the items in some way. I this case, the rows represent feature vectors, and the columns are each feature in the vector.</p>
+<p>Both encoders keep producing feature vectors until they are as similar as possible.</p>
+</section>
+<section id="image-compression" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="image-compression">Image Compression</h3>
+<div class="column-body-outset-right">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-4">flowchart TB
+    subgraph A [ ]
+        id2[Input Image] --&gt; id1
+        subgraph B [Image Compression]
+            direction LR
+            id1([VAE Autoencdoer])
+        end
+        id1 --&gt; id7[Latent]
+    end
+    style A fill:#FFF, stroke:#333,stroke-width:3px
+
+    subgraph C[ ]
+        direction LR
+        id3[Input Image]
+        subgraph D [Image Compression]
+            id4([VAE Encoder])
+            id5([VAE Decoder])
+        end
+        id3 --&gt; id4 --&gt; id6[Latent]
+    end
+    style C fill:#FFF, stroke:#333,stroke-width:3px
+
+    A &amp; A &amp; A --&gt; C
+</pre>
+<div id="mermaid-tooltip-4" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<p>Once the feature vectors have been produced, some noise is tossed onto the image. This noisy image is then compressed by the VAE autoencoder.</p>
+<p>The VAE autoencoder contains an encoder and a decoder. The encoder handles compression whereas the decoder handles decompression.</p>
+<p>The compressed noisy image is now known as the latent. The image is compressed for faster computation, as there would be fewer pixels to compute on.</p>
+</section>
+<section id="noise-removal" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="noise-removal">Noise Removal</h3>
+<div class="column-body-outset-right">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-5">flowchart TB
+    subgraph A [ ]
+        id1[Feature Vector] &amp; id2[Noisy Latent] --&gt; id3
+        subgraph B [Noise Removal]
+            direction LR
+            id3([U-net]) --&gt; id4[Noise]
+        end
+        id4 --with learning rate--&gt; id5[Less Noisy Latent] --&gt; id3
+    end
+    style A fill:#FFF, stroke:#333,stroke-width:3px 
+
+    subgraph C [ ]
+        id6[Feature Vector] &amp; id7[Noisy Latent] --&gt; id8
+        subgraph Noise Removal
+            direction LR
+            id8([U-net])
+        end
+        id8 --&gt; id9([Less Noisy Latent]) --&gt; id8
+    end
+    C &amp; C &amp; C --&gt; A
+    style C fill:#FFF, stroke:#333,stroke-width:3px
+</pre>
+<div id="mermaid-tooltip-5" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<p>The latent, together with its feature vector, is now input to the U-net. Instead of predicting what the original, un-noisy image was, the U-net predicts the noise that was tossed onto the image.</p>
+<p>Once it outputs the predicted noise, that noise is subtracted from the latent in conjunction with the learning rate. This new, less noisy latent is now input again and the process repeats until desired.</p>
+</section>
+<section id="image-decompression" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="image-decompression">Image Decompression</h3>
+<div class="column-body-outset-right">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-6">flowchart TB
+    subgraph A [ ]
+        direction LR
+        id2[Input Image] --&gt; id1
+        subgraph B [Image Decompression]
+            id1([VAE Autoencdoer])
+        end
+        id1 --&gt; id7[Latent]
+    end
+    style A fill:#FFF, stroke:#333,stroke-width:3px
+
+    subgraph C [ ]
+        direction LR
+        id3[Less Noisy Latent] --&gt; id5
+        subgraph D [Image Decompression]
+            id4([VAE Encoder])
+            id5([VAE Decoder])
+        end
+        id5 --&gt; id6[Generated Image]
+    end
+    style C fill:#FFF, stroke:#333,stroke-width:3px
+
+    A &amp; A &amp; A --&gt; C
+</pre>
+<div id="mermaid-tooltip-6" class="mermaidTooltip">
+
+</div>
+<p></p>
+</div>
+</div>
+</div>
+</div>
+<p>The latent is now decompressed through the VAE autoencoder’s decoder.</p>
+<p>We now have a generated image!</p>
+</section>
+</section>
+<section id="inference" class="level2">
+<h2 class="anchored" data-anchor-id="inference">Inference</h2>
+<p>When using a diffuser for inference, the diffuser <em>typically</em> begins with a purely noisey image. The diffuser uses the input prompt to guide the removal of noise from the noisy image, until the image resembles what is desired.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And that’s all there is to it!</p>
+<p>We take an image and its prompt, and create a feature vector out of them. Noise is then added to the image, which is then compressed. The latent and the feature vector are input to a U-net which then predicts the noise in the latent. The predicted noise is subtracted from the latent, which is then input back to the U-net. After the desired number of steps has lapsed, the latent is decompressed and the generated image is ready!</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Diffusion</category>
+  <category>Creating Models</category>
+  <guid>https://forbo7.github.io/forblog/posts/12_stable_diffusion_summarized.html</guid>
+  <pubDate>Thu, 13 Apr 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>How to Convert Audio to Spectrogram Images</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><strong>You can find this notebook on Kaggle <a href="https://www.kaggle.com/code/forbo7/how-to-convert-audio-to-spectrogram-images">here</a>.</strong></p>
+<blockquote class="blockquote">
+<p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html#style-guide">fastai style conventions</a>.</p>
+</blockquote>
+<p><img src="https://forbo7.github.io/forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" class="img-fluid" alt="A generated image of a colorful East African bird."></p>
+<p>In this to-the-point notebook, I go over how one can create images of spectrograms from audio files using the PyTorch torchaudio module.</p>
+<p>The notebook also goes over how I created the spectrogram images for the BirdCLEF 2023 competition, and how one can create and push a dataset right on Kaggle (useful if your local machine doesn’t have enough storage).</p>
+<p>You can view the dataset that was generated from this notebook <a href="https://www.kaggle.com/datasets/forbo7/spectrograms-birdclef-2023">here</a>.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:15:52.222983Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:15:52.221975Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:06.187026Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:06.185564Z&quot;}" data-papermill="{&quot;duration&quot;:13.988997,&quot;end_time&quot;:&quot;2023-04-05T11:16:06.190265&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:15:52.201268&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="cf" style="color: #003B4F;">try</span>: <span class="im" style="color: #00769E;">from</span> fastkaggle <span class="im" style="color: #00769E;">import</span> <span class="op" style="color: #5E5E5E;">*</span></span>
+<span id="cb1-2"><span class="cf" style="color: #003B4F;">except</span> ModuleNotFoundError:</span>
+<span id="cb1-3">    <span class="op" style="color: #5E5E5E;">!</span> pip install <span class="op" style="color: #5E5E5E;">-</span>Uqq fastkaggle</span>
+<span id="cb1-4">    <span class="im" style="color: #00769E;">from</span> fastkaggle <span class="im" style="color: #00769E;">import</span> <span class="op" style="color: #5E5E5E;">*</span></span>
+<span id="cb1-5"></span>
+<span id="cb1-6">iskaggle</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'Batch'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:06.219791Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:06.217738Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:19.085766Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:19.083703Z&quot;}" data-papermill="{&quot;duration&quot;:12.886205,&quot;end_time&quot;:&quot;2023-04-05T11:16:19.089359&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:06.203154&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">comp <span class="op" style="color: #5E5E5E;">=</span> <span class="st" style="color: #20794D;">'birdclef-2023'</span></span>
+<span id="cb3-2">d_path <span class="op" style="color: #5E5E5E;">=</span> setup_comp(comp, install<span class="op" style="color: #5E5E5E;">=</span><span class="st" style="color: #20794D;">'nbdev'</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:19.119731Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:19.119242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.763802Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.761810Z&quot;}" data-papermill="{&quot;duration&quot;:6.663933,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.766895&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:19.102962&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;">from</span> fastai.imports <span class="im" style="color: #00769E;">import</span> <span class="op" style="color: #5E5E5E;">*</span></span>
+<span id="cb4-2"><span class="im" style="color: #00769E;">from</span> fastai.vision.<span class="bu" style="color: null;">all</span> <span class="im" style="color: #00769E;">import</span> <span class="op" style="color: #5E5E5E;">*</span></span></code></pre></div>
+</div>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<section id="paths" class="level3">
+<h3 class="anchored" data-anchor-id="paths">Paths</h3>
+<p>Let’s see all the files and directories we have.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:25.878998Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:25.878488Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.888345Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.887118Z&quot;}" data-papermill="{&quot;duration&quot;:0.028396,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.891571&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.863175&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">d_path.ls()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>(#5) [Path('../input/birdclef-2023/sample_submission.csv'),Path('../input/birdclef-2023/train_audio'),Path('../input/birdclef-2023/eBird_Taxonomy_v2021.csv'),Path('../input/birdclef-2023/train_metadata.csv'),Path('../input/birdclef-2023/test_soundscapes')]</code></pre>
+</div>
+</div>
+<p>Let’s get the path to the audio files.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:25.947818Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:25.947204Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.953261Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.951813Z&quot;}" data-papermill="{&quot;duration&quot;:0.022977,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.956052&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.933075&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">aud_files <span class="op" style="color: #5E5E5E;">=</span> d_path<span class="op" style="color: #5E5E5E;">/</span><span class="st" style="color: #20794D;">'train_audio'</span></span></code></pre></div>
+</div>
+<p>And create a directory to store the spectrogram images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.012862Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.012021Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.022510Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.020324Z&quot;}" data-papermill="{&quot;duration&quot;:0.030052,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.026393&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.996341&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">mkdir(<span class="st" style="color: #20794D;">'/kaggle/train_images'</span>, exist_ok<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)<span class="op" style="color: #5E5E5E;">;</span> Path(<span class="st" style="color: #20794D;">'/kaggle/train_images'</span>).exists()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="single-image" class="level2">
+<h2 class="anchored" data-anchor-id="single-image">Single Image</h2>
+<p>It’s always a good idea to try things out on a smaller scale; so let’s begin by converting only a single audio file.</p>
+<p>Let’s get the first audio file.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.113335Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.112824Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.142126Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.140480Z&quot;}" data-papermill="{&quot;duration&quot;:0.048533,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.145465&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.096932&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">aud_files.ls()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>(#264) [Path('../input/birdclef-2023/train_audio/yetgre1'),Path('../input/birdclef-2023/train_audio/moccha1'),Path('../input/birdclef-2023/train_audio/rostur1'),Path('../input/birdclef-2023/train_audio/walsta1'),Path('../input/birdclef-2023/train_audio/ratcis1'),Path('../input/birdclef-2023/train_audio/norfis1'),Path('../input/birdclef-2023/train_audio/macshr1'),Path('../input/birdclef-2023/train_audio/brrwhe3'),Path('../input/birdclef-2023/train_audio/crefra2'),Path('../input/birdclef-2023/train_audio/pabspa1')...]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.174836Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.174343Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.192704Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.190872Z&quot;}" data-papermill="{&quot;duration&quot;:0.035581,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.195419&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.159838&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">aud_files.ls()[<span class="dv" style="color: #AD0000;">0</span>].ls()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>(#27) [Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC574558.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403259.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498854.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC289493.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC716763.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498853.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC338717.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC349660.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403543.ogg')...]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.226795Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.225378Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.237298Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.236003Z&quot;}" data-papermill="{&quot;duration&quot;:0.031014,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.240594&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.209580&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">aud <span class="op" style="color: #5E5E5E;">=</span> aud_files.ls()[<span class="dv" style="color: #AD0000;">0</span>].ls()[<span class="dv" style="color: #AD0000;">0</span>]<span class="op" style="color: #5E5E5E;">;</span> aud</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg')</code></pre>
+</div>
+</div>
+<p>Now it’s time to load it in. What we get in return is the waveform and the sample rate.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.298265Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.297796Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.258464Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.256550Z&quot;}" data-papermill="{&quot;duration&quot;:0.980217,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.261269&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.281052&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="im" style="color: #00769E;">import</span> torchaudio</span>
+<span id="cb16-2">wvfrm, sr <span class="op" style="color: #5E5E5E;">=</span> torchaudio.load(aud)<span class="op" style="color: #5E5E5E;">;</span> wvfrm</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>tensor([[0.0000e+00, 0.0000e+00, 0.0000e+00,  ..., 3.0518e-05, 0.0000e+00,
+         0.0000e+00]])</code></pre>
+</div>
+</div>
+<hr>
+<section id="birdclef-2023-clipping-the-audio-files" class="level4">
+<h4 class="anchored" data-anchor-id="birdclef-2023-clipping-the-audio-files">BirdCLEF 2023 — Clipping the Audio Files</h4>
+<p>This competition requires predictions to be submitted of all 5 second intervals in each audio clip. This means the audio files need to be clipped.</p>
+<p>Below is an easy way this can be done. We clip the first 5 seconds of the audio file.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.375336Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.374863Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.383346Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.381728Z&quot;}" data-papermill="{&quot;duration&quot;:0.027009,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.386202&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.359193&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">start_sec <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">0</span></span>
+<span id="cb18-2">end_sec <span class="op" style="color: #5E5E5E;">=</span> <span class="dv" style="color: #AD0000;">5</span></span>
+<span id="cb18-3">wvfrm <span class="op" style="color: #5E5E5E;">=</span> wvfrm[:, start_sec<span class="op" style="color: #5E5E5E;">*</span>sr:end_sec<span class="op" style="color: #5E5E5E;">*</span>sr]</span>
+<span id="cb18-4">wvfrm.shape[<span class="dv" style="color: #AD0000;">1</span>] <span class="op" style="color: #5E5E5E;">/</span> sr</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>5.0</code></pre>
+</div>
+</div>
+<p>Sample rate is simply the number of frames recorded per second. The waveform that torchaudio returns is a tensor of frames. Therefore, we can easily select the desired range of frames by multiplying the sample rate with the desired start and end seconds.</p>
+<hr>
+<p>Now let’s create the spectrogram.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.503378Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.502883Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.586982Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.585599Z&quot;}" data-papermill="{&quot;duration&quot;:0.103329,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.589754&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.486425&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="im" style="color: #00769E;">import</span> torchaudio.transforms <span class="im" style="color: #00769E;">as</span> T</span>
+<span id="cb20-2">spec <span class="op" style="color: #5E5E5E;">=</span> T.Spectrogram()(wvfrm)<span class="op" style="color: #5E5E5E;">;</span> spec</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>tensor([[[4.3970e-08, 8.2461e-09, 4.7306e-11,  ..., 7.8266e-08,
+          1.7642e-08, 1.5016e-03],
+         [6.3310e-09, 6.5514e-10, 1.6958e-08,  ..., 4.3492e-09,
+          3.6019e-08, 1.5231e-03],
+         [1.1548e-08, 1.7308e-08, 6.5956e-08,  ..., 2.9340e-06,
+          1.2277e-06, 1.4124e-03],
+         ...,
+         [2.4446e-07, 6.1277e-09, 1.4932e-09,  ..., 1.4665e-08,
+          1.0110e-08, 1.8980e-05],
+         [3.1582e-07, 1.4777e-09, 1.2275e-08,  ..., 1.3213e-08,
+          1.9035e-09, 2.0009e-05],
+         [3.1673e-07, 1.1897e-10, 2.7457e-09,  ..., 1.0001e-08,
+          6.0452e-14, 1.9979e-05]]])</code></pre>
+</div>
+</div>
+<p>Let’s scale it logarithmically. This allows for better viewing.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.649631Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.648891Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.674057Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.672720Z&quot;}" data-papermill="{&quot;duration&quot;:0.043955,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.676877&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.632922&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">spec <span class="op" style="color: #5E5E5E;">=</span> T.AmplitudeToDB()(spec)<span class="op" style="color: #5E5E5E;">;</span> spec</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>tensor([[[ -73.5684,  -80.8375, -100.0000,  ...,  -71.0643,  -77.5346,
+           -28.2346],
+         [ -81.9853,  -91.8367,  -77.7063,  ...,  -83.6159,  -74.4347,
+           -28.1726],
+         [ -79.3751,  -77.6177,  -71.8074,  ...,  -55.3254,  -59.1092,
+           -28.5005],
+         ...,
+         [ -66.1180,  -82.1270,  -88.2588,  ...,  -78.3373,  -79.9524,
+           -47.2170],
+         [ -65.0056,  -88.3043,  -79.1097,  ...,  -78.7899,  -87.2045,
+           -46.9877],
+         [ -64.9931,  -99.2458,  -85.6135,  ...,  -79.9997, -100.0000,
+           -46.9943]]])</code></pre>
+</div>
+</div>
+<p>The PyTorch tensor needs to be converted into a NumPy array so it can then further be converted to an image. I’m using the <code>squeeze</code> method to remove the uneeded axis of length 1, as seen below.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.740341Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.739507Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.749453Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.748268Z&quot;}" data-papermill="{&quot;duration&quot;:0.029094,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.752190&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.723096&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">spec.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>torch.Size([1, 201, 801])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.785837Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.784455Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.793653Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.792659Z&quot;}" data-papermill="{&quot;duration&quot;:0.028469,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.796037&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.767568&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">spec <span class="op" style="color: #5E5E5E;">=</span> spec.squeeze().numpy()<span class="op" style="color: #5E5E5E;">;</span> spec</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>array([[ -73.56842 ,  -80.83749 , -100.      , ...,  -71.064285,
+         -77.53463 ,  -28.234562],
+       [ -81.98525 ,  -91.83666 ,  -77.706314, ...,  -83.615875,
+         -74.43467 ,  -28.172626],
+       [ -79.37505 ,  -77.61765 ,  -71.80743 , ...,  -55.32541 ,
+         -59.109177,  -28.500452],
+       ...,
+       [ -66.118   ,  -82.127014,  -88.25883 , ...,  -78.33732 ,
+         -79.95244 ,  -47.21705 ],
+       [ -65.00563 ,  -88.30426 ,  -79.10974 , ...,  -78.78989 ,
+         -87.20445 ,  -46.987743],
+       [ -64.99306 ,  -99.24575 ,  -85.61355 , ...,  -79.99969 ,
+        -100.      ,  -46.994343]], dtype=float32)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.828702Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.827779Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.834763Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.833666Z&quot;}" data-papermill="{&quot;duration&quot;:0.026709,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.837709&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.811000&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">spec.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>(201, 801)</code></pre>
+</div>
+</div>
+<p>The array now needs to be normalized so it contains integers between 0 and 255: the values needed for images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.900797Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.900280Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.913110Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.912123Z&quot;}" data-papermill="{&quot;duration&quot;:0.033373,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.916342&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.882969&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">spec <span class="op" style="color: #5E5E5E;">=</span> (spec <span class="op" style="color: #5E5E5E;">-</span> spec.<span class="bu" style="color: null;">min</span>()) <span class="op" style="color: #5E5E5E;">/</span> (spec.<span class="bu" style="color: null;">max</span>() <span class="op" style="color: #5E5E5E;">-</span> spec.<span class="bu" style="color: null;">min</span>()) <span class="op" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">255</span><span class="op" style="color: #5E5E5E;">;</span> spec</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>array([[ 53.000538 ,  38.424625 ,   0.       , ...,  58.021824 ,
+         45.047504 , 143.90388  ],
+       [ 36.123127 ,  16.369104 ,  44.703243 , ...,  32.853405 ,
+         51.263535 , 144.02808  ],
+       [ 41.35709  ,  44.881027 ,  56.53168  , ...,  89.581375 ,
+         81.99417  , 143.37071  ],
+       ...,
+       [ 67.94011  ,  35.838867 ,  23.543371 , ...,  43.437954 ,
+         40.199318 , 105.84024  ],
+       [ 70.17062  ,  23.452267 ,  41.889095 , ...,  42.530468 ,
+         25.6576   , 106.30005  ],
+       [ 70.19584  ,   1.5124193,  28.847677 , ...,  40.104576 ,
+          0.       , 106.28681  ]], dtype=float32)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.951841Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.949505Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.961525Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.960579Z&quot;}" data-papermill="{&quot;duration&quot;:0.032237,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.964842&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.932605&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">spec <span class="op" style="color: #5E5E5E;">=</span> spec.astype(<span class="st" style="color: #20794D;">'uint8'</span>)<span class="op" style="color: #5E5E5E;">;</span> spec</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>array([[ 53,  38,   0, ...,  58,  45, 143],
+       [ 36,  16,  44, ...,  32,  51, 144],
+       [ 41,  44,  56, ...,  89,  81, 143],
+       ...,
+       [ 67,  35,  23, ...,  43,  40, 105],
+       [ 70,  23,  41, ...,  42,  25, 106],
+       [ 70,   1,  28, ...,  40,   0, 106]], dtype=uint8)</code></pre>
+</div>
+</div>
+<p>Now we can finally convert the array to an image!</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.031056Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.029390Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.084834Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.083568Z&quot;}" data-papermill="{&quot;duration&quot;:0.07604,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.088714&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.012674&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1">img <span class="op" style="color: #5E5E5E;">=</span> Image.fromarray(spec)</span>
+<span id="cb34-2"><span class="bu" style="color: null;">print</span>(img.shape)</span>
+<span id="cb34-3">img</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(201, 801)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Cool, hey? We’ve just visualized audio!</p>
+<hr>
+</section>
+<section id="birdclef-2023-resizing-the-images" class="level4">
+<h4 class="anchored" data-anchor-id="birdclef-2023-resizing-the-images">BirdCLEF 2023 — Resizing the Images</h4>
+<p>To allow the images to easily be used by various models, I resized the spectrograms to be 512 by 512 pixels as shown below.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.274501Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.273673Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.326587Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.324898Z&quot;}" data-papermill="{&quot;duration&quot;:0.078347,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.331168&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.252821&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1">img_size <span class="op" style="color: #5E5E5E;">=</span> (<span class="dv" style="color: #AD0000;">512</span>, <span class="dv" style="color: #AD0000;">512</span>)</span>
+<span id="cb36-2">img <span class="op" style="color: #5E5E5E;">=</span> img.resize(img_size)</span>
+<span id="cb36-3"><span class="bu" style="color: null;">print</span>(img.shape)<span class="op" style="color: #5E5E5E;">;</span> img</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(512, 512)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+<p>To save the image, we can simply use the <code>save</code> method.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.459626Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.459199Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.503231Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.501434Z&quot;}" data-papermill="{&quot;duration&quot;:0.069824,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.506489&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.436665&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1">img.save(<span class="st" style="color: #20794D;">'img.png'</span>)</span></code></pre></div>
+</div>
+</section>
+</section>
+<section id="all-the-images" class="level2">
+<h2 class="anchored" data-anchor-id="all-the-images">All the Images</h2>
+<p>Now that we have verified that our algorithm works fine, we can extend it to convert all audio files.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.643386Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.642940Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.655463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.653781Z&quot;}" data-papermill="{&quot;duration&quot;:0.039189,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.658495&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.619306&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><span class="kw" style="color: #003B4F;">def</span> create_imgs(duration, f):</span>
+<span id="cb39-2">    <span class="cf" style="color: #003B4F;">for</span> step <span class="kw" style="color: #003B4F;">in</span> <span class="bu" style="color: null;">range</span>(<span class="dv" style="color: #AD0000;">0</span>, duration, <span class="dv" style="color: #AD0000;">5</span>):</span>
+<span id="cb39-3">        wvfrm, sr <span class="op" style="color: #5E5E5E;">=</span> torchaudio.load(f)</span>
+<span id="cb39-4">        wvfrm <span class="op" style="color: #5E5E5E;">=</span> cut_wvfrm(wvfrm, sr, step)</span>
+<span id="cb39-5">        spec <span class="op" style="color: #5E5E5E;">=</span> create_spec(wvfrm)</span>
+<span id="cb39-6">        img <span class="op" style="color: #5E5E5E;">=</span> spec2img(spec)</span>
+<span id="cb39-7">        end_sec <span class="op" style="color: #5E5E5E;">=</span> step <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">5</span></span>
+<span id="cb39-8">        img.save(<span class="ss" style="color: #20794D;">f'/kaggle/train_images/</span><span class="sc" style="color: #5E5E5E;">{</span>bird<span class="sc" style="color: #5E5E5E;">.</span>stem<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">/</span><span class="sc" style="color: #5E5E5E;">{</span>f<span class="sc" style="color: #5E5E5E;">.</span>stem<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">_</span><span class="sc" style="color: #5E5E5E;">{</span>end_sec<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">.png'</span>)</span>
+<span id="cb39-9"></span>
+<span id="cb39-10"><span class="kw" style="color: #003B4F;">def</span> cut_wvfrm(wvfrm, sr, step):</span>
+<span id="cb39-11">    start_sec, end_sec <span class="op" style="color: #5E5E5E;">=</span> step, step <span class="op" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">5</span></span>
+<span id="cb39-12">    <span class="cf" style="color: #003B4F;">return</span> wvfrm[:, start_sec <span class="op" style="color: #5E5E5E;">*</span> sr: end_sec <span class="op" style="color: #5E5E5E;">*</span> sr]</span>
+<span id="cb39-13">            </span>
+<span id="cb39-14"><span class="kw" style="color: #003B4F;">def</span> create_spec(wvfrm):</span>
+<span id="cb39-15">    spec <span class="op" style="color: #5E5E5E;">=</span> T.Spectrogram()(wvfrm)</span>
+<span id="cb39-16">    <span class="cf" style="color: #003B4F;">return</span> T.AmplitudeToDB()(spec)</span>
+<span id="cb39-17">        </span>
+<span id="cb39-18"><span class="kw" style="color: #003B4F;">def</span> spec2img(spec, img_size<span class="op" style="color: #5E5E5E;">=</span>(<span class="dv" style="color: #AD0000;">512</span>, <span class="dv" style="color: #AD0000;">512</span>)):</span>
+<span id="cb39-19">    spec <span class="op" style="color: #5E5E5E;">=</span> np.real(spec.squeeze().numpy())</span>
+<span id="cb39-20">    spec <span class="op" style="color: #5E5E5E;">=</span> ((spec <span class="op" style="color: #5E5E5E;">-</span> spec.<span class="bu" style="color: null;">min</span>()) <span class="op" style="color: #5E5E5E;">/</span> (spec.<span class="bu" style="color: null;">max</span>() <span class="op" style="color: #5E5E5E;">-</span> spec.<span class="bu" style="color: null;">min</span>()) <span class="op" style="color: #5E5E5E;">*</span> <span class="dv" style="color: #AD0000;">255</span>).astype(<span class="st" style="color: #20794D;">'uint8'</span>)</span>
+<span id="cb39-21">    <span class="cf" style="color: #003B4F;">return</span> Image.fromarray(spec).resize(img_size)</span></code></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.704642Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.704142Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.713257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.711504Z&quot;}" data-papermill="{&quot;duration&quot;:0.036435,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.716300&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.679865&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> iskaggle:</span>
+<span id="cb40-2">    <span class="cf" style="color: #003B4F;">for</span> bird <span class="kw" style="color: #003B4F;">in</span> aud_files.ls().<span class="bu" style="color: null;">sorted</span>():</span>
+<span id="cb40-3">        mkdir(<span class="ss" style="color: #20794D;">f'/kaggle/train_images/</span><span class="sc" style="color: #5E5E5E;">{</span>bird<span class="sc" style="color: #5E5E5E;">.</span>stem<span class="sc" style="color: #5E5E5E;">}</span><span class="ss" style="color: #20794D;">'</span>, exist_ok<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span>
+<span id="cb40-4">        <span class="cf" style="color: #003B4F;">for</span> f <span class="kw" style="color: #003B4F;">in</span> bird.ls().<span class="bu" style="color: null;">sorted</span>():</span>
+<span id="cb40-5">            info <span class="op" style="color: #5E5E5E;">=</span> torchaudio.info(f)</span>
+<span id="cb40-6">            duration <span class="op" style="color: #5E5E5E;">=</span> info.num_frames <span class="op" style="color: #5E5E5E;">/</span> info.sample_rate</span>
+<span id="cb40-7">            <span class="cf" style="color: #003B4F;">if</span> duration <span class="op" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">5</span>:</span>
+<span id="cb40-8">                create_imgs(<span class="bu" style="color: null;">round</span>(duration<span class="op" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">5</span>)<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">5</span>, f)</span>
+<span id="cb40-9">            <span class="cf" style="color: #003B4F;">else</span>: <span class="cf" style="color: #003B4F;">continue</span></span></code></pre></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Ignore the <code>if not iskaggle</code> statement when replicating. I added it since I edited this notebook and needed to save changes without reproducing the entire dataset.</p>
+</blockquote>
+<p>In the first <code>for</code> loop below, we loop through all the bird folders. For each folder, a folder with the same name is created in the directory where we want to store the images.</p>
+<p>In the second <code>for</code> loop, we loop through all audio files within the folder and then convert them to spectrogram images through the <code>create_images</code> function I defined.</p>
+<hr>
+<section id="birdclef-2023-clipping-the-audio-files-1" class="level4">
+<h4 class="anchored" data-anchor-id="birdclef-2023-clipping-the-audio-files-1">BirdCLEF 2023 — Clipping the Audio Files</h4>
+<p>Some audio files in the training set are of different durations. Therefore, we obtain the duration of the audio file so it can correctly be clipped into 5 second intervals.</p>
+<div class="sourceCode" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1">info <span class="op" style="color: #5E5E5E;">=</span> torchaudio.info(f)</span>
+<span id="cb41-2">duration <span class="op" style="color: #5E5E5E;">=</span> info.num_frames <span class="op" style="color: #5E5E5E;">/</span> info.sample_rate</span>
+<span id="cb41-3"><span class="cf" style="color: #003B4F;">if</span> duration <span class="op" style="color: #5E5E5E;">&gt;=</span> <span class="dv" style="color: #AD0000;">5</span>:</span>
+<span id="cb41-4">    create_images(<span class="bu" style="color: null;">round</span>(duration<span class="op" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">5</span>)<span class="op" style="color: #5E5E5E;">*</span><span class="dv" style="color: #AD0000;">5</span>, f)</span>
+<span id="cb41-5"><span class="cf" style="color: #003B4F;">else</span>: <span class="cf" style="color: #003B4F;">continue</span></span></code></pre></div>
+<p>Again, since sample rate is the number of frames recorded per second, we can divide the total number of frames by the sample rate to obtain the duration in seconds of a clip.</p>
+<p><code>duration = info.num_frames / info.sample_rate</code></p>
+<p>Then we round the duration to the nearest 5 for easy clipping.</p>
+<p><code>round(duration/5)*5</code></p>
+<hr>
+<p>The images now created! The rest of this notebook covers how one can generate a dataset in a Kaggle Notebook and push it directly to Kaggle within it.</p>
+</section>
+</section>
+<section id="api-setup" class="level2">
+<h2 class="anchored" data-anchor-id="api-setup">API Setup</h2>
+<p>We need to configure the user keys so we can push to the correct account.</p>
+<p>To do this, first obtain your Kaggle API key. Then, while in the notebook editor, click Add-ons -&gt; Secrets -&gt; Add a New Secret…</p>
+<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mY_6mu6XXxmpkR_MwTxHxfEGRV9QOqlxkCF8i6T90WkRadthJc9yeOxUG3k21bT-QQ4CxJcP1W-MHuAhX_tKvf-gcZqUvkLONiKPeumqZCTezKhwXJXs0OFuTDBnedbcViCOeeIkzjVjYJiBc3J7ib0AqG5v247vovXQP1JYv-8RmfWMFytuyCgwvLNt_5MSP?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mBCKZg2xbmSClGOAWdxf6vXcrgLKV0TNe-SuLaS37nzKAuHpzMZsXL0lEAuauWYrrKnZVx2qGStH3ZjVn-E0xARzTUW7UN9Em3gx_X3qivCHIX_85Z0aQc0xQYrl2dJPvyPOHwuCm0ML5188bFuemgoQik3jn_TVih1YKxYw9Z79fDahzG8wD9Yu-zbizRsVS?width=1024&amp;height=640&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mgCDqODGoakfC1zbSK1tEGy1gcUPMpzzw5DEFHJnQPZIWZpWn2WKLT48EGRky-kXSmBYt-BYSgVxO7jMVT321_gqOYjX0daxumANws9LpNOvwdG3ce9nKJFT8ZkSEjtb5Q93leY75dKLk2CumNpmRGi4WoZr5jsTPPEV42yTlNPURAMrSsl09XeKqGaBjJO0u?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p>…input your key and give it a name…</p>
+<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mz3E2oKRG9H8n6cSwx-uk8ZAuIB8WSExJX92_w8ZoqYkX4f72QXKM2AFjjn7n_UaS30btHk6ueSi9VTRD_us_pUp3CSo3MkBM0mRBZqeqYDrSY4GRGamkrYnNKtxfZ-PQKJEvjOr8r8N97cftsJ3-9fEUcO3jv8kVGniKNPHWx_aVpIElx4_qgVq-aRt30PSD?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p>…and click save. Then click the checkbox next to the secret to activate it for your notebook.</p>
+<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4m3RfkLD7cbynZIPmI7X17qmHTxar-hX5p-w5G70Z3YiRiIPzkzo3Z9h1Z4eWecrmmU88yl-HXUSRU7xUQ0LN2C-_wn_qmKDJFJyXSjNfhV7XjKpGbyhxXU9JCaTOxZhRwHGl4ghkykkhpMBTpoG-dxe7YlhPI40DQJT2dvCcuv1KZQkYkcOHIqiUI8SvwhL4Q?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p>Repeat for your Kaggle username.</p>
+<p>Now we can set the keys for the notebook as shown below (input the name of your key into <code>get_secret</code>).</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.196185Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.195768Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:29.201245Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:29.199576Z&quot;}" data-papermill="{&quot;duration&quot;:0.032545,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.203954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.171409&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><span class="im" style="color: #00769E;">import</span> os</span>
+<span id="cb42-2"><span class="im" style="color: #00769E;">from</span> kaggle_secrets <span class="im" style="color: #00769E;">import</span> UserSecretsClient</span></code></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.247229Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.246767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:29.732755Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:29.730826Z&quot;}" data-papermill="{&quot;duration&quot;:0.511238,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.735938&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.224700&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1">secrets <span class="op" style="color: #5E5E5E;">=</span> UserSecretsClient()</span>
+<span id="cb43-2">os.environ[<span class="st" style="color: #20794D;">'KAGGLE_USERNAME'</span>] <span class="op" style="color: #5E5E5E;">=</span> secrets.get_secret(<span class="st" style="color: #20794D;">'KAGGLE_USERNAME'</span>)</span>
+<span id="cb43-3">os.environ[<span class="st" style="color: #20794D;">'KAGGLE_KEY'</span>] <span class="op" style="color: #5E5E5E;">=</span> secrets.get_secret(<span class="st" style="color: #20794D;">'KAGGLE_KEY'</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="push-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="push-dataset">Push Dataset</h2>
+<p>The <a href="fastkaggle">fastkaggle</a> library offers a convenient way to easily create and push a dataset to Kaggle.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.865172Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.864701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.396398Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.394702Z&quot;}" data-papermill="{&quot;duration&quot;:0.558069,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.399675&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.841606&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1">doc(mk_dataset)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<hr>
+<h3 class="anchored">mk_dataset</h3>
+<blockquote class="blockquote"><pre><code>mk_dataset(dataset_path, title, force=False, upload=True)</code></pre></blockquote><p>Creates minimal dataset metadata needed to push new dataset to kaggle</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Ignore the <code>if not iskaggle</code> statement when replicating. I added it since I edited this notebook and needed to save changes without reproducing the entire dataset.</p>
+</blockquote>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:30.488813Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:30.487791Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.495264Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.494072Z&quot;}" data-papermill="{&quot;duration&quot;:0.034606,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.498618&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.464012&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> iskaggle:</span>
+<span id="cb45-2">    mk_dataset(<span class="st" style="color: #20794D;">'/kaggle/train_images'</span>, <span class="st" style="color: #20794D;">'spectrograms-birdclef-2023'</span>, force<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>, upload<span class="op" style="color: #5E5E5E;">=</span><span class="va" style="color: #111111;">True</span>)</span></code></pre></div>
+</div>
+<p>And we can verify our dataset has been created by having a look at the generated metadata file.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:30.591890Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:30.591361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.597529Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.596042Z&quot;}" data-papermill="{&quot;duration&quot;:0.032864,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.600152&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.567288&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><span class="cf" style="color: #003B4F;">if</span> <span class="kw" style="color: #003B4F;">not</span> iskaggle:</span>
+<span id="cb46-2">    <span class="op" style="color: #5E5E5E;">!</span> cat <span class="op" style="color: #5E5E5E;">/</span>kaggle<span class="op" style="color: #5E5E5E;">/</span>train_images<span class="op" style="color: #5E5E5E;">/</span>dataset<span class="op" style="color: #5E5E5E;">-</span>metadata.json</span></code></pre></div>
+</div>
+<p>From here, we can go directly to the dataset page on Kaggle and fill out the rest of the details.</p>
+</section>
+<section id="and-there-you-have-it" class="level2">
+<h2 class="anchored" data-anchor-id="and-there-you-have-it">And there you have it!</h2>
+<p>In summary, you saw how to: * Generate spectrogram images from audio files using torchaudio and fastai * How to cut audio tracks * And how to create and push a dataset directly on Kaggle</p>
+<p>You can view the dataset that was generated from this notebook <a href="https://www.kaggle.com/datasets/forbo7/spectrograms-birdclef-2023">here</a>.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Computer Vision</category>
+  <category>Data</category>
+  <category>PyTorch</category>
+  <guid>https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html</guid>
+  <pubDate>Wed, 05 Apr 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Transformers, Simply Explained</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -61,6 +860,8 @@
 </section>
 
  ]]></description>
+  <category>LLMs</category>
+  <category>Transformers</category>
   <guid>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</guid>
   <pubDate>Tue, 28 Feb 2023 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/9_transformers_explained/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>

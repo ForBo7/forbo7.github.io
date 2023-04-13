@@ -2,6 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/forblog/posts/11_musings_through_stable_diffusion.html",
+      "/forblog/posts/12_stable_diffusion_summarized.html",
+      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
       "/forblog/posts/9_transformers_explained.html",
       "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
       "/forblog/posts/7_blog_subscriptions.html",
@@ -19,6 +22,9 @@
   {
     "listing": "/forblog/index.html",
     "items": [
+      "/forblog/posts/11_musings_through_stable_diffusion.html",
+      "/forblog/posts/12_stable_diffusion_summarized.html",
+      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
       "/forblog/posts/9_transformers_explained.html",
       "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
       "/forblog/posts/7_blog_subscriptions.html",
@@ -87,6 +93,9 @@
   {
     "listing": "/testing_page.html",
     "items": [
+      "/forblog/posts/11_musings_through_stable_diffusion.html",
+      "/forblog/posts/12_stable_diffusion_summarized.html",
+      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
       "/forblog/posts/9_transformers_explained.html",
       "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
       "/forblog/posts/7_blog_subscriptions.html",

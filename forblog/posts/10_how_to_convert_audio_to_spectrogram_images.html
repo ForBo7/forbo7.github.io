@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Salman Naqvi">
+<meta name="description" content="A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.">
+
+<title>ForBo7 // Salman Naqvi - How to Convert Audio to Spectrogram Images</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - How to Convert Audio to Spectrogram Images">
+<meta property="og:description" content="A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.">
+<meta property="og:image" content="https://forbo7.github.io/forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg">
+<meta property="og:site-name" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:title" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:description" content="A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.">
+<meta name="twitter:image" content="https://forbo7.github.io/forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg">
+<meta name="twitter:creator" content="@ForBo7">
+<meta name="twitter:site" content="@ForBo7">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ForBo7 // Salman Naqvi</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"><i class="bi bi-house" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../forblog/index.html"><i class="bi bi-newspaper" role="img">
+</i> 
+ <span class="menu-text">ForBlog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../web_apps/index.html"><i class="bi bi-sliders2" role="img">
+</i> 
+ <span class="menu-text">Playground</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dictionary/index.html"><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Dictionary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"><i class="bi bi-file-person" role="img">
+</i> 
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ForBo7/forbo7.github.io"><i class="bi bi-code-slash" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../forblog/index.xml"><i class="bi bi-rss" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul>
+  <li><a href="#paths" id="toc-paths" class="nav-link" data-scroll-target="#paths">Paths</a></li>
+  </ul></li>
+  <li><a href="#single-image" id="toc-single-image" class="nav-link" data-scroll-target="#single-image">Single Image</a>
+  <ul>
+  <li><a href="#birdclef-2023-clipping-the-audio-files" id="toc-birdclef-2023-clipping-the-audio-files" class="nav-link" data-scroll-target="#birdclef-2023-clipping-the-audio-files">BirdCLEF 2023 — Clipping the Audio Files</a></li>
+  <li><a href="#birdclef-2023-resizing-the-images" id="toc-birdclef-2023-resizing-the-images" class="nav-link" data-scroll-target="#birdclef-2023-resizing-the-images">BirdCLEF 2023 — Resizing the Images</a></li>
+  </ul></li>
+  <li><a href="#all-the-images" id="toc-all-the-images" class="nav-link" data-scroll-target="#all-the-images">All the Images</a>
+  <ul>
+  <li><a href="#birdclef-2023-clipping-the-audio-files-1" id="toc-birdclef-2023-clipping-the-audio-files-1" class="nav-link" data-scroll-target="#birdclef-2023-clipping-the-audio-files-1">BirdCLEF 2023 — Clipping the Audio Files</a></li>
+  </ul></li>
+  <li><a href="#api-setup" id="toc-api-setup" class="nav-link" data-scroll-target="#api-setup">API Setup</a></li>
+  <li><a href="#push-dataset" id="toc-push-dataset" class="nav-link" data-scroll-target="#push-dataset">Push Dataset</a></li>
+  <li><a href="#and-there-you-have-it" id="toc-and-there-you-have-it" class="nav-link" data-scroll-target="#and-there-you-have-it">And there you have it!</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">How to Convert Audio to Spectrogram Images</h1>
+<p class="subtitle lead">Visualizing Sound</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Computer Vision</div>
+    <div class="quarto-category">Data</div>
+    <div class="quarto-category">PyTorch</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Salman Naqvi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Wednesday, 05 April 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p><strong>You can find this notebook on Kaggle <a href="https://www.kaggle.com/code/forbo7/how-to-convert-audio-to-spectrogram-images">here</a>.</strong></p>
+<blockquote class="blockquote">
+<p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html#style-guide">fastai style conventions</a>.</p>
+</blockquote>
+<p><img src="../images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" class="img-fluid" alt="A generated image of a colorful East African bird."></p>
+<p>In this to-the-point notebook, I go over how one can create images of spectrograms from audio files using the PyTorch torchaudio module.</p>
+<p>The notebook also goes over how I created the spectrogram images for the BirdCLEF 2023 competition, and how one can create and push a dataset right on Kaggle (useful if your local machine doesn’t have enough storage).</p>
+<p>You can view the dataset that was generated from this notebook <a href="https://www.kaggle.com/datasets/forbo7/spectrograms-birdclef-2023">here</a>.</p>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:15:52.222983Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:15:52.221975Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:06.187026Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:06.185564Z&quot;}" data-papermill="{&quot;duration&quot;:13.988997,&quot;end_time&quot;:&quot;2023-04-05T11:16:06.190265&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:15:52.201268&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>: <span class="im">from</span> fastkaggle <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> ModuleNotFoundError:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span> pip install <span class="op">-</span>Uqq fastkaggle</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> fastkaggle <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>iskaggle</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>'Batch'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:06.219791Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:06.217738Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:19.085766Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:19.083703Z&quot;}" data-papermill="{&quot;duration&quot;:12.886205,&quot;end_time&quot;:&quot;2023-04-05T11:16:19.089359&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:06.203154&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>comp <span class="op">=</span> <span class="st">'birdclef-2023'</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>d_path <span class="op">=</span> setup_comp(comp, install<span class="op">=</span><span class="st">'nbdev'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:19.119731Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:19.119242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.763802Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.761810Z&quot;}" data-papermill="{&quot;duration&quot;:6.663933,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.766895&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:19.102962&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.imports <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<section id="paths" class="level3">
+<h3 class="anchored" data-anchor-id="paths">Paths</h3>
+<p>Let’s see all the files and directories we have.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:25.878998Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:25.878488Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.888345Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.887118Z&quot;}" data-papermill="{&quot;duration&quot;:0.028396,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.891571&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.863175&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d_path.ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>(#5) [Path('../input/birdclef-2023/sample_submission.csv'),Path('../input/birdclef-2023/train_audio'),Path('../input/birdclef-2023/eBird_Taxonomy_v2021.csv'),Path('../input/birdclef-2023/train_metadata.csv'),Path('../input/birdclef-2023/test_soundscapes')]</code></pre>
+</div>
+</div>
+<p>Let’s get the path to the audio files.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:25.947818Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:25.947204Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.953261Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.951813Z&quot;}" data-papermill="{&quot;duration&quot;:0.022977,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.956052&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.933075&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aud_files <span class="op">=</span> d_path<span class="op">/</span><span class="st">'train_audio'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And create a directory to store the spectrogram images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.012862Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.012021Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.022510Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.020324Z&quot;}" data-papermill="{&quot;duration&quot;:0.030052,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.026393&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.996341&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mkdir(<span class="st">'/kaggle/train_images'</span>, exist_ok<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> Path(<span class="st">'/kaggle/train_images'</span>).exists()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="single-image" class="level2">
+<h2 class="anchored" data-anchor-id="single-image">Single Image</h2>
+<p>It’s always a good idea to try things out on a smaller scale; so let’s begin by converting only a single audio file.</p>
+<p>Let’s get the first audio file.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.113335Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.112824Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.142126Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.140480Z&quot;}" data-papermill="{&quot;duration&quot;:0.048533,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.145465&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.096932&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>aud_files.ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>(#264) [Path('../input/birdclef-2023/train_audio/yetgre1'),Path('../input/birdclef-2023/train_audio/moccha1'),Path('../input/birdclef-2023/train_audio/rostur1'),Path('../input/birdclef-2023/train_audio/walsta1'),Path('../input/birdclef-2023/train_audio/ratcis1'),Path('../input/birdclef-2023/train_audio/norfis1'),Path('../input/birdclef-2023/train_audio/macshr1'),Path('../input/birdclef-2023/train_audio/brrwhe3'),Path('../input/birdclef-2023/train_audio/crefra2'),Path('../input/birdclef-2023/train_audio/pabspa1')...]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.174836Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.174343Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.192704Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.190872Z&quot;}" data-papermill="{&quot;duration&quot;:0.035581,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.195419&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.159838&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>aud_files.ls()[<span class="dv">0</span>].ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>(#27) [Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC574558.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403259.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498854.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC289493.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC716763.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498853.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC338717.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC349660.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403543.ogg')...]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.226795Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.225378Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.237298Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.236003Z&quot;}" data-papermill="{&quot;duration&quot;:0.031014,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.240594&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.209580&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>aud <span class="op">=</span> aud_files.ls()[<span class="dv">0</span>].ls()[<span class="dv">0</span>]<span class="op">;</span> aud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg')</code></pre>
+</div>
+</div>
+<p>Now it’s time to load it in. What we get in return is the waveform and the sample rate.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.298265Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.297796Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.258464Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.256550Z&quot;}" data-papermill="{&quot;duration&quot;:0.980217,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.261269&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.281052&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchaudio</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>wvfrm, sr <span class="op">=</span> torchaudio.load(aud)<span class="op">;</span> wvfrm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>tensor([[0.0000e+00, 0.0000e+00, 0.0000e+00,  ..., 3.0518e-05, 0.0000e+00,
+         0.0000e+00]])</code></pre>
+</div>
+</div>
+<hr>
+<section id="birdclef-2023-clipping-the-audio-files" class="level4">
+<h4 class="anchored" data-anchor-id="birdclef-2023-clipping-the-audio-files">BirdCLEF 2023 — Clipping the Audio Files</h4>
+<p>This competition requires predictions to be submitted of all 5 second intervals in each audio clip. This means the audio files need to be clipped.</p>
+<p>Below is an easy way this can be done. We clip the first 5 seconds of the audio file.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.375336Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.374863Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.383346Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.381728Z&quot;}" data-papermill="{&quot;duration&quot;:0.027009,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.386202&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.359193&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>start_sec <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>end_sec <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>wvfrm <span class="op">=</span> wvfrm[:, start_sec<span class="op">*</span>sr:end_sec<span class="op">*</span>sr]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>wvfrm.shape[<span class="dv">1</span>] <span class="op">/</span> sr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>5.0</code></pre>
+</div>
+</div>
+<p>Sample rate is simply the number of frames recorded per second. The waveform that torchaudio returns is a tensor of frames. Therefore, we can easily select the desired range of frames by multiplying the sample rate with the desired start and end seconds.</p>
+<hr>
+<p>Now let’s create the spectrogram.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.503378Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.502883Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.586982Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.585599Z&quot;}" data-papermill="{&quot;duration&quot;:0.103329,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.589754&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.486425&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchaudio.transforms <span class="im">as</span> T</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> T.Spectrogram()(wvfrm)<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>tensor([[[4.3970e-08, 8.2461e-09, 4.7306e-11,  ..., 7.8266e-08,
+          1.7642e-08, 1.5016e-03],
+         [6.3310e-09, 6.5514e-10, 1.6958e-08,  ..., 4.3492e-09,
+          3.6019e-08, 1.5231e-03],
+         [1.1548e-08, 1.7308e-08, 6.5956e-08,  ..., 2.9340e-06,
+          1.2277e-06, 1.4124e-03],
+         ...,
+         [2.4446e-07, 6.1277e-09, 1.4932e-09,  ..., 1.4665e-08,
+          1.0110e-08, 1.8980e-05],
+         [3.1582e-07, 1.4777e-09, 1.2275e-08,  ..., 1.3213e-08,
+          1.9035e-09, 2.0009e-05],
+         [3.1673e-07, 1.1897e-10, 2.7457e-09,  ..., 1.0001e-08,
+          6.0452e-14, 1.9979e-05]]])</code></pre>
+</div>
+</div>
+<p>Let’s scale it logarithmically. This allows for better viewing.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.649631Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.648891Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.674057Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.672720Z&quot;}" data-papermill="{&quot;duration&quot;:0.043955,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.676877&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.632922&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> T.AmplitudeToDB()(spec)<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>tensor([[[ -73.5684,  -80.8375, -100.0000,  ...,  -71.0643,  -77.5346,
+           -28.2346],
+         [ -81.9853,  -91.8367,  -77.7063,  ...,  -83.6159,  -74.4347,
+           -28.1726],
+         [ -79.3751,  -77.6177,  -71.8074,  ...,  -55.3254,  -59.1092,
+           -28.5005],
+         ...,
+         [ -66.1180,  -82.1270,  -88.2588,  ...,  -78.3373,  -79.9524,
+           -47.2170],
+         [ -65.0056,  -88.3043,  -79.1097,  ...,  -78.7899,  -87.2045,
+           -46.9877],
+         [ -64.9931,  -99.2458,  -85.6135,  ...,  -79.9997, -100.0000,
+           -46.9943]]])</code></pre>
+</div>
+</div>
+<p>The PyTorch tensor needs to be converted into a NumPy array so it can then further be converted to an image. I’m using the <code>squeeze</code> method to remove the uneeded axis of length 1, as seen below.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.740341Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.739507Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.749453Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.748268Z&quot;}" data-papermill="{&quot;duration&quot;:0.029094,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.752190&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.723096&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>spec.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>torch.Size([1, 201, 801])</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.785837Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.784455Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.793653Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.792659Z&quot;}" data-papermill="{&quot;duration&quot;:0.028469,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.796037&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.767568&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> spec.squeeze().numpy()<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>array([[ -73.56842 ,  -80.83749 , -100.      , ...,  -71.064285,
+         -77.53463 ,  -28.234562],
+       [ -81.98525 ,  -91.83666 ,  -77.706314, ...,  -83.615875,
+         -74.43467 ,  -28.172626],
+       [ -79.37505 ,  -77.61765 ,  -71.80743 , ...,  -55.32541 ,
+         -59.109177,  -28.500452],
+       ...,
+       [ -66.118   ,  -82.127014,  -88.25883 , ...,  -78.33732 ,
+         -79.95244 ,  -47.21705 ],
+       [ -65.00563 ,  -88.30426 ,  -79.10974 , ...,  -78.78989 ,
+         -87.20445 ,  -46.987743],
+       [ -64.99306 ,  -99.24575 ,  -85.61355 , ...,  -79.99969 ,
+        -100.      ,  -46.994343]], dtype=float32)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.828702Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.827779Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.834763Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.833666Z&quot;}" data-papermill="{&quot;duration&quot;:0.026709,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.837709&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.811000&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>spec.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>(201, 801)</code></pre>
+</div>
+</div>
+<p>The array now needs to be normalized so it contains integers between 0 and 255: the values needed for images.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.900797Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.900280Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.913110Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.912123Z&quot;}" data-papermill="{&quot;duration&quot;:0.033373,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.916342&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.882969&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> (spec <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">/</span> (spec.<span class="bu">max</span>() <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">*</span> <span class="dv">255</span><span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>array([[ 53.000538 ,  38.424625 ,   0.       , ...,  58.021824 ,
+         45.047504 , 143.90388  ],
+       [ 36.123127 ,  16.369104 ,  44.703243 , ...,  32.853405 ,
+         51.263535 , 144.02808  ],
+       [ 41.35709  ,  44.881027 ,  56.53168  , ...,  89.581375 ,
+         81.99417  , 143.37071  ],
+       ...,
+       [ 67.94011  ,  35.838867 ,  23.543371 , ...,  43.437954 ,
+         40.199318 , 105.84024  ],
+       [ 70.17062  ,  23.452267 ,  41.889095 , ...,  42.530468 ,
+         25.6576   , 106.30005  ],
+       [ 70.19584  ,   1.5124193,  28.847677 , ...,  40.104576 ,
+          0.       , 106.28681  ]], dtype=float32)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.951841Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.949505Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.961525Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.960579Z&quot;}" data-papermill="{&quot;duration&quot;:0.032237,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.964842&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.932605&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> spec.astype(<span class="st">'uint8'</span>)<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>array([[ 53,  38,   0, ...,  58,  45, 143],
+       [ 36,  16,  44, ...,  32,  51, 144],
+       [ 41,  44,  56, ...,  89,  81, 143],
+       ...,
+       [ 67,  35,  23, ...,  43,  40, 105],
+       [ 70,  23,  41, ...,  42,  25, 106],
+       [ 70,   1,  28, ...,  40,   0, 106]], dtype=uint8)</code></pre>
+</div>
+</div>
+<p>Now we can finally convert the array to an image!</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.031056Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.029390Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.084834Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.083568Z&quot;}" data-papermill="{&quot;duration&quot;:0.07604,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.088714&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.012674&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> Image.fromarray(spec)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(img.shape)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(201, 801)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<p><img src="10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Cool, hey? We’ve just visualized audio!</p>
+<hr>
+</section>
+<section id="birdclef-2023-resizing-the-images" class="level4">
+<h4 class="anchored" data-anchor-id="birdclef-2023-resizing-the-images">BirdCLEF 2023 — Resizing the Images</h4>
+<p>To allow the images to easily be used by various models, I resized the spectrograms to be 512 by 512 pixels as shown below.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.274501Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.273673Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.326587Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.324898Z&quot;}" data-papermill="{&quot;duration&quot;:0.078347,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.331168&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.252821&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>img_size <span class="op">=</span> (<span class="dv">512</span>, <span class="dv">512</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> img.resize(img_size)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(img.shape)<span class="op">;</span> img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(512, 512)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<p><img src="10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+<p>To save the image, we can simply use the <code>save</code> method.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.459626Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.459199Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.503231Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.501434Z&quot;}" data-papermill="{&quot;duration&quot;:0.069824,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.506489&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.436665&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>img.save(<span class="st">'img.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="all-the-images" class="level2">
+<h2 class="anchored" data-anchor-id="all-the-images">All the Images</h2>
+<p>Now that we have verified that our algorithm works fine, we can extend it to convert all audio files.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.643386Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.642940Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.655463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.653781Z&quot;}" data-papermill="{&quot;duration&quot;:0.039189,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.658495&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.619306&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_imgs(duration, f):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, duration, <span class="dv">5</span>):</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        wvfrm, sr <span class="op">=</span> torchaudio.load(f)</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>        wvfrm <span class="op">=</span> cut_wvfrm(wvfrm, sr, step)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        spec <span class="op">=</span> create_spec(wvfrm)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>        img <span class="op">=</span> spec2img(spec)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>        end_sec <span class="op">=</span> step <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>        img.save(<span class="ss">f'/kaggle/train_images/</span><span class="sc">{</span>bird<span class="sc">.</span>stem<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>f<span class="sc">.</span>stem<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>end_sec<span class="sc">}</span><span class="ss">.png'</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> cut_wvfrm(wvfrm, sr, step):</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    start_sec, end_sec <span class="op">=</span> step, step <span class="op">+</span> <span class="dv">5</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> wvfrm[:, start_sec <span class="op">*</span> sr: end_sec <span class="op">*</span> sr]</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_spec(wvfrm):</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> T.Spectrogram()(wvfrm)</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> T.AmplitudeToDB()(spec)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> spec2img(spec, img_size<span class="op">=</span>(<span class="dv">512</span>, <span class="dv">512</span>)):</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> np.real(spec.squeeze().numpy())</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> ((spec <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">/</span> (spec.<span class="bu">max</span>() <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">*</span> <span class="dv">255</span>).astype(<span class="st">'uint8'</span>)</span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Image.fromarray(spec).resize(img_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.704642Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.704142Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.713257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.711504Z&quot;}" data-papermill="{&quot;duration&quot;:0.036435,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.716300&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.679865&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> iskaggle:</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> bird <span class="kw">in</span> aud_files.ls().<span class="bu">sorted</span>():</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        mkdir(<span class="ss">f'/kaggle/train_images/</span><span class="sc">{</span>bird<span class="sc">.</span>stem<span class="sc">}</span><span class="ss">'</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> f <span class="kw">in</span> bird.ls().<span class="bu">sorted</span>():</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>            info <span class="op">=</span> torchaudio.info(f)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>            duration <span class="op">=</span> info.num_frames <span class="op">/</span> info.sample_rate</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> duration <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>                create_imgs(<span class="bu">round</span>(duration<span class="op">/</span><span class="dv">5</span>)<span class="op">*</span><span class="dv">5</span>, f)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>: <span class="cf">continue</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Ignore the <code>if not iskaggle</code> statement when replicating. I added it since I edited this notebook and needed to save changes without reproducing the entire dataset.</p>
+</blockquote>
+<p>In the first <code>for</code> loop below, we loop through all the bird folders. For each folder, a folder with the same name is created in the directory where we want to store the images.</p>
+<p>In the second <code>for</code> loop, we loop through all audio files within the folder and then convert them to spectrogram images through the <code>create_images</code> function I defined.</p>
+<hr>
+<section id="birdclef-2023-clipping-the-audio-files-1" class="level4">
+<h4 class="anchored" data-anchor-id="birdclef-2023-clipping-the-audio-files-1">BirdCLEF 2023 — Clipping the Audio Files</h4>
+<p>Some audio files in the training set are of different durations. Therefore, we obtain the duration of the audio file so it can correctly be clipped into 5 second intervals.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>info <span class="op">=</span> torchaudio.info(f)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>duration <span class="op">=</span> info.num_frames <span class="op">/</span> info.sample_rate</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> duration <span class="op">&gt;=</span> <span class="dv">5</span>:</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    create_images(<span class="bu">round</span>(duration<span class="op">/</span><span class="dv">5</span>)<span class="op">*</span><span class="dv">5</span>, f)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>: <span class="cf">continue</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Again, since sample rate is the number of frames recorded per second, we can divide the total number of frames by the sample rate to obtain the duration in seconds of a clip.</p>
+<p><code>duration = info.num_frames / info.sample_rate</code></p>
+<p>Then we round the duration to the nearest 5 for easy clipping.</p>
+<p><code>round(duration/5)*5</code></p>
+<hr>
+<p>The images now created! The rest of this notebook covers how one can generate a dataset in a Kaggle Notebook and push it directly to Kaggle within it.</p>
+</section>
+</section>
+<section id="api-setup" class="level2">
+<h2 class="anchored" data-anchor-id="api-setup">API Setup</h2>
+<p>We need to configure the user keys so we can push to the correct account.</p>
+<p>To do this, first obtain your Kaggle API key. Then, while in the notebook editor, click Add-ons -&gt; Secrets -&gt; Add a New Secret…</p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mY_6mu6XXxmpkR_MwTxHxfEGRV9QOqlxkCF8i6T90WkRadthJc9yeOxUG3k21bT-QQ4CxJcP1W-MHuAhX_tKvf-gcZqUvkLONiKPeumqZCTezKhwXJXs0OFuTDBnedbcViCOeeIkzjVjYJiBc3J7ib0AqG5v247vovXQP1JYv-8RmfWMFytuyCgwvLNt_5MSP?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mBCKZg2xbmSClGOAWdxf6vXcrgLKV0TNe-SuLaS37nzKAuHpzMZsXL0lEAuauWYrrKnZVx2qGStH3ZjVn-E0xARzTUW7UN9Em3gx_X3qivCHIX_85Z0aQc0xQYrl2dJPvyPOHwuCm0ML5188bFuemgoQik3jn_TVih1YKxYw9Z79fDahzG8wD9Yu-zbizRsVS?width=1024&amp;height=640&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mgCDqODGoakfC1zbSK1tEGy1gcUPMpzzw5DEFHJnQPZIWZpWn2WKLT48EGRky-kXSmBYt-BYSgVxO7jMVT321_gqOYjX0daxumANws9LpNOvwdG3ce9nKJFT8ZkSEjtb5Q93leY75dKLk2CumNpmRGi4WoZr5jsTPPEV42yTlNPURAMrSsl09XeKqGaBjJO0u?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p>…input your key and give it a name…</p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mz3E2oKRG9H8n6cSwx-uk8ZAuIB8WSExJX92_w8ZoqYkX4f72QXKM2AFjjn7n_UaS30btHk6ueSi9VTRD_us_pUp3CSo3MkBM0mRBZqeqYDrSY4GRGamkrYnNKtxfZ-PQKJEvjOr8r8N97cftsJ3-9fEUcO3jv8kVGniKNPHWx_aVpIElx4_qgVq-aRt30PSD?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p>…and click save. Then click the checkbox next to the secret to activate it for your notebook.</p>
+<p><img src="https://sat02pap002files.storage.live.com/y4m3RfkLD7cbynZIPmI7X17qmHTxar-hX5p-w5G70Z3YiRiIPzkzo3Z9h1Z4eWecrmmU88yl-HXUSRU7xUQ0LN2C-_wn_qmKDJFJyXSjNfhV7XjKpGbyhxXU9JCaTOxZhRwHGl4ghkykkhpMBTpoG-dxe7YlhPI40DQJT2dvCcuv1KZQkYkcOHIqiUI8SvwhL4Q?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p>Repeat for your Kaggle username.</p>
+<p>Now we can set the keys for the notebook as shown below (input the name of your key into <code>get_secret</code>).</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.196185Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.195768Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:29.201245Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:29.199576Z&quot;}" data-papermill="{&quot;duration&quot;:0.032545,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.203954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.171409&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> kaggle_secrets <span class="im">import</span> UserSecretsClient</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.247229Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.246767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:29.732755Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:29.730826Z&quot;}" data-papermill="{&quot;duration&quot;:0.511238,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.735938&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.224700&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>secrets <span class="op">=</span> UserSecretsClient()</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'KAGGLE_USERNAME'</span>] <span class="op">=</span> secrets.get_secret(<span class="st">'KAGGLE_USERNAME'</span>)</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'KAGGLE_KEY'</span>] <span class="op">=</span> secrets.get_secret(<span class="st">'KAGGLE_KEY'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="push-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="push-dataset">Push Dataset</h2>
+<p>The <a href="fastkaggle">fastkaggle</a> library offers a convenient way to easily create and push a dataset to Kaggle.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.865172Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.864701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.396398Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.394702Z&quot;}" data-papermill="{&quot;duration&quot;:0.558069,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.399675&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.841606&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>doc(mk_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<hr>
+<h3 class="anchored">mk_dataset</h3>
+<blockquote class="blockquote"><pre><code>mk_dataset(dataset_path, title, force=False, upload=True)</code></pre></blockquote><p>Creates minimal dataset metadata needed to push new dataset to kaggle</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>Note:</strong> Ignore the <code>if not iskaggle</code> statement when replicating. I added it since I edited this notebook and needed to save changes without reproducing the entire dataset.</p>
+</blockquote>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:30.488813Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:30.487791Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.495264Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.494072Z&quot;}" data-papermill="{&quot;duration&quot;:0.034606,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.498618&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.464012&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> iskaggle:</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    mk_dataset(<span class="st">'/kaggle/train_images'</span>, <span class="st">'spectrograms-birdclef-2023'</span>, force<span class="op">=</span><span class="va">True</span>, upload<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And we can verify our dataset has been created by having a look at the generated metadata file.</p>
+<div class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:30.591890Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:30.591361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.597529Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.596042Z&quot;}" data-papermill="{&quot;duration&quot;:0.032864,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.600152&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.567288&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> iskaggle:</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span> cat <span class="op">/</span>kaggle<span class="op">/</span>train_images<span class="op">/</span>dataset<span class="op">-</span>metadata.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>From here, we can go directly to the dataset page on Kaggle and fill out the rest of the details.</p>
+</section>
+<section id="and-there-you-have-it" class="level2">
+<h2 class="anchored" data-anchor-id="and-there-you-have-it">And there you have it!</h2>
+<p>In summary, you saw how to: * Generate spectrogram images from audio files using torchaudio and fastai * How to cut audio tracks * And how to create and push a dataset directly on Kaggle</p>
+<p>You can view the dataset that was generated from this notebook <a href="https://www.kaggle.com/datasets/forbo7/spectrograms-birdclef-2023">here</a>.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.1.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:salmananaqvii+forblog@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/ForBo7_">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ForBo7">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.kaggle.com/forbo7">
+      <i class="bi bi-clipboard-data" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.artstation.com/forbo7">
+      <i class="bi bi-brush" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../forblog/index.xml">
+      <i class="bi bi-rss" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
