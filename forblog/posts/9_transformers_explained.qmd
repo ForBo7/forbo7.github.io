@@ -5,6 +5,7 @@ description: All transformers really do is fill in the blanks and autocomplete.
 image: ../images/9_transformers_explained/thumbnail.png
 author: Salman Naqvi
 date: 2023-02-28
+categories: [LLMs, Transformers]
 open-graph:
   description: Autobots or Decepticons?
   image: ../images/9_transformers_explained/thumbnail.png
