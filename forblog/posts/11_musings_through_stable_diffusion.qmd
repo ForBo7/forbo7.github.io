@@ -23,7 +23,7 @@ lightbox: auto
 
 ![](../images/11_musings_through_stable_diffusion/thumbnail.png){fig-alt="An antique 18th century painting of a gorilla eating a plate of chips." fig-align="center"}
 
-I recently begun [fastai Course Part 2](https://course.fast.ai/Lessons/part2.html): a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.
+I recently began [fastai Course Part 2](https://course.fast.ai/Lessons/part2.html): a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.
 
 In the first lesson, we play around with diffusers using the [Hugging Face Diffusers](https://huggingface.co/docs/diffusers/index) library. Below are things I have noticed; my musings.
 
