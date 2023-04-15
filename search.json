@@ -480,7 +480,7 @@
     "href": "forblog/posts/11_musings_through_stable_diffusion.html",
     "title": "My Musings Through Stable Diffusion",
     "section": "",
-    "text": "Quick tip: Click or tap the images to view them up close.\nI recently begun fastai Course Part 2: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.\nIn the first lesson, we play around with diffusers using the Hugging Face Diffusers library. Below are things I have noticed; my musings."
+    "text": "Quick tip: Click or tap the images to view them up close.\nI recently began fastai Course Part 2: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.\nIn the first lesson, we play around with diffusers using the Hugging Face Diffusers library. Below are things I have noticed; my musings."
   },
   {
     "objectID": "forblog/posts/11_musings_through_stable_diffusion.html#steps",
