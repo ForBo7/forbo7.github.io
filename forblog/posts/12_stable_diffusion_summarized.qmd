@@ -127,7 +127,7 @@ flowchart TB
         id2[Input Image] --> id1
         subgraph B [Image Compression]
             direction LR
-            id1([VAE Autoencdoer])
+            id1([VAE Autoencoder])
         end
         id1 --> id7[Latent]
     end
@@ -195,7 +195,7 @@ flowchart TB
         direction LR
         id2[Input Image] --> id1
         subgraph B [Image Decompression]
-            id1([VAE Autoencdoer])
+            id1([VAE Autoencoder])
         end
         id1 --> id7[Latent]
     end
