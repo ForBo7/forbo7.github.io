@@ -313,7 +313,7 @@
         id2[Input Image] --&gt; id1
         subgraph B [Image Compression]
             direction LR
-            id1([VAE Autoencdoer])
+            id1([VAE Autoencoder])
         end
         id1 --&gt; id7[Latent]
     end
@@ -396,7 +396,7 @@
         direction LR
         id2[Input Image] --&gt; id1
         subgraph B [Image Decompression]
-            id1([VAE Autoencdoer])
+            id1([VAE Autoencoder])
         end
         id1 --&gt; id7[Latent]
     end
