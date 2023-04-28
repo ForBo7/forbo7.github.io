@@ -1,0 +1,4 @@
+---
+term: Inference
+description: "Using a trained [model](model.qmd) for predictions."
+---
