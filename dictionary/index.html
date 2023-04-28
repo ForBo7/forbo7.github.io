@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -91,23 +91,20 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="ForBo7 // Salman Naqvi - The AI Dictionary">
 <meta property="og:description" content="AI terms explained simply.">
-<meta property="og:image" content="https://forbo7.github.io/cover.png">
+<meta property="og:image" content="https://forbo7.github.io/dictionary/cover.png">
 <meta property="og:site-name" content="ForBo7 // Salman Naqvi">
-<meta property="og:image:height" content="1024">
-<meta property="og:image:width" content="1024">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
 <meta name="twitter:description" content="AI terms explained simply.">
-<meta name="twitter:image" content="https://forbo7.github.io/cover.png">
+<meta name="twitter:image" content="https://forbo7.github.io/dictionary/cover.png">
 <meta name="twitter:creator" content="@ForBo7">
 <meta name="twitter:site" content="@ForBo7">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1024">
 </head>
 
 <body class="nav-fixed">
@@ -121,50 +118,52 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"><i class="bi bi-house" role="img">
+    <a class="nav-link" href="../index.html" rel="" target=""><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../forblog/index.html"><i class="bi bi-newspaper" role="img">
+    <a class="nav-link" href="../forblog/index.html" rel="" target=""><i class="bi bi-newspaper" role="img">
 </i> 
  <span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../web_apps/index.html"><i class="bi bi-sliders2" role="img">
+    <a class="nav-link" href="../web_apps/index.html" rel="" target=""><i class="bi bi-sliders2" role="img">
 </i> 
  <span class="menu-text">Playground</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../dictionary/index.html" aria-current="page"><i class="bi bi-book" role="img">
+    <a class="nav-link active" href="../dictionary/index.html" rel="" target="" aria-current="page"><i class="bi bi-book" role="img">
 </i> 
  <span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../about.html"><i class="bi bi-file-person" role="img">
+    <a class="nav-link" href="../about.html" rel="" target=""><i class="bi bi-file-person" role="img">
 </i> 
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ForBo7/forbo7.github.io"><i class="bi bi-code-slash" role="img">
+    <a class="nav-link" href="https://github.com/ForBo7/forbo7.github.io" rel="" target=""><i class="bi bi-code-slash" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../forblog/index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../forblog/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -210,7 +209,7 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.21">
+<div class="quarto-post image-left" data-index="0" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/accuracy.html">
 <h3 class="no-anchor listing-title">
@@ -228,7 +227,7 @@ Accuracy
 <a href="../dictionary/terms/accuracy.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="1" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/architecture.html">
 <h3 class="no-anchor listing-title">
@@ -246,7 +245,7 @@ Architecture
 <a href="../dictionary/terms/architecture.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.195">
+<div class="quarto-post image-left" data-index="2" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/bagging.html">
 <h3 class="no-anchor listing-title">
@@ -264,7 +263,7 @@ Bagging
 <a href="../dictionary/terms/bagging.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="5.43">
+<div class="quarto-post image-left" data-index="3" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="6">
 <div class="body">
 <a href="../dictionary/terms/cross_entropy_loss.html">
 <h3 class="no-anchor listing-title">
@@ -282,7 +281,7 @@ Cross Entropy Loss
 <a href="../dictionary/terms/cross_entropy_loss.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="4" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.56">
+<div class="quarto-post image-left" data-index="4" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/decision_tree.html">
 <h3 class="no-anchor listing-title">
@@ -300,7 +299,7 @@ Decision Tree
 <a href="../dictionary/terms/decision_tree.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="5" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.065">
+<div class="quarto-post image-left" data-index="5" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/decoder.html">
 <h3 class="no-anchor listing-title">
@@ -318,7 +317,7 @@ Decoder (Transformers)
 <a href="../dictionary/terms/decoder.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="6" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="6" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/document.html">
 <h3 class="no-anchor listing-title">
@@ -336,7 +335,7 @@ Document
 <a href="../dictionary/terms/document.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="7" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.11">
+<div class="quarto-post image-left" data-index="7" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/dot_product.html">
 <h3 class="no-anchor listing-title">
@@ -354,7 +353,7 @@ Dot Product
 <a href="../dictionary/terms/dot_product.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="8" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="2.9">
+<div class="quarto-post image-left" data-index="8" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="3">
 <div class="body">
 <a href="../dictionary/terms/embedding.html">
 <h3 class="no-anchor listing-title">
@@ -372,7 +371,7 @@ Embedding
 <a href="../dictionary/terms/embedding.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="9" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.065">
+<div class="quarto-post image-left" data-index="9" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/encoder.html">
 <h3 class="no-anchor listing-title">
@@ -390,7 +389,7 @@ Encoder (Transformers)
 <a href="../dictionary/terms/encoder.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="10" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.235">
+<div class="quarto-post image-left" data-index="10" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/ensemble.html">
 <h3 class="no-anchor listing-title">
@@ -408,7 +407,7 @@ Ensemble
 <a href="../dictionary/terms/ensemble.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="11" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.21">
+<div class="quarto-post image-left" data-index="11" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/error_rate.html">
 <h3 class="no-anchor listing-title">
@@ -426,7 +425,7 @@ Error Rate
 <a href="../dictionary/terms/error_rate.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="12" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.345">
+<div class="quarto-post image-left" data-index="12" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/gradient.html">
 <h3 class="no-anchor listing-title">
@@ -444,7 +443,7 @@ Gradient
 <a href="../dictionary/terms/gradient.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="13" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="1.065">
+<div class="quarto-post image-left" data-index="13" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="2">
 <div class="body">
 <a href="../dictionary/terms/gradient_accumulation.html">
 <h3 class="no-anchor listing-title">
@@ -462,7 +461,7 @@ Gradient Accumulation
 <a href="../dictionary/terms/gradient_accumulation.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="14" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.415">
+<div class="quarto-post image-left" data-index="14" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/gradient_boosting_machine_gbm.html">
 <h3 class="no-anchor listing-title">
@@ -480,7 +479,7 @@ Gradient Boosting Machine (GBM)
 <a href="../dictionary/terms/gradient_boosting_machine_gbm.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="15" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.25">
+<div class="quarto-post image-left" data-index="15" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/k_fold_cross_validation.html">
 <h3 class="no-anchor listing-title">
@@ -498,7 +497,7 @@ K-Fold Cross Validation
 <a href="../dictionary/terms/k_fold_cross_validation.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="16" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.335">
+<div class="quarto-post image-left" data-index="16" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/learning_rate.html">
 <h3 class="no-anchor listing-title">
@@ -516,7 +515,7 @@ Learning Rate
 <a href="../dictionary/terms/learning_rate.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="17" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.11">
+<div class="quarto-post image-left" data-index="17" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/linear_combination.html">
 <h3 class="no-anchor listing-title">
@@ -534,7 +533,7 @@ Linear Combination
 <a href="../dictionary/terms/linear_combination.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="18" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="18" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/loss.html">
 <h3 class="no-anchor listing-title">
@@ -552,7 +551,7 @@ Loss
 <a href="../dictionary/terms/loss.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="19" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.19">
+<div class="quarto-post image-left" data-index="19" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/matrix.html">
 <h3 class="no-anchor listing-title">
@@ -570,7 +569,7 @@ Matrix
 <a href="../dictionary/terms/matrix.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="20" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="1.06">
+<div class="quarto-post image-left" data-index="20" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="2">
 <div class="body">
 <a href="../dictionary/terms/mean_absolute_error_mae.html">
 <h3 class="no-anchor listing-title">
@@ -588,7 +587,7 @@ Mean Absolute Error (MAE)
 <a href="../dictionary/terms/mean_absolute_error_mae.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="21" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="1.03">
+<div class="quarto-post image-left" data-index="21" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="2">
 <div class="body">
 <a href="../dictionary/terms/mean_squared_error_mse.html">
 <h3 class="no-anchor listing-title">
@@ -606,7 +605,7 @@ Mean Squared Error (MSE)
 <a href="../dictionary/terms/mean_squared_error_mse.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="22" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.07">
+<div class="quarto-post image-left" data-index="22" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/metric.html">
 <h3 class="no-anchor listing-title">
@@ -624,7 +623,7 @@ Metric
 <a href="../dictionary/terms/metric.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="23" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.96">
+<div class="quarto-post image-left" data-index="23" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/model.html">
 <h3 class="no-anchor listing-title">
@@ -642,7 +641,7 @@ Model
 <a href="../dictionary/terms/model.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="24" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.195">
+<div class="quarto-post image-left" data-index="24" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/named_entity_recognition.html">
 <h3 class="no-anchor listing-title">
@@ -660,7 +659,7 @@ Named Entity Recognition (NER)
 <a href="../dictionary/terms/named_entity_recognition.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="25" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="25" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/numericalization.html">
 <h3 class="no-anchor listing-title">
@@ -678,7 +677,7 @@ Numericalization
 <a href="../dictionary/terms/numericalization.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="26" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.34">
+<div class="quarto-post image-left" data-index="26" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/one_hot_encoding.html">
 <h3 class="no-anchor listing-title">
@@ -696,7 +695,7 @@ One Hot Encoding
 <a href="../dictionary/terms/one_hot_encoding.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="27" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.185">
+<div class="quarto-post image-left" data-index="27" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/oner_classifier.html">
 <h3 class="no-anchor listing-title">
@@ -714,7 +713,7 @@ OneR Classifier
 <a href="../dictionary/terms/oner_classifier.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="28" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="28" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/random_forest.html">
 <h3 class="no-anchor listing-title">
@@ -732,7 +731,7 @@ Random Forest
 <a href="../dictionary/terms/random_forest.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="29" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="1.1">
+<div class="quarto-post image-left" data-index="29" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="2">
 <div class="body">
 <a href="../dictionary/terms/root_mean_squared_error_rmse.html">
 <h3 class="no-anchor listing-title">
@@ -750,7 +749,7 @@ Root Mean Squared Error (RMSE)
 <a href="../dictionary/terms/root_mean_squared_error_rmse.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="30" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="1.385">
+<div class="quarto-post image-left" data-index="30" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="2">
 <div class="body">
 <a href="../dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html">
 <h3 class="no-anchor listing-title">
@@ -768,7 +767,7 @@ Root Mean Squared Logarithmic Error (RMSLE)
 <a href="../dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="31" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="31" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/sequence.html">
 <h3 class="no-anchor listing-title">
@@ -786,7 +785,7 @@ Sequence
 <a href="../dictionary/terms/sequence.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="32" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="6.73">
+<div class="quarto-post image-left" data-index="32" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="7">
 <div class="body">
 <a href="../dictionary/terms/softmax.html">
 <h3 class="no-anchor listing-title">
@@ -804,7 +803,7 @@ Softmax
 <a href="../dictionary/terms/softmax.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="33" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="33" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/tabular_data.html">
 <h3 class="no-anchor listing-title">
@@ -822,7 +821,7 @@ Tabular Data
 <a href="../dictionary/terms/tabular_data.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="34" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="34" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/tabular_model.html">
 <h3 class="no-anchor listing-title">
@@ -840,7 +839,7 @@ Tabular Model
 <a href="../dictionary/terms/tabular_model.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="35" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.18">
+<div class="quarto-post image-left" data-index="35" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/tokenization.html">
 <h3 class="no-anchor listing-title">
@@ -858,7 +857,7 @@ Tokenization
 <a href="../dictionary/terms/tokenization.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="36" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.065">
+<div class="quarto-post image-left" data-index="36" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/transformer.html">
 <h3 class="no-anchor listing-title">
@@ -876,7 +875,7 @@ Transformer
 <a href="../dictionary/terms/transformer.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="37" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.15">
+<div class="quarto-post image-left" data-index="37" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/vector.html">
 <h3 class="no-anchor listing-title">
@@ -894,7 +893,7 @@ Vector
 <a href="../dictionary/terms/vector.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="38" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="38" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/weight_decay.html">
 <h3 class="no-anchor listing-title">
@@ -912,7 +911,7 @@ Weight Decay
 <a href="../dictionary/terms/weight_decay.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="39" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0.005">
+<div class="quarto-post image-left" data-index="39" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
 <div class="body">
 <a href="../dictionary/terms/zero_shot.html">
 <h3 class="no-anchor listing-title">
@@ -930,7 +929,41 @@ Zero-shot
 <a href="../dictionary/terms/zero_shot.html"> </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="40" data-listing-file-modified-sort="1682093047408" data-listing-reading-time-sort="0">
+<div class="quarto-post image-left" data-index="40" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
+<div class="body">
+<a href="../dictionary/terms/inference.html">
+<h3 class="no-anchor listing-title">
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>Using a trained <span>model</span> for predictions.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../dictionary/terms/inference.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="41" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="1">
+<div class="body">
+<a href="../dictionary/terms/latent.html">
+<h3 class="no-anchor listing-title">
+</h3>
+<div class="listing-subtitle">
+
+</div>
+<div class="listing-description">
+<p>A compressed image.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="../dictionary/terms/latent.html"> </a>
+</div>
+</div>
+<div class="quarto-post image-left" data-index="42" data-listing-file-modified-sort="1682669441663" data-listing-reading-time-sort="0">
 <div class="body">
 <a href="../dictionary/terms/neuron.html">
 <h3 class="no-anchor listing-title">
@@ -984,9 +1017,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -1051,6 +1098,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1096,6 +1229,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.1.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

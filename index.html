@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.475">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -17,7 +17,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -118,6 +118,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
@@ -148,50 +149,52 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"><i class="bi bi-house" role="img">
+    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page"><i class="bi bi-house" role="img">
 </i> 
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./forblog/index.html"><i class="bi bi-newspaper" role="img">
+    <a class="nav-link" href="./forblog/index.html" rel="" target=""><i class="bi bi-newspaper" role="img">
 </i> 
  <span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./web_apps/index.html"><i class="bi bi-sliders2" role="img">
+    <a class="nav-link" href="./web_apps/index.html" rel="" target=""><i class="bi bi-sliders2" role="img">
 </i> 
  <span class="menu-text">Playground</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dictionary/index.html"><i class="bi bi-book" role="img">
+    <a class="nav-link" href="./dictionary/index.html" rel="" target=""><i class="bi bi-book" role="img">
 </i> 
  <span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"><i class="bi bi-file-person" role="img">
+    <a class="nav-link" href="./about.html" rel="" target=""><i class="bi bi-file-person" role="img">
 </i> 
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/ForBo7/forbo7.github.io"><i class="bi bi-code-slash" role="img">
+    <a class="nav-link" href="https://github.com/ForBo7/forbo7.github.io" rel="" target=""><i class="bi bi-code-slash" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./forblog/index.xml"><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="./forblog/index.xml" rel="" target=""><i class="bi bi-rss" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -222,23 +225,23 @@ ul.task-list li input[type="checkbox"] {
 </div> 
   <hr class="about-sep">
    <div class="about-links">
-  <a href="https://twitter.com/ForBo7_" class="about-link">
+  <a href="https://twitter.com/ForBo7_" class="about-link" rel="" target="">
     <i class="bi bi-twitter"></i>
      <span class="about-link-text">Twitter</span>
   </a>
-  <a href="https://github.com/ForBo7" class="about-link">
+  <a href="https://github.com/ForBo7" class="about-link" rel="" target="">
     <i class="bi bi-github"></i>
      <span class="about-link-text">GitHub</span>
   </a>
-  <a href="https://www.kaggle.com/forbo7" class="about-link">
+  <a href="https://www.kaggle.com/forbo7" class="about-link" rel="" target="">
     <i class="bi bi-clipboard-data"></i>
      <span class="about-link-text">Kaggle</span>
   </a>
-  <a href="https://www.artstation.com/forbo7" class="about-link">
+  <a href="https://www.artstation.com/forbo7" class="about-link" rel="" target="">
     <i class="bi bi-brush"></i>
      <span class="about-link-text">Artstation</span>
   </a>
-  <a href="mailto:salmananaqvii+forblog@gmail.com" class="about-link">
+  <a href="mailto:salmananaqvii+forblog@gmail.com" class="about-link" rel="" target="">
     <i class="bi bi-envelope"></i>
      <span class="about-link-text">Email</span>
   </a>
@@ -251,9 +254,37 @@ ul.task-list li input[type="checkbox"] {
 <p>Click <a href="./forblog/index.html">here</a> to check out the latest on the ForBlog.</p>
 <div id="listing-landing-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Diffusion" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1682093047652" data-listing-reading-time-sort="4.31">
+<div class="quarto-post image-right" data-index="0" data-categories="Diffusion,Creating Models" data-listing-date-sort="1682640000000" data-listing-file-modified-sort="1682669442011" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
-<p><a href="./forblog/posts/11_musings_through_stable_diffusion.html"> <img src="./forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="thumnail-image"> </a></p>
+<p><a href="./forblog/posts/13_implementing_stable_diffusion_from_its_components.html"> <img src="./forblog/images/13_implementing_stable_diffusion_from_its_components/thumbnail.png" class="thumbnail-image"> </a></p>
+</div>
+<div class="body">
+<a href="./forblog/posts/13_implementing_stable_diffusion_from_its_components.html">
+<h3 class="no-anchor listing-title">
+Implementing Stable Diffusion From Its Components
+</h3>
+<div class="listing-subtitle">
+Creating Diffuser that Diffuses Stable-y
+</div>
+<div class="listing-description">
+<p>Implementing stable diffusion from the 🤗 🧨 library.</p>
+</div>
+</a>
+</div>
+<div class="metadata">
+<a href="./forblog/posts/13_implementing_stable_diffusion_from_its_components.html">
+<div class="listing-date">
+Apr 28, 2023
+</div>
+<div class="listing-author">
+Salman Naqvi
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Diffusion,Analyzing Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1682669441939" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="thumbnail">
+<p><a href="./forblog/posts/11_musings_through_stable_diffusion.html"> <img src="./forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./forblog/posts/11_musings_through_stable_diffusion.html">
@@ -279,9 +310,9 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Diffusion,Creating Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1682093047652" data-listing-reading-time-sort="7.375">
+<div class="quarto-post image-right" data-index="2" data-categories="Diffusion,Creating Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1682669441939" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
 <div class="thumbnail">
-<p><a href="./forblog/posts/12_stable_diffusion_summarized.html"> <img src="./forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="thumnail-image"> </a></p>
+<p><a href="./forblog/posts/12_stable_diffusion_summarized.html"> <img src="./forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="thumbnail-image"> </a></p>
 </div>
 <div class="body">
 <a href="./forblog/posts/12_stable_diffusion_summarized.html">
@@ -307,34 +338,6 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Computer Vision,Data,PyTorch" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1682093047652" data-listing-reading-time-sort="4.29">
-<div class="thumbnail">
-<p><a href="./forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html"> <img src="./forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html">
-<h3 class="no-anchor listing-title">
-How to Convert Audio to Spectrogram Images
-</h3>
-<div class="listing-subtitle">
-Visualizing Sound
-</div>
-<div class="listing-description">
-<p>A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.</p>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html">
-<div class="listing-date">
-Apr 5, 2023
-</div>
-<div class="listing-author">
-Salman Naqvi
-</div>
-</a>
-</div>
-</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
@@ -346,7 +349,7 @@ No matching items
 <p>Click <a href="./web_apps/index.html">here</a> to play more in the playground.</p>
 <div id="listing-landing-apps" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1682093047796" data-listing-reading-time-sort="0.09">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1682669442175" data-listing-reading-time-sort="1">
 <a href="./web_apps/apps/coming_soon.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -368,7 +371,7 @@ More apps coming soon…
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="Image Classification" data-listing-date-sort="1663632000000" data-listing-file-modified-sort="1682093047796" data-listing-reading-time-sort="0.095">
+<div class="g-col-1" data-index="1" data-categories="Image Classification" data-listing-date-sort="1663632000000" data-listing-file-modified-sort="1682669442175" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <a href="./web_apps/apps/flood_detector.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -393,7 +396,7 @@ Sep 20, 2022
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="Image Classification" data-listing-date-sort="1651276800000" data-listing-file-modified-sort="1682093047796" data-listing-reading-time-sort="0.055">
+<div class="g-col-1" data-index="2" data-categories="Image Classification" data-listing-date-sort="1651276800000" data-listing-file-modified-sort="1682669442175" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <a href="./web_apps/apps/bear_detector.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -451,9 +454,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -518,6 +535,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -561,6 +664,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.1.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
