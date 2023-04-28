@@ -5,7 +5,7 @@ description: Exploring the various knobs and dials of stable diffusion.
 image: ../images/11_musings_through_stable_diffusion/thumbnail.png
 author: Salman Naqvi
 date: '2023-04-13'
-categories: [Diffusion]
+categories: [Diffusion, Analyzing Models]
 open-graph: 
   description: Exploring the various knobs and dials of stable diffusion.
   image: ../images/11_musings_through_stable_diffusion/thumbnail.png
