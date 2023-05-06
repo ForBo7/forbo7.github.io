@@ -17,7 +17,250 @@
 <width>144</width>
 </image>
 <generator>quarto-1.3.340</generator>
-<lastBuildDate>Fri, 28 Apr 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 03 May 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Iterators and Generators</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/14_iterators_and_generators.html</link>
+  <description><![CDATA[ 
+
+
+
+<blockquote class="blockquote">
+<p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
+</blockquote>
+<p><img src="https://forbo7.github.io/forblog/images/14_iterators_and_generators/thumbnail.jpg" class="img-fluid" alt="A small red gasoline generator."></p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This bits and bobs is explained in terms of my explorations and experimentations. Therefore, explanations and descriptions below may not necessarily be accurate.</p>
+</div>
+</div>
+</div>
+<section id="iter" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="iter"><code>iter</code></h2>
+<p><code>iter</code> creates what’s known as an iterator. It is a type of iterable.</p>
+<p>An iterable is anything that can be looped through (e.g., a list or a string).</p>
+<p><code>iter</code> essentially allows you to loop through an iterable without using a <code>for</code> loop. It gives you finer and more granuler control over when you loop, and how how much you loop.</p>
+
+<div class="no-row-height column-margin column-container"><div class="cell" data-execution_count="2">
+<div class="cell-output cell-output-stdout">
+<pre><code>Docstring:
+iter(iterable) -&gt; iterator
+iter(callable, sentinel) -&gt; iterator
+
+Get an iterator from an object.  In the first form, the argument must
+supply its own iterator, or be a sequence.
+In the second form, the callable is called until it returns the sentinel.
+Type:      builtin_function_or_method</code></pre>
+</div>
+</div></div><div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">l <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> l</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">it <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">iter</span>(l)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> it</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>&lt;list_iterator at 0x11e29a6e0&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">next</span>(it)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>0</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">next</span>(it)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>1</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">next</span>(it)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>2</code></pre>
+</div>
+</div>
+</section>
+<section id="islice" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="islice"><code>islice</code></h2>
+<p><code>islice</code> is a type of iterator that returns <img src="https://latex.codecogs.com/png.latex?x"> items from an iterable at a time.</p>
+
+<div class="no-row-height column-margin column-container"><div class="cell" data-execution_count="8">
+<div class="cell-output cell-output-stdout">
+<pre><code>Init signature: islice(self, /, *args, **kwargs)
+Docstring:     
+islice(iterable, stop) --&gt; islice object
+islice(iterable, start, stop[, step]) --&gt; islice object
+
+Return an iterator whose next() method returns selected values from an
+iterable.  If start is specified, will skip all preceding elements;
+otherwise, start defaults to zero.  Step defaults to one.  If
+specified as another value, step determines how many values are
+skipped between successive calls.  Works like a slice() on a list
+but returns an iterator.
+Type:           type
+Subclasses:     </code></pre>
+</div>
+</div></div><div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> itertools <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> islice</span>
+<span id="cb13-2">it <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">iter</span>(l)</span>
+<span id="cb13-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(islice(it, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[0, 1, 2, 3, 4]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(islice(it, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<pre><code>[5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(islice(it, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[]</code></pre>
+</div>
+</div>
+</section>
+<section id="yield" class="level2">
+<h2 class="anchored" data-anchor-id="yield"><code>yield</code></h2>
+<p><code>yield</code> is a substitute for <code>return</code> in a function or method. When <code>yield</code> is used, the function is known as a generator.</p>
+<p><code>yield</code> essentially allows you to perform multiple returns, and also allows you to treat a function as an iterator.</p>
+<section id="multiple-returns" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-returns">Multiple Returns</h3>
+<p>To demonstrate multiple returns, let’s create a function that chops a list up into smaller lists.</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> chunks(l, step):</span>
+<span id="cb19-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(l), step): <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">yield</span> l[i:i<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>step]</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(chunks(l, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>[[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]]</code></pre>
+</div>
+</div>
+</section>
+<section id="function-as-an-iterator" class="level3">
+<h3 class="anchored" data-anchor-id="function-as-an-iterator">Function as an Iterator</h3>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">l_iter <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> chunks(l, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> l_iter</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>&lt;generator object chunks at 0x11e2a8cf0&gt;</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">next</span>(l_iter)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>[0, 1, 2, 3, 4]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">next</span>(l_iter)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>[5, 6, 7, 8, 9]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">next</span>(l_iter)</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>StopIteration: </code></pre>
+</div>
+</div>
+<hr>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>Python</category>
+  <category>Bits and Bobs</category>
+  <guid>https://forbo7.github.io/forblog/posts/14_iterators_and_generators.html</guid>
+  <pubDate>Wed, 03 May 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/14_iterators_and_generators/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>Implementing Stable Diffusion From Its Components</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -102,7 +345,7 @@ font-style: inherit;">*</span></span><div class="code-annotation-gutter-bg"></di
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-2" data-code-annotation="1">Hugging Face can be very verbose.</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-2">Hugging Face can be very verbose.</span>
 </dd>
 </dl>
 </div>
@@ -453,11 +696,11 @@ font-style: inherit;">;</span> uncond_inp</span><div class="code-annotation-gutt
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="1" data-code-cell="annotated-cell-12" data-code-annotation="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-12">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="3" data-code-cell="annotated-cell-12" data-code-annotation="2">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
+<span data-code-annotation="2" data-code-lines="3" data-code-cell="annotated-cell-12">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
 </dd>
 </dl>
 </div>
@@ -743,23 +986,23 @@ font-style: inherit;">=</span> sched.step(pred, ts, lats).prev_sample</span><div
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-25" data-code-annotation="1">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
+<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-25">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-25" data-code-annotation="2">We then further scale the noise on the latents.</span>
+<span data-code-annotation="2" data-code-lines="5" data-code-cell="annotated-cell-25">We then further scale the noise on the latents.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="7" data-code-cell="annotated-cell-25" data-code-annotation="3">We then predict noise.</span>
+<span data-code-annotation="3" data-code-lines="7" data-code-cell="annotated-cell-25">We then predict noise.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="9,10" data-code-cell="annotated-cell-25" data-code-annotation="4">We then perform guidance.</span>
+<span data-code-annotation="4" data-code-lines="9,10" data-code-cell="annotated-cell-25">We then perform guidance.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="12" data-code-cell="annotated-cell-25" data-code-annotation="5">We then subtract the predicted, guided noise from the image.</span>
+<span data-code-annotation="5" data-code-lines="12" data-code-cell="annotated-cell-25">We then subtract the predicted, guided noise from the image.</span>
 </dd>
 </dl>
 </div>
@@ -1807,23 +2050,23 @@ font-style: inherit;">self</span>.decompress_lats(lats)</span><div class="code-a
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="4" data-code-cell="annotated-cell-40" data-code-annotation="1">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
+<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-40">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="5" data-code-cell="annotated-cell-40" data-code-annotation="2">An empty list is created to store the images.</span>
+<span data-code-annotation="2" data-code-lines="5" data-code-cell="annotated-cell-40">An empty list is created to store the images.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="8" data-code-cell="annotated-cell-40" data-code-annotation="3">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
+<span data-code-annotation="3" data-code-lines="8" data-code-cell="annotated-cell-40">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-40" data-code-annotation="4">We smoosh all images into one long line.</span>
+<span data-code-annotation="4" data-code-lines="10" data-code-cell="annotated-cell-40">We smoosh all images into one long line.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-lines="11" data-code-cell="annotated-cell-40" data-code-annotation="5">The image is displayed.</span>
+<span data-code-annotation="5" data-code-lines="11" data-code-cell="annotated-cell-40">The image is displayed.</span>
 </dd>
 </dl>
 <div class="cell" data-execution_count="40">
@@ -2368,7 +2611,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-1"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
 </figure>
 </div>
 <p>I recently began <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
@@ -2378,20 +2621,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald." data-gallery="quarto-lightbox-gallery-2"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
 <figcaption class="figure-caption">A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" title="The gif itself has artefacts due to compression…" data-gallery="quarto-lightbox-gallery-3"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
 <figcaption class="figure-caption">The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" title="This image displays all images in the gif above in a grid." data-gallery="quarto-lightbox-gallery-4"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="This image displays all images in the gif above in a grid."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
 </figure>
 </div>
 <p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
@@ -2401,19 +2644,19 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-5"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 <figcaption class="figure-caption">A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-6"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 <p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-7"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 </section>
@@ -2424,7 +2667,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-8"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
@@ -2436,14 +2679,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-9"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle" data-gallery="quarto-lightbox-gallery-10"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
 <figcaption class="figure-caption">Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
@@ -2454,20 +2697,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I quickly mocked up the following image.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky." data-gallery="quarto-lightbox-gallery-11"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
 </figure>
 </div>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" title="A bench under a tree in a park" data-gallery="quarto-lightbox-gallery-12"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" title="A low poly 3D render of a bench under a tree in a park" data-gallery="quarto-lightbox-gallery-13"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
@@ -2483,7 +2726,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle" data-gallery="quarto-lightbox-gallery-14"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
