@@ -345,7 +345,7 @@ font-style: inherit;">*</span></span><div class="code-annotation-gutter-bg"></di
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-2">Hugging Face can be very verbose.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1">Hugging Face can be very verbose.</span>
 </dd>
 </dl>
 </div>
@@ -696,11 +696,11 @@ font-style: inherit;">;</span> uncond_inp</span><div class="code-annotation-gutt
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-12">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="3" data-code-cell="annotated-cell-12">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-12" data-code-lines="3">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
 </dd>
 </dl>
 </div>
@@ -986,23 +986,23 @@ font-style: inherit;">=</span> sched.step(pred, ts, lats).prev_sample</span><div
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-25">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-25" data-code-lines="4">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="5" data-code-cell="annotated-cell-25">We then further scale the noise on the latents.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-25" data-code-lines="5">We then further scale the noise on the latents.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="7" data-code-cell="annotated-cell-25">We then predict noise.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-25" data-code-lines="7">We then predict noise.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="9,10" data-code-cell="annotated-cell-25">We then perform guidance.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-25" data-code-lines="9,10">We then perform guidance.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="12" data-code-cell="annotated-cell-25">We then subtract the predicted, guided noise from the image.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-25" data-code-lines="12">We then subtract the predicted, guided noise from the image.</span>
 </dd>
 </dl>
 </div>
@@ -2050,23 +2050,23 @@ font-style: inherit;">self</span>.decompress_lats(lats)</span><div class="code-a
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-40">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-40" data-code-lines="4">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-lines="5" data-code-cell="annotated-cell-40">An empty list is created to store the images.</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-40" data-code-lines="5">An empty list is created to store the images.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-lines="8" data-code-cell="annotated-cell-40">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
+<span data-code-annotation="3" data-code-cell="annotated-cell-40" data-code-lines="8">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-lines="10" data-code-cell="annotated-cell-40">We smoosh all images into one long line.</span>
+<span data-code-annotation="4" data-code-cell="annotated-cell-40" data-code-lines="10">We smoosh all images into one long line.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-lines="11" data-code-cell="annotated-cell-40">The image is displayed.</span>
+<span data-code-annotation="5" data-code-cell="annotated-cell-40" data-code-lines="11">The image is displayed.</span>
 </dd>
 </dl>
 <div class="cell" data-execution_count="40">
