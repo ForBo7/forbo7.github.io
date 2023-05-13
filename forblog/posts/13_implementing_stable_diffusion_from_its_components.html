@@ -301,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Hugging Face can be very verbose.</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-2">Hugging Face can be very verbose.</span>
 </dd>
 </dl>
 </div>
@@ -502,11 +502,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-12">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="3" data-code-annotation="2">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
+<span data-code-annotation="2" data-code-lines="3" data-code-cell="annotated-cell-12">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
 </dd>
 </dl>
 </div>
@@ -690,23 +690,23 @@ torch.Size([2, 3, 4])</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="4" data-code-annotation="1">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
+<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-25">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="5" data-code-annotation="2">We then further scale the noise on the latents.</span>
+<span data-code-annotation="2" data-code-lines="5" data-code-cell="annotated-cell-25">We then further scale the noise on the latents.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="7" data-code-annotation="3">We then predict noise.</span>
+<span data-code-annotation="3" data-code-lines="7" data-code-cell="annotated-cell-25">We then predict noise.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="9,10" data-code-annotation="4">We then perform guidance.</span>
+<span data-code-annotation="4" data-code-lines="9,10" data-code-cell="annotated-cell-25">We then perform guidance.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-lines="12" data-code-annotation="5">We then subtract the predicted, guided noise from the image.</span>
+<span data-code-annotation="5" data-code-lines="12" data-code-cell="annotated-cell-25">We then subtract the predicted, guided noise from the image.</span>
 </dd>
 </dl>
 </div>
@@ -996,23 +996,23 @@ torch.Size([2, 3, 4])</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-lines="4" data-code-annotation="1">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
+<span data-code-annotation="1" data-code-lines="4" data-code-cell="annotated-cell-40">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-lines="5" data-code-annotation="2">An empty list is created to store the images.</span>
+<span data-code-annotation="2" data-code-lines="5" data-code-cell="annotated-cell-40">An empty list is created to store the images.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-lines="8" data-code-annotation="3">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
+<span data-code-annotation="3" data-code-lines="8" data-code-cell="annotated-cell-40">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-lines="10" data-code-annotation="4">We smoosh all images into one long line.</span>
+<span data-code-annotation="4" data-code-lines="10" data-code-cell="annotated-cell-40">We smoosh all images into one long line.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-lines="11" data-code-annotation="5">The image is displayed.</span>
+<span data-code-annotation="5" data-code-lines="11" data-code-cell="annotated-cell-40">The image is displayed.</span>
 </dd>
 </dl>
 <div class="cell" data-execution_count="40">
@@ -1363,7 +1363,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.0</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>

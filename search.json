@@ -7,11 +7,18 @@
     "text": "Detailed patchnotes are unavailable prior to site version 2.0.0.0."
   },
   {
+    "objectID": "patch_notes.html#version-2.2.0.1-13-may-2023",
+    "href": "patch_notes.html#version-2.2.0.1-13-may-2023",
+    "title": "Site Patch Notes",
+    "section": "Version 2.2.0.1 | 13 May 2023",
+    "text": "Version 2.2.0.1 | 13 May 2023\n\nFixed animations for the App Playground.\nFixed back-to-top button covering content on the About Me page."
+  },
+  {
     "objectID": "patch_notes.html#version-2.2.0.0-13-may-2023",
     "href": "patch_notes.html#version-2.2.0.0-13-may-2023",
     "title": "Site Patch Notes",
     "section": "Version 2.2.0.0 | 13 May 2023",
-    "text": "Version 2.2.0.0 | 13 May 2023\n\nImplemented site-wide animations!\nConsolidated unsubscribe and all subscribe forms into a single form.\nRSS and source code navbar icons are now positioned more cleanly when accessed from the drop down menu on smaller screens.\nIncreased number of displayed posts on the ForBlog from 5 per page to 7 per page.\nChanged Home navbar icon.\nTemporarily disabled App Playground."
+    "text": "Version 2.2.0.0 | 13 May 2023\n\nImplemented site-wide animations!\nConsolidated unsubscribe form and all subscribe forms into a single form.\nAdded a back-to-top button.\nRSS and source code navbar icons are now positioned more cleanly when accessed from the drop down menu on smaller screens.\nIncreased number of displayed posts on the ForBlog from 5 per page to 7 per page.\nChanged Home navbar icon.\nTemporarily disabled App Playground."
   },
   {
     "objectID": "patch_notes.html#version-2.1.0.1-25-march-2023",
@@ -25,7 +32,7 @@
     "href": "patch_notes.html#version-2.1.0.0-23-february-2023",
     "title": "Site Patch Notes",
     "section": "Version 2.1.0.0 | 23 February 2023",
-    "text": "Version 2.1.0.0 | 23 February 2023\n\nLaunched the AI dictionary."
+    "text": "Version 2.1.0.0 | 23 February 2023\n\nLaunched the AI dictionary.\nShortened navbar text."
   },
   {
     "objectID": "patch_notes.html#version-2.0.3.2-22-february-2023",
