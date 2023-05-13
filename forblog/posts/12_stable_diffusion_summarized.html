@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.340">
+<meta name="generator" content="quarto-1.3.353">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -204,6 +204,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p><em><strong>This post was edited on Sunday, 30 April 2023</strong></em></p>
 <p><img src="../images/12_stable_diffusion_summarized/thumbnail.jpeg" class="img-fluid"></p>
 <p>Here, I explain the workings of stable diffusion at a high level.</p>
 <section id="components" class="level2">
@@ -261,7 +262,7 @@ ul.task-list li input[type="checkbox"] {
     end
 
     id7[Input Image Description] &amp; id6[Input Image] --&gt; A --&gt; id9[Feature Vector]
-    id6 --noise added to image--&gt; B --&gt; id10[Noisy Latent]
+    id6 --&gt; B --noise added to image--&gt; id10[Noisy Latent]
     id9 &amp; id10 --&gt; C --&gt; id11[Less Noisy Latent] --&gt;  C
     id11 --&gt; D --&gt; id8[Generated Image]
 </pre>
@@ -316,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p>We start with an image and its description. The image encoder takes the image and produces a feature vector — a vector with numerical values that describe the image in some way. The text encoder takes the image’s description and similarly produces a feature vector.</p>
-<p>These two feature vectors are then stored in what’s known as a CLIP embedding. An embedding is simply a table where each row is an item and each column describes the items in some way. I this case, the rows represent feature vectors, and the columns are each feature in the vector.</p>
+<p>These two feature vectors are then stored in what’s known as a CLIP embedding. An embedding is simply a table where each row is an item and each column describes the items in some way. In this case, the rows represent feature vectors, and the columns are each feature in the vector.</p>
 <p>Both encoders keep producing feature vectors until they are as similar as possible.</p>
 </section>
 <section id="image-compression" class="level3 page-columns page-full">
@@ -355,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-<p>Once the feature vectors have been produced, some noise is tossed onto the image. This noisy image is then compressed by the VAE autoencoder.</p>
+<p>Once the feature vectors have been produced, the image is compressed by the VAE autoencoder. Some noise is then tossed onto the image.</p>
 <p>The VAE autoencoder contains an encoder and a decoder. The encoder handles compression whereas the decoder handles decompression.</p>
 <p>The compressed noisy image is now known as the latent. The image is compressed for faster computation, as there would be fewer pixels to compute on.</p>
 </section>
@@ -438,12 +439,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="inference" class="level2">
 <h2 class="anchored" data-anchor-id="inference">Inference</h2>
-<p>When using a diffuser for inference, the diffuser <em>typically</em> begins with a purely noisey image. The diffuser uses the input prompt to guide the removal of noise from the noisy image, until the image resembles what is desired.</p>
+<p>When using a diffuser for inference, the diffuser <em>typically</em> begins with a purely noisey latent. The diffuser uses the input prompt to guide the removal of noise from the latent, until the latent resembles what is desired.</p>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>And that’s all there is to it!</p>
-<p>We take an image and its prompt, and create a feature vector out of them. Noise is then added to the image, which is then compressed. The latent and the feature vector are input to a U-net which then predicts the noise in the latent. The predicted noise is subtracted from the latent, which is then input back to the U-net. After the desired number of steps has lapsed, the latent is decompressed and the generated image is ready!</p>
+<p>We take an image and its prompt, and create a feature vector out of them. The image is compressed and noise is then added to it. The latent and the feature vector are input to a U-net which then predicts the noise in the latent. The predicted noise is subtracted from the latent, which is then input back to the U-net. After the desired number of steps has lapsed, the latent is decompressed and the generated image is ready!</p>
 <p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
 
 
