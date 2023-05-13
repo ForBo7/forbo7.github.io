@@ -14,6 +14,8 @@ twitter-card:
   image: ../images/12_stable_diffusion_summarized/thumbnail.jpeg
 ---
 
+_**This post was edited on Sunday, 30 April 2023**_
+
 ![](../images/12_stable_diffusion_summarized/thumbnail.jpeg)
 
 Here, I explain the workings of stable diffusion at a high level.
@@ -66,7 +68,7 @@ flowchart LR
     end
 
     id7[Input Image Description] & id6[Input Image] --> A --> id9[Feature Vector]
-    id6 --noise added to image--> B --> id10[Noisy Latent]
+    id6 --> B --noise added to image--> id10[Noisy Latent]
     id9 & id10 --> C --> id11[Less Noisy Latent] -->  C
     id11 --> D --> id8[Generated Image]
 ```
@@ -114,7 +116,7 @@ flowchart TB
 
 We start with an image and its description. The image encoder takes the image and produces a feature vector — a vector with numerical values that describe the image in some way. The text encoder takes the image's description and similarly produces a feature vector.
 
-These two feature vectors are then stored in what's known as a CLIP embedding. An embedding is simply a table where each row is an item and each column describes the items in some way. I this case, the rows represent feature vectors, and the columns are each feature in the vector.
+These two feature vectors are then stored in what's known as a CLIP embedding. An embedding is simply a table where each row is an item and each column describes the items in some way. In this case, the rows represent feature vectors, and the columns are each feature in the vector.
 
 Both encoders keep producing feature vectors until they are as similar as possible.
 
@@ -148,7 +150,7 @@ flowchart TB
 ```
 :::
 
-Once the feature vectors have been produced, some noise is tossed onto the image. This noisy image is then compressed by the VAE autoencoder.
+Once the feature vectors have been produced, the image is compressed by the VAE autoencoder. Some noise is then tossed onto the image.
 
 The VAE autoencoder contains an encoder and a decoder. The encoder handles compression whereas the decoder handles decompression.
 
@@ -222,12 +224,12 @@ We now have a generated image!
 
 ## Inference
 
-When using a diffuser for inference, the diffuser _typically_ begins with a purely noisey image. The diffuser uses the input prompt to guide the removal of noise from the noisy image, until the image resembles what is desired.
+When using a diffuser for inference, the diffuser _typically_ begins with a purely noisey latent. The diffuser uses the input prompt to guide the removal of noise from the latent, until the latent resembles what is desired.
 
 ## Conclusion
 
 And that's all there is to it!
 
-We take an image and its prompt, and create a feature vector out of them. Noise is then added to the image, which is then compressed. The latent and the feature vector are input to a U-net which then predicts the noise in the latent. The predicted noise is subtracted from the latent, which is then input back to the U-net. After the desired number of steps has lapsed, the latent is decompressed and the generated image is ready!
+We take an image and its prompt, and create a feature vector out of them. The image is compressed and noise is then added to it. The latent and the feature vector are input to a U-net which then predicts the noise in the latent. The predicted noise is subtracted from the latent, which is then input back to the U-net. After the desired number of steps has lapsed, the latent is decompressed and the generated image is ready!
 
 If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!
