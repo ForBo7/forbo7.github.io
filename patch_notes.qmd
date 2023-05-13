@@ -13,10 +13,16 @@ twitter-card:
 Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 :::
 
+## Version 2.2.0.1 | 13 May 2023 {.animate__animated .animate__slideInRight .animate__faster}
+
+* Fixed animations for the App Playground.
+* Fixed back-to-top button covering content on the About Me page.
+
 ## Version 2.2.0.0 | 13 May 2023 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Implemented site-wide animations!
-* Consolidated unsubscribe and all subscribe forms into a single form.
+* Consolidated unsubscribe form and all subscribe forms into a single form.
+* Added a back-to-top button.
 * RSS and source code navbar icons are now positioned more cleanly when accessed from the drop down menu on smaller screens.
 * Increased number of displayed posts on the ForBlog from 5 per page to 7 per page.
 * Changed Home navbar icon.
@@ -29,6 +35,7 @@ Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 ## Version 2.1.0.0 | 23 February 2023 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Launched the AI dictionary.
+* Shortened navbar text.
 
 ## Version 2.0.3.2 | 22 February 2023 {.animate__animated .animate__slideInRight .animate__faster}
 
