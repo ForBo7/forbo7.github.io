@@ -254,7 +254,7 @@ font-style: inherit;">next</span>(l_iter)</span></code></pre></div>
 </section>
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Python</category>
   <category>Bits and Bobs</category>
   <guid>https://forbo7.github.io/forblog/posts/14_iterators_and_generators.html</guid>
@@ -345,7 +345,7 @@ font-style: inherit;">*</span></span><div class="code-annotation-gutter-bg"></di
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1">Hugging Face can be very verbose.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Hugging Face can be very verbose.</span>
 </dd>
 </dl>
 </div>
@@ -381,32 +381,32 @@ background-color: null;
 font-style: inherit;">'cuda'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"af7d88b70e5c4402a1990866772f444a","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"af7d88b70e5c4402a1990866772f444a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"f97ee3513bab4ae18fb9cd37e3613151","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"f97ee3513bab4ae18fb9cd37e3613151","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"38832f5d87674c2986ef347ad98aaff6","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"38832f5d87674c2986ef347ad98aaff6","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"6946eaa565e84b0384f6e7de58a0202d","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"6946eaa565e84b0384f6e7de58a0202d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"6b1c17163f2e4e05a30548bca4ecbb17","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"6b1c17163f2e4e05a30548bca4ecbb17","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"42a8ef90d3af439d9cb2934d91e1b059","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"42a8ef90d3af439d9cb2934d91e1b059","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
@@ -446,22 +446,22 @@ background-color: null;
 font-style: inherit;">"cuda"</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"da65cef390a041afacbf3e233285ea67","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"da65cef390a041afacbf3e233285ea67","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"050f0650b3214447bbe8ac7d512882d3","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"050f0650b3214447bbe8ac7d512882d3","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"fab9249a6d38474d9dc7eb703d645211","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"fab9249a6d38474d9dc7eb703d645211","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"9e9fc25b990f4d66ade4c94e7b10cbfa","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"9e9fc25b990f4d66ade4c94e7b10cbfa","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
@@ -696,11 +696,11 @@ font-style: inherit;">;</span> uncond_inp</span><div class="code-annotation-gutt
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-12" data-code-lines="3">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="3" data-code-annotation="2">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
 </dd>
 </dl>
 </div>
@@ -986,29 +986,29 @@ font-style: inherit;">=</span> sched.step(pred, ts, lats).prev_sample</span><div
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-25" data-code-lines="4">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="4" data-code-annotation="1">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-25" data-code-lines="5">We then further scale the noise on the latents.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="5" data-code-annotation="2">We then further scale the noise on the latents.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-25" data-code-lines="7">We then predict noise.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="7" data-code-annotation="3">We then predict noise.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-25" data-code-lines="9,10">We then perform guidance.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="9,10" data-code-annotation="4">We then perform guidance.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-25" data-code-lines="12">We then subtract the predicted, guided noise from the image.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="12" data-code-annotation="5">We then subtract the predicted, guided noise from the image.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"f1ca276ff050429a82811d0e0160a04a","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"f1ca276ff050429a82811d0e0160a04a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
@@ -1334,7 +1334,7 @@ font-style: inherit;">=</span> decompress_lat(lat)</span>
 <span id="cb47-6">Image.fromarray(img)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"91699b11dcbe47da99541cc28e50479a","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"91699b11dcbe47da99541cc28e50479a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -1454,7 +1454,7 @@ font-style: inherit;">=</span> decompress_lat(lat)</span>
 <span id="cb49-7">Image.fromarray(img)</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"ad33e26e98be43ed90661f963b4d4c23","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"ad33e26e98be43ed90661f963b4d4c23","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="34">
@@ -1910,7 +1910,7 @@ background-color: null;
 font-style: inherit;">=</span> diffuser.diffuse()</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"8191285afab4474a86574cc98aa7965b","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"8191285afab4474a86574cc98aa7965b","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
@@ -1949,7 +1949,7 @@ background-color: null;
 font-style: inherit;">0</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"3bd5fd90d89d4506b1df10765fa2a88f","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"3bd5fd90d89d4506b1df10765fa2a88f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="39">
@@ -2050,23 +2050,23 @@ font-style: inherit;">self</span>.decompress_lats(lats)</span><div class="code-a
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-40" data-code-lines="4">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="4" data-code-annotation="1">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-40" data-code-lines="5">An empty list is created to store the images.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="5" data-code-annotation="2">An empty list is created to store the images.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-40" data-code-lines="8">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="8" data-code-annotation="3">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-40" data-code-lines="10">We smoosh all images into one long line.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="10" data-code-annotation="4">We smoosh all images into one long line.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-40" data-code-lines="11">The image is displayed.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="11" data-code-annotation="5">The image is displayed.</span>
 </dd>
 </dl>
 <div class="cell" data-execution_count="40">
@@ -2564,7 +2564,7 @@ background-color: null;
 font-style: inherit;">0</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"version_major":2,"version_minor":0,"model_id":"110e7852a7c046939c4f3889229c3a4d","quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"110e7852a7c046939c4f3889229c3a4d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
@@ -2591,7 +2591,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Diffusion</category>
   <category>Creating Models</category>
   <guid>https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components.html</guid>
@@ -2611,7 +2611,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-1"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
 </figure>
 </div>
 <p>I recently began <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
@@ -2621,20 +2621,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald." data-gallery="quarto-lightbox-gallery-2"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
 <figcaption class="figure-caption">A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" title="The gif itself has artefacts due to compression…" data-gallery="quarto-lightbox-gallery-3"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
 <figcaption class="figure-caption">The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" title="This image displays all images in the gif above in a grid." data-gallery="quarto-lightbox-gallery-4"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="This image displays all images in the gif above in a grid."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
 </figure>
 </div>
 <p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
@@ -2644,19 +2644,19 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-5"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 <figcaption class="figure-caption">A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-6"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 <p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-7"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 </section>
@@ -2667,7 +2667,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-8"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
@@ -2679,14 +2679,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-9"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle" data-gallery="quarto-lightbox-gallery-10"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
 <figcaption class="figure-caption">Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
@@ -2697,20 +2697,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I quickly mocked up the following image.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky." data-gallery="quarto-lightbox-gallery-11"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
 </figure>
 </div>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" title="A bench under a tree in a park" data-gallery="quarto-lightbox-gallery-12"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" title="A low poly 3D render of a bench under a tree in a park" data-gallery="quarto-lightbox-gallery-13"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
@@ -2726,7 +2726,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle" data-gallery="quarto-lightbox-gallery-14"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
@@ -2743,7 +2743,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Diffusion</category>
   <category>Analyzing Models</category>
   <guid>https://forbo7.github.io/forblog/posts/11_musings_through_stable_diffusion.html</guid>
@@ -3004,7 +3004,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Diffusion</category>
   <category>Creating Models</category>
   <guid>https://forbo7.github.io/forblog/posts/12_stable_diffusion_summarized.html</guid>
@@ -3763,7 +3763,7 @@ font-style: inherit;">-</span>metadata.json</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Computer Vision</category>
   <category>Data</category>
   <category>PyTorch</category>
@@ -3813,7 +3813,7 @@ font-style: inherit;">-</span>metadata.json</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>LLMs</category>
   <category>Transformers</category>
   <guid>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</guid>
@@ -4014,7 +4014,7 @@ font-style: inherit;">3</span>])</span>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>PyTorch</category>
   <guid>https://forbo7.github.io/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html</guid>
   <pubDate>Thu, 26 Jan 2023 00:00:00 GMT</pubDate>
@@ -4256,7 +4256,7 @@ Before you hit that send button!
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Quarto</category>
   <category>Collaboration</category>
   <guid>https://forbo7.github.io/forblog/posts/7_blog_subscriptions.html</guid>
@@ -4711,7 +4711,7 @@ Code Output
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Creating Models</category>
   <guid>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</guid>
   <pubDate>Tue, 04 Oct 2022 00:00:00 GMT</pubDate>
@@ -6205,7 +6205,7 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Creating Models</category>
   <guid>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</guid>
   <pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate>
@@ -6281,7 +6281,7 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
 
 
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Data</category>
   <category>Analyzing Models</category>
   <guid>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</guid>
@@ -6372,7 +6372,7 @@ Note
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Analyzing Models</category>
   <guid>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</guid>
   <pubDate>Fri, 03 Jun 2022 00:00:00 GMT</pubDate>
@@ -6971,7 +6971,7 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 
 </section>
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Creating Models</category>
   <guid>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</guid>
   <pubDate>Sat, 28 May 2022 00:00:00 GMT</pubDate>
@@ -7075,7 +7075,7 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 </section>
 
 
- ]]></description>
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Approaching AI</category>
   <guid>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</guid>
   <pubDate>Fri, 27 May 2022 00:00:00 GMT</pubDate>
