@@ -1,6 +1,6 @@
 ---
-title: The AI Dictionary
-subtitle: "AI terms and jargon simply explained."
+title: "{{< animate fadeInUp 'The AI Dictionary' >}}"
+subtitle: "{{< animate fadeInUp 'AI terms and jargon simply explained.' >}}"
 margin-header: "[The AI Dictionary](https://forbo7.github.io/dictionary/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
 listing:
   - id: terms
@@ -21,11 +21,13 @@ twitter-card:
 
 <!-- TODO: Enable arraws at the bottom of the page to jump to next term. -->
 
+:::{.animate__animated .animate__fadeInUp}
 I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.
 
 Click terms to view expanded definitions.
 
 Do let me know of any corrections and improvements, and of any terms you would like added!
+:::
 
-:::{#terms}
+:::{#terms .animate__animated .animate__fadeInUp .animate_duration-faster}
 :::

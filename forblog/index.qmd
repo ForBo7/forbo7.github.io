@@ -1,41 +1,45 @@
 ---
-title: Welcome to ForBlog by ForBo7
+title: '{{< animate fadeInDown "Welcome to ForBlog by ForBo7" >}}'
 comments: false
 margin-header: "[ForBlog](https://forbo7.github.io/forblog/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
+toc: false
 listing:
   - id: posts
     contents: posts
     sort: 
       - "date desc"
       - "title asc"
-    # TODO: Set categories appearance.  
     categories: true
     sort-ui: [date, author]
     filter-ui: [title, date, author]
     feed: true
     type: default
-    page-size: 5
+    page-size: 7
     image-align: left
     date-format: "DD MMMM YYYY"
     fields: [title, subtitle, author, description, date, image, reading-time]
 format:
   html:
     page-layout: full
+website:
+  back-to-top-navigation: true
 open-graph:
   description: "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits."
 twitter-card:
   description: "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits."
 ---
 
-Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.
+{{< animate fadeInDown 'Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.' >}}
 
 <br></br>
+
+::::{.animate__animated .animate__slideInLeft .animate__duration-250ms}
 
 :::{#posts}
 :::
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfjkZ_LRy1pXna0cDuvfH9lflySyxTaBAMozJTfKtwWG0m5bA/viewform?embedded=true" width="100%" height="475vh"
-frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSetO4I9TtneTiZXNidTYHcAyqrVUeZzKAq00it7RbHMBGJ53g/viewform?embedded=true" width="100%" height="600vh" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
 
+<br></br>
 
-[Click here](../unsubscribe.qmd) to unsubscribe from the ForBlog.
+::::

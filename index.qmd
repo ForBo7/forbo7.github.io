@@ -1,5 +1,5 @@
 ---
-title: Welcome to the world of ForBo7
+title: '{{< animate bounceIn "Welcome to the world of ForBo7" delay=1s duration=faster >}}'
 comments: False
 format:
   html:
@@ -12,14 +12,14 @@ listing:
     sort: 
       - "date desc"
       - "title asc"
-  - id: landing-apps
-    contents: web_apps/apps
-    type: grid
-    max-items: 6
-    grid-columns: 3
-    sort: 
-      - "date desc"
-      - "title asc"
+  # - id: landing-apps
+  #   contents: web_apps/apps
+  #   type: grid
+  #   max-items: 6
+  #   grid-columns: 3
+  #   sort: 
+  #     - "date desc"
+  #     - "title asc"
 about:
   id: about-forbo7
   template: jolla
@@ -27,24 +27,28 @@ about:
   image-shape: round
   links:
       # Variables don't work here.
+    - icon: file-post-fill
+      text: "{{< animate fadeIn 'fastai Forums' >}}"
+      href: https://forums.fast.ai/u/forbo7/summary
     - icon: twitter
-      text: Twitter
+      text: "{{< animate fadeIn 'Twitter' >}}"
       href: https://twitter.com/ForBo7_
-    - icon: github
-      text: GitHub
-      href: https://github.com/ForBo7
-    - icon: clipboard-data
-      text: Kaggle
-      href: https://www.kaggle.com/forbo7
     - icon: brush
-      text: Artstation
+      text: "{{< animate fadeIn 'Artstation' >}}"
       href: https://www.artstation.com/forbo7
+    - icon: clipboard-data
+      text: "{{< animate fadeIn 'Kaggle' >}}"
+      href: https://www.kaggle.com/forbo7
+    - icon: github
+      text: "{{< animate fadeIn 'GitHub' >}}"
+      href: https://github.com/ForBo7
     - icon: envelope
-      text: Email
-      href: mailto:salmananaqvii+forblog@gmail.com
+      text: "{{< animate fadeIn 'Email' >}}"
+      href: mailto:salmanaqvi+forblog@icloud.com
+back-to-top-navigation: false
 ---
 
-:::{#about-forbo7}
+:::{#about-forbo7 .animate__animated .animate__zoomInDown}
 I'm a curious individual who dabbles in AI, does 3D CG, loves learning, and
 is a scitech geek and space nerd. I've also been to 18 countries.
 
@@ -54,18 +58,22 @@ Feel free to contact me with one of the fancy buttons below!
 :::
 
 :::::{.grid}
-::::{.g-col-12 .g-col-md-6}
+::::{.g-col-12 .g-col-md-6 .animate__animated .animate__fadeIn .animate__faster .animate__delay-1s}
 ## ForBlog
 Click [here](forblog/index.qmd) to check out the latest on the ForBlog.
 
 :::{#landing-posts}
 :::
 ::::
-::::{.g-col-12 .g-col-md-6}
+::::{.g-col-12 .g-col-md-6 .animate__animated .animate__fadeIn .animate__faster .animate__delay-1s}
 ## Playground
-Click [here](web_apps/index.qmd) to play more in the playground.
+<!-- Click [here](web_apps/index.qmd) to play more in the playground.
 
 :::{#landing-apps}
-:::
+::: -->
+The playground is currently offline.
+
+
+![](web_apps/images/coming_soon/thumbnail.png){width=80%}
 ::::
 :::::

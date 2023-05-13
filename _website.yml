@@ -7,16 +7,13 @@ website:
   favicon: favicon.ico
 #  favicon: cover.png
   image: images/profile.png
-  # TODO: Page navigation is not working. Enable this for ForBlog and playground only.
-  page-navigation: false
-  # TODO: Enable this for ForBlog only.
-  reader-mode: false
+  back-to-top-navigation: true
   navbar:
     # Currently have set pinned to true because it isn't smooth.
 #    logo: cover.png
     pinned: True
     left:
-      - icon: house
+      - icon: house-door
         text: Home
         href: index.qmd
       - icon: newspaper
@@ -31,7 +28,7 @@ website:
       - icon: file-person
         text: About
         href: about.qmd
-    right:
+    tools:
       - icon: code-slash
         href: https://github.com/ForBo7/forbo7.github.io
       - icon: rss
@@ -39,18 +36,20 @@ website:
   page-footer:
     left: "[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2023 and ForBlog™ \n by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site 
     Version 
-    2.1.0.1](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
+    2.2.0.0](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
     right:
-      - icon: envelope
-        href: mailto:salmananaqvii+forblog@gmail.com
+      - icon: file-post-fill
+        href: https://forums.fast.ai/u/forbo7/summary
       - icon: twitter
         href: https://twitter.com/ForBo7_
-      - icon: github
-        href: https://github.com/ForBo7
-      - icon: clipboard-data
-        href: https://www.kaggle.com/forbo7
       - icon: brush
         href: https://www.artstation.com/forbo7
+      - icon: clipboard-data
+        href: https://www.kaggle.com/forbo7
+      - icon: github
+        href: https://github.com/ForBo7
+      - icon: envelope
+        href: mailto:salmananaqvii+forblog@gmail.com
       - icon: rss
         href: forblog/index.xml
   twitter-card:

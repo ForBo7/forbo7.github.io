@@ -1,32 +1,38 @@
 ---
-title: "Salman Naqvi"
+title: "{{< animate fadeIn 'Salman Naqvi' duration=faster >}}"
 about:
   id: about-forbo7
   template: trestles
   image: images/profile.png
   image-shape: rounded
   links:
-    - icon: envelope
-      text: Email
-      href: mailto:salmananaqvii+forblog@gmail.com
+    - icon: file-post-fill
+      text: "{{< animate fadeIn 'fastai Forums' >}}"
+      href: https://forums.fast.ai/u/forbo7/summary
     - icon: twitter
-      text: Twitter
+      text: "{{< animate fadeIn 'Twitter' >}}"
       href: https://twitter.com/ForBo7_
-    - icon: github
-      text: GitHub
-      href: https://github.com/ForBo7
-    - icon: clipboard-data
-      text: Kaggle
-      href: https://www.kaggle.com/forbo7
     - icon: brush
-      text: Artstation
+      text: "{{< animate fadeIn 'Artstation' >}}"
       href: https://www.artstation.com/forbo7
+    - icon: clipboard-data
+      text: "{{< animate fadeIn 'Kaggle' >}}"
+      href: https://www.kaggle.com/forbo7
+    - icon: github
+      text: "{{< animate fadeIn 'GitHub' >}}"
+      href: https://github.com/ForBo7
+    - icon: envelope
+      text: "{{< animate fadeIn 'Email' >}}"
+      href: mailto:salmanaqvi+forblog@icloud.com
 comments: false
 page-layout: full
 ---
 
+:::{.animate__animated .animate__slideInRight .animate__faster}
 _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries._
+:::
 
+::::{.animate__animated .animate__slideInUp .animate__faster}
 :::{.panel-tabset}
 
 # Notable Experience
@@ -42,6 +48,10 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 **Concert Marketing — Raised \$8,400** | Beaconhouse College Program Potohar Campus | January 2020 | Islamabad, Pakistan
 
 **Bronze Medal — Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest 2018 | Islamabad, Pakistan
+
+<!-- TODO: # Notable Works -->
+
+
 
 # Skills
 
@@ -96,3 +106,4 @@ Education) | August 2015 — August 2019
 **Urdu** | Good speaking and listening competency. Fair writing and reading competency.
 
 :::
+::::

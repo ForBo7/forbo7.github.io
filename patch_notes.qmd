@@ -1,7 +1,7 @@
 ---
-title: Site Patch Notes
-subtitle: Patches upon patches upon patches...
-description: Does that end up being the [Ship of Thesius](https://en.wikipedia.org/wiki/Ship_of_Theseus)?
+title: "{{< animate flipInX 'Site Patch Notes' >}}"
+subtitle: "{{< animate flipInX 'Patches upon patches upon patches...' >}}"
+description: "{{< animate flipInX 'Does that end up being the [Ship of Thesius](https://en.wikipedia.org/wiki/Ship_of_Theseus)?' >}}"
 comments: false
 open-graph:
   description: Patches upon patches upon patches...
@@ -13,48 +13,57 @@ twitter-card:
 Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 :::
 
-## Version 2.1.0.1 | 25 March 2023
+## Version 2.2.0.0 | 13 May 2023 {.animate__animated .animate__slideInLeft .animate__faster}
+
+* Implemented site-wide animations!
+* Consolidated unsubscribe and all subscribe forms into a single form.
+* RSS and source code navbar icons are now positioned more cleanly when accessed from the drop down menu on smaller screens.
+* Increased number of displayed posts on the ForBlog from 5 per page to 7 per page.
+* Changed Home navbar icon.
+* Temporarily disabled App Playground.
+
+## Version 2.1.0.1 | 25 March 2023 {.animate__animated .animate__slideInRight .animate__faster}
 
 * Tweaked the various subscription forms' positioning.
 
-## Version 2.1.0.0 | 23 February 2023
+## Version 2.1.0.0 | 23 February 2023 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Launched the AI dictionary.
 
-## Version 2.0.3.2 | 22 February 2023
+## Version 2.0.3.2 | 22 February 2023 {.animate__animated .animate__slideInRight .animate__faster}
 
 * Updated copyright notices for 2023.
 
-## Version 2.0.3.1 | 28 January 2023
+## Version 2.0.3.1 | 28 January 2023 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Changed comment section theme.
 
-## Version 2.0.3.0 | 27 November 2022
+## Version 2.0.3.0 | 27 November 2022 {.animate__animated .animate__slideInRight .animate__faster}
 
 * Fully implemented Twitter Cards.
 
-## Version 2.0.2.0 | 26 November 2022
+## Version 2.0.2.0 | 26 November 2022 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Fully implemented Open Graph.
 * Added button for direct link to site's source code.
 * Tweaked landing page description.
 
-## Version 2.0.1.2 | 17 November 2022
+## Version 2.0.1.2 | 17 November 2022 {.animate__animated .animate__slideInRight .animate__faster}
 
 * Fixed broken license link.
 
-## Version 2.0.1.1 | 17 November 2022
+## Version 2.0.1.1 | 17 November 2022 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Fixed broken site feedback link.
 * Updated site version references.
 
-## Version 2.0.1.0 | 17 November 2022
+## Version 2.0.1.0 | 17 November 2022 {.animate__animated .animate__slideInRight .animate__faster}
 
 * Fixed a bunch of broken links.
 * Fixed RSS buttons.
 * Shifted links on the landing page.
 
-## Version 2.0.0.0 | 16 November 2022
+## Version 2.0.0.0 | 16 November 2022 {.animate__animated .animate__slideInRight .animate__faster}
 
 * Created, erm, site patch notes.
 * Site is now entirely remade in [Quarto](https://quarto.org).
@@ -80,7 +89,7 @@ Added...
 * copyright licences.
 * new fancy buttons.
 
-## Version 1.0.0.0 | 15 May 2022
+## Version 1.0.0.0 | 15 May 2022 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Initial release.
 * Site is built on [fastpages](https://github.com/fastai/fastpages), by [fastai](https://fast.ai).

@@ -1,12 +1,14 @@
-site_version: 2.1.0.1
+site_version: 2.2.0.0
 
 contact:
-  email: "[salmananaqvii+forblog@gmail.com](mailto:salmananaqvii+forblog@gmail.com)"
+  email: "[salmanaqvi+forblog@icloud.com](mailto:salmanaqvi+forblog@icloud.com)"
 
 links:
   twitter: https://twitter.com/ForBo7_
   github: https://github.com/ForBo7
   artstation: https://www.artstation.com/forbo7
+  kaggle: https://www.kaggle.com/forbo7
+  fastai:  https://forums.fast.ai/u/forbo7/summary
 
 licenses:
   forblog: "[ForBlog](https://forbo7.github.io/forblog.html) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
