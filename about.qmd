@@ -51,7 +51,13 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 
 <!-- TODO: # Notable Works -->
 
+# Current Status
 
+**Leading a 7 Member Study Group** | fastai Course Part 2: From Deep Learning Foundations to Stable Diffusion | April 2023 — Current
+
+**1100+ AI Community Administrator** | The Dataspace | November 2022 — Current | Discord
+
+Gap Year
 
 # Skills
 
@@ -62,12 +68,6 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 **Teaching** | Can teach in a logical manner that fosters understanding and the solidification of concepts.
 
 **English** | Can use the language to a very high degree of complexity.
-
-# Current Status
-
-**1100+ AI Community Administrator** | The Dataspace | November 2022 — Current | Discord
-
-Gap Year
 
 :::
 
