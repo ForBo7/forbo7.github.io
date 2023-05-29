@@ -16,8 +16,1691 @@
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.3.353</generator>
-<lastBuildDate>Wed, 03 May 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.3.361</generator>
+<lastBuildDate>Mon, 29 May 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>(Un)successfully Implementing DiffEdit</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit.html</link>
+  <description><![CDATA[ 
+
+
+
+<blockquote class="blockquote">
+<p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
+</blockquote>
+<p><img src="https://forbo7.github.io/forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" class="img-fluid"></p>
+<p>Well, my implementation was a partial success: I managed to generate a mask, but failed to apply it. If you don’t understand, hold on as I’ll explain DiffEdit.</p>
+<p>In this notebook, I try to implement the <a href="https://arxiv.org/abs/2210.11427">DiffEdit</a> paper: a diffusion algorithm that allows us to replace the subject of an image with another subject, simply through a text prompt.</p>
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This notebook does not closely follow the paper implementation of DiffEdit. However, it does capture the underlying mechanisms.</p>
+</div>
+</div>
+</div>
+<p>In a nutshell, this is done by generating a mask from the text prompt. This mask cuts out the subject from the image, which allows a new subject to be added to the image.</p>
+<p>While I was successful in genreating a mask, I wasn’t successful in applying it to an image. So at the end of this notebook, I’ll use the <a href="https://huggingface.co/docs/diffusers/api/pipelines/stable_diffusion/inpaint">Hugging Face Stable Diffusion Inpaint Pipeline</a> to see the mask in action.</p>
+<p>If you would like a refresher on how Stable Diffusion can be implemented from its various components, you can read my post on this <a href="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components.html">here</a>.</p>
+<section id="basic-workings" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="basic-workings">Basic Workings</h2>
+<p>Let’s say we have an image of a horse in front of a forest. We want to replace the horse with a zebra. At a high level, DiffEdit achieves this in the following manner.</p>
+<ol type="1">
+<li>Using our image, we generate a further image with the prompt ‘horse’.</li>
+<li>We similarly generate another further image with the prompt ‘zebra’.</li>
+<li>The difference between both generated images is then taken.</li>
+<li>The difference is normalized<sup>1</sup> and binarized<sup>2</sup> to obtain the mask.</li>
+<li>We again generate an image with the prompt ‘zebra’.
+<ul>
+<li>However this time, after each denoising step, apply the mask to the latent to obtain a cutout of the zebra.</li>
+<li>Then add the noised background pixels of the original image to the cutout.</li>
+</ul></li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></li></div></section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span> pip install <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>Uqq fastcore transformers diffusers</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="annotated-cell-2" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> logging<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> logging.disable(logging.WARNING)</span>
+<span id="annotated-cell-2-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastcore.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">all</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="annotated-cell-2-3"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastai.imports <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="annotated-cell-2-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastai.vision.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">all</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1">Hugging Face can be verbose.</span>
+</dd>
+</dl>
+</div>
+</div>
+</section>
+<section id="get-components" class="level2">
+<h2 class="anchored" data-anchor-id="get-components">Get Components</h2>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> transformers <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> CLIPTokenizer, CLIPTextModel</span>
+<span id="cb2-2"></span>
+<span id="cb2-3">tokz <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> CLIPTokenizer.from_pretrained(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'openai/clip-vit-large-patch14'</span>, torch_dtype<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>torch.float16)</span>
+<span id="cb2-4">txt_enc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> CLIPTextModel.from_pretrained(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'openai/clip-vit-large-patch14'</span>, torch_dtype<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>torch.float16).to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cuda'</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> diffusers <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> AutoencoderKL, UNet2DConditionModel</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">vae <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> AutoencoderKL.from_pretrained(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'stabilityai/sd-vae-ft-ema'</span>, torch_dtype<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>torch.float16).to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cuda'</span>)</span>
+<span id="cb3-4">unet <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> UNet2DConditionModel.from_pretrained(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"CompVis/stable-diffusion-v1-4"</span>, subfolder<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"unet"</span>, torch_dtype<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>torch.float16).to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cuda"</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> diffusers <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> LMSDiscreteScheduler</span>
+<span id="cb4-2"></span>
+<span id="cb4-3">sched <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LMSDiscreteScheduler(</span>
+<span id="cb4-4">    beta_start <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.00085</span>,</span>
+<span id="cb4-5">    beta_end <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.012</span>,</span>
+<span id="cb4-6">    beta_schedule <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'scaled_linear'</span>,</span>
+<span id="cb4-7">    num_train_timesteps <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span></span>
+<span id="cb4-8">)</span></code></pre></div>
+</div>
+</section>
+<section id="simple-loop" class="level2">
+<h2 class="anchored" data-anchor-id="simple-loop">Simple Loop</h2>
+<p>In this simple loop, I’m making sure I can correctly generate an image based on another image as the starting point.</p>
+<section id="hyperparameters" class="level3">
+<h3 class="anchored" data-anchor-id="hyperparameters">Hyperparameters</h3>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'earth'</span>]</span>
+<span id="cb5-2">neg_prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>]</span>
+<span id="cb5-3">w, h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span></span>
+<span id="cb5-4">n_inf_steps <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">50</span></span>
+<span id="cb5-5">g_scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span></span>
+<span id="cb5-6">bs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb5-7">seed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">77</span></span></code></pre></div>
+</div>
+</section>
+<section id="encode-prompt" class="level3">
+<h3 class="anchored" data-anchor-id="encode-prompt">Encode Prompt</h3>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">txt_inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tokz(</span>
+<span id="cb6-2">    prompt,</span>
+<span id="cb6-3">    padding <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'max_length'</span>,</span>
+<span id="cb6-4">    max_length <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tokz.model_max_length,</span>
+<span id="cb6-5">    truncation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>,</span>
+<span id="cb6-6">    return_tensors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'pt'</span>,</span>
+<span id="cb6-7">)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">txt_emb <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> txt_enc(txt_inp[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'input_ids'</span>].to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cuda'</span>))[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].half()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">neg_inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tokz(</span>
+<span id="cb8-2">    [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> bs,</span>
+<span id="cb8-3">    padding <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'max_length'</span>,</span>
+<span id="cb8-4">    max_length <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> txt_inp[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'input_ids'</span>].shape[<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>],</span>
+<span id="cb8-5">    return_tensors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'pt'</span></span>
+<span id="cb8-6">)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">neg_emb <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> txt_enc(neg_inp[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'input_ids'</span>].to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cuda'</span>))[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].half()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">embs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.cat([neg_emb, txt_emb])</span></code></pre></div>
+</div>
+</section>
+<section id="compress-image" class="level3">
+<h3 class="anchored" data-anchor-id="compress-image">Compress Image</h3>
+<div class="cell" data-outputid="ce54a32a-6d7f-47db-f64c-7ae2328dcd0b" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>curl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">--</span>output planet.png <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://images.unsplash.com/photo-1630839437035-dac17da580d0?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2515&amp;q=80'</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  188k  100  188k    0     0  4829k      0 --:--:-- --:--:-- --:--:-- 4829k</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="c704e6ce-5719-4312-bb4b-6798987f1033" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/content/planet.png'</span>).resize((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> img</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torchvision.transforms <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> T</span>
+<span id="cb14-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.no_grad():</span>
+<span id="cb14-3">  img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> T.ToTensor()(img).unsqueeze(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>).half().to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cuda'</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb14-4">  lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vae.encode(img)</span>
+<span id="cb14-5">  lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.18215</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> lat.latent_dist.sample()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> lat.shape</span></code></pre></div>
+</div>
+<p>Below we can see the all 4 channels of the compressed image.</p>
+<div class="cell" data-outputid="30c72127-3bb2-4732-a7e6-b69a8fc1aede" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">fig, axs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> plt.subplots(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, figsize<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span>
+<span id="cb15-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> c <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>):</span>
+<span id="cb15-3">  axs[c].imshow(lat[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][c].cpu(), cmap<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Greys'</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="noise-image" class="level3">
+<h3 class="anchored" data-anchor-id="noise-image">Noise Image</h3>
+<div class="cell" data-outputid="081737ce-53c6-4209-f4f2-d077128b98e0" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">sched <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> LMSDiscreteScheduler(</span>
+<span id="cb16-2">    beta_start<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.00085</span>,</span>
+<span id="cb16-3">    beta_end<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.012</span>,</span>
+<span id="cb16-4">    beta_schedule<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'scaled_linear'</span>,</span>
+<span id="cb16-5">    num_train_timesteps<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1000</span></span>
+<span id="cb16-6">)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> sched</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
+<pre><code>LMSDiscreteScheduler {
+  "_class_name": "LMSDiscreteScheduler",
+  "_diffusers_version": "0.16.1",
+  "beta_end": 0.012,
+  "beta_schedule": "scaled_linear",
+  "beta_start": 0.00085,
+  "num_train_timesteps": 1000,
+  "prediction_type": "epsilon",
+  "trained_betas": null
+}</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">sched.set_timesteps(n_inf_steps)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">torch.manual_seed(seed)</span>
+<span id="cb19-2">noise <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.randn_like(lat)</span>
+<span id="cb19-3">sched.timesteps <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> sched.timesteps.to(torch.float32)</span>
+<span id="cb19-4">start_step <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span>
+<span id="cb19-5">ts <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tensor([sched.timesteps[start_step]])</span>
+<span id="cb19-6">lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> sched.add_noise(lat, noise, timesteps<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>ts)</span></code></pre></div>
+</div>
+</section>
+<section id="denoise" class="level3">
+<h3 class="anchored" data-anchor-id="denoise">Denoise</h3>
+<div class="cell" data-outputid="b621c1e5-e76d-4b0a-833c-80ddf38a35e4" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> tqdm.auto <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> tqdm</span>
+<span id="cb20-2"></span>
+<span id="cb20-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i, ts <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(tqdm(sched.timesteps)):</span>
+<span id="cb20-4">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> start_step:</span>
+<span id="cb20-5">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.cat([lat] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb20-6">    inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> sched.scale_model_input(inp, ts)</span>
+<span id="cb20-7"></span>
+<span id="cb20-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.no_grad(): preds <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> unet(inp, ts, encoder_hidden_states<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>embs)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'sample'</span>]</span>
+<span id="cb20-9"></span>
+<span id="cb20-10">    pred_neg, pred_txt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> preds.chunk(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb20-11">    pred <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pred_neg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> g_scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (pred_txt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> pred_neg)</span>
+<span id="cb20-12"></span>
+<span id="cb20-13">    lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> sched.step(pred, ts, lat).prev_sample</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"122f3279fd6144eaa60ba4ba3e7b1a2d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+</section>
+<section id="uncompress" class="level3">
+<h3 class="anchored" data-anchor-id="uncompress">Uncompress</h3>
+<div class="cell" data-outputid="ed1cbf9a-8e6f-461b-85c9-b9912a348ab5" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1">lat.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>torch.Size([1, 4, 64, 64])</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="a9275534-7ab6-48ee-991e-edd7a9320010" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1">lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*=</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.18215</span>)</span>
+<span id="cb23-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.no_grad(): img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vae.decode(lat).sample</span>
+<span id="cb23-3">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>).clamp(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb23-4">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> img[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].detach().cpu().permute(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>).numpy()</span>
+<span id="cb23-5">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'uint8'</span>)</span>
+<span id="cb23-6">Image.fromarray(img)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="encapsulate" class="level3">
+<h3 class="anchored" data-anchor-id="encapsulate">Encapsulate</h3>
+<p>I’ll encapsulate the code above so we can focus on DiffEdit.</p>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> get_embs(prompt, neg_prompt):</span>
+<span id="cb24-2">  txt_inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tok_seq(prompt)</span>
+<span id="cb24-3">  txt_emb <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> calc_emb(txt_inp[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'input_ids'</span>])</span>
+<span id="cb24-4"></span>
+<span id="cb24-5">  neg_inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tok_seq(neg_prompt)</span>
+<span id="cb24-6">  neg_emb <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> calc_emb(neg_inp[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'input_ids'</span>])</span>
+<span id="cb24-7"></span>
+<span id="cb24-8">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> torch.cat([neg_emb, txt_emb])</span>
+<span id="cb24-9"></span>
+<span id="cb24-10"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> tok_seq(prompt):</span>
+<span id="cb24-11">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> tokz(</span>
+<span id="cb24-12">      prompt,</span>
+<span id="cb24-13">      padding <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'max_length'</span>,</span>
+<span id="cb24-14">      max_length <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tokz.model_max_length,</span>
+<span id="cb24-15">      truncation <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>,</span>
+<span id="cb24-16">      return_tensors <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'pt'</span>,</span>
+<span id="cb24-17">  )</span>
+<span id="cb24-18"></span>
+<span id="cb24-19"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> calc_emb(inp_ids):</span>
+<span id="cb24-20">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> txt_enc(inp_ids.to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cuda'</span>))[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].half()</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> get_lat(img, start_step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span>):</span>
+<span id="cb25-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> noise_lat(compress_img(img), start_step)</span>
+<span id="cb25-3"></span>
+<span id="cb25-4"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> compress_img(img):</span>
+<span id="cb25-5">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.no_grad():</span>
+<span id="cb25-6">    img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> T.ToTensor()(img).unsqueeze(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>).half().to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'cuda'</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb25-7">    lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vae.encode(img)</span>
+<span id="cb25-8">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.18215</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> lat.latent_dist.sample()</span>
+<span id="cb25-9"></span>
+<span id="cb25-10"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> noise_lat(lat, start_step):</span>
+<span id="cb25-11">  torch.manual_seed(seed)</span>
+<span id="cb25-12">  noise <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.randn_like(lat)</span>
+<span id="cb25-13"></span>
+<span id="cb25-14">  sched.set_timesteps(n_inf_steps)</span>
+<span id="cb25-15">  sched.timesteps <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> sched.timesteps.to(torch.float32)</span>
+<span id="cb25-16">  ts <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tensor([sched.timesteps[start_step]])</span>
+<span id="cb25-17"></span>
+<span id="cb25-18">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> sched.add_noise(lat, noise, timesteps<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>ts)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> denoise(lat, ts):</span>
+<span id="cb26-2">  inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.cat([lat] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb26-3">  inp <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> sched.scale_model_input(inp, ts)</span>
+<span id="cb26-4"></span>
+<span id="cb26-5">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.no_grad(): preds <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> unet(inp, ts, encoder_hidden_states<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>embs)[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'sample'</span>]</span>
+<span id="cb26-6"></span>
+<span id="cb26-7">  pred_neg, pred_txt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> preds.chunk(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span>
+<span id="cb26-8">  pred <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pred_neg <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> g_scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (pred_txt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> pred_neg)</span>
+<span id="cb26-9"></span>
+<span id="cb26-10">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> sched.step(pred, ts, lat).prev_sample</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> decompress(lat):</span>
+<span id="cb27-2">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">with</span> torch.no_grad(): img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vae.decode(lat<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.18215</span>)).sample</span>
+<span id="cb27-3">  img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>).clamp(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb27-4">  img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> img[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].detach().cpu().permute(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>).numpy()</span>
+<span id="cb27-5">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> (img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'uint8'</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="8c301019-171b-4856-9d1e-c75dd1987002" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'basketball'</span>]</span>
+<span id="cb28-2">neg_prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>]</span>
+<span id="cb28-3">w, h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span></span>
+<span id="cb28-4">n_inf_steps <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">70</span></span>
+<span id="cb28-5">start_step <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">30</span></span>
+<span id="cb28-6">g_scale <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7.5</span></span>
+<span id="cb28-7">bs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb28-8">seed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">77</span></span>
+<span id="cb28-9"></span>
+<span id="cb28-10"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span> curl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">--</span>output img.png <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://images.unsplash.com/photo-1630839437035-dac17da580d0?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2515&amp;q=80'</span></span>
+<span id="cb28-11">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/content/img.png'</span>).resize((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>))</span>
+<span id="cb28-12"></span>
+<span id="cb28-13">embs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_embs(prompt, neg_prompt)</span>
+<span id="cb28-14">lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_lat(img)</span>
+<span id="cb28-15"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i, ts <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(tqdm(sched.timesteps)):</span>
+<span id="cb28-16">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> start_step: lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> denoise(lat, ts)</span>
+<span id="cb28-17">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> decompress(lat)</span>
+<span id="cb28-18">Image.fromarray(img)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  188k  100  188k    0     0  5232k      0 --:--:-- --:--:-- --:--:-- 5381k</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"f4afeec48beb439599274c8ba21cce79","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-27-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="diffedit" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="diffedit">DiffEdit</h2>
+<p>Let’s review the steps of DiffEdit once more.</p>
+<ol type="1">
+<li>Using our image, we generate a further image with the prompt ‘horse’.</li>
+<li>We similarly generate another further image with the prompt ‘zebra’.</li>
+<li>The difference between both generated images is then taken.</li>
+<li>The difference is normalized<sup>3</sup> and binarized<sup>4</sup> to obtain the mask.</li>
+<li>We then again generate an image with the prompt ‘zebra’.
+<ul>
+<li>However this time, after each denoising step, apply the mask to the latent to obtain a cutout of the zebra.</li>
+<li>Then add the noised background pixels of the original image to the cutout.</li>
+</ul></li>
+</ol>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></li></div><section id="obtain-two-latents" class="level3">
+<h3 class="anchored" data-anchor-id="obtain-two-latents">Obtain two latents</h3>
+<p>First, we need to obtain an image of a horse and an image of a zebra.</p>
+<p>We’ll use this as our original image.</p>
+<div class="cell" data-outputid="fd026bec-9922-4cfd-eec2-25d5df8c41ac" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span> curl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">--</span>output img.png <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://images.unsplash.com/photo-1553284965-fa61e9ad4795?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1742&amp;q=80'</span></span>
+<span id="cb30-2">Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/content/img.png'</span>).resize((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  515k  100  515k    0     0  10.7M      0 --:--:-- --:--:-- --:--:-- 10.7M</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>This is the generated image of the horse.</p>
+<div class="cell" data-outputid="3bc9907d-28c2-4494-9d4a-3c99d816ec77" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'horse'</span>]</span>
+<span id="cb32-2">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/content/img.png'</span>).resize((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>))</span>
+<span id="cb32-3">embs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_embs(prompt, neg_prompt)</span>
+<span id="cb32-4">lat1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_lat(img)</span>
+<span id="cb32-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i, ts <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(tqdm(sched.timesteps)):</span>
+<span id="cb32-6">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> start_step: lat1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> denoise(lat1, ts)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"806877b6db584265b44acf8ec21b44ee","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-outputid="71146f7d-0e36-409e-949d-ac674e0f9c2f" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">Image.fromarray(decompress(lat1))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>And this is the generated image of the zebra.</p>
+<div class="cell" data-outputid="567b2a55-12b7-4e3a-c9bb-df9599f78cf8" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1">prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'zebra'</span>]</span>
+<span id="cb34-2">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/content/img.png'</span>).resize((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>))</span>
+<span id="cb34-3">embs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_embs(prompt, neg_prompt)</span>
+<span id="cb34-4">lat2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_lat(img)</span>
+<span id="cb34-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i, ts <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(tqdm(sched.timesteps)):</span>
+<span id="cb34-6">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> start_step: lat2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> denoise(lat2, ts)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"2aa487ae799a4895afe868ec33d0b831","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-outputid="ed39364b-5757-4278-8393-18d0d2af010f" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1">Image.fromarray(decompress(lat2))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-outputid="dc02baac-806b-4f0a-a3d5-7e0c40737e76" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1">lat1[:].shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<pre><code>torch.Size([1, 4, 64, 64])</code></pre>
+</div>
+</div>
+</section>
+<section id="create-mask" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="create-mask">Create Mask</h3>
+<p>We’ll first convert the generated images to grayscale and then take their difference.</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> torchvision.transforms.functional <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> F</span>
+<span id="cb38-2"></span>
+<span id="cb38-3">img1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> F.to_tensor(F.to_grayscale(Image.fromarray(decompress(lat1[:]))))</span>
+<span id="cb38-4">img2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> F.to_tensor(F.to_grayscale(Image.fromarray(decompress(lat2[:]))))</span>
+<span id="cb38-5">diff <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">abs</span>(img1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> img2)</span></code></pre></div>
+</div>
+<p>Then we’ll normalize the difference to have values between 0 and 1.</p>
+<div class="cell" data-outputid="2210980e-f88b-4c98-d81d-12510dfd59da" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1">norm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> diff <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> torch.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">max</span>(diff)</span>
+<span id="cb39-2">Image.fromarray((norm<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).squeeze().numpy().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(np.uint8))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>And then finally binarize the values so they are either 0 or 1.</p>
+<div class="cell" data-outputid="b0a6b4f2-a6ea-4637-c616-54885906421a" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1">thresh <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span></span>
+<span id="cb40-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (norm <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> thresh).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>()</span>
+<span id="cb40-3">Image.fromarray((<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span>.squeeze().numpy()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).astype(np.uint8))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1">Image.fromarray((<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span>.squeeze().numpy()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).astype(np.uint8)).save(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'mask.png'</span>)</span></code></pre></div>
+</div>
+<p>Now we need to apply transformations to the binarized mask so it encapsulates the shape of the horbra/zeborse (horse + zebra 🫤).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-37" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy"><code class="sourceCode python"><span id="annotated-cell-37-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> cv2 <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> cv</span>
+<span id="annotated-cell-37-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> google.colab.patches <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> cv2_imshow</span>
+<span id="annotated-cell-37-3"></span>
+<span id="annotated-cell-37-4">mask <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> cv.imread(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'mask.png'</span>, cv.IMREAD_GRAYSCALE)</span>
+<span id="annotated-cell-37-5">kernel <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> cv.getStructuringElement(cv.MORPH_ELLIPSE, (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>))</span></code></pre></div>
+</div>
+<p>The kernel is essentially a shape. Multiple shapes are be applied to the image in order to perform transformations.</p>
+<p>I’ve chosen to use an ellipse of size 10 by 10 units.</p>
+<p>Applying an erosion transformation makes our binarized mask look like this. Such transformations remove can remove small, noisy objects.</p>
+<div class="cell" data-outputid="36fd0318-8262-460e-bada-cae36e7337e1" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1">cv2_imshow(cv.erode(mask, kernel))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Applying a dilation transformation makes our binarized mask look like this. Such transformations can fill in gaps and smooth edges.</p>
+<div class="cell" data-outputid="9cd8049b-3785-4129-dda7-59939e999e96" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1">cv2_imshow(cv.dilate(mask, kernel))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="page-columns page-full"><p>To produce the final mask, I’ll apply the closing transform<sup>5</sup> 7 times consecutively…</p><div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;The closing transform is a dilation transform followed immediately by an erosion transform. This allows holes or small black points to be closed.</p></li></div></div>
+<div class="cell" data-outputid="95fd3e98-2260-4b2d-a1bc-32d7da61195d" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1">mask_closed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mask</span>
+<span id="cb44-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> _ <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>):</span>
+<span id="cb44-3">  mask_closed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> cv.morphologyEx(mask_closed, cv.MORPH_CLOSE, kernel)</span>
+<span id="cb44-4">  cv2_imshow(mask_closed)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-3.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-4.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-5.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-6.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-7.png" class="img-fluid"></p>
+</div>
+</div>
+<p>…and then apply the dilation transform 3 times consecutively.</p>
+<div class="cell" data-outputid="95834d7a-5919-4546-b0b0-e41644f5db7d" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1">mask_dilated <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mask_closed</span>
+<span id="cb45-2"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> _ <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>):</span>
+<span id="cb45-3">  mask_dilated <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> cv.dilate(mask_dilated, kernel)</span>
+<span id="cb45-4">  cv2_imshow(mask_dilated)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+<p>A more concise way of doing the above.</p>
+<div class="cell" data-outputid="a0ff2d87-b253-4489-8fd2-87cf8820e16c" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1">mask_closed <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> cv.morphologyEx(mask, cv.MORPH_CLOSE, kernel, iterations<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">7</span>)</span>
+<span id="cb46-2">mask_dilated <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> cv.dilate(mask_closed, kernel, iterations<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span>
+<span id="cb46-3"></span>
+<span id="cb46-4">cv2_imshow(mask_dilated)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Then I’ll stack the mask together so I have a 3 channel image.</p>
+<div class="cell" data-outputid="a87f3e71-af4a-4292-ad18-71231294c580" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1">mask <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> np.stack((mask_dilated, mask_dilated, mask_dilated), axis<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> mask.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>(512, 512, 3)</code></pre>
+</div>
+</div>
+<p>To read more about such transformations applied above, you can read them at the OpenCV docs <a href="https://docs.opencv.org/3.4/d9/d61/tutorial_py_morphological_ops.html">here</a>.</p>
+</section>
+<section id="apply-mask" class="level3">
+<h3 class="anchored" data-anchor-id="apply-mask">Apply Mask</h3>
+<p>Now for the part I couldn’t figure out how to do.</p>
+<p>By applying the mask to the original iamge. This is how the cutout of the horse looks like.</p>
+<div class="cell" data-outputid="06e2d78c-88f9-44f2-c22c-225d8af090a3" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1">fore <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.mul(F.to_tensor(img).permute(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), torch.from_numpy(mask))</span>
+<span id="cb49-2">Image.fromarray((fore<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).numpy().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'uint8'</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>You can see that it does not exactly cut out the outline: this is good because different subjects will have different levels of protrusion.</p>
+<p>And this is how the background pixels look like.</p>
+<div class="cell" data-outputid="56f8ac83-b157-4096-a1fc-765a32b25825" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1">inv_mask <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> mask</span>
+<span id="cb50-2">back <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.mul(F.to_tensor(img).permute(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), torch.from_numpy(inv_mask))</span>
+<span id="cb50-3">Image.fromarray((back<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).numpy().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'uint8'</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-46-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Adding both the foreground and the background together…</p>
+<div class="cell" data-outputid="bc2bd713-6719-444f-dd02-9161c4d44680" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1">Image.fromarray(((fore<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>back)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).numpy().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(np.uint8))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+<section id="detour" class="level4 unnumbered unlisted">
+<h4 class="unnumbered unlisted anchored" data-anchor-id="detour">Detour</h4>
+<p>Note the subtle, yet very important difference in the two cells below, along with their output.</p>
+<div class="cell" data-outputid="4e1d5f6d-cc7d-44dd-d932-56c48fdaf976" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tensor([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>])</span>
+<span id="cb52-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> foo(y):</span>
+<span id="cb52-3">  y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb52-4">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> y</span>
+<span id="cb52-5">foo(x)</span>
+<span id="cb52-6">x</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>tensor([2, 3, 4])</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="d345952c-9b3c-4663-ae43-ac0d9979c947" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tensor([<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>])</span>
+<span id="cb54-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">def</span> foo(y):</span>
+<span id="cb54-3">  z <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb54-4">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">return</span> z</span>
+<span id="cb54-5">foo(x)</span>
+<span id="cb54-6">x</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>tensor([1, 2, 3])</code></pre>
+</div>
+</div>
+<p>This was the reason for the bug that had me pulling my hair out for hours — when you pass a list or any list-like object (or even just objects I think), a copy is not passed, but rather the same object.</p>
+<hr>
+<p>However, I can’t quite correctly apply the mask to the latent when denoising.</p>
+<div class="cell" data-outputid="a4fd4b49-a0bd-4569-a1ef-098eb853238e" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb56" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1">prompt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'zebra'</span>]</span>
+<span id="cb56-2">img <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'/content/img.png'</span>).resize((<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">512</span>))</span>
+<span id="cb56-3">embs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_embs(prompt, neg_prompt)</span>
+<span id="cb56-4">lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> get_lat(img)</span>
+<span id="cb56-5">inv_mask <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> mask</span>
+<span id="cb56-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># back = torch.mul(F.to_tensor(img).permute(1, 2, 0), torch.from_numpy(inv_mask))</span></span>
+<span id="cb56-7"></span>
+<span id="cb56-8"></span>
+<span id="cb56-9"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">for</span> i, ts <span class="kw" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">in</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">enumerate</span>(tqdm(sched.timesteps)):</span>
+<span id="cb56-10">  <span class="cf" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">if</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> start_step: </span>
+<span id="cb56-11">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># </span><span class="al" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">TODO</span><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">: Visualize the latent at each loop</span></span>
+<span id="cb56-12"></span>
+<span id="cb56-13">    back <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.mul(torch.from_numpy(decompress(get_lat(img, start_step<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>i)))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>, torch.from_numpy(inv_mask))</span>
+<span id="cb56-14">    fore <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> torch.mul(torch.from_numpy(decompress(lat))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>, torch.from_numpy(mask))</span>
+<span id="cb56-15">    bafo <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (back <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> fore)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span></span>
+<span id="cb56-16">    lat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> compress_img(Image.fromarray(bafo.numpy().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(np.uint8)))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"b932751b005b4775a7c6e152c80f0aa2","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div class="cell" data-outputid="8b78fd84-916f-4467-abf3-45a041c03f1e" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1">Image.fromarray(decompress(lat))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-51-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>After asking on the fastai forum, and hours of fiddling about, the reason why this is happening is most likely due to the fact that I keep uncompressing and recompressing the latent. The compression that the VAE performs is lossy, so detail is lost during each compression and decompression.</p>
+<p>My mask is not calculated in the same latent space as my latent. In other words, my mask was calculated as a 512x512 pixel and 3 channel image, whereas my latent is a 64x64 pixel and 4 channel image. I’m uncompressing the latent so that I can apply the mask to cutout the zebra and add the background pixels, and then recompressing.</p>
+<p>To fix this, I would need to generate the mask as a 64x64 pixel and 3 channel image.</p>
+<p>To at least see the mask in action, let’s use the Hugging Face Stable Diffusion Pipeline.</p>
+</section>
+</section>
+</section>
+<section id="pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="pipeline">Pipeline</h2>
+<p>The Hugging Face Stable Diffusion pipeline works by simply providing the starting image and a mask. The pipeline will handle the rest.</p>
+<div class="cell" data-outputid="41b6273d-3b3f-41d9-8c14-a760e9ecf7a0" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb58" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> diffusers <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> StableDiffusionInpaintPipeline</span>
+<span id="cb58-2">pipe <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> StableDiffusionInpaintPipeline.from_pretrained(</span>
+<span id="cb58-3">    <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"runwayml/stable-diffusion-inpainting"</span>,</span>
+<span id="cb58-4">    revision<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"fp16"</span>,</span>
+<span id="cb58-5">    torch_dtype<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>torch.float16,</span>
+<span id="cb58-6">).to(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cuda"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.10/dist-packages/transformers/models/clip/feature_extraction_clip.py:28: FutureWarning: The class CLIPFeatureExtractor is deprecated and will be removed in version 5 of Transformers. Please use CLIPImageProcessor instead.
+  warnings.warn(</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="f53afdba-acda-4f7a-8979-9c23c40df7c6" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1">img</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-outputid="c5938ffe-0669-4610-9387-24937532d4a1" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb61" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1">torch.manual_seed(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">77</span>)</span>
+<span id="cb61-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 35 or 25 steps are good</span></span>
+<span id="cb61-3">out <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> pipe(</span>
+<span id="cb61-4">    prompt<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"zebra"</span>], </span>
+<span id="cb61-5">    image<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>img, </span>
+<span id="cb61-6">    mask_image<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>Image.fromarray((mask<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">255</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">round</span>().astype(np.uint8)), </span>
+<span id="cb61-7">    num_inference_steps <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">25</span></span>
+<span id="cb61-8">).images</span>
+<span id="cb61-9">out[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"fe08343893b942c8928034b1c6e9474e","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-54-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
+<p>Looking back, the actual problem for me was that I let the paper feel intimidating; all those symbols, variables, jargon, and notation. I ended up glazing over the paper and missing the smaller details.</p>
+<p>To help prevent this the next time, I should * list out the variables and what they represent * write out the steps in simpler terms * and take a deep breath before reading, so I take things slowly.</p>
+<p>And that’s that.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Diffusion</category>
+  <category>Creating Models</category>
+  <category>Papers</category>
+  <guid>https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit.html</guid>
+  <pubDate>Mon, 29 May 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Iterators and Generators</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -2611,7 +4294,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-1"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
 </figure>
 </div>
 <p>I recently began <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
@@ -2621,20 +4304,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald." data-gallery="quarto-lightbox-gallery-2"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
 <figcaption class="figure-caption">A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" title="The gif itself has artefacts due to compression…" data-gallery="quarto-lightbox-gallery-3"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
 <figcaption class="figure-caption">The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="This image displays all images in the gif above in a grid."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" title="This image displays all images in the gif above in a grid." data-gallery="quarto-lightbox-gallery-4"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
 </figure>
 </div>
 <p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
@@ -2644,19 +4327,19 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-5"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 <figcaption class="figure-caption">A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-6"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 <p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-7"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 </section>
@@ -2667,7 +4350,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-8"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
@@ -2679,14 +4362,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-9"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle" data-gallery="quarto-lightbox-gallery-10"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
 <figcaption class="figure-caption">Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
@@ -2697,20 +4380,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I quickly mocked up the following image.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky." data-gallery="quarto-lightbox-gallery-11"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
 </figure>
 </div>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" title="A bench under a tree in a park" data-gallery="quarto-lightbox-gallery-12"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" title="A low poly 3D render of a bench under a tree in a park" data-gallery="quarto-lightbox-gallery-13"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
@@ -2726,7 +4409,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle" data-gallery="quarto-lightbox-gallery-14"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
