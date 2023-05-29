@@ -835,17 +835,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>embs <span class="op">=</span> get_embs(prompt, neg_prompt)</span>
 <span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>lat <span class="op">=</span> get_lat(img)</span>
 <span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>inv_mask <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> mask</span>
-<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co"># back = torch.mul(F.to_tensor(img).permute(1, 2, 0), torch.from_numpy(inv_mask))</span></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, ts <span class="kw">in</span> <span class="bu">enumerate</span>(tqdm(sched.timesteps)):</span>
-<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;=</span> start_step: </span>
-<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># </span><span class="al">TODO</span><span class="co">: Visualize the latent at each loop</span></span>
-<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>    back <span class="op">=</span> torch.mul(torch.from_numpy(decompress(get_lat(img, start_step<span class="op">=</span>i)))<span class="op">/</span><span class="dv">255</span>, torch.from_numpy(inv_mask))</span>
-<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>    fore <span class="op">=</span> torch.mul(torch.from_numpy(decompress(lat))<span class="op">/</span><span class="dv">255</span>, torch.from_numpy(mask))</span>
-<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a>    bafo <span class="op">=</span> (back <span class="op">+</span> fore)<span class="op">*</span><span class="dv">255</span></span>
-<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>    lat <span class="op">=</span> compress_img(Image.fromarray(bafo.numpy().<span class="bu">round</span>().astype(np.uint8)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, ts <span class="kw">in</span> <span class="bu">enumerate</span>(tqdm(sched.timesteps)):</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> i <span class="op">&gt;=</span> start_step: </span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    back <span class="op">=</span> torch.mul(torch.from_numpy(decompress(get_lat(img, start_step<span class="op">=</span>i)))<span class="op">/</span><span class="dv">255</span>, torch.from_numpy(inv_mask))</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>    fore <span class="op">=</span> torch.mul(torch.from_numpy(decompress(lat))<span class="op">/</span><span class="dv">255</span>, torch.from_numpy(mask))</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>    bafo <span class="op">=</span> (back <span class="op">+</span> fore)<span class="op">*</span><span class="dv">255</span></span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>    lat <span class="op">=</span> compress_img(Image.fromarray(bafo.numpy().<span class="bu">round</span>().astype(np.uint8)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id":"b932751b005b4775a7c6e152c80f0aa2","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
@@ -909,7 +906,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="takeaways" class="level2">
 <h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
 <p>Looking back, the actual problem for me was that I let the paper feel intimidating; all those symbols, variables, jargon, and notation. I ended up glazing over the paper and missing the smaller details.</p>
-<p>To help prevent this the next time, I should * list out the variables and what they represent * write out the steps in simpler terms * and take a deep breath before reading, so I take things slowly.</p>
+<p>To help prevent this the next time, I should</p>
+<ul>
+<li>list out the variables and what they represent</li>
+<li>write out the steps in simpler terms</li>
+<li>and take a deep breath before reading, so I take things slowly.</li>
+</ul>
 <p>And that’s that.</p>
 <p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
 
