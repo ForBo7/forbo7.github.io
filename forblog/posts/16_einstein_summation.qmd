@@ -1,0 +1,430 @@
+---
+title: Einstein Summation
+draft: true
+---
+
+:::{.callout-warning appearance="simple"}
+This post covers einsum notation syntax in terms of programming languages.
+:::
+
+Einstein summation is a handy way of writing various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.
+
+For example, matrix multiplication can be written as `ik, kj -> ij`. A transpose of a matrix could be written as `ij -> ji`.
+
+Let's figure this out.
+
+## General Rules
+
+The following are two general rules one can use to quickly write einsum notation.
+
+> Repeating letters between input arrays means that values along those axes will be multiplied together.
+
+> Omitting a letter from the output means that values along that axis will be summed.
+
+However, I don't find these rules intuitive, even a little confusing. Why?
+
+Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we multiply each row in the first matrix with each column in the second matrix.
+
+However, when the rules above are used, the order of a matrix appears to change to be column by row. 
+
+![](../images/16_einstein_summation/2.png)
+
+## A More Intuitive Way
+
+The key to understanding einsum notation is to think of the letters as iterators. For example, $i$ is an iterator that returns a row of a matrix. $j$ is an iterator that returns the columns of a matrix.
+
+Let's begin with a relatively more simpler example: the hadamard product (also known as the elementwise product or elementwise multiplication.)
+
+### Hadamard Product
+
+We have the following two matrices.
+
+$$
+A 
+= 
+\begin{bmatrix} 
+1 & 2 & 3 \\ 
+4 & 5 & 6 \\ 
+7 & 8 & 9 
+\end{bmatrix}, 
+B 
+= 
+\begin{bmatrix} 
+9 & 8 & 7 \\ 
+6 & 5 & 4 \\ 
+3 & 2 & 1 
+\end{bmatrix}
+$$
+
+To access the element 8 in matrix $A$, we need to return the second row and first column. This can be denoted as $a_{21}$. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as $a_{ij}.
+
+Taking the hadamard product looks like this.
+
+$$ 
+\begin{bmatrix}
+ 1 & 2 & 3 \\
+ 4 & 5 & 6 \\
+ 7 & 8 & 9
+ \end{bmatrix} 
+ \odot 
+ \begin{bmatrix} 
+ 9 & 8 & 7 \\ 
+ 6 & 5 & 4 \\ 
+ 3 & 2 & 1 
+ \end{bmatrix} 
+ = 
+ \begin{bmatrix} 
+ 1 \cdot 9 & 2 \cdot 8 & 3 \cdot 7 \\ 
+ 4 \cdot 6 & 5 \cdot 5 & 6 \cdot 4 \\ 
+ 7 \cdot 3 & 8 \cdot 2 & 9 \cdot 1 
+ \end{bmatrix} 
+ = 
+ C
+$$
+
+
+:::{.callout-note appearance="simple" collapse="true" icon="false"}
+# An alternative way to look at it 
+
+::::{.callout-warning appearance="simple"}
+Don't dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.
+::::
+
+$$
+\begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix} \odot \begin{bmatrix} 9 & 8 & 7 \\ 6 & 5 & 4 \\ 3 & 2 & 1 \end{bmatrix} = \begin{bmatrix} a_{00}b_{00} & a_{01}b_{01} & a_{02}b_{02} \\ a_{10}b_{10} & a_{11}b_{11} & a_{12}b_{12} \\ a_{20}b_{20} & a_{21}b_{21} & a_{22}b_{22} \\ \end{bmatrix} = C
+$$
+:::
+
+In words, what's happening is that we iterate through each row of $A$ and $B$ and each column of $A$ and $B$ to multiply each element.
+
+> $\text{for row in } A \text{ and } B$
+> 
+> &nbsp;&nbsp;$\text{for col in } A \text{ and } B$
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;$a_{\text{rowcol}} \cdot b_{\text{rowcol}} = c_{\text{rowcol}}$
+
+
+> $\text{for } i \text{ in } A \text{ and } B$
+>
+> &nbsp;&nbsp;$\text{for } j \text{ in } A \text{ and } B$
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;$a_{ij} \cdot b_{ij} = c_{ij}$
+
+Let's focus on that last line above.
+
+$$a_{ij} \cdot b_{ij} = c_{ij}$$
+
+This line represents elementwise multiplication. For each row $i$, we iterate through each col $j$ to multiply the corresponding elements.
+
+In einsum notation, we can more succinctly write this as $ij, ij \rightarrow ij$. This has 4 parts. 
+
+1. $ij$ refers to the iterators working on rows and columns of $A$ — $i$ works on the rows and $j$ works on the columns.
+2. $ij$ refers to the exact same iterators working on $B$.
+3. $\rightarrow$ tells us an output will be returned.
+4. $ij$ refers to the exact same iterators that will be responsble for making up the output matrix $C$.
+
+### Matrix Multiplication
+
+Let's cover matrix multiplication in the same manner as above.
+
+$$
+A 
+= 
+\begin{bmatrix} 
+1 & 2 \\
+3 & 4 
+\end{bmatrix}
+, 
+B 
+= 
+\begin{bmatrix} 
+5 & 6 \\ 
+7 & 8 
+\end{bmatrix}
+$$
+
+$$
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+5 & 6 \\
+7 & 8
+\end{bmatrix}
+=
+\begin{bmatrix}
+(1 \cdot 5) + (2 \cdot 7) & (1 \cdot 6) + (2 \cdot 8) \\
+(3 \cdot 5) + (4 \cdot 7) & (3 \cdot 6) + (4 \cdot 8)
+\end{bmatrix}
+=
+C
+$$
+
+<!-- TODO: Might want to remove the example below or position it after the einsum notation for matrix multiplication. -->
+
+:::{.callout-note appearance="simple" collapse="true" icon="false"}
+# An alternative way to look at it 
+
+::::{.callout-warning appearance="simple"}
+Don't dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.
+::::
+
+$$
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+5 & 6 \\
+7 & 8
+\end{bmatrix}
+=
+\begin{bmatrix}
+(a_{00}b_{00} + a_{01}b_{10}) & (a_{00}b_{01} + a_{01}b_{11}) \\
+(a_{10}b_{00} + a_{11}b_{10}) & (a_{10}b_{01} + a_{11}b_{11}) 
+\end{bmatrix}
+=
+C
+$$
+:::
+
+Matrix multiplication is simply taking the dot product of each row in the first matrix with each column in the second matrix. 
+
+Above, we're using 3 iterators for this: one iterator $i$ to loop through the rows of $A$, another iterator $j$ to loop through the columns of $B$, and a third iterator $k$ to loop through the elements in a row and column.
+
+> $\text{for row in } A$
+>
+> &nbsp;&nbsp;$\text{for col in } B$
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;$\text{for ele in } A_{\text{row}} \text{ and } B_{\text{col}}$
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $a_{\text{rowele}} \cdot b_{\text{elecol}} \mathrel{+}= c_{\text{rowcol}}$
+
+> $\text{for } i \text{ in } A$
+>
+> &nbsp;&nbsp;$\text{for } j \text{ in } B$
+>
+> &nbsp;&nbsp;&nbsp;&nbsp; $\text{for } k \text{ in } A_{i} \text{ and } B_{j}
+>
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij}$
+
+Let's focus on in on the last line above.
+
+$$ 
+a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij} 
+$$
+
+This can more succinctly be written in einsum notation as $ik, kj \rightarrow ij$
+
+## Various Examples
+
+### 1D Operations
+
+$$
+A = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, B = \begin{bmatrix} 4 \\ 5 \\ 6 \end{bmatrix}
+$$
+
+#### Returning a View of $A$
+
+##### Pseudocode
+
+Iterate through each row $i$ and output the element.
+
+##### Einsum Notation
+
+$i -> i$
+
+#### Summing the Values of $A$
+
+##### Pseudocode
+
+Iterate through each row $i$, and sum all elements.
+
+##### Einsum Notation
+
+$i \rightarrow $
+
+:::{.callout-note appearance="simple"}
+A scalar is output, hence no output iterator.
+:::
+
+#### Elementwise Product of $A$ and $B$
+
+##### Pseudocode
+
+Iterate through each row $i$ in $A$ and $B$, and multiply the corresponding elements.
+
+##### Einsum Notation
+
+$i, i -> i$
+
+#### Dot Product of $A$ and $B$
+
+##### Pseudocode
+
+Iterate through each row $i$ in $A$ and $B$, multiply the corresponding elements, and then sum them.
+
+For each row $i$ in $A$ and $B$
+
+##### Einsum Notation
+
+$i, i, ->$
+
+:::{.callout-note appearance="simple"}
+A scalar is output, hence no output iterator.
+:::
+
+#### Outer Product of $A$ and $B$
+
+link to outer product wiki page here
+
+##### Pseudocode
+
+For each row $i$ in $A$, iteratre through each row $j$ in $B$ and multiply it with the row $i$ in $A$.
+
+:::{.callout-note appearance="simple" collapse="true"}
+# Expanded example
+
+The outer product involves multiplying each element in $A$ with all elements in $B$.
+
+> $\text{for row in } A$
+>
+> &nbsp;&nbsp;$\text{for another_row in } B$
+>
+> &nbsp;&nbsp;&nbsp;&nbsp; $a_{\text{row}} \cdot b_{\text{another_row}} = c_{\text{rowanother_row}}$
+
+> $\text{for } i \text{ in } A$
+>
+> &nbsp;&nbsp; $\text{for } j \text{ in } B$
+>
+> &nbsp;&nbsp;&nbsp;&nbsp; $a_{i} \cdot b_{j} = c_{ij}$
+:::
+
+<!-- TODO: maybe expand on this with a full on example? -->
+
+##### Einsum Notation
+
+$i, j \rightarray ij$
+
+### 2D Operations
+
+$$
+A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}, B = \begin{bmatrix} 9 & 8 & 7 \\ 6 & 5 & 4 \\ 3 & 2 & 1 \end{bmatrix}
+$$
+
+#### Return a View of $A$
+
+##### Pseudocode
+
+For each row $i$, iterate through each column $j$ and output the element.
+
+##### Einsum Notation
+
+$ij \rightarrow ij$
+
+#### Transpose $A$
+
+##### Pseudocode
+
+For each row $i$, iterate through each column $j$ and output the that element with row $j$ and column $i$.
+
+##### Einsum Notation
+
+$ji \rightarrow ji$
+
+#### Return the Main Diagonal of $A$
+
+##### Pseudocode
+
+For each row $i$, iterate through each column $i$ and output it.
+
+##### Einsum Notation
+
+$ii \rightarrow i$
+
+#### Obtain the Trace of $A$
+
+##### Pseudocode
+
+For each row $i$, iterate through each column $i$ and sum those elements.
+
+##### Einsum Notation
+
+$ii \rightarrow $
+
+#### Sum the Rows of $A$
+
+##### Pseudocode
+
+For each row $i$, iterate through each column $j$ and sum those elements.
+
+##### Einsum Notation
+
+$ij \rightarrow j$
+
+#### Sum the Columns of $A$
+
+##### Pseudocode
+
+For each column $j$, iterate through each row $i$ and sum those elements.
+
+##### Einsum Notation
+
+$ij -> i$
+
+#### Elementwise Product of $A$ and $B$
+
+##### Pseudocode
+
+For each row $i$ in $A$ and $B$, iterate throuch each column $j$ in $A$ and $B$, and take the product of those elements.
+
+##### Einsum Notation
+
+$ij, ij \rightarray ij$
+
+#### Elementwise Product of $A$ and $B$ Transposed
+
+##### Pseudocode
+
+For each row $i$ and $j$ in $A$ and $B$ respectively, iterate through each column $j$ and $i$ in $A$ and $B$ respectively, and take the product of those elements.
+
+##### Einsum Notation
+
+$ij, ji \rightarray ij$
+
+#### Matrix Product of $A$ and $B$
+
+##### Pseudocode
+
+For each row $i$ in $A$, and for each column $j$ in $B$, iterate through each element $k$, take their product, and then sum those products.
+
+##### Einsum Notation
+
+$ik, kj \rightarrow ij$
+
+#### Each Row of $A$ Multiplied with $B$
+
+##### Pseudocode
+
+For each row $i$ and $j$ in $A$ and $B$ respectively, iterate through each element $k$ and take their product.
+
+##### Einsum Notation
+
+$ik, jk \rightarrow ijk$
+
+#### Every Element of $A$ Multiplied with $B$
+
+##### Pseudocode
+
+For each row $i$ in $A$, iterate through each column $j$ and multiply that element with each row $k$ in $B$ by iterating through each element $l$ in that row.
+
+##### Einsum Notation
+
+$ij, kl \rightarrow ijkl$
+
+---
+
+iterator returns elments; perhaps add that in?
