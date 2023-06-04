@@ -17,450 +17,7 @@
 <width>144</width>
 </image>
 <generator>quarto-1.3.361</generator>
-<lastBuildDate>Sun, 04 Jun 2023 00:00:00 GMT</lastBuildDate>
-<item>
-  <title>Intuitively Approaching Einstein Summation Notation</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/16_einstein_summation.html</link>
-  <description><![CDATA[ 
-
-
-
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>This post covers einstein summation notation syntax in terms of programming languages.</p>
-</div>
-</div>
-</div>
-<p><img src="https://forbo7.github.io/forblog/images/16_einstein_summation/thumbnail.png" class="img-fluid"></p>
-<p>Einstein summation notation (or einsum notation for short) is a handy way of writing various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.</p>
-<p>For example, matrix multiplication can be written as <code>ik, kj -&gt; ij</code> and a transpose of a matrix could be written as <code>ij -&gt; ji</code>.</p>
-<p>Let’s figure this out.</p>
-<section id="general-rules" class="level2">
-<h2 class="anchored" data-anchor-id="general-rules">General Rules</h2>
-<p>The following are two general rules one can use to quickly write einsum notation.</p>
-<blockquote class="blockquote">
-<p>Repeating letters between input arrays means that values along those axes will be multiplied together.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Omitting a letter from the output means that values along that axis will be summed.</p>
-</blockquote>
-<p>However, I don’t find these rules intuitive, even a little confusing. Why?</p>
-<p>Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we multiply each row in the first matrix with each column in the second matrix.</p>
-<p>However, when the rules above are used to denote matrix multiplication (<img src="https://latex.codecogs.com/png.latex?ik,%20kj%20%5Crightarrow%20ij">), the order of a matrix appears to change.</p>
-<p><img src="https://forbo7.github.io/forblog/images/16_einstein_summation/2.png" class="img-fluid"></p>
-<p>The first matrix is <img src="https://latex.codecogs.com/png.latex?i%20%5Ctimes%20j">. However, <img src="https://latex.codecogs.com/png.latex?j"> appears to denote the rows meaning we end up with a column by row matrix. But even if we let <img src="https://latex.codecogs.com/png.latex?j"> denote the columns, we end up doing dot products with each <em>column</em> in the first matrix and with each <em>row</em> in the second matrix.</p>
-<p>Not intuitive.</p>
-</section>
-<section id="a-more-intuitive-way" class="level2">
-<h2 class="anchored" data-anchor-id="a-more-intuitive-way">A More Intuitive Way</h2>
-<p>The key to understanding einsum notation is to not think of axes, but of iterators. For example, <img src="https://latex.codecogs.com/png.latex?i"> is an iterator that returns the rows of a matrix. <img src="https://latex.codecogs.com/png.latex?j"> is an iterator that returns the columns of a matrix.</p>
-<p>Let’s begin with a relatively more simple example: the hadamard product (also known as the elementwise product or elementwise multiplication.)</p>
-<section id="hadamard-product" class="level3">
-<h3 class="anchored" data-anchor-id="hadamard-product">Hadamard Product</h3>
-<p>We have the following two matrices.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0AA%0A=%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20&amp;%203%20%5C%5C%0A4%20&amp;%205%20&amp;%206%20%5C%5C%0A7%20&amp;%208%20&amp;%209%0A%5Cend%7Bbmatrix%7D,%0AB%0A=%0A%5Cbegin%7Bbmatrix%7D%0A9%20&amp;%208%20&amp;%207%20%5C%5C%0A6%20&amp;%205%20&amp;%204%20%5C%5C%0A3%20&amp;%202%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A"></p>
-<p>To access the element 8 in matrix <img src="https://latex.codecogs.com/png.latex?A">, we need to return the second row and first column. This can be denoted as <img src="https://latex.codecogs.com/png.latex?a_%7B21%7D">. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as <img src="https://latex.codecogs.com/png.latex?a_%7Bij%7D">.</p>
-<p>Taking the hadamard product looks like this.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20&amp;%203%20%5C%5C%0A4%20&amp;%205%20&amp;%206%20%5C%5C%0A7%20&amp;%208%20&amp;%209%0A%5Cend%7Bbmatrix%7D%0A%5Codot%0A%5Cbegin%7Bbmatrix%7D%0A9%20&amp;%208%20&amp;%207%20%5C%5C%0A6%20&amp;%205%20&amp;%204%20%5C%5C%0A3%20&amp;%202%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A1%20%5Ccdot%209%20&amp;%202%20%5Ccdot%208%20&amp;%203%20%5Ccdot%207%20%5C%5C%0A4%20%5Ccdot%206%20&amp;%205%20%5Ccdot%205%20&amp;%206%20%5Ccdot%204%20%5C%5C%0A7%20%5Ccdot%203%20&amp;%208%20%5Ccdot%202%20&amp;%209%20%5Ccdot%201%0A%5Cend%7Bbmatrix%7D%0A=%0AC%0A"></p>
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-An alternative way to look at it…
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
-</div>
-</div>
-</div>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%201%20&amp;%202%20&amp;%203%20%5C%5C%204%20&amp;%205%20&amp;%206%20%5C%5C%207%20&amp;%208%20&amp;%209%20%5Cend%7Bbmatrix%7D%20%5Codot%20%5Cbegin%7Bbmatrix%7D%209%20&amp;%208%20&amp;%207%20%5C%5C%206%20&amp;%205%20&amp;%204%20%5C%5C%203%20&amp;%202%20&amp;%201%20%5Cend%7Bbmatrix%7D%20=%20%5Cbegin%7Bbmatrix%7D%20a_%7B00%7Db_%7B00%7D%20&amp;%20a_%7B01%7Db_%7B01%7D%20&amp;%20a_%7B02%7Db_%7B02%7D%20%5C%5C%20a_%7B10%7Db_%7B10%7D%20&amp;%20a_%7B11%7Db_%7B11%7D%20&amp;%20a_%7B12%7Db_%7B12%7D%20%5C%5C%20a_%7B20%7Db_%7B20%7D%20&amp;%20a_%7B21%7Db_%7B21%7D%20&amp;%20a_%7B22%7Db_%7B22%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%20=%20C%0A"></p>
-</div>
-</div>
-</div>
-<p>In words, what’s happening is that we’re looping through all the rows of <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B">. For each row, we also loop through each column and multiply those columns together.</p>
-<blockquote class="blockquote">
-<p><img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20row%20in%20%7D%20A%20%5Ctext%7B%20and%20%7D%20B"></p>
-<p>&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20col%20in%20%7D%20A%20%5Ctext%7B%20and%20%7D%20B"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?a_%7B%5Ctext%7Browcol%7D%7D%20%5Ccdot%20b_%7B%5Ctext%7Browcol%7D%7D%20=%20c_%7B%5Ctext%7Browcol%7D%7D"></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20%7D%20i%20%5Ctext%7B%20in%20%7D%20A%20%5Ctext%7B%20and%20%7D%20B"></p>
-<p>&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20%7D%20j%20%5Ctext%7B%20in%20%7D%20A%20%5Ctext%7B%20and%20%7D%20B"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?a_%7Bij%7D%20%5Ccdot%20b_%7Bij%7D%20=%20c_%7Bij%7D"></p>
-</blockquote>
-<p>Let’s focus on that last line above.</p>
-<p><img src="https://latex.codecogs.com/png.latex?a_%7Bij%7D%20%5Ccdot%20b_%7Bij%7D%20=%20c_%7Bij%7D"></p>
-<p>This line represents elementwise multiplication. For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B">, we iterate through each column <img src="https://latex.codecogs.com/png.latex?j"> in those rows, and take their product.</p>
-<p>In einsum notation, we can more succinctly write this as <img src="https://latex.codecogs.com/png.latex?ij,%20ij%20%5Crightarrow%20ij">. This has 4 parts.</p>
-<ol type="1">
-<li><img src="https://latex.codecogs.com/png.latex?ij"> refers to the iterators working on the rows and columns of <img src="https://latex.codecogs.com/png.latex?A"> — <img src="https://latex.codecogs.com/png.latex?i"> works on the rows and <img src="https://latex.codecogs.com/png.latex?j"> works on the columns.</li>
-<li><img src="https://latex.codecogs.com/png.latex?ij"> refers to the exact same iterators working on <img src="https://latex.codecogs.com/png.latex?B">.</li>
-<li><img src="https://latex.codecogs.com/png.latex?%5Crightarrow"> tells us an output will be returned.</li>
-<li><img src="https://latex.codecogs.com/png.latex?ij"> refers to the exact same iterators that will be responsble for making up the output matrix <img src="https://latex.codecogs.com/png.latex?C">. The location <img src="https://latex.codecogs.com/png.latex?ij"> says where the product of two elements will be located in <img src="https://latex.codecogs.com/png.latex?C">.</li>
-</ol>
-</section>
-<section id="matrix-multiplication" class="level3">
-<h3 class="anchored" data-anchor-id="matrix-multiplication">Matrix Multiplication</h3>
-<p>Let’s cover matrix multiplication in the same manner as above.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0AA%0A=%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20%5C%5C%0A3%20&amp;%204%0A%5Cend%7Bbmatrix%7D%0A,%0AB%0A=%0A%5Cbegin%7Bbmatrix%7D%0A5%20&amp;%206%20%5C%5C%0A7%20&amp;%208%0A%5Cend%7Bbmatrix%7D%0A"></p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20%5C%5C%0A3%20&amp;%204%0A%5Cend%7Bbmatrix%7D%0A%5Ccdot%0A%5Cbegin%7Bbmatrix%7D%0A5%20&amp;%206%20%5C%5C%0A7%20&amp;%208%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A(1%20%5Ccdot%205)%20+%20(2%20%5Ccdot%207)%20&amp;%20(1%20%5Ccdot%206)%20+%20(2%20%5Ccdot%208)%20%5C%5C%0A(3%20%5Ccdot%205)%20+%20(4%20%5Ccdot%207)%20&amp;%20(3%20%5Ccdot%206)%20+%20(4%20%5Ccdot%208)%0A%5Cend%7Bbmatrix%7D%0A=%0AC%0A"></p>
-<!-- TODO: Might want to remove the example below or position it after the einsum notation for matrix multiplication. -->
-<div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-An alternative way to look at it…
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
-</div>
-</div>
-</div>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20%5C%5C%0A3%20&amp;%204%0A%5Cend%7Bbmatrix%7D%0A%5Ccdot%0A%5Cbegin%7Bbmatrix%7D%0A5%20&amp;%206%20%5C%5C%0A7%20&amp;%208%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A(a_%7B00%7Db_%7B00%7D%20+%20a_%7B01%7Db_%7B10%7D)%20&amp;%20(a_%7B00%7Db_%7B01%7D%20+%20a_%7B01%7Db_%7B11%7D)%20%5C%5C%0A(a_%7B10%7Db_%7B00%7D%20+%20a_%7B11%7Db_%7B10%7D)%20&amp;%20(a_%7B10%7Db_%7B01%7D%20+%20a_%7B11%7Db_%7B11%7D)%0A%5Cend%7Bbmatrix%7D%0A=%0AC%0A"></p>
-</div>
-</div>
-</div>
-<p>Matrix multiplication simply involves taking the dot product of each row in the first matrix with each column in the second matrix.</p>
-<p>We’ll need to use 3 iterators for this: one iterator <img src="https://latex.codecogs.com/png.latex?i"> to loop through the rows of <img src="https://latex.codecogs.com/png.latex?A">, another iterator <img src="https://latex.codecogs.com/png.latex?j"> to loop through the columns of <img src="https://latex.codecogs.com/png.latex?B">, and a third iterator <img src="https://latex.codecogs.com/png.latex?k"> to loop through the elements in a row and column.</p>
-<blockquote class="blockquote">
-<p><img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20row%20in%20%7D%20A"></p>
-<p>&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20col%20in%20%7D%20B"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20ele%20in%20%7D%20A_%7B%5Ctext%7Brow%7D%7D%20%5Ctext%7B%20and%20%7D%20B_%7B%5Ctext%7Bcol%7D%7D"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/png.latex?a_%7B%5Ctext%7Browele%7D%7D%20%5Ccdot%20b_%7B%5Ctext%7Belecol%7D%7D%20%5Cmathrel%7B+%7D=%20c_%7B%5Ctext%7Browcol%7D%7D"></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20%7D%20i%20%5Ctext%7B%20in%20%7D%20A"></p>
-<p>&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20%7D%20j%20%5Ctext%7B%20in%20%7D%20B"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20%7D%20k%20%5Ctext%7B%20in%20%7D%20A_%7Bi%7D%20%5Ctext%7B%20and%20%7D%20B_%7Bj%7D"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/png.latex?a_%7Bik%7D%20%5Ccdot%20b_%7Bkj%7D%20%5Cmathrel%7B+%7D=%20c_%7Bij%7D"></p>
-</blockquote>
-<p>Let’s focus on in on the last line above.</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0Aa_%7Bik%7D%20%5Ccdot%20b_%7Bkj%7D%20%5Cmathrel%7B+%7D=%20c_%7Bij%7D%0A"></p>
-<p>This can more succinctly be written in einsum notation as <img src="https://latex.codecogs.com/png.latex?ik,%20kj%20%5Crightarrow%20ij"> — for each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A">, and for each column <img src="https://latex.codecogs.com/png.latex?j"> in <img src="https://latex.codecogs.com/png.latex?B">, iterate through each element <img src="https://latex.codecogs.com/png.latex?k">, take their product, and sum the those products. The location of the output of the dot product in the output matrix <img src="https://latex.codecogs.com/png.latex?C"> is <img src="https://latex.codecogs.com/png.latex?c_%7Bij%7D">.</p>
-</section>
-</section>
-<section id="various-examples" class="level2">
-<h2 class="anchored" data-anchor-id="various-examples">Various Examples</h2>
-<section id="d-operations" class="level3">
-<h3 class="anchored" data-anchor-id="d-operations">1D Operations</h3>
-<p><img src="https://latex.codecogs.com/png.latex?%0AA%20=%20%5Cbegin%7Bbmatrix%7D%201%20%5C%5C%202%20%5C%5C%203%20%5Cend%7Bbmatrix%7D,%20B%20=%20%5Cbegin%7Bbmatrix%7D%204%20%5C%5C%205%20%5C%5C%206%20%5Cend%7Bbmatrix%7D%0A"></p>
-<section id="returning-a-view-of-a" class="level4">
-<h4 class="anchored" data-anchor-id="returning-a-view-of-a">Returning a View of <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i">, output the row.</p>
-</section>
-<section id="einsum-notation" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?i%20%5Crightarrow%20i"></p>
-<hr>
-</section>
-</section>
-<section id="summing-the-values-of-a" class="level4">
-<h4 class="anchored" data-anchor-id="summing-the-values-of-a">Summing the Values of <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode-1" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-1"><strong>Pseudocode</strong></h5>
-<p>Iterate through each row <img src="https://latex.codecogs.com/png.latex?i">, and sum all rows.</p>
-</section>
-<section id="einsum-notation-1" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-1"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?i%20%5Crightarrow%20%5Cphantom%7Bi%7D"></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>A scalar is output, hence no output iterator.</p>
-</div>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="hadamard-product-of-a-and-b" class="level4">
-<h4 class="anchored" data-anchor-id="hadamard-product-of-a-and-b">Hadamard Product of <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B"></h4>
-<section id="pseudocode-2" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-2"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B">, and multiply them together.</p>
-</section>
-<section id="einsum-notation-2" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-2"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?i,%20i%20%5Crightarrow%20i"></p>
-<hr>
-</section>
-</section>
-<section id="dot-product-of-a-and-b" class="level4">
-<h4 class="anchored" data-anchor-id="dot-product-of-a-and-b">Dot Product of <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B"></h4>
-<section id="pseudocode-3" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-3"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B">, multiply them together, and sum the products.</p>
-</section>
-<section id="einsum-notation-3" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-3"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?i,%20i,%20%5Crightarrow%20%5Cphantom%7Bi%7D"></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>A scalar is output, hence no output iterator.</p>
-</div>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="outer-product-of-a-and-b" class="level4">
-<h4 class="anchored" data-anchor-id="outer-product-of-a-and-b"><a href="https://en.wikipedia.org/wiki/Outer_product">Outer Product</a> of <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B"></h4>
-<section id="pseudocode-4" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-4"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A"> and multiply it with each row <img src="https://latex.codecogs.com/png.latex?j"> in <img src="https://latex.codecogs.com/png.latex?B">.</p>
-</section>
-<section id="einsum-notation-4" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-4"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?i,%20j%20%5Crightarrow%20ij"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Expanded example
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>The outer product involves multiplying each element in <img src="https://latex.codecogs.com/png.latex?A"> with all elements in <img src="https://latex.codecogs.com/png.latex?B">.</p>
-<blockquote class="blockquote">
-<p><img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20row%20in%20%7D%20A"></p>
-<p>&nbsp;&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20another-row%20in%20%7D%20B"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/png.latex?a_%7B%5Ctext%7Brow%7D%7D%20%5Ccdot%20b_%7B%5Ctext%7Banother-row%7D%7D%20=%20c_%7B%5Ctext%7Browanother-row%7D%7D"></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20%7D%20i%20%5Ctext%7B%20in%20%7D%20A"></p>
-<p>&nbsp;&nbsp; <img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bfor%20%7D%20j%20%5Ctext%7B%20in%20%7D%20B"></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp; <img src="https://latex.codecogs.com/png.latex?a_%7Bi%7D%20%5Ccdot%20b_%7Bj%7D%20=%20c_%7Bij%7D"></p>
-</blockquote>
-</div>
-</div>
-</div>
-</section>
-</section>
-</section>
-<section id="d-operations-1" class="level3">
-<h3 class="anchored" data-anchor-id="d-operations-1">2D Operations</h3>
-<p><img src="https://latex.codecogs.com/png.latex?%0AA%0A=%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20&amp;%203%20%5C%5C%0A4%20&amp;%205%20&amp;%206%20%5C%5C%0A7%20&amp;%208%20&amp;%209%0A%5Cend%7Bbmatrix%7D%0A,%0AB%0A=%0A%5Cbegin%7Bbmatrix%7D%0A9%20&amp;%208%20&amp;%207%20%5C%5C%0A6%20&amp;%205%20&amp;%204%20%5C%5C%0A3%20&amp;%202%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A"></p>
-<section id="return-a-view-of-a" class="level4">
-<h4 class="anchored" data-anchor-id="return-a-view-of-a">Return a View of <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode-5" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-5"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i">, iterate through each column <img src="https://latex.codecogs.com/png.latex?j"> and output it.</p>
-</section>
-<section id="einsum-notation-5" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-5"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij%20%5Crightarrow%20ij"></p>
-<hr>
-</section>
-</section>
-<section id="transpose-a" class="level4">
-<h4 class="anchored" data-anchor-id="transpose-a">Transpose <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode-6" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-6"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i">, iterate through each column <img src="https://latex.codecogs.com/png.latex?j"> and output it in <img src="https://latex.codecogs.com/png.latex?C"> at row <img src="https://latex.codecogs.com/png.latex?j"> and column <img src="https://latex.codecogs.com/png.latex?i">.</p>
-</section>
-<section id="einsum-notation-6" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-6"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij%20%5Crightarrow%20ji"></p>
-<hr>
-</section>
-</section>
-<section id="return-the-main-diagonal-of-a" class="level4">
-<h4 class="anchored" data-anchor-id="return-the-main-diagonal-of-a">Return the Main Diagonal of <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode-7" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-7"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i">, iterate through each column <img src="https://latex.codecogs.com/png.latex?i"> and output it.</p>
-</section>
-<section id="einsum-notation-7" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-7"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ii%20%5Crightarrow%20i"></p>
-<hr>
-</section>
-</section>
-<section id="obtain-the-trace-of-a" class="level4">
-<h4 class="anchored" data-anchor-id="obtain-the-trace-of-a">Obtain the Trace of <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode-8" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-8"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i">, iterate through each column <img src="https://latex.codecogs.com/png.latex?i"> and sum them.</p>
-</section>
-<section id="einsum-notation-8" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-8"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ii%20%5Crightarrow%20%5Cphantom%7Bi%7D"></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>A scalar is output, hence no output iterator.</p>
-</div>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="sum-the-rows-of-a" class="level4">
-<h4 class="anchored" data-anchor-id="sum-the-rows-of-a">Sum the Rows of <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode-9" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-9"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i">, iterate through each column <img src="https://latex.codecogs.com/png.latex?j"> and sum them.</p>
-</section>
-<section id="einsum-notation-9" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-9"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij%20%5Crightarrow%20j"></p>
-<hr>
-</section>
-</section>
-<section id="sum-the-columns-of-a" class="level4">
-<h4 class="anchored" data-anchor-id="sum-the-columns-of-a">Sum the Columns of <img src="https://latex.codecogs.com/png.latex?A"></h4>
-<section id="pseudocode-10" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-10"><strong>Pseudocode</strong></h5>
-<p>For each column <img src="https://latex.codecogs.com/png.latex?j">, iterate through each row <img src="https://latex.codecogs.com/png.latex?i"> and sum them.</p>
-</section>
-<section id="einsum-notation-10" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-10"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij%20-%3E%20i"></p>
-<hr>
-</section>
-</section>
-<section id="hadamard-product-of-a-and-b-1" class="level4">
-<h4 class="anchored" data-anchor-id="hadamard-product-of-a-and-b-1">Hadamard Product of <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B"></h4>
-<section id="pseudocode-11" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-11"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B">, iterate throuch each column <img src="https://latex.codecogs.com/png.latex?j">, and take their product.</p>
-</section>
-<section id="einsum-notation-11" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-11"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij,%20ij%20%5Crightarrow%20ij"></p>
-<hr>
-</section>
-</section>
-<section id="hadamard-product-of-a-and-b-transposed-a-odot-bt" class="level4">
-<h4 class="anchored" data-anchor-id="hadamard-product-of-a-and-b-transposed-a-odot-bt">Hadamard Product of <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B"> Transposed (<img src="https://latex.codecogs.com/png.latex?A%20%5Codot%20B%5E%7BT%7D">)</h4>
-<section id="pseudocode-12" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-12"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A">, and for each row <img src="https://latex.codecogs.com/png.latex?j"> in <img src="https://latex.codecogs.com/png.latex?B">, iterate through each column <img src="https://latex.codecogs.com/png.latex?j"> in <img src="https://latex.codecogs.com/png.latex?A"> and each column <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?B">, and take their product.</p>
-</section>
-<section id="einsum-notation-12" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-12"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij,%20ji%20%5Crightarray%20ij"></p>
-<hr>
-</section>
-</section>
-<section id="matrix-product-of-a-and-b" class="level4">
-<h4 class="anchored" data-anchor-id="matrix-product-of-a-and-b">Matrix Product of <img src="https://latex.codecogs.com/png.latex?A"> and <img src="https://latex.codecogs.com/png.latex?B"></h4>
-<section id="pseudocode-13" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-13"><strong>Pseudocode</strong></h5>
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A">, and for each column <img src="https://latex.codecogs.com/png.latex?j"> in <img src="https://latex.codecogs.com/png.latex?B">, iterate through each element <img src="https://latex.codecogs.com/png.latex?k">, take their product, and then sum those products.</p>
-</section>
-<section id="einsum-notation-13" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-13"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ik,%20kj%20%5Crightarrow%20ij"></p>
-<hr>
-</section>
-</section>
-<section id="each-row-of-a-multiplied-with-b" class="level4">
-<h4 class="anchored" data-anchor-id="each-row-of-a-multiplied-with-b">Each Row of <img src="https://latex.codecogs.com/png.latex?A"> Multiplied with <img src="https://latex.codecogs.com/png.latex?B"></h4>
-<section id="pseudocode-14" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-14"><strong>Pseudocode</strong></h5>
-<!-- TODO: may want to reword this one. -->
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A">, and for each row <img src="https://latex.codecogs.com/png.latex?j"> in <img src="https://latex.codecogs.com/png.latex?B">, iterate through each column <img src="https://latex.codecogs.com/png.latex?k"> and take their product.</p>
-</section>
-<section id="einsum-notation-14" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-14"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ik,%20jk%20%5Crightarrow%20ijk"></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>A three dimensional tensor is output, hence the three output iterators.</p>
-</div>
-</div>
-</div>
-<hr>
-</section>
-</section>
-<section id="every-element-of-a-multiplied-with-b" class="level4">
-<h4 class="anchored" data-anchor-id="every-element-of-a-multiplied-with-b">Every Element of <img src="https://latex.codecogs.com/png.latex?A"> Multiplied with <img src="https://latex.codecogs.com/png.latex?B"></h4>
-<section id="pseudocode-15" class="level5">
-<h5 class="anchored" data-anchor-id="pseudocode-15"><strong>Pseudocode</strong></h5>
-<!-- TODO: may want to reword this one. -->
-<p>For each row <img src="https://latex.codecogs.com/png.latex?i"> in <img src="https://latex.codecogs.com/png.latex?A">, iterate through each column <img src="https://latex.codecogs.com/png.latex?j"> and multiply it with each row <img src="https://latex.codecogs.com/png.latex?k"> in <img src="https://latex.codecogs.com/png.latex?B"> by iterating through each column <img src="https://latex.codecogs.com/png.latex?l"> in that row <img src="https://latex.codecogs.com/png.latex?k">.</p>
-</section>
-<section id="einsum-notation-15" class="level5">
-<h5 class="anchored" data-anchor-id="einsum-notation-15"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij,%20kl%20%5Crightarrow%20ijkl"></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>A four dimensional tensor is output, hence the four output iterators.</p>
-</div>
-</div>
-</div>
-</section>
-</section>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>And that’s that! The key is to think in terms of iterators that return locations in a matrix.</p>
-<p>It may help to implement the operations above by yourself through pencil and paper, and in a programming languge too.</p>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Mathematics</category>
-  <category>Programming</category>
-  <guid>https://forbo7.github.io/forblog/posts/16_einstein_summation.html</guid>
-  <pubDate>Sun, 04 Jun 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/16_einstein_summation/thumbnail.png" medium="image" type="image/png"/>
-</item>
+<lastBuildDate>Mon, 29 May 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>(Un)successfully Implementing DiffEdit</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -547,7 +104,7 @@ font-style: inherit;">*</span></span><div class="code-annotation-gutter-bg"></di
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Hugging Face can be verbose.</span>
+<span data-code-annotation="1" data-code-lines="1" data-code-cell="annotated-cell-2">Hugging Face can be verbose.</span>
 </dd>
 </dl>
 </div>
@@ -2465,7 +2022,7 @@ font-style: inherit;">*</span></span><div class="code-annotation-gutter-bg"></di
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-2" data-code-lines="1">Hugging Face can be very verbose.</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-2">Hugging Face can be very verbose.</span>
 </dd>
 </dl>
 </div>
@@ -2816,11 +2373,11 @@ font-style: inherit;">;</span> uncond_inp</span><div class="code-annotation-gutt
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-12" data-code-lines="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
+<span data-code-lines="1" data-code-annotation="1" data-code-cell="annotated-cell-12">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-12" data-code-lines="3">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
+<span data-code-lines="3" data-code-annotation="2" data-code-cell="annotated-cell-12">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
 </dd>
 </dl>
 </div>
@@ -3106,23 +2663,23 @@ font-style: inherit;">=</span> sched.step(pred, ts, lats).prev_sample</span><div
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-25" data-code-lines="4">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-25">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-25" data-code-lines="5">We then further scale the noise on the latents.</span>
+<span data-code-lines="5" data-code-annotation="2" data-code-cell="annotated-cell-25">We then further scale the noise on the latents.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-25" data-code-lines="7">We then predict noise.</span>
+<span data-code-lines="7" data-code-annotation="3" data-code-cell="annotated-cell-25">We then predict noise.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-25" data-code-lines="9,10">We then perform guidance.</span>
+<span data-code-lines="9,10" data-code-annotation="4" data-code-cell="annotated-cell-25">We then perform guidance.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-25" data-code-lines="12">We then subtract the predicted, guided noise from the image.</span>
+<span data-code-lines="12" data-code-annotation="5" data-code-cell="annotated-cell-25">We then subtract the predicted, guided noise from the image.</span>
 </dd>
 </dl>
 </div>
@@ -4170,23 +3727,23 @@ font-style: inherit;">self</span>.decompress_lats(lats)</span><div class="code-a
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-40" data-code-lines="4">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
+<span data-code-lines="4" data-code-annotation="1" data-code-cell="annotated-cell-40">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-annotation="2" data-code-cell="annotated-cell-40" data-code-lines="5">An empty list is created to store the images.</span>
+<span data-code-lines="5" data-code-annotation="2" data-code-cell="annotated-cell-40">An empty list is created to store the images.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-40" data-code-lines="8">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
+<span data-code-lines="8" data-code-annotation="3" data-code-cell="annotated-cell-40">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-annotation="4" data-code-cell="annotated-cell-40" data-code-lines="10">We smoosh all images into one long line.</span>
+<span data-code-lines="10" data-code-annotation="4" data-code-cell="annotated-cell-40">We smoosh all images into one long line.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-40" data-code-lines="11">The image is displayed.</span>
+<span data-code-lines="11" data-code-annotation="5" data-code-cell="annotated-cell-40">The image is displayed.</span>
 </dd>
 </dl>
 <div class="cell" data-execution_count="40">

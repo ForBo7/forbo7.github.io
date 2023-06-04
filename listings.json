@@ -2,7 +2,6 @@
   {
     "listing": "/forblog/index.html",
     "items": [
-      "/forblog/posts/16_einstein_summation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
       "/forblog/posts/14_iterators_and_generators.html",
       "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
@@ -23,7 +22,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/forblog/posts/16_einstein_summation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
       "/forblog/posts/14_iterators_and_generators.html",
       "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
@@ -92,7 +90,6 @@
   {
     "listing": "/testing_page.html",
     "items": [
-      "/forblog/posts/16_einstein_summation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
       "/forblog/posts/14_iterators_and_generators.html",
       "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
