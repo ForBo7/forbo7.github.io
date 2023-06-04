@@ -1,15 +1,28 @@
 ---
-title: Einstein Summation
-draft: true
+title: Intuitively Approaching Einstein Summation Notation
+subtitle: Putting it in an einsum-ple manner.
+description: An alternative way to write matrix operations.
+image: ../images/16_einstein_summation/thumbnail.png
+author: Salman Naqvi
+date: '2023-06-04'
+categories: [Mathematics, Programming]
+open-graph:
+  description: An alternative way to write matrix operations.
+  image: ../images/16_einstein_summation/thumbnail.png
+twitter-card:
+  description: An alternative way to write matrix operations.
+  image: ../images/16_einstein_summation/thumbnail.png
 ---
 
 :::{.callout-warning appearance="simple"}
-This post covers einsum notation syntax in terms of programming languages.
+This post covers einstein summation notation syntax in terms of programming languages.
 :::
 
-Einstein summation is a handy way of writing various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.
+![](../images/16_einstein_summation/thumbnail.png)
 
-For example, matrix multiplication can be written as `ik, kj -> ij`. A transpose of a matrix could be written as `ij -> ji`.
+Einstein summation notation (or einsum notation for short) is a handy way of writing various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.
+
+For example, matrix multiplication can be written as `ik, kj -> ij` and a transpose of a matrix could be written as `ij -> ji`.
 
 Let's figure this out.
 
@@ -25,15 +38,19 @@ However, I don't find these rules intuitive, even a little confusing. Why?
 
 Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we multiply each row in the first matrix with each column in the second matrix.
 
-However, when the rules above are used, the order of a matrix appears to change to be column by row. 
+However, when the rules above are used to denote matrix multiplication ($ik, kj \rightarrow ij$), the order of a matrix appears to change. 
 
 ![](../images/16_einstein_summation/2.png)
 
+The first matrix is $i \times j$. However, $j$ appears to denote the rows meaning we end up with a column by row matrix. But even if we let $j$ denote the columns, we end up doing dot products with each _column_ in the first matrix and with each _row_ in the second matrix.
+
+Not intuitive.
+
 ## A More Intuitive Way
 
-The key to understanding einsum notation is to think of the letters as iterators. For example, $i$ is an iterator that returns a row of a matrix. $j$ is an iterator that returns the columns of a matrix.
+The key to understanding einsum notation is to not think of axes, but of iterators. For example, $i$ is an iterator that returns the rows of a matrix. $j$ is an iterator that returns the columns of a matrix.
 
-Let's begin with a relatively more simpler example: the hadamard product (also known as the elementwise product or elementwise multiplication.)
+Let's begin with a relatively more simple example: the hadamard product (also known as the elementwise product or elementwise multiplication.)
 
 ### Hadamard Product
 
@@ -56,7 +73,7 @@ B
 \end{bmatrix}
 $$
 
-To access the element 8 in matrix $A$, we need to return the second row and first column. This can be denoted as $a_{21}$. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as $a_{ij}.
+To access the element 8 in matrix $A$, we need to return the second row and first column. This can be denoted as $a_{21}$. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as $a_{ij}$.
 
 Taking the hadamard product looks like this.
 
@@ -84,7 +101,7 @@ $$
 
 
 :::{.callout-note appearance="simple" collapse="true" icon="false"}
-# An alternative way to look at it 
+# An alternative way to look at it...
 
 ::::{.callout-warning appearance="simple"}
 Don't dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.
@@ -95,7 +112,7 @@ $$
 $$
 :::
 
-In words, what's happening is that we iterate through each row of $A$ and $B$ and each column of $A$ and $B$ to multiply each element.
+In words, what's happening is that we're looping through all the rows of $A$ and $B$. For each row, we also loop through each column and multiply those columns together.
 
 > $\text{for row in } A \text{ and } B$
 > 
@@ -114,14 +131,14 @@ Let's focus on that last line above.
 
 $$a_{ij} \cdot b_{ij} = c_{ij}$$
 
-This line represents elementwise multiplication. For each row $i$, we iterate through each col $j$ to multiply the corresponding elements.
+This line represents elementwise multiplication. For each row $i$ in $A$ and $B$, we iterate through each column $j$ in those rows, and take their product.
 
 In einsum notation, we can more succinctly write this as $ij, ij \rightarrow ij$. This has 4 parts. 
 
-1. $ij$ refers to the iterators working on rows and columns of $A$ — $i$ works on the rows and $j$ works on the columns.
+1. $ij$ refers to the iterators working on the rows and columns of $A$ — $i$ works on the rows and $j$ works on the columns.
 2. $ij$ refers to the exact same iterators working on $B$.
 3. $\rightarrow$ tells us an output will be returned.
-4. $ij$ refers to the exact same iterators that will be responsble for making up the output matrix $C$.
+4. $ij$ refers to the exact same iterators that will be responsble for making up the output matrix $C$. The location $ij$ says where the product of two elements will be located in $C$.
 
 ### Matrix Multiplication
 
@@ -165,7 +182,7 @@ $$
 <!-- TODO: Might want to remove the example below or position it after the einsum notation for matrix multiplication. -->
 
 :::{.callout-note appearance="simple" collapse="true" icon="false"}
-# An alternative way to look at it 
+# An alternative way to look at it... 
 
 ::::{.callout-warning appearance="simple"}
 Don't dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.
@@ -191,9 +208,9 @@ C
 $$
 :::
 
-Matrix multiplication is simply taking the dot product of each row in the first matrix with each column in the second matrix. 
+Matrix multiplication simply involves taking the dot product of each row in the first matrix with each column in the second matrix. 
 
-Above, we're using 3 iterators for this: one iterator $i$ to loop through the rows of $A$, another iterator $j$ to loop through the columns of $B$, and a third iterator $k$ to loop through the elements in a row and column.
+We'll need to use 3 iterators for this: one iterator $i$ to loop through the rows of $A$, another iterator $j$ to loop through the columns of $B$, and a third iterator $k$ to loop through the elements in a row and column.
 
 > $\text{for row in } A$
 >
@@ -207,7 +224,7 @@ Above, we're using 3 iterators for this: one iterator $i$ to loop through the ro
 >
 > &nbsp;&nbsp;$\text{for } j \text{ in } B$
 >
-> &nbsp;&nbsp;&nbsp;&nbsp; $\text{for } k \text{ in } A_{i} \text{ and } B_{j}
+> &nbsp;&nbsp;&nbsp;&nbsp; $\text{for } k \text{ in } A_{i} \text{ and } B_{j}$
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij}$
 
@@ -217,7 +234,7 @@ $$
 a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij} 
 $$
 
-This can more succinctly be written in einsum notation as $ik, kj \rightarrow ij$
+This can more succinctly be written in einsum notation as $ik, kj \rightarrow ij$ — for each row $i$ in $A$, and for each column $j$ in $B$, iterate through each element $k$, take their product, and sum the those products. The location of the output of the dot product in the output matrix $C$ is $c_{ij}$.
 
 ## Various Examples
 
@@ -229,61 +246,69 @@ $$
 
 #### Returning a View of $A$
 
-##### Pseudocode
+##### **Pseudocode**
 
-Iterate through each row $i$ and output the element.
+For each row $i$, output the row.
 
-##### Einsum Notation
+##### **Einsum Notation**
 
-$i -> i$
+$i \rightarrow i$
+
+---
 
 #### Summing the Values of $A$
 
-##### Pseudocode
+##### **Pseudocode**
 
-Iterate through each row $i$, and sum all elements.
+Iterate through each row $i$, and sum all rows.
 
-##### Einsum Notation
+##### **Einsum Notation**
 
-$i \rightarrow $
+$i \rightarrow \phantom{i}$
 
 :::{.callout-note appearance="simple"}
 A scalar is output, hence no output iterator.
 :::
 
-#### Elementwise Product of $A$ and $B$
+---
 
-##### Pseudocode
+#### Hadamard Product of $A$ and $B$
 
-Iterate through each row $i$ in $A$ and $B$, and multiply the corresponding elements.
+##### **Pseudocode**
 
-##### Einsum Notation
+For each row $i$ in $A$ and $B$, and multiply them together.
 
-$i, i -> i$
+##### **Einsum Notation**
+
+$i, i \rightarrow i$
+
+---
 
 #### Dot Product of $A$ and $B$
 
-##### Pseudocode
+##### **Pseudocode**
 
-Iterate through each row $i$ in $A$ and $B$, multiply the corresponding elements, and then sum them.
+For each row $i$ in $A$ and $B$, multiply them together, and sum the products.
 
-For each row $i$ in $A$ and $B$
+##### **Einsum Notation**
 
-##### Einsum Notation
-
-$i, i, ->$
+$i, i, \rightarrow \phantom{i}$
 
 :::{.callout-note appearance="simple"}
 A scalar is output, hence no output iterator.
 :::
 
-#### Outer Product of $A$ and $B$
+---
 
-link to outer product wiki page here
+#### [Outer Product](https://en.wikipedia.org/wiki/Outer_product) of $A$ and $B$
 
-##### Pseudocode
+##### **Pseudocode**
 
-For each row $i$ in $A$, iteratre through each row $j$ in $B$ and multiply it with the row $i$ in $A$.
+For each row $i$ in $A$ and multiply it with each row $j$ in $B$.
+
+##### **Einsum Notation**
+
+$i, j \rightarrow ij$
 
 :::{.callout-note appearance="simple" collapse="true"}
 # Expanded example
@@ -292,9 +317,9 @@ The outer product involves multiplying each element in $A$ with all elements in 
 
 > $\text{for row in } A$
 >
-> &nbsp;&nbsp;$\text{for another_row in } B$
+> &nbsp;&nbsp;$\text{for another-row in } B$
 >
-> &nbsp;&nbsp;&nbsp;&nbsp; $a_{\text{row}} \cdot b_{\text{another_row}} = c_{\text{rowanother_row}}$
+> &nbsp;&nbsp;&nbsp;&nbsp; $a_{\text{row}} \cdot b_{\text{another-row}} = c_{\text{rowanother-row}}$
 
 > $\text{for } i \text{ in } A$
 >
@@ -303,128 +328,176 @@ The outer product involves multiplying each element in $A$ with all elements in 
 > &nbsp;&nbsp;&nbsp;&nbsp; $a_{i} \cdot b_{j} = c_{ij}$
 :::
 
-<!-- TODO: maybe expand on this with a full on example? -->
-
-##### Einsum Notation
-
-$i, j \rightarray ij$
-
 ### 2D Operations
 
 $$
-A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{bmatrix}, B = \begin{bmatrix} 9 & 8 & 7 \\ 6 & 5 & 4 \\ 3 & 2 & 1 \end{bmatrix}
+A 
+= 
+\begin{bmatrix} 
+1 & 2 & 3 \\ 
+4 & 5 & 6 \\ 
+7 & 8 & 9 
+\end{bmatrix}
+, 
+B 
+= 
+\begin{bmatrix} 
+9 & 8 & 7 \\ 
+6 & 5 & 4 \\ 
+3 & 2 & 1 
+\end{bmatrix}
 $$
 
 #### Return a View of $A$
 
-##### Pseudocode
+##### **Pseudocode**
 
-For each row $i$, iterate through each column $j$ and output the element.
+For each row $i$, iterate through each column $j$ and output it.
 
-##### Einsum Notation
+##### **Einsum Notation**
 
 $ij \rightarrow ij$
 
+---
+
 #### Transpose $A$
 
-##### Pseudocode
+##### **Pseudocode**
 
-For each row $i$, iterate through each column $j$ and output the that element with row $j$ and column $i$.
+For each row $i$, iterate through each column $j$ and output it in $C$ at row $j$ and column $i$.
 
-##### Einsum Notation
+##### **Einsum Notation**
 
-$ji \rightarrow ji$
-
-#### Return the Main Diagonal of $A$
-
-##### Pseudocode
-
-For each row $i$, iterate through each column $i$ and output it.
-
-##### Einsum Notation
-
-$ii \rightarrow i$
-
-#### Obtain the Trace of $A$
-
-##### Pseudocode
-
-For each row $i$, iterate through each column $i$ and sum those elements.
-
-##### Einsum Notation
-
-$ii \rightarrow $
-
-#### Sum the Rows of $A$
-
-##### Pseudocode
-
-For each row $i$, iterate through each column $j$ and sum those elements.
-
-##### Einsum Notation
-
-$ij \rightarrow j$
-
-#### Sum the Columns of $A$
-
-##### Pseudocode
-
-For each column $j$, iterate through each row $i$ and sum those elements.
-
-##### Einsum Notation
-
-$ij -> i$
-
-#### Elementwise Product of $A$ and $B$
-
-##### Pseudocode
-
-For each row $i$ in $A$ and $B$, iterate throuch each column $j$ in $A$ and $B$, and take the product of those elements.
-
-##### Einsum Notation
-
-$ij, ij \rightarray ij$
-
-#### Elementwise Product of $A$ and $B$ Transposed
-
-##### Pseudocode
-
-For each row $i$ and $j$ in $A$ and $B$ respectively, iterate through each column $j$ and $i$ in $A$ and $B$ respectively, and take the product of those elements.
-
-##### Einsum Notation
-
-$ij, ji \rightarray ij$
-
-#### Matrix Product of $A$ and $B$
-
-##### Pseudocode
-
-For each row $i$ in $A$, and for each column $j$ in $B$, iterate through each element $k$, take their product, and then sum those products.
-
-##### Einsum Notation
-
-$ik, kj \rightarrow ij$
-
-#### Each Row of $A$ Multiplied with $B$
-
-##### Pseudocode
-
-For each row $i$ and $j$ in $A$ and $B$ respectively, iterate through each element $k$ and take their product.
-
-##### Einsum Notation
-
-$ik, jk \rightarrow ijk$
-
-#### Every Element of $A$ Multiplied with $B$
-
-##### Pseudocode
-
-For each row $i$ in $A$, iterate through each column $j$ and multiply that element with each row $k$ in $B$ by iterating through each element $l$ in that row.
-
-##### Einsum Notation
-
-$ij, kl \rightarrow ijkl$
+$ij \rightarrow ji$
 
 ---
 
-iterator returns elments; perhaps add that in?
+#### Return the Main Diagonal of $A$
+
+##### **Pseudocode**
+
+For each row $i$, iterate through each column $i$ and output it.
+
+##### **Einsum Notation**
+
+$ii \rightarrow i$
+
+---
+
+#### Obtain the Trace of $A$
+
+##### **Pseudocode**
+
+For each row $i$, iterate through each column $i$ and sum them.
+
+##### **Einsum Notation**
+
+$ii \rightarrow \phantom{i}$
+
+:::{.callout-note appearance="simple"}
+A scalar is output, hence no output iterator.
+:::
+
+---
+
+#### Sum the Rows of $A$
+
+##### **Pseudocode**
+
+For each row $i$, iterate through each column $j$ and sum them.
+
+##### **Einsum Notation**
+
+$ij \rightarrow j$
+
+---
+
+#### Sum the Columns of $A$
+
+##### **Pseudocode**
+
+For each column $j$, iterate through each row $i$ and sum them.
+
+##### **Einsum Notation**
+
+$ij -> i$
+
+---
+
+#### Hadamard Product of $A$ and $B$
+
+##### **Pseudocode**
+
+For each row $i$ in $A$ and $B$, iterate throuch each column $j$, and take their product.
+
+##### **Einsum Notation**
+
+$ij, ij \rightarrow ij$
+
+---
+
+#### Hadamard Product of $A$ and $B$ Transposed ($A \odot B^{T}$)
+
+##### **Pseudocode**
+
+For each row $i$ in $A$, and for each row $j$ in $B$, iterate through each column $j$ in $A$ and each column $i$ in $B$, and take their product.
+
+##### **Einsum Notation**
+
+$ij, ji \rightarray ij$
+
+---
+
+#### Matrix Product of $A$ and $B$
+
+##### **Pseudocode**
+
+For each row $i$ in $A$, and for each column $j$ in $B$, iterate through each element $k$, take their product, and then sum those products.
+
+##### **Einsum Notation**
+
+$ik, kj \rightarrow ij$
+
+---
+
+#### Each Row of $A$ Multiplied with $B$
+
+##### **Pseudocode**
+
+<!-- TODO: may want to reword this one. -->
+
+For each row $i$ in $A$, and for each row $j$ in $B$, iterate through each column $k$ and take their product.
+
+##### **Einsum Notation**
+
+$ik, jk \rightarrow ijk$
+
+:::{.callout-note appearance="simple"}
+A three dimensional tensor is output, hence the three output iterators.
+:::
+
+---
+
+#### Every Element of $A$ Multiplied with $B$
+
+##### **Pseudocode**
+
+<!-- TODO: may want to reword this one. -->
+
+For each row $i$ in $A$, iterate through each column $j$ and multiply it with each row $k$ in $B$ by iterating through each column $l$ in that row $k$.
+
+##### **Einsum Notation**
+
+$ij, kl \rightarrow ijkl$
+
+:::{.callout-note appearance="simple"}
+A four dimensional tensor is output, hence the four output iterators.
+:::
+
+## Conclusion
+
+And that's that! The key is to think in terms of iterators that return locations in a matrix.
+
+It may help to implement the operations above by yourself through pencil and paper, and in a programming languge too.
+
+If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!
