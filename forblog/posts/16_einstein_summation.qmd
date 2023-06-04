@@ -12,6 +12,7 @@ open-graph:
 twitter-card:
   description: An alternative way to write matrix operations.
   image: ../images/16_einstein_summation/thumbnail.png
+draft: true
 ---
 
 :::{.callout-warning appearance="simple"}
