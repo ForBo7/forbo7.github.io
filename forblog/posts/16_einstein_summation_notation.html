@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -210,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Sunday, 04 June 2023</p>
+      <p class="date">Tuesday, 06 June 2023</p>
     </div>
   </div>
   
@@ -231,8 +231,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <p><img src="../images/16_einstein_summation/thumbnail.png" class="img-fluid"></p>
-<p>Einstein summation notation (or einsum notation for short) is a handy way of writing various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.</p>
-<p>For example, matrix multiplication can be written as <code>ik, kj -&gt; ij</code> and a transpose of a matrix could be written as <code>ij -&gt; ji</code>.</p>
+<p>Einstein summation notation (or einsum notation for short) is a handy way to write various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.</p>
+<p>For example, matrix multiplication can be written as <code>ik, kj -&gt; ij</code> and a transpose of a matrix can be written as <code>ij -&gt; ji</code>.</p>
 <p>Let’s figure this out.</p>
 <section id="general-rules" class="level2">
 <h2 class="anchored" data-anchor-id="general-rules">General Rules</h2>
@@ -244,17 +244,18 @@ ul.task-list li input[type="checkbox"] {
 <p>Omitting a letter from the output means that values along that axis will be summed.</p>
 </blockquote>
 <p>However, I don’t find these rules intuitive, even a little confusing. Why?</p>
-<p>Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we multiply each row in the first matrix with each column in the second matrix.</p>
-<p>However, when the rules above are used to denote matrix multiplication (<span class="math inline">\(ik, kj \rightarrow ij\)</span>), the order of a matrix appears to change.</p>
-<p><img src="../images/16_einstein_summation/2.png" class="img-fluid"></p>
-<p>The first matrix is <span class="math inline">\(i \times j\)</span>. However, <span class="math inline">\(j\)</span> appears to denote the rows meaning we end up with a column by row matrix. But even if we let <span class="math inline">\(j\)</span> denote the columns, we end up doing dot products with each <em>column</em> in the first matrix and with each <em>row</em> in the second matrix.</p>
+<p>Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we take the dot product of each row in the first matrix with each column in the second matrix.</p>
+<p>However, when the rules above are used to denote matrix multiplication (<span class="math inline">\(ik, kj \rightarrow ij\)</span>, as depicted below), the order of a matrix appears to change.</p>
+<p><img src="../images/16_einstein_summation/1.png" class="img-fluid"></p>
+<p>The first matrix is <span class="math inline">\(i \times k\)</span>. However, <span class="math inline">\(k\)</span> appears to denote the rows meaning we end up with a column by row matrix. And in the second matrix, <span class="math inline">\(k\)</span> appears to denote the columns instead of rows.</p>
+<p>But even if we let <span class="math inline">\(k\)</span> denote the columns in the first matrix, we end up doing dot products with each <em>column</em> in the first matrix and with each <em>row</em> in the second matrix.</p>
 <p>Not intuitive.</p>
 </section>
-<section id="a-more-intuitive-way" class="level2">
+<section id="a-more-intuitive-way" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="a-more-intuitive-way">A More Intuitive Way</h2>
 <p>The key to understanding einsum notation is to not think of axes, but of iterators. For example, <span class="math inline">\(i\)</span> is an iterator that returns the rows of a matrix. <span class="math inline">\(j\)</span> is an iterator that returns the columns of a matrix.</p>
 <p>Let’s begin with a relatively more simple example: the hadamard product (also known as the elementwise product or elementwise multiplication.)</p>
-<section id="hadamard-product" class="level3">
+<section id="hadamard-product" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="hadamard-product">Hadamard Product</h3>
 <p>We have the following two matrices.</p>
 <p><span class="math display">\[
@@ -273,7 +274,7 @@ B
 3 &amp; 2 &amp; 1
 \end{bmatrix}
 \]</span></p>
-<p>To access the element 8 in matrix <span class="math inline">\(A\)</span>, we need to return the second row and first column. This can be denoted as <span class="math inline">\(a_{21}\)</span>. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as <span class="math inline">\(a_{ij}\)</span>.</p>
+<div class="page-columns page-full"><p>To access the element 8 in matrix <span class="math inline">\(A\)</span>, we need to return the second row and first column<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This can be denoted as <span class="math inline">\(a_{21}\)</span>. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as <span class="math inline">\(a_{ij}\)</span>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This assumes the matrix is zero indexed. This means <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}\)</span> is the zeroth row of <span class="math inline">\(A\)</span>.</p></li></div></div>
 <p>Taking the hadamard product looks like this.</p>
 <p><span class="math display">\[
 \begin{bmatrix}
@@ -440,7 +441,7 @@ C
 <p>&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(\text{for } k \text{ in } A_{i} \text{ and } B_{j}\)</span></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="math inline">\(a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij}\)</span></p>
 </blockquote>
-<p>Let’s focus on in on the last line above.</p>
+<p>Let’s focus in on the last line above.</p>
 <p><span class="math display">\[
 a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij}
 \]</span></p>
@@ -492,7 +493,7 @@ A = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, B = \begin{bmatrix} 4 \\ 5 \\ 6 \
 <h4 class="anchored" data-anchor-id="hadamard-product-of-a-and-b">Hadamard Product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></h4>
 <section id="pseudocode-2" class="level5">
 <h5 class="anchored" data-anchor-id="pseudocode-2"><strong>Pseudocode</strong></h5>
-<p>For each row <span class="math inline">\(i\)</span> in <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, and multiply them together.</p>
+<p>For each row <span class="math inline">\(i\)</span> in <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, multiply them together.</p>
 </section>
 <section id="einsum-notation-2" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-2"><strong>Einsum Notation</strong></h5>
@@ -508,7 +509,7 @@ A = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, B = \begin{bmatrix} 4 \\ 5 \\ 6 \
 </section>
 <section id="einsum-notation-3" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-3"><strong>Einsum Notation</strong></h5>
-<p><span class="math inline">\(i, i, \rightarrow \phantom{i}\)</span></p>
+<p><span class="math inline">\(i, i \rightarrow \phantom{i}\)</span></p>
 <div class="callout callout-style-simple callout-note">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -526,7 +527,7 @@ A = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, B = \begin{bmatrix} 4 \\ 5 \\ 6 \
 <h4 class="anchored" data-anchor-id="outer-product-of-a-and-b"><a href="https://en.wikipedia.org/wiki/Outer_product">Outer Product</a> of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></h4>
 <section id="pseudocode-4" class="level5">
 <h5 class="anchored" data-anchor-id="pseudocode-4"><strong>Pseudocode</strong></h5>
-<p>For each row <span class="math inline">\(i\)</span> in <span class="math inline">\(A\)</span> and multiply it with each row <span class="math inline">\(j\)</span> in <span class="math inline">\(B\)</span>.</p>
+<p>For each row <span class="math inline">\(i\)</span> in <span class="math inline">\(A\)</span>, multiply it with each row <span class="math inline">\(j\)</span> in <span class="math inline">\(B\)</span>.</p>
 </section>
 <section id="einsum-notation-4" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-4"><strong>Einsum Notation</strong></h5>
@@ -657,7 +658,7 @@ B
 </section>
 <section id="einsum-notation-10" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-10"><strong>Einsum Notation</strong></h5>
-<p><span class="math inline">\(ij -&gt; i\)</span></p>
+<p><span class="math inline">\(ij \rightarrow i\)</span></p>
 <hr>
 </section>
 </section>
@@ -681,7 +682,7 @@ B
 </section>
 <section id="einsum-notation-12" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-12"><strong>Einsum Notation</strong></h5>
-<p><span class="math inline">\(ij, ji \rightarray ij\)</span></p>
+<p><span class="math inline">\(ij, ji \rightarrow ij\)</span></p>
 <hr>
 </section>
 </section>
@@ -752,6 +753,7 @@ B
 
 
 </section>
+
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
