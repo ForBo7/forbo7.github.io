@@ -39,11 +39,11 @@ However, I don't find these rules intuitive, even a little confusing. Why?
 
 Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we take the dot product of each row in the first matrix with each column in the second matrix.
 
-However, when the rules above are used to denote matrix multiplication ($ik, kj \rightarrow ij$, as depicted below), the order of a matrix appears to change. 
+However, when the einsum rules above — specifically the first rule — are used to denote matrix multiplication ($ik, kj \rightarrow ij$, as depicted below), the order of a matrix appears to change. 
 
 ![](../images/16_einstein_summation/1.png)
 
-The first matrix is $i \times k$. However, $k$ appears to denote the rows meaning we end up with a column by row matrix. And in the second matrix, $k$ appears to denote the columns instead of rows. 
+In order for the einsum rules and the definition of matrix multiplcation above to stay consistent, $k$ now denotes the rows in the first matrix and columns in the second matrix, thereby changing the order of a matrix to column by row. 
 
 But even if we let $k$ denote the columns in the first matrix, we end up doing dot products with each _column_ in the first matrix and with each _row_ in the second matrix.
 
