@@ -4,7 +4,7 @@ subtitle: Putting it in an einsum-ple manner.
 description: An alternative way to write matrix operations.
 image: ../images/16_einstein_summation/thumbnail.png
 author: Salman Naqvi
-date: '2023-06-04'
+date: '2023-06-06'
 categories: [Mathematics, Programming]
 open-graph:
   description: An alternative way to write matrix operations.
@@ -22,9 +22,9 @@ This post covers einstein summation notation syntax in terms of programming lang
 
 ![](../images/16_einstein_summation/thumbnail.png)
 
-Einstein summation notation (or einsum notation for short) is a handy way of writing various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.
+Einstein summation notation (or einsum notation for short) is a handy way to write various matrix operations in a succinct, universal manner. With it, you can probably forget all the various symbols and operators there are and stick to one common syntax, that once understood, can be more intuitive.
 
-For example, matrix multiplication can be written as `ik, kj -> ij` and a transpose of a matrix could be written as `ij -> ji`.
+For example, matrix multiplication can be written as `ik, kj -> ij` and a transpose of a matrix can be written as `ij -> ji`.
 
 Let's figure this out.
 
@@ -38,13 +38,15 @@ The following are two general rules one can use to quickly write einsum notation
 
 However, I don't find these rules intuitive, even a little confusing. Why?
 
-Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we multiply each row in the first matrix with each column in the second matrix.
+Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we take the dot product of each row in the first matrix with each column in the second matrix.
 
-However, when the rules above are used to denote matrix multiplication ($ik, kj \rightarrow ij$), the order of a matrix appears to change. 
+However, when the rules above are used to denote matrix multiplication ($ik, kj \rightarrow ij$, as depicted below), the order of a matrix appears to change. 
 
-![](../images/16_einstein_summation/2.png)
+![](../images/16_einstein_summation/1.png)
 
-The first matrix is $i \times j$. However, $j$ appears to denote the rows meaning we end up with a column by row matrix. But even if we let $j$ denote the columns, we end up doing dot products with each _column_ in the first matrix and with each _row_ in the second matrix.
+The first matrix is $i \times k$. However, $k$ appears to denote the rows meaning we end up with a column by row matrix. And in the second matrix, $k$ appears to denote the columns instead of rows. 
+
+But even if we let $k$ denote the columns in the first matrix, we end up doing dot products with each _column_ in the first matrix and with each _row_ in the second matrix.
 
 Not intuitive.
 
@@ -75,7 +77,7 @@ B
 \end{bmatrix}
 $$
 
-To access the element 8 in matrix $A$, we need to return the second row and first column. This can be denoted as $a_{21}$. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as $a_{ij}$.
+To access the element 8 in matrix $A$, we need to return the second row and first column^[This assumes the matrix is zero indexed. This means $\begin{bmatrix} 1 & 2 & 3 \end{bmatrix}$ is the zeroth row of $A$.]. This can be denoted as $a_{21}$. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as $a_{ij}$.
 
 Taking the hadamard product looks like this.
 
@@ -230,7 +232,7 @@ We'll need to use 3 iterators for this: one iterator $i$ to loop through the row
 >
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij}$
 
-Let's focus on in on the last line above.
+Let's focus in on the last line above.
 
 $$ 
 a_{ik} \cdot b_{kj} \mathrel{+}= c_{ij} 
@@ -278,7 +280,7 @@ A scalar is output, hence no output iterator.
 
 ##### **Pseudocode**
 
-For each row $i$ in $A$ and $B$, and multiply them together.
+For each row $i$ in $A$ and $B$, multiply them together.
 
 ##### **Einsum Notation**
 
@@ -294,7 +296,7 @@ For each row $i$ in $A$ and $B$, multiply them together, and sum the products.
 
 ##### **Einsum Notation**
 
-$i, i, \rightarrow \phantom{i}$
+$i, i \rightarrow \phantom{i}$
 
 :::{.callout-note appearance="simple"}
 A scalar is output, hence no output iterator.
@@ -306,7 +308,7 @@ A scalar is output, hence no output iterator.
 
 ##### **Pseudocode**
 
-For each row $i$ in $A$ and multiply it with each row $j$ in $B$.
+For each row $i$ in $A$, multiply it with each row $j$ in $B$.
 
 ##### **Einsum Notation**
 
@@ -422,7 +424,7 @@ For each column $j$, iterate through each row $i$ and sum them.
 
 ##### **Einsum Notation**
 
-$ij -> i$
+$ij \rightarrow i$
 
 ---
 
@@ -446,7 +448,7 @@ For each row $i$ in $A$, and for each row $j$ in $B$, iterate through each colum
 
 ##### **Einsum Notation**
 
-$ij, ji \rightarray ij$
+$ij, ji \rightarrow ij$
 
 ---
 
