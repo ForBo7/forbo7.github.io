@@ -245,9 +245,9 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <p>However, I don’t find these rules intuitive, even a little confusing. Why?</p>
 <p>Matrices have the order of row by column. A 2x3 matrix has 2 rows and 3 columns. When we perform matrix multiplication, we take the dot product of each row in the first matrix with each column in the second matrix.</p>
-<p>However, when the rules above are used to denote matrix multiplication (<span class="math inline">\(ik, kj \rightarrow ij\)</span>, as depicted below), the order of a matrix appears to change.</p>
+<p>However, when the einsum rules above — specifically the first rule — are used to denote matrix multiplication (<span class="math inline">\(ik, kj \rightarrow ij\)</span>, as depicted below), the order of a matrix appears to change.</p>
 <p><img src="../images/16_einstein_summation/1.png" class="img-fluid"></p>
-<p>The first matrix is <span class="math inline">\(i \times k\)</span>. However, <span class="math inline">\(k\)</span> appears to denote the rows meaning we end up with a column by row matrix. And in the second matrix, <span class="math inline">\(k\)</span> appears to denote the columns instead of rows.</p>
+<p>In order for the einsum rules and the definition of matrix multiplcation above to stay consistent, <span class="math inline">\(k\)</span> now denotes the rows in the first matrix and columns in the second matrix, thereby changing the order of a matrix to column by row.</p>
 <p>But even if we let <span class="math inline">\(k\)</span> denote the columns in the first matrix, we end up doing dot products with each <em>column</em> in the first matrix and with each <em>row</em> in the second matrix.</p>
 <p>Not intuitive.</p>
 </section>
