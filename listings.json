@@ -2,7 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
-      "/forblog/posts/17_mean_shift_clustering.html",
+      "/forblog/posts/17_meanshift_clustering.html",
       "/forblog/posts/16_einstein_summation_notation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
       "/forblog/posts/14_iterators_and_generators.html",
@@ -24,7 +24,7 @@
   {
     "listing": "/testing_page.html",
     "items": [
-      "/forblog/posts/17_mean_shift_clustering.html",
+      "/forblog/posts/17_meanshift_clustering.html",
       "/forblog/posts/16_einstein_summation_notation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
       "/forblog/posts/14_iterators_and_generators.html",
@@ -49,7 +49,7 @@
   {
     "listing": "/forblog/index.html",
     "items": [
-      "/forblog/posts/17_mean_shift_clustering.html",
+      "/forblog/posts/17_meanshift_clustering.html",
       "/forblog/posts/16_einstein_summation_notation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
       "/forblog/posts/14_iterators_and_generators.html",
@@ -112,8 +112,8 @@
       "/dictionary/terms/weight_decay.html",
       "/dictionary/terms/zero_shot.html",
       "/dictionary/terms/inference.html",
-      "/dictionary/terms/neuron.html",
-      "/dictionary/terms/latent.html"
+      "/dictionary/terms/latent.html",
+      "/dictionary/terms/neuron.html"
     ]
   }
 ]
