@@ -2,290 +2,290 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://forbo7.github.io/patch_notes.html</loc>
-    <lastmod>2023-06-21T06:13:54.490Z</lastmod>
+    <lastmod>2023-06-21T06:21:42.434Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/feedback.html</loc>
-    <lastmod>2023-06-21T06:13:54.814Z</lastmod>
+    <lastmod>2023-06-21T06:21:42.814Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/index.html</loc>
-    <lastmod>2023-06-21T06:13:57.890Z</lastmod>
+    <lastmod>2023-06-21T06:21:46.042Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/about.html</loc>
-    <lastmod>2023-06-21T06:13:58.386Z</lastmod>
+    <lastmod>2023-06-21T06:21:46.590Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/testing_page.html</loc>
-    <lastmod>2023-06-21T06:14:01.482Z</lastmod>
+    <lastmod>2023-06-21T06:21:49.898Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/index.html</loc>
-    <lastmod>2023-06-21T06:14:07.378Z</lastmod>
+    <lastmod>2023-06-21T06:21:56.078Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit.html</loc>
-    <lastmod>2023-06-21T06:14:09.294Z</lastmod>
+    <lastmod>2023-06-21T06:21:58.258Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</loc>
-    <lastmod>2023-06-21T06:14:10.022Z</lastmod>
+    <lastmod>2023-06-21T06:21:59.034Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</loc>
-    <lastmod>2023-06-21T06:14:10.462Z</lastmod>
+    <lastmod>2023-06-21T06:21:59.506Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/17_meanshift_clustering.html</loc>
-    <lastmod>2023-06-21T06:14:12.566Z</lastmod>
+    <lastmod>2023-06-21T06:22:01.850Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/11_musings_through_stable_diffusion.html</loc>
-    <lastmod>2023-06-21T06:14:13.094Z</lastmod>
+    <lastmod>2023-06-21T06:22:02.402Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components.html</loc>
-    <lastmod>2023-06-21T06:14:15.493Z</lastmod>
+    <lastmod>2023-06-21T06:22:05.002Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html</loc>
-    <lastmod>2023-06-21T06:14:16.053Z</lastmod>
+    <lastmod>2023-06-21T06:22:05.618Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</loc>
-    <lastmod>2023-06-21T06:14:17.293Z</lastmod>
+    <lastmod>2023-06-21T06:22:06.942Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/12_stable_diffusion_summarized.html</loc>
-    <lastmod>2023-06-21T06:14:17.777Z</lastmod>
+    <lastmod>2023-06-21T06:22:07.466Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/14_iterators_and_generators.html</loc>
-    <lastmod>2023-06-21T06:14:18.205Z</lastmod>
+    <lastmod>2023-06-21T06:22:07.918Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</loc>
-    <lastmod>2023-06-21T06:14:18.641Z</lastmod>
+    <lastmod>2023-06-21T06:22:08.394Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</loc>
-    <lastmod>2023-06-21T06:14:19.045Z</lastmod>
+    <lastmod>2023-06-21T06:22:08.826Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</loc>
-    <lastmod>2023-06-21T06:14:19.933Z</lastmod>
+    <lastmod>2023-06-21T06:22:09.774Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/16_einstein_summation_notation.html</loc>
-    <lastmod>2023-06-21T06:14:20.665Z</lastmod>
+    <lastmod>2023-06-21T06:22:10.578Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</loc>
-    <lastmod>2023-06-21T06:14:21.181Z</lastmod>
+    <lastmod>2023-06-21T06:22:11.130Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html</loc>
-    <lastmod>2023-06-21T06:14:21.813Z</lastmod>
+    <lastmod>2023-06-21T06:22:11.810Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/forblog/posts/7_blog_subscriptions.html</loc>
-    <lastmod>2023-06-21T06:14:22.493Z</lastmod>
+    <lastmod>2023-06-21T06:22:12.538Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/index.html</loc>
-    <lastmod>2023-06-21T06:14:25.597Z</lastmod>
+    <lastmod>2023-06-21T06:22:15.774Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/ensemble.html</loc>
-    <lastmod>2023-06-21T06:14:25.901Z</lastmod>
+    <lastmod>2023-06-21T06:22:16.138Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/architecture.html</loc>
-    <lastmod>2023-06-21T06:14:26.213Z</lastmod>
+    <lastmod>2023-06-21T06:22:16.474Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/numericalization.html</loc>
-    <lastmod>2023-06-21T06:14:26.533Z</lastmod>
+    <lastmod>2023-06-21T06:22:16.818Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/inference.html</loc>
-    <lastmod>2023-06-21T06:14:26.829Z</lastmod>
+    <lastmod>2023-06-21T06:22:17.146Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/latent.html</loc>
-    <lastmod>2023-06-21T06:14:27.129Z</lastmod>
+    <lastmod>2023-06-21T06:22:17.506Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/loss.html</loc>
-    <lastmod>2023-06-21T06:14:27.441Z</lastmod>
+    <lastmod>2023-06-21T06:22:17.834Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/decoder.html</loc>
-    <lastmod>2023-06-21T06:14:27.749Z</lastmod>
+    <lastmod>2023-06-21T06:22:18.182Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/decision_tree.html</loc>
-    <lastmod>2023-06-21T06:14:28.077Z</lastmod>
+    <lastmod>2023-06-21T06:22:18.587Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/tabular_model.html</loc>
-    <lastmod>2023-06-21T06:14:28.397Z</lastmod>
+    <lastmod>2023-06-21T06:22:18.927Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/bagging.html</loc>
-    <lastmod>2023-06-21T06:14:28.725Z</lastmod>
+    <lastmod>2023-06-21T06:22:19.299Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/random_forest.html</loc>
-    <lastmod>2023-06-21T06:14:29.053Z</lastmod>
+    <lastmod>2023-06-21T06:22:19.667Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/accuracy.html</loc>
-    <lastmod>2023-06-21T06:14:29.389Z</lastmod>
+    <lastmod>2023-06-21T06:22:20.087Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/weight_decay.html</loc>
-    <lastmod>2023-06-21T06:14:29.693Z</lastmod>
+    <lastmod>2023-06-21T06:22:20.423Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/tabular_data.html</loc>
-    <lastmod>2023-06-21T06:14:29.997Z</lastmod>
+    <lastmod>2023-06-21T06:22:20.751Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/transformer.html</loc>
-    <lastmod>2023-06-21T06:14:30.337Z</lastmod>
+    <lastmod>2023-06-21T06:22:21.119Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/softmax.html</loc>
-    <lastmod>2023-06-21T06:14:30.789Z</lastmod>
+    <lastmod>2023-06-21T06:22:21.615Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/gradient_boosting_machine_gbm.html</loc>
-    <lastmod>2023-06-21T06:14:31.189Z</lastmod>
+    <lastmod>2023-06-21T06:22:22.043Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/neuron.html</loc>
-    <lastmod>2023-06-21T06:14:31.477Z</lastmod>
+    <lastmod>2023-06-21T06:22:22.367Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/embedding.html</loc>
-    <lastmod>2023-06-21T06:14:31.921Z</lastmod>
+    <lastmod>2023-06-21T06:22:22.895Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/one_hot_encoding.html</loc>
-    <lastmod>2023-06-21T06:14:32.233Z</lastmod>
+    <lastmod>2023-06-21T06:22:23.243Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/tokenization.html</loc>
-    <lastmod>2023-06-21T06:14:32.565Z</lastmod>
+    <lastmod>2023-06-21T06:22:23.599Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/gradient_accumulation.html</loc>
-    <lastmod>2023-06-21T06:14:32.993Z</lastmod>
+    <lastmod>2023-06-21T06:22:24.063Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/dot_product.html</loc>
-    <lastmod>2023-06-21T06:14:33.309Z</lastmod>
+    <lastmod>2023-06-21T06:22:24.419Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/vector.html</loc>
-    <lastmod>2023-06-21T06:14:33.621Z</lastmod>
+    <lastmod>2023-06-21T06:22:24.799Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/root_mean_squared_error_rmse.html</loc>
-    <lastmod>2023-06-21T06:14:33.997Z</lastmod>
+    <lastmod>2023-06-21T06:22:25.211Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/zero_shot.html</loc>
-    <lastmod>2023-06-21T06:14:34.309Z</lastmod>
+    <lastmod>2023-06-21T06:22:25.559Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/k_fold_cross_validation.html</loc>
-    <lastmod>2023-06-21T06:14:34.969Z</lastmod>
+    <lastmod>2023-06-21T06:22:26.287Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/mean_squared_error_mse.html</loc>
-    <lastmod>2023-06-21T06:14:35.333Z</lastmod>
+    <lastmod>2023-06-21T06:22:26.683Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/document.html</loc>
-    <lastmod>2023-06-21T06:14:35.641Z</lastmod>
+    <lastmod>2023-06-21T06:22:27.019Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/gradient.html</loc>
-    <lastmod>2023-06-21T06:14:36.001Z</lastmod>
+    <lastmod>2023-06-21T06:22:27.403Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html</loc>
-    <lastmod>2023-06-21T06:14:36.393Z</lastmod>
+    <lastmod>2023-06-21T06:22:27.835Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/metric.html</loc>
-    <lastmod>2023-06-21T06:14:36.713Z</lastmod>
+    <lastmod>2023-06-21T06:22:28.191Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/named_entity_recognition.html</loc>
-    <lastmod>2023-06-21T06:14:37.033Z</lastmod>
+    <lastmod>2023-06-21T06:22:28.567Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/oner_classifier.html</loc>
-    <lastmod>2023-06-21T06:14:37.361Z</lastmod>
+    <lastmod>2023-06-21T06:22:28.923Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/cross_entropy_loss.html</loc>
-    <lastmod>2023-06-21T06:14:37.873Z</lastmod>
+    <lastmod>2023-06-21T06:22:29.495Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/matrix.html</loc>
-    <lastmod>2023-06-21T06:14:38.181Z</lastmod>
+    <lastmod>2023-06-21T06:22:29.827Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/model.html</loc>
-    <lastmod>2023-06-21T06:14:38.485Z</lastmod>
+    <lastmod>2023-06-21T06:22:30.191Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/error_rate.html</loc>
-    <lastmod>2023-06-21T06:14:38.825Z</lastmod>
+    <lastmod>2023-06-21T06:22:30.559Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/learning_rate.html</loc>
-    <lastmod>2023-06-21T06:14:39.149Z</lastmod>
+    <lastmod>2023-06-21T06:22:30.919Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/encoder.html</loc>
-    <lastmod>2023-06-21T06:14:39.473Z</lastmod>
+    <lastmod>2023-06-21T06:22:31.267Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/mean_absolute_error_mae.html</loc>
-    <lastmod>2023-06-21T06:14:39.853Z</lastmod>
+    <lastmod>2023-06-21T06:22:31.687Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/sequence.html</loc>
-    <lastmod>2023-06-21T06:14:40.161Z</lastmod>
+    <lastmod>2023-06-21T06:22:32.031Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/dictionary/terms/linear_combination.html</loc>
-    <lastmod>2023-06-21T06:14:40.477Z</lastmod>
+    <lastmod>2023-06-21T06:22:32.387Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/web_apps/apps/flood_detector.html</loc>
-    <lastmod>2023-06-21T06:14:40.809Z</lastmod>
+    <lastmod>2023-06-21T06:22:32.755Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/web_apps/apps/coming_soon.html</loc>
-    <lastmod>2023-06-21T06:14:41.121Z</lastmod>
+    <lastmod>2023-06-21T06:22:33.123Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/web_apps/apps/bear_detector.html</loc>
-    <lastmod>2023-06-21T06:14:41.481Z</lastmod>
+    <lastmod>2023-06-21T06:22:33.475Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/web_apps/index.html</loc>
-    <lastmod>2023-06-21T06:14:41.817Z</lastmod>
+    <lastmod>2023-06-21T06:22:33.847Z</lastmod>
   </url>
   <url>
     <loc>https://forbo7.github.io/unsubscribe.html</loc>
-    <lastmod>2023-06-21T06:14:42.117Z</lastmod>
+    <lastmod>2023-06-21T06:22:34.187Z</lastmod>
   </url>
 </urlset>
