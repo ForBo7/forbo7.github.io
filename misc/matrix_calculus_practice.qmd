@@ -3,7 +3,7 @@ title: Matrix Calculus Practice Questions
 format:
   typst:
     date: 2023-07-09
-    keep-type: true
+    keep-typ: true
 ---
 
 ```{=typst}
