@@ -1,9 +1,7 @@
 ---
 title: Matrix Calculus Practice Questions
 date: 2023-07-09
-format:
-  typst:
-    keep-typ: true
+format: typst
 ---
 
 ```{=typst}
