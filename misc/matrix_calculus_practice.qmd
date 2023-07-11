@@ -6,7 +6,7 @@ format: typst
 
 ```{=typst}
 Questions compiled by #link("https://forbo7.github.io/about.html", [#underline[Salman Naqvi]]).
-All question in this paper are based of the #link("https://explained.ai/matrix-calculus/#notation", [#underline[The Matrix Calculus You Need For Deep Learning]]) paper by #link("https://www.linkedin.com/in/terence-parr/", [#underline[Terence Parr]]) and #link("https://www.fast.ai/about.html#jeremy-howard", [#underline[Jeremy Howard]]).
+All questions in this paper are based of the #link("https://explained.ai/matrix-calculus/#notation", [#underline[The Matrix Calculus You Need For Deep Learning]]) paper by #link("https://www.linkedin.com/in/terence-parr/", [#underline[Terence Parr]]) and #link("https://www.fast.ai/about.html#jeremy-howard", [#underline[Jeremy Howard]]).
 Do let me know of any corrections.
 #outline(title: none, target: heading.where(level: 2), )
 == Questions
