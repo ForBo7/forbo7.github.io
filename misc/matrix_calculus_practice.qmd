@@ -35,8 +35,8 @@ Do let me know of any corrections.
     + show that $partial((arr(w) times.circle arr(x)), arr(w)) = "diag"(arr(x))$.
     + show that $partial((arr(w) times.circle arr(x)), arr(x)) = "diag"(arr(w))$.
   + If $arr(y) = arr(f)(arr(w)) \u{2298} arr(g)(arr(w))$,
-    + show that $partial((arr(w) \u{2298} arr(x)), arr(w)) = "diag"(dots.c, 1/x_i, dots.c)$.
-    + show that $partial((arr(w) \u{2298} arr(x)), arr(x)) = "diag"(dots.c, -(w_i)/(x^2_i)$.
+    + show that $partial((arr(w) \u{2298} arr(x)), arr(w)) = "diag"(dots.c 1/x_i dots.c)$.
+    + show that $partial((arr(w) \u{2298} arr(x)), arr(x)) = "diag"(dots.c -(w_i)/(x^2_i) dots.c)$.
 + $arr(y) = arr(f)(arr(x)) circle arr(g)(z) = arr(x) circle arrow(1)z$. Prove the following identities once with matricies and once with a general form of the equation. <q6>
   + $partial((arr(x) plus.circle z), arr(x)) = I$
   + $partial((arr(x) plus.circle z), z) = arrow(1)$
