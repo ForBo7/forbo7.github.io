@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.205">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -82,6 +82,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -106,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:title" content="ForBo7 // Salman Naqvi - Implementing Stable Diffusion From Its Components">
 <meta property="og:description" content="Implementing stable diffusion from the 🤗 🧨 library.">
 <meta property="og:image" content="https://forbo7.github.io/forblog/images/13_implementing_stable_diffusion_from_its_components/thumbnail.png">
-<meta property="og:site-name" content="ForBo7 // Salman Naqvi">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
 <meta property="og:image:height" content="1024">
 <meta property="og:image:width" content="1024">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
@@ -125,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
@@ -162,11 +167,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
     <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -284,7 +289,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div class="cell" data-outputid="afc220c4-1d86-4071-c392-de336b5bf478" data-execution_count="1">
+<div id="cell-7" class="cell" data-outputid="afc220c4-1d86-4071-c392-de336b5bf478" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pip install <span class="op">-</span>Uqq fastcore transformers diffusers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 40.9 MB/s eta 0:00:00
@@ -293,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.8/7.8 MB 29.1 MB/s eta 0:00:00</code></pre>
 </div>
 </div>
-<div class="cell" data-code-annotations="hover" data-execution_count="2">
+<div id="cell-8" class="cell" data-code-annotations="hover" data-execution_count="2">
 <div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging<span class="op">;</span> logging.disable(logging.WARNING)</span>
 <span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
 <span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.imports <span class="im">import</span> <span class="op">*</span></span>
@@ -302,7 +307,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-annotation="1" data-code-lines="1">Hugging Face can be very verbose.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Hugging Face can be very verbose.</span>
 </dd>
 </dl>
 </div>
@@ -313,7 +318,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="clip-components" class="level3">
 <h3 class="anchored" data-anchor-id="clip-components">CLIP Components</h3>
 <p>To process the prompt, we need to download a tokenizer and a text encoder. The tokenizer will split the prompt into tokens while the text encoder will convert the tokens into a numerical representation (an embedding).</p>
-<div class="cell" data-outputid="dbb333f5-b653-4cdc-90c0-0e4c18759e83" data-execution_count="3">
+<div id="cell-13" class="cell" data-outputid="dbb333f5-b653-4cdc-90c0-0e4c18759e83" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> CLIPTokenizer, CLIPTextModel</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>tokz <span class="op">=</span> CLIPTokenizer.from_pretrained(<span class="st">'openai/clip-vit-large-patch14'</span>, torch_dtype<span class="op">=</span>torch.float16)</span>
@@ -354,7 +359,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="u-net-and-vae" class="level3">
 <h3 class="anchored" data-anchor-id="u-net-and-vae">U-Net and VAE</h3>
 <p>The U-Net will predict the noise in the image, while the VAE will decompress the generated image.</p>
-<div class="cell" data-outputid="121d8578-339e-42e6-8620-2e3fe2d960cb" data-execution_count="4">
+<div id="cell-17" class="cell" data-outputid="121d8578-339e-42e6-8620-2e3fe2d960cb" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> diffusers <span class="im">import</span> AutoencoderKL, UNet2DConditionModel</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>vae <span class="op">=</span> AutoencoderKL.from_pretrained(<span class="st">'stabilityai/sd-vae-ft-ema'</span>, torch_dtype<span class="op">=</span>torch.float16).to(<span class="st">'cuda'</span>)</span>
@@ -384,7 +389,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="scheduler" class="level3">
 <h3 class="anchored" data-anchor-id="scheduler">Scheduler</h3>
 <p>The scheduler will control how much noise is intially added to the image, and will also control how much of the noise predicted from the U-Net will be subtracted from the image.</p>
-<div class="cell" data-outputid="a577e6ba-53a6-48b9-d24a-c14accc94654" data-execution_count="5">
+<div id="cell-20" class="cell" data-outputid="a577e6ba-53a6-48b9-d24a-c14accc94654" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> diffusers <span class="im">import</span> LMSDiscreteScheduler</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sched <span class="op">=</span> LMSDiscreteScheduler(</span>
@@ -419,7 +424,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>The batch size</li>
 <li>The seed</li>
 </ul>
-<div class="cell" data-execution_count="6">
+<div id="cell-23" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> [<span class="st">'a photograph of an astronaut riding a horse'</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>w, h <span class="op">=</span> <span class="dv">512</span>, <span class="dv">512</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>n_inf_steps <span class="op">=</span> <span class="dv">70</span></span>
@@ -432,7 +437,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="encode-prompt">Encode Prompt</h2>
 <p>Now we need to parse the prompt. To do so, we’ll first tokenize it, and then encode the tokens to produce an embedding.</p>
 <p>First, let’s tokenize.</p>
-<div class="cell" data-outputid="5e53ad36-8588-468f-e26e-f8bfe170081e" data-execution_count="7">
+<div id="cell-27" class="cell" data-outputid="5e53ad36-8588-468f-e26e-f8bfe170081e" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>txt_inp <span class="op">=</span> tokz(</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    prompt,</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    padding <span class="op">=</span> <span class="st">'max_length'</span>,</span>
@@ -455,14 +460,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The token <code>49407</code> is a padding token and represents <code>'&lt;|endoftext|&gt;'</code>. These tokens have been given an attention mask of 0.</p>
-<div class="cell" data-outputid="eea25561-424d-4c5e-f231-1b2a60f03c8b" data-execution_count="8">
+<div id="cell-29" class="cell" data-outputid="eea25561-424d-4c5e-f231-1b2a60f03c8b" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tokz.decode(<span class="dv">49407</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>'&lt;|endoftext|&gt;'</code></pre>
 </div>
 </div>
 <p>Now using the text encoder, we’ll create an embedding out of these tokens.</p>
-<div class="cell" data-outputid="aff0a562-a899-49b4-fa6b-6283375dbedc" data-execution_count="9">
+<div id="cell-31" class="cell" data-outputid="aff0a562-a899-49b4-fa6b-6283375dbedc" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>txt_emb <span class="op">=</span> txt_enc(txt_inp[<span class="st">'input_ids'</span>].to(<span class="st">'cuda'</span>))[<span class="dv">0</span>].half()<span class="op">;</span> txt_emb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>tensor([[[-0.3884,  0.0229, -0.0523,  ..., -0.4902, -0.3066,  0.0674],
@@ -475,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
        device='cuda:0', dtype=torch.float16, grad_fn=&lt;NativeLayerNormBackward0&gt;)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="a3e58dce-6f4b-4862-afdb-c2e66b6371b2" data-execution_count="10">
+<div id="cell-32" class="cell" data-outputid="a3e58dce-6f4b-4862-afdb-c2e66b6371b2" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>txt_emb.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>torch.Size([1, 77, 768])</code></pre>
@@ -485,13 +490,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="embeddings-for-cfg" class="level2">
 <h2 class="anchored" data-anchor-id="embeddings-for-cfg">Embeddings for CFG</h2>
 <p>We also need to create an embedding for an empty prompt, also known as the uncondtional prompt. This embedding is what is used to control the guidance.</p>
-<div class="cell" data-outputid="e76bee35-2544-4d96-efec-07561cacc72e" data-execution_count="11">
+<div id="cell-35" class="cell" data-outputid="e76bee35-2544-4d96-efec-07561cacc72e" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>txt_inp[<span class="st">'input_ids'</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>torch.Size([1, 77])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="9adf14dc-304c-497d-93d7-7a510d476cd5" data-execution_count="12">
+<div id="cell-36" class="cell" data-outputid="9adf14dc-304c-497d-93d7-7a510d476cd5" data-execution_count="12">
 <div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> txt_inp[<span class="st">'input_ids'</span>].shape[<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>uncond_inp <span class="op">=</span> tokz(</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-12-3" class="code-annotation-target"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">''</span>] <span class="op">*</span> bs,</span>
@@ -503,11 +508,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="1" data-code-lines="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">We use the maximum length of the prompt so the unconditional prompt embedding matches the size of the text prmpt embedding.</span>
 </dd>
 <dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-12" data-code-annotation="2" data-code-lines="3">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="3" data-code-annotation="2">We also multiply the list containing the empty prompt with the batch size so we have an empty prompt for each text prompt.</span>
 </dd>
 </dl>
 </div>
@@ -525,13 +530,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
          0, 0, 0, 0, 0]])}</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="3479fc9a-e7a2-4d37-e25e-95238211c05a" data-execution_count="13">
+<div id="cell-38" class="cell" data-outputid="3479fc9a-e7a2-4d37-e25e-95238211c05a" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>uncond_inp[<span class="st">'input_ids'</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>torch.Size([1, 77])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="f5df4dc7-4108-4cb4-9d63-ea356f5ce80e" data-execution_count="14">
+<div id="cell-39" class="cell" data-outputid="f5df4dc7-4108-4cb4-9d63-ea356f5ce80e" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>uncond_emb <span class="op">=</span> txt_enc(uncond_inp[<span class="st">'input_ids'</span>].to(<span class="st">'cuda'</span>))[<span class="dv">0</span>].half()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>uncond_emb.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -539,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We can then concatenate both the unconditonal embedding and the text embedding together. This allows images to be generated from each prompt without having to go through the U-Net twice.</p>
-<div class="cell" data-execution_count="15">
+<div id="cell-41" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>embs <span class="op">=</span> torch.cat([uncond_emb, txt_emb])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -547,13 +552,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="create-noisy-image">Create Noisy Image</h2>
 <p>It’s now time to create our noisy image, which will be the starting point for generation.</p>
 <p>We’ll create a single latent that is 64 by 64 pixels, and that also has 4 channels. After the latent is denoised, we’ll decompress it to a 512 by 512 pixel image with 3 channels.</p>
-<div class="cell" data-outputid="688e2ea5-0a4c-448b-ab2d-68ad6d843b7b" data-execution_count="16">
+<div id="cell-44" class="cell" data-outputid="688e2ea5-0a4c-448b-ab2d-68ad6d843b7b" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bs, unet.config.in_channels, h<span class="op">//</span><span class="dv">8</span>, w<span class="op">//</span><span class="dv">8</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>(1, 4, 64, 64)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="3024288e-7040-4278-bad1-2dadb54e54d4" data-execution_count="17">
+<div id="cell-45" class="cell" data-outputid="3024288e-7040-4278-bad1-2dadb54e54d4" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(torch.randn((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(torch.randn((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)).shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -567,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 torch.Size([2, 3, 4])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="785b9471-ad20-4588-f034-b66162979c27" data-execution_count="18">
+<div id="cell-46" class="cell" data-outputid="785b9471-ad20-4588-f034-b66162979c27" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(seed)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> torch.randn((bs, unet.config.in_channels, h<span class="op">//</span><span class="dv">8</span>, w<span class="op">//</span><span class="dv">8</span>))<span class="op">;</span> lats.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
@@ -575,7 +580,7 @@ torch.Size([2, 3, 4])</code></pre>
 </div>
 </div>
 <p>The latent is a rank 4 tensor. <code>1</code> refers to the batch size, which is the number of images being generated. <code>4</code> is the number of channels, and <code>64</code> is the number of pixel with regard to both height and width.</p>
-<div class="cell" data-outputid="f9a646e3-1af6-4798-c8a2-b3271f514520" data-execution_count="19">
+<div id="cell-48" class="cell" data-outputid="f9a646e3-1af6-4798-c8a2-b3271f514520" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lats <span class="op">=</span> lats.to(<span class="st">'cuda'</span>).half()<span class="op">;</span> lats</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>tensor([[[[-0.5044, -0.4163, -0.1365,  ..., -1.6104,  0.1381,  1.7676],
@@ -613,7 +618,7 @@ torch.Size([2, 3, 4])</code></pre>
 </div>
 </div>
 <p>Our latent has random values which represent noise. This noise needs to be scaled so it can work with the scheduler.</p>
-<div class="cell" data-outputid="faa1d689-c840-4715-c0e7-ce8915a83c20" data-execution_count="20">
+<div id="cell-50" class="cell" data-outputid="faa1d689-c840-4715-c0e7-ce8915a83c20" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sched.set_timesteps(n_inf_steps)<span class="op">;</span> sched</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>LMSDiscreteScheduler {
@@ -628,13 +633,13 @@ torch.Size([2, 3, 4])</code></pre>
 }</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="867b1f31-6fe4-4958-9114-20efcbccea23" data-execution_count="21">
+<div id="cell-51" class="cell" data-outputid="867b1f31-6fe4-4958-9114-20efcbccea23" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lats <span class="op">*=</span> sched.init_noise_sigma<span class="op">;</span> sched.init_noise_sigma</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>tensor(14.6146)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="bac85b4e-565b-4487-fc30-68288dbcaf87" data-execution_count="22">
+<div id="cell-52" class="cell" data-outputid="bac85b4e-565b-4487-fc30-68288dbcaf87" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sched.sigmas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>tensor([14.6146, 13.3974, 12.3033, 11.3184, 10.4301,  9.6279,  8.9020,  8.2443,
@@ -648,7 +653,7 @@ torch.Size([2, 3, 4])</code></pre>
          0.2805,  0.2455,  0.2084,  0.1672,  0.1174,  0.0292,  0.0000])</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="2745ccc4-cb84-4de7-a334-7438c064f3eb" data-execution_count="23">
+<div id="cell-53" class="cell" data-outputid="2745ccc4-cb84-4de7-a334-7438c064f3eb" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>sched.timesteps</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>tensor([999.0000, 984.5217, 970.0435, 955.5652, 941.0870, 926.6087, 912.1304,
@@ -664,7 +669,7 @@ torch.Size([2, 3, 4])</code></pre>
        dtype=torch.float64)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="86693bd1-f4c0-4459-b8db-c0b298e61159" data-execution_count="24">
+<div id="cell-54" class="cell" data-outputid="86693bd1-f4c0-4459-b8db-c0b298e61159" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>plt.plot(sched.timesteps, sched.sigmas[:<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
@@ -674,7 +679,7 @@ torch.Size([2, 3, 4])</code></pre>
 <section id="denoise" class="level2">
 <h2 class="anchored" data-anchor-id="denoise">Denoise</h2>
 <p>The denoising process can now begin!</p>
-<div class="cell" data-outputid="cd368f63-0b8e-46c6-8103-be9d08c1fe53" data-execution_count="25">
+<div id="cell-57" class="cell" data-outputid="cd368f63-0b8e-46c6-8103-be9d08c1fe53" data-execution_count="25">
 <div class="sourceCode cell-code" id="annotated-cell-25"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm.auto <span class="im">import</span> tqdm</span>
 <span id="annotated-cell-25-2"><a href="#annotated-cell-25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="annotated-cell-25-3"><a href="#annotated-cell-25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, ts <span class="kw">in</span> <span class="bu">enumerate</span>(tqdm(sched.timesteps)):</span>
@@ -691,23 +696,23 @@ torch.Size([2, 3, 4])</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-annotation="1" data-code-lines="4">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="4" data-code-annotation="1">We first create two latents: one for the text prompt, and one for the unconditional prompt.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-annotation="2" data-code-lines="5">We then further scale the noise on the latents.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="5" data-code-annotation="2">We then further scale the noise on the latents.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-annotation="3" data-code-lines="7">We then predict noise.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="7" data-code-annotation="3">We then predict noise.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-annotation="4" data-code-lines="9,10">We then perform guidance.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="9,10" data-code-annotation="4">We then perform guidance.</span>
 </dd>
 <dt data-target-cell="annotated-cell-25" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-25" data-code-annotation="5" data-code-lines="12">We then subtract the predicted, guided noise from the image.</span>
+<span data-code-cell="annotated-cell-25" data-code-lines="12" data-code-annotation="5">We then subtract the predicted, guided noise from the image.</span>
 </dd>
 </dl>
 </div>
@@ -721,10 +726,10 @@ torch.Size([2, 3, 4])</code></pre>
 <section id="decompress" class="level2">
 <h2 class="anchored" data-anchor-id="decompress">Decompress</h2>
 <p>We can now decompress the latent and display it.</p>
-<div class="cell" data-execution_count="26">
+<div id="cell-61" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.no_grad(): img <span class="op">=</span> vae.decode(<span class="dv">1</span><span class="op">/</span><span class="fl">0.18215</span><span class="op">*</span>lats).sample</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="ed46598b-30cc-4d1d-a050-3e8cd4f77659" data-execution_count="27">
+<div id="cell-62" class="cell" data-outputid="ed46598b-30cc-4d1d-a050-3e8cd4f77659" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> (img <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> <span class="fl">0.5</span>).clamp(<span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> img[<span class="dv">0</span>].detach().cpu().permute(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>).numpy()</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> (img <span class="op">*</span> <span class="dv">255</span>).<span class="bu">round</span>().astype(<span class="st">'uint8'</span>)</span>
@@ -750,7 +755,7 @@ torch.Size([2, 3, 4])</code></pre>
 </ul>
 <section id="create-embeddings" class="level4">
 <h4 class="anchored" data-anchor-id="create-embeddings">Create Embeddings</h4>
-<div class="cell" data-execution_count="28">
+<div id="cell-69" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_embs():</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  txt_inp <span class="op">=</span> tok_seq(prompt)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>  uncond_inp <span class="op">=</span> tok_seq([<span class="st">''</span>]<span class="op">*</span><span class="bu">len</span>(prompt), max_len<span class="op">=</span>txt_inp[<span class="st">'input_ids'</span>].shape[<span class="op">-</span><span class="dv">1</span>])</span>
@@ -775,7 +780,7 @@ torch.Size([2, 3, 4])</code></pre>
 </section>
 <section id="create-latents" class="level4">
 <h4 class="anchored" data-anchor-id="create-latents">Create Latents</h4>
-<div class="cell" data-execution_count="29">
+<div id="cell-71" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_lat():</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  torch.manual_seed(seed)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  lat <span class="op">=</span> torch.randn((bs, unet.config.in_channels, h<span class="op">//</span><span class="dv">8</span>, w<span class="op">//</span><span class="dv">8</span>))</span>
@@ -785,7 +790,7 @@ torch.Size([2, 3, 4])</code></pre>
 </section>
 <section id="denoise-latents" class="level4">
 <h4 class="anchored" data-anchor-id="denoise-latents">Denoise Latents</h4>
-<div class="cell" data-execution_count="30">
+<div id="cell-73" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> denoise(latent, embeddings, timestep):</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>  inp <span class="op">=</span> sched.scale_model_input(torch.cat([latent]<span class="op">*</span><span class="dv">2</span>), timestep)</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> torch.no_grad():</span>
@@ -796,7 +801,7 @@ torch.Size([2, 3, 4])</code></pre>
 </section>
 <section id="decompress-latents" class="level4">
 <h4 class="anchored" data-anchor-id="decompress-latents">Decompress Latents</h4>
-<div class="cell" data-execution_count="31">
+<div id="cell-75" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> decompress_lat(latent):</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">with</span> torch.no_grad(): img <span class="op">=</span> vae.decode(<span class="dv">1</span><span class="op">/</span><span class="fl">0.18215</span><span class="op">*</span>latent).sample</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  img <span class="op">=</span> (img <span class="op">/</span> <span class="dv">2</span> <span class="op">+</span> <span class="fl">0.5</span>).clamp(<span class="dv">0</span>, <span class="dv">1</span>)</span>
@@ -806,7 +811,7 @@ torch.Size([2, 3, 4])</code></pre>
 </section>
 <section id="putting-it-all-together" class="level4">
 <h4 class="anchored" data-anchor-id="putting-it-all-together">Putting it All Together</h4>
-<div class="cell" data-outputid="468933d2-6bbb-4c20-e4c6-f9fe3202e59b" data-execution_count="32">
+<div id="cell-77" class="cell" data-outputid="468933d2-6bbb-4c20-e4c6-f9fe3202e59b" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> [<span class="st">'An antique 18th century painting of a gorilla eating a plate of chips.'</span>]</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>embs <span class="op">=</span> set_embs()</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>lat <span class="op">=</span> set_lat()</span>
@@ -826,7 +831,7 @@ torch.Size([2, 3, 4])</code></pre>
 <section id="negative-prompts." class="level4">
 <h4 class="anchored" data-anchor-id="negative-prompts.">Negative Prompts.</h4>
 <p>To implement negative prompts, we can simply pass in a list containing the negative prompt. This will be used in place of the empty list used for the unconditional prompt.</p>
-<div class="cell" data-execution_count="33">
+<div id="cell-80" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_embs():</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  txt_inp <span class="op">=</span> tok_seq(prompt)</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  uncond_inp <span class="op">=</span> tok_seq(neg_prompt<span class="op">*</span><span class="bu">len</span>(prompt), max_len<span class="op">=</span>txt_inp[<span class="st">'input_ids'</span>].shape[<span class="op">-</span><span class="dv">1</span>])</span>
@@ -845,7 +850,7 @@ torch.Size([2, 3, 4])</code></pre>
 <span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>      return_tensors <span class="op">=</span> <span class="st">'pt'</span></span>
 <span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="b5dd9828-6197-474f-ec90-ea75fffefbf9" data-execution_count="34">
+<div id="cell-81" class="cell" data-outputid="b5dd9828-6197-474f-ec90-ea75fffefbf9" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> [<span class="st">'An antique 18th century painting of a gorilla eating a plate of chips.'</span>]</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>neg_prompt <span class="op">=</span> [<span class="st">'plate'</span>]</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>embs <span class="op">=</span> set_embs()</span>
@@ -869,7 +874,7 @@ torch.Size([2, 3, 4])</code></pre>
 <h3 class="anchored" data-anchor-id="class">Class</h3>
 <p>I’ll be tweaking the code above so that multiple prompts can be input.</p>
 <p>This is as simple as using the length of the list of prompts as the batch size (an image is generated for each prompt).</p>
-<div class="cell" data-execution_count="35">
+<div id="cell-85" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Diffuser:</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, prompts, neg_prompt<span class="op">=</span>[<span class="st">''</span>], guidance<span class="op">=</span><span class="fl">7.5</span>, seed<span class="op">=</span><span class="dv">100</span>, steps<span class="op">=</span><span class="dv">70</span>, width<span class="op">=</span><span class="dv">512</span>, height<span class="op">=</span><span class="dv">512</span>):</span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.prompts <span class="op">=</span> prompts</span>
@@ -932,7 +937,7 @@ torch.Size([2, 3, 4])</code></pre>
 <span id="cb50-60"><a href="#cb50-60" aria-hidden="true" tabindex="-1"></a>        <span class="bu">setattr</span>(<span class="va">self</span>, k, v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now creating a diffuser is as simple as this!</p>
-<div class="cell" data-outputid="dc306e78-4819-434d-f022-22de3bec7980" data-execution_count="36">
+<div id="cell-87" class="cell" data-outputid="dc306e78-4819-434d-f022-22de3bec7980" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>prompts <span class="op">=</span> [</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A lightning bolt striking a jumbo jet; 4k; photorealistic'</span>,</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'A toaster in the style of Jony Ive; modern; different; apple; form over function'</span></span>
@@ -945,20 +950,20 @@ torch.Size([2, 3, 4])</code></pre>
 </script>
 </div>
 </div>
-<div class="cell" data-outputid="d2bfecfa-3b4a-48fe-bdcd-dca8d4bab341" data-execution_count="37">
+<div id="cell-88" class="cell" data-outputid="d2bfecfa-3b4a-48fe-bdcd-dca8d4bab341" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>Image.fromarray(imgs[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <p><img src="13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-outputid="d84be80f-7ade-4400-a85a-4cb65b9acf02" data-execution_count="38">
+<div id="cell-89" class="cell" data-outputid="d84be80f-7ade-4400-a85a-4cb65b9acf02" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>Image.fromarray(imgs[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <p><img src="13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Let’s remove the wooden background from the second image.</p>
-<div class="cell" data-outputid="1d1e1cee-9972-4025-dd92-572876305b7f" data-execution_count="39">
+<div id="cell-91" class="cell" data-outputid="1d1e1cee-9972-4025-dd92-572876305b7f" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> [prompts[<span class="dv">1</span>]]</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>diffuser.update_params(prompts<span class="op">=</span>prompt, neg_prompt<span class="op">=</span><span class="st">'wood'</span>)</span>
 <span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>Image.fromarray(diffuser.diffuse()[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -997,26 +1002,26 @@ torch.Size([2, 3, 4])</code></pre>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-40" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-annotation="1" data-code-lines="4">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="4" data-code-annotation="1">We first check if callbacks are desired (we can’t save how the latents looked like every 0 intervals).</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-annotation="2" data-code-lines="5">An empty list is created to store the images.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="5" data-code-annotation="2">An empty list is created to store the images.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-annotation="3" data-code-lines="8">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="8" data-code-annotation="3">We check if we have reached our desired interval. If the current loop number matches the interval, it should divide the interval cleanly.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-annotation="4" data-code-lines="10">We smoosh all images into one long line.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="10" data-code-annotation="4">We smoosh all images into one long line.</span>
 </dd>
 <dt data-target-cell="annotated-cell-40" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-cell="annotated-cell-40" data-code-annotation="5" data-code-lines="11">The image is displayed.</span>
+<span data-code-cell="annotated-cell-40" data-code-lines="11" data-code-annotation="5">The image is displayed.</span>
 </dd>
 </dl>
-<div class="cell" data-execution_count="40">
+<div id="cell-97" class="cell" data-execution_count="40">
 <details>
 <summary>Diffuser Class Redefined</summary>
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Diffuser:</span>
@@ -1089,7 +1094,7 @@ torch.Size([2, 3, 4])</code></pre>
 <span id="cb55-68"><a href="#cb55-68" aria-hidden="true" tabindex="-1"></a>        <span class="bu">setattr</span>(<span class="va">self</span>, key, value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell" data-outputid="c7c38332-d72e-48aa-c804-7aaa4367f5d2" data-execution_count="41">
+<div id="cell-98" class="cell" data-outputid="c7c38332-d72e-48aa-c804-7aaa4367f5d2" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> [<span class="st">'A toaster in the style of Jony Ive; modern; realistic; different; apple; form over function'</span>]</span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>diffuser <span class="op">=</span> Diffuser(prompts<span class="op">=</span>prompt, neg_prompt<span class="op">=</span>[<span class="st">'wood'</span>], seed<span class="op">=</span><span class="dv">42</span>)</span>
 <span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>Image.fromarray(diffuser.diffuse(interval<span class="op">=</span><span class="dv">7</span>)[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1205,10 +1210,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1218,8 +1222,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1232,6 +1245,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1275,6 +1342,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1361,10 +1429,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
 </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1416,6 +1488,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.205">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -51,6 +51,11 @@ ul.task-list li input[type="checkbox"] {
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -71,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:title" content="ForBo7 // Salman Naqvi - My Musings Through Stable Diffusion">
 <meta property="og:description" content="Exploring the various knobs and dials of stable diffusion.">
 <meta property="og:image" content="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png">
-<meta property="og:site-name" content="ForBo7 // Salman Naqvi">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
 <meta property="og:image:height" content="512">
 <meta property="og:image:width" content="512">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
@@ -90,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
@@ -127,11 +132,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
     <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -205,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="../images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-1"><img src="../images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
 </figure>
 </div>
 <p>I recently began <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
@@ -215,20 +220,20 @@ ul.task-list li input[type="checkbox"] {
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald." data-gallery="quarto-lightbox-gallery-2"><img src="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
 <figcaption class="figure-caption">A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" title="The gif itself has artefacts due to compression…" data-gallery="quarto-lightbox-gallery-3"><img src="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
 <figcaption class="figure-caption">The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="This image displays all images in the gif above in a grid."><img src="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" title="This image displays all images in the gif above in a grid." data-gallery="quarto-lightbox-gallery-4"><img src="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
 </figure>
 </div>
 <p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
@@ -238,19 +243,19 @@ ul.task-list li input[type="checkbox"] {
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-5"><img src="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 <figcaption class="figure-caption">A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="A grasshopper riding a bunny."><img src="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-6"><img src="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 <p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."><img src="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-7"><img src="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 </section>
@@ -261,7 +266,7 @@ ul.task-list li input[type="checkbox"] {
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="../images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-8"><img src="../images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
@@ -273,14 +278,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-9"><img src="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle" data-gallery="quarto-lightbox-gallery-10"><img src="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
 <figcaption class="figure-caption">Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
@@ -291,20 +296,20 @@ ul.task-list li input[type="checkbox"] {
 <p>I quickly mocked up the following image.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."><img src="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky." data-gallery="quarto-lightbox-gallery-11"><img src="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
 </figure>
 </div>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" title="A bench under a tree in a park" data-gallery="quarto-lightbox-gallery-12"><img src="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" title="A low poly 3D render of a bench under a tree in a park" data-gallery="quarto-lightbox-gallery-13"><img src="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
@@ -320,7 +325,7 @@ ul.task-list li input[type="checkbox"] {
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle" data-gallery="quarto-lightbox-gallery-14"><img src="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
@@ -417,10 +422,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -430,8 +434,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -444,6 +457,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -487,6 +554,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -573,10 +641,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
 </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -628,7 +700,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","closeEffect":"zoom","selector":".lightbox","loop":true,"descPosition":"bottom"});</script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":true,"openEffect":"zoom","selector":".lightbox"});</script>
+
 
 
 

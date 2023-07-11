@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.205">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -83,6 +83,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -103,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:title" content="ForBo7 // Salman Naqvi - Adding Subscriptions to a Quarto Site">
 <meta property="og:description" content="A no nonsense, to the point guide to implementing subscriptions in your Quarto site.">
 <meta property="og:image" content="https://forbo7.github.io/forblog/images/7_blog_subscriptions/thumbnail.png">
-<meta property="og:site-name" content="ForBo7 // Salman Naqvi">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
 <meta property="og:image:height" content="768">
 <meta property="og:image:width" content="768">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
@@ -122,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
@@ -159,11 +164,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
     <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -332,15 +337,18 @@ Tip
 <p>On Google Forms, you have an option to implement email checking with the following option.</p>
 <p><img src="../images/7_blog_subscriptions/manual/2.png" class="img-fluid"></p>
 <p><img src="../images/7_blog_subscriptions/manual/3.png" class="img-fluid"></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You may want to allow responses to be edited after submission, create a confirmation message, and disable a link to submit another response.</p>
 <p>In Google Forms, these options can be toggled under the ‘Settings’ tab.</p>
-</div>
 </div>
 </div>
 </section>
@@ -395,15 +403,18 @@ Before you hit that send button!
 </section>
 <section id="step-0-extras" class="level3">
 <h3 class="anchored" data-anchor-id="step-0-extras">Step 0: Extras</h3>
-<div class="callout callout-style-simple callout-tip">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You could combine the subscribe and unsubscribe forms into a single form so it would be easier to manage. The form would initially ask if a user would like to subscribe or unsubscribe. Based on their input, the form would take them to the appropriate section.</p>
 <p>Further expanding on this, if your site has multiple feeds, the form could also ask which feed the user would like to subscribe to or unsubscribe from.</p>
-</div>
 </div>
 </div>
 </section>
@@ -508,10 +519,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -521,8 +531,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -535,6 +554,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -578,6 +651,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -664,10 +738,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
 </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -719,6 +797,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

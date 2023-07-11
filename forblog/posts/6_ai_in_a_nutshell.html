@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.205">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -48,6 +48,11 @@ ul.task-list li input[type="checkbox"] {
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -73,7 +78,7 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:title" content="ForBo7 // Salman Naqvi - AI in a Nutshell">
 <meta property="og:description" content="AI models are much, much simpler than you think.">
 <meta property="og:image" content="https://forbo7.github.io/forblog/images/6_ai_in_a_nutshell/thumbnail.png">
-<meta property="og:site-name" content="ForBo7 // Salman Naqvi">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
 <meta property="og:image:height" content="1024">
 <meta property="og:image:width" content="1024">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
@@ -92,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
@@ -129,11 +134,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
     <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -230,7 +235,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="simple-case-quadratic-function">Simple Case: Quadratic Function</h2>
 <p><em>Gasp!</em> A quadratic?? What’s this nonsense!</p>
 <p>A quadratic is a very simple equation. When shown on a graph, it looks like this.</p>
-<div class="cell" data-execution_count="5">
+<div id="8fc36543" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
@@ -262,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
 <p>We’ll break this down by going over the very simple example.</p>
 <p>Let’s say we have the following data points that describe, say, the speed of an object with respect to time. We want to predict what the speed of an object would be outside these data points.</p>
 <p>The horizontal axis is time and the vertical axis is the object’s speed.</p>
-<div class="cell" data-tags="[]" data-execution_count="7">
+<div id="f959959d-cd81-4531-ae30-04bbcbfcd1ce" class="cell" data-tags="[]" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
@@ -270,21 +275,21 @@ ul.task-list li input[type="checkbox"] {
 <p>We can see that the data looks like the quadratic function shown above! Therefore, we could use the quadratic to predict what the speed of the object would be after 2.0 s and before -2.0 s.</p>
 <p>A quadratic equation includes three numbers which we will call <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>. These three numbers affect or control how our quadratic function will end up looking. <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> are our <strong>parameters</strong>.</p>
 <p>Let’s let <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> all equal <span class="math inline">\(1\)</span> to begin with.</p>
-<div class="cell" data-execution_count="8">
+<div id="f7175b28-a8b7-42da-9717-0c35c891724c" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Hmm, not a very good fit.</p>
 <p>Let’s try another set of values for the parameters: <span class="math inline">\(2\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(1.5\)</span>.</p>
-<div class="cell" data-tags="[]" data-execution_count="9">
+<div id="bea84315-2cbf-46a5-b908-ac315bcde997" class="cell" data-tags="[]" data-execution_count="9">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Looking much better now!</p>
 <p>Let’s see what <span class="math inline">\(2\)</span>, <span class="math inline">\(0\)</span>, and <span class="math inline">\(1.5\)</span> gives us.</p>
-<div class="cell" data-execution_count="10">
+<div id="56db2757-accb-4bbf-9a4b-6bc5c78bc26c" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
@@ -294,19 +299,19 @@ ul.task-list li input[type="checkbox"] {
 <p>There are many different ways loss can be calculated. The way we will be doing it is known as <strong>mean absolute error (MAE)</strong>. In simple terms, it tells us how far off each prediction is from the actual value. For example, if we have a MAE of 1, this means that, on average, each prediction we make is 1 unit off from the real value.</p>
 <p>In our case, a MAE of 1 would mean that each prediction is on average 1 m/s off from the real value.</p>
 <p>Let’s repeat what we did above, but this time, we’ll also see what the MAE is.</p>
-<div class="cell" data-execution_count="12">
+<div id="76e029bd" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Again, this means that on average, each prediction we will make is 2.61 m/s off from the real value.</p>
-<div class="cell" data-execution_count="13">
+<div id="676b9af7" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>That’s a big jump!</p>
-<div class="cell" data-execution_count="14">
+<div id="6b25e46c" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
 </div>
@@ -337,7 +342,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Let’s give <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> an arbitrary set of parameters <span class="math inline">\(1.1\)</span>, <span class="math inline">\(1.1\)</span>, and <span class="math inline">\(1.1\)</span>.</p>
 <p>Now let’s create a quadratic with this set of parameters and calculate its mean absolute error.</p>
-<div class="cell" data-execution_count="16">
+<div id="bb00c846" class="cell" data-execution_count="16">
 <div class="cell-output cell-output-display">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -387,7 +392,7 @@ Code Output
 </div>
 </div>
 <p>Lets see this tangibly.</p>
-<div class="cell" data-execution_count="17">
+<div id="59621e10" class="cell" data-execution_count="17">
 <div class="cell-output cell-output-display">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -406,7 +411,7 @@ Code Output
 </div>
 <p>Okay, let’s break this down. The gradient for the first parameter <span class="math inline">\(a\)</span> is <span class="math inline">\(-1.35\)</span>. This tells us that if we increase the parameter <span class="math inline">\(a\)</span> by <span class="math inline">\(1\)</span>, our loss will decrease by <span class="math inline">\(-1.35\)</span>. Similary, if we increase the parameter <span class="math inline">\(b\)</span> by <span class="math inline">\(1\)</span>, this will result in the loss being decreased by <span class="math inline">\(-0.03\)</span>. The same logic holds for <span class="math inline">\(c\)</span>.</p>
 <p>Let’s now update the parameters. Remember, the current set of parameters, their gradients, and the learning rate all update the current set of parameters to new values.</p>
-<div class="cell" data-execution_count="18">
+<div id="e650f22a" class="cell" data-execution_count="18">
 <div class="cell-output cell-output-display">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -424,7 +429,7 @@ Code Output
 </div>
 </div>
 <p>We can now repeat the process as many times as desired. Let’s do it 4 times.</p>
-<div class="cell" data-execution_count="19">
+<div id="8435fb11" class="cell" data-execution_count="19">
 <div class="cell-output cell-output-stdout">
 <pre><code>Pass: 0; Loss: 2.4010409560416095
 Pass: 1; Loss: 1.9847692009423128
@@ -452,7 +457,7 @@ Code Output
 </div>
 <p>And there you go! An even better fitting quadratic!</p>
 <p>Let’s see what the object’s speed is at 1 second.</p>
-<div class="cell" data-execution_count="20">
+<div id="680a267b" class="cell" data-execution_count="20">
 <div class="cell-output cell-output-display">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -471,7 +476,7 @@ Code Output
 </div>
 <p>That roughly seems right!</p>
 <p>Let’s see what the object’s speed would be at 3 seconds.</p>
-<div class="cell" data-execution_count="21">
+<div id="651f8feb" class="cell" data-execution_count="21">
 <div class="cell-output cell-output-display">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -520,37 +525,37 @@ Code Output
 <p>The ReLU takes any value that is less than 0, and converts to 0.</p>
 <p>Let’s see this.</p>
 <p>Take the following line. It has both positive and negative values on the vertical axis.</p>
-<div class="cell" data-execution_count="22">
+<div id="11928802" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>When we use a ReLU, all negative values are converted to zero.</p>
-<div class="cell" data-execution_count="23">
+<div id="a280f3aa" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Let’s return to our original data.</p>
-<div class="cell" data-execution_count="24">
+<div id="e0c3728b" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Now a single ReLU won’t work as seen below.</p>
-<div class="cell" data-execution_count="25">
+<div id="abe007b3" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Even after we try to fit it.</p>
-<div class="cell" data-execution_count="26">
+<div id="d721709d" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>But look at what happens when two ReLUs are, literally, added together!</p>
-<div class="cell" data-execution_count="27">
+<div id="6268423d" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
 </div>
@@ -566,28 +571,28 @@ Code Output
 - Seed 10: 45 passes; lr=0.1
 - Seed 33; 50 passes; lr=0.05
 - Seed 38, 196 passes; lr=0.01 -->
-<div class="cell" data-execution_count="31">
+<div id="dba7b121" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>You can see here how the function is adapting to the shape of the data.</p>
 <p>With some extra experimentation, I was able to get the loss down to 1.08!</p>
-<div class="cell" data-execution_count="32">
+<div id="56738df9" class="cell" data-execution_count="32">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>That said, it’s not too much of a difference when compared to two ReLUs.</p>
 <p>What if we add 5 more to the mix, for a total of 8?</p>
-<div class="cell" data-execution_count="35">
+<div id="24319274" class="cell" data-execution_count="35">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Nice! The MAE has gone below 1!</p>
 <p>It’s even beat the quadratic function from before! With some expermimenting, I had managed to get the quadratic’s loss down to 1.03.</p>
-<div class="cell" data-execution_count="36">
+<div id="6a4d960f" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display">
 <p><img src="6_ai_in_a_nutshell_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>
@@ -595,7 +600,7 @@ Code Output
 <!-- - Seed 16; 36 passes; lr=0.1
 - Seed 42; 37 passes; lr=0.5 -->
 <p>Let’s use the model that has 8 ReLUs to predict what the object’s velocity would be at 1 second.</p>
-<div class="cell" data-execution_count="39">
+<div id="25348510" class="cell" data-execution_count="39">
 <div class="cell-output cell-output-display">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -714,10 +719,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -727,8 +731,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -741,6 +754,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -784,6 +851,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -870,10 +938,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
 </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -925,6 +997,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.205">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -48,6 +48,11 @@ ul.task-list li input[type="checkbox"] {
   "panel-placement": "end",
   "type": "overlay",
   "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -70,7 +75,7 @@ ul.task-list li input[type="checkbox"] {
 <meta property="og:title" content="ForBo7 // Salman Naqvi - Intuitively Approaching Einstein Summation Notation">
 <meta property="og:description" content="An alternative way to write matrix operations.">
 <meta property="og:image" content="https://forbo7.github.io/forblog/images/16_einstein_summation/thumbnail.png">
-<meta property="og:site-name" content="ForBo7 // Salman Naqvi">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
 <meta property="og:image:height" content="1200">
 <meta property="og:image:width" content="1200">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
@@ -89,7 +94,7 @@ ul.task-list li input[type="checkbox"] {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
@@ -126,11 +131,11 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
     <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -220,14 +225,17 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>This post covers einstein summation notation syntax in terms of programming languages.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This post covers einstein summation notation syntax in terms of programming languages.</p>
 </div>
 </div>
 <p><img src="../images/16_einstein_summation/thumbnail.png" class="img-fluid"></p>
@@ -274,8 +282,8 @@ B
 3 &amp; 2 &amp; 1
 \end{bmatrix}
 \]</span></p>
-<div class="page-columns page-full"><p>To access the element 8 in matrix <span class="math inline">\(A\)</span>, we need to return the second row and first column<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This can be denoted as <span class="math inline">\(a_{21}\)</span>. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as <span class="math inline">\(a_{ij}\)</span>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This assumes the matrix is zero indexed. This means <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}\)</span> is the zeroth row of <span class="math inline">\(A\)</span>.</p></li></div></div>
-<p>Taking the hadamard product looks like this.</p>
+<p>To access the element 8 in matrix <span class="math inline">\(A\)</span>, we need to return the second row and first column<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This can be denoted as <span class="math inline">\(a_{21}\)</span>. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as <span class="math inline">\(a_{ij}\)</span>.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This assumes the matrix is zero indexed. This means <span class="math inline">\(\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}\)</span> is the zeroth row of <span class="math inline">\(A\)</span>.</p></li></div><p>Taking the hadamard product looks like this.</p>
 <p><span class="math display">\[
 \begin{bmatrix}
 1 &amp; 2 &amp; 3 \\
@@ -298,7 +306,7 @@ B
 C
 \]</span></p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -307,16 +315,19 @@ An alternative way to look at it…
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
 </div>
 </div>
 <p><span class="math display">\[
@@ -385,7 +396,7 @@ C
 \]</span></p>
 <!-- TODO: Might want to remove the example below or position it after the einsum notation for matrix multiplication. -->
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -394,16 +405,19 @@ An alternative way to look at it…
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
 </div>
 </div>
 <p><span class="math display">\[
@@ -476,14 +490,17 @@ A = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, B = \begin{bmatrix} 4 \\ 5 \\ 6 \
 <section id="einsum-notation-1" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-1"><strong>Einsum Notation</strong></h5>
 <p><span class="math inline">\(i \rightarrow \phantom{i}\)</span></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>A scalar is output, hence no output iterator.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A scalar is output, hence no output iterator.</p>
 </div>
 </div>
 <hr>
@@ -510,14 +527,17 @@ A = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, B = \begin{bmatrix} 4 \\ 5 \\ 6 \
 <section id="einsum-notation-3" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-3"><strong>Einsum Notation</strong></h5>
 <p><span class="math inline">\(i, i \rightarrow \phantom{i}\)</span></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>A scalar is output, hence no output iterator.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A scalar is output, hence no output iterator.</p>
 </div>
 </div>
 <hr>
@@ -533,7 +553,7 @@ A = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}, B = \begin{bmatrix} 4 \\ 5 \\ 6 \
 <h5 class="anchored" data-anchor-id="einsum-notation-4"><strong>Einsum Notation</strong></h5>
 <p><span class="math inline">\(i, j \rightarrow ij\)</span></p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -542,7 +562,7 @@ Expanded example
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The outer product involves multiplying each element in <span class="math inline">\(A\)</span> with all elements in <span class="math inline">\(B\)</span>.</p>
 <blockquote class="blockquote">
@@ -625,14 +645,17 @@ B
 <section id="einsum-notation-8" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-8"><strong>Einsum Notation</strong></h5>
 <p><span class="math inline">\(ii \rightarrow \phantom{i}\)</span></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>A scalar is output, hence no output iterator.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A scalar is output, hence no output iterator.</p>
 </div>
 </div>
 <hr>
@@ -708,14 +731,17 @@ B
 <section id="einsum-notation-14" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-14"><strong>Einsum Notation</strong></h5>
 <p><span class="math inline">\(ik, jk \rightarrow ijk\)</span></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>A three dimensional tensor is output, hence the three output iterators.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A three dimensional tensor is output, hence the three output iterators.</p>
 </div>
 </div>
 <hr>
@@ -731,14 +757,17 @@ B
 <section id="einsum-notation-15" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-15"><strong>Einsum Notation</strong></h5>
 <p><span class="math inline">\(ij, kl \rightarrow ijkl\)</span></p>
-<div class="callout callout-style-simple callout-note">
-<div class="callout-body d-flex">
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-body-container">
-<p>A four dimensional tensor is output, hence the four output iterators.</p>
+<div class="callout-title-container flex-fill">
+
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A four dimensional tensor is output, hence the four output iterators.</p>
 </div>
 </div>
 </section>
@@ -835,10 +864,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -848,8 +876,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -862,6 +899,60 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      try { hash = new URL(url).hash; } catch {}
+      const id = hash.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note !== null) {
+        try {
+          const html = processXRef(id, note);
+          instance.setContent(html);
+        } finally {
+          instance.enable();
+          instance.show();
+        }
+      } else {
+        // See if we can fetch this
+        fetch(url.split('#')[0])
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.getElementById(id);
+          if (note !== null) {
+            const html = processXRef(id, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -905,6 +996,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -991,10 +1083,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
 </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left"><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</div>   
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.1</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
@@ -1046,6 +1142,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 
