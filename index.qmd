@@ -73,6 +73,5 @@ Click [here](web_apps/index.qmd) to play more in the playground.
 :::
 
 
-![](web_apps/images/coming_soon/thumbnail.png){width=80%}
 ::::
 :::::
