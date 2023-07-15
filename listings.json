@@ -70,6 +70,14 @@
     ]
   },
   {
+    "listing": "/web_apps/index.html",
+    "items": [
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
+    ]
+  },
+  {
     "listing": "/testing_page.html",
     "items": [
       "/forblog/posts/17_meanshift_clustering.html",

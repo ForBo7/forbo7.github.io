@@ -592,7 +592,7 @@
     "href": "web_apps/index.html",
     "title": "App Playground",
     "section": "",
-    "text": "The playground is currently offline."
+    "text": "Here you can view various apps and gizmos I’ve created. Have a play through some of them let me know what you think!\nMore apps coming soon.™\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\n\nImage Classification\n\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nTuesday, 20 September 2022 | 2022-09-20\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\n\nImage Classification\n\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nSaturday, 30 April 2022 | 2022-04-30\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\nLoading…"
   },
   {
     "objectID": "web_apps/apps/bear_detector.html",
@@ -1020,6 +1020,13 @@
     "title": "Site Patch Notes",
     "section": "",
     "text": "Detailed patchnotes are unavailable prior to site version 2.0.0.0."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.2.0.2-15-july-2023",
+    "href": "patch_notes.html#version-2.2.0.2-15-july-2023",
+    "title": "Site Patch Notes",
+    "section": "Version 2.2.0.2 | 15 July 2023",
+    "text": "Version 2.2.0.2 | 15 July 2023\n\nRe-enabled App Playground."
   },
   {
     "objectID": "patch_notes.html#version-2.2.0.1-13-may-2023",
