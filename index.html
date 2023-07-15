@@ -94,6 +94,34 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-landing-apps .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-landing-apps'] = new List('listing-landing-apps', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
@@ -242,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Click <a href="./forblog/index.html">here</a> to check out the latest on the ForBlog.</p>
 <div id="listing-landing-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Creating Models" data-listing-date-sort="1687305600000" data-listing-file-modified-sort="1689439067063" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-right" data-index="0" data-categories="Creating Models" data-listing-date-sort="1687305600000" data-listing-file-modified-sort="1689439141903" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="./forblog/posts/17_meanshift_clustering.html"> <img src="./forblog/images/17_meanshift_clustering/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -270,7 +298,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Mathematics,Programming" data-listing-date-sort="1686009600000" data-listing-file-modified-sort="1689439067035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
+<div class="quarto-post image-right" data-index="1" data-categories="Mathematics,Programming" data-listing-date-sort="1686009600000" data-listing-file-modified-sort="1689439141875" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
 <div class="thumbnail">
 <p><a href="./forblog/posts/16_einstein_summation_notation.html"> <img src="./forblog/images/16_einstein_summation/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -298,7 +326,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Diffusion,Creating Models,Papers" data-listing-date-sort="1685318400000" data-listing-file-modified-sort="1689439067035" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-right" data-index="2" data-categories="Diffusion,Creating Models,Papers" data-listing-date-sort="1685318400000" data-listing-file-modified-sort="1689439141875" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="./forblog/posts/15_un_successfully_implementing_diffedit.html"> <img src="./forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -334,11 +362,86 @@ No matching items
 </section>
 <section id="playground" class="level2 g-col-12 g-col-md-6 animate__animated animate__fadeIn animate__faster animate__delay-1s">
 <h2 data-anchor-id="playground">Playground</h2>
-<!-- Click [here](web_apps/index.qmd) to play more in the playground.
+<p>Click <a href="./web_apps/index.html">here</a> to play more in the playground.</p>
+<div id="listing-landing-apps" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1689439142067" data-listing-reading-time-sort="1">
+<a href="./web_apps/apps/coming_soon.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./web_apps/images/coming_soon/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+More apps coming soon…
+</h5>
+<div class="card-text listing-description">
 
-:::{#landing-apps}
-::: -->
-<p>The playground is currently offline.</p>
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Image Classification" data-listing-date-sort="1663632000000" data-listing-file-modified-sort="1689439142067" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./web_apps/apps/flood_detector.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Flood Classifier
+</h5>
+<div class="card-text listing-description">
+How well can you classify floods?
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Salman Naqvi
+</div>
+<div class="listing-date">
+Sep 20, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="Image Classification" data-listing-date-sort="1651276800000" data-listing-file-modified-sort="1689439142067" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<a href="./web_apps/apps/bear_detector.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./forblog/images/2_bear_classifier_model/thumbnail.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Bear Classifier
+</h5>
+<div class="card-text listing-description">
+Can you spot a black bear in a black night?
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Salman Naqvi
+</div>
+<div class="listing-date">
+Apr 30, 2022
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div>
 <p><img src="web_apps/images/coming_soon/thumbnail.png" class="img-fluid" style="width:80.0%"></p>
 </section>
 </div>
