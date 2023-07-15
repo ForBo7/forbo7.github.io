@@ -12,14 +12,14 @@ listing:
     sort: 
       - "date desc"
       - "title asc"
-  # - id: landing-apps
-  #   contents: web_apps/apps
-  #   type: grid
-  #   max-items: 6
-  #   grid-columns: 3
-  #   sort: 
-  #     - "date desc"
-  #     - "title asc"
+  - id: landing-apps
+    contents: web_apps/apps
+    type: grid
+    max-items: 6
+    grid-columns: 3
+    sort: 
+      - "date desc"
+      - "title asc"
 about:
   id: about-forbo7
   template: jolla
@@ -67,11 +67,10 @@ Click [here](forblog/index.qmd) to check out the latest on the ForBlog.
 ::::
 ::::{.g-col-12 .g-col-md-6 .animate__animated .animate__fadeIn .animate__faster .animate__delay-1s}
 ## Playground
-<!-- Click [here](web_apps/index.qmd) to play more in the playground.
+Click [here](web_apps/index.qmd) to play more in the playground.
 
 :::{#landing-apps}
-::: -->
-The playground is currently offline.
+:::
 
 
 ![](web_apps/images/coming_soon/thumbnail.png){width=80%}
