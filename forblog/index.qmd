@@ -2,6 +2,7 @@
 title: '{{< animate fadeInDown "Welcome to ForBlog by ForBo7" >}}'
 comments: false
 margin-header: "[ForBlog](https://forbo7.github.io/forblog/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
+# Can't seem to get ToC working.
 toc: false
 listing:
   - id: posts
@@ -18,6 +19,23 @@ listing:
     image-align: left
     date-format: "DD MMMM YYYY"
     fields: [title, subtitle, author, description, date, image, reading-time]
+  - id: featured
+    contents: 
+      - posts/15_un_successfully_implementing_diffedit.ipynb
+      - posts/13_implementing_stable_diffusion_from_its_components.ipynb
+      - posts/12_stable_diffusion_summarized.qmd
+      - posts/10_how_to_convert_audio_to_spectrogram_images.ipynb
+      - posts/8_how_to_use_apple_gpu_with_pytorch.qmd
+    categories: false
+    sort: false
+    sort-ui: false
+    filter-ui: false
+    type: grid
+    grid-columns: 3
+    image-height: 100%
+    page-size: 3
+    date-format: "DD MMMM YYYY"
+    fields: [title, description, author, date, image]
 format:
   html:
     page-layout: full
@@ -31,10 +49,17 @@ twitter-card:
 
 {{< animate fadeInDown 'Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.' >}}
 
-<br></br>
-
 ::::{.animate__animated .animate__slideInLeft .animate__duration-250ms}
 
+### Featured Posts
+:::{#featured}
+:::
+
+<br></br>
+---
+<br></br>
+
+### All Posts
 :::{#posts}
 :::
 

@@ -16,6 +16,7 @@ listing:
     grid-columns: 3
     grid-item-border: true
     grid-item-align: left
+    image-height: 100%
     date-format: "dddd, DD MMMM YYYY | YYYY-MM-DD"
 format:
   html:
