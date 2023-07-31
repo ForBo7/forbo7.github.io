@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.226">
+<meta name="generator" content="quarto-1.4.268">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -96,6 +96,35 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-featured .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-author','listing-date','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      page: 3,
+    pagination: { item: "<li class='page-item'><a class='page page-link' href='#'></a></li>" },
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-featured'] = new List('listing-featured', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
 <style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
@@ -177,7 +206,7 @@ ul.task-list li input[type="checkbox"] {
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar"><div class="quarto-margin-header"><div class="margin-header-item">
 <p><a href="https://forbo7.github.io/forblog/">ForBlog</a> © 2023 by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1">CC BY-NC 4.0</a></p>
 </div></div>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(17)</span></div><div class="category" data-category="Analyzing Models">Analyzing Models <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Approaching AI">Approaching AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Bits and Bobs">Bits and Bobs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Collaboration">Collaboration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Computer Vision">Computer Vision <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Creating Models">Creating Models <span class="quarto-category-count">(7)</span></div><div class="category" data-category="Data">Data <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Diffusion">Diffusion <span class="quarto-category-count">(4)</span></div><div class="category" data-category="LLMs">LLMs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Mathematics">Mathematics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Papers">Papers <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Programming">Programming <span class="quarto-category-count">(1)</span></div><div class="category" data-category="PyTorch">PyTorch <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Quarto">Quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Transformers">Transformers <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(22)</span></div><div class="category" data-category="Analyzing Models">Analyzing Models <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Approaching AI">Approaching AI <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Bits and Bobs">Bits and Bobs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Collaboration">Collaboration <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Computer Vision">Computer Vision <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Creating Models">Creating Models <span class="quarto-category-count">(10)</span></div><div class="category" data-category="Data">Data <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Diffusion">Diffusion <span class="quarto-category-count">(7)</span></div><div class="category" data-category="LLMs">LLMs <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Mathematics">Mathematics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Papers">Papers <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Programming">Programming <span class="quarto-category-count">(1)</span></div><div class="category" data-category="PyTorch">PyTorch <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Quarto">Quarto <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Transformers">Transformers <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -196,11 +225,154 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
 
 <p><span class="animate__animated animate__fadeInDown" style="display: inline-block;">Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.</span></p>
-<p><br><br></p>
 <div class="animate__animated animate__slideInLeft animate__duration-250ms">
+<section id="featured-posts" class="level3">
+<h3 class="anchored" data-anchor-id="featured-posts">Featured Posts</h3>
+<div id="listing-featured" class="quarto-listing quarto-listing-container-grid">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="Diffusion,Creating Models,Papers" data-listing-date-sort="1685318400000" data-listing-file-modified-sort="1690791729205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="../forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+(Un)successfully Implementing DiffEdit
+</h5>
+<div class="card-text listing-description">
+An attempt at implementing the DiffEdit paper.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Salman Naqvi
+</div>
+<div class="listing-date">
+29 May 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="Diffusion,Creating Models" data-listing-date-sort="1682640000000" data-listing-file-modified-sort="1690791729165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="../forblog/images/13_implementing_stable_diffusion_from_its_components/thumbnail.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Implementing Stable Diffusion From Its Components
+</h5>
+<div class="card-text listing-description">
+Implementing stable diffusion from the 🤗 🧨 library.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Salman Naqvi
+</div>
+<div class="listing-date">
+28 April 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="Diffusion,Creating Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1690791729097" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<a href="../forblog/posts/12_stable_diffusion_summarized.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="../forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Stable Diffusion, Summarized
+</h5>
+<div class="card-text listing-description">
+A concise, high level overview on the mechanisms of stable diffusion.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Salman Naqvi
+</div>
+<div class="listing-date">
+13 April 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="Computer Vision,Data,PyTorch" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1690791729097" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img data-src="../forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+How to Convert Audio to Spectrogram Images
+</h5>
+<div class="card-text listing-description">
+A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Salman Naqvi
+</div>
+<div class="listing-date">
+05 April 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="PyTorch" data-listing-date-sort="1674691200000" data-listing-file-modified-sort="1690791729377" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img data-src="../forblog/images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" class="thumbnail-image card-img" style="height: 100%;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch
+</h5>
+<div class="card-text listing-description">
+Squeezing out that extra performance.
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Salman Naqvi
+</div>
+<div class="listing-date">
+26 January 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+<nav id="featured-pagination" class="listing-pagination" aria-label="Page Navigation">
+  <ul class="pagination"></ul>
+</nav>
+</div>
+<p><br><br></p>
+<hr>
+<p><br><br></p>
+</section>
+<section id="all-posts" class="level3">
+<h3 class="anchored" data-anchor-id="all-posts">All Posts</h3>
 <div id="listing-posts" class="quarto-listing quarto-listing-container-default">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
@@ -225,7 +397,7 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="Creating Models" data-listing-date-sort="1687305600000" data-listing-file-modified-sort="1689439810566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-left" data-index="0" data-categories="Creating Models" data-listing-date-sort="1687305600000" data-listing-file-modified-sort="1690791729233" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="../forblog/posts/17_meanshift_clustering.html"> <img src="../forblog/images/17_meanshift_clustering/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -256,7 +428,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-categories="Mathematics,Programming" data-listing-date-sort="1686009600000" data-listing-file-modified-sort="1689439810538" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
+<div class="quarto-post image-left" data-index="1" data-categories="Mathematics,Programming" data-listing-date-sort="1686009600000" data-listing-file-modified-sort="1690791729205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10">
 <div class="thumbnail">
 <p><a href="../forblog/posts/16_einstein_summation_notation.html"> <img src="../forblog/images/16_einstein_summation/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -287,7 +459,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="2" data-categories="Diffusion,Creating Models,Papers" data-listing-date-sort="1685318400000" data-listing-file-modified-sort="1689439810538" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-left" data-index="2" data-categories="Diffusion,Creating Models,Papers" data-listing-date-sort="1685318400000" data-listing-file-modified-sort="1690791729205" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html"> <img src="../forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -318,7 +490,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="3" data-categories="Python,Bits and Bobs" data-listing-date-sort="1683072000000" data-listing-file-modified-sort="1689439810498" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
+<div class="quarto-post image-left" data-index="3" data-categories="Python,Bits and Bobs" data-listing-date-sort="1683072000000" data-listing-file-modified-sort="1690791729165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
 <div class="thumbnail">
 <p><a href="../forblog/posts/14_iterators_and_generators.html"> <img src="../forblog/images/14_iterators_and_generators/thumbnail.jpg" class="thumbnail-image"> </a></p>
 </div>
@@ -349,7 +521,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="4" data-categories="Diffusion,Creating Models" data-listing-date-sort="1682640000000" data-listing-file-modified-sort="1689439810498" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-left" data-index="4" data-categories="Diffusion,Creating Models" data-listing-date-sort="1682640000000" data-listing-file-modified-sort="1690791729165" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html"> <img src="../forblog/images/13_implementing_stable_diffusion_from_its_components/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -380,7 +552,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="5" data-categories="Diffusion,Analyzing Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1689439810434" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-left" data-index="5" data-categories="Diffusion,Analyzing Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1690791729097" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
 <p><a href="../forblog/posts/11_musings_through_stable_diffusion.html"> <img src="../forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -411,7 +583,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="6" data-categories="Diffusion,Creating Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1689439810434" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
+<div class="quarto-post image-left" data-index="6" data-categories="Diffusion,Creating Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1690791729097" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8">
 <div class="thumbnail">
 <p><a href="../forblog/posts/12_stable_diffusion_summarized.html"> <img src="../forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="thumbnail-image"> </a></p>
 </div>
@@ -442,7 +614,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="7" data-categories="Computer Vision,Data,PyTorch" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1689439810434" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-left" data-index="7" data-categories="Computer Vision,Data,PyTorch" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1690791729097" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
 <p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html"> <img data-src="../forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" class="thumbnail-image"> </a></p>
 </div>
@@ -473,7 +645,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="8" data-categories="LLMs,Transformers" data-listing-date-sort="1677542400000" data-listing-file-modified-sort="1689439810710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-left" data-index="8" data-categories="LLMs,Transformers" data-listing-date-sort="1677542400000" data-listing-file-modified-sort="1690791729377" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
 <div class="thumbnail">
 <p><a href="../forblog/posts/9_transformers_explained.html"> <img data-src="../forblog/images/9_transformers_explained/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -504,7 +676,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="9" data-categories="PyTorch" data-listing-date-sort="1674691200000" data-listing-file-modified-sort="1689439810710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-left" data-index="9" data-categories="PyTorch" data-listing-date-sort="1674691200000" data-listing-file-modified-sort="1690791729377" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
 <div class="thumbnail">
 <p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html"> <img data-src="../forblog/images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -535,7 +707,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="10" data-categories="Quarto,Collaboration" data-listing-date-sort="1671753600000" data-listing-file-modified-sort="1689439810710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
+<div class="quarto-post image-left" data-index="10" data-categories="Quarto,Collaboration" data-listing-date-sort="1671753600000" data-listing-file-modified-sort="1690791729377" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
 <div class="thumbnail">
 <p><a href="../forblog/posts/7_blog_subscriptions.html"> <img data-src="../forblog/images/7_blog_subscriptions/thumbnail.png" class="thumbnail-image"> </a></p>
 </div>
@@ -566,7 +738,7 @@ Isaac Flath, Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="11" data-categories="Creating Models" data-listing-date-sort="1664841600000" data-listing-file-modified-sort="1689439810710" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
+<div class="quarto-post image-left" data-index="11" data-categories="Creating Models" data-listing-date-sort="1664841600000" data-listing-file-modified-sort="1690791729377" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9">
 <div class="thumbnail">
 <p><a href="../forblog/posts/6_ai_in_a_nutshell.html"> <p class="card-img-top"><img data-src="images/6_ai_in_a_nutshell/thumbnail.png" alt="A circuit board inside a walnut."  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -597,7 +769,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="12" data-categories="Creating Models" data-listing-date-sort="1662940800000" data-listing-file-modified-sort="1689439810702" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
+<div class="quarto-post image-left" data-index="12" data-categories="Creating Models" data-listing-date-sort="1662940800000" data-listing-file-modified-sort="1690791729369" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
 <div class="thumbnail">
 <p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html"> <p class="card-img-top"><img data-src="images/5_detecting_floods_for_disaster_relief/thumbnail.png" alt="An image of a house on top of a pinnacle of rock surrounded by water."  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -628,7 +800,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="13" data-categories="Data,Analyzing Models" data-listing-date-sort="1654300800000" data-listing-file-modified-sort="1689439810574" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
+<div class="quarto-post image-left" data-index="13" data-categories="Data,Analyzing Models" data-listing-date-sort="1654300800000" data-listing-file-modified-sort="1690791729241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
 <div class="thumbnail">
 <p><a href="../forblog/posts/4_data_quality_is_important.html"> <p class="card-img-top"><img data-src="images/4_data_quality_is_important/thumbnail.jpg" alt="A parking lot filled with cars."  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -659,7 +831,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="14" data-categories="Analyzing Models" data-listing-date-sort="1654214400000" data-listing-file-modified-sort="1689439810574" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
+<div class="quarto-post image-left" data-index="14" data-categories="Analyzing Models" data-listing-date-sort="1654214400000" data-listing-file-modified-sort="1690791729241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
 <div class="thumbnail">
 <p><a href="../forblog/posts/3_the_confusion_matrix.html"> <p class="card-img-top"><img data-src="images/3_the_confusion_matrix/thumbnail.jpg" alt="A meme from the Matrix film."  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -690,7 +862,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="15" data-categories="Creating Models" data-listing-date-sort="1653696000000" data-listing-file-modified-sort="1689439810574" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
+<div class="quarto-post image-left" data-index="15" data-categories="Creating Models" data-listing-date-sort="1653696000000" data-listing-file-modified-sort="1690791729241" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6">
 <div class="thumbnail">
 <p><a href="../forblog/posts/2_bear_classifier_model.html"> <p class="card-img-top"><img data-src="images/2_bear_classifier_model/thumbnail.jpg" alt="A bear waving hello."  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -721,7 +893,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="16" data-categories="Approaching AI" data-listing-date-sort="1653609600000" data-listing-file-modified-sort="1689439810566" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
+<div class="quarto-post image-left" data-index="16" data-categories="Approaching AI" data-listing-date-sort="1653609600000" data-listing-file-modified-sort="1690791729233" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5">
 <div class="thumbnail">
 <p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html"> <p class="card-img-top"><img data-src="images/1_how_to_approach_creating_ai_models/thumbnail.jpg" alt="A picture showing cogs and gears."  class="thumbnail-image card-img"/></p> </a></p>
 </div>
@@ -764,6 +936,7 @@ No matching items
 Loading…
 </iframe>
 <p><br><br></p>
+</section>
 </div>
 
 
@@ -888,6 +1061,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
   const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
     if (id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -900,6 +1083,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return note.innerHTML;
       }
     } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
       return note.innerHTML;
     }
   }
@@ -909,33 +1097,39 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       instance.disable();
       let url = xref.getAttribute('href');
       let hash = undefined; 
-      try { hash = new URL(url).hash; } catch {}
-      const id = hash.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note !== null) {
-        try {
-          const html = processXRef(id, note);
-          instance.setContent(html);
-        } finally {
-          instance.enable();
-          instance.show();
-        }
+      if (url.startsWith('#')) {
+        hash = url;
       } else {
-        // See if we can fetch this
-        fetch(url.split('#')[0])
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.getElementById(id);
-          if (note !== null) {
-            const html = processXRef(id, note);
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
             instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
       }
     }, function(instance) {
     });
@@ -1070,7 +1264,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.0.2</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a> | <a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.0</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
