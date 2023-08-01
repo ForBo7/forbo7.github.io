@@ -34,10 +34,8 @@ website:
       - icon: rss
         href: forblog/index.xml
   page-footer:
-    left: "[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2023 and ForBlog™ \n by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site 
-    Version 
-    2.2.1.0](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
-    right:
+    left: "[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2023 and ForBlog™ by [Salman Naqvi](https://forbo7.github.io/about.html)"
+    center:
       - icon: file-post-fill
         href: https://forums.fast.ai/u/forbo7/summary
       - icon: twitter
@@ -52,6 +50,7 @@ website:
         href: mailto:salmananaqvii+forblog@gmail.com
       - icon: rss
         href: forblog/index.xml
+    right: "[Site Version 2.2.1.1](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
   twitter-card:
     title: "ForBo7 // Salman Naqvi"
     description: "The world of ForBo7!"
