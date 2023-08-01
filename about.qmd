@@ -43,7 +43,7 @@ _Greetings, fellow human! I’m a curious individual who dabbles in AI, does 3D 
 
 **Received 132% Scholarship worth HKD 740,000 (USD 94,920) over 4 Years** | Covers full tuition fees and living expenses | 24 February 2023 | EdUHK Full Entrance Scholarship | The Education University of Hong Kong (Ranked 4th in Asia and 21st Worldwide in Education as a Subject) | Tai Po, Hong Kong SAR
 
-**Placed in Top 12% of Contestants of Data Science Competition** | 17 January 2023 | Playground Series Season 3, Episode 2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle
+**Placed in Top 12% of Contestants in Data Science Competition** | 17 January 2023 | Playground Series Season 3, Episode 2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle
 
 **1100+ Member AI Community Administrator** | November 2022 – June 2023 | The Dataspace | Discord
 
