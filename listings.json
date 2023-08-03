@@ -1,5 +1,85 @@
 [
   {
+    "listing": "/forblog/index.html",
+    "items": [
+      "/forblog/posts/17_meanshift_clustering.html",
+      "/forblog/posts/16_einstein_summation_notation.html",
+      "/forblog/posts/15_un_successfully_implementing_diffedit.html",
+      "/forblog/posts/14_iterators_and_generators.html",
+      "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
+      "/forblog/posts/11_musings_through_stable_diffusion.html",
+      "/forblog/posts/12_stable_diffusion_summarized.html",
+      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
+      "/forblog/posts/9_transformers_explained.html",
+      "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
+      "/forblog/posts/7_blog_subscriptions.html",
+      "/forblog/posts/6_ai_in_a_nutshell.html",
+      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
+      "/forblog/posts/4_data_quality_is_important.html",
+      "/forblog/posts/3_the_confusion_matrix.html",
+      "/forblog/posts/2_bear_classifier_model.html",
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
+    ]
+  },
+  {
+    "listing": "/testing_page.html",
+    "items": [
+      "/forblog/posts/17_meanshift_clustering.html",
+      "/forblog/posts/16_einstein_summation_notation.html",
+      "/forblog/posts/15_un_successfully_implementing_diffedit.html",
+      "/forblog/posts/14_iterators_and_generators.html",
+      "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
+      "/forblog/posts/11_musings_through_stable_diffusion.html",
+      "/forblog/posts/12_stable_diffusion_summarized.html",
+      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
+      "/forblog/posts/9_transformers_explained.html",
+      "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
+      "/forblog/posts/7_blog_subscriptions.html",
+      "/forblog/posts/6_ai_in_a_nutshell.html",
+      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
+      "/forblog/posts/4_data_quality_is_important.html",
+      "/forblog/posts/3_the_confusion_matrix.html",
+      "/forblog/posts/2_bear_classifier_model.html",
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/forblog/posts/17_meanshift_clustering.html",
+      "/forblog/posts/16_einstein_summation_notation.html",
+      "/forblog/posts/15_un_successfully_implementing_diffedit.html",
+      "/forblog/posts/14_iterators_and_generators.html",
+      "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
+      "/forblog/posts/11_musings_through_stable_diffusion.html",
+      "/forblog/posts/12_stable_diffusion_summarized.html",
+      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
+      "/forblog/posts/9_transformers_explained.html",
+      "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
+      "/forblog/posts/7_blog_subscriptions.html",
+      "/forblog/posts/6_ai_in_a_nutshell.html",
+      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
+      "/forblog/posts/4_data_quality_is_important.html",
+      "/forblog/posts/3_the_confusion_matrix.html",
+      "/forblog/posts/2_bear_classifier_model.html",
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
+    ]
+  },
+  {
+    "listing": "/web_apps/index.html",
+    "items": [
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
+    ]
+  },
+  {
     "listing": "/dictionary/index.html",
     "items": [
       "/dictionary/terms/accuracy.html",
@@ -43,88 +123,8 @@
       "/dictionary/terms/weight_decay.html",
       "/dictionary/terms/zero_shot.html",
       "/dictionary/terms/neuron.html",
-      "/dictionary/terms/latent.html",
-      "/dictionary/terms/inference.html"
-    ]
-  },
-  {
-    "listing": "/index.html",
-    "items": [
-      "/forblog/posts/17_meanshift_clustering.html",
-      "/forblog/posts/16_einstein_summation_notation.html",
-      "/forblog/posts/15_un_successfully_implementing_diffedit.html",
-      "/forblog/posts/14_iterators_and_generators.html",
-      "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
-      "/forblog/posts/11_musings_through_stable_diffusion.html",
-      "/forblog/posts/12_stable_diffusion_summarized.html",
-      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
-      "/forblog/posts/9_transformers_explained.html",
-      "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
-      "/forblog/posts/7_blog_subscriptions.html",
-      "/forblog/posts/6_ai_in_a_nutshell.html",
-      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
-      "/forblog/posts/4_data_quality_is_important.html",
-      "/forblog/posts/3_the_confusion_matrix.html",
-      "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
-    ]
-  },
-  {
-    "listing": "/web_apps/index.html",
-    "items": [
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
-    ]
-  },
-  {
-    "listing": "/testing_page.html",
-    "items": [
-      "/forblog/posts/17_meanshift_clustering.html",
-      "/forblog/posts/16_einstein_summation_notation.html",
-      "/forblog/posts/15_un_successfully_implementing_diffedit.html",
-      "/forblog/posts/14_iterators_and_generators.html",
-      "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
-      "/forblog/posts/11_musings_through_stable_diffusion.html",
-      "/forblog/posts/12_stable_diffusion_summarized.html",
-      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
-      "/forblog/posts/9_transformers_explained.html",
-      "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
-      "/forblog/posts/7_blog_subscriptions.html",
-      "/forblog/posts/6_ai_in_a_nutshell.html",
-      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
-      "/forblog/posts/4_data_quality_is_important.html",
-      "/forblog/posts/3_the_confusion_matrix.html",
-      "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
-    ]
-  },
-  {
-    "listing": "/forblog/index.html",
-    "items": [
-      "/forblog/posts/17_meanshift_clustering.html",
-      "/forblog/posts/16_einstein_summation_notation.html",
-      "/forblog/posts/15_un_successfully_implementing_diffedit.html",
-      "/forblog/posts/14_iterators_and_generators.html",
-      "/forblog/posts/13_implementing_stable_diffusion_from_its_components.html",
-      "/forblog/posts/11_musings_through_stable_diffusion.html",
-      "/forblog/posts/12_stable_diffusion_summarized.html",
-      "/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html",
-      "/forblog/posts/9_transformers_explained.html",
-      "/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html",
-      "/forblog/posts/7_blog_subscriptions.html",
-      "/forblog/posts/6_ai_in_a_nutshell.html",
-      "/forblog/posts/5_detecting_floods_for_disaster_relief.html",
-      "/forblog/posts/4_data_quality_is_important.html",
-      "/forblog/posts/3_the_confusion_matrix.html",
-      "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
+      "/dictionary/terms/inference.html",
+      "/dictionary/terms/latent.html"
     ]
   }
 ]
