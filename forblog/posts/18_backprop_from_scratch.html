@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.291">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Salman Naqvi">
+<meta name="description" content="*Most words are in English.">
+
+<title>ForBo7 // Salman Naqvi - Backpropagation Explained using English Words*</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Backpropagation Explained using English Words*">
+<meta property="og:description" content="The world of ForBo7!">
+<meta property="og:image" content="https://forbo7.github.io/forblog/posts/cover.png">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:title" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:description" content="The world of ForBo7!">
+<meta name="twitter:image" content="https://forbo7.github.io/forblog/posts/cover.png">
+<meta name="twitter:creator" content="@ForBo7">
+<meta name="twitter:site" content="@ForBo7">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ForBo7 // Salman Naqvi</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house-door" role="img">
+</i> 
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../forblog/index.html" rel="" target=""><i class="bi bi-newspaper" role="img">
+</i> 
+ <span class="menu-text">ForBlog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../web_apps/index.html" rel="" target=""><i class="bi bi-sliders2" role="img">
+</i> 
+ <span class="menu-text">Playground</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dictionary/index.html" rel="" target=""><i class="bi bi-book" role="img">
+</i> 
+ <span class="menu-text">Dictionary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target=""><i class="bi bi-file-person" role="img">
+</i> 
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+    <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
+    <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Backpropagation Explained using English Words*</h1>
+<p class="subtitle lead">Propagating you all way the from the back.</p>
+</div>
+
+<div>
+  <div class="description">
+    *Most words are in English.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Salman Naqvi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Friday, 04 August 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This guide assumes a basic understanding of derivatives.</p>
+</div>
+</div>
+<p>Backpropagation sounds and looks daunting. It doesn’t need to be. In fact, backpropagation is really just a fancy word for the chain rule. Implementing a backpropagation algorithm is simply implementing one big fat chain rule equation.</p>
+<p>Let’s remind ourselves of the chain rule. The chain rule lets us figure out how much a given variable indirectly changes with respect to another variable. Take the example below.</p>
+<p><span class="math display">\[
+\begin{align}
+  y &amp;= 3u \\
+  u &amp;= 7 + x^2
+\end{align}
+\]</span></p>
+<p>We want to figure out how much <span class="math inline">\(y\)</span> changes with each increment in <span class="math inline">\(x\)</span>. The problem is that <span class="math inline">\(x\)</span> doesn’t direcly change <span class="math inline">\(y\)</span>. Rather, <span class="math inline">\(x\)</span> changes <span class="math inline">\(u\)</span> which in turn changes <span class="math inline">\(y\)</span>.</p>
+<p>The chain rule allows us to solve this problem. In this case, the chain rule tells us that we can figure out how much <span class="math inline">\(x\)</span> indirecly changes <span class="math inline">\(y\)</span> by multiplying the derivative of <span class="math inline">\(y\)</span> with respect to <span class="math inline">\(u\)</span>, and the derivative of <span class="math inline">\(u\)</span> with respect to <span class="math inline">\(x\)</span>.</p>
+<p><span class="math display">\[
+\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}
+\]</span></p>
+<p>Aaand I’ve just described backpropagation in a nutshell. That’s all there really is to it. The only difference is that in a neural network there are many more intermediate variables and functions, and that we want to find out how the weights indirectly change the loss.</p>
+<p>Let’s see this tangibly in action.</p>
+<p>We have the following neural network comprised of two layers: the first layer contains the affine function<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> together with the ReLU, while the second layer contains only the affine function. The loss, which is MSE (Mean Squared Error), will then be calculated from the output of the second layer.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></li></div><div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  subgraph A [Layer 1]
+    direction LR
+    id1[Affine Function] --&gt; id2[ReLU]
+  end
+
+  subgraph B [Layer 2]
+    direction LR
+    id2 --&gt; id3[Affine Function]
+  end
+  
+  subgraph C [Loss Function]
+    direction LR
+    id3 --&gt; id4[MSE]
+  end
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Mathematically speaking, the first layer with a single sample <span class="math inline">\(x\)</span> looks like this.</p>
+<p><span class="math display">\[
+\text{max}(0, x \cdot \vec{\rm{w}}_1 + b_1)
+\]</span></p>
+<p>The second layer looks like this.</p>
+<p><span class="math display">\[
+\text{max}(0, x \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2
+\]</span></p>
+<p>And the loss function looks like this.</p>
+<p><span class="math display">\[
+\frac{(y - (\text{max}(0, x \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{2}
+\]</span></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>MSE in its most basic form looks like this. <span class="math display">\[
+\text{MSE} = \frac{(y - x)^2}{1}
+\]</span></p>
+<p>If we have multiple data points, then it looks like this.</p>
+<p><span class="math display">\[
+\text{MSE} = \frac{(y_1 - x_1)^2+(y_2 - x_2)^2+(y_3 - x_3)^2}{3}
+\]</span></p>
+</div>
+</div>
+<p>However, when working with multiple samples, the mean squared error comes out looking like this, where <span class="math inline">\(N\)</span> represents the total number of samples.</p>
+<p><span class="math display">\[
+\frac{(\vec{\rm{y}}_1 - (\text{max}(0, \vec{\rm{x}}_1 \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 + (\vec{\rm{y}}_2 - (\text{max}(0, \vec{\rm{x}}_2 \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 + \cdots + (\vec{\rm{y}}_N - (\text{max}(0, \vec{\rm{x}}_N \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{N}
+\]</span></p>
+<p>Or more simply…</p>
+<p><span class="math display">\[
+\frac{\sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{N}
+\]</span></p>
+<p>…or even more simply.</p>
+<p><span class="math display">\[
+\frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2
+\]</span></p>
+<p>Our goal for the rest of this guide is to derive the gradients of <span class="math inline">\(w_1\)</span>.</p>
+<p>The equation above looks quite the mouthful though. One might even say scary. How would you even apply the chain rule here? How would you use the chain rule to derive the gradients of the weights and biases?</p>
+<p>Let’s simplify things by introducing a bunch of intermediate variables.</p>
+<p><span class="math display">\[
+\begin{align}
+    u_1 &amp;= \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 \\
+    u_2 &amp;= \text{max}(0, u_1) \\
+    u_3 &amp;= u_2 \cdot \vec{\rm{w}}_2 + b_2 \\
+    u_4 &amp;= \vec{\rm{y}}_i - u_3 \\
+    u_5 &amp;= u_4^2
+\end{align}
+\]</span></p>
+<p>The menacing equation above now gradually simplifies into the cute equation below.</p>
+<p><span class="math display">\[
+\begin{align}
+    &amp;\frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 \\
+    &amp;= \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, u_1) \cdot \vec{\rm{w}}_2 + b_2))^2 \\
+    &amp;= \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (u_2 \cdot \vec{\rm{w}}_2 + b_2))^2 \\
+    &amp;= \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - u_3)^2 \\
+    &amp;= \frac{1}{N} \sum^N_{i=1} (u_4)^2 \\
+    &amp;= \frac{1}{N} \sum^N_{i=1} u_5
+\end{align}
+\]</span></p>
+<p>Very cute, hey?</p>
+<p>In this cuter version of the equation, it is visible that incrementing <span class="math inline">\(\vec{\rm{w}}_1\)</span> does not directly change the MSE. Rather, incrementing <span class="math inline">\(\vec{\rm{w}}_1\)</span> changes <span class="math inline">\(u_1\)</span>, which changes <span class="math inline">\(u_2\)</span>, which changes <span class="math inline">\(u_3\)</span>, which changes <span class="math inline">\(u_4\)</span>, which in turn changes <span class="math inline">\(u_5\)</span>.</p>
+<p><span class="math display">\[
+\frac{\partial}{\partial \vec{w}_1} \text{MSE} = \frac{\partial}{\partial \vec{w}_1} \frac{1}{N} \sum^N_{i=1} u_5 = \frac{1}{N} \sum^N_{i=1} \frac{\partial u^5}{\partial \vec{w}_1} = \frac{1}{N} \sum^N_{i=1} \frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial \vec{w}_1}
+\]</span></p>
+<p>See? Just a big, fat, and simple chain rule problem.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(\partial\)</span> is a curly “d” and can be read as “curly d”, or simply as “d”. <span class="math inline">\(\partial\)</span> notation will be used below, due to a concept known as partial derivatives. We will not go into this concept here, however, <a href="https://www.mathsisfun.com/calculus/derivatives-partial.html">this</a> is a great brief rundown on partial derivatives.</p>
+</div>
+</div>
+<p>Now we can tackle finding the gradients for <span class="math inline">\(w_1\)</span>. To do so, let’s find the gradients of each intermediate variable.</p>
+<p><span class="math display">\[
+\begin{align*}
+\text{gradient of } u_4 &amp;= \frac{\partial u_5}{\partial u_4} &amp;&amp;= \frac{\partial}{\partial u_4} u_4^2 &amp;&amp;&amp;= 2u_4 \\
+\text{gradient of } u_3 &amp;= \frac{\partial u_4}{\partial u_3} &amp;&amp;= \frac{\partial}{\partial u_3} \vec{\rm{y}}_i - u_3 &amp;&amp;&amp;= -1 \\
+\text{gradient of } u_2 &amp;= \frac{\partial u_3}{\partial u_2} &amp;&amp;= \frac{\partial}{\partial u_2} u_2 \cdot \vec{\rm{w}}_2 + b_2 &amp;&amp;&amp;= \vec{\rm{w}}^T_2 \\
+\text{gradient of } u_1 &amp;= \frac{\partial \vec{\rm{u}}_2}{\partial \vec{\rm{u}}_1} &amp;&amp;= \frac{\partial}{\partial u_1} \text{max}(0, u_1) &amp;&amp;&amp;=
+\begin{cases}
+0 &amp; \vec{\rm{u}}_1 \leq 0 \\
+1 &amp; \vec{\rm{u}}_1 &gt; 0
+\end{cases} \\
+\text{gradient of } \vec{\rm{w}}_1 &amp;= \frac{\partial u_1}{\partial \vec{\rm{w}}_1} &amp;&amp;= \frac{\partial}{\partial w_1} \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &amp;&amp;&amp;= \vec{\rm{x}}^T_i
+\end{align*}
+\]</span></p>
+<p>Now we multiply everything together.</p>
+<p><span class="math display">\[
+\frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} = \frac{\partial u_5}{\partial \vec{\rm{w}}_1} = \frac{1}{N} \sum^N_{i=1} (2u_4) \cdot (-1) \cdot \left(\vec{\rm{w}}^T_2\right) \cdot \left(\begin{cases} 0 &amp; \vec{\rm{u}}_1 ≤ 0 \\ 1 &amp; \vec{\rm{u}}_1 &gt; 0 \end{cases}\right) \cdot \left(\vec{\rm{x}}^T_i\right)
+\]</span></p>
+<p>And it all eventually simplifies out to the following.</p>
+<p><span class="math display">\[
+\frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} =
+\begin{cases}
+  0 &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\
+  \frac{1}{N} \sum^N_{i=1} -2(\vec{\rm{y}}_i - \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2) \cdot \vec{\rm{w}}^T_2 \cdot\vec{\rm{x}}_i^T &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &gt; 0
+\end{cases}
+\]</span></p>
+<p>We can further simplify by taking <span class="math inline">\(-1\)</span> and <span class="math inline">\(2\)</span> common.</p>
+<p><span class="math display">\[
+\frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} =
+\begin{cases}
+  0 &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\
+  \frac{2}{N} \sum^N_{i=1} (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 - \vec{\rm{y}}_i) \cdot \vec{\rm{w}}^T_2 \cdot \vec{\rm{x}}_i^T &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &gt; 0
+\end{cases}
+\]</span></p>
+<p>We can simplify even further, by letting <span class="math inline">\(e_i = \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 - \vec{\rm{y}}_i\)</span>.&nbsp;The <span class="math inline">\(e\)</span> stands for “error”.</p>
+<p><span class="math display">\[
+\frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} =
+\begin{cases}
+  0 &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\
+  \frac{2}{N} \sum^N_{i=1} e_i \cdot \vec{\rm{w}}^T_2 \cdot \vec{\rm{x}}_i^T &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &gt; 0
+\end{cases}
+\]</span></p>
+<p>And there you go! We’ve derived the formula that will allow us to calculate the gradients of <span class="math inline">\(w_1\)</span>.</p>
+<hr>
+<p>When implementing backpropagation in a program, it is often better to implement the entire equation in pieces, as opposed to a single line of code, through storing the result of each intermediate gradient. These intermediate gradients can be reused to calculate the gradients of another variable, such as the bias <span class="math inline">\(b_1\)</span>.</p>
+<p>Instead of implementing the following in a single line of code.</p>
+<p><span class="math display">\[
+\frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial \vec{w}_1}
+\]</span></p>
+<p>We can instead first calculate the gradients of <span class="math inline">\(u_4\)</span>.</p>
+<p><span class="math display">\[
+u_{4_g} = \frac{\partial u_5}{\partial u_4}
+\]</span></p>
+<p>Then calculate the gradients of <span class="math inline">\(u_3\)</span> and multiply it with it with the gradients of <span class="math inline">\(u_4\)</span>.</p>
+<p><span class="math display">\[
+u_{3_g} = u_{4_g} \cdot \frac{\partial u_4}{\partial u_3} = \left(\frac{\partial u_5}{\partial u_4}\right) \cdot \frac{\partial u_4}{\partial u_3}
+\]</span></p>
+<p>Then multiply the product above with the gradients of <span class="math inline">\(u_2\)</span>.</p>
+<p><span class="math display">\[
+u_{2_g} = u_{3_g} \cdot \frac{\partial u_3}{\partial u_2} = \left(\frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3}\right) \cdot \frac{\partial u_3}{\partial u_2}
+\]</span></p>
+<p>Then multiply the product above with the gradients of <span class="math inline">\(u_1\)</span>.</p>
+<p><span class="math display">\[
+u_{1_g} = u_{2_g} \cdot \frac{\partial u_2}{\partial u_1} = \left(\frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2}\right) \cdot \frac{\partial u_2}{\partial u_1}
+\]</span></p>
+<p>And finally multiply the product above with the gradients of <span class="math inline">\(\vec{\rm{w}}_1\)</span></p>
+<p><span class="math display">\[
+\vec{\rm{w}}_{1_g} = u_{1_g} \cdot \frac{\partial u_1}{\partial \vec{w}_1} = \left(\frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1}\right) \cdot \frac{\partial u_1}{\partial \vec{w}_1}
+\]</span></p>
+<p>Let’s see this using Python instead.</p>
+<p>The following is our neural network.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="op">=</span> relu(lin(trn_x, w1, b1))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>l2 <span class="op">=</span> lin(l1, w2, b2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> mse(l2, trn_y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Substitutions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align}
+    u_1 &amp;= \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 \\
+    u_2 &amp;= \text{max}(0, u_1) \\
+    u_3 &amp;= u_2 \cdot \vec{\rm{w}}_2 + b_2 \\
+    u_4 &amp;= \vec{\rm{y}}_i - u_3 \\
+    u_5 &amp;= u_4^2
+\end{align}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivatives of the Substitutions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{alignat}{3}
+  \text{gradient of } u_4 &amp;= \frac{\partial u_5}{\partial u_4} &amp;&amp;=
+  \frac{\partial}{\partial u_4} u_4^2 &amp;&amp;&amp;= 2u_4 \\
+  \text{gradient of } u_3 &amp;= \frac{\partial u_4}{\partial u_3} &amp;&amp;= \frac{\partial}{\partial u_3} \vec{\rm{y}}_i - u_3 &amp;&amp;&amp;= -1 \\
+  \text{gradient of } u_2 &amp;= \frac{\partial u_3}{\partial u_2} &amp;&amp;= \frac{\partial}{\partial u_2} u_2 \cdot \vec{\rm{w}}_2 + b_2 &amp;&amp;&amp;= \vec{\rm{w}}^T_2 \\
+  \text{gradient of } u_1 &amp;= \frac{\partial \vec{\rm{u}}_2}{\partial \vec{\rm{u}}_1} &amp;&amp;= \frac{\partial}{\partial u_1} \text{max}(0, u_1) &amp;&amp;&amp;=
+    \begin{cases}
+      0 &amp; \vec{\rm{u}}_1 ≤ 0 \\
+      1 &amp; \vec{\rm{u}}_1 &gt; 0
+    \end{cases} \\
+  \text{gradient of } \vec{\rm{w}}_1 &amp;= \frac{\partial u_1}{\partial \vec{\rm{w}}_1} &amp;&amp;= \frac{\partial}{\partial w_1} \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &amp;&amp;&amp;= \vec{\rm{x}}^T_i
+\end{alignat}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>First we need to calculate the gradients of <span class="math inline">\(u_4\)</span>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> (trn_y[:, <span class="va">None</span>] <span class="op">-</span> l2)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>loss.g <span class="op">=</span> (<span class="dv">2</span><span class="op">/</span>trn_x.shape[<span class="dv">0</span>]) <span class="op">*</span> diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next are the gradients of <span class="math inline">\(u_3\)</span></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>diff.g <span class="op">=</span> loss.g <span class="op">*</span> <span class="op">-</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then the gradients of <span class="math inline">\(u_2\)</span></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>l2.g <span class="op">=</span> diff.g <span class="op">@</span> w2.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then the gradients of <span class="math inline">\(u_1\)</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>l1.g <span class="op">=</span> l2.g <span class="op">*</span> (l1 <span class="op">&gt;</span> <span class="dv">0</span>).<span class="bu">float</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And finally the gradients of <span class="math inline">\(\vec{\rm{w}}_1\)</span>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(l1.g[:, <span class="va">None</span>, :] <span class="op">*</span> trn_x[..., <span class="va">None</span>]).<span class="bu">sum</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The shapes may differ according to the data, functions, and classes you are working with, so be sure to change the shapes accordingly.</p>
+</div>
+</div>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And that’s all there really is to backpropagation; think of it a one big chain rule problem.</p>
+<p>To make sure you’ve got it hammered down, get out a pen and paper and derivate the equations that would compute the gradients of <span class="math inline">\(\vec{\rm{x}}_i\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(\vec{\rm{w}}_2\)</span>, and <span class="math inline">\(u_2\)</span> respectively with respect to the MSE.</p>
+<p>And if you really want to hammer down your understanding on what’s happening, then I highly recommend reading <a href="https://explained.ai/matrix-calculus/">The Matrix Calculus You Need For Deep Learning</a>. I’ve also <a href="https://forbo7.github.io/misc/matrix_calculus_practice.pdf">compiled backpropagation practice questions</a> from this paper!</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[
+\begin{align}
+  \frac{\partial \text{MSE}}{\partial b_1} &amp;=
+    \begin{cases}
+      0 &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\
+      \frac{2}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2) \cdot \vec{\rm{w}}_2^T &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &gt; 0
+    \end{cases} \\
+  \frac{\partial \text{MSE}}{\partial \vec{\rm{x}}_i} &amp;=
+    \begin{cases}
+      0 &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\
+      \frac{2}{N} \sum^N_{i=1} (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 - \vec{\rm{y}}_i) \cdot \vec{\rm{w}}^T_2 \cdot \vec{\rm{w}}_1^T &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &gt; 0
+    \end{cases} \\
+  \frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_2} &amp;= \frac{2}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2) \cdot \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \\
+  \frac{\partial \text{MSE}}{\partial b_2} &amp;= \frac{2}{N} \sum^N_{i=1} \vec{\rm{y}}_i - \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2
+\end{align}
+\]</span></p>
+</div>
+</div>
+</div>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        for (let i = 0; i < 2; i++) {
+          container.appendChild(note.children[i].cloneNode(true));
+        }
+        return container.innerHTML
+      } else {
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2023 and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a></p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://forums.fast.ai/u/forbo7/summary">
+      <i class="bi bi-file-post-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/ForBo7_">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.artstation.com/forbo7">
+      <i class="bi bi-brush" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.kaggle.com/forbo7">
+      <i class="bi bi-clipboard-data" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ForBo7">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:salmananaqvii+forblog@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../forblog/index.xml">
+      <i class="bi bi-rss" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.2</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
