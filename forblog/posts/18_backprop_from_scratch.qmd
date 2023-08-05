@@ -9,7 +9,7 @@ draft: true
 ---
 
 :::{.callout-important appearance="simple"}
-This guide assumes a basic understanding of derivatives.
+This guide assumes a basic understanding of derivatives and matrices.
 :::
 
 Backpropagation sounds and looks daunting. It doesn't need to be. In fact, backpropagation is really just a fancy word for the chain rule. Implementing a backpropagation algorithm is simply implementing one big fat chain rule equation.
@@ -93,7 +93,7 @@ $$
 \frac{(\vec{\rm{y}}_1 - (\text{max}(0, \vec{\rm{x}}_1 \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 + (\vec{\rm{y}}_2 - (\text{max}(0, \vec{\rm{x}}_2 \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 + \cdots + (\vec{\rm{y}}_N - (\text{max}(0, \vec{\rm{x}}_N \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{N}
 $$
 
-Or more simply...
+Or more simply...^[$\sum$ is known as the summation or sigma operator. If we have the equation $\sum^4_{x=1}2x$, it means sum the equation $2x$ for all values of $x$ from 1 to 4. Find out more [here](https://www.mathsisfun.com/algebra/sigma-notation.html).]
 
 $$
 \frac{\sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{N}
@@ -109,7 +109,7 @@ Our goal for the rest of this guide is to derive the gradients of $w_1$.
 
 The equation above looks quite the mouthful though. One might even say scary. How would you even apply the chain rule here? How would you use the chain rule to derive the gradients of the weights and biases?
 
-Let's simplify things by introducing a bunch of intermediate variables.
+Let's simplify things by introducing a bunch of intermediate variables. We'll begin by substituting the innermost pieces of the equation, and then gradually make our way out.
 
 $$
 \begin{align}
@@ -125,7 +125,7 @@ The menacing equation above now gradually simplifies into the cute equation belo
 
 $$
 \begin{align}
-    &\frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 \\
+    \text{MSE} &= \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 \\
     &= \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, u_1) \cdot \vec{\rm{w}}_2 + b_2))^2 \\
     &= \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (u_2 \cdot \vec{\rm{w}}_2 + b_2))^2 \\
     &= \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - u_3)^2 \\
@@ -148,17 +148,17 @@ See? Just a big, fat, and simple chain rule problem.
 $\partial$ is a curly "d" and can be read as "curly d", or simply as "d". $\partial$ notation will be used below, due to a concept known as partial derivatives. We will not go into this concept here, however, [this](https://www.mathsisfun.com/calculus/derivatives-partial.html) is a great brief rundown on partial derivatives.
 :::
 
-Now we can tackle finding the gradients for $w_1$. To do so, let's find the gradients of each intermediate variable.
+Now we can tackle finding the gradients for $w_1$. To do so, let's find the gradients of each intermediate variable.^[If needed, get a refresher of the derivative rules [here](https://www.mathsisfun.com/calculus/derivatives-rules.html).] ^[$\begin{cases}\end{cases}$ denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more [here](https://www.mathsisfun.com/sets/functions-piecewise.html)]
 
 $$
 \begin{align*}
 \text{gradient of } u_4 &= \frac{\partial u_5}{\partial u_4} &&= \frac{\partial}{\partial u_4} u_4^2 &&&= 2u_4 \\
 \text{gradient of } u_3 &= \frac{\partial u_4}{\partial u_3} &&= \frac{\partial}{\partial u_3} \vec{\rm{y}}_i - u_3 &&&= -1 \\
 \text{gradient of } u_2 &= \frac{\partial u_3}{\partial u_2} &&= \frac{\partial}{\partial u_2} u_2 \cdot \vec{\rm{w}}_2 + b_2 &&&= \vec{\rm{w}}^T_2 \\
-\text{gradient of } u_1 &= \frac{\partial \vec{\rm{u}}_2}{\partial \vec{\rm{u}}_1} &&= \frac{\partial}{\partial u_1} \text{max}(0, u_1) &&&= 
+\text{gradient of } u_1 &= \frac{\partial u_2}{\partial u_1} &&= \frac{\partial}{\partial u_1} \text{max}(0, u_1) &&&= 
 \begin{cases}
-0 & \vec{\rm{u}}_1 \leq 0 \\
-1 & \vec{\rm{u}}_1 > 0
+0 & u_1 ≤ 0 \\
+1 & u_1 > 0
 \end{cases} \\
 \text{gradient of } \vec{\rm{w}}_1 &= \frac{\partial u_1}{\partial \vec{\rm{w}}_1} &&= \frac{\partial}{\partial w_1} \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &&&= \vec{\rm{x}}^T_i
 \end{align*}
@@ -167,10 +167,24 @@ $$
 Now we multiply everything together.
 
 $$
-\frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} = \frac{\partial u_5}{\partial \vec{\rm{w}}_1} = \frac{1}{N} \sum^N_{i=1} (2u_4) \cdot (-1) \cdot \left(\vec{\rm{w}}^T_2\right) \cdot \left(\begin{cases} 0 & \vec{\rm{u}}_1 ≤ 0 \\ 1 & \vec{\rm{u}}_1 > 0 \end{cases}\right) \cdot \left(\vec{\rm{x}}^T_i\right)
+\frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} = \frac{\partial u_5}{\partial \vec{\rm{w}}_1} = \frac{1}{N} \sum^N_{i=1} (2u_4) \cdot (-1) \cdot \left(\vec{\rm{w}}^T_2\right) \cdot \left(\begin{cases} 0 & u_1 ≤ 0 \\ 1 & u_1 > 0 \end{cases}\right) \cdot \left(\vec{\rm{x}}^T_i\right)
 $$
 
-And it all eventually simplifies out to the following.
+And it all eventually expands out to the following.
+
+:::{.callout-note appearance="simple" collapse="true"}
+## Expansion
+$$
+\begin{align}
+\frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} = \frac{\partial u_5}{\partial \vec{\rm{w}}_1} &= \frac{1}{N}\sum^N_{i=1} (2u_4) \cdot (-1) \cdot (\vec{\rm{w}}^T_2) \cdot \begin{cases}0 & u_1 ≤ 0 \\ 1 & u_1 > 0\end{cases} \cdot \vec{\rm{x}}_i^T \\
+&= \frac{1}{N}\sum^N_{i=1} \begin{cases} 0 & u_1 ≤ 0 \\ -2u_4 \cdot \vec{\rm{w}}_2^T \cdot \vec{\rm{x}}_i^T & u_1 > 0\end{cases} \\
+&= \frac{1}{N}\sum^N_{i=1} \begin{cases} 0 & u_1 ≤ 0 \\ -2(\vec{\rm{y}}_i - u_3) \cdot \vec{\rm{w}}_2^T \cdot \vec{\rm{x}}_i^T & u_1 > 0\end{cases} \\
+&= \frac{1}{N}\sum^N_{i=1} \begin{cases} 0 & u_1 ≤ 0 \\ -2(\vec{\rm{y}}_i - (u_2 \cdot \vec{\rm{w}}_2 + b_2)) \cdot \vec{\rm{w}}_2^T \cdot \vec{\rm{x}}_i^T & u_1 > 0\end{cases} \\
+&= \frac{1}{N}\sum^N_{i=1} \begin{cases} 0 & u_1 ≤ 0 \\ -2(\vec{\rm{y}}_i - (\text{max}(0, u_1) \cdot \vec{\rm{w}}_2 + b_2)) \cdot \vec{\rm{w}}_2^T \cdot \vec{\rm{x}}_i^T & u_1 > 0\end{cases} \\
+&= \frac{1}{N}\sum^N_{i=1} \begin{cases} 0 & \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\ -2(\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2)) \cdot \vec{\rm{w}}_2^T \cdot \vec{\rm{x}}_i^T & \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 > 0\end{cases}
+\end{align}
+$$
+:::
 
 $$
 \frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_1} = 
@@ -247,11 +261,17 @@ Let's see this using Python instead.
 The following is our neural network.
 
 ```python
-l1 = relu(lin(trn_x, w1, b1))
-l2 = lin(l1, w2, b2)
-loss = mse(l2, trn_y)
+l1 = relu(lin(trn_x, w1, b1)) #<1>
+l2 = lin(l1, w2, b2) #<2>
+loss = mse(l2, trn_y) #<3>
 ```
-:::{.callout-note appearance="simple" collapse="true"}
+
+1. `l1` is the first layer, $\text{max}(0, x \cdot \vec{\rm{w}}_1 + b_1)$.
+2. `l2` is the second layer, $\text{max}(0, x \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 = l_1 \cdot \vec{\rm{w}}_2 + b_2$.
+3. `loss` is the MSE, $\frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 = \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - l_2)^2$.
+
+::::{.callout-note appearance="simple"}
+:::{.callout-note appearance="minimal" collapse="true"}
 ## Substitutions
 $$
 \begin{align}
@@ -264,7 +284,7 @@ $$
 $$
 :::
 
-:::{.callout-note appearance="simple" collapse="true"}
+:::{.callout-note appearance="minimal" collapse="true"}
 ## Derivatives of the Substitutions
 $$
 \begin{alignat}{3}
@@ -281,13 +301,15 @@ $$
 \end{alignat}
 $$
 :::
+::::
 
 First we need to calculate the gradients of $u_4$.
 
 ```python
 diff = (trn_y[:, None] - l2)
-loss.g = (2/trn_x.shape[0]) * diff
+loss.g = (2/trn_x.shape[0]) * diff #<1>
 ```
+1. `trn_x.shape[0]` returns the total number of samples.
 
 Next are the gradients of $u_3$
 
@@ -310,7 +332,13 @@ l1.g = l2.g * (l1 > 0).float()
 And finally the gradients of $\vec{\rm{w}}_1$.
 
 ```python
-(l1.g[:, None, :] * trn_x[..., None]).sum(0)
+w1.g = (l1.g[:, None, :] * trn_x[..., None]).sum(0)
+```
+
+The equation for the gradient of $b_1$ is almost the same as the equation for the gradients of $w_1$, save for the last line where we do not have to matrix multiply with $\vec{\rm{x}}_i$. Therefore, we can reuse all previous gradient calculations to find the gradient of $b_1$.
+
+```python
+b1.g = (l1.g * 1).sum(0)
 ```
 
 :::{.callout-important appearance="simple"}
@@ -332,15 +360,15 @@ $$
   \frac{\partial \text{MSE}}{\partial b_1} &=
     \begin{cases}
       0 & \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\
-      \frac{2}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2) \cdot \vec{\rm{w}}_2^T & \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 > 0
+      \frac{2}{N} \sum^N_{i=1} (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 - \vec{\rm{y}}_i) \cdot \vec{\rm{w}}_2^T & \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 > 0
     \end{cases} \\
   \frac{\partial \text{MSE}}{\partial \vec{\rm{x}}_i} &=
     \begin{cases}
       0 & \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 ≤ 0 \\
       \frac{2}{N} \sum^N_{i=1} (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 - \vec{\rm{y}}_i) \cdot \vec{\rm{w}}^T_2 \cdot \vec{\rm{w}}_1^T & \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 > 0
     \end{cases} \\
-  \frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_2} &= \frac{2}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2) \cdot \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \\
-  \frac{\partial \text{MSE}}{\partial b_2} &= \frac{2}{N} \sum^N_{i=1} \vec{\rm{y}}_i - \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2
+  \frac{\partial \text{MSE}}{\partial \vec{\rm{w}}_2} &= \frac{2}{N} \sum^N_{i=1} (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 - \vec{\rm{y}}_i) \cdot \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \\
+  \frac{\partial \text{MSE}}{\partial b_2} &= \frac{2}{N} \sum^N_{i=1} \text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2 - \vec{\rm{y}}_i
 \end{align}
 $$
 :::
