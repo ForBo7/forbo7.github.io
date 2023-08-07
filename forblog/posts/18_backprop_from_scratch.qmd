@@ -6,6 +6,7 @@ image: ../images/18_backprop_from_scratch/thumbnail.png
 author: Salman Naqvi
 date: '2023-08-07'
 toc: false
+categories: [Mathematics, Creating Models]
 twitter-card:
   description: "*Most words are in English."
   image: ../images/18_backprop_from_scratch/thumbnail.png
