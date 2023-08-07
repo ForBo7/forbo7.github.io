@@ -2,6 +2,7 @@
   {
     "listing": "/forblog/index.html",
     "items": [
+      "/forblog/posts/18_backprop_from_scratch.html",
       "/forblog/posts/17_meanshift_clustering.html",
       "/forblog/posts/16_einstein_summation_notation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
@@ -24,6 +25,7 @@
   {
     "listing": "/testing_page.html",
     "items": [
+      "/forblog/posts/18_backprop_from_scratch.html",
       "/forblog/posts/17_meanshift_clustering.html",
       "/forblog/posts/16_einstein_summation_notation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",
@@ -49,6 +51,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/forblog/posts/18_backprop_from_scratch.html",
       "/forblog/posts/17_meanshift_clustering.html",
       "/forblog/posts/16_einstein_summation_notation.html",
       "/forblog/posts/15_un_successfully_implementing_diffedit.html",

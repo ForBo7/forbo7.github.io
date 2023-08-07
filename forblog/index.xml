@@ -16,8 +16,347 @@
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.4.294</generator>
-<lastBuildDate>Wed, 21 Jun 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.298</generator>
+<lastBuildDate>Mon, 07 Aug 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Backpropagation Explained using English Words*</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/18_backprop_from_scratch.html</link>
+  <description><![CDATA[ 
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/18_backprop_from_scratch/thumbnail.png" class="img-fluid" alt="A red rocket ship being propelled through space by mathematical symbols propagating out of its boosters."></p>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This guide assumes a basic understanding of derivatives and matrices.</p>
+</div>
+</div>
+<p>Backpropagation sounds and looks daunting. It doesn’t need to be. In fact, backpropagation is really just a fancy word for the chain rule. Implementing a backpropagation algorithm is simply implementing one big fat chain rule equation.</p>
+<p>Let’s remind ourselves of the chain rule. The chain rule lets us figure out how much a given variable indirectly changes with respect to another variable. Take the example below.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20y%20&amp;=%203u%20%5C%5C%0A%20%20u%20&amp;=%207%20+%20x%5E2%0A%5Cend%7Balign%7D%0A"></p>
+<p>We want to figure out how much <img src="https://latex.codecogs.com/png.latex?y"> changes with each increment in <img src="https://latex.codecogs.com/png.latex?x">. The problem is that <img src="https://latex.codecogs.com/png.latex?x"> doesn’t direcly change <img src="https://latex.codecogs.com/png.latex?y">. Rather, <img src="https://latex.codecogs.com/png.latex?x"> changes <img src="https://latex.codecogs.com/png.latex?u"> which in turn changes <img src="https://latex.codecogs.com/png.latex?y">.</p>
+<p>The chain rule allows us to solve this problem. In this case, the chain rule tells us that we can figure out how much <img src="https://latex.codecogs.com/png.latex?x"> indirecly changes <img src="https://latex.codecogs.com/png.latex?y"> by multiplying the derivative of <img src="https://latex.codecogs.com/png.latex?y"> with respect to <img src="https://latex.codecogs.com/png.latex?u">, and the derivative of <img src="https://latex.codecogs.com/png.latex?u"> with respect to <img src="https://latex.codecogs.com/png.latex?x">.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7Bdy%7D%7Bdx%7D%20=%20%5Cfrac%7Bdy%7D%7Bdu%7D%20%5Ccdot%20%5Cfrac%7Bdu%7D%7Bdx%7D%0A"></p>
+<p>Aaand I’ve just described backpropagation in a nutshell. That’s all there really is to it. The only difference is that in a neural network there are many more intermediate variables and functions, and that we want to find out how the weights indirectly change the loss.</p>
+<p>Let’s see this tangibly in action.</p>
+<p>We have the following neural network comprised of two layers: the first layer contains the affine function<sup>1</sup> together with the ReLU, while the second layer contains only the affine function. The loss, which is MSE (Mean Squared Error), will then be calculated from the output of the second layer.</p>
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></li></div><div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  subgraph A [Layer 1]
+    direction LR
+    id1[Affine Function] --&gt; id2[ReLU]
+  end
+
+  subgraph B [Layer 2]
+    direction LR
+    id2 --&gt; id3[Affine Function]
+  end
+  
+  subgraph C [Loss Function]
+    direction LR
+    id3 --&gt; id4[MSE]
+  end
+</pre>
+</div>
+</div>
+</div>
+</div>
+<p>Mathematically speaking, the first layer with a single sample <img src="https://latex.codecogs.com/png.latex?x"> looks like this.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7Bmax%7D(0,%20x%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%0A"></p>
+<p>The second layer looks like this.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7Bmax%7D(0,%20x%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%0A"></p>
+<p>And the loss function looks like this.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B(y%20-%20(%5Ctext%7Bmax%7D(0,%20x%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%7D%7B2%7D%0A"></p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>MSE in its most basic form looks like this. <img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BMSE%7D%20=%20%5Cfrac%7B(y%20-%20x)%5E2%7D%7B1%7D%0A"></p>
+<p>If we have multiple data points, then it looks like this.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BMSE%7D%20=%20%5Cfrac%7B(y_1%20-%20x_1)%5E2+(y_2%20-%20x_2)%5E2+(y_3%20-%20x_3)%5E2%7D%7B3%7D%0A"></p>
+</div>
+</div>
+<p>However, when working with multiple samples, the mean squared error comes out looking like this, where <img src="https://latex.codecogs.com/png.latex?N"> represents the total number of samples.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B(%5Cvec%7B%5Crm%7By%7D%7D_1%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_1%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20+%20(%5Cvec%7B%5Crm%7By%7D%7D_2%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20+%20%5Ccdots%20+%20(%5Cvec%7B%5Crm%7By%7D%7D_N%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_N%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%7D%7BN%7D%0A"></p>
+<p>Or more simply…<sup>2</sup></p>
+<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Csum"> is known as the summation or sigma operator. If we have the equation <img src="https://latex.codecogs.com/png.latex?%5Csum%5E4_%7Bx=1%7D2x">, it means sum the equation <img src="https://latex.codecogs.com/png.latex?2x"> for all values of <img src="https://latex.codecogs.com/png.latex?x"> from 1 to 4. Find out more <a href="https://www.mathsisfun.com/algebra/sigma-notation.html">here</a>.</p></li></div><p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%7D%7BN%7D%0A"></p>
+<p>…or even more simply.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%0A"></p>
+<p>Our goal for the rest of this guide is to derive the gradients of <img src="https://latex.codecogs.com/png.latex?w_1">.</p>
+<p>The equation above looks quite the mouthful though. One might even say scary. How would you even apply the chain rule here? How would you use the chain rule to derive the gradients of the weights and biases?</p>
+<p>Let’s simplify things by introducing a bunch of intermediate variables. We’ll begin by substituting the innermost pieces of the equation, and then gradually make our way out.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20u_1%20&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%5C%5C%0A%20%20%20%20u_2%20&amp;=%20%5Ctext%7Bmax%7D(0,%20u_1)%20%5C%5C%0A%20%20%20%20u_3%20&amp;=%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20%5C%5C%0A%20%20%20%20u_4%20&amp;=%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20%5C%5C%0A%20%20%20%20u_5%20&amp;=%20u_4%5E2%0A%5Cend%7Balign%7D%0A"></p>
+<p>The menacing equation above now gradually simplifies into the cute equation below.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20%5Ctext%7BMSE%7D%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20u_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3)%5E2%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(u_4)%5E2%20%5C%5C%0A%20%20%20%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20u_5%0A%5Cend%7Balign%7D%0A"></p>
+<p>Very cute, hey?</p>
+<p>In this cuter version of the equation, it is visible that incrementing <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_1"> does not directly change the MSE. Rather, incrementing <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_1"> changes <img src="https://latex.codecogs.com/png.latex?u_1">, which changes <img src="https://latex.codecogs.com/png.latex?u_2">, which changes <img src="https://latex.codecogs.com/png.latex?u_3">, which changes <img src="https://latex.codecogs.com/png.latex?u_4">, which in turn changes <img src="https://latex.codecogs.com/png.latex?u_5">.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%20%5Ctext%7BMSE%7D%20=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20u_5%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20%5Cfrac%7B%5Cpartial%20u%5E5%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%0A"></p>
+<p>See? Just a big, fat, and simple chain rule problem.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%5Cpartial"> is a curly “d” and can be read as “curly d”, or simply as “d”. <img src="https://latex.codecogs.com/png.latex?%5Cpartial"> notation will be used below, due to a concept known as partial derivatives. We will not go into this concept here, however, <a href="https://www.mathsisfun.com/calculus/derivatives-partial.html">this</a> is a great brief rundown on partial derivatives.</p>
+</div>
+</div>
+<p>Now we can tackle finding the gradients for <img src="https://latex.codecogs.com/png.latex?w_1">. To do so, let’s find the gradients of each intermediate variable.<sup>3</sup> <sup>4</sup></p>
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;If needed, get a refresher of the derivative rules <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bcases%7D%5Cend%7Bcases%7D"> denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more <a href="https://www.mathsisfun.com/sets/functions-piecewise.html">here</a></p></li></div><p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign*%7D%0A%5Ctext%7Bgradient%20of%20%7D%20u_4%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_4%7D%20u_4%5E2%20&amp;&amp;&amp;=%202u_4%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_3%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_3%7D%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20&amp;&amp;&amp;=%20-1%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_2%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_2%7D%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_1%7D%20%5Ctext%7Bmax%7D(0,%20u_1)%20&amp;&amp;&amp;=%0A%5Cbegin%7Bcases%7D%0A0%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%0A1%20&amp;%20u_1%20%3E%200%0A%5Cend%7Bcases%7D%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w_1%7D%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%0A%5Cend%7Balign*%7D%0A"></p>
+<p>Now we multiply everything together.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(2u_4)%20%5Ccdot%20(-1)%20%5Ccdot%20%5Cleft(%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%5Cright)%20%5Ccdot%20%5Cleft(%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%201%20&amp;%20u_1%20%3E%200%20%5Cend%7Bcases%7D%5Cright)%20%5Ccdot%20%5Cleft(%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%5Cright)%0A"></p>
+<p>And it all eventually expands out to the following.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expansion
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20(2u_4)%20%5Ccdot%20(-1)%20%5Ccdot%20(%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2)%20%5Ccdot%20%5Cbegin%7Bcases%7D0%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%201%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2u_4%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20u_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%5Cend%7Bcases%7D%0A%5Cend%7Balign%7D%0A"></p>
+</div>
+</div>
+</div>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%0A%5Cbegin%7Bcases%7D%0A%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5Ccdot%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%0A%5Cend%7Bcases%7D%0A"></p>
+<p>We can further simplify by taking <img src="https://latex.codecogs.com/png.latex?-1"> and <img src="https://latex.codecogs.com/png.latex?2"> common.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%0A%5Cbegin%7Bcases%7D%0A%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%0A%5Cend%7Bcases%7D%0A"></p>
+<p>We can simplify even further, by letting <img src="https://latex.codecogs.com/png.latex?e_i%20=%20%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i">.&nbsp;The <img src="https://latex.codecogs.com/png.latex?e"> stands for “error”.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%0A%5Cbegin%7Bcases%7D%0A%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20e_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%0A%5Cend%7Bcases%7D%0A"></p>
+<p>And there you go! We’ve derived the formula that will allow us to calculate the gradients of <img src="https://latex.codecogs.com/png.latex?w_1">.</p>
+<hr>
+<p>When implementing backpropagation in a program, it is often better to implement the entire equation in pieces, as opposed to a single line of code, through storing the result of each intermediate gradient. These intermediate gradients can be reused to calculate the gradients of another variable, such as the bias <img src="https://latex.codecogs.com/png.latex?b_1">.</p>
+<p>Instead of implementing the following in a single line of code.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%0A"></p>
+<p>We can instead first calculate the gradients of <img src="https://latex.codecogs.com/png.latex?u_4">.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Au_%7B4_g%7D%20=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%0A"></p>
+<p>Then calculate the gradients of <img src="https://latex.codecogs.com/png.latex?u_3"> and multiply it with it with the gradients of <img src="https://latex.codecogs.com/png.latex?u_4">.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Au_%7B3_g%7D%20=%20u_%7B4_g%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20=%20%5Cleft(%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%5Cright)%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%0A"></p>
+<p>Then multiply the product above with the gradients of <img src="https://latex.codecogs.com/png.latex?u_2">.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Au_%7B2_g%7D%20=%20u_%7B3_g%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20=%20%5Cleft(%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%5Cright)%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%0A"></p>
+<p>Then multiply the product above with the gradients of <img src="https://latex.codecogs.com/png.latex?u_1">.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Au_%7B1_g%7D%20=%20u_%7B2_g%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%20=%20%5Cleft(%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%5Cright)%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%0A"></p>
+<p>And finally multiply the product above with the gradients of <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_1"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cvec%7B%5Crm%7Bw%7D%7D_%7B1_g%7D%20=%20u_%7B1_g%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%20=%20%5Cleft(%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%5Cright)%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%0A"></p>
+<p>Let’s see this using Python instead.</p>
+<p>The following is our neural network.</p>
+<div class="sourceCode" id="annotated-cell-1" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-1" class="code-annotation-target">l1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> relu(lin(trn_x, w1, b1))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-1-2" class="code-annotation-target">l2 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> lin(l1, w2, b2)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-1-3" class="code-annotation-target">loss <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mse(l2, trn_y)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1"><code>l1</code> is the first layer, <img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bmax%7D(0,%20x%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)">.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2"><code>l2</code> is the second layer, <img src="https://latex.codecogs.com/png.latex?%5Ctext%7Bmax%7D(0,%20x%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20=%20l_1%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2">.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3"><code>loss</code> is the MSE, <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20l_2)%5E2">.</span>
+</dd>
+</dl>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Substitutions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20u_1%20&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%5C%5C%0A%20%20%20%20u_2%20&amp;=%20%5Ctext%7Bmax%7D(0,%20u_1)%20%5C%5C%0A%20%20%20%20u_3%20&amp;=%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20%5C%5C%0A%20%20%20%20u_4%20&amp;=%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20%5C%5C%0A%20%20%20%20u_5%20&amp;=%20u_4%5E2%0A%5Cend%7Balign%7D%0A"></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Derivatives of the Substitutions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balignat%7D%7B3%7D%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_4%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20&amp;&amp;=%0A%20%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_4%7D%20u_4%5E2%20&amp;&amp;&amp;=%202u_4%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_3%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_3%7D%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20&amp;&amp;&amp;=%20-1%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_2%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_2%7D%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bu%7D%7D_2%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bu%7D%7D_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_1%7D%20%5Ctext%7Bmax%7D(0,%20u_1)%20&amp;&amp;&amp;=%0A%20%20%20%20%5Cbegin%7Bcases%7D%0A%20%20%20%20%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bu%7D%7D_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%20%20%20%201%20&amp;%20%5Cvec%7B%5Crm%7Bu%7D%7D_1%20%3E%200%0A%20%20%20%20%5Cend%7Bcases%7D%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w_1%7D%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%0A%5Cend%7Balignat%7D%0A"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>First we need to calculate the gradients of <img src="https://latex.codecogs.com/png.latex?u_4">.</p>
+<div class="sourceCode" id="annotated-cell-2" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-2-1">diff <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (trn_y[:, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> l2)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-2" class="code-annotation-target">loss.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>trn_x.shape[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> diff</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1"><code>trn_x.shape[0]</code> returns the total number of samples.</span>
+</dd>
+</dl>
+<p>Next are the gradients of <img src="https://latex.codecogs.com/png.latex?u_3"></p>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">diff.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> loss.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span></code></pre></div>
+<p>Then the gradients of <img src="https://latex.codecogs.com/png.latex?u_2"></p>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">l2.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> diff.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">@</span> w2.T</span></code></pre></div>
+<p>Then the gradients of <img src="https://latex.codecogs.com/png.latex?u_1"></p>
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">l1.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> l2.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> (l1 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>()</span></code></pre></div>
+<p>And finally the gradients of <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_1">.</p>
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">w1.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (l1.g[:, <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, :] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> trn_x[..., <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>]).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span></code></pre></div>
+<p>The equation for the gradient of <img src="https://latex.codecogs.com/png.latex?b_1"> is almost the same as the equation for the gradients of <img src="https://latex.codecogs.com/png.latex?w_1">, save for the last line where we do not have to matrix multiply with <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bx%7D%7D_i">. Therefore, we can reuse all previous gradient calculations to find the gradient of <img src="https://latex.codecogs.com/png.latex?b_1">.</p>
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">b1.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (l1.g <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>).<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">sum</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span></code></pre></div>
+<div class="callout callout-style-simple callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The shapes may differ according to the data, functions, and classes you are working with, so be sure to change the shapes accordingly.</p>
+</div>
+</div>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And that’s all there really is to backpropagation; think of it a one big chain rule problem.</p>
+<p>To make sure you’ve got it hammered down, get out a pen and paper and derivate the equations that would compute the gradients of <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bx%7D%7D_i">, <img src="https://latex.codecogs.com/png.latex?b_1">, <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_2">, and <img src="https://latex.codecogs.com/png.latex?u_2"> respectively with respect to the MSE.</p>
+<p>And if you really want to hammer down your understanding on what’s happening, then I highly recommend reading <a href="https://explained.ai/matrix-calculus/">The Matrix Calculus You Need For Deep Learning</a>. I’ve also <a href="https://forbo7.github.io/misc/matrix_calculus_practice.pdf">compiled backpropagation practice questions</a> from this paper!</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20b_1%7D%20&amp;=%0A%20%20%20%20%5Cbegin%7Bcases%7D%0A%20%20%20%20%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%20%20%20%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%0A%20%20%20%20%5Cend%7Bcases%7D%20%5C%5C%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%7D%20&amp;=%0A%20%20%20%20%5Cbegin%7Bcases%7D%0A%20%20%20%20%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%20%20%20%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%0A%20%20%20%20%5Cend%7Bcases%7D%20%5C%5C%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%7D%20&amp;=%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i)%20%5Ccdot%20%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5C%5C%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20b_2%7D%20&amp;=%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i%0A%5Cend%7Balign%7D%0A"></p>
+</div>
+</div>
+</div>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://forbo7.github.io/forblog/posts/18_backprop_from_scratch.html</guid>
+  <pubDate>Mon, 07 Aug 2023 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/18_backprop_from_scratch/thumbnail.png" medium="image" type="image/png"/>
+</item>
 <item>
   <title>Implementing and Optimizing Meanshift Clustering</title>
   <dc:creator>Salman Naqvi</dc:creator>
