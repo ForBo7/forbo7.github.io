@@ -2,11 +2,19 @@
 title: Backpropagation Explained using English Words*
 subtitle: Propagating you all way the from the back.
 description: "*Most words are in English."
+image: ../images/18_backprop_from_scratch/thumbnail.png
 author: Salman Naqvi
-date: '2023-08-04'
+date: '2023-08-07'
 toc: false
-draft: true
+twitter-card:
+  description: "*Most words are in English."
+  image: ../images/18_backprop_from_scratch/thumbnail.png
+open-graph:
+  description: "*Most words are in English."
+  image: ../images/18_backprop_from_scratch/thumbnail.png
 ---
+
+![](../images/18_backprop_from_scratch/thumbnail.png){fig-alt="A red rocket ship being propelled through space by mathematical symbols propagating out of its boosters."}
 
 :::{.callout-important appearance="simple"}
 This guide assumes a basic understanding of derivatives and matrices.
