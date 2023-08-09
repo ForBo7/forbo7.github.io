@@ -15,6 +15,8 @@ open-graph:
   image: ../images/18_backprop_from_scratch/thumbnail.png
 ---
 
+_**This post was edited on Wednesday, 9 August 2023**_
+
 ![](../images/18_backprop_from_scratch/thumbnail.png){fig-alt="A red rocket ship being propelled through space by mathematical symbols propagating out of its boosters."}
 
 :::{.callout-important appearance="simple"}
@@ -315,10 +317,10 @@ $$
 First we need to calculate the gradients of $u_4$.
 
 ```python
-diff = (trn_y[:, None] - l2)
+diff = (trn_y - l2)
 loss.g = (2/trn_x.shape[0]) * diff #<1>
 ```
-1. `trn_x.shape[0]` returns the total number of samples.
+1. `trn_x.shape[0]`, in this case, returns the total number of samples.
 
 Next are the gradients of $u_3$
 
@@ -341,17 +343,17 @@ l1.g = l2.g * (l1 > 0).float()
 And finally the gradients of $\vec{\rm{w}}_1$.
 
 ```python
-w1.g = (l1.g[:, None, :] * trn_x[..., None]).sum(0)
+w1.g = (l1.g * trn_x).sum()
 ```
 
 The equation for the gradient of $b_1$ is almost the same as the equation for the gradients of $w_1$, save for the last line where we do not have to matrix multiply with $\vec{\rm{x}}_i$. Therefore, we can reuse all previous gradient calculations to find the gradient of $b_1$.
 
 ```python
-b1.g = (l1.g * 1).sum(0)
+b1.g = (l1.g * 1).sum()
 ```
 
 :::{.callout-important appearance="simple"}
-The shapes may differ according to the data, functions, and classes you are working with, so be sure to change the shapes accordingly.
+When multiplying various tensors together, make sure their shapes are compatible. Shape manipulations have been omitted above for simplicity.
 :::
 
 ## Conclusion
