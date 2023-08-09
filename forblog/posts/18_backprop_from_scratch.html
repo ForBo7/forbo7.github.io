@@ -343,7 +343,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Very cute, hey?</p>
 <p>In this cuter version of the equation, it is visible that incrementing <span class="math inline">\(\vec{\rm{w}}_1\)</span> does not directly change the MSE. Rather, incrementing <span class="math inline">\(\vec{\rm{w}}_1\)</span> changes <span class="math inline">\(u_1\)</span>, which changes <span class="math inline">\(u_2\)</span>, which changes <span class="math inline">\(u_3\)</span>, which changes <span class="math inline">\(u_4\)</span>, which in turn changes <span class="math inline">\(u_5\)</span>.</p>
 <p><span class="math display">\[
-\frac{\partial}{\partial \vec{w}_1} \text{MSE} = \frac{\partial}{\partial \vec{w}_1} \frac{1}{N} \sum^N_{i=1} u_5 = \frac{1}{N} \sum^N_{i=1} \frac{\partial u^5}{\partial \vec{w}_1} = \frac{1}{N} \sum^N_{i=1} \frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial \vec{w}_1}
+\frac{\partial}{\partial \vec{\rm{w}}_1} \text{MSE} = \frac{\partial}{\partial \vec{\rm{w}}_1} \frac{1}{N} \sum^N_{i=1} u_5 = \frac{1}{N} \sum^N_{i=1} \frac{\partial u^5}{\partial \vec{\rm{w}}_1} = \frac{1}{N} \sum^N_{i=1} \frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial \vec{\rm{w}}_1}
 \]</span></p>
 <p>See? Just a big, fat, and simple chain rule problem.</p>
 <div class="callout callout-style-simple callout-note">
@@ -357,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now we can tackle finding the gradients for <span class="math inline">\(w_1\)</span>. To do so, let’s find the gradients of each intermediate variable.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;If needed, get a refresher of the derivative rules <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;<span class="math inline">\(\begin{cases}\end{cases}\)</span> denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more <a href="https://www.mathsisfun.com/sets/functions-piecewise.html">here</a></p></li></div><p><span class="math display">\[
+<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;If needed, get a refresher of the derivative rules <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;<span class="math inline">\(\begin{cases}\end{cases}\)</span> denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more <a href="https://www.mathsisfun.com/sets/functions-piecewise.html">here</a>.</p></li></div><p><span class="math display">\[
 \begin{align*}
 \text{gradient of } u_4 &amp;= \frac{\partial u_5}{\partial u_4} &amp;&amp;= \frac{\partial}{\partial u_4} u_4^2 &amp;&amp;&amp;= 2u_4 \\
 \text{gradient of } u_3 &amp;= \frac{\partial u_4}{\partial u_3} &amp;&amp;= \frac{\partial}{\partial u_3} \vec{\rm{y}}_i - u_3 &amp;&amp;&amp;= -1 \\
@@ -423,7 +423,7 @@ Expansion
   \frac{2}{N} \sum^N_{i=1} e_i \cdot \vec{\rm{w}}^T_2 \cdot \vec{\rm{x}}_i^T &amp; \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1 &gt; 0
 \end{cases}
 \]</span></p>
-<p>And there you go! We’ve derived the formula that will allow us to calculate the gradients of <span class="math inline">\(w_1\)</span>.</p>
+<p>And there you go! We’ve derived the formula that will allow us to calculate the gradients of <span class="math inline">\(\vec{\rm{w}}_1\)</span>.</p>
 <hr>
 <p>When implementing backpropagation in a program, it is often better to implement the entire equation in pieces, as opposed to a single line of code, through storing the result of each intermediate gradient. These intermediate gradients can be reused to calculate the gradients of another variable, such as the bias <span class="math inline">\(b_1\)</span>.</p>
 <p>Instead of implementing the following in a single line of code.</p>
