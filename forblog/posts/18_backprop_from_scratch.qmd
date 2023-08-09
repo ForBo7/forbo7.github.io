@@ -150,7 +150,7 @@ Very cute, hey?
 In this cuter version of the equation, it is visible that incrementing $\vec{\rm{w}}_1$ does not directly change the MSE. Rather, incrementing $\vec{\rm{w}}_1$ changes $u_1$, which changes $u_2$, which changes $u_3$, which changes $u_4$, which in turn changes $u_5$.
 
 $$
-\frac{\partial}{\partial \vec{w}_1} \text{MSE} = \frac{\partial}{\partial \vec{w}_1} \frac{1}{N} \sum^N_{i=1} u_5 = \frac{1}{N} \sum^N_{i=1} \frac{\partial u^5}{\partial \vec{w}_1} = \frac{1}{N} \sum^N_{i=1} \frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial \vec{w}_1}
+\frac{\partial}{\partial \vec{\rm{w}}_1} \text{MSE} = \frac{\partial}{\partial \vec{\rm{w}}_1} \frac{1}{N} \sum^N_{i=1} u_5 = \frac{1}{N} \sum^N_{i=1} \frac{\partial u^5}{\partial \vec{\rm{w}}_1} = \frac{1}{N} \sum^N_{i=1} \frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial \vec{\rm{w}}_1}
 $$
 
 See? Just a big, fat, and simple chain rule problem.
@@ -159,7 +159,7 @@ See? Just a big, fat, and simple chain rule problem.
 $\partial$ is a curly "d" and can be read as "curly d", or simply as "d". $\partial$ notation will be used below, due to a concept known as partial derivatives. We will not go into this concept here, however, [this](https://www.mathsisfun.com/calculus/derivatives-partial.html) is a great brief rundown on partial derivatives.
 :::
 
-Now we can tackle finding the gradients for $w_1$. To do so, let's find the gradients of each intermediate variable.^[If needed, get a refresher of the derivative rules [here](https://www.mathsisfun.com/calculus/derivatives-rules.html).] ^[$\begin{cases}\end{cases}$ denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more [here](https://www.mathsisfun.com/sets/functions-piecewise.html)]
+Now we can tackle finding the gradients for $w_1$. To do so, let's find the gradients of each intermediate variable.^[If needed, get a refresher of the derivative rules [here](https://www.mathsisfun.com/calculus/derivatives-rules.html).] ^[$\begin{cases}\end{cases}$ denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more [here](https://www.mathsisfun.com/sets/functions-piecewise.html).]
 
 $$
 \begin{align*}
@@ -225,7 +225,7 @@ $$
 \end{cases}
 $$
 
-And there you go! We've derived the formula that will allow us to calculate the gradients of $w_1$.
+And there you go! We've derived the formula that will allow us to calculate the gradients of $\vec{\rm{w}}_1$.
 
 ---
 
