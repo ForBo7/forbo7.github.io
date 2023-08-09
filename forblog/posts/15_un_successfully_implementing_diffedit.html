@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.298">
+<meta name="generator" content="quarto-1.4.309">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -142,35 +142,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house-door" role="img">
-</i> 
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../forblog/index.html" rel="" target=""><i class="bi bi-newspaper" role="img">
-</i> 
- <span class="menu-text">ForBlog</span></a>
+    <a class="nav-link" href="../../forblog/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../web_apps/index.html" rel="" target=""><i class="bi bi-sliders2" role="img">
-</i> 
- <span class="menu-text">Playground</span></a>
+    <a class="nav-link" href="../../web_apps/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Playground</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../dictionary/index.html" rel="" target=""><i class="bi bi-book" role="img">
-</i> 
- <span class="menu-text">Dictionary</span></a>
+    <a class="nav-link" href="../../dictionary/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target=""><i class="bi bi-file-person" role="img">
-</i> 
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
-    <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
-    <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+    <a href="https://github.com/ForBo7/forbo7.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
+    <a href="../../forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -258,17 +258,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="../images/15_un_successfully_implementing_diffedit/thumbnail.png" class="img-fluid"></p>
 <p>Well, my implementation was a partial success: I managed to generate a mask, but failed to apply it. If you don’t understand, hold on as I’ll explain DiffEdit.</p>
 <p>In this notebook, I try to implement the <a href="https://arxiv.org/abs/2210.11427">DiffEdit</a> paper: a diffusion algorithm that allows us to replace the subject of an image with another subject, simply through a text prompt.</p>
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>This notebook does not closely follow the paper implementation of DiffEdit. However, it does capture the underlying mechanisms.</p>
+</div>
 </div>
 </div>
 <p>In a nutshell, this is done by generating a mask from the text prompt. This mask cuts out the subject from the image, which allows a new subject to be added to the image.</p>
@@ -1190,6 +1187,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {

@@ -16,7 +16,7 @@
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.4.298</generator>
+<generator>quarto-1.4.309</generator>
 <lastBuildDate>Mon, 07 Aug 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Backpropagation Explained using English Words*</title>
@@ -26,18 +26,16 @@
 
 
 
+<p><em><strong>This post was edited on Wednesday, 9 August 2023</strong></em></p>
 <p><img src="https://forbo7.github.io/forblog/images/18_backprop_from_scratch/thumbnail.png" class="img-fluid" alt="A red rocket ship being propelled through space by mathematical symbols propagating out of its boosters."></p>
-<div class="callout callout-style-simple callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>This guide assumes a basic understanding of derivatives and matrices.</p>
+</div>
 </div>
 </div>
 <p>Backpropagation sounds and looks daunting. It doesn’t need to be. In fact, backpropagation is really just a fancy word for the chain rule. Implementing a backpropagation algorithm is simply implementing one big fat chain rule equation.</p>
@@ -79,19 +77,16 @@
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7Bmax%7D(0,%20x%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%0A"></p>
 <p>And the loss function looks like this.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B(y%20-%20(%5Ctext%7Bmax%7D(0,%20x%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%7D%7B2%7D%0A"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>MSE in its most basic form looks like this. <img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BMSE%7D%20=%20%5Cfrac%7B(y%20-%20x)%5E2%7D%7B1%7D%0A"></p>
 <p>If we have multiple data points, then it looks like this.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Ctext%7BMSE%7D%20=%20%5Cfrac%7B(y_1%20-%20x_1)%5E2+(y_2%20-%20x_2)%5E2+(y_3%20-%20x_3)%5E2%7D%7B3%7D%0A"></p>
+</div>
 </div>
 </div>
 <p>However, when working with multiple samples, the mean squared error comes out looking like this, where <img src="https://latex.codecogs.com/png.latex?N"> represents the total number of samples.</p>
@@ -110,17 +105,14 @@
 <p>In this cuter version of the equation, it is visible that incrementing <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_1"> does not directly change the MSE. Rather, incrementing <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_1"> changes <img src="https://latex.codecogs.com/png.latex?u_1">, which changes <img src="https://latex.codecogs.com/png.latex?u_2">, which changes <img src="https://latex.codecogs.com/png.latex?u_3">, which changes <img src="https://latex.codecogs.com/png.latex?u_4">, which in turn changes <img src="https://latex.codecogs.com/png.latex?u_5">.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%20%5Ctext%7BMSE%7D%20=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20u_5%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20%5Cfrac%7B%5Cpartial%20u%5E5%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%20%5Ccdot%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7Bw%7D_1%7D%0A"></p>
 <p>See? Just a big, fat, and simple chain rule problem.</p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p><img src="https://latex.codecogs.com/png.latex?%5Cpartial"> is a curly “d” and can be read as “curly d”, or simply as “d”. <img src="https://latex.codecogs.com/png.latex?%5Cpartial"> notation will be used below, due to a concept known as partial derivatives. We will not go into this concept here, however, <a href="https://www.mathsisfun.com/calculus/derivatives-partial.html">this</a> is a great brief rundown on partial derivatives.</p>
+</div>
 </div>
 </div>
 <p>Now we can tackle finding the gradients for <img src="https://latex.codecogs.com/png.latex?w_1">. To do so, let’s find the gradients of each intermediate variable.<sup>3</sup> <sup>4</sup></p>
@@ -129,7 +121,7 @@
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(2u_4)%20%5Ccdot%20(-1)%20%5Ccdot%20%5Cleft(%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%5Cright)%20%5Ccdot%20%5Cleft(%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%201%20&amp;%20u_1%20%3E%200%20%5Cend%7Bcases%7D%5Cright)%20%5Ccdot%20%5Cleft(%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%5Cright)%0A"></p>
 <p>And it all eventually expands out to the following.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -138,7 +130,7 @@ Expansion
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20(2u_4)%20%5Ccdot%20(-1)%20%5Ccdot%20(%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2)%20%5Ccdot%20%5Cbegin%7Bcases%7D0%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%201%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2u_4%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20u_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20u_1%20%3E%200%5Cend%7Bcases%7D%20%5C%5C%0A&amp;=%20%5Cfrac%7B1%7D%7BN%7D%5Csum%5EN_%7Bi=1%7D%20%5Cbegin%7Bcases%7D%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%20-2(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20%5Ccdot%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%5Cend%7Bcases%7D%0A%5Cend%7Balign%7D%0A"></p>
 </div>
@@ -189,18 +181,14 @@ font-style: inherit;">=</span> mse(l2, trn_y)</span><div class="code-annotation-
 <span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3"><code>loss</code> is the MSE, <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20l_2)%5E2">.</span>
 </dd>
 </dl>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -209,14 +197,14 @@ Substitutions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%20%20u_1%20&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%5C%5C%0A%20%20%20%20u_2%20&amp;=%20%5Ctext%7Bmax%7D(0,%20u_1)%20%5C%5C%0A%20%20%20%20u_3%20&amp;=%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20%5C%5C%0A%20%20%20%20u_4%20&amp;=%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20%5C%5C%0A%20%20%20%20u_5%20&amp;=%20u_4%5E2%0A%5Cend%7Balign%7D%0A"></p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -225,9 +213,10 @@ Derivatives of the Substitutions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balignat%7D%7B3%7D%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_4%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20&amp;&amp;=%0A%20%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_4%7D%20u_4%5E2%20&amp;&amp;&amp;=%202u_4%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_3%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_3%7D%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20&amp;&amp;&amp;=%20-1%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_2%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_2%7D%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20u_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bu%7D%7D_2%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bu%7D%7D_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_1%7D%20%5Ctext%7Bmax%7D(0,%20u_1)%20&amp;&amp;&amp;=%0A%20%20%20%20%5Cbegin%7Bcases%7D%0A%20%20%20%20%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bu%7D%7D_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%20%20%20%201%20&amp;%20%5Cvec%7B%5Crm%7Bu%7D%7D_1%20%3E%200%0A%20%20%20%20%5Cend%7Bcases%7D%20%5C%5C%0A%20%20%5Ctext%7Bgradient%20of%20%7D%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w_1%7D%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%0A%5Cend%7Balignat%7D%0A"></p>
+</div>
 </div>
 </div>
 </div>
@@ -236,9 +225,7 @@ Derivatives of the Substitutions
 <p>First we need to calculate the gradients of <img src="https://latex.codecogs.com/png.latex?u_4">.</p>
 <div class="sourceCode" id="annotated-cell-2" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-2-1">diff <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> (trn_y[:, <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>] <span class="op" style="color: #5E5E5E;
+font-style: inherit;">=</span> (trn_y <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> l2)</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-2" class="code-annotation-target">loss.g <span class="op" style="color: #5E5E5E;
@@ -255,7 +242,7 @@ font-style: inherit;">*</span> diff</span><div class="code-annotation-gutter-bg"
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1"><code>trn_x.shape[0]</code> returns the total number of samples.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1"><code>trn_x.shape[0]</code>, in this case, returns the total number of samples.</span>
 </dd>
 </dl>
 <p>Next are the gradients of <img src="https://latex.codecogs.com/png.latex?u_3"></p>
@@ -289,17 +276,11 @@ font-style: inherit;">float</span>()</span></code></pre></div>
 <p>And finally the gradients of <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_1">.</p>
 <div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">w1.g <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> (l1.g[:, <span class="va" style="color: #111111;
+font-style: inherit;">=</span> (l1.g <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">None</span>, :] <span class="op" style="color: #5E5E5E;
+font-style: inherit;">*</span> trn_x).<span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">*</span> trn_x[..., <span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>]).<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sum</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>)</span></code></pre></div>
+font-style: inherit;">sum</span>()</span></code></pre></div>
 <p>The equation for the gradient of <img src="https://latex.codecogs.com/png.latex?b_1"> is almost the same as the equation for the gradients of <img src="https://latex.codecogs.com/png.latex?w_1">, save for the last line where we do not have to matrix multiply with <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bx%7D%7D_i">. Therefore, we can reuse all previous gradient calculations to find the gradient of <img src="https://latex.codecogs.com/png.latex?b_1">.</p>
 <div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">b1.g <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -309,20 +290,15 @@ font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>).<span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">sum</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>)</span></code></pre></div>
-<div class="callout callout-style-simple callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
+font-style: inherit;">sum</span>()</span></code></pre></div>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
+<div class="callout-body-container">
+<p>When multiplying various tensors together, make sure their shapes are compatible. Shape manipulations have been omitted above for simplicity.</p>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The shapes may differ according to the data, functions, and classes you are working with, so be sure to change the shapes accordingly.</p>
 </div>
 </div>
 <section id="conclusion" class="level2">
@@ -331,7 +307,7 @@ font-style: inherit;">0</span>)</span></code></pre></div>
 <p>To make sure you’ve got it hammered down, get out a pen and paper and derivate the equations that would compute the gradients of <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bx%7D%7D_i">, <img src="https://latex.codecogs.com/png.latex?b_1">, <img src="https://latex.codecogs.com/png.latex?%5Cvec%7B%5Crm%7Bw%7D%7D_2">, and <img src="https://latex.codecogs.com/png.latex?u_2"> respectively with respect to the MSE.</p>
 <p>And if you really want to hammer down your understanding on what’s happening, then I highly recommend reading <a href="https://explained.ai/matrix-calculus/">The Matrix Calculus You Need For Deep Learning</a>. I’ve also <a href="https://forbo7.github.io/misc/matrix_calculus_practice.pdf">compiled backpropagation practice questions</a> from this paper!</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -340,7 +316,7 @@ Answers
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20b_1%7D%20&amp;=%0A%20%20%20%20%5Cbegin%7Bcases%7D%0A%20%20%20%20%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%20%20%20%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%0A%20%20%20%20%5Cend%7Bcases%7D%20%5C%5C%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%7D%20&amp;=%0A%20%20%20%20%5Cbegin%7Bcases%7D%0A%20%20%20%20%20%200%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%E2%89%A4%200%20%5C%5C%0A%20%20%20%20%20%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%5ET%20&amp;%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20%3E%200%0A%20%20%20%20%5Cend%7Bcases%7D%20%5C%5C%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%7D%20&amp;=%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i)%20%5Ccdot%20%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5C%5C%0A%20%20%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20b_2%7D%20&amp;=%20%5Cfrac%7B2%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20-%20%5Cvec%7B%5Crm%7By%7D%7D_i%0A%5Cend%7Balign%7D%0A"></p>
 </div>
@@ -1897,17 +1873,14 @@ font-style: inherit;">10</span> meanshift(data)</span></code></pre></div>
 
 
 
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>This post covers einstein summation notation syntax in terms of programming languages.</p>
+</div>
 </div>
 </div>
 <p><img src="https://forbo7.github.io/forblog/images/16_einstein_summation/thumbnail.png" class="img-fluid"></p>
@@ -1943,7 +1916,7 @@ font-style: inherit;">10</span> meanshift(data)</span></code></pre></div>
 <div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This assumes the matrix is zero indexed. This means <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bbmatrix%7D%201%20&amp;%202%20&amp;%203%20%5Cend%7Bbmatrix%7D"> is the zeroth row of <img src="https://latex.codecogs.com/png.latex?A">.</p></li></div><p>Taking the hadamard product looks like this.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20&amp;%203%20%5C%5C%0A4%20&amp;%205%20&amp;%206%20%5C%5C%0A7%20&amp;%208%20&amp;%209%0A%5Cend%7Bbmatrix%7D%0A%5Codot%0A%5Cbegin%7Bbmatrix%7D%0A9%20&amp;%208%20&amp;%207%20%5C%5C%0A6%20&amp;%205%20&amp;%204%20%5C%5C%0A3%20&amp;%202%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A1%20%5Ccdot%209%20&amp;%202%20%5Ccdot%208%20&amp;%203%20%5Ccdot%207%20%5C%5C%0A4%20%5Ccdot%206%20&amp;%205%20%5Ccdot%205%20&amp;%206%20%5Ccdot%204%20%5C%5C%0A7%20%5Ccdot%203%20&amp;%208%20%5Ccdot%202%20&amp;%209%20%5Ccdot%201%0A%5Cend%7Bbmatrix%7D%0A=%0AC%0A"></p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1952,19 +1925,16 @@ An alternative way to look at it…
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
+</div>
 </div>
 </div>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%201%20&amp;%202%20&amp;%203%20%5C%5C%204%20&amp;%205%20&amp;%206%20%5C%5C%207%20&amp;%208%20&amp;%209%20%5Cend%7Bbmatrix%7D%20%5Codot%20%5Cbegin%7Bbmatrix%7D%209%20&amp;%208%20&amp;%207%20%5C%5C%206%20&amp;%205%20&amp;%204%20%5C%5C%203%20&amp;%202%20&amp;%201%20%5Cend%7Bbmatrix%7D%20=%20%5Cbegin%7Bbmatrix%7D%20a_%7B00%7Db_%7B00%7D%20&amp;%20a_%7B01%7Db_%7B01%7D%20&amp;%20a_%7B02%7Db_%7B02%7D%20%5C%5C%20a_%7B10%7Db_%7B10%7D%20&amp;%20a_%7B11%7Db_%7B11%7D%20&amp;%20a_%7B12%7Db_%7B12%7D%20%5C%5C%20a_%7B20%7Db_%7B20%7D%20&amp;%20a_%7B21%7Db_%7B21%7D%20&amp;%20a_%7B22%7Db_%7B22%7D%20%5C%5C%20%5Cend%7Bbmatrix%7D%20=%20C%0A"></p>
@@ -2000,7 +1970,7 @@ An alternative way to look at it…
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20%5C%5C%0A3%20&amp;%204%0A%5Cend%7Bbmatrix%7D%0A%5Ccdot%0A%5Cbegin%7Bbmatrix%7D%0A5%20&amp;%206%20%5C%5C%0A7%20&amp;%208%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A(1%20%5Ccdot%205)%20+%20(2%20%5Ccdot%207)%20&amp;%20(1%20%5Ccdot%206)%20+%20(2%20%5Ccdot%208)%20%5C%5C%0A(3%20%5Ccdot%205)%20+%20(4%20%5Ccdot%207)%20&amp;%20(3%20%5Ccdot%206)%20+%20(4%20%5Ccdot%208)%0A%5Cend%7Bbmatrix%7D%0A=%0AC%0A"></p>
 <!-- TODO: Might want to remove the example below or position it after the einsum notation for matrix multiplication. -->
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -2009,19 +1979,16 @@ An alternative way to look at it…
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>Don’t dwell too much on this; it may help to refer back to this later to help understand the einsum notation below.</p>
+</div>
 </div>
 </div>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20%5C%5C%0A3%20&amp;%204%0A%5Cend%7Bbmatrix%7D%0A%5Ccdot%0A%5Cbegin%7Bbmatrix%7D%0A5%20&amp;%206%20%5C%5C%0A7%20&amp;%208%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A(a_%7B00%7Db_%7B00%7D%20+%20a_%7B01%7Db_%7B10%7D)%20&amp;%20(a_%7B00%7Db_%7B01%7D%20+%20a_%7B01%7Db_%7B11%7D)%20%5C%5C%0A(a_%7B10%7Db_%7B00%7D%20+%20a_%7B11%7Db_%7B10%7D)%20&amp;%20(a_%7B10%7Db_%7B01%7D%20+%20a_%7B11%7Db_%7B11%7D)%0A%5Cend%7Bbmatrix%7D%0A=%0AC%0A"></p>
@@ -2073,17 +2040,14 @@ An alternative way to look at it…
 <section id="einsum-notation-1" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-1"><strong>Einsum Notation</strong></h5>
 <p><img src="https://latex.codecogs.com/png.latex?i%20%5Crightarrow%20%5Cphantom%7Bi%7D"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>A scalar is output, hence no output iterator.</p>
+</div>
 </div>
 </div>
 <hr>
@@ -2110,17 +2074,14 @@ An alternative way to look at it…
 <section id="einsum-notation-3" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-3"><strong>Einsum Notation</strong></h5>
 <p><img src="https://latex.codecogs.com/png.latex?i,%20i%20%5Crightarrow%20%5Cphantom%7Bi%7D"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>A scalar is output, hence no output iterator.</p>
+</div>
 </div>
 </div>
 <hr>
@@ -2136,7 +2097,7 @@ An alternative way to look at it…
 <h5 class="anchored" data-anchor-id="einsum-notation-4"><strong>Einsum Notation</strong></h5>
 <p><img src="https://latex.codecogs.com/png.latex?i,%20j%20%5Crightarrow%20ij"></p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -2145,7 +2106,7 @@ Expanded example
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>The outer product involves multiplying each element in <img src="https://latex.codecogs.com/png.latex?A"> with all elements in <img src="https://latex.codecogs.com/png.latex?B">.</p>
 <blockquote class="blockquote">
@@ -2212,17 +2173,14 @@ Expanded example
 <section id="einsum-notation-8" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-8"><strong>Einsum Notation</strong></h5>
 <p><img src="https://latex.codecogs.com/png.latex?ii%20%5Crightarrow%20%5Cphantom%7Bi%7D"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>A scalar is output, hence no output iterator.</p>
+</div>
 </div>
 </div>
 <hr>
@@ -2298,17 +2256,14 @@ Expanded example
 <section id="einsum-notation-14" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-14"><strong>Einsum Notation</strong></h5>
 <p><img src="https://latex.codecogs.com/png.latex?ik,%20jk%20%5Crightarrow%20ijk"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>A three dimensional tensor is output, hence the three output iterators.</p>
+</div>
 </div>
 </div>
 <hr>
@@ -2324,17 +2279,14 @@ Expanded example
 <section id="einsum-notation-15" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-15"><strong>Einsum Notation</strong></h5>
 <p><img src="https://latex.codecogs.com/png.latex?ij,%20kl%20%5Crightarrow%20ijkl"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>A four dimensional tensor is output, hence the four output iterators.</p>
+</div>
 </div>
 </div>
 </section>
@@ -2372,17 +2324,14 @@ Expanded example
 <p><img src="https://forbo7.github.io/forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" class="img-fluid"></p>
 <p>Well, my implementation was a partial success: I managed to generate a mask, but failed to apply it. If you don’t understand, hold on as I’ll explain DiffEdit.</p>
 <p>In this notebook, I try to implement the <a href="https://arxiv.org/abs/2210.11427">DiffEdit</a> paper: a diffusion algorithm that allows us to replace the subject of an image with another subject, simply through a text prompt.</p>
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>This notebook does not closely follow the paper implementation of DiffEdit. However, it does capture the underlying mechanisms.</p>
+</div>
 </div>
 </div>
 <p>In a nutshell, this is done by generating a mask from the text prompt. This mask cuts out the subject from the image, which allows a new subject to be added to the image.</p>
@@ -4050,17 +3999,14 @@ font-style: inherit;">0</span>]</span></code></pre></div>
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
 <p><img src="https://forbo7.github.io/forblog/images/14_iterators_and_generators/thumbnail.jpg" class="img-fluid" alt="A small red gasoline generator."></p>
-<div class="callout callout-style-simple callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-warning">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>This bits and bobs is explained in terms of my explorations and experimentations. Therefore, explanations and descriptions below may not necessarily be accurate.</p>
+</div>
 </div>
 </div>
 <section id="iter" class="level2 page-columns page-full">
@@ -8183,18 +8129,15 @@ font-style: inherit;"> subscribe.html</span></span></code></pre></div>
 <p>On Google Forms, you have an option to implement email checking with the following option.</p>
 <p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/2.png" class="img-fluid"></p>
 <p><img src="https://forbo7.github.io/forblog/images/7_blog_subscriptions/manual/3.png" class="img-fluid"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>You may want to allow responses to be edited after submission, create a confirmation message, and disable a link to submit another response.</p>
 <p>In Google Forms, these options can be toggled under the ‘Settings’ tab.</p>
+</div>
 </div>
 </div>
 </section>
@@ -8249,18 +8192,15 @@ Before you hit that send button!
 </section>
 <section id="step-0-extras" class="level3">
 <h3 class="anchored" data-anchor-id="step-0-extras">Step 0: Extras</h3>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>You could combine the subscribe and unsubscribe forms into a single form so it would be easier to manage. The form would initially ask if a user would like to subscribe or unsubscribe. Based on their input, the form would take them to the appropriate section.</p>
 <p>Further expanding on this, if your site has multiple feeds, the form could also ask which feed the user would like to subscribe to or unsubscribe from.</p>
+</div>
 </div>
 </div>
 </section>

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.298">
+<meta name="generator" content="quarto-1.4.309">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -139,35 +139,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house-door" role="img">
-</i> 
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../forblog/index.html" rel="" target=""><i class="bi bi-newspaper" role="img">
-</i> 
- <span class="menu-text">ForBlog</span></a>
+    <a class="nav-link" href="../../forblog/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../web_apps/index.html" rel="" target=""><i class="bi bi-sliders2" role="img">
-</i> 
- <span class="menu-text">Playground</span></a>
+    <a class="nav-link" href="../../web_apps/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Playground</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../dictionary/index.html" rel="" target=""><i class="bi bi-book" role="img">
-</i> 
- <span class="menu-text">Dictionary</span></a>
+    <a class="nav-link" href="../../dictionary/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target=""><i class="bi bi-file-person" role="img">
-</i> 
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
-    <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
-    <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+    <a href="https://github.com/ForBo7/forbo7.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
+    <a href="../../forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -338,18 +338,15 @@ Tip
 <p>On Google Forms, you have an option to implement email checking with the following option.</p>
 <p><img src="../images/7_blog_subscriptions/manual/2.png" class="img-fluid"></p>
 <p><img src="../images/7_blog_subscriptions/manual/3.png" class="img-fluid"></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>You may want to allow responses to be edited after submission, create a confirmation message, and disable a link to submit another response.</p>
 <p>In Google Forms, these options can be toggled under the ‘Settings’ tab.</p>
+</div>
 </div>
 </div>
 </section>
@@ -404,18 +401,15 @@ Before you hit that send button!
 </section>
 <section id="step-0-extras" class="level3">
 <h3 class="anchored" data-anchor-id="step-0-extras">Step 0: Extras</h3>
-<div class="callout callout-style-simple callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>You could combine the subscribe and unsubscribe forms into a single form so it would be easier to manage. The form would initially ask if a user would like to subscribe or unsubscribe. Based on their input, the form would take them to the appropriate section.</p>
 <p>Further expanding on this, if your site has multiple feeds, the form could also ask which feed the user would like to subscribe to or unsubscribe from.</p>
+</div>
 </div>
 </div>
 </section>
@@ -699,6 +693,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {

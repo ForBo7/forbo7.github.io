@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.298">
+<meta name="generator" content="quarto-1.4.309">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -143,35 +143,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target=""><i class="bi bi-house-door" role="img">
-</i> 
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../forblog/index.html" rel="" target=""><i class="bi bi-newspaper" role="img">
-</i> 
- <span class="menu-text">ForBlog</span></a>
+    <a class="nav-link" href="../../forblog/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../web_apps/index.html" rel="" target=""><i class="bi bi-sliders2" role="img">
-</i> 
- <span class="menu-text">Playground</span></a>
+    <a class="nav-link" href="../../web_apps/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Playground</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../dictionary/index.html" rel="" target=""><i class="bi bi-book" role="img">
-</i> 
- <span class="menu-text">Dictionary</span></a>
+    <a class="nav-link" href="../../dictionary/index.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target=""><i class="bi bi-file-person" role="img">
-</i> 
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html" <i="" role="img">
+ 
+&gt;<span class="menu-text">About</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
-    <a href="https://github.com/ForBo7/forbo7.github.io" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
-    <a href="../../forblog/index.xml" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+    <a href="https://github.com/ForBo7/forbo7.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
+    <a href="../../forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -225,18 +225,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+<p><em><strong>This post was edited on Wednesday, 9 August 2023</strong></em></p>
 <p><img src="../images/18_backprop_from_scratch/thumbnail.png" class="img-fluid" alt="A red rocket ship being propelled through space by mathematical symbols propagating out of its boosters."></p>
-<div class="callout callout-style-simple callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>This guide assumes a basic understanding of derivatives and matrices.</p>
+</div>
 </div>
 </div>
 <p>Backpropagation sounds and looks daunting. It doesn’t need to be. In fact, backpropagation is really just a fancy word for the chain rule. Implementing a backpropagation algorithm is simply implementing one big fat chain rule equation.</p>
@@ -291,16 +289,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[
 \frac{(y - (\text{max}(0, x \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{2}
 \]</span></p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p>MSE in its most basic form looks like this. <span class="math display">\[
 \text{MSE} = \frac{(y - x)^2}{1}
 \]</span></p>
@@ -308,6 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[
 \text{MSE} = \frac{(y_1 - x_1)^2+(y_2 - x_2)^2+(y_3 - x_3)^2}{3}
 \]</span></p>
+</div>
 </div>
 </div>
 <p>However, when working with multiple samples, the mean squared error comes out looking like this, where <span class="math inline">\(N\)</span> represents the total number of samples.</p>
@@ -351,17 +346,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 \frac{\partial}{\partial \vec{w}_1} \text{MSE} = \frac{\partial}{\partial \vec{w}_1} \frac{1}{N} \sum^N_{i=1} u_5 = \frac{1}{N} \sum^N_{i=1} \frac{\partial u^5}{\partial \vec{w}_1} = \frac{1}{N} \sum^N_{i=1} \frac{\partial u_5}{\partial u_4} \cdot \frac{\partial u_4}{\partial u_3} \cdot \frac{\partial u_3}{\partial u_2} \cdot \frac{\partial u_2}{\partial u_1} \cdot \frac{\partial u_1}{\partial \vec{w}_1}
 \]</span></p>
 <p>See? Just a big, fat, and simple chain rule problem.</p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <p><span class="math inline">\(\partial\)</span> is a curly “d” and can be read as “curly d”, or simply as “d”. <span class="math inline">\(\partial\)</span> notation will be used below, due to a concept known as partial derivatives. We will not go into this concept here, however, <a href="https://www.mathsisfun.com/calculus/derivatives-partial.html">this</a> is a great brief rundown on partial derivatives.</p>
+</div>
 </div>
 </div>
 <p>Now we can tackle finding the gradients for <span class="math inline">\(w_1\)</span>. To do so, let’s find the gradients of each intermediate variable.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
@@ -384,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 \]</span></p>
 <p>And it all eventually expands out to the following.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -393,7 +385,7 @@ Expansion
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{align}
@@ -477,18 +469,14 @@ u_{1_g} = u_{2_g} \cdot \frac{\partial u_2}{\partial u_1} = \left(\frac{\partial
 <span data-code-cell="annotated-cell-1" data-code-lines="3" data-code-annotation="3"><code>loss</code> is the MSE, <span class="math inline">\(\frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 = \frac{1}{N} \sum^N_{i=1} (\vec{\rm{y}}_i - l_2)^2\)</span>.</span>
 </dd>
 </dl>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<div class="callout-body-container">
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -497,7 +485,7 @@ Substitutions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{align}
@@ -512,7 +500,7 @@ Substitutions
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -521,7 +509,7 @@ Derivatives of the Substitutions
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{alignat}{3}
@@ -542,13 +530,14 @@ Derivatives of the Substitutions
 </div>
 </div>
 </div>
+</div>
 <p>First we need to calculate the gradients of <span class="math inline">\(u_4\)</span>.</p>
-<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> (trn_y[:, <span class="va">None</span>] <span class="op">-</span> l2)</span>
+<div class="sourceCode" id="annotated-cell-2"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-2-1"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>diff <span class="op">=</span> (trn_y <span class="op">-</span> l2)</span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>loss.g <span class="op">=</span> (<span class="dv">2</span><span class="op">/</span>trn_x.shape[<span class="dv">0</span>]) <span class="op">*</span> diff</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1"><code>trn_x.shape[0]</code> returns the total number of samples.</span>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="1"><code>trn_x.shape[0]</code>, in this case, returns the total number of samples.</span>
 </dd>
 </dl>
 <p>Next are the gradients of <span class="math inline">\(u_3\)</span></p>
@@ -558,20 +547,17 @@ Derivatives of the Substitutions
 <p>Then the gradients of <span class="math inline">\(u_1\)</span></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>l1.g <span class="op">=</span> l2.g <span class="op">*</span> (l1 <span class="op">&gt;</span> <span class="dv">0</span>).<span class="bu">float</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And finally the gradients of <span class="math inline">\(\vec{\rm{w}}_1\)</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>w1.g <span class="op">=</span> (l1.g[:, <span class="va">None</span>, :] <span class="op">*</span> trn_x[..., <span class="va">None</span>]).<span class="bu">sum</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>w1.g <span class="op">=</span> (l1.g <span class="op">*</span> trn_x).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The equation for the gradient of <span class="math inline">\(b_1\)</span> is almost the same as the equation for the gradients of <span class="math inline">\(w_1\)</span>, save for the last line where we do not have to matrix multiply with <span class="math inline">\(\vec{\rm{x}}_i\)</span>. Therefore, we can reuse all previous gradient calculations to find the gradient of <span class="math inline">\(b_1\)</span>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>b1.g <span class="op">=</span> (l1.g <span class="op">*</span> <span class="dv">1</span>).<span class="bu">sum</span>(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-simple callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>b1.g <span class="op">=</span> (l1.g <span class="op">*</span> <span class="dv">1</span>).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-simple callout-important">
+<div class="callout-body d-flex">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-
+<div class="callout-body-container">
+<p>When multiplying various tensors together, make sure their shapes are compatible. Shape manipulations have been omitted above for simplicity.</p>
 </div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The shapes may differ according to the data, functions, and classes you are working with, so be sure to change the shapes accordingly.</p>
 </div>
 </div>
 <section id="conclusion" class="level2">
@@ -580,7 +566,7 @@ Derivatives of the Substitutions
 <p>To make sure you’ve got it hammered down, get out a pen and paper and derivate the equations that would compute the gradients of <span class="math inline">\(\vec{\rm{x}}_i\)</span>, <span class="math inline">\(b_1\)</span>, <span class="math inline">\(\vec{\rm{w}}_2\)</span>, and <span class="math inline">\(u_2\)</span> respectively with respect to the MSE.</p>
 <p>And if you really want to hammer down your understanding on what’s happening, then I highly recommend reading <a href="https://explained.ai/matrix-calculus/">The Matrix Calculus You Need For Deep Learning</a>. I’ve also <a href="https://forbo7.github.io/misc/matrix_calculus_practice.pdf">compiled backpropagation practice questions</a> from this paper!</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -589,7 +575,7 @@ Answers
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[
 \begin{align}
@@ -875,6 +861,33 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        console.log("RESIZE");
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
