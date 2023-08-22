@@ -49,8 +49,7 @@ back-to-top-navigation: false
 ---
 
 :::{#about-forbo7 .animate__animated .animate__zoomInDown}
-I'm a curious individual who does AI, dabbles in 3D CG, loves learning, and
-is a scitech geek and space nerd. I've also been to 18 countries.
+I'm a curious individual who does AI, dabbles in 3D computer graphics, loves learning, and is a scitech geek and space nerd. I've also been to 18 countries.
 
 Read more about me [here](about.qmd).
 

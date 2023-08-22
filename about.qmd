@@ -29,7 +29,7 @@ page-layout: full
 ---
 
 :::{.animate__animated .animate__slideInRight .animate__faster}
-_Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D CG, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries._
+_Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D computer graphics, loves learning, and is a scitech geek and space nerd. I’ve also been to 18 countries._
 :::
 
 ::::{.animate__animated .animate__slideInUp .animate__faster}
