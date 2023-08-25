@@ -37,6 +37,8 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 
 # Notable Achivements and Experience
 
+**1100+ Member AI Community Administrator** | November 2022 – June 2023 | The Dataspace | Discord
+
 **Received 50% Scholarship worth JPY 1,860,000 (USD 13,180) over 4 Years** | 17 March 2023 | KUAS-E Scholarship | Kyoto University of Advanced Sciences | Kyoto, Japan
 
 **Received 132% Scholarship worth HKD 740,000 (USD 94,920) over 4 Years** | Covers full tuition fees and living expenses | 24 February 2023 | EdUHK Full Entrance Scholarship | The Education University of Hong Kong (Ranked 4th in Asia and 21st Worldwide in Education as a Subject) | Tai Po, Hong Kong SAR
@@ -44,8 +46,6 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 **Completed fastai Course Part 1: Practical Deep Learning for Coders** | September 2022 – March 2023
 
 **Placed in Top 12% of Contestants in Data Science Competition** | 17 January 2023 | Playground Series Season 3, Episode 2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle
-
-**1100+ Member AI Community Administrator** | November 2022 – June 2023 | The Dataspace | Discord
 
 **Physics Teaching Assistant** | September 2020 — May 2021 | Beaconhouse College Program Potohar Campus | Islamabad, Pakistan
 
