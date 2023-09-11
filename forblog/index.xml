@@ -16,7 +16,7 @@
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.4.330</generator>
+<generator>quarto-1.4.358</generator>
 <lastBuildDate>Mon, 07 Aug 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Backpropagation Explained using English Words*</title>
@@ -6580,7 +6580,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-1"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
 </figure>
 </div>
 <p>I recently began <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
@@ -6590,20 +6590,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald." data-gallery="quarto-lightbox-gallery-2"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
 <figcaption class="figure-caption">A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" title="The gif itself has artefacts due to compression…" data-gallery="quarto-lightbox-gallery-3"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
 <figcaption class="figure-caption">The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" title="This image displays all images in the gif above in a grid." data-gallery="quarto-lightbox-gallery-4"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="This image displays all images in the gif above in a grid."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
 </figure>
 </div>
 <p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
@@ -6613,19 +6613,19 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-5"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 <figcaption class="figure-caption">A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" title="A grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-6"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 <p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny." data-gallery="quarto-lightbox-gallery-7"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
 </figure>
 </div>
 </section>
@@ -6636,7 +6636,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-8"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
@@ -6648,14 +6648,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips." data-gallery="quarto-lightbox-gallery-9"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle" data-gallery="quarto-lightbox-gallery-10"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
 <figcaption class="figure-caption">Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
@@ -6666,20 +6666,20 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I quickly mocked up the following image.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky." data-gallery="quarto-lightbox-gallery-11"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
 </figure>
 </div>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" title="A bench under a tree in a park" data-gallery="quarto-lightbox-gallery-12"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" title="A low poly 3D render of a bench under a tree in a park" data-gallery="quarto-lightbox-gallery-13"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
 <figcaption class="figure-caption">A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
@@ -6695,7 +6695,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle" data-gallery="quarto-lightbox-gallery-14"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
 <figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
