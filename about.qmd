@@ -9,7 +9,7 @@ about:
     - icon: file-post-fill
       text: "{{< animate fadeIn 'fastai Forums' >}}"
       href: https://forums.fast.ai/u/forbo7/summary
-    - icon: twitter
+    - icon: twitter-x
       text: "{{< animate fadeIn 'Twitter' >}}"
       href: https://twitter.com/ForBo7_
     - icon: brush
@@ -37,6 +37,8 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 
 # Notable Achivements and Experience
 
+**Invited to Speak at the Advanced Study Institute (ASI) Online Symposium** | 7 December 2023 | The Education University of Hong Kong and Hong Kong Baptist University | Hong Kong SAR, China
+
 **1100+ Member AI Community Administrator** | November 2022 – June 2023 | The Dataspace | Discord
 
 **Received 50% Scholarship worth JPY 1,860,000 (USD 13,180) over 4 Years** | 17 March 2023 | KUAS-E Scholarship | Kyoto University of Advanced Sciences | Kyoto, Japan
@@ -63,9 +65,9 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 
 # Current Status
 
-**Studying Bachelor of Science (Honours) in Artificial Intelligence and Educational Technology (Four-year Full-time)** | September 2023 — Current | The Education University of Hong Kong | Tai Po, Hong Kong SAR
+**Studying Bachelor of Science (Honours) in Artificial Intelligence and Educational Technology (Four-year Full-time)** | September 2023 — Current | The Education University of Hong Kong | Hong Kong SAR, China
 
-**International Student Ambassador** | September 2023 — Current | The Education University of Hong Kong | Tai Po, Hong Kong SAR
+**International Student Ambassador** | September 2023 — Current | The Education University of Hong Kong | Hong Kong SAR, China
 
 **Self-studying Artificial Intelligence** | April 2023 – Current | fastai Course Part 2: From Deep Learning Foundations to Stable Diffusion
 
@@ -100,14 +102,14 @@ Education) | August 2015 — August 2019
 
 ## Lived in
 
-**Hong Kong SAR** (Current; less than a year) | **United Kingdom** (5 years) | **Saudi Arabia** (6 years) | **Pakistan** (9 years)
+**China** (Current; less than a year) | **United Kingdom** (5 years) | **Saudi Arabia** (6 years) | **Pakistan** (9 years)
 
 ## Been to
 
 <!-- TODO: Use footnotes instead of asterisks. -->
 <!-- Need to figure out how to make all footnotes reference the same footnote -->
 
-**Egypt*** | **England** | **France** | **Greece** | **Hong Kong SAR** | **Italy** | **Jordan*** | **Lebanon*** | **Malaysia** | **Pakistan** | **Qatar*** | **Saudi Arabia** | **Sri Lanka** | **Switzerland** | **Tanzania** | **Thailand** | **Turkey** | **UAE** | **Wales**
+**Egypt*** | **England** | **France** | **Greece** | **China** | **Italy** | **Jordan*** | **Lebanon*** | **Malaysia** | **Pakistan** | **Qatar*** | **Saudi Arabia** | **Sri Lanka** | **Switzerland** | **Tanzania** | **Thailand** | **Turkey** | **UAE** | **Wales**
 
 <span style="font-size:8px">*Transit destinations; I count them still because I was technically within the country's border.</span>
 
@@ -116,6 +118,8 @@ Education) | August 2015 — August 2019
 **English** | Native level fluency.
 
 **Urdu** | Good speaking and listening competency. Fair writing and reading competency.
+
+**Mandarin** | Currently learning.
 
 :::
 ::::

@@ -30,7 +30,7 @@ about:
     - icon: file-post-fill
       text: "{{< animate fadeIn 'fastai Forums' >}}"
       href: https://forums.fast.ai/u/forbo7/summary
-    - icon: twitter
+    - icon: twitter-x
       text: "{{< animate fadeIn 'Twitter' >}}"
       href: https://twitter.com/ForBo7_
     - icon: brush

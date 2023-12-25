@@ -38,7 +38,7 @@ website:
     center:
       - icon: file-post-fill
         href: https://forums.fast.ai/u/forbo7/summary
-      - icon: twitter
+      - icon: twitter-x
         href: https://twitter.com/ForBo7_
       - icon: brush
         href: https://www.artstation.com/forbo7
@@ -50,7 +50,7 @@ website:
         href: mailto:salmananaqvii+forblog@gmail.com
       - icon: rss
         href: forblog/index.xml
-    right: "[Site Version 2.2.1.2](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
+    right: "[Site Version 2.2.1.3](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
   twitter-card:
     title: "ForBo7 // Salman Naqvi"
     description: "The world of ForBo7!"
