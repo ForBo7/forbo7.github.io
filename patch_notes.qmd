@@ -13,10 +13,6 @@ twitter-card:
 Detailed patchnotes are unavailable prior to site version 2.0.0.0.
 :::
 
-## Version 2.2.1.3 | 25 December 2023 {.animate__animated .animate__slideInLeft .animate__faster}
-
-* Updated social media icon.
-
 ## Version 2.2.1.2 | 3 August 2023 {.animate__animated .animate__slideInRight .animate__faster}
 
 * Removed featured posts section in the ForBlog.
