@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.358">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
@@ -62,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -87,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -204,6 +205,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+
 <p><em>This article was rewritten on <strong>Monday, 31 October 2022</strong>.</em></p>
 <p><img src="../images/1_how_to_approach_creating_ai_models/thumbnail.jpg" class="img-fluid" alt="A picture showing cogs and gears."></p>
 <section id="introduction" class="level2 page-columns page-full">
@@ -224,10 +226,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Consider your data</li>
 <li>Create the models</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/1_how_to_approach_creating_ai_models/drivetrain_approach.png" class="img-fluid figure-img" alt="A diagram depicting the DrivetrainApproach as a flow chart."></p>
-<figcaption class="figure-caption"><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption>
+<figcaption><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption>
 </figure>
 </div>
 <section id="define-the-objective" class="level3">
@@ -272,10 +274,10 @@ ul.task-list li input[type="checkbox"] {
 <p>However, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.</p>
 <p>Even if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.</p>
 <p>In short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../images/1_how_to_approach_creating_ai_models/whistle_language.jpg" class="img-fluid figure-img" alt="An elderly man blowing a whistle."></p>
-<figcaption class="figure-caption">Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption>
+<figcaption>Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption>
 </figure>
 </div>
 </section>
@@ -424,15 +426,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -440,6 +455,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -483,6 +501,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -558,7 +599,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);
@@ -660,7 +700,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/ForBo7_">
-      <i class="bi bi-twitter" role="img">
+      <i class="bi bi-twitter-x" role="img">
 </i> 
     </a>
   </li>  
@@ -697,7 +737,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </ul>
     </div>
     <div class="nav-footer-right">
-<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.2</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.3</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
 </div>
   </div>
 </footer>

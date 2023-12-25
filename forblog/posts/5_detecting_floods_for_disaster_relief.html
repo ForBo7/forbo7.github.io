@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.358">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
@@ -81,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
@@ -96,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -103,7 +104,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
@@ -129,7 +130,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -237,6 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
+
 <p><strong>You can find this notebook on Kaggle <a href="https://www.kaggle.com/code/forbo7/flood-classifier">here</a>.</strong></p>
 <p><em>This article was updated on <strong>Friday, 11 November 2022</strong>.</em></p>
 <!-- TODO: Rotate image. -->
@@ -331,7 +333,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="adabc577" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.477823Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.477117Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.688255Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.687359Z&quot;}" data-papermill="{&quot;duration&quot;:0.226811,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.691568&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.464757&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Image.<span class="bu">open</span>(training_images[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cc9b0e5e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.719927Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.719594Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.728327Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.727274Z&quot;}" data-papermill="{&quot;duration&quot;:0.025912,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.730913&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.705001&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
@@ -343,7 +349,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="b7f8f3d0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.760100Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.759783Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.880274Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.879306Z&quot;}" data-papermill="{&quot;duration&quot;:0.139112,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.884616&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.745504&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>Image.<span class="bu">open</span>(validation_images[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -363,7 +373,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="0e06863a" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:16.690449Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:16.689337Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:17.569325Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:17.568486Z&quot;}" data-papermill="{&quot;duration&quot;:0.904393,&quot;end_time&quot;:&quot;2022-09-11T07:18:17.576236&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:16.671843&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dataloaders.show_batch(max_n<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -568,7 +582,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-15-output-5.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-15-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Only a couple of mistakes. Let’s see what they are.</p>
@@ -596,7 +614,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-16-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-16-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Nothing has been mislabeled, but the first one is especially tricky to determine, even for human eyes.</p>
@@ -618,7 +640,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="46f21a9d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.622862Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.622520Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:00.688753Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:00.687512Z&quot;}" data-papermill="{&quot;duration&quot;:0.096393,&quot;end_time&quot;:&quot;2022-09-11T07:19:00.690854&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.594461&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'1.jpeg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -650,7 +676,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="3963f1e4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:00.808329Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:00.807968Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:02.432693Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:02.431630Z&quot;}" data-papermill="{&quot;duration&quot;:1.658645,&quot;end_time&quot;:&quot;2022-09-11T07:19:02.435988&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:00.777343&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'2.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -681,7 +711,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="6f044586" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:03.158164Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:03.157795Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:03.326060Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:03.324479Z&quot;}" data-papermill="{&quot;duration&quot;:0.313347,&quot;end_time&quot;:&quot;2022-09-11T07:19:03.329205&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:03.015858&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'3.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -712,7 +746,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="a3516186" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:03.915708Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:03.915118Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:04.297396Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:04.296252Z&quot;}" data-papermill="{&quot;duration&quot;:0.532781,&quot;end_time&quot;:&quot;2022-09-11T07:19:04.300294&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:03.767513&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'4.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -744,7 +782,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="731f30cb" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:05.417373Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:05.416795Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:05.473225Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:05.471793Z&quot;}" data-papermill="{&quot;duration&quot;:0.252769,&quot;end_time&quot;:&quot;2022-09-11T07:19:05.475284&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:05.222515&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'5.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -774,7 +816,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="4f2de933" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:05.835986Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:05.835396Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:06.151206Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:06.150029Z&quot;}" data-papermill="{&quot;duration&quot;:0.504279,&quot;end_time&quot;:&quot;2022-09-11T07:19:06.154063&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:05.649784&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>infer_image(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'6.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -809,7 +855,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="83684292" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:07.793911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:07.793281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:08.090600Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:08.089689Z&quot;}" data-papermill="{&quot;duration&quot;:0.526936,&quot;end_time&quot;:&quot;2022-09-11T07:19:08.109805&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:07.582869&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>Image.<span class="bu">open</span>(input_path<span class="op">/</span><span class="st">'floodclassifiertestset'</span><span class="op">/</span><span class="st">'1'</span><span class="op">/</span><span class="st">'4.jpg'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="9a919065" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:09.399017Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:09.398632Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:12.073251Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:12.072257Z&quot;}" data-papermill="{&quot;duration&quot;:3.737701,&quot;end_time&quot;:&quot;2022-09-11T07:19:12.075717&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:08.338016&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
@@ -825,7 +875,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="5164dfb9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:12.539701Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:12.539118Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:13.438651Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:13.437466Z&quot;}" data-papermill="{&quot;duration&quot;:1.134797,&quot;end_time&quot;:&quot;2022-09-11T07:19:13.443352&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:12.308555&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>augmented_dataloaders.show_batch(max_n<span class="op">=</span><span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="344bb716" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:14.119021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:14.118453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:42.786631Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:42.785492Z&quot;}" data-papermill="{&quot;duration&quot;:28.901784,&quot;end_time&quot;:&quot;2022-09-11T07:19:42.788960&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:13.887176&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="26">
@@ -979,7 +1033,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
 <span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Unknown label assigned to image."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -1055,7 +1113,11 @@ Image 5 is flooded with a probability of 100.00%.
 Image 6 is flooded with a probability of 100.00%.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="5_detecting_floods_for_disaster_relief_files/figure-html/cell-31-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Drastically improved probabilities! A little augmentation can go a long way.</p>
@@ -1206,15 +1268,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -1222,6 +1297,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -1265,6 +1343,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -1340,7 +1441,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);
@@ -1442,7 +1542,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/ForBo7_">
-      <i class="bi bi-twitter" role="img">
+      <i class="bi bi-twitter-x" role="img">
 </i> 
     </a>
   </li>  
@@ -1479,7 +1579,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </ul>
     </div>
     <div class="nav-footer-right">
-<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.2</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.3</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
 </div>
   </div>
 </footer>

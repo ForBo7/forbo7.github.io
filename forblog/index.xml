@@ -6,23 +6,24 @@
       version="2.0">
 <channel>
 <title>ForBo7 // Salman Naqvi</title>
-<link>https://forbo7.github.io/forblog/index.html</link>
+<link>https://forbo7.github.io/forblog/</link>
 <atom:link href="https://forbo7.github.io/forblog/index.xml" rel="self" type="application/rss+xml"/>
 <description>The world of ForBo7!</description>
 <image>
 <url>https://forbo7.github.io/images/profile.png</url>
 <title>ForBo7 // Salman Naqvi</title>
-<link>https://forbo7.github.io/forblog/index.html</link>
+<link>https://forbo7.github.io/forblog/</link>
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.4.358</generator>
+<generator>quarto-1.4.533</generator>
 <lastBuildDate>Mon, 07 Aug 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Backpropagation Explained using English Words*</title>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/18_backprop_from_scratch.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -47,9 +48,10 @@
 <p>Aaand I’ve just described backpropagation in a nutshell. That’s all there really is to it. The only difference is that in a neural network there are many more intermediate variables and functions, and that we want to find out how the weights indirectly change the loss.</p>
 <p>Let’s see this tangibly in action.</p>
 <p>We have the following neural network comprised of two layers: the first layer contains the affine function<sup>1</sup> together with the ReLU, while the second layer contains only the affine function. The loss, which is MSE (Mean Squared Error), will then be calculated from the output of the second layer.</p>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></li></div><div class="cell">
+<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></li></div><div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
   subgraph A [Layer 1]
@@ -68,6 +70,7 @@
   end
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -340,6 +343,7 @@ Answers
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/17_meanshift_clustering.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -1873,6 +1877,7 @@ font-style: inherit;">10</span> meanshift(data)</span></code></pre></div>
 
 
 
+
 <div class="callout callout-style-simple callout-warning">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -2318,6 +2323,7 @@ Expanded example
 
 
 
+
 <blockquote class="blockquote">
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
@@ -2652,7 +2658,11 @@ font-style: inherit;">512</span>))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> img</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cell-27" class="cell" data-execution_count="14">
@@ -2724,7 +2734,11 @@ font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'Greys'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -2925,7 +2939,11 @@ background-color: null;
 font-style: inherit;">'uint8'</span>)</span>
 <span id="cb23-6">Image.fromarray(img)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -3259,7 +3277,11 @@ font-style: inherit;">=</span> decompress(lat)</span>
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="27">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-27-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-27-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -3305,7 +3327,11 @@ font-style: inherit;">512</span>))</span></code></pre></div>
   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  515k  100  515k    0     0  10.7M      0 --:--:-- --:--:-- --:--:-- 10.7M</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="28">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-28-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>This is the generated image of the horse.</p>
@@ -3355,7 +3381,11 @@ font-style: inherit;">=</span> denoise(lat1, ts)</span></code></pre></div>
 <div id="cell-54" class="cell" data-outputid="71146f7d-0e36-409e-949d-ac674e0f9c2f" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb33" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">Image.fromarray(decompress(lat1))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And this is the generated image of the zebra.</p>
@@ -3405,7 +3435,11 @@ font-style: inherit;">=</span> denoise(lat2, ts)</span></code></pre></div>
 <div id="cell-57" class="cell" data-outputid="ed39364b-5757-4278-8393-18d0d2af010f" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb35" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1">Image.fromarray(decompress(lat2))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cell-58" class="cell" data-outputid="dc02baac-806b-4f0a-a3d5-7e0c40737e76" data-execution_count="33">
@@ -3456,7 +3490,11 @@ font-style: inherit;">255</span>).squeeze().numpy().<span class="bu" style="colo
 background-color: null;
 font-style: inherit;">round</span>().astype(np.uint8))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And then finally binarize the values so they are either 0 or 1.</p>
@@ -3483,7 +3521,11 @@ font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">255</span>).astype(np.uint8))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cell-66" class="cell" data-execution_count="37">
@@ -3529,14 +3571,22 @@ font-style: inherit;">10</span>))</span></code></pre></div>
 <div id="cell-71" class="cell" data-outputid="36fd0318-8262-460e-bada-cae36e7337e1" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1">cv2_imshow(cv.erode(mask, kernel))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Applying a dilation transformation makes our binarized mask look like this. Such transformations can fill in gaps and smooth edges.</p>
 <div id="cell-73" class="cell" data-outputid="9cd8049b-3785-4129-dda7-59939e999e96" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1">cv2_imshow(cv.dilate(mask, kernel))</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>To produce the final mask, I’ll apply the closing transform<sup>5</sup> 7 times consecutively…</p>
@@ -3558,25 +3608,53 @@ background-color: null;
 font-style: inherit;">=</span> cv.morphologyEx(mask_closed, cv.MORPH_CLOSE, kernel)</span>
 <span id="cb44-4">  cv2_imshow(mask_closed)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-4.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-5.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-6.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-7.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-41-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>…and then apply the dilation transform 3 times consecutively.</p>
@@ -3598,13 +3676,25 @@ background-color: null;
 font-style: inherit;">=</span> cv.dilate(mask_dilated, kernel)</span>
 <span id="cb45-4">  cv2_imshow(mask_dilated)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-42-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>A more concise way of doing the above.</p>
@@ -3626,7 +3716,11 @@ font-style: inherit;">3</span>)</span>
 <span id="cb46-3"></span>
 <span id="cb46-4">cv2_imshow(mask_dilated)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-43-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Then I’ll stack the mask together so I have a 3 channel image.</p>
@@ -3674,7 +3768,11 @@ font-style: inherit;">round</span>().astype(<span class="st" style="color: #2079
 background-color: null;
 font-style: inherit;">'uint8'</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-45-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>You can see that it does not exactly cut out the outline: this is good because different subjects will have different levels of protrusion.</p>
@@ -3706,7 +3804,11 @@ font-style: inherit;">round</span>().astype(<span class="st" style="color: #2079
 background-color: null;
 font-style: inherit;">'uint8'</span>))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-46-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-46-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Adding both the foreground and the background together…</p>
@@ -3721,7 +3823,11 @@ font-style: inherit;">255</span>).numpy().<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">round</span>().astype(np.uint8))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-47-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -3870,7 +3976,11 @@ font-style: inherit;">round</span>().astype(np.uint8)))</span></code></pre></div
 <div id="cell-101" class="cell" data-outputid="8b78fd84-916f-4467-abf3-45a041c03f1e" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb57" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1">Image.fromarray(decompress(lat))</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-51-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-51-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>After asking on the fastai forum, and hours of fiddling about, the reason why this is happening is most likely due to the fact that I keep uncompressing and recompressing the latent. The compression that the VAE performs is lossy, so detail is lost during each compression and decompression.</p>
@@ -3914,7 +4024,11 @@ font-style: inherit;">"cuda"</span>)</span></code></pre></div>
 <div id="cell-106" class="cell" data-outputid="f53afdba-acda-4f7a-8979-9c23c40df7c6" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb60" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1">img</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-53-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cell-107" class="cell" data-outputid="c5938ffe-0669-4610-9387-24937532d4a1" data-execution_count="54">
@@ -3959,7 +4073,11 @@ font-style: inherit;">0</span>]</span></code></pre></div>
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="54">
-<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-54-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit_files/figure-html/cell-54-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -3992,6 +4110,7 @@ font-style: inherit;">0</span>]</span></code></pre></div>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/14_iterators_and_generators.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -4235,6 +4354,7 @@ font-style: inherit;">next</span>(l_iter)</span></code></pre></div>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -4893,7 +5013,11 @@ font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -5040,7 +5164,11 @@ background-color: null;
 font-style: inherit;">'uint8'</span>)</span>
 <span id="cb42-4">Image.fromarray(img)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And there you have it! We implemented stable diffusion using a text encoder, VAE, and U-Net!</p>
@@ -5307,7 +5435,11 @@ font-style: inherit;">=</span> decompress_lat(lat)</span>
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="32">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-33-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -5427,7 +5559,11 @@ font-style: inherit;">=</span> decompress_lat(lat)</span>
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="34">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-35-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s now encapsulate everything into a class, so we can much more easily further iterate.</p>
@@ -5888,7 +6024,11 @@ font-style: inherit;">=</span> diffuser.diffuse()</span></code></pre></div>
 background-color: null;
 font-style: inherit;">0</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cell-89" class="cell" data-outputid="d84be80f-7ade-4400-a85a-4cb65b9acf02" data-execution_count="38">
@@ -5896,7 +6036,11 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 background-color: null;
 font-style: inherit;">1</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s remove the wooden background from the second image.</p>
@@ -5922,7 +6066,11 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 </script>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="39">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-40-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-40-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now that we have a class, we can easily add more functionality to our diffuser.</p>
@@ -6039,7 +6187,7 @@ font-style: inherit;">self</span>.decompress_lats(lats)</span><div class="code-a
 </dd>
 </dl>
 <div id="cell-97" class="cell" data-execution_count="40">
-<details>
+<details class="code-fold">
 <summary>Diffuser Class Redefined</summary>
 <div class="sourceCode cell-code" id="cb55" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><span class="kw" style="color: #003B4F;
 background-color: null;
@@ -6537,10 +6685,18 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 </script>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-42-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-42-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="41">
-<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-42-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components_files/figure-html/cell-42-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -6575,12 +6731,13 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 
 
 
+
 <blockquote class="blockquote">
 <p><strong>Quick tip:</strong> Click or tap the images to view them up close.</p>
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
 </figure>
 </div>
 <p>I recently began <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
@@ -6590,22 +6747,18 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
-<figcaption class="figure-caption">A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<figcaption>A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
-<figcaption class="figure-caption">The gif itself has artefacts due to compression…</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<figcaption>The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="This image displays all images in the gif above in a grid."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid figure-img" alt="This image displays all images in the gif above in a grid."></a></p>
-</figure>
-</div>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid" alt="This image displays all images in the gif above in a grid."></a></p>
 <p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
 </section>
 <section id="when-it-doesnt-work-well" class="level2">
@@ -6613,21 +6766,13 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
-<figcaption class="figure-caption">A grasshopper riding a bunny.</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<figcaption>A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
-</figure>
-</div>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid" alt="A grasshopper riding a bunny."></a></p>
 <p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid figure-img" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
-</figure>
-</div>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
 </section>
 <section id="cfg-classifier-free-guidance" class="level2">
 <h2 class="anchored" data-anchor-id="cfg-classifier-free-guidance">CFG (Classifier Free Guidance)</h2>
@@ -6636,8 +6781,8 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
-<figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>The image above shows rows with increasing levels of guidance (1, 2.5, 5, 7.5, 10, 25, 50). 7.5 is the sweetspot.</p>
@@ -6648,15 +6793,15 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
-<figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" data-glightbox="description: .lightbox-desc-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
-<figcaption class="figure-caption">Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-glightbox="description: .lightbox-desc-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<figcaption>Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
 </section>
@@ -6664,23 +6809,19 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="image-to-image">Image to Image</h2>
 <p>Instead of starting from noise, one can make a diffuser begin from an existing image. The diffuser follows the image as guide and doesn’t match it 1 to 1.</p>
 <p>I quickly mocked up the following image.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid figure-img" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
-</figure>
-</div>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
-<figcaption class="figure-caption">A bench under a tree in a park</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" data-glightbox="description: .lightbox-desc-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<figcaption>A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
-<figcaption class="figure-caption">A low poly 3D render of a bench under a tree in a park</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" data-glightbox="description: .lightbox-desc-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<figcaption>A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
 </section>
@@ -6695,8 +6836,8 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
-<figcaption class="figure-caption">An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" data-glightbox="description: .lightbox-desc-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<figcaption>An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
 </section>
@@ -6727,6 +6868,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 
 
 
+
 <p><em><strong>This post was edited on Sunday, 30 April 2023</strong></em></p>
 <p><img src="https://forbo7.github.io/forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="img-fluid"></p>
 <p>Here, I explain the workings of stable diffusion at a high level.</p>
@@ -6739,9 +6881,10 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <li>The autoencoder (VAE autoencoder)</li>
 <li>The neural network (U-net)</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     A{{Diffuser}}
@@ -6753,6 +6896,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
     A --&gt; D &amp; E &amp; C &amp; B
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -6762,9 +6906,10 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ll explain the training process in terms of a single image.</p>
 <p>When all components shown above are put into their respective places, the overall training process looks like this.</p>
 <div class="column-screen-inset">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     subgraph A [Feature Vector Creation]
@@ -6790,6 +6935,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
     id11 --&gt; D --&gt; id8[Generated Image]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -6798,9 +6944,10 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <section id="feature-vector-creation" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="feature-vector-creation">Feature Vector Creation</h3>
 <div class="column-body-outset-right">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     subgraph B [ ]
@@ -6835,6 +6982,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
     B --&gt; C
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -6846,9 +6994,10 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <section id="image-compression" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="image-compression">Image Compression</h3>
 <div class="column-body-outset-right">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     subgraph A [ ]
@@ -6875,6 +7024,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
     A &amp; A &amp; A --&gt; C
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -6886,9 +7036,10 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <section id="noise-removal" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="noise-removal">Noise Removal</h3>
 <div class="column-body-outset-right">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     subgraph A [ ]
@@ -6913,6 +7064,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
     style C fill:#FFF, stroke:#333,stroke-width:3px
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -6923,9 +7075,10 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <section id="image-decompression" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="image-decompression">Image Decompression</h3>
 <div class="column-body-outset-right">
-<div class="cell">
+<div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     subgraph A [ ]
@@ -6952,6 +7105,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
     A &amp; A &amp; A --&gt; C
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -6985,6 +7139,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -7341,7 +7496,11 @@ font-style: inherit;">print</span>(img.shape)</span>
 <pre><code>(201, 801)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="19">
-<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-20-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Cool, hey? We’ve just visualized audio!</p>
@@ -7370,7 +7529,11 @@ font-style: inherit;">;</span> img</span></code></pre></div>
 <pre><code>(512, 512)</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="20">
-<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -7629,13 +7792,13 @@ font-style: inherit;">continue</span></span></code></pre></div>
 <h2 class="anchored" data-anchor-id="api-setup">API Setup</h2>
 <p>We need to configure the user keys so we can push to the correct account.</p>
 <p>To do this, first obtain your Kaggle API key. Then, while in the notebook editor, click Add-ons -&gt; Secrets -&gt; Add a New Secret…</p>
-<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mY_6mu6XXxmpkR_MwTxHxfEGRV9QOqlxkCF8i6T90WkRadthJc9yeOxUG3k21bT-QQ4CxJcP1W-MHuAhX_tKvf-gcZqUvkLONiKPeumqZCTezKhwXJXs0OFuTDBnedbcViCOeeIkzjVjYJiBc3J7ib0AqG5v247vovXQP1JYv-8RmfWMFytuyCgwvLNt_5MSP?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
-<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mBCKZg2xbmSClGOAWdxf6vXcrgLKV0TNe-SuLaS37nzKAuHpzMZsXL0lEAuauWYrrKnZVx2qGStH3ZjVn-E0xARzTUW7UN9Em3gx_X3qivCHIX_85Z0aQc0xQYrl2dJPvyPOHwuCm0ML5188bFuemgoQik3jn_TVih1YKxYw9Z79fDahzG8wD9Yu-zbizRsVS?width=1024&amp;height=640&amp;cropmode=none" width="75%" height="100%"></p>
-<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mgCDqODGoakfC1zbSK1tEGy1gcUPMpzzw5DEFHJnQPZIWZpWn2WKLT48EGRky-kXSmBYt-BYSgVxO7jMVT321_gqOYjX0daxumANws9LpNOvwdG3ce9nKJFT8ZkSEjtb5Q93leY75dKLk2CumNpmRGi4WoZr5jsTPPEV42yTlNPURAMrSsl09XeKqGaBjJO0u?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mY_6mu6XXxmpkR_MwTxHxfEGRV9QOqlxkCF8i6T90WkRadthJc9yeOxUG3k21bT-QQ4CxJcP1W-MHuAhX_tKvf-gcZqUvkLONiKPeumqZCTezKhwXJXs0OFuTDBnedbcViCOeeIkzjVjYJiBc3J7ib0AqG5v247vovXQP1JYv-8RmfWMFytuyCgwvLNt_5MSP?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mBCKZg2xbmSClGOAWdxf6vXcrgLKV0TNe-SuLaS37nzKAuHpzMZsXL0lEAuauWYrrKnZVx2qGStH3ZjVn-E0xARzTUW7UN9Em3gx_X3qivCHIX_85Z0aQc0xQYrl2dJPvyPOHwuCm0ML5188bFuemgoQik3jn_TVih1YKxYw9Z79fDahzG8wD9Yu-zbizRsVS?width=1024&amp;height=640&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mgCDqODGoakfC1zbSK1tEGy1gcUPMpzzw5DEFHJnQPZIWZpWn2WKLT48EGRky-kXSmBYt-BYSgVxO7jMVT321_gqOYjX0daxumANws9LpNOvwdG3ce9nKJFT8ZkSEjtb5Q93leY75dKLk2CumNpmRGi4WoZr5jsTPPEV42yTlNPURAMrSsl09XeKqGaBjJO0u?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
 <p>…input your key and give it a name…</p>
-<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4mz3E2oKRG9H8n6cSwx-uk8ZAuIB8WSExJX92_w8ZoqYkX4f72QXKM2AFjjn7n_UaS30btHk6ueSi9VTRD_us_pUp3CSo3MkBM0mRBZqeqYDrSY4GRGamkrYnNKtxfZ-PQKJEvjOr8r8N97cftsJ3-9fEUcO3jv8kVGniKNPHWx_aVpIElx4_qgVq-aRt30PSD?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://sat02pap002files.storage.live.com/y4mz3E2oKRG9H8n6cSwx-uk8ZAuIB8WSExJX92_w8ZoqYkX4f72QXKM2AFjjn7n_UaS30btHk6ueSi9VTRD_us_pUp3CSo3MkBM0mRBZqeqYDrSY4GRGamkrYnNKtxfZ-PQKJEvjOr8r8N97cftsJ3-9fEUcO3jv8kVGniKNPHWx_aVpIElx4_qgVq-aRt30PSD?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
 <p>…and click save. Then click the checkbox next to the secret to activate it for your notebook.</p>
-<p><img src="https://forbo7.github.io/forblog/posts/https:/sat02pap002files.storage.live.com/y4m3RfkLD7cbynZIPmI7X17qmHTxar-hX5p-w5G70Z3YiRiIPzkzo3Z9h1Z4eWecrmmU88yl-HXUSRU7xUQ0LN2C-_wn_qmKDJFJyXSjNfhV7XjKpGbyhxXU9JCaTOxZhRwHGl4ghkykkhpMBTpoG-dxe7YlhPI40DQJT2dvCcuv1KZQkYkcOHIqiUI8SvwhL4Q?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
+<p><img src="https://sat02pap002files.storage.live.com/y4m3RfkLD7cbynZIPmI7X17qmHTxar-hX5p-w5G70Z3YiRiIPzkzo3Z9h1Z4eWecrmmU88yl-HXUSRU7xUQ0LN2C-_wn_qmKDJFJyXSjNfhV7XjKpGbyhxXU9JCaTOxZhRwHGl4ghkykkhpMBTpoG-dxe7YlhPI40DQJT2dvCcuv1KZQkYkcOHIqiUI8SvwhL4Q?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
 <p>Repeat for your Kaggle username.</p>
 <p>Now we can set the keys for the notebook as shown below (input the name of your key into <code>get_secret</code>).</p>
 <div id="b4153a0e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.196185Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.195768Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:29.201245Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:29.199576Z&quot;}" data-papermill="{&quot;duration&quot;:0.032545,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.203954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.171409&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
@@ -7748,6 +7911,7 @@ font-style: inherit;">-</span>metadata.json</span></code></pre></div>
 
 
 
+
 <p><img src="https://forbo7.github.io/forblog/images/9_transformers_explained/thumbnail.png" class="img-fluid" alt="A picture of Transformers — the ones that transform from a robot into cars — posing as English alphabets."></p>
 <section id="at-a-high-view" class="level2">
 <h2 class="anchored" data-anchor-id="at-a-high-view">At a High View</h2>
@@ -7794,6 +7958,7 @@ font-style: inherit;">-</span>metadata.json</span></code></pre></div>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -7995,6 +8160,7 @@ font-style: inherit;">3</span>])</span>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/7_blog_subscriptions.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -8240,6 +8406,7 @@ Before you hit that send button!
 
 
 
+
 <p><em>This blog post was updated on <strong>Saturday, 12 November 2022</strong>.</em></p>
 <p><img src="https://forbo7.github.io/forblog/images/6_ai_in_a_nutshell/thumbnail.png" class="img-fluid" alt="A circuit board inside a walnut."></p>
 <p>Artificial Intelligence. Machine Learning. Neural Networks. Deep Learning. Fancy Words. Deceptively Simple. All really the same.</p>
@@ -8249,14 +8416,16 @@ Before you hit that send button!
 
 </div>
 <div class="g-col-4">
-<div class="cell" data-fig-width="2">
+<div class="cell" data-fig-width="2" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     A[Function] -- fits --&gt; B[Data]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -8278,7 +8447,11 @@ Before you hit that send button!
 <p>A quadratic is a very simple equation. When shown on a graph, it looks like this.</p>
 <div id="8fc36543" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We’ll be using this equation to demonstrate a very simple example.</p>
@@ -8288,14 +8461,16 @@ Before you hit that send button!
 
 </div>
 <div class="g-col-8">
-<div class="cell" data-fig-width="3.5">
+<div class="cell" data-fig-width="3.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -8310,7 +8485,11 @@ Before you hit that send button!
 <p>The horizontal axis is time and the vertical axis is the object’s speed.</p>
 <div id="f959959d-cd81-4531-ae30-04bbcbfcd1ce" class="cell" data-tags="[]" data-execution_count="7">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We can see that the data looks like the quadratic function shown above! Therefore, we could use the quadratic to predict what the speed of the object would be after 2.0 s and before -2.0 s.</p>
@@ -8318,21 +8497,33 @@ Before you hit that send button!
 <p>Let’s let <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> all equal <img src="https://latex.codecogs.com/png.latex?1"> to begin with.</p>
 <div id="f7175b28-a8b7-42da-9717-0c35c891724c" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Hmm, not a very good fit.</p>
 <p>Let’s try another set of values for the parameters: <img src="https://latex.codecogs.com/png.latex?2">, <img src="https://latex.codecogs.com/png.latex?1">, <img src="https://latex.codecogs.com/png.latex?1.5">.</p>
 <div id="bea84315-2cbf-46a5-b908-ac315bcde997" class="cell" data-tags="[]" data-execution_count="9">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Looking much better now!</p>
 <p>Let’s see what <img src="https://latex.codecogs.com/png.latex?2">, <img src="https://latex.codecogs.com/png.latex?0">, and <img src="https://latex.codecogs.com/png.latex?1.5"> gives us.</p>
 <div id="56db2757-accb-4bbf-9a4b-6bc5c78bc26c" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Eyeballing this is difficult. A certain set of parameters we use may be good by looking at the resulting graph, but in reality, it may not be.</p>
@@ -8342,19 +8533,31 @@ Before you hit that send button!
 <p>Let’s repeat what we did above, but this time, we’ll also see what the MAE is.</p>
 <div id="76e029bd" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Again, this means that on average, each prediction we will make is 2.61 m/s off from the real value.</p>
 <div id="676b9af7" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That’s a big jump!</p>
 <div id="6b25e46c" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Hmm, things got worse.</p>
@@ -8365,14 +8568,16 @@ Before you hit that send button!
 
 </div>
 <div class="g-col-4">
-<div class="cell" data-fig-width="2.2">
+<div class="cell" data-fig-width="2.2" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     A[Loss] -- Updates ---&gt; B[Parameters] -- Updates ---&gt; A
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -8384,7 +8589,7 @@ Before you hit that send button!
 <p>Let’s give <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> an arbitrary set of parameters <img src="https://latex.codecogs.com/png.latex?1.1">, <img src="https://latex.codecogs.com/png.latex?1.1">, and <img src="https://latex.codecogs.com/png.latex?1.1">.</p>
 <p>Now let’s create a quadratic with this set of parameters and calculate its mean absolute error.</p>
 <div id="bb00c846" class="cell" data-execution_count="16">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -8411,9 +8616,10 @@ Code Output
 
 </div>
 <div class="g-col-8">
-<div class="cell" data-fig-width="5">
+<div class="cell" data-fig-width="5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     A[Gradients]
@@ -8424,6 +8630,7 @@ Code Output
     A &amp; B &amp; C ---&gt; D ---&gt; E
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -8434,7 +8641,7 @@ Code Output
 </div>
 <p>Lets see this tangibly.</p>
 <div id="59621e10" class="cell" data-execution_count="17">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -8453,7 +8660,7 @@ Code Output
 <p>Okay, let’s break this down. The gradient for the first parameter <img src="https://latex.codecogs.com/png.latex?a"> is <img src="https://latex.codecogs.com/png.latex?-1.35">. This tells us that if we increase the parameter <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1">, our loss will decrease by <img src="https://latex.codecogs.com/png.latex?-1.35">. Similary, if we increase the parameter <img src="https://latex.codecogs.com/png.latex?b"> by <img src="https://latex.codecogs.com/png.latex?1">, this will result in the loss being decreased by <img src="https://latex.codecogs.com/png.latex?-0.03">. The same logic holds for <img src="https://latex.codecogs.com/png.latex?c">.</p>
 <p>Let’s now update the parameters. Remember, the current set of parameters, their gradients, and the learning rate all update the current set of parameters to new values.</p>
 <div id="e650f22a" class="cell" data-execution_count="18">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -8477,7 +8684,7 @@ Pass: 1; Loss: 1.9847692009423128
 Pass: 2; Loss: 1.498316818239171
 Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -8493,13 +8700,17 @@ Code Output
 </div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-19-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-19-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And there you go! An even better fitting quadratic!</p>
 <p>Let’s see what the object’s speed is at 1 second.</p>
 <div id="680a267b" class="cell" data-execution_count="20">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -8518,7 +8729,7 @@ Code Output
 <p>That roughly seems right!</p>
 <p>Let’s see what the object’s speed would be at 3 seconds.</p>
 <div id="651f8feb" class="cell" data-execution_count="21">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -8540,14 +8751,16 @@ Code Output
 
 </div>
 <div class="g-col-8">
-<div class="cell" data-fig-width="3.5">
+<div class="cell" data-fig-width="3.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -8568,37 +8781,61 @@ Code Output
 <p>Take the following line. It has both positive and negative values on the vertical axis.</p>
 <div id="11928802" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>When we use a ReLU, all negative values are converted to zero.</p>
 <div id="a280f3aa" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s return to our original data.</p>
 <div id="e0c3728b" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now a single ReLU won’t work as seen below.</p>
 <div id="abe007b3" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Even after we try to fit it.</p>
 <div id="d721709d" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>But look at what happens when two ReLUs are, literally, added together!</p>
 <div id="6268423d" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <!-- - Seed 22; 196 passes; lr=0.01
@@ -8614,35 +8851,51 @@ Code Output
 - Seed 38, 196 passes; lr=0.01 -->
 <div id="dba7b121" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>You can see here how the function is adapting to the shape of the data.</p>
 <p>With some extra experimentation, I was able to get the loss down to 1.08!</p>
 <div id="56738df9" class="cell" data-execution_count="32">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That said, it’s not too much of a difference when compared to two ReLUs.</p>
 <p>What if we add 5 more to the mix, for a total of 8?</p>
 <div id="24319274" class="cell" data-execution_count="35">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Nice! The MAE has gone below 1!</p>
 <p>It’s even beat the quadratic function from before! With some expermimenting, I had managed to get the quadratic’s loss down to 1.03.</p>
 <div id="6a4d960f" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <!-- - Seed 16; 36 passes; lr=0.1
 - Seed 42; 37 passes; lr=0.5 -->
 <p>Let’s use the model that has 8 ReLUs to predict what the object’s velocity would be at 1 second.</p>
 <div id="25348510" class="cell" data-execution_count="39">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -8690,6 +8943,7 @@ Code Output
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -9013,7 +9267,11 @@ font-style: inherit;">open</span>(training_images[<span class="dv" style="color:
 background-color: null;
 font-style: inherit;">0</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="cc9b0e5e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:18:12.719927Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:18:12.719594Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:18:12.728327Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:18:12.727274Z&quot;}" data-papermill="{&quot;duration&quot;:0.025912,&quot;end_time&quot;:&quot;2022-09-11T07:18:12.730913&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:18:12.705001&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
@@ -9043,7 +9301,11 @@ font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>])</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -9089,7 +9351,11 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -9302,7 +9568,11 @@ font-style: inherit;">=</span> ClassificationInterpretation.from_learner(learner
 
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-15-output-5.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-15-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Only a couple of mistakes. Let’s see what they are.</p>
@@ -9336,7 +9606,11 @@ font-style: inherit;">1</span>)</span></code></pre></div>
 
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-16-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-16-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Nothing has been mislabeled, but the first one is especially tricky to determine, even for human eyes.</p>
@@ -9426,7 +9700,11 @@ font-style: inherit;">/</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'1.jpeg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -9470,7 +9748,11 @@ font-style: inherit;">/</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'2.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -9513,7 +9795,11 @@ font-style: inherit;">/</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'3.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -9556,7 +9842,11 @@ font-style: inherit;">/</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'4.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -9600,7 +9890,11 @@ font-style: inherit;">/</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'5.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -9642,7 +9936,11 @@ font-style: inherit;">/</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'6.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -9691,7 +9989,11 @@ font-style: inherit;">/</span><span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'4.jpg'</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="9a919065" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:09.399017Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:09.398632Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:12.073251Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:12.072257Z&quot;}" data-papermill="{&quot;duration&quot;:3.737701,&quot;end_time&quot;:&quot;2022-09-11T07:19:12.075717&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:08.338016&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
@@ -9735,7 +10037,11 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">8</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <div id="344bb716" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2022-09-11T07:19:14.119021Z&quot;,&quot;iopub.status.busy&quot;:&quot;2022-09-11T07:19:14.118453Z&quot;,&quot;iopub.status.idle&quot;:&quot;2022-09-11T07:19:42.786631Z&quot;,&quot;shell.execute_reply&quot;:&quot;2022-09-11T07:19:42.785492Z&quot;}" data-papermill="{&quot;duration&quot;:28.901784,&quot;end_time&quot;:&quot;2022-09-11T07:19:42.788960&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2022-09-11T07:19:13.887176&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="26">
@@ -9973,7 +10279,11 @@ font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"Unknown label assigned to image."</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-28-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 <div class="cell-output cell-output-display">
 
@@ -10155,7 +10465,11 @@ Image 5 is flooded with a probability of 100.00%.
 Image 6 is flooded with a probability of 100.00%.</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-31-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief_files/figure-html/cell-31-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Drastically improved probabilities! A little augmentation can go a long way.</p>
@@ -10187,6 +10501,7 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
 
 
 
+
 <p><em>This article was updated on <strong>Thursday, 10 November 2022</strong>.</em></p>
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/thumbnail.jpg" class="img-fluid" alt="A parking lot filled with cars."></p>
 <p>I recently created a car classifier that classified cars into their respective brands.</p>
@@ -10213,32 +10528,35 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
 <p>It can be seen that this model “confuses” between quite a few different brands: Ford and Chevrolet, Chevrolet and Ford, Jaguar and Aston Martin, Renault and Ford.</p>
 <p>But <strong>why</strong> is data quality important? Because without good data, the model will not be able to “see” things the way they actually are, and in turn end up making worse predictions and not generalize to other data.</p>
 <p>Let’s say you did not know how, say, a toaster looked like. So I taught you by showing you pictures of a kettle. Then to test you, I showed you a set of pictures depicting various kitchen appliances and told you to find the toaster. You would not be able to.</p>
-<div class="quarto-layout-panel">
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="4">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_1.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_2.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_1.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_2.jpg" class="img-fluid"></p>
 </div>
 </div>
-<div class="quarto-layout-row quarto-layout-valign-top">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_3.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_4.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_3.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_4.jpg" class="img-fluid"></p>
 </div>
 </div>
@@ -10261,6 +10579,7 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -10351,6 +10670,7 @@ Note
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -10529,7 +10849,11 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -10567,7 +10891,11 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -10599,7 +10927,11 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>The best approach is to take random crops of different parts of the same image. This makes sure that the model does not miss out on any details whilst letting it “know” how an object fully looks like.</p>
@@ -10633,7 +10965,11 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>fastai comes with a function that applies a variety of augmentations to images. This can allow a model to “see” and recognize images in a variety of scenarios.</p>
@@ -10668,7 +11004,11 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>I have not used <code>RandomResizedCrop</code> here so that the different augmentations can be seen more clearly. <code>RandomResizedCrop</code> will be used when the model is trained.</p>
@@ -10798,7 +11138,11 @@ font-style: inherit;">=</span> ClassificationInterpretation.from_learner(learn)<
 
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>3 grizzly bears were misclassified as black bears.</p>
@@ -10813,7 +11157,11 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -10953,6 +11301,7 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 
 
 
+
 <p><em>This article was rewritten on <strong>Monday, 31 October 2022</strong>.</em></p>
 <p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/thumbnail.jpg" class="img-fluid" alt="A picture showing cogs and gears."></p>
 <section id="introduction" class="level2 page-columns page-full">
@@ -10973,10 +11322,10 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 <li>Consider your data</li>
 <li>Create the models</li>
 </ul>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/drivetrain_approach.png" class="img-fluid figure-img" alt="A diagram depicting the DrivetrainApproach as a flow chart."></p>
-<figcaption class="figure-caption"><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption>
+<figcaption><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption>
 </figure>
 </div>
 <section id="define-the-objective" class="level3">
@@ -11021,10 +11370,10 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 <p>However, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.</p>
 <p>Even if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.</p>
 <p>In short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.</p>
-<div class="quarto-figure quarto-figure-center">
+<div class="img-fluid quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/whistle_language.jpg" class="img-fluid figure-img" alt="An elderly man blowing a whistle."></p>
-<figcaption class="figure-caption">Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption>
+<figcaption>Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption>
 </figure>
 </div>
 </section>

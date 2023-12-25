@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.358">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -48,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
@@ -63,6 +63,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -107,6 +108,33 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../styles.css">
 <link rel="alternate" type="application/rss+xml" title="ForBo7 // Salman Naqvi" href="index.xml" data-external="1"><meta property="og:title" content="ForBo7 // Salman Naqvi - Welcome to ForBlog by ForBo7">
 <meta property="og:description" content="Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.">
@@ -124,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
@@ -200,6 +228,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+
 <p><span class="animate__animated animate__fadeInDown" style="display: inline-block;">Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.</span></p>
 <div class="animate__animated animate__slideInLeft animate__duration-250ms">
 <!-- ### Featured Posts
@@ -234,27 +263,25 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-left" data-index="0" data-categories="Mathematics,Creating Models" data-listing-date-sort="1691366400000" data-listing-file-modified-sort="1694422640156" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2290">
+<div class="quarto-post image-left" data-index="0" data-categories="Mathematics,Creating Models" data-listing-date-sort="1691366400000" data-listing-file-modified-sort="1703499685240" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2290">
 <div class="thumbnail">
-<p><a href="../forblog/posts/18_backprop_from_scratch.html"></a></p><a href="../forblog/posts/18_backprop_from_scratch.html">
+<p><a href="../forblog/posts/18_backprop_from_scratch.html" class="no-external"></a></p><a href="../forblog/posts/18_backprop_from_scratch.html" class="no-external">
 <p><img src="../forblog/images/18_backprop_from_scratch/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/18_backprop_from_scratch.html"></a></p>
+</a><p><a href="../forblog/posts/18_backprop_from_scratch.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/18_backprop_from_scratch.html"></a></p><a href="../forblog/posts/18_backprop_from_scratch.html">
 <h3 class="no-anchor listing-title">
-Backpropagation Explained using English Words*
+<a href="../forblog/posts/18_backprop_from_scratch.html" class="no-external">Backpropagation Explained using English Words*</a>
 </h3>
 <div class="listing-subtitle">
-Propagating you all way the from the back.
+<a href="../forblog/posts/18_backprop_from_scratch.html" class="no-external">Propagating you all way the from the back.</a>
 </div>
 <div class="listing-description">
-<p>*Most words are in English.</p>
+<a href="../forblog/posts/18_backprop_from_scratch.html" class="no-external">*Most words are in English.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/18_backprop_from_scratch.html">
+<a href="../forblog/posts/18_backprop_from_scratch.html" class="no-external">
 <div class="listing-date">
 07 August 2023
 </div>
@@ -267,27 +294,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="1" data-categories="Creating Models" data-listing-date-sort="1687305600000" data-listing-file-modified-sort="1694422640156" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1268">
+<div class="quarto-post image-left" data-index="1" data-categories="Creating Models" data-listing-date-sort="1687305600000" data-listing-file-modified-sort="1703499685240" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1268">
 <div class="thumbnail">
-<p><a href="../forblog/posts/17_meanshift_clustering.html"></a></p><a href="../forblog/posts/17_meanshift_clustering.html">
+<p><a href="../forblog/posts/17_meanshift_clustering.html" class="no-external"></a></p><a href="../forblog/posts/17_meanshift_clustering.html" class="no-external">
 <p><img src="../forblog/images/17_meanshift_clustering/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/17_meanshift_clustering.html"></a></p>
+</a><p><a href="../forblog/posts/17_meanshift_clustering.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/17_meanshift_clustering.html"></a></p><a href="../forblog/posts/17_meanshift_clustering.html">
 <h3 class="no-anchor listing-title">
-Implementing and Optimizing Meanshift Clustering
+<a href="../forblog/posts/17_meanshift_clustering.html" class="no-external">Implementing and Optimizing Meanshift Clustering</a>
 </h3>
 <div class="listing-subtitle">
-This posts includes a cool animation.
+<a href="../forblog/posts/17_meanshift_clustering.html" class="no-external">This posts includes a cool animation.</a>
 </div>
 <div class="listing-description">
-<p>A guide to grouping data together —&nbsp;fast.</p>
+<a href="../forblog/posts/17_meanshift_clustering.html" class="no-external">A guide to grouping data together —&nbsp;fast.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/17_meanshift_clustering.html">
+<a href="../forblog/posts/17_meanshift_clustering.html" class="no-external">
 <div class="listing-date">
 21 June 2023
 </div>
@@ -300,27 +325,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="2" data-categories="Mathematics,Programming" data-listing-date-sort="1686009600000" data-listing-file-modified-sort="1694422640112" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1869">
+<div class="quarto-post image-left" data-index="2" data-categories="Mathematics,Programming" data-listing-date-sort="1686009600000" data-listing-file-modified-sort="1703499685216" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1869">
 <div class="thumbnail">
-<p><a href="../forblog/posts/16_einstein_summation_notation.html"></a></p><a href="../forblog/posts/16_einstein_summation_notation.html">
+<p><a href="../forblog/posts/16_einstein_summation_notation.html" class="no-external"></a></p><a href="../forblog/posts/16_einstein_summation_notation.html" class="no-external">
 <p><img src="../forblog/images/16_einstein_summation/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/16_einstein_summation_notation.html"></a></p>
+</a><p><a href="../forblog/posts/16_einstein_summation_notation.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/16_einstein_summation_notation.html"></a></p><a href="../forblog/posts/16_einstein_summation_notation.html">
 <h3 class="no-anchor listing-title">
-Intuitively Approaching Einstein Summation Notation
+<a href="../forblog/posts/16_einstein_summation_notation.html" class="no-external">Intuitively Approaching Einstein Summation Notation</a>
 </h3>
 <div class="listing-subtitle">
-Putting it in an einsum-ple manner.
+<a href="../forblog/posts/16_einstein_summation_notation.html" class="no-external">Putting it in an einsum-ple manner.</a>
 </div>
 <div class="listing-description">
-<p>An alternative way to write matrix operations.</p>
+<a href="../forblog/posts/16_einstein_summation_notation.html" class="no-external">An alternative way to write matrix operations.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/16_einstein_summation_notation.html">
+<a href="../forblog/posts/16_einstein_summation_notation.html" class="no-external">
 <div class="listing-date">
 06 June 2023
 </div>
@@ -333,27 +356,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="3" data-categories="Diffusion,Creating Models,Papers" data-listing-date-sort="1685318400000" data-listing-file-modified-sort="1694422640112" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1161">
+<div class="quarto-post image-left" data-index="3" data-categories="Diffusion,Creating Models,Papers" data-listing-date-sort="1685318400000" data-listing-file-modified-sort="1703499685216" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1161">
 <div class="thumbnail">
-<p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html"></a></p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html">
+<p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="no-external"></a></p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="no-external">
 <p><img src="../forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html"></a></p>
+</a><p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html"></a></p><a href="../forblog/posts/15_un_successfully_implementing_diffedit.html">
 <h3 class="no-anchor listing-title">
-(Un)successfully Implementing DiffEdit
+<a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="no-external">(Un)successfully Implementing DiffEdit</a>
 </h3>
 <div class="listing-subtitle">
-The (Un)expected Difficulties of Editing
+<a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="no-external">The (Un)expected Difficulties of Editing</a>
 </div>
 <div class="listing-description">
-<p>An attempt at implementing the DiffEdit paper.</p>
+<a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="no-external">An attempt at implementing the DiffEdit paper.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/15_un_successfully_implementing_diffedit.html">
+<a href="../forblog/posts/15_un_successfully_implementing_diffedit.html" class="no-external">
 <div class="listing-date">
 29 May 2023
 </div>
@@ -366,27 +387,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="4" data-categories="Python,Bits and Bobs" data-listing-date-sort="1683072000000" data-listing-file-modified-sort="1694422640072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190">
+<div class="quarto-post image-left" data-index="4" data-categories="Python,Bits and Bobs" data-listing-date-sort="1683072000000" data-listing-file-modified-sort="1703499685188" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="190">
 <div class="thumbnail">
-<p><a href="../forblog/posts/14_iterators_and_generators.html"></a></p><a href="../forblog/posts/14_iterators_and_generators.html">
+<p><a href="../forblog/posts/14_iterators_and_generators.html" class="no-external"></a></p><a href="../forblog/posts/14_iterators_and_generators.html" class="no-external">
 <p><img src="../forblog/images/14_iterators_and_generators/thumbnail.jpg" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/14_iterators_and_generators.html"></a></p>
+</a><p><a href="../forblog/posts/14_iterators_and_generators.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/14_iterators_and_generators.html"></a></p><a href="../forblog/posts/14_iterators_and_generators.html">
 <h3 class="no-anchor listing-title">
-Iterators and Generators
+<a href="../forblog/posts/14_iterators_and_generators.html" class="no-external">Iterators and Generators</a>
 </h3>
 <div class="listing-subtitle">
-Iteratively Generating Iterative Generators
+<a href="../forblog/posts/14_iterators_and_generators.html" class="no-external">Iteratively Generating Iterative Generators</a>
 </div>
 <div class="listing-description">
-<p>Iterators and generators shown by example.</p>
+<a href="../forblog/posts/14_iterators_and_generators.html" class="no-external">Iterators and generators shown by example.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/14_iterators_and_generators.html">
+<a href="../forblog/posts/14_iterators_and_generators.html" class="no-external">
 <div class="listing-date">
 03 May 2023
 </div>
@@ -399,27 +418,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="5" data-categories="Diffusion,Creating Models" data-listing-date-sort="1682640000000" data-listing-file-modified-sort="1694422640072" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1341">
+<div class="quarto-post image-left" data-index="5" data-categories="Diffusion,Creating Models" data-listing-date-sort="1682640000000" data-listing-file-modified-sort="1703499685188" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1341">
 <div class="thumbnail">
-<p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html"></a></p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html">
+<p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="no-external"></a></p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="no-external">
 <p><img src="../forblog/images/13_implementing_stable_diffusion_from_its_components/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html"></a></p>
+</a><p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html"></a></p><a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html">
 <h3 class="no-anchor listing-title">
-Implementing Stable Diffusion From Its Components
+<a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="no-external">Implementing Stable Diffusion From Its Components</a>
 </h3>
 <div class="listing-subtitle">
-Creating a Diffuser that Diffuses Stable-y
+<a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="no-external">Creating a Diffuser that Diffuses Stable-y</a>
 </div>
 <div class="listing-description">
-<p>Implementing stable diffusion from the 🤗 🧨 library.</p>
+<a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="no-external">Implementing stable diffusion from the 🤗 🧨 library.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html">
+<a href="../forblog/posts/13_implementing_stable_diffusion_from_its_components.html" class="no-external">
 <div class="listing-date">
 28 April 2023
 </div>
@@ -432,27 +449,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="6" data-categories="Diffusion,Analyzing Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1694422639992" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="862">
+<div class="quarto-post image-left" data-index="6" data-categories="Diffusion,Analyzing Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1703499685136" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="862">
 <div class="thumbnail">
-<p><a href="../forblog/posts/11_musings_through_stable_diffusion.html"></a></p><a href="../forblog/posts/11_musings_through_stable_diffusion.html">
+<p><a href="../forblog/posts/11_musings_through_stable_diffusion.html" class="no-external"></a></p><a href="../forblog/posts/11_musings_through_stable_diffusion.html" class="no-external">
 <p><img src="../forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/11_musings_through_stable_diffusion.html"></a></p>
+</a><p><a href="../forblog/posts/11_musings_through_stable_diffusion.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/11_musings_through_stable_diffusion.html"></a></p><a href="../forblog/posts/11_musings_through_stable_diffusion.html">
 <h3 class="no-anchor listing-title">
-My Musings Through Stable Diffusion
+<a href="../forblog/posts/11_musings_through_stable_diffusion.html" class="no-external">My Musings Through Stable Diffusion</a>
 </h3>
 <div class="listing-subtitle">
-Diffusing the Musings
+<a href="../forblog/posts/11_musings_through_stable_diffusion.html" class="no-external">Diffusing the Musings</a>
 </div>
 <div class="listing-description">
-<p>Exploring the various knobs and dials of stable diffusion.</p>
+<a href="../forblog/posts/11_musings_through_stable_diffusion.html" class="no-external">Exploring the various knobs and dials of stable diffusion.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/11_musings_through_stable_diffusion.html">
+<a href="../forblog/posts/11_musings_through_stable_diffusion.html" class="no-external">
 <div class="listing-date">
 13 April 2023
 </div>
@@ -465,27 +480,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="7" data-categories="Diffusion,Creating Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1694422639992" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1481">
+<div class="quarto-post image-left" data-index="7" data-categories="Diffusion,Creating Models" data-listing-date-sort="1681344000000" data-listing-file-modified-sort="1703499685136" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1481">
 <div class="thumbnail">
-<p><a href="../forblog/posts/12_stable_diffusion_summarized.html"></a></p><a href="../forblog/posts/12_stable_diffusion_summarized.html">
+<p><a href="../forblog/posts/12_stable_diffusion_summarized.html" class="no-external"></a></p><a href="../forblog/posts/12_stable_diffusion_summarized.html" class="no-external">
 <p><img data-src="../forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/12_stable_diffusion_summarized.html"></a></p>
+</a><p><a href="../forblog/posts/12_stable_diffusion_summarized.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/12_stable_diffusion_summarized.html"></a></p><a href="../forblog/posts/12_stable_diffusion_summarized.html">
 <h3 class="no-anchor listing-title">
-Stable Diffusion, Summarized
+<a href="../forblog/posts/12_stable_diffusion_summarized.html" class="no-external">Stable Diffusion, Summarized</a>
 </h3>
 <div class="listing-subtitle">
-Taking a Look at how Diffusers Dream
+<a href="../forblog/posts/12_stable_diffusion_summarized.html" class="no-external">Taking a Look at how Diffusers Dream</a>
 </div>
 <div class="listing-description">
-<p>A concise, high level overview on the mechanisms of stable diffusion.</p>
+<a href="../forblog/posts/12_stable_diffusion_summarized.html" class="no-external">A concise, high level overview on the mechanisms of stable diffusion.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/12_stable_diffusion_summarized.html">
+<a href="../forblog/posts/12_stable_diffusion_summarized.html" class="no-external">
 <div class="listing-date">
 13 April 2023
 </div>
@@ -498,27 +511,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="8" data-categories="Computer Vision,Data,PyTorch" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1694422639992" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="858">
+<div class="quarto-post image-left" data-index="8" data-categories="Computer Vision,Data,PyTorch" data-listing-date-sort="1680652800000" data-listing-file-modified-sort="1703499685136" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="858">
 <div class="thumbnail">
-<p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html"></a></p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html">
+<p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="no-external"></a></p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="no-external">
 <p><img data-src="../forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html"></a></p>
+</a><p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html"></a></p><a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html">
 <h3 class="no-anchor listing-title">
-How to Convert Audio to Spectrogram Images
+<a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="no-external">How to Convert Audio to Spectrogram Images</a>
 </h3>
 <div class="listing-subtitle">
-Visualizing Sound
+<a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="no-external">Visualizing Sound</a>
 </div>
 <div class="listing-description">
-<p>A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.</p>
+<a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="no-external">A no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html">
+<a href="../forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html" class="no-external">
 <div class="listing-date">
 05 April 2023
 </div>
@@ -531,27 +542,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="9" data-categories="LLMs,Transformers" data-listing-date-sort="1677542400000" data-listing-file-modified-sort="1694422640312" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="434">
+<div class="quarto-post image-left" data-index="9" data-categories="LLMs,Transformers" data-listing-date-sort="1677542400000" data-listing-file-modified-sort="1703499685352" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="434">
 <div class="thumbnail">
-<p><a href="../forblog/posts/9_transformers_explained.html"></a></p><a href="../forblog/posts/9_transformers_explained.html">
+<p><a href="../forblog/posts/9_transformers_explained.html" class="no-external"></a></p><a href="../forblog/posts/9_transformers_explained.html" class="no-external">
 <p><img data-src="../forblog/images/9_transformers_explained/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/9_transformers_explained.html"></a></p>
+</a><p><a href="../forblog/posts/9_transformers_explained.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/9_transformers_explained.html"></a></p><a href="../forblog/posts/9_transformers_explained.html">
 <h3 class="no-anchor listing-title">
-Transformers, Simply Explained
+<a href="../forblog/posts/9_transformers_explained.html" class="no-external">Transformers, Simply Explained</a>
 </h3>
 <div class="listing-subtitle">
-Autobots or Decepticons?
+<a href="../forblog/posts/9_transformers_explained.html" class="no-external">Autobots or Decepticons?</a>
 </div>
 <div class="listing-description">
-<p>All transformers really do is fill in the blanks and autocomplete.</p>
+<a href="../forblog/posts/9_transformers_explained.html" class="no-external">All transformers really do is fill in the blanks and autocomplete.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/9_transformers_explained.html">
+<a href="../forblog/posts/9_transformers_explained.html" class="no-external">
 <div class="listing-date">
 28 February 2023
 </div>
@@ -564,27 +573,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="10" data-categories="PyTorch" data-listing-date-sort="1674691200000" data-listing-file-modified-sort="1694422640312" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="479">
+<div class="quarto-post image-left" data-index="10" data-categories="PyTorch" data-listing-date-sort="1674691200000" data-listing-file-modified-sort="1703499685352" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="479">
 <div class="thumbnail">
-<p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html"></a></p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html">
+<p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="no-external"></a></p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="no-external">
 <p><img data-src="../forblog/images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html"></a></p>
+</a><p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html"></a></p><a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html">
 <h3 class="no-anchor listing-title">
-A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch
+<a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="no-external">A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch</a>
 </h3>
 <div class="listing-subtitle">
-M-Series Macs is better than saying M1/M2 Macs
+<a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="no-external">M-Series Macs is better than saying M1/M2 Macs</a>
 </div>
 <div class="listing-description">
-<p>Squeezing out that extra performance.</p>
+<a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="no-external">Squeezing out that extra performance.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html">
+<a href="../forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html" class="no-external">
 <div class="listing-date">
 26 January 2023
 </div>
@@ -597,27 +604,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="11" data-categories="Quarto,Collaboration" data-listing-date-sort="1671753600000" data-listing-file-modified-sort="1694422640312" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1343">
+<div class="quarto-post image-left" data-index="11" data-categories="Quarto,Collaboration" data-listing-date-sort="1671753600000" data-listing-file-modified-sort="1703499685352" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1343">
 <div class="thumbnail">
-<p><a href="../forblog/posts/7_blog_subscriptions.html"></a></p><a href="../forblog/posts/7_blog_subscriptions.html">
+<p><a href="../forblog/posts/7_blog_subscriptions.html" class="no-external"></a></p><a href="../forblog/posts/7_blog_subscriptions.html" class="no-external">
 <p><img data-src="../forblog/images/7_blog_subscriptions/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="../forblog/posts/7_blog_subscriptions.html"></a></p>
+</a><p><a href="../forblog/posts/7_blog_subscriptions.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/7_blog_subscriptions.html"></a></p><a href="../forblog/posts/7_blog_subscriptions.html">
 <h3 class="no-anchor listing-title">
-Adding Subscriptions to a Quarto Site
+<a href="../forblog/posts/7_blog_subscriptions.html" class="no-external">Adding Subscriptions to a Quarto Site</a>
 </h3>
 <div class="listing-subtitle">
-Subscribable Subscriptions
+<a href="../forblog/posts/7_blog_subscriptions.html" class="no-external">Subscribable Subscriptions</a>
 </div>
 <div class="listing-description">
-<p>A no nonsense, to the point guide to implementing subscriptions in your Quarto site.</p>
+<a href="../forblog/posts/7_blog_subscriptions.html" class="no-external">A no nonsense, to the point guide to implementing subscriptions in your Quarto site.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/7_blog_subscriptions.html">
+<a href="../forblog/posts/7_blog_subscriptions.html" class="no-external">
 <div class="listing-date">
 23 December 2022
 </div>
@@ -630,27 +635,25 @@ Isaac Flath, Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="12" data-categories="Creating Models" data-listing-date-sort="1664841600000" data-listing-file-modified-sort="1694422640312" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1740">
+<div class="quarto-post image-left" data-index="12" data-categories="Creating Models" data-listing-date-sort="1664841600000" data-listing-file-modified-sort="1703499685348" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1740">
 <div class="thumbnail">
-<p><a href="../forblog/posts/6_ai_in_a_nutshell.html"></a></p><a href="../forblog/posts/6_ai_in_a_nutshell.html">
+<p><a href="../forblog/posts/6_ai_in_a_nutshell.html" class="no-external"></a></p><a href="../forblog/posts/6_ai_in_a_nutshell.html" class="no-external">
 <p class="card-img-top"><img data-src="images/6_ai_in_a_nutshell/thumbnail.png" alt="A circuit board inside a walnut."  class="thumbnail-image card-img"/></p>
-</a><p><a href="../forblog/posts/6_ai_in_a_nutshell.html"></a></p>
+</a><p><a href="../forblog/posts/6_ai_in_a_nutshell.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/6_ai_in_a_nutshell.html"></a></p><a href="../forblog/posts/6_ai_in_a_nutshell.html">
 <h3 class="no-anchor listing-title">
-AI in a Nutshell
+<a href="../forblog/posts/6_ai_in_a_nutshell.html" class="no-external">AI in a Nutshell</a>
 </h3>
 <div class="listing-subtitle">
-This nutshell contains very little math!
+<a href="../forblog/posts/6_ai_in_a_nutshell.html" class="no-external">This nutshell contains very little math!</a>
 </div>
 <div class="listing-description">
-<p>AI models are much, much simpler than you think.</p>
+<a href="../forblog/posts/6_ai_in_a_nutshell.html" class="no-external">AI models are much, much simpler than you think.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/6_ai_in_a_nutshell.html">
+<a href="../forblog/posts/6_ai_in_a_nutshell.html" class="no-external">
 <div class="listing-date">
 04 October 2022
 </div>
@@ -663,27 +666,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="13" data-categories="Creating Models" data-listing-date-sort="1662940800000" data-listing-file-modified-sort="1694422640304" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="796">
+<div class="quarto-post image-left" data-index="13" data-categories="Creating Models" data-listing-date-sort="1662940800000" data-listing-file-modified-sort="1703499685344" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="796">
 <div class="thumbnail">
-<p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html"></a></p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html">
+<p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html" class="no-external"></a></p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html" class="no-external">
 <p class="card-img-top"><img data-src="images/5_detecting_floods_for_disaster_relief/thumbnail.png" alt="An image of a house on top of a pinnacle of rock surrounded by water."  class="thumbnail-image card-img"/></p>
-</a><p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html"></a></p>
+</a><p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html"></a></p><a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html">
 <h3 class="no-anchor listing-title">
-Detecting Floods for Disaster Relief
+<a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html" class="no-external">Detecting Floods for Disaster Relief</a>
 </h3>
 <div class="listing-subtitle">
-How good are you at detecting floods?
+<a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html" class="no-external">How good are you at detecting floods?</a>
 </div>
 <div class="listing-description">
-<p>A rundown of the creation of my flood classifier.</p>
+<a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html" class="no-external">A rundown of the creation of my flood classifier.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html">
+<a href="../forblog/posts/5_detecting_floods_for_disaster_relief.html" class="no-external">
 <div class="listing-date">
 12 September 2022
 </div>
@@ -696,27 +697,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="14" data-categories="Data,Analyzing Models" data-listing-date-sort="1654300800000" data-listing-file-modified-sort="1694422640164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
+<div class="quarto-post image-left" data-index="14" data-categories="Data,Analyzing Models" data-listing-date-sort="1654300800000" data-listing-file-modified-sort="1703499685248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="477">
 <div class="thumbnail">
-<p><a href="../forblog/posts/4_data_quality_is_important.html"></a></p><a href="../forblog/posts/4_data_quality_is_important.html">
+<p><a href="../forblog/posts/4_data_quality_is_important.html" class="no-external"></a></p><a href="../forblog/posts/4_data_quality_is_important.html" class="no-external">
 <p class="card-img-top"><img data-src="images/4_data_quality_is_important/thumbnail.jpg" alt="A parking lot filled with cars."  class="thumbnail-image card-img"/></p>
-</a><p><a href="../forblog/posts/4_data_quality_is_important.html"></a></p>
+</a><p><a href="../forblog/posts/4_data_quality_is_important.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/4_data_quality_is_important.html"></a></p><a href="../forblog/posts/4_data_quality_is_important.html">
 <h3 class="no-anchor listing-title">
-Data Quality is Important | Car Classifier
+<a href="../forblog/posts/4_data_quality_is_important.html" class="no-external">Data Quality is Important | Car Classifier</a>
 </h3>
 <div class="listing-subtitle">
-Classy Cars
+<a href="../forblog/posts/4_data_quality_is_important.html" class="no-external">Classy Cars</a>
 </div>
 <div class="listing-description">
-<p>Most of the time, data matters more than the model.</p>
+<a href="../forblog/posts/4_data_quality_is_important.html" class="no-external">Most of the time, data matters more than the model.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/4_data_quality_is_important.html">
+<a href="../forblog/posts/4_data_quality_is_important.html" class="no-external">
 <div class="listing-date">
 04 June 2022
 </div>
@@ -729,27 +728,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="15" data-categories="Analyzing Models" data-listing-date-sort="1654214400000" data-listing-file-modified-sort="1694422640164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="354">
+<div class="quarto-post image-left" data-index="15" data-categories="Analyzing Models" data-listing-date-sort="1654214400000" data-listing-file-modified-sort="1703499685248" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="354">
 <div class="thumbnail">
-<p><a href="../forblog/posts/3_the_confusion_matrix.html"></a></p><a href="../forblog/posts/3_the_confusion_matrix.html">
+<p><a href="../forblog/posts/3_the_confusion_matrix.html" class="no-external"></a></p><a href="../forblog/posts/3_the_confusion_matrix.html" class="no-external">
 <p class="card-img-top"><img data-src="images/3_the_confusion_matrix/thumbnail.jpg" alt="A meme from the Matrix film."  class="thumbnail-image card-img"/></p>
-</a><p><a href="../forblog/posts/3_the_confusion_matrix.html"></a></p>
+</a><p><a href="../forblog/posts/3_the_confusion_matrix.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/3_the_confusion_matrix.html"></a></p><a href="../forblog/posts/3_the_confusion_matrix.html">
 <h3 class="no-anchor listing-title">
-A No Nonsense Guide to Reading a Confusion Matrix
+<a href="../forblog/posts/3_the_confusion_matrix.html" class="no-external">A No Nonsense Guide to Reading a Confusion Matrix</a>
 </h3>
 <div class="listing-subtitle">
-Are you confused yet?
+<a href="../forblog/posts/3_the_confusion_matrix.html" class="no-external">Are you confused yet?</a>
 </div>
 <div class="listing-description">
-<p>A straight to the point guide about reading a confusion matrix.</p>
+<a href="../forblog/posts/3_the_confusion_matrix.html" class="no-external">A straight to the point guide about reading a confusion matrix.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/3_the_confusion_matrix.html">
+<a href="../forblog/posts/3_the_confusion_matrix.html" class="no-external">
 <div class="listing-date">
 03 June 2022
 </div>
@@ -762,27 +759,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="16" data-categories="Creating Models" data-listing-date-sort="1653696000000" data-listing-file-modified-sort="1694422640164" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1131">
+<div class="quarto-post image-left" data-index="16" data-categories="Creating Models" data-listing-date-sort="1653696000000" data-listing-file-modified-sort="1703499685244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1131">
 <div class="thumbnail">
-<p><a href="../forblog/posts/2_bear_classifier_model.html"></a></p><a href="../forblog/posts/2_bear_classifier_model.html">
+<p><a href="../forblog/posts/2_bear_classifier_model.html" class="no-external"></a></p><a href="../forblog/posts/2_bear_classifier_model.html" class="no-external">
 <p class="card-img-top"><img data-src="images/2_bear_classifier_model/thumbnail.jpg" alt="A bear waving hello."  class="thumbnail-image card-img"/></p>
-</a><p><a href="../forblog/posts/2_bear_classifier_model.html"></a></p>
+</a><p><a href="../forblog/posts/2_bear_classifier_model.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/2_bear_classifier_model.html"></a></p><a href="../forblog/posts/2_bear_classifier_model.html">
 <h3 class="no-anchor listing-title">
-My first AI model
+<a href="../forblog/posts/2_bear_classifier_model.html" class="no-external">My first AI model</a>
 </h3>
 <div class="listing-subtitle">
-Can you bare reading through this bear classifier?
+<a href="../forblog/posts/2_bear_classifier_model.html" class="no-external">Can you bare reading through this bear classifier?</a>
 </div>
 <div class="listing-description">
-<p>A rundown on my first attempt at creating model.</p>
+<a href="../forblog/posts/2_bear_classifier_model.html" class="no-external">A rundown on my first attempt at creating model.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/2_bear_classifier_model.html">
+<a href="../forblog/posts/2_bear_classifier_model.html" class="no-external">
 <div class="listing-date">
 28 May 2022
 </div>
@@ -795,27 +790,25 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-left" data-index="17" data-categories="Approaching AI" data-listing-date-sort="1653609600000" data-listing-file-modified-sort="1694422640156" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="914">
+<div class="quarto-post image-left" data-index="17" data-categories="Approaching AI" data-listing-date-sort="1653609600000" data-listing-file-modified-sort="1703499685240" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="914">
 <div class="thumbnail">
-<p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html"></a></p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html">
+<p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html" class="no-external"></a></p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html" class="no-external">
 <p class="card-img-top"><img data-src="images/1_how_to_approach_creating_ai_models/thumbnail.jpg" alt="A picture showing cogs and gears."  class="thumbnail-image card-img"/></p>
-</a><p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html"></a></p>
+</a><p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html" class="no-external"></a></p>
 </div>
 <div class="body">
-<p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html"></a></p><a href="../forblog/posts/1_how_to_approach_creating_ai_models.html">
 <h3 class="no-anchor listing-title">
-How to Approach Creating AI Models
+<a href="../forblog/posts/1_how_to_approach_creating_ai_models.html" class="no-external">How to Approach Creating AI Models</a>
 </h3>
 <div class="listing-subtitle">
-Putting the Drive into the Train
+<a href="../forblog/posts/1_how_to_approach_creating_ai_models.html" class="no-external">Putting the Drive into the Train</a>
 </div>
 <div class="listing-description">
-<p>There’s more to AI than just creating models.</p>
+<a href="../forblog/posts/1_how_to_approach_creating_ai_models.html" class="no-external">There’s more to AI than just creating models.</a>
 </div>
-</a>
 </div>
 <div class="metadata">
-<a href="../forblog/posts/1_how_to_approach_creating_ai_models.html">
+<a href="../forblog/posts/1_how_to_approach_creating_ai_models.html" class="no-external">
 <div class="listing-date">
 27 May 2022
 </div>
@@ -974,15 +967,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -990,6 +996,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -1033,6 +1042,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -1108,7 +1140,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);
@@ -1206,7 +1237,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/ForBo7_">
-      <i class="bi bi-twitter" role="img">
+      <i class="bi bi-twitter-x" role="img">
 </i> 
     </a>
   </li>  
@@ -1243,7 +1274,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </ul>
     </div>
     <div class="nav-footer-right">
-<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.2</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.3</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
 </div>
   </div>
 </footer>

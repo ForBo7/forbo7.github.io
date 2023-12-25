@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.358">
+<meta name="generator" content="quarto-1.4.533">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
   "keyboard-shortcut": [
     "f",
     "/",
@@ -62,6 +62,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -74,6 +75,33 @@ ul.task-list li input[type="checkbox"] {
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="ForBo7 // Salman Naqvi - AI in a Nutshell">
@@ -96,7 +124,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
@@ -201,6 +229,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+
 <p><em>This blog post was updated on <strong>Saturday, 12 November 2022</strong>.</em></p>
 <p><img src="../images/6_ai_in_a_nutshell/thumbnail.png" class="img-fluid" alt="A circuit board inside a walnut."></p>
 <p>Artificial Intelligence. Machine Learning. Neural Networks. Deep Learning. Fancy Words. Deceptively Simple. All really the same.</p>
@@ -210,14 +239,16 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div class="g-col-4">
-<div class="cell" data-fig-width="2">
+<div class="cell" data-fig-width="2" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     A[Function] -- fits --&gt; B[Data]
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -239,7 +270,11 @@ ul.task-list li input[type="checkbox"] {
 <p>A quadratic is a very simple equation. When shown on a graph, it looks like this.</p>
 <div id="8fc36543" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We’ll be using this equation to demonstrate a very simple example.</p>
@@ -249,14 +284,16 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div class="g-col-8">
-<div class="cell" data-fig-width="3.5">
+<div class="cell" data-fig-width="3.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -271,7 +308,11 @@ ul.task-list li input[type="checkbox"] {
 <p>The horizontal axis is time and the vertical axis is the object’s speed.</p>
 <div id="f959959d-cd81-4531-ae30-04bbcbfcd1ce" class="cell" data-tags="[]" data-execution_count="7">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>We can see that the data looks like the quadratic function shown above! Therefore, we could use the quadratic to predict what the speed of the object would be after 2.0 s and before -2.0 s.</p>
@@ -279,21 +320,33 @@ ul.task-list li input[type="checkbox"] {
 <p>Let’s let <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> all equal <span class="math inline">\(1\)</span> to begin with.</p>
 <div id="f7175b28-a8b7-42da-9717-0c35c891724c" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Hmm, not a very good fit.</p>
 <p>Let’s try another set of values for the parameters: <span class="math inline">\(2\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(1.5\)</span>.</p>
 <div id="bea84315-2cbf-46a5-b908-ac315bcde997" class="cell" data-tags="[]" data-execution_count="9">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Looking much better now!</p>
 <p>Let’s see what <span class="math inline">\(2\)</span>, <span class="math inline">\(0\)</span>, and <span class="math inline">\(1.5\)</span> gives us.</p>
 <div id="56db2757-accb-4bbf-9a4b-6bc5c78bc26c" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Eyeballing this is difficult. A certain set of parameters we use may be good by looking at the resulting graph, but in reality, it may not be.</p>
@@ -303,19 +356,31 @@ ul.task-list li input[type="checkbox"] {
 <p>Let’s repeat what we did above, but this time, we’ll also see what the MAE is.</p>
 <div id="76e029bd" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Again, this means that on average, each prediction we will make is 2.61 m/s off from the real value.</p>
 <div id="676b9af7" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That’s a big jump!</p>
 <div id="6b25e46c" class="cell" data-execution_count="14">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Hmm, things got worse.</p>
@@ -326,14 +391,16 @@ ul.task-list li input[type="checkbox"] {
 
 </div>
 <div class="g-col-4">
-<div class="cell" data-fig-width="2.2">
+<div class="cell" data-fig-width="2.2" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     A[Loss] -- Updates ---&gt; B[Parameters] -- Updates ---&gt; A
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -345,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Let’s give <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> an arbitrary set of parameters <span class="math inline">\(1.1\)</span>, <span class="math inline">\(1.1\)</span>, and <span class="math inline">\(1.1\)</span>.</p>
 <p>Now let’s create a quadratic with this set of parameters and calculate its mean absolute error.</p>
 <div id="bb00c846" class="cell" data-execution_count="16">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -372,9 +439,10 @@ Code Output
 
 </div>
 <div class="g-col-8">
-<div class="cell" data-fig-width="5">
+<div class="cell" data-fig-width="5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     A[Gradients]
@@ -385,6 +453,7 @@ Code Output
     A &amp; B &amp; C ---&gt; D ---&gt; E
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -395,7 +464,7 @@ Code Output
 </div>
 <p>Lets see this tangibly.</p>
 <div id="59621e10" class="cell" data-execution_count="17">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -414,7 +483,7 @@ Code Output
 <p>Okay, let’s break this down. The gradient for the first parameter <span class="math inline">\(a\)</span> is <span class="math inline">\(-1.35\)</span>. This tells us that if we increase the parameter <span class="math inline">\(a\)</span> by <span class="math inline">\(1\)</span>, our loss will decrease by <span class="math inline">\(-1.35\)</span>. Similary, if we increase the parameter <span class="math inline">\(b\)</span> by <span class="math inline">\(1\)</span>, this will result in the loss being decreased by <span class="math inline">\(-0.03\)</span>. The same logic holds for <span class="math inline">\(c\)</span>.</p>
 <p>Let’s now update the parameters. Remember, the current set of parameters, their gradients, and the learning rate all update the current set of parameters to new values.</p>
 <div id="e650f22a" class="cell" data-execution_count="18">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -438,7 +507,7 @@ Pass: 1; Loss: 1.9847692009423128
 Pass: 2; Loss: 1.498316818239171
 Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -454,13 +523,17 @@ Code Output
 </div>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-19-output-3.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-19-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>And there you go! An even better fitting quadratic!</p>
 <p>Let’s see what the object’s speed is at 1 second.</p>
 <div id="680a267b" class="cell" data-execution_count="20">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -479,7 +552,7 @@ Code Output
 <p>That roughly seems right!</p>
 <p>Let’s see what the object’s speed would be at 3 seconds.</p>
 <div id="651f8feb" class="cell" data-execution_count="21">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -501,14 +574,16 @@ Code Output
 
 </div>
 <div class="g-col-8">
-<div class="cell" data-fig-width="3.5">
+<div class="cell" data-fig-width="3.5" data-layout-align="default">
 <div class="cell-output-display">
 <div>
+<p></p><figure class="figure"><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart TB
     B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
 </pre>
 </div>
+<p></p></figure><p></p>
 </div>
 </div>
 </div>
@@ -529,37 +604,61 @@ Code Output
 <p>Take the following line. It has both positive and negative values on the vertical axis.</p>
 <div id="11928802" class="cell" data-execution_count="22">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>When we use a ReLU, all negative values are converted to zero.</p>
 <div id="a280f3aa" class="cell" data-execution_count="23">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Let’s return to our original data.</p>
 <div id="e0c3728b" class="cell" data-execution_count="24">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now a single ReLU won’t work as seen below.</p>
 <div id="abe007b3" class="cell" data-execution_count="25">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-25-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Even after we try to fit it.</p>
 <div id="d721709d" class="cell" data-execution_count="26">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>But look at what happens when two ReLUs are, literally, added together!</p>
 <div id="6268423d" class="cell" data-execution_count="27">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-27-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <!-- - Seed 22; 196 passes; lr=0.01
@@ -575,35 +674,51 @@ Code Output
 - Seed 38, 196 passes; lr=0.01 -->
 <div id="dba7b121" class="cell" data-execution_count="31">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>You can see here how the function is adapting to the shape of the data.</p>
 <p>With some extra experimentation, I was able to get the loss down to 1.08!</p>
 <div id="56738df9" class="cell" data-execution_count="32">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>That said, it’s not too much of a difference when compared to two ReLUs.</p>
 <p>What if we add 5 more to the mix, for a total of 8?</p>
 <div id="24319274" class="cell" data-execution_count="35">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Nice! The MAE has gone below 1!</p>
 <p>It’s even beat the quadratic function from before! With some expermimenting, I had managed to get the quadratic’s loss down to 1.03.</p>
 <div id="6a4d960f" class="cell" data-execution_count="36">
 <div class="cell-output cell-output-display">
-<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="6_ai_in_a_nutshell_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <!-- - Seed 16; 36 passes; lr=0.1
 - Seed 42; 37 passes; lr=0.5 -->
 <p>Let’s use the model that has 8 ReLUs to predict what the object’s velocity would be at 1 second.</p>
 <div id="25348510" class="cell" data-execution_count="39">
-<div class="cell-output cell-output-display">
+<div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -770,15 +885,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    if (id.startsWith('sec-')) {
+    if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
       if (note.children && note.children.length > 2) {
-        for (let i = 0; i < 2; i++) {
-          container.appendChild(note.children[i].cloneNode(true));
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
         }
         return container.innerHTML
       } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -786,6 +914,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const anchorLink = note.querySelector('a.anchorjs-link');
       if (anchorLink) {
         anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
       }
       return note.innerHTML;
     }
@@ -829,6 +960,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
       }
     }, function(instance) {
     });
@@ -904,7 +1058,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     window.addEventListener(
       "resize",
       throttle(() => {
-        console.log("RESIZE");
         elRect = undefined;
         if (selectedAnnoteEl) {
           selectCodeLines(selectedAnnoteEl);
@@ -1006,7 +1159,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/ForBo7_">
-      <i class="bi bi-twitter" role="img">
+      <i class="bi bi-twitter-x" role="img">
 </i> 
     </a>
   </li>  
@@ -1043,7 +1196,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </ul>
     </div>
     <div class="nav-footer-right">
-<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.2</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
+<p><a href="https://forbo7.github.io/patch_notes.html">Site Version 2.2.1.3</a> | <a href="https://forbo7.github.io/feedback.html">Site Feedback</a> | Website made by me!</p>
 </div>
   </div>
 </footer>
