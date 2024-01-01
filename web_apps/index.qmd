@@ -1,7 +1,7 @@
 ---
 title: '{{< animate bounceInDown "App Playground" duration-faster >}}'
 comments: false
-margin-header: "[App Playground](https://forbo7.github.io/web_apps/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC
+margin-header: "[App Playground](https://forbo7.github.io/web_apps/) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC
 BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)"
 listing:
   - id: apps

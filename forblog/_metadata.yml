@@ -9,7 +9,7 @@ website:
   reader-mode: true
   # TODO: Not able to get per page footers.
   page-footer: 
-    left: "[ForBlog](https://forbo7.github.io/forblog.html) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."
+    left: "[ForBlog](https://forbo7.github.io/forblog.html) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."
     right:
       - icon: github
         href: https://github.com/ForBo7

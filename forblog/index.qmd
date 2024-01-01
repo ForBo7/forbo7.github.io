@@ -1,7 +1,7 @@
 ---
 title: '{{< animate fadeInDown "Welcome to ForBlog by ForBo7" >}}'
 comments: false
-margin-header: "[ForBlog](https://forbo7.github.io/forblog/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
+margin-header: "[ForBlog](https://forbo7.github.io/forblog/) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
 # Can't seem to get ToC working.
 toc: false
 listing:

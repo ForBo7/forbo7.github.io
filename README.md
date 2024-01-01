@@ -36,11 +36,11 @@ If you would like to submit feedback about my site, you can do so at [this](http
 
 ## Licenses
 
-[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2023 and ForBlog™ by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site
+[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2024 and ForBlog™ by [Salman Naqvi](https://forbo7.github.io/about.html) | [Site
 Version 2.2.1.2](https://forbo7.github.io/patch_notes.html)
 
-[ForBlog](https://forbo7.github.io/forblog/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
+[ForBlog](https://forbo7.github.io/forblog/) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
 
-[App Playground](https://forbo7.github.io/web_apps/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
+[App Playground](https://forbo7.github.io/web_apps/) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
 
-[The AI Dictionary](https://forbo7.github.io/dictionary/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)
+[The AI Dictionary](https://forbo7.github.io/dictionary/) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)

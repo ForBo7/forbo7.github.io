@@ -1,7 +1,7 @@
 ---
 title: "{{< animate fadeInUp 'The AI Dictionary' >}}"
 subtitle: "{{< animate fadeInUp 'AI terms and jargon simply explained.' >}}"
-margin-header: "[The AI Dictionary](https://forbo7.github.io/dictionary/) © 2023 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
+margin-header: "[The AI Dictionary](https://forbo7.github.io/dictionary/) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
 listing:
   - id: terms
     contents: terms
