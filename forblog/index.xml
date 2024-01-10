@@ -16,7 +16,7 @@
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.4.533</generator>
+<generator>quarto-1.4.538</generator>
 <lastBuildDate>Mon, 07 Aug 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Backpropagation Explained using English Words*</title>
@@ -48,7 +48,7 @@
 <p>Aaand I’ve just described backpropagation in a nutshell. That’s all there really is to it. The only difference is that in a neural network there are many more intermediate variables and functions, and that we want to find out how the weights indirectly change the loss.</p>
 <p>Let’s see this tangibly in action.</p>
 <p>We have the following neural network comprised of two layers: the first layer contains the affine function<sup>1</sup> together with the ReLU, while the second layer contains only the affine function. The loss, which is MSE (Mean Squared Error), will then be calculated from the output of the second layer.</p>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></li></div><div class="cell" data-layout-align="default">
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></div><div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -95,7 +95,7 @@
 <p>However, when working with multiple samples, the mean squared error comes out looking like this, where <img src="https://latex.codecogs.com/png.latex?N"> represents the total number of samples.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B(%5Cvec%7B%5Crm%7By%7D%7D_1%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_1%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20+%20(%5Cvec%7B%5Crm%7By%7D%7D_2%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%20+%20%5Ccdots%20+%20(%5Cvec%7B%5Crm%7By%7D%7D_N%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_N%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%7D%7BN%7D%0A"></p>
 <p>Or more simply…<sup>2</sup></p>
-<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Csum"> is known as the summation or sigma operator. If we have the equation <img src="https://latex.codecogs.com/png.latex?%5Csum%5E4_%7Bx=1%7D2x">, it means sum the equation <img src="https://latex.codecogs.com/png.latex?2x"> for all values of <img src="https://latex.codecogs.com/png.latex?x"> from 1 to 4. Find out more <a href="https://www.mathsisfun.com/algebra/sigma-notation.html">here</a>.</p></li></div><p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%7D%7BN%7D%0A"></p>
+<div class="no-row-height column-margin column-container"><p><sup>2</sup>&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Csum"> is known as the summation or sigma operator. If we have the equation <img src="https://latex.codecogs.com/png.latex?%5Csum%5E4_%7Bx=1%7D2x">, it means sum the equation <img src="https://latex.codecogs.com/png.latex?2x"> for all values of <img src="https://latex.codecogs.com/png.latex?x"> from 1 to 4. Find out more <a href="https://www.mathsisfun.com/algebra/sigma-notation.html">here</a>.</p></div><p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%7D%7BN%7D%0A"></p>
 <p>…or even more simply.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20(%5Ctext%7Bmax%7D(0,%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1)%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2))%5E2%0A"></p>
 <p>Our goal for the rest of this guide is to derive the gradients of <img src="https://latex.codecogs.com/png.latex?w_1">.</p>
@@ -119,7 +119,7 @@
 </div>
 </div>
 <p>Now we can tackle finding the gradients for <img src="https://latex.codecogs.com/png.latex?w_1">. To do so, let’s find the gradients of each intermediate variable.<sup>3</sup> <sup>4</sup></p>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;If needed, get a refresher of the derivative rules <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bcases%7D%5Cend%7Bcases%7D"> denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more <a href="https://www.mathsisfun.com/sets/functions-piecewise.html">here</a>.</p></li></div><p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign*%7D%0A%5Ctext%7Bgradient%20of%20%7D%20u_4%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_4%7D%20u_4%5E2%20&amp;&amp;&amp;=%202u_4%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_3%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_3%7D%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20&amp;&amp;&amp;=%20-1%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_2%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_2%7D%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_1%7D%20%5Ctext%7Bmax%7D(0,%20u_1)%20&amp;&amp;&amp;=%0A%5Cbegin%7Bcases%7D%0A0%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%0A1%20&amp;%20u_1%20%3E%200%0A%5Cend%7Bcases%7D%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w_1%7D%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%0A%5Cend%7Balign*%7D%0A"></p>
+<div class="no-row-height column-margin column-container"><p><sup>3</sup>&nbsp;If needed, get a refresher of the derivative rules <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</p><p><sup>4</sup>&nbsp;<img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bcases%7D%5Cend%7Bcases%7D"> denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more <a href="https://www.mathsisfun.com/sets/functions-piecewise.html">here</a>.</p></div><p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign*%7D%0A%5Ctext%7Bgradient%20of%20%7D%20u_4%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20u_4%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_4%7D%20u_4%5E2%20&amp;&amp;&amp;=%202u_4%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_3%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_4%7D%7B%5Cpartial%20u_3%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_3%7D%20%5Cvec%7B%5Crm%7By%7D%7D_i%20-%20u_3%20&amp;&amp;&amp;=%20-1%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_2%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_3%7D%7B%5Cpartial%20u_2%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_2%7D%20u_2%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_2%20+%20b_2%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20u_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_2%7D%7B%5Cpartial%20u_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20u_1%7D%20%5Ctext%7Bmax%7D(0,%20u_1)%20&amp;&amp;&amp;=%0A%5Cbegin%7Bcases%7D%0A0%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%0A1%20&amp;%20u_1%20%3E%200%0A%5Cend%7Bcases%7D%20%5C%5C%0A%5Ctext%7Bgradient%20of%20%7D%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20&amp;=%20%5Cfrac%7B%5Cpartial%20u_1%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20&amp;&amp;=%20%5Cfrac%7B%5Cpartial%7D%7B%5Cpartial%20w_1%7D%20%5Cvec%7B%5Crm%7Bx%7D%7D_i%20%5Ccdot%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%20+%20b_1%20&amp;&amp;&amp;=%20%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%0A%5Cend%7Balign*%7D%0A"></p>
 <p>Now we multiply everything together.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B%5Cpartial%20%5Ctext%7BMSE%7D%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B%5Cpartial%20u_5%7D%7B%5Cpartial%20%5Cvec%7B%5Crm%7Bw%7D%7D_1%7D%20=%20%5Cfrac%7B1%7D%7BN%7D%20%5Csum%5EN_%7Bi=1%7D%20(2u_4)%20%5Ccdot%20(-1)%20%5Ccdot%20%5Cleft(%5Cvec%7B%5Crm%7Bw%7D%7D%5ET_2%5Cright)%20%5Ccdot%20%5Cleft(%5Cbegin%7Bcases%7D%200%20&amp;%20u_1%20%E2%89%A4%200%20%5C%5C%201%20&amp;%20u_1%20%3E%200%20%5Cend%7Bcases%7D%5Cright)%20%5Ccdot%20%5Cleft(%5Cvec%7B%5Crm%7Bx%7D%7D%5ET_i%5Cright)%0A"></p>
 <p>And it all eventually expands out to the following.</p>
@@ -1918,7 +1918,7 @@ font-style: inherit;">10</span> meanshift(data)</span></code></pre></div>
 <p>We have the following two matrices.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0AA%0A=%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20&amp;%203%20%5C%5C%0A4%20&amp;%205%20&amp;%206%20%5C%5C%0A7%20&amp;%208%20&amp;%209%0A%5Cend%7Bbmatrix%7D,%0AB%0A=%0A%5Cbegin%7Bbmatrix%7D%0A9%20&amp;%208%20&amp;%207%20%5C%5C%0A6%20&amp;%205%20&amp;%204%20%5C%5C%0A3%20&amp;%202%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A"></p>
 <p>To access the element 8 in matrix <img src="https://latex.codecogs.com/png.latex?A">, we need to return the second row and first column<sup>1</sup>. This can be denoted as <img src="https://latex.codecogs.com/png.latex?a_%7B21%7D">. The first digit in the subscript refers to the row and the second refers to the column. We can refer to any entry generally as <img src="https://latex.codecogs.com/png.latex?a_%7Bij%7D">.</p>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;This assumes the matrix is zero indexed. This means <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bbmatrix%7D%201%20&amp;%202%20&amp;%203%20%5Cend%7Bbmatrix%7D"> is the zeroth row of <img src="https://latex.codecogs.com/png.latex?A">.</p></li></div><p>Taking the hadamard product looks like this.</p>
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;This assumes the matrix is zero indexed. This means <img src="https://latex.codecogs.com/png.latex?%5Cbegin%7Bbmatrix%7D%201%20&amp;%202%20&amp;%203%20%5Cend%7Bbmatrix%7D"> is the zeroth row of <img src="https://latex.codecogs.com/png.latex?A">.</p></div><p>Taking the hadamard product looks like this.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Bbmatrix%7D%0A1%20&amp;%202%20&amp;%203%20%5C%5C%0A4%20&amp;%205%20&amp;%206%20%5C%5C%0A7%20&amp;%208%20&amp;%209%0A%5Cend%7Bbmatrix%7D%0A%5Codot%0A%5Cbegin%7Bbmatrix%7D%0A9%20&amp;%208%20&amp;%207%20%5C%5C%0A6%20&amp;%205%20&amp;%204%20%5C%5C%0A3%20&amp;%202%20&amp;%201%0A%5Cend%7Bbmatrix%7D%0A=%0A%5Cbegin%7Bbmatrix%7D%0A1%20%5Ccdot%209%20&amp;%202%20%5Ccdot%208%20&amp;%203%20%5Ccdot%207%20%5C%5C%0A4%20%5Ccdot%206%20&amp;%205%20%5Ccdot%205%20&amp;%206%20%5Ccdot%204%20%5C%5C%0A7%20%5Ccdot%203%20&amp;%208%20%5Ccdot%202%20&amp;%209%20%5Ccdot%201%0A%5Cend%7Bbmatrix%7D%0A=%0AC%0A"></p>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -2357,7 +2357,7 @@ Expanded example
 <li>Then add the noised background pixels of the original image to the cutout.</li>
 </ul></li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></li></div></section>
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p><p><sup>2</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></div></section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div id="cell-7" class="cell" data-execution_count="1">
@@ -3300,7 +3300,7 @@ font-style: inherit;">=</span> decompress(lat)</span>
 <li>Then add the noised background pixels of the original image to the cutout.</li>
 </ul></li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></li></div><section id="obtain-two-latents" class="level3">
+<div class="no-row-height column-margin column-container"><p><sup>3</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p><p><sup>4</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></div><section id="obtain-two-latents" class="level3">
 <h3 class="anchored" data-anchor-id="obtain-two-latents">Obtain two latents</h3>
 <p>First, we need to obtain an image of a horse and an image of a zebra.</p>
 <p>We’ll use this as our original image.</p>
@@ -3590,7 +3590,7 @@ font-style: inherit;">10</span>))</span></code></pre></div>
 </div>
 </div>
 <p>To produce the final mask, I’ll apply the closing transform<sup>5</sup> 7 times consecutively…</p>
-<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;The closing transform is a dilation transform followed immediately by an erosion transform. This allows holes or small black points to be closed.</p></li></div><div id="cell-75" class="cell" data-outputid="95fd3e98-2260-4b2d-a1bc-32d7da61195d" data-execution_count="41">
+<div class="no-row-height column-margin column-container"><p><sup>5</sup>&nbsp;The closing transform is a dilation transform followed immediately by an erosion transform. This allows holes or small black points to be closed.</p></div><div id="cell-75" class="cell" data-outputid="95fd3e98-2260-4b2d-a1bc-32d7da61195d" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1">mask_closed <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> mask</span>
@@ -6747,14 +6747,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
 <figcaption>A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
 <figcaption>The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
@@ -6766,7 +6766,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 <figcaption>A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
@@ -6781,7 +6781,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-glightbox="description: .lightbox-desc-8" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
 <figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
@@ -6793,14 +6793,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" data-glightbox="description: .lightbox-desc-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-glightbox="description: .lightbox-desc-9" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
 <figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-glightbox="description: .lightbox-desc-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-glightbox="description: .lightbox-desc-10" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
 <figcaption>Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
@@ -6813,14 +6813,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" data-glightbox="description: .lightbox-desc-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-glightbox="description: .lightbox-desc-12" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
 <figcaption>A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" data-glightbox="description: .lightbox-desc-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-glightbox="description: .lightbox-desc-13" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
 <figcaption>A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
@@ -6836,7 +6836,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" data-glightbox="description: .lightbox-desc-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-glightbox="description: .lightbox-desc-14" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
 <figcaption>An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
@@ -6849,6 +6849,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <section id="so-end-my-musings" class="level2">
 <h2 class="anchored" data-anchor-id="so-end-my-musings">So End my Musings</h2>
 <p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
 
 
 </section>
@@ -10533,30 +10534,30 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
 </div>
 <div class="quarto-layout-panel" data-layout-ncol="4">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_1.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_2.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_1.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_2.jpg" class="img-fluid"></p>
 </div>
 </div>
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_3.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_4.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_3.jpg" class="img-fluid"></p>
 </div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;display: flex;">
+<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
 <p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_4.jpg" class="img-fluid"></p>
 </div>
 </div>
@@ -11307,7 +11308,7 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 <section id="introduction" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>How you approach making models is crucial. The way AI methods are used in today’s landscape is very different. AI methods are created to solve small, atomic problems. And we’ve got most of the methods to handle these small tasks hammered down. Therefore, applied AI is not about creating models; it’s only a small part of it. It’s 80% problem solving and 20% implementing (I would not be surprised if it actually followed the 80-20 rule<sup>1</sup>).</p>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;<a href="https://en.wikipedia.org/wiki/Pareto_principle">The 80/20 Rule, also known as the Pareto Principle</a></p></li></div><p>Think of AI methods as a tool; think of it as a pencil. You can use pencils to draw, take notes, poke holes, and much more. There are also dozens of pencils out there. But what point is there in using any of those pencils if you don’t even know how to properly use a pencil in the first place? The art of creating pencils has already been perfected too.</p>
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;<a href="https://en.wikipedia.org/wiki/Pareto_principle">The 80/20 Rule, also known as the Pareto Principle</a></p></div><p>Think of AI methods as a tool; think of it as a pencil. You can use pencils to draw, take notes, poke holes, and much more. There are also dozens of pencils out there. But what point is there in using any of those pencils if you don’t even know how to properly use a pencil in the first place? The art of creating pencils has already been perfected too.</p>
 <p>One highly successful approach is the <em>Drivetrain Approach</em>, created by Jeremy Howard — who’s widely known for his fastai course and library —, Margit Zwemer, and Mike Loukides.</p>
 <p>The goal of the <em>Drivetrain Approach</em> is to not just use data to generate more data — data that is in the form of predictions. But rather to use data to also generate actionable outcomes.</p>
 <p>The official blogpost goes into much more depth <a href="https://www.oreilly.com/radar/drivetrain-approach-data-products/">here</a>.</p>
@@ -11322,7 +11323,7 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 <li>Consider your data</li>
 <li>Create the models</li>
 </ul>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/drivetrain_approach.png" class="img-fluid figure-img" alt="A diagram depicting the DrivetrainApproach as a flow chart."></p>
 <figcaption><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption>
@@ -11370,7 +11371,7 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
 <p>However, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.</p>
 <p>Even if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.</p>
 <p>In short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.</p>
-<div class="img-fluid quarto-figure quarto-figure-center">
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/whistle_language.jpg" class="img-fluid figure-img" alt="An elderly man blowing a whistle."></p>
 <figcaption>Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption>

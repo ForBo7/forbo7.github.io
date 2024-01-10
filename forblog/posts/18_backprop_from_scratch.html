@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.538">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -283,7 +283,7 @@ window.Quarto = {
 <p>Aaand I’ve just described backpropagation in a nutshell. That’s all there really is to it. The only difference is that in a neural network there are many more intermediate variables and functions, and that we want to find out how the weights indirectly change the loss.</p>
 <p>Let’s see this tangibly in action.</p>
 <p>We have the following neural network comprised of two layers: the first layer contains the affine function<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> together with the ReLU, while the second layer contains only the affine function. The loss, which is MSE (Mean Squared Error), will then be calculated from the output of the second layer.</p>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></li></div><div class="cell" data-layout-align="default">
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;Affine function is a fancy name for the linear function</p></div><div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
@@ -342,7 +342,7 @@ window.Quarto = {
 \frac{(\vec{\rm{y}}_1 - (\text{max}(0, \vec{\rm{x}}_1 \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 + (\vec{\rm{y}}_2 - (\text{max}(0, \vec{\rm{x}}_2 \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2 + \cdots + (\vec{\rm{y}}_N - (\text{max}(0, \vec{\rm{x}}_N \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{N}
 \]</span></p>
 <p>Or more simply…<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;<span class="math inline">\(\sum\)</span> is known as the summation or sigma operator. If we have the equation <span class="math inline">\(\sum^4_{x=1}2x\)</span>, it means sum the equation <span class="math inline">\(2x\)</span> for all values of <span class="math inline">\(x\)</span> from 1 to 4. Find out more <a href="https://www.mathsisfun.com/algebra/sigma-notation.html">here</a>.</p></li></div><p><span class="math display">\[
+<div class="no-row-height column-margin column-container"><p><sup>2</sup>&nbsp;<span class="math inline">\(\sum\)</span> is known as the summation or sigma operator. If we have the equation <span class="math inline">\(\sum^4_{x=1}2x\)</span>, it means sum the equation <span class="math inline">\(2x\)</span> for all values of <span class="math inline">\(x\)</span> from 1 to 4. Find out more <a href="https://www.mathsisfun.com/algebra/sigma-notation.html">here</a>.</p></div><p><span class="math display">\[
 \frac{\sum^N_{i=1} (\vec{\rm{y}}_i - (\text{max}(0, \vec{\rm{x}}_i \cdot \vec{\rm{w}}_1 + b_1) \cdot \vec{\rm{w}}_2 + b_2))^2}{N}
 \]</span></p>
 <p>…or even more simply.</p>
@@ -389,7 +389,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Now we can tackle finding the gradients for <span class="math inline">\(w_1\)</span>. To do so, let’s find the gradients of each intermediate variable.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;If needed, get a refresher of the derivative rules <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;<span class="math inline">\(\begin{cases}\end{cases}\)</span> denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more <a href="https://www.mathsisfun.com/sets/functions-piecewise.html">here</a>.</p></li></div><p><span class="math display">\[
+<div class="no-row-height column-margin column-container"><p><sup>3</sup>&nbsp;If needed, get a refresher of the derivative rules <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</p><p><sup>4</sup>&nbsp;<span class="math inline">\(\begin{cases}\end{cases}\)</span> denotes a piecewise function. The most simplest piecewise function returns one calculation if a condition is met, and another calculation if the condition is not met. It can be thought of as an if-else statement in programming. Find out more <a href="https://www.mathsisfun.com/sets/functions-piecewise.html">here</a>.</p></div><p><span class="math display">\[
 \begin{align*}
 \text{gradient of } u_4 &amp;= \frac{\partial u_5}{\partial u_4} &amp;&amp;= \frac{\partial}{\partial u_4} u_4^2 &amp;&amp;&amp;= 2u_4 \\
 \text{gradient of } u_3 &amp;= \frac{\partial u_4}{\partial u_3} &amp;&amp;= \frac{\partial}{\partial u_3} \vec{\rm{y}}_i - u_3 &amp;&amp;&amp;= -1 \\

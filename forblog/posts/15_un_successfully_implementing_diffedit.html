@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.533">
+<meta name="generator" content="quarto-1.4.538">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -288,7 +288,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Then add the noised background pixels of the original image to the cutout.</li>
 </ul></li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></li></div></section>
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p><p><sup>2</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></div></section>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div id="cell-7" class="cell" data-execution_count="1">
@@ -617,7 +617,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Then add the noised background pixels of the original image to the cutout.</li>
 </ul></li>
 </ol>
-<div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p></li><li id="fn4"><p><sup>4</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></li></div><section id="obtain-two-latents" class="level3">
+<div class="no-row-height column-margin column-container"><p><sup>3</sup>&nbsp;In this case, normalizing means scaling the values to be between 0 and 1.</p><p><sup>4</sup>&nbsp;Binarizing means making values to be any of 2 possible values. In this case, either 0 or 1.</p></div><section id="obtain-two-latents" class="level3">
 <h3 class="anchored" data-anchor-id="obtain-two-latents">Obtain two latents</h3>
 <p>First, we need to obtain an image of a horse and an image of a zebra.</p>
 <p>We’ll use this as our original image.</p>
@@ -763,7 +763,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>To produce the final mask, I’ll apply the closing transform<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> 7 times consecutively…</p>
-<div class="no-row-height column-margin column-container"><li id="fn5"><p><sup>5</sup>&nbsp;The closing transform is a dilation transform followed immediately by an erosion transform. This allows holes or small black points to be closed.</p></li></div><div id="cell-75" class="cell" data-outputid="95fd3e98-2260-4b2d-a1bc-32d7da61195d" data-execution_count="41">
+<div class="no-row-height column-margin column-container"><p><sup>5</sup>&nbsp;The closing transform is a dilation transform followed immediately by an erosion transform. This allows holes or small black points to be closed.</p></div><div id="cell-75" class="cell" data-outputid="95fd3e98-2260-4b2d-a1bc-32d7da61195d" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>mask_closed <span class="op">=</span> mask</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>):</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  mask_closed <span class="op">=</span> cv.morphologyEx(mask_closed, cv.MORPH_CLOSE, kernel)</span>
