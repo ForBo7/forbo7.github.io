@@ -39,11 +39,13 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 
 **Invited to Speak at the Advanced Study Institute (ASI) Online Symposium** | 7 December 2023 | The Education University of Hong Kong and Hong Kong Baptist University | Hong Kong SAR, China
 
+**Colead Online Study Group | April 2023 — November 2023** | fastai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord
+
 **1100+ Member AI Community Administrator** | November 2022 – June 2023 | The Dataspace | Discord
 
 **Received 50% Scholarship worth JPY 1,860,000 (USD 13,180) over 4 Years** | 17 March 2023 | KUAS-E Scholarship | Kyoto University of Advanced Sciences | Kyoto, Japan
 
-**Received 132% Scholarship worth HKD 740,000 (USD 94,920) over 4 Years** | Covers full tuition fees and living expenses | 24 February 2023 | EdUHK Full Entrance Scholarship | The Education University of Hong Kong (Ranked 4th in Asia and 21st Worldwide in Education as a Subject) | Tai Po, Hong Kong SAR
+**Received 132% Scholarship worth HKD 740,000 (USD 94,920) over 4 Years** | Covers full tuition fees and living expenses | 24 February 2023 | EdUHK Full Entrance Scholarship | The Education University of Hong Kong (Ranked 4th in Asia and 21st Worldwide in Education as a Subject) | Hong Kong SAR
 
 **Completed fastai Course Part 1: Practical Deep Learning for Coders** | September 2022 – March 2023
 
@@ -70,8 +72,6 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 **International Student Ambassador** | September 2023 — Current | The Education University of Hong Kong | Hong Kong SAR, China
 
 **Self-studying Artificial Intelligence** | April 2023 – Current | fastai Course Part 2: From Deep Learning Foundations to Stable Diffusion
-
-**Coleading Online Study Group** | April 2023 — Current | fastai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord
 
 # Skills
 
