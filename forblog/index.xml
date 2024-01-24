@@ -16,8 +16,286 @@
 <height>144</height>
 <width>144</width>
 </image>
-<generator>quarto-1.4.538</generator>
-<lastBuildDate>Mon, 07 Aug 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.549</generator>
+<lastBuildDate>Mon, 22 Jan 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>A Brief Token on Tokenizers</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/19_tokenizers.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<blockquote class="blockquote">
+<p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
+</blockquote>
+<p><img src="https://forbo7.github.io/forblog/images/19_tokenizers/thumbnail.png" class="img-fluid"></p>
+<p>Tokenization is the process whereby text is given a numerical representation. Sentences are split into components known as tokens. These tokens represent numerical values that language models can work with.</p>
+<p>There are various approaches to tokenization. Examples include:</p>
+<ul>
+<li>word-based tokenization</li>
+<li>character-based tokenization</li>
+<li>subword-based tokenization</li>
+<li>and a whole lot more.</li>
+</ul>
+<p>Language models require the use of their own tokenization technique to properly work. Let’s have a look at three approaches.</p>
+<section id="word-based" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="word-based">Word-based</h2>
+<p>The word-based approach, well, splits sentences into individual words. In some cases, it also splits on punctuation.</p>
+<p>In the example below, the sentence is tokenized into its words using whitespace.</p>
+<div id="cell-6" class="cell" data-outputid="e2ac5d36-aca7-4b93-ecc1-a26600b00266" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"I'm really excited doing this, you know?"</span>.split()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>["I'm", 'really', 'excited', 'doing', 'this,', 'you', 'know?']</code></pre>
+</div>
+</div>
+<p>Let’s see it split based on its punctuation.</p>
+<div id="cell-8" class="cell" data-outputid="df4cc4a8-490f-4d3f-f2c2-5daa149303cd" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> re</span>
+<span id="cb3-2"></span>
+<span id="cb3-3">seq <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"I'm really excited doing this, you know?"</span></span>
+<span id="cb3-4">toks <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> re.findall(<span class="vs" style="color: #20794D;
+background-color: null;
+font-style: inherit;">r'\w+|[^\w\s]+'</span>, seq)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> toks</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>['I', "'", 'm', 'really', 'excited', 'doing', 'this', ',', 'you', 'know', '?']</code></pre>
+</div>
+</div>
+<p>After tokenizing, an ID is assigned to each word, or token, so the model can identify them.</p>
+<p>The issue with the word-based approach is wend up with huge vocabularies<sup>1</sup>, especially when splitting on punctuation. For instance, the English language has over 500,000 words, so we would also need more than 500,000 tokens.</p>
+<div class="no-row-height column-margin column-container"><p><sup>1</sup>&nbsp;A vocabulary is a collection of tokens.</p><p><sup>2</sup>&nbsp;Examples of such tokens include [UNK] or &lt;unk&gt;.</p></div><p>To remedy this, we could use only the <img src="https://latex.codecogs.com/png.latex?x"> most frequently used words However, the issue that arises here is when the tokenizer encounters a word not present in its vocabulary. In this situation, a token representing the concept of “unknown” would be assigned<sup>2</sup>. When there are many such tokens, the model has no way of “knowing” that these tokens in fact represent different words.</p>
+<p>Another issue with this approach is that the tokenizer will assign words such as “car” and “cars” different tokens. The model will not know that these two words are actually similar and represent almost the same concept.</p>
+</section>
+<section id="character-based" class="level2">
+<h2 class="anchored" data-anchor-id="character-based">Character-based</h2>
+<p>This approach splits text into characters, resulting in a much, much smaller vocabulary – the English alphabet only has 26 letters, as opposed to hundreds of thousands of words. It also results in fewer unknown tokens as words are comprised from everything within the vocabulary.</p>
+<div id="cell-12" class="cell" data-outputid="857f71cd-b624-4a43-ee6a-ae9028d267d8" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Who doesn't love tokenization!"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>['W',
+ 'h',
+ 'o',
+ ' ',
+ 'd',
+ 'o',
+ 'e',
+ 's',
+ 'n',
+ "'",
+ 't',
+ ' ',
+ 'l',
+ 'o',
+ 'v',
+ 'e',
+ ' ',
+ 't',
+ 'o',
+ 'k',
+ 'e',
+ 'n',
+ 'i',
+ 'z',
+ 'a',
+ 't',
+ 'i',
+ 'o',
+ 'n',
+ '!']</code></pre>
+</div>
+</div>
+<p>However, this approach also has its drawbacks. Individual characters hold less meaning than a whole word. For example, ‘t’ holds less meaning than ‘tokenization’.</p>
+<p>That said, this issue is not as prevalent in other languages. In Chinese languages, each character is also a word. Therefore, characters in Chinese languages hold less meaning than characters in Latin languages.</p>
+<p>While there will be an overall smaller vocabulary, there will still be much processing to do – we end up with a large amount of individual tokens to process. ‘Hello!’ would need only a single token, where as ‘H’, ‘e’, ‘l’, ‘l’, ‘o’, and ‘!’ would require six tokens.</p>
+</section>
+<section id="subword-based" class="level2">
+<h2 class="anchored" data-anchor-id="subword-based">Subword-based</h2>
+<p>This approach is a combination of the two approaches above, and is also the approach most state-of-the-art tokenizers use today.</p>
+<p>With subword-based tokenizers, words fall into two categories: frequent words and rare words. Frequent words are not to be split, but rare words are to be split into meaningful subwords.</p>
+<p><img src="https://forbo7.github.io/forblog/images/19_tokenizers/1.png" class="img-fluid"></p>
+<p>For example, ‘tokenization’ would be categorized as a rare word and would be tokenized into the tokens ‘token’ and ‘ization’. Though one word is now represented by two tokens, as opposed to a single token with the word-based approach, it is split into two components that much more frequently appear. We also don’t need eleven tokens, as would be with the character-based approach. On top of that, the model would learn the grammatical function of ‘ization’.</p>
+<p>This is all while giving the model the ability to learn the meaning of ‘realization’ as the two tokens that comprise the word appear next to each other</p>
+<p>This approach allows us to have relatively good covereage for a language while having relatively smaller vocabularies. It also results in minimal unknown tokens.</p>
+</section>
+<section id="tokenizing-time" class="level2">
+<h2 class="anchored" data-anchor-id="tokenizing-time">Tokenizing Time</h2>
+<p>If we draw parallels between a tokenizer and a model, the algorithm of a tokenizer is akin to the architecture of a model. On a similar note, the vocabulary of a tokenizer is akin to the weights of a model.</p>
+<p>Let’s load in the tokenizer used for the <a href="https://huggingface.co/bert-base-cased">BERT base model (cased)</a>.</p>
+<div id="cell-19" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span> pip install <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>Uqq transformers</span></code></pre></div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="annotated-cell-5" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-1" class="code-annotation-target"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> logging<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> logging.disable(logging.WARNING)</span>
+<span id="annotated-cell-5-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> transformers <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> AutoTokenizer</span>
+<span id="annotated-cell-5-3"></span>
+<span id="annotated-cell-5-4">tokz <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> AutoTokenizer.from_pretrained(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bert-base-cased'</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="1" data-code-annotation="1">HuggingFace is verbose.</span>
+</dd>
+</dl>
+</div>
+</div>
+<p>We can use the loaded tokenizer to directly tokenize our desired sequence.</p>
+<div id="cell-23" class="cell" data-outputid="54c37ef9-3702-4dcd-c2cc-1cc2f576ff05" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">seq <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"The process of tokenization has lead me to the appalling conclusion: life isn't what it is."</span></span>
+<span id="cb8-2">tokz(seq)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>{'input_ids': [101, 1109, 1965, 1104, 22559, 2734, 1144, 1730, 1143, 1106, 1103, 12647, 5727, 1158, 6593, 131, 1297, 2762, 112, 189, 1184, 1122, 1110, 119, 102], 'token_type_ids': [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}</code></pre>
+</div>
+</div>
+<p>However, let’s look behind the scenes to see what’s happening. We’ll only focus on how <code>input_ids</code> came to be.</p>
+</section>
+<section id="behind-the-scenes" class="level2">
+<h2 class="anchored" data-anchor-id="behind-the-scenes">Behind the Scenes</h2>
+<section id="encoding" class="level3">
+<h3 class="anchored" data-anchor-id="encoding">Encoding</h3>
+<p>Encoding is the name given to the process whereby text is mapped to numbers. Text is first tokenized, after which, the tokens are mapped to their respective IDs.</p>
+<section id="tokenization" class="level4">
+<h4 class="anchored" data-anchor-id="tokenization">Tokenization</h4>
+<div id="cell-29" class="cell" data-outputid="86d16c18-36e7-4741-c9c8-5c3c3a6a1687" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">toks <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tokz.tokenize(seq)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> toks</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>['The',
+ 'process',
+ 'of',
+ 'token',
+ '##ization',
+ 'has',
+ 'lead',
+ 'me',
+ 'to',
+ 'the',
+ 'app',
+ '##all',
+ '##ing',
+ 'conclusion',
+ ':',
+ 'life',
+ 'isn',
+ "'",
+ 't',
+ 'what',
+ 'it',
+ 'is',
+ '.']</code></pre>
+</div>
+</div>
+<p>As we can see, the tokenizer used by the BERT base model (cased) is a subword-based tokenizer. This can be seen by ‘tokenization’ being split into ‘token’ and ‘##ization’, as well as ‘appalling’ being split into ‘app’, ‘##all’, and ‘##ing’.</p>
+</section>
+<section id="tokens-to-ids" class="level4">
+<h4 class="anchored" data-anchor-id="tokens-to-ids">Tokens to IDs</h4>
+<div id="cell-32" class="cell" data-outputid="1e775139-627e-4994-d613-f8842dfb23f7" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">ids <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tokz.convert_tokens_to_ids(toks)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> ids</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>[1109,
+ 1965,
+ 1104,
+ 22559,
+ 2734,
+ 1144,
+ 1730,
+ 1143,
+ 1106,
+ 1103,
+ 12647,
+ 5727,
+ 1158,
+ 6593,
+ 131,
+ 1297,
+ 2762,
+ 112,
+ 189,
+ 1184,
+ 1122,
+ 1110,
+ 119]</code></pre>
+</div>
+</div>
+<p>The numbers that have been assigned are based on the vocabulary of the tokenizer. These IDs can now be used as input to a model.</p>
+</section>
+</section>
+</section>
+<section id="decoding" class="level2">
+<h2 class="anchored" data-anchor-id="decoding">Decoding</h2>
+<p>Decoding is simply the opposite process: convert a sequence of IDs into their respective tokens, including putting together tokens that were part of the same word.</p>
+<div id="cell-36" class="cell" data-outputid="c4f87052-7ff4-4e56-972b-47103df0d782" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">dec_seq <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tokz.decode(ids)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> dec_seq</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>"The process of tokenization has lead me to the appalling conclusion : life isn't what it is."</code></pre>
+</div>
+</div>
+<p>The decoding algorithm of our tokenzier has introduced a space before the colon. 🤔</p>
+<p>Decoding is used for models that generate text: the model outputs a sequence of IDs which are then decoded to their respective tokens.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Tokenization is all about splitting text up and giving the split up text a numerical representation that computers can work with.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>LLMs</category>
+  <category>Transformers</category>
+  <guid>https://forbo7.github.io/forblog/posts/19_tokenizers.html</guid>
+  <pubDate>Mon, 22 Jan 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/19_tokenizers/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Backpropagation Explained using English Words*</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -6747,14 +7025,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
 <figcaption>A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
 </figure>
 </div>
 <p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
 <figcaption>The gif itself has artefacts due to compression…</figcaption>
 </figure>
 </div>
@@ -6766,7 +7044,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
 <figcaption>A grasshopper riding a bunny.</figcaption>
 </figure>
 </div>
@@ -6781,7 +7059,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-glightbox="description: .lightbox-desc-8" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
 <figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
@@ -6793,14 +7071,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>Take the image below as an example.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-glightbox="description: .lightbox-desc-9" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" data-glightbox="description: .lightbox-desc-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
 <figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
 </figure>
 </div>
 <p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-glightbox="description: .lightbox-desc-10" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-glightbox="description: .lightbox-desc-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
 <figcaption>Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
 </figure>
 </div>
@@ -6813,14 +7091,14 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I input it to a diffuser with a prompt, and it output the following.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-glightbox="description: .lightbox-desc-12" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" data-glightbox="description: .lightbox-desc-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
 <figcaption>A bench under a tree in a park</figcaption>
 </figure>
 </div>
 <p>I then further generated another image from this one.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-glightbox="description: .lightbox-desc-13" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" data-glightbox="description: .lightbox-desc-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
 <figcaption>A low poly 3D render of a bench under a tree in a park</figcaption>
 </figure>
 </div>
@@ -6836,7 +7114,7 @@ font-style: inherit;">0</span>])</span></code></pre></div>
 <p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
 <div class="quarto-figure quarto-figure-left">
 <figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-glightbox="description: .lightbox-desc-14" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
+<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" data-glightbox="description: .lightbox-desc-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
 <figcaption>An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
 </figure>
 </div>
