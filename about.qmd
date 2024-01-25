@@ -29,7 +29,7 @@ page-layout: full
 ---
 
 :::{.animate__animated .animate__slideInRight .animate__faster}
-_Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D computer graphics, loves learning, and is a scitech geek and space nerd. I’ve also been to 19 countries._
+_I’m a curious individual who does AI, dabbles in 3D computer graphics, loves learning, and is a scitech geek and space nerd. I’ve also been to 19 countries._
 :::
 
 ::::{.animate__animated .animate__slideInUp .animate__faster}
@@ -89,6 +89,8 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 
 # Education
 
+**GPA 3.78/4.00** *Semester 1 of 8* | **Bachelor of Science (Honors) in Artificial Intelligence and Educational Technology** | September 2023 — Current
+
 **8.5/9.0** | **IELTS**
 
 **2 A\*s, 1 A, 1 B** | **High School** | CAIE A Level (Cambridge Assessment International Examinations Advanced Level) | September 2019 — August 2021
@@ -96,7 +98,9 @@ _Greetings, fellow human! I’m a curious individual who does AI, dabbles in 3D 
 **3 A\*s, 4 As, 1 B** | **Middle School** | CAIE IGCSE (Cambridge Assessment International Examinations International General Certificate of Secondary
 Education) | August 2015 — August 2019
 
-**International Baccalaureate Primary Years Program** | Primary School | August 2009 – June 2015
+**International Baccalaureate Middle Years Program** | **Middle School** | August 2013 – June 2015
+
+**International Baccalaureate Primary Years Program** | **Primary School** | August 2009 – June 2013
 
 # Countries
 
@@ -111,7 +115,7 @@ Education) | August 2015 — August 2019
 
 **Egypt*** | **England** | **France** | **Greece** | **China** | **Italy** | **Jordan*** | **Lebanon*** | **Malaysia** | **Pakistan** | **Qatar*** | **Saudi Arabia** | **Sri Lanka** | **Switzerland** | **Tanzania** | **Thailand** | **Turkey** | **UAE** | **Wales**
 
-<span style="font-size:8px">*Transit destinations; I count them still because I was technically within the country's border.</span>
+<span style="font-size:8px">*Transit destinations; I technically count them because I was within the country's border!</span>
 
 # Known Languages
 
