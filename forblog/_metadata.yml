@@ -19,5 +19,9 @@ website:
         href: https://www.artstation.com/forbo7
       - icon: envelope
         href: mailto:salmananaqvii+forblog@gmail.com
+format:
+  html:
+    mermaid:
+      theme: neutral
 
 # TODO: Try a word cloud for categories listing.
