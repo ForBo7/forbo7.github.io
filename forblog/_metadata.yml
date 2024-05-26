@@ -5,6 +5,8 @@ number-sections: false
 reference-location: margin
 date-format: "dddd, DD MMMM YYYY"
 reading-time: true
+# Page navigation doesn't work.
+page-navigation: true
 website:
   reader-mode: true
   # TODO: Not able to get per page footers.

@@ -15,12 +15,6 @@ about:
     - icon: brush
       text: "{{< animate fadeIn 'Artstation' >}}"
       href: https://www.artstation.com/forbo7
-    - icon: clipboard-data
-      text: "{{< animate fadeIn 'Kaggle' >}}"
-      href: https://www.kaggle.com/forbo7
-    - icon: github
-      text: "{{< animate fadeIn 'GitHub' >}}"
-      href: https://github.com/ForBo7
     - icon: envelope
       text: "{{< animate fadeIn 'Email' >}}"
       href: mailto:salmanaqvi+forblog@icloud.com
@@ -36,6 +30,10 @@ page-layout: full
 :::{.panel-tabset}
 
 # Notable Experience and Honors
+
+*Jun. 2024 – Jul. 2024* — **Educational Technology Innovator** | READily
+
+*Mar. 2024* – **Intern** | Kids4Kids Hong Kong
 
 *Dec. 7, 2023* — **Invited Speaker at the Advanced Study Institute (ASI) Online Symposium** | The Education University of Hong Kong and Hong Kong Baptist University
 
@@ -85,7 +83,7 @@ Self-learning since April 2022.
 
 **Urdu** | Fluent
 
-**Mandarin** | Currently learning
+**Mandarin** | Very basic proficiency
 
 :::
 

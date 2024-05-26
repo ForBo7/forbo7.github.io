@@ -42,15 +42,11 @@ website:
         href: https://twitter.com/ForBo7_
       - icon: brush
         href: https://www.artstation.com/forbo7
-      - icon: clipboard-data
-        href: https://www.kaggle.com/forbo7
-      - icon: github
-        href: https://github.com/ForBo7
       - icon: envelope
         href: mailto:salmananaqvii+forblog@gmail.com
       - icon: rss
         href: forblog/index.xml
-    right: "[Site Version 2.2.1.4](https://forbo7.github.io/patch_notes.html) | [Site Feedback](https://forbo7.github.io/feedback.html) | Website made by me!"
+    right: "[Version 2.2.1.5](https://forbo7.github.io/patch_notes.html) | [Feedback](https://forbo7.github.io/feedback.html) | Website made with [Quarto](https://quarto.org/), by me!"
   twitter-card:
     title: "ForBo7 // Salman Naqvi"
     description: "The world of ForBo7!"

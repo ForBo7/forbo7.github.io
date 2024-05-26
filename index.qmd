@@ -36,12 +36,6 @@ about:
     - icon: brush
       text: "{{< animate fadeIn 'Artstation' >}}"
       href: https://www.artstation.com/forbo7
-    - icon: clipboard-data
-      text: "{{< animate fadeIn 'Kaggle' >}}"
-      href: https://www.kaggle.com/forbo7
-    - icon: github
-      text: "{{< animate fadeIn 'GitHub' >}}"
-      href: https://github.com/ForBo7
     - icon: envelope
       text: "{{< animate fadeIn 'Email' >}}"
       href: mailto:salmanaqvi+forblog@icloud.com
