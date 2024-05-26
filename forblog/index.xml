@@ -523,7 +523,7 @@ font-style: inherit;">/</span> res.shape[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
-<pre data-code-line-numbers=""><code>tensor(1319.92)</code></pre>
+<pre data-code-line-numbers=""><code>tensor(717.17)</code></pre>
 </div>
 </div>
 <div id="cell-47" class="cell" data-execution_count="25">
@@ -550,7 +550,7 @@ font-style: inherit;">=</span> model(trn_x)<span class="op" style="color: #5E5E5
 background-color: null;
 font-style: inherit;">;</span> mse(preds, trn_y)</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
-<pre data-code-line-numbers=""><code>tensor(1138.80)</code></pre>
+<pre data-code-line-numbers=""><code>tensor(648.87)</code></pre>
 </div>
 </div>
 <div id="cell-49" class="cell" data-execution_count="27">
@@ -589,7 +589,7 @@ font-style: inherit;">=</span> mse(l2, trn_y)<span class="op" style="color: #5E5
 background-color: null;
 font-style: inherit;">;</span> loss</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
-<pre data-code-line-numbers=""><code>tensor(1138.80)</code></pre>
+<pre data-code-line-numbers=""><code>tensor(648.87)</code></pre>
 </div>
 </div>
 <section id="w1-gradients" class="level3">
@@ -665,7 +665,7 @@ font-style: inherit;">*</span> diff<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> loss, loss.g.shape</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
-<pre data-code-line-numbers=""><code>(tensor(1138.80), torch.Size([1000, 1]))</code></pre>
+<pre data-code-line-numbers=""><code>(tensor(648.87), torch.Size([1000, 1]))</code></pre>
 </div>
 </div>
 <div id="cell-58" class="cell" data-execution_count="31">
@@ -683,11 +683,11 @@ font-style: inherit;">;</span> diff[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>], diff.shape</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
-<pre data-code-line-numbers=""><code>(tensor([[-15.10],
-         [ 31.04],
-         [ 39.06],
-         [-48.94],
-         [  4.59]]),
+<pre data-code-line-numbers=""><code>(tensor([[-15.34],
+         [-33.46],
+         [-35.26],
+         [ -6.92],
+         [-21.55]]),
  torch.Size([1000, 1]))</code></pre>
 </div>
 </div>
@@ -729,13 +729,13 @@ font-style: inherit;">0</span>).<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">float</span>()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-<pre data-code-line-numbers=""><code>tensor([[1., 1., 1.,  ..., 0., 1., 1.],
-        [0., 1., 1.,  ..., 0., 1., 1.],
-        [1., 0., 1.,  ..., 0., 1., 1.],
+<pre data-code-line-numbers=""><code>tensor([[0., 1., 1.,  ..., 0., 0., 0.],
+        [0., 0., 1.,  ..., 1., 0., 0.],
+        [1., 1., 1.,  ..., 0., 0., 1.],
         ...,
-        [1., 1., 1.,  ..., 0., 1., 1.],
-        [0., 0., 1.,  ..., 0., 0., 1.],
-        [1., 1., 1.,  ..., 0., 1., 1.]])</code></pre>
+        [0., 0., 0.,  ..., 0., 1., 0.],
+        [1., 1., 0.,  ..., 0., 0., 1.],
+        [0., 0., 1.,  ..., 0., 0., 0.]])</code></pre>
 </div>
 </div>
 <div id="cell-63" class="cell" data-execution_count="36">
@@ -804,7 +804,7 @@ background-color: null;
 font-style: inherit;">max</span>())</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre data-code-line-numbers=""><code>((torch.Size([784, 50]), torch.Size([784, 50])),
- (tensor(-48.07), tensor(46.82)))</code></pre>
+ (tensor(-17.50), tensor(25.09)))</code></pre>
 </div>
 </div>
 <p>Let’s verify our derivation is correct by comparing it to the gradients computed by PyTorch.</p>
@@ -850,7 +850,7 @@ font-style: inherit;">min</span>(), w1_.grad.<span class="bu" style="color: null
 background-color: null;
 font-style: inherit;">max</span>())</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="44">
-<pre data-code-line-numbers=""><code>((tensor(-48.07), tensor(46.82)), (tensor(-48.07), tensor(46.82)))</code></pre>
+<pre data-code-line-numbers=""><code>((tensor(-17.50), tensor(25.09)), (tensor(-17.50), tensor(25.09)))</code></pre>
 </div>
 </div>
 <div id="cell-73" class="cell" data-execution_count="45">
@@ -1004,7 +1004,7 @@ font-style: inherit;">min</span>(), trn_x.g.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">max</span>()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
-<pre data-code-line-numbers=""><code>(tensor(-4.58, grad_fn=&lt;MinBackward1&gt;), tensor(3.99, grad_fn=&lt;MaxBackward1&gt;))</code></pre>
+<pre data-code-line-numbers=""><code>(tensor(-2.85, grad_fn=&lt;MinBackward1&gt;), tensor(2.85, grad_fn=&lt;MaxBackward1&gt;))</code></pre>
 </div>
 </div>
 </section>
@@ -1100,7 +1100,7 @@ font-style: inherit;">min</span>(), w2.g.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">max</span>()</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
-<pre data-code-line-numbers=""><code>(tensor(1.94, grad_fn=&lt;MinBackward1&gt;), tensor(461.44, grad_fn=&lt;MaxBackward1&gt;))</code></pre>
+<pre data-code-line-numbers=""><code>(tensor(8.37, grad_fn=&lt;MinBackward1&gt;), tensor(388.44, grad_fn=&lt;MaxBackward1&gt;))</code></pre>
 </div>
 </div>
 </section>
@@ -1152,19 +1152,9 @@ font-style: inherit;">0</span>)</span>
 <section id="verify" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="verify">Verify</h3>
 <p>Let’s verify our remaining gradients.</p>
-<div id="cell-94" class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb97" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1">w1_, b1_, w2_, b2_, trn_x_ <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">map</span>(<span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">lambda</span> w: w.clone().requires_grad_(), [w1, b1, w2, b2, trn_x])</span></code></pre></div>
-</div>
 
-<div class="no-row-height column-margin column-container"><div id="cell-95" class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb98" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1">w1_, b1_, w2_, b2_, trn_x_ <span class="op" style="color: #5E5E5E;
+<div class="no-row-height column-margin column-container"><div id="cell-94" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb97" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1">w1_, b1_, w2_, b2_, trn_x_ <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="kw" style="color: #003B4F;
 background-color: null;
@@ -1179,15 +1169,37 @@ font-style: inherit;">in</span> [w1, b1, w2, b2, trn_x]]</span></code></pre></di
 </div><div class="">
 <p>The expression above does not work to create copies. Rather than returning a cloned copy that requires gradients, lambda objects will be returned.</p>
 </div></div>
+<div id="cell-96" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb98" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1">w1_, b1_, w2_, b2_, trn_x_ <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">map</span>(<span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">lambda</span> w: w.clone().requires_grad_(), [w1, b1, w2, b2, trn_x])</span></code></pre></div>
+</div>
 <div id="cell-97" class="cell page-columns page-full" data-execution_count="60">
 
 <div class="no-row-height column-margin column-container"><div class="cell-output cell-output-display" data-execution_count="60">
-<pre data-code-line-numbers=""><code>&lt;function __main__.&lt;listcomp&gt;.&lt;lambda&gt;(w)&gt;</code></pre>
+<pre data-code-line-numbers=""><code>tensor([[-2.81, -1.72, -0.97,  ..., -0.29, -1.62, -0.45],
+        [-1.77, -0.17,  1.32,  ..., -0.92,  0.76,  2.77],
+        [ 0.58,  2.13, -0.98,  ...,  0.41,  1.50,  0.86],
+        ...,
+        [-0.50, -1.90, -0.10,  ..., -1.61,  0.78, -0.09],
+        [ 0.89,  0.50,  1.21,  ...,  0.93, -0.37, -0.85],
+        [ 0.57, -0.50, -1.47,  ...,  0.72,  1.64, -0.85]], requires_grad=True)</code></pre>
 </div></div></div>
 <div id="cell-98" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb100" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1">w1_</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="61">
-<pre data-code-line-numbers=""><code>&lt;function __main__.&lt;listcomp&gt;.&lt;lambda&gt;(w)&gt;</code></pre>
+<pre data-code-line-numbers=""><code>tensor([[-2.81, -1.72, -0.97,  ..., -0.29, -1.62, -0.45],
+        [-1.77, -0.17,  1.32,  ..., -0.92,  0.76,  2.77],
+        [ 0.58,  2.13, -0.98,  ...,  0.41,  1.50,  0.86],
+        ...,
+        [-0.50, -1.90, -0.10,  ..., -1.61,  0.78, -0.09],
+        [ 0.89,  0.50,  1.21,  ...,  0.93, -0.37, -0.85],
+        [ 0.57, -0.50, -1.47,  ...,  0.72,  1.64, -0.85]], requires_grad=True)</code></pre>
 </div>
 </div>
 <div id="cell-99" class="cell" data-execution_count="62">
@@ -1201,23 +1213,8 @@ font-style: inherit;">=</span> lin(l1, w2_, b2_)</span>
 background-color: null;
 font-style: inherit;">=</span> mse(l2, trn_y)</span>
 <span id="cb102-4">loss.backward()</span></code></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[62], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> l1 <span style="color:rgb(98,98,98)">=</span> relu(<span class="ansi-yellow-bg">lin</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">trn_x_</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">w1_</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">b1_</span><span class="ansi-yellow-bg">)</span>)
-<span class="ansi-green-fg ansi-bold">      2</span> l2 <span style="color:rgb(98,98,98)">=</span> lin(l1, w2_, b2_)
-<span class="ansi-green-fg ansi-bold">      3</span> loss <span style="color:rgb(98,98,98)">=</span> mse(l2, trn_y)
-
-Cell <span class="ansi-green-fg">In[8], line 1</span>, in <span class="ansi-cyan-fg">lin</span><span class="ansi-blue-fg">(x, w, b)</span>
-<span class="ansi-green-fg">----&gt; 1</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">lin</span>(x, w, b): <span style="font-weight:bold;color:rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">@</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">w</span> <span style="color:rgb(98,98,98)">+</span> b
-
-<span class="ansi-red-fg">TypeError</span>: unsupported operand type(s) for @: 'function' and 'function'</pre>
 </div>
-</div>
-</div>
-<div id="cell-100" class="cell">
+<div id="cell-100" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb103" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1238,7 +1235,7 @@ font-style: inherit;">1e-2</span>)</span></code></pre></div>
 <section id="encapsulate" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="encapsulate">Encapsulate</h2>
 <p>Now that we have the forward and backward passes sorted, let us cohesively bring them together.</p>
-<div id="cell-104" class="cell">
+<div id="cell-104" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb104" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1360,13 +1357,13 @@ font-style: inherit;">=</span> l1.g <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">@</span> w1.T</span></code></pre></div>
 </div>
-<div id="cell-105" class="cell">
+<div id="cell-105" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb105" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1">l1, l2, loss <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> forward(trn_x, trn_y)</span>
 <span id="cb105-2">backward(trn_x, trn_y, l1, l2, loss)</span></code></pre></div>
 </div>
-<div id="cell-106" class="cell">
+<div id="cell-106" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb106" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1387,11 +1384,11 @@ font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1e-2</span>)</span></code></pre></div>
 </div>
-<div id="cell-107" class="cell">
+<div id="cell-107" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb107" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1">comp_grads(w1, b1, w2, b2, trn_x)</span></code></pre></div>
 </div>
 <p>The <code>backward</code> function can be further refactored by taking the gradient computations of the linear layers common.</p>
-<div id="cell-109" class="cell">
+<div id="cell-109" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb108" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1580,19 +1577,19 @@ background-color: null;
 font-style: inherit;">=</span> l1.g <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">@</span> w1.T</span></code></pre></div>
-</div></div><div id="cell-111" class="cell">
+</div></div><div id="cell-111" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb110" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1">backward(trn_x, trn_y, <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">*</span>forward(trn_x, trn_y))</span></code></pre></div>
 </div>
-<div id="cell-112" class="cell">
+<div id="cell-112" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb111" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1">comp_grads(w1, b1, w2, b2, trn_x)</span></code></pre></div>
 </div>
 <section id="class" class="level3">
 <h3 class="anchored" data-anchor-id="class">Class</h3>
 <p>Currently, we have functions that each separately handle a part of the network. For instance, <code>mse</code> only computes its respective portion of the forward pass: the mean squared error. <code>backward</code> is a separate function that handles the backward pass for all pieces of the network.</p>
 <p>Let us change how this works, so each piece of the network also handles its respective backward pass. This means, <code>mse</code> will have the ability to compute both its forward pass and backward pass.</p>
-<div id="cell-115" class="cell">
+<div id="cell-115" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb112" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1663,10 +1660,10 @@ font-style: inherit;">self</span>.targs)[..., <span class="va" style="color: #11
 background-color: null;
 font-style: inherit;">None</span>]</span></code></pre></div>
 </div>
-<div id="cell-116" class="cell">
+<div id="cell-116" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb113" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1">test_eq(MSE()(preds, trn_y), mse(preds, trn_y))</span></code></pre></div>
 </div>
-<div id="cell-117" class="cell">
+<div id="cell-117" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb114" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1769,10 +1766,10 @@ font-style: inherit;">sum</span>(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>)</span></code></pre></div>
 </div>
-<div id="cell-118" class="cell">
+<div id="cell-118" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb115" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1">test_eq(Lin(w1, b1)(trn_x), lin(trn_x, w1, b1))</span></code></pre></div>
 </div>
-<div id="cell-119" class="cell">
+<div id="cell-119" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb116" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1829,10 +1826,10 @@ font-style: inherit;">0</span>).<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">float</span>()</span></code></pre></div>
 </div>
-<div id="cell-120" class="cell">
+<div id="cell-120" class="cell" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb117" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1">test_eq(ReLU()(l1), relu(l1))</span></code></pre></div>
 </div>
-<div id="cell-121" class="cell">
+<div id="cell-121" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb118" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1905,7 +1902,7 @@ font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]: l.backward()</span></code></pre></div>
 </div>
-<div id="cell-122" class="cell">
+<div id="cell-122" class="cell" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb119" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Model(w1, b1, w2, b2)</span>
@@ -1914,14 +1911,14 @@ background-color: null;
 font-style: inherit;">=</span> model(trn_x, trn_y)</span>
 <span id="cb119-3">model.backward()</span></code></pre></div>
 </div>
-<div id="cell-123" class="cell">
+<div id="cell-123" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb120" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1">comp_grads(w1, b1, w2, b2, trn_x)</span></code></pre></div>
 </div>
 </section>
 <section id="super-class" class="level3">
 <h3 class="anchored" data-anchor-id="super-class">Super Class</h3>
 <p>The classes we have created have common functionality, meaning their is still room for further refactoring. In particular, all the classes store the forward pass arguments as attributes if needed, have a <code>__call__</code> dunder method that exectutes the forward pass, and a <code>backward</code> method for the backward pass.</p>
-<div id="cell-126" class="cell">
+<div id="cell-126" class="cell" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb121" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -1998,7 +1995,7 @@ font-style: inherit;">Exception</span>(<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'Backward pass not implemented.'</span>)</span></code></pre></div>
 </div>
-<div id="cell-127" class="cell">
+<div id="cell-127" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb122" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb122-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2043,10 +2040,10 @@ font-style: inherit;">-</span> targs)[..., <span class="va" style="color: #11111
 background-color: null;
 font-style: inherit;">None</span>]</span></code></pre></div>
 </div>
-<div id="cell-128" class="cell">
+<div id="cell-128" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb123" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1">test_eq(MSE()(preds, trn_y), mse(preds, trn_y))</span></code></pre></div>
 </div>
-<div id="cell-129" class="cell">
+<div id="cell-129" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb124" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb124-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2121,10 +2118,10 @@ background-color: null;
 font-style: inherit;">0</span>)</span>
 <span id="cb124-8">    </span></code></pre></div>
 </div>
-<div id="cell-130" class="cell">
+<div id="cell-130" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb125" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb125-1">test_eq(Lin(w1, b1)(trn_x), lin(trn_x, w1, b1))</span></code></pre></div>
 </div>
-<div id="cell-131" class="cell">
+<div id="cell-131" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb126" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2157,10 +2154,10 @@ font-style: inherit;">0</span>).<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">float</span>()</span></code></pre></div>
 </div>
-<div id="cell-132" class="cell">
+<div id="cell-132" class="cell" data-execution_count="86">
 <div class="sourceCode cell-code" id="cb127" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb127-1">test_eq(ReLU()(l1), relu(l1))</span></code></pre></div>
 </div>
-<div id="cell-133" class="cell">
+<div id="cell-133" class="cell" data-execution_count="87">
 <div class="sourceCode cell-code" id="cb128" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb128-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Model(w1, b1, w2, b2)</span>
@@ -2169,7 +2166,7 @@ background-color: null;
 font-style: inherit;">=</span> model(trn_x, trn_y)</span>
 <span id="cb128-3">model.backward()</span></code></pre></div>
 </div>
-<div id="cell-134" class="cell">
+<div id="cell-134" class="cell" data-execution_count="88">
 <div class="sourceCode cell-code" id="cb129" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb129-1">comp_grads(w1, b1, w2, b2)</span></code></pre></div>
 </div>
 <p>And with that, this is the basic underlying paradigm in which PyTorch implements its components.</p>
@@ -2177,13 +2174,13 @@ font-style: inherit;">=</span> model(trn_x, trn_y)</span>
 </section>
 <section id="pytorchs-nn.module" class="level3">
 <h3 class="anchored" data-anchor-id="pytorchs-nn.module">PyTorch’s <code>nn.Module</code></h3>
-<div id="cell-137" class="cell">
+<div id="cell-137" class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb130" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb130-1">w1.shape, n, m, c, b1.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="90">
+<div class="cell-output cell-output-display" data-execution_count="89">
 <pre data-code-line-numbers=""><code>(torch.Size([784, 50]), 1000, 784, tensor(10), torch.Size([50]))</code></pre>
 </div>
 </div>
-<div id="cell-138" class="cell">
+<div id="cell-138" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb132" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> torch <span class="im" style="color: #00769E;
@@ -2235,7 +2232,7 @@ font-style: inherit;">+</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.b</span></code></pre></div>
 </div>
-<div id="cell-139" class="cell">
+<div id="cell-139" class="cell" data-execution_count="91">
 <div class="sourceCode cell-code" id="cb133" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1">F <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> nn.functional</span>
@@ -2288,7 +2285,7 @@ font-style: inherit;">return</span> F.mse_loss(inp, targ[:, <span class="va" sty
 background-color: null;
 font-style: inherit;">None</span>])</span></code></pre></div>
 </div>
-<div id="cell-140" class="cell">
+<div id="cell-140" class="cell" data-execution_count="92">
 <div class="sourceCode cell-code" id="cb134" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb134-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Model(m, nh, <span class="dv" style="color: #AD0000;
@@ -2301,13 +2298,13 @@ background-color: null;
 font-style: inherit;">float</span>())</span>
 <span id="cb134-3">loss.backward()</span></code></pre></div>
 </div>
-<div id="cell-141" class="cell">
+<div id="cell-141" class="cell" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb135" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1">model.layers</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="94">
+<div class="cell-output cell-output-display" data-execution_count="93">
 <pre data-code-line-numbers=""><code>[Linear(), ReLU(), Linear()]</code></pre>
 </div>
 </div>
-<div id="cell-142" class="cell">
+<div id="cell-142" class="cell" data-execution_count="94">
 <div class="sourceCode cell-code" id="cb137" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb137-1">l0 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> model.layers[<span class="dv" style="color: #AD0000;
@@ -2315,10 +2312,11 @@ background-color: null;
 font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> l0.b.grad</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="95">
-<pre data-code-line-numbers=""><code>tensor([13.05, 14.31,  7.96, -1.16,  0.56, -0.27, -0.73, -2.79, -0.15,  0.62, -1.79, -0.36,  3.98, -0.02,  3.49,  6.20, -0.61,  4.99,  0.89,
-         0.20,  0.15,  0.88,  2.47, -1.26,  0.29, -0.03,  0.58, 17.70,  2.80,  9.98,  0.45,  1.64, -0.58,  1.26, 10.36, -0.04,  0.93, -3.19,
-         6.86, -1.35,  8.41,  0.05, -0.56,  3.24, -0.91, -1.94,  0.20,  1.12,  1.57, -4.29])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="94">
+<pre data-code-line-numbers=""><code>tensor([ 42.11, -25.91,   0.15,  15.73, -16.16,  41.61,  13.73,  81.32,  -8.91,  55.30, -14.12, -82.24,  12.02, -27.58,  -9.48, -90.85,
+        -25.55,  34.89,  -0.68, -14.24,   4.73,  49.70, -27.02,  19.55,  10.14,  38.86,  30.55,  74.17,   2.15,  -2.62, -37.11,  14.04,
+        -12.12,   0.89,  -0.99,  -6.29,  -1.15,  12.26,  -9.73,  -4.13,  -1.53,   1.67,   1.34,  -9.78,  20.50,   7.30,  62.45,   5.94,
+         -3.28, -18.14])</code></pre>
 </div>
 </div>
 <hr>
@@ -2327,7 +2325,7 @@ font-style: inherit;">;</span> l0.b.grad</span></code></pre></div>
 <section id="cross-entropy-loss" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="cross-entropy-loss">Cross Entropy Loss</h2>
 <p>Let’s now implement a much more appropriate loss function for our multi-target problem: cross entropy loss.</p>
-<div id="cell-146" class="cell">
+<div id="cell-146" class="cell" data-execution_count="95">
 <details class="code-fold">
 <summary>Redefinition of <code>Model</code>, but without with loss function.</summary>
 <div class="sourceCode cell-code" id="cb139" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb139-1"><span class="kw" style="color: #003B4F;
@@ -2378,7 +2376,7 @@ font-weight: bold;
 font-style: inherit;">return</span> x</span></code></pre></div>
 </details>
 </div>
-<div id="cell-147" class="cell">
+<div id="cell-147" class="cell" data-execution_count="96">
 <div class="sourceCode cell-code" id="cb140" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb140-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Model(m, nh, c)</span>
@@ -2387,7 +2385,7 @@ background-color: null;
 font-style: inherit;">=</span> model(trn_x)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> preds.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="97">
+<div class="cell-output cell-output-display" data-execution_count="96">
 <pre data-code-line-numbers=""><code>torch.Size([1000, 10])</code></pre>
 </div>
 </div>
@@ -2408,7 +2406,7 @@ Sigmoid Function Definition
 </div>
 </div>
 <p>Let’s begin by first taking the logarithm of the softmax function.</p>
-<div id="cell-149" class="cell">
+<div id="cell-149" class="cell" data-execution_count="97">
 <div class="sourceCode cell-code" id="cb142" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb142-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2429,33 +2427,33 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>))).log()</span>
 <span id="cb142-2">log_softmax(preds)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="98">
-<pre data-code-line-numbers=""><code>tensor([[-2.35, -2.31, -2.30,  ..., -2.22, -2.26, -2.27],
-        [-2.23, -2.24, -2.38,  ..., -2.18, -2.22, -2.36],
-        [-2.31, -2.33, -2.30,  ..., -2.32, -2.29, -2.33],
+<div class="cell-output cell-output-display" data-execution_count="97">
+<pre data-code-line-numbers=""><code>tensor([[-2.40, -2.33, -2.25,  ..., -2.33, -2.40, -2.34],
+        [-2.37, -2.44, -2.21,  ..., -2.30, -2.34, -2.28],
+        [-2.37, -2.45, -2.16,  ..., -2.24, -2.40, -2.40],
         ...,
-        [-2.35, -2.22, -2.34,  ..., -2.20, -2.31, -2.32],
-        [-2.41, -2.31, -2.25,  ..., -2.23, -2.32, -2.31],
-        [-2.37, -2.29, -2.33,  ..., -2.26, -2.28, -2.33]], grad_fn=&lt;LogBackward0&gt;)</code></pre>
+        [-2.36, -2.45, -2.20,  ..., -2.24, -2.39, -2.37],
+        [-2.34, -2.41, -2.28,  ..., -2.20, -2.53, -2.25],
+        [-2.43, -2.37, -2.21,  ..., -2.26, -2.40, -2.37]], grad_fn=&lt;LogBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-150" class="cell">
+<div id="cell-150" class="cell" data-execution_count="98">
 <div class="sourceCode cell-code" id="cb144" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb144-1">F.log_softmax(preds, dim<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=-</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="99">
-<pre data-code-line-numbers=""><code>tensor([[-2.35, -2.31, -2.30,  ..., -2.22, -2.26, -2.27],
-        [-2.23, -2.24, -2.38,  ..., -2.18, -2.22, -2.36],
-        [-2.31, -2.33, -2.30,  ..., -2.32, -2.29, -2.33],
+<div class="cell-output cell-output-display" data-execution_count="98">
+<pre data-code-line-numbers=""><code>tensor([[-2.40, -2.33, -2.25,  ..., -2.33, -2.40, -2.34],
+        [-2.37, -2.44, -2.21,  ..., -2.30, -2.34, -2.28],
+        [-2.37, -2.45, -2.16,  ..., -2.24, -2.40, -2.40],
         ...,
-        [-2.35, -2.22, -2.34,  ..., -2.20, -2.31, -2.32],
-        [-2.41, -2.31, -2.25,  ..., -2.23, -2.32, -2.31],
-        [-2.37, -2.29, -2.33,  ..., -2.26, -2.28, -2.33]], grad_fn=&lt;LogSoftmaxBackward0&gt;)</code></pre>
+        [-2.36, -2.45, -2.20,  ..., -2.24, -2.39, -2.37],
+        [-2.34, -2.41, -2.28,  ..., -2.20, -2.53, -2.25],
+        [-2.43, -2.37, -2.21,  ..., -2.26, -2.40, -2.37]], grad_fn=&lt;LogSoftmaxBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-151" class="cell">
+<div id="cell-151" class="cell" data-execution_count="99">
 <div class="sourceCode cell-code" id="cb146" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1">test_close(log_softmax(preds).detach(), F.log_softmax(preds, dim<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=-</span><span class="dv" style="color: #AD0000;
@@ -2463,7 +2461,7 @@ background-color: null;
 font-style: inherit;">1</span>).detach())</span></code></pre></div>
 </div>
 <p>Our implementation involves division. According to the rule, <img src="https://latex.codecogs.com/png.latex?%5Clg%5Cleft(%5Cfrac%7Ba%7D%7Bb%7D%5Cright)%20=%20%5Clg(a)%20-%20%5Clg(b)">, we can simplify our computation by subtracting the numerators and denominators instead.</p>
-<div id="cell-153" class="cell">
+<div id="cell-153" class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb147" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2484,20 +2482,20 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>).log()</span></code></pre></div>
 </div>
-<div id="cell-154" class="cell">
+<div id="cell-154" class="cell" data-execution_count="101">
 <div class="sourceCode cell-code" id="cb148" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1">log_softmax(preds)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="102">
-<pre data-code-line-numbers=""><code>tensor([[-2.35, -2.31, -2.30,  ..., -2.22, -2.26, -2.27],
-        [-2.23, -2.24, -2.38,  ..., -2.18, -2.22, -2.36],
-        [-2.31, -2.33, -2.30,  ..., -2.32, -2.29, -2.33],
+<div class="cell-output cell-output-display" data-execution_count="101">
+<pre data-code-line-numbers=""><code>tensor([[-2.40, -2.33, -2.25,  ..., -2.33, -2.40, -2.34],
+        [-2.37, -2.44, -2.21,  ..., -2.30, -2.34, -2.28],
+        [-2.37, -2.45, -2.16,  ..., -2.24, -2.40, -2.40],
         ...,
-        [-2.35, -2.22, -2.34,  ..., -2.20, -2.31, -2.32],
-        [-2.41, -2.31, -2.25,  ..., -2.23, -2.32, -2.31],
-        [-2.37, -2.29, -2.33,  ..., -2.26, -2.28, -2.33]], grad_fn=&lt;SubBackward0&gt;)</code></pre>
+        [-2.36, -2.45, -2.20,  ..., -2.24, -2.39, -2.37],
+        [-2.34, -2.41, -2.28,  ..., -2.20, -2.53, -2.25],
+        [-2.43, -2.37, -2.21,  ..., -2.26, -2.40, -2.37]], grad_fn=&lt;SubBackward0&gt;)</code></pre>
 </div>
 </div>
 <p>Our implementation has an issue though: it is unstable. Anything involving exponents is inherently unstable. Have a large enough value, and we converge to infinity relatively quickly.</p>
-<div id="cell-156" class="cell">
+<div id="cell-156" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb150" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2549,7 +2547,7 @@ e^100=inf</code></pre>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Clg%5Cleft(%5Csum%5En_%7Bj=1%7D%20e%5E%7Bx_j%7D%5Cright)%20=%20%5Clg%5Cleft(e%5Ea%20%5Csum%5En_%7Bj=1%7D%20%5Cfrac%7Be%5E%7Bx_j%7D%7D%7Be%5Ea%7D%5Cright)%20=%20%5Clg%5Cleft(e%5Ea%20%5Csum%5En_%7Bj=1%7D%20e%5E%7Bx_j%20-%20a%7D%5Cright)%20=%20a%20+%20%5Clg%5Cleft(%5Csum%5En_%7Bj=1%7D%20e%5E%7Bx_j%20-%20a%7D%5Cright)%0A"></p>
 <p><img src="https://latex.codecogs.com/png.latex?a"> is the largest element in <img src="https://latex.codecogs.com/png.latex?x">.</p>
 <p>To begin, we need to get the largest value in each sample.</p>
-<div id="cell-158" class="cell">
+<div id="cell-158" class="cell" data-execution_count="103">
 <div class="sourceCode cell-code" id="cb152" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">max</span> <span class="op" style="color: #5E5E5E;
@@ -2567,12 +2565,12 @@ background-color: null;
 font-style: inherit;">;</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">max</span>.shape, preds.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="105">
+<div class="cell-output cell-output-display" data-execution_count="103">
 <pre data-code-line-numbers=""><code>(torch.Size([1000]), torch.Size([1000, 10]))</code></pre>
 </div>
 </div>
 
-<div class="no-row-height column-margin column-container"><div id="cell-159" class="cell">
+<div class="no-row-height column-margin column-container"><div id="cell-159" class="cell" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb154" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1">?torch.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">max</span></span></code></pre></div>
@@ -2638,7 +2636,7 @@ See :func:`torch.maximum`.
 Type:      builtin_function_or_method</code></pre>
 </div>
 </div></div><p>Then we can simply implement the rest of the algorithm.</p>
-<div id="cell-161" class="cell">
+<div id="cell-161" class="cell" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb156" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1">(preds <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> <span class="bu" style="color: null;
@@ -2646,11 +2644,11 @@ background-color: null;
 font-style: inherit;">max</span>[..., <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">None</span>]).shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="106">
+<div class="cell-output cell-output-display" data-execution_count="105">
 <pre data-code-line-numbers=""><code>torch.Size([1000, 10])</code></pre>
 </div>
 </div>
-<div id="cell-162" class="cell">
+<div id="cell-162" class="cell" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb158" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb158-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Output hidden to prevent endless scrolling.</span></span>
@@ -2678,7 +2676,7 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>).log()</span></code></pre></div>
 </div>
-<div id="cell-163" class="cell">
+<div id="cell-163" class="cell" data-execution_count="107">
 <div class="sourceCode cell-code" id="cb159" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb159-1">test_close(torch.exp(preds).<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">sum</span>(<span class="op" style="color: #5E5E5E;
@@ -2713,7 +2711,7 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>).log())</span></code></pre></div>
 </div>
-<div id="cell-164" class="cell">
+<div id="cell-164" class="cell" data-execution_count="108">
 <div class="sourceCode cell-code" id="cb160" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb160-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2758,13 +2756,13 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">True</span>).log()</span></code></pre></div>
 </div>
-<div id="cell-165" class="cell">
+<div id="cell-165" class="cell" data-execution_count="109">
 <div class="sourceCode cell-code" id="cb161" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb161-1">logsumexp(preds).shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="110">
+<div class="cell-output cell-output-display" data-execution_count="109">
 <pre data-code-line-numbers=""><code>torch.Size([1000, 1])</code></pre>
 </div>
 </div>
-<div id="cell-166" class="cell">
+<div id="cell-166" class="cell" data-execution_count="110">
 <div class="sourceCode cell-code" id="cb163" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb163-1">test_close(logsumexp(preds), preds.logsumexp(<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
@@ -2774,16 +2772,15 @@ background-color: null;
 font-style: inherit;">None</span>])</span></code></pre></div>
 </div>
 <p>Let’s compare how quicker our new implemenation is compared to the previous one.</p>
-<div id="cell-168" class="cell">
+<div id="cell-168" class="cell" data-execution_count="111">
 <div class="sourceCode cell-code" id="cb164" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb164-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%</span>timeit log_softmax(preds)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>The slowest run took 13.80 times longer than the fastest. This could mean that an intermediate result is being cached.
-863 µs ± 963 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)</code></pre>
+<pre data-code-line-numbers=""><code>337 µs ± 75.8 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
 </div>
 </div>
-<div id="cell-169" class="cell">
+<div id="cell-169" class="cell" data-execution_count="112">
 <div class="sourceCode cell-code" id="cb166" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb166-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2794,25 +2791,25 @@ font-style: inherit;">return</span> x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span> logsumexp(x)</span></code></pre></div>
 </div>
-<div id="cell-170" class="cell">
+<div id="cell-170" class="cell" data-execution_count="113">
 <div class="sourceCode cell-code" id="cb167" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb167-1">log_softmax(preds).shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="114">
+<div class="cell-output cell-output-display" data-execution_count="113">
 <pre data-code-line-numbers=""><code>torch.Size([1000, 10])</code></pre>
 </div>
 </div>
-<div id="cell-171" class="cell">
+<div id="cell-171" class="cell" data-execution_count="114">
 <div class="sourceCode cell-code" id="cb169" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb169-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%</span>timeit log_softmax(preds)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>361 µs ± 160 µs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)</code></pre>
+<pre data-code-line-numbers=""><code>190 µs ± 56 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)</code></pre>
 </div>
 </div>
 <p><em>Much</em> faster!</p>
 <p>All that is left now is to multiply our softmax predictions with the one hot encoded targets, and sum the resulting vector. However, due to the nature of our targets, we can employ a nifty trick that removes the need to create a tensor of one hot encoded targets: integer array indexing.</p>
 <section id="integer-array-indexing" class="level3">
 <h3 class="anchored" data-anchor-id="integer-array-indexing">Integer Array Indexing</h3>
-<div id="cell-175" class="cell">
+<div id="cell-175" class="cell" data-execution_count="115">
 <div class="sourceCode cell-code" id="cb171" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb171-1">t <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> tensor([[<span class="dv" style="color: #AD0000;
@@ -2836,14 +2833,14 @@ background-color: null;
 font-style: inherit;">9</span>]])<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> t</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
+<div class="cell-output cell-output-display" data-execution_count="115">
 <pre data-code-line-numbers=""><code>tensor([[1, 2, 3],
         [4, 5, 6],
         [7, 8, 9]])</code></pre>
 </div>
 </div>
 <p>A fancy name for a simple concept, integer array indexing allows one to access elements in a tensor by simply specifing lists of indices.</p>
-<div id="cell-177" class="cell">
+<div id="cell-177" class="cell" data-execution_count="116">
 <div class="sourceCode cell-code" id="cb173" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb173-1">t[[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
@@ -2857,13 +2854,13 @@ background-color: null;
 font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="117">
+<div class="cell-output cell-output-display" data-execution_count="116">
 <pre data-code-line-numbers=""><code>tensor([1, 5, 9])</code></pre>
 </div>
 </div>
 <p>It is best to think of the tensor as a grid of coordinates, with the first coordinate representing the row, and the second coordinate representing the column. Elements 1, 5, and 9 are at (0, 0), (1, 1), and (2, 2).</p>
 <p>1, 6, and 8 are at (0, 0), (1, 2), and (2, 1)</p>
-<div id="cell-179" class="cell">
+<div id="cell-179" class="cell" data-execution_count="117">
 <div class="sourceCode cell-code" id="cb175" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb175-1">t[[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
@@ -2877,12 +2874,12 @@ background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="118">
+<div class="cell-output cell-output-display" data-execution_count="117">
 <pre data-code-line-numbers=""><code>tensor([1, 6, 8])</code></pre>
 </div>
 </div>
 <p>3 and 8 are at (0, 2) and (2, 1).</p>
-<div id="cell-181" class="cell">
+<div id="cell-181" class="cell" data-execution_count="118">
 <div class="sourceCode cell-code" id="cb177" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb177-1">t[[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
@@ -2892,32 +2889,32 @@ background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="119">
+<div class="cell-output cell-output-display" data-execution_count="118">
 <pre data-code-line-numbers=""><code>tensor([3, 8])</code></pre>
 </div>
 </div>
 <p>Our targets consist of the integers from 0 to 9. Each row, or sample, in our predictions tensor represents a set of probabilites for each target.</p>
 <p>This means we can directly access the prediction for the correct target through integer array indexing.</p>
-<div id="cell-183" class="cell">
+<div id="cell-183" class="cell" data-execution_count="119">
 <div class="sourceCode cell-code" id="cb179" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb179-1">trn_y[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="120">
+<div class="cell-output cell-output-display" data-execution_count="119">
 <pre data-code-line-numbers=""><code>tensor([5, 0, 4])</code></pre>
 </div>
 </div>
 <p>The targets for the first three samples are 5, 0, and, 4. Instead of manually specifying the targets when obtaining the predictions for the first three samples…</p>
-<div id="cell-185" class="cell">
+<div id="cell-185" class="cell" data-execution_count="120">
 <div class="sourceCode cell-code" id="cb181" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb181-1">sm_preds <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> log_softmax(preds)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> sm_preds.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="121">
+<div class="cell-output cell-output-display" data-execution_count="120">
 <pre data-code-line-numbers=""><code>torch.Size([1000, 10])</code></pre>
 </div>
 </div>
-<div id="cell-186" class="cell">
+<div id="cell-186" class="cell" data-execution_count="121">
 <div class="sourceCode cell-code" id="cb183" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb183-1">sm_preds[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
@@ -2931,14 +2928,14 @@ background-color: null;
 font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="122">
-<pre data-code-line-numbers=""><code>(tensor(-2.24, grad_fn=&lt;SelectBackward0&gt;),
- tensor(-2.23, grad_fn=&lt;SelectBackward0&gt;),
- tensor(-2.35, grad_fn=&lt;SelectBackward0&gt;))</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="121">
+<pre data-code-line-numbers=""><code>(tensor(-2.27, grad_fn=&lt;SelectBackward0&gt;),
+ tensor(-2.37, grad_fn=&lt;SelectBackward0&gt;),
+ tensor(-2.26, grad_fn=&lt;SelectBackward0&gt;))</code></pre>
 </div>
 </div>
 <p>…we can use the targets themselves to directly obtain our predictions.</p>
-<div id="cell-188" class="cell">
+<div id="cell-188" class="cell" data-execution_count="122">
 <div class="sourceCode cell-code" id="cb185" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb185-1">sm_preds[[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>, <span class="dv" style="color: #AD0000;
@@ -2948,12 +2945,12 @@ background-color: null;
 font-style: inherit;">2</span>], trn_y[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="123">
-<pre data-code-line-numbers=""><code>tensor([-2.24, -2.23, -2.35], grad_fn=&lt;IndexBackward0&gt;)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="122">
+<pre data-code-line-numbers=""><code>tensor([-2.27, -2.37, -2.26], grad_fn=&lt;IndexBackward0&gt;)</code></pre>
 </div>
 </div>
 <p>And now, our implementation can be completed.</p>
-<div id="cell-190" class="cell">
+<div id="cell-190" class="cell" data-execution_count="123">
 <div class="sourceCode cell-code" id="cb187" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb187-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -2968,17 +2965,17 @@ font-style: inherit;">range</span>(targs.shape[<span class="dv" style="color: #A
 background-color: null;
 font-style: inherit;">0</span>]), targs].mean()</span></code></pre></div>
 </div>
-<div id="cell-191" class="cell">
+<div id="cell-191" class="cell" data-execution_count="124">
 <div class="sourceCode cell-code" id="cb188" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb188-1">loss <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> nll(sm_preds, trn_y)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> loss</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="125">
-<pre data-code-line-numbers=""><code>tensor(2.31, grad_fn=&lt;NegBackward0&gt;)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="124">
+<pre data-code-line-numbers=""><code>tensor(2.30, grad_fn=&lt;NegBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-192" class="cell">
+<div id="cell-192" class="cell" data-execution_count="125">
 <div class="sourceCode cell-code" id="annotated-cell-124" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><a class="code-annotation-anchor" data-target-cell="annotated-cell-124" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-124-1" class="code-annotation-target">test_close(F.nll_loss(F.log_softmax(preds, <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
@@ -3030,12 +3027,12 @@ font-style: inherit;">1e-3</span>)</span><div class="code-annotation-gutter-bg">
 
 </div>
 </div>
-<div id="cell-196" class="cell">
+<div id="cell-196" class="cell" data-execution_count="126">
 <div class="sourceCode cell-code" id="cb190" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb190-1">loss_func <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> F.cross_entropy</span></code></pre></div>
 </div>
-<div id="cell-197" class="cell">
+<div id="cell-197" class="cell" data-execution_count="127">
 <div class="sourceCode cell-code" id="cb191" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb191-1">bs <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
@@ -3053,41 +3050,41 @@ background-color: null;
 font-style: inherit;">;</span> preds[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>], preds.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="128">
-<pre data-code-line-numbers=""><code>(tensor([-0.11, -0.07, -0.05, -0.13, -0.16, -0.00, -0.07,  0.02, -0.02, -0.02], grad_fn=&lt;SelectBackward0&gt;),
+<div class="cell-output cell-output-display" data-execution_count="127">
+<pre data-code-line-numbers=""><code>(tensor([-0.08, -0.01,  0.08,  0.11, -0.02,  0.06,  0.13, -0.00, -0.08, -0.01], grad_fn=&lt;SelectBackward0&gt;),
  torch.Size([50, 10]))</code></pre>
 </div>
 </div>
-<div id="cell-198" class="cell">
+<div id="cell-198" class="cell" data-execution_count="128">
 <div class="sourceCode cell-code" id="cb193" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb193-1">yb <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> trn_y[:bs]<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> yb</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="129">
+<div class="cell-output cell-output-display" data-execution_count="128">
 <pre data-code-line-numbers=""><code>tensor([5, 0, 4, 1, 9, 2, 1, 3, 1, 4, 3, 5, 3, 6, 1, 7, 2, 8, 6, 9, 4, 0, 9, 1, 1, 2, 4, 3, 2, 7, 3, 8, 6, 9, 0, 5, 6, 0, 7, 6, 1, 8, 7, 9,
         3, 9, 8, 5, 9, 3])</code></pre>
 </div>
 </div>
-<div id="cell-199" class="cell">
+<div id="cell-199" class="cell" data-execution_count="129">
 <div class="sourceCode cell-code" id="cb195" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb195-1">loss_func(preds, yb)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="130">
+<div class="cell-output cell-output-display" data-execution_count="129">
 <pre data-code-line-numbers=""><code>tensor(2.30, grad_fn=&lt;NllLossBackward0&gt;)</code></pre>
 </div>
 </div>
 <p>We’ll use <a href="../../dictionary/terms/accuracy.html">accuracy</a> as our metric.</p>
-<div id="cell-201" class="cell">
+<div id="cell-201" class="cell" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb197" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb197-1">preds.argmax(<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="131">
-<pre data-code-line-numbers=""><code>tensor([7, 7, 6, 7, 6, 1, 2, 7, 2, 6, 5, 1, 7, 5, 6, 0, 7, 7, 7, 6, 6, 7, 6, 7, 1, 7, 5, 5, 1, 6, 6, 7, 7, 6, 7, 6, 6, 1, 7, 5, 7, 7, 5, 2,
-        5, 6, 1, 7, 7, 7])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="130">
+<pre data-code-line-numbers=""><code>tensor([6, 2, 2, 2, 5, 2, 5, 2, 5, 2, 2, 2, 3, 2, 5, 5, 2, 2, 2, 5, 6, 3, 5, 2, 5, 2, 2, 3, 3, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 5, 2, 5, 5,
+        2, 2, 2, 2, 5, 5])</code></pre>
 </div>
 </div>
-<div id="cell-202" class="cell">
+<div id="cell-202" class="cell" data-execution_count="131">
 <div class="sourceCode cell-code" id="cb199" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb199-1">(preds.argmax(<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
@@ -3097,11 +3094,11 @@ background-color: null;
 font-style: inherit;">==</span> yb).<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">sum</span>()</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="132">
-<pre data-code-line-numbers=""><code>tensor(3)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="131">
+<pre data-code-line-numbers=""><code>tensor(5)</code></pre>
 </div>
 </div>
-<div id="cell-203" class="cell">
+<div id="cell-203" class="cell" data-execution_count="132">
 <div class="sourceCode cell-code" id="cb201" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb201-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3122,13 +3119,13 @@ font-style: inherit;">/</span> yb.shape[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]</span></code></pre></div>
 </div>
-<div id="cell-204" class="cell">
+<div id="cell-204" class="cell" data-execution_count="133">
 <div class="sourceCode cell-code" id="cb202" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb202-1">accuracy(preds, yb)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="134">
-<pre data-code-line-numbers=""><code>tensor(0.06)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="133">
+<pre data-code-line-numbers=""><code>tensor(0.10)</code></pre>
 </div>
 </div>
-<div id="cell-205" class="cell">
+<div id="cell-205" class="cell" data-execution_count="134">
 <div class="sourceCode cell-code" id="cb204" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb204-1">test_close(accuracy(preds, yb), (preds.argmax(<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">-</span><span class="dv" style="color: #AD0000;
@@ -3139,7 +3136,7 @@ font-style: inherit;">==</span> yb).<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">float</span>().mean())</span></code></pre></div>
 </div>
-<div id="cell-206" class="cell">
+<div id="cell-206" class="cell" data-execution_count="135">
 <div class="sourceCode cell-code" id="cb205" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb205-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3161,7 +3158,7 @@ font-style: inherit;">:.2f}</span><span class="ss" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'</span>)</span></code></pre></div>
 </div>
-<div id="cell-207" class="cell">
+<div id="cell-207" class="cell" data-execution_count="136">
 <div class="sourceCode cell-code" id="cb206" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb206-1">lr, epochs <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
@@ -3177,11 +3174,11 @@ background-color: null;
 font-style: inherit;">=</span> model(xb)</span>
 <span id="cb206-4">report(loss_func(preds, yb), preds, yb)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 2.30; Accuracy: 0.06</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 2.30; Accuracy: 0.10</code></pre>
 </div>
 </div>
 <p>The training loop can now be assembled.</p>
-<div id="cell-209" class="cell">
+<div id="cell-209" class="cell" data-execution_count="137">
 <div class="sourceCode cell-code" id="cb208" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb208-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3254,14 +3251,14 @@ font-style: inherit;">*</span> lr</span>
 <span id="cb208-14">          l.bias  .grad.zero_()</span>
 <span id="cb208-15">  report(loss, preds, yb)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 0.87; Accuracy: 0.78
-Loss: 0.44; Accuracy: 0.86
-Loss: 0.30; Accuracy: 0.88</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 1.01; Accuracy: 0.66
+Loss: 0.45; Accuracy: 0.88
+Loss: 0.37; Accuracy: 0.82</code></pre>
 </div>
 </div>
 <p>Let’s take a closer look at how we slice: <code>s = slice(i, min(n, bs+i))</code>. We have to use <code>min</code> to prevent the slices from going out of bounds.</p>
 
-<div class="no-row-height column-margin column-container"><div id="cell-211" class="cell">
+<div class="no-row-height column-margin column-container"><div id="cell-211" class="cell" data-execution_count="138">
 <div class="sourceCode cell-code" id="cb210" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb210-1">?<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">slice</span></span></code></pre></div>
@@ -3275,7 +3272,7 @@ Create a slice object.  This is used for extended slicing (e.g. a[0:10:2]).
 Type:           type
 Subclasses:     </code></pre>
 </div>
-</div></div><div id="cell-212" class="cell">
+</div></div><div id="cell-212" class="cell" data-execution_count="139">
 <div class="sourceCode cell-code" id="cb212" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb212-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3319,7 +3316,7 @@ slice(950, 1000, None)</code></pre>
 </div>
 </div>
 <p>Simply adding <code>bs</code> to <code>n</code> at the <code>end</code> parameter for <code>range</code> will not work.</p>
-<div id="cell-214" class="cell">
+<div id="cell-214" class="cell" data-execution_count="140">
 <div class="sourceCode cell-code" id="cb214" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb214-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3440,7 +3437,7 @@ font-style: inherit;">*</span> lr </span>
 <span id="cb216-15">  report(loss, preds, yb)</span></code></pre></div>
 <p>PyTorch actually keeps track which layers have weights. Let us explore.</p>
 <p>Here, PyTorch knows that our model has a linear layer with 3 inputs and 4 outputs.</p>
-<div id="cell-218" class="cell">
+<div id="cell-218" class="cell" data-execution_count="141">
 <div class="sourceCode cell-code" id="cb217" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb217-1">m1 <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> nn.Module()</span>
@@ -3453,51 +3450,51 @@ background-color: null;
 font-style: inherit;">4</span>)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> m1</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="142">
+<div class="cell-output cell-output-display" data-execution_count="141">
 <pre data-code-line-numbers=""><code>Module(
   (foo): Linear(in_features=3, out_features=4, bias=True)
 )</code></pre>
 </div>
 </div>
-<div id="cell-219" class="cell">
+<div id="cell-219" class="cell" data-execution_count="142">
 <div class="sourceCode cell-code" id="cb219" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb219-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(m1.named_children())</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="143">
+<div class="cell-output cell-output-display" data-execution_count="142">
 <pre data-code-line-numbers=""><code>[('foo', Linear(in_features=3, out_features=4, bias=True))]</code></pre>
 </div>
 </div>
 <p>In a similar manner, we can access the layer’s parameters.</p>
-<div id="cell-223" class="cell">
+<div id="cell-223" class="cell" data-execution_count="145">
 <div class="sourceCode cell-code" id="cb221" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb221-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(m1.foo.parameters())</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="146">
+<div class="cell-output cell-output-display" data-execution_count="145">
 <pre data-code-line-numbers=""><code>[Parameter containing:
- tensor([[ 0.02,  0.42, -0.46],
-         [-0.15,  0.23, -0.42],
-         [-0.18, -0.06,  0.51],
-         [-0.15,  0.15, -0.13]], requires_grad=True),
+ tensor([[-0.37,  0.20, -0.39],
+         [-0.47,  0.00,  0.18],
+         [ 0.51, -0.35,  0.36],
+         [ 0.12,  0.10, -0.03]], requires_grad=True),
  Parameter containing:
- tensor([ 0.41, -0.27,  0.04, -0.36], requires_grad=True)]</code></pre>
+ tensor([ 0.31, -0.42,  0.35,  0.16], requires_grad=True)]</code></pre>
 </div>
 </div>
 <p>However, this approach will require us to loop through all layers to access all parameters. PyTorch instead provides a way to directly return the parameters of all layers.</p>
-<div id="cell-225" class="cell">
+<div id="cell-225" class="cell" data-execution_count="146">
 <div class="sourceCode cell-code" id="cb223" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb223-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(m1.parameters())</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="147">
+<div class="cell-output cell-output-display" data-execution_count="146">
 <pre data-code-line-numbers=""><code>[Parameter containing:
- tensor([[ 0.02,  0.42, -0.46],
-         [-0.15,  0.23, -0.42],
-         [-0.18, -0.06,  0.51],
-         [-0.15,  0.15, -0.13]], requires_grad=True),
+ tensor([[-0.37,  0.20, -0.39],
+         [-0.47,  0.00,  0.18],
+         [ 0.51, -0.35,  0.36],
+         [ 0.12,  0.10, -0.03]], requires_grad=True),
  Parameter containing:
- tensor([ 0.41, -0.27,  0.04, -0.36], requires_grad=True)]</code></pre>
+ tensor([ 0.31, -0.42,  0.35,  0.16], requires_grad=True)]</code></pre>
 </div>
 </div>
-<div id="cell-226" class="cell">
+<div id="cell-226" class="cell" data-execution_count="147">
 <div class="sourceCode cell-code" id="cb225" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb225-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3547,25 +3544,25 @@ font-style: inherit;">self</span>.relu(<span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.l1(x)))</span></code></pre></div>
 </div>
-<div id="cell-227" class="cell">
+<div id="cell-227" class="cell" data-execution_count="148">
 <div class="sourceCode cell-code" id="cb226" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb226-1">n, m, nh, c</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="149">
+<div class="cell-output cell-output-display" data-execution_count="148">
 <pre data-code-line-numbers=""><code>(1000, 784, 50, tensor(10))</code></pre>
 </div>
 </div>
-<div id="cell-228" class="cell">
+<div id="cell-228" class="cell" data-execution_count="149">
 <div class="sourceCode cell-code" id="cb228" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb228-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> MLP(m, nh, c)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> model.l1</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="150">
+<div class="cell-output cell-output-display" data-execution_count="149">
 <pre data-code-line-numbers=""><code>Linear(in_features=784, out_features=50, bias=True)</code></pre>
 </div>
 </div>
-<div id="cell-229" class="cell">
+<div id="cell-229" class="cell" data-execution_count="150">
 <div class="sourceCode cell-code" id="cb230" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb230-1">model</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="151">
+<div class="cell-output cell-output-display" data-execution_count="150">
 <pre data-code-line-numbers=""><code>MLP(
   (l1): Linear(in_features=784, out_features=50, bias=True)
   (l2): Linear(in_features=50, out_features=10, bias=True)
@@ -3573,7 +3570,7 @@ font-style: inherit;">;</span> model.l1</span></code></pre></div>
 )</code></pre>
 </div>
 </div>
-<div id="cell-230" class="cell">
+<div id="cell-230" class="cell" data-execution_count="151">
 <div class="sourceCode cell-code" id="cb232" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb232-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3603,7 +3600,7 @@ l2: Linear(in_features=50, out_features=10, bias=True)
 relu: ReLU()</code></pre>
 </div>
 </div>
-<div id="cell-231" class="cell">
+<div id="cell-231" class="cell" data-execution_count="152">
 <div class="sourceCode cell-code" id="cb234" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb234-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3621,7 +3618,7 @@ torch.Size([10])</code></pre>
 </div>
 </div>
 <p>Since we can directly access the parameters, we do not need to check whether a certain parameter exists.</p>
-<div id="cell-234" class="cell" data-source-line-numbers="9-12">
+<div id="cell-234" class="cell" data-source-line-numbers="9-12" data-execution_count="154">
 <div class="sourceCode cell-code" id="annotated-cell-151" data-source-line-numbers="9-12" data-code-line-numbers="9-12" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-151-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3691,17 +3688,17 @@ font-style: inherit;">*</span> lr</span>
 </dl>
 </div>
 </div>
-<div id="cell-236" class="cell">
+<div id="cell-236" class="cell" data-execution_count="155">
 <div class="sourceCode cell-code" id="cb236" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb236-1">fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 0.84; Accuracy: 0.70
-Loss: 0.45; Accuracy: 0.86
-Loss: 0.34; Accuracy: 0.86</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 0.84; Accuracy: 0.74
+Loss: 0.45; Accuracy: 0.88
+Loss: 0.37; Accuracy: 0.84</code></pre>
 </div>
 </div>
 <p>Let us implement this functionality–where the model itself knows what its layers and parameters are–ourselves.</p>
 <p>To do so, we will need to define the <code>__setattr__</code> dunder method, where any submodules defined are registered as parameters of the model.</p>
-<div id="cell-238" class="cell">
+<div id="cell-238" class="cell" data-execution_count="156">
 <div class="sourceCode cell-code" id="annotated-cell-153" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-153-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3811,13 +3808,13 @@ font-style: inherit;">from</span> l.parameters()</span><div class="code-annotati
 </dl>
 </div>
 </div>
-<div id="cell-240" class="cell">
+<div id="cell-240" class="cell" data-execution_count="157">
 <div class="sourceCode cell-code" id="cb238" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb238-1">mdl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> MyModule(m, nh, c)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> mdl, model</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="158">
+<div class="cell-output cell-output-display" data-execution_count="157">
 <pre data-code-line-numbers=""><code>({'l1': Linear(in_features=784, out_features=50, bias=True), 'l2': Linear(in_features=50, out_features=10, bias=True)},
  MLP(
    (l1): Linear(in_features=784, out_features=50, bias=True)
@@ -3826,7 +3823,7 @@ font-style: inherit;">;</span> mdl, model</span></code></pre></div>
  ))</code></pre>
 </div>
 </div>
-<div id="cell-241" class="cell">
+<div id="cell-241" class="cell" data-execution_count="158">
 <div class="sourceCode cell-code" id="cb240" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb240-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3846,7 +3843,7 @@ torch.Size([10])</code></pre>
 <section id="registering-modules" class="level3 page-columns page-full">
 <h3 class="anchored" data-anchor-id="registering-modules">Registering Modules</h3>
 <p>To use our original approach, where a list of layers are specified, we can use the <code>add_module</code> method provided by PyTorch.</p>
-<div id="cell-244" class="cell">
+<div id="cell-244" class="cell" data-execution_count="159">
 <div class="sourceCode cell-code" id="cb242" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb242-1">?nn.Module.add_module</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Signature:
@@ -3868,12 +3865,12 @@ File:      ~/mambaforge/envs/default/lib/python3.10/site-packages/torch/nn/modul
 Type:      function</code></pre>
 </div>
 </div>
-<div id="cell-245" class="cell">
+<div id="cell-245" class="cell" data-execution_count="160">
 <div class="sourceCode cell-code" id="cb244" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb244-1">layers <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [nn.Linear(m, nh), nn.ReLU(), nn.Linear(nh, c)]</span></code></pre></div>
 </div>
-<div id="cell-246" class="cell">
+<div id="cell-246" class="cell" data-execution_count="161">
 <div class="sourceCode cell-code" id="annotated-cell-158" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-158-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> functools <span class="im" style="color: #00769E;
@@ -3951,7 +3948,7 @@ font-style: inherit;">self</span>.layers, x)</span><div class="code-annotation-g
 </div>
 </div>
 
-<div class="no-row-height column-margin column-container"><div id="cell-248" class="cell">
+<div class="no-row-height column-margin column-container"><div id="cell-248" class="cell" data-execution_count="162">
 <div class="sourceCode cell-code" id="cb245" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb245-1">?<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">reduce</span></span></code></pre></div>
@@ -3967,7 +3964,7 @@ of the iterable in the calculation, and serves as a default when the
 iterable is empty.
 Type:      builtin_function_or_method</code></pre>
 </div>
-</div></div><div id="cell-249" class="cell">
+</div></div><div id="cell-249" class="cell" data-execution_count="163">
 <div class="sourceCode cell-code" id="cb247" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb247-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">reduce</span>(<span class="kw" style="color: #003B4F;
@@ -3986,17 +3983,17 @@ background-color: null;
 font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="164">
+<div class="cell-output cell-output-display" data-execution_count="163">
 <pre data-code-line-numbers=""><code>15</code></pre>
 </div>
 </div>
-<div id="cell-250" class="cell">
+<div id="cell-250" class="cell" data-execution_count="164">
 <div class="sourceCode cell-code" id="cb249" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb249-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Model(layers)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> model</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="165">
+<div class="cell-output cell-output-display" data-execution_count="164">
 <pre data-code-line-numbers=""><code>Model(
   (layer_0): Linear(in_features=784, out_features=50, bias=True)
   (layer_1): ReLU()
@@ -4004,15 +4001,15 @@ font-style: inherit;">;</span> model</span></code></pre></div>
 )</code></pre>
 </div>
 </div>
-<div id="cell-251" class="cell">
+<div id="cell-251" class="cell" data-execution_count="165">
 <div class="sourceCode cell-code" id="cb251" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb251-1">model(xb).shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="166">
+<div class="cell-output cell-output-display" data-execution_count="165">
 <pre data-code-line-numbers=""><code>torch.Size([50, 10])</code></pre>
 </div>
 </div>
 <p>Alternatively, <code>nn.ModuleList</code> can do the registration for us.</p>
 
-<div class="no-row-height column-margin column-container"><div id="cell-253" class="cell">
+<div class="no-row-height column-margin column-container"><div id="cell-253" class="cell" data-execution_count="166">
 <div class="sourceCode cell-code" id="cb253" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb253-1">?nn.ModuleList</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Init signature:
@@ -4046,7 +4043,7 @@ File:           ~/mambaforge/envs/default/lib/python3.10/site-packages/torch/nn/
 Type:           type
 Subclasses:     ParametrizationList</code></pre>
 </div>
-</div></div><div id="cell-254" class="cell">
+</div></div><div id="cell-254" class="cell" data-execution_count="167">
 <div class="sourceCode cell-code" id="cb255" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb255-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4087,13 +4084,13 @@ font-style: inherit;">lambda</span> x, layer: layer(x), <span class="va" style="
 background-color: null;
 font-style: inherit;">self</span>.layers, x)</span></code></pre></div>
 </div>
-<div id="cell-255" class="cell">
+<div id="cell-255" class="cell" data-execution_count="168">
 <div class="sourceCode cell-code" id="cb256" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb256-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> SequentialModel(layers)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> model</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="169">
+<div class="cell-output cell-output-display" data-execution_count="168">
 <pre data-code-line-numbers=""><code>SequentialModel(
   (layers): ModuleList(
     (0): Linear(in_features=784, out_features=50, bias=True)
@@ -4103,21 +4100,21 @@ font-style: inherit;">;</span> model</span></code></pre></div>
 )</code></pre>
 </div>
 </div>
-<div id="cell-256" class="cell">
+<div id="cell-256" class="cell" data-execution_count="169">
 <div class="sourceCode cell-code" id="cb258" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb258-1">fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 0.78; Accuracy: 0.78
-Loss: 0.42; Accuracy: 0.88
-Loss: 0.44; Accuracy: 0.84</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 0.93; Accuracy: 0.78
+Loss: 0.52; Accuracy: 0.86
+Loss: 0.38; Accuracy: 0.86</code></pre>
 </div>
 </div>
-<div id="cell-257" class="cell">
+<div id="cell-257" class="cell" data-execution_count="170">
 <div class="sourceCode cell-code" id="cb260" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb260-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> nn.Sequential(nn.Linear(m, nh), nn.ReLU(), nn.Linear(nh, c))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> model</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="171">
+<div class="cell-output cell-output-display" data-execution_count="170">
 <pre data-code-line-numbers=""><code>Sequential(
   (0): Linear(in_features=784, out_features=50, bias=True)
   (1): ReLU()
@@ -4125,19 +4122,19 @@ font-style: inherit;">;</span> model</span></code></pre></div>
 )</code></pre>
 </div>
 </div>
-<div id="cell-258" class="cell">
+<div id="cell-258" class="cell" data-execution_count="171">
 <div class="sourceCode cell-code" id="cb262" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb262-1">fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 0.81; Accuracy: 0.80
-Loss: 0.45; Accuracy: 0.90
-Loss: 0.47; Accuracy: 0.84</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 0.88; Accuracy: 0.74
+Loss: 0.48; Accuracy: 0.86
+Loss: 0.39; Accuracy: 0.88</code></pre>
 </div>
 </div>
 </section>
 <section id="optimizer" class="level3">
 <h3 class="anchored" data-anchor-id="optimizer">Optimizer</h3>
 <p>Optimizer is simply the name given to the algorithm that updates the weights.</p>
-<div id="cell-261" class="cell">
+<div id="cell-261" class="cell" data-execution_count="172">
 <div class="sourceCode cell-code" id="cb264" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb264-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4205,7 +4202,7 @@ font-style: inherit;">in</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.params: p.grad.data.zero_()</span></code></pre></div>
 </div>
-<div id="cell-262" class="cell">
+<div id="cell-262" class="cell" data-execution_count="173">
 <div class="sourceCode cell-code" id="cb265" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb265-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> nn.Sequential(nn.Linear(m, nh), nn.ReLU(), nn.Linear(nh, c))</span>
@@ -4274,7 +4271,7 @@ background-color: null;
 font-style: inherit;">*</span> lr </span>
 <span id="cb266-11">        model.zero_grad() </span>
 <span id="cb266-12">    report(loss, preds, yb)</span></code></pre></div>
-<div id="cell-264" class="cell">
+<div id="cell-264" class="cell" data-execution_count="174">
 <div class="sourceCode cell-code" id="cb267" data-source-line-numbers="nil" data-code-line-numbers="9,10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb267-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4322,15 +4319,15 @@ font-style: inherit;">=</span> loss_func(preds, yb)</span>
 <span id="cb267-10">      opt.zero_grad() </span>
 <span id="cb267-11">    report(loss, preds, yb)</span></code></pre></div>
 </div>
-<div id="cell-265" class="cell">
+<div id="cell-265" class="cell" data-execution_count="175">
 <div class="sourceCode cell-code" id="cb268" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb268-1">fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 1.02; Accuracy: 0.68
-Loss: 0.44; Accuracy: 0.88
-Loss: 0.34; Accuracy: 0.86</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 0.89; Accuracy: 0.74
+Loss: 0.51; Accuracy: 0.88
+Loss: 0.41; Accuracy: 0.86</code></pre>
 </div>
 </div>
-<div id="cell-266" class="cell">
+<div id="cell-266" class="cell" data-execution_count="176">
 <div class="sourceCode cell-code" id="cb270" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb270-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> torch <span class="im" style="color: #00769E;
@@ -4350,21 +4347,21 @@ font-style: inherit;">return</span> model, optim.SGD(model.parameters(), lr<span
 background-color: null;
 font-style: inherit;">=</span>lr)</span></code></pre></div>
 </div>
-<div id="cell-267" class="cell">
+<div id="cell-267" class="cell" data-execution_count="177">
 <div class="sourceCode cell-code" id="cb271" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb271-1">model, opt <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_model()</span>
 <span id="cb271-2">loss_func(model(xb), yb)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="178">
+<div class="cell-output cell-output-display" data-execution_count="177">
 <pre data-code-line-numbers=""><code>tensor(2.32, grad_fn=&lt;NllLossBackward0&gt;)</code></pre>
 </div>
 </div>
-<div id="cell-268" class="cell">
+<div id="cell-268" class="cell" data-execution_count="178">
 <div class="sourceCode cell-code" id="cb273" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb273-1">fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 1.00; Accuracy: 0.70
-Loss: 0.49; Accuracy: 0.84
-Loss: 0.35; Accuracy: 0.84</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 0.82; Accuracy: 0.78
+Loss: 0.42; Accuracy: 0.90
+Loss: 0.35; Accuracy: 0.86</code></pre>
 </div>
 </div>
 </section>
@@ -4400,7 +4397,7 @@ font-style: inherit;">=</span> trn_x[s], trn_y[s]</span></code></pre></div>
 <section id="dataset" class="level3">
 <h3 class="anchored" data-anchor-id="dataset">Dataset</h3>
 <p>The first point of simplification is to create a single dataset that will return both a sample and its associated target, from a single index. This will prevent us from having to index into two separate tensors.</p>
-<div id="cell-273" class="cell">
+<div id="cell-273" class="cell" data-execution_count="179">
 <div class="sourceCode cell-code" id="cb276" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb276-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4450,7 +4447,7 @@ font-style: inherit;">self</span>.x[i], <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.y[i]</span></code></pre></div>
 </div>
-<div id="cell-274" class="cell">
+<div id="cell-274" class="cell" data-execution_count="180">
 <div class="sourceCode cell-code" id="cb277" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb277-1">trn_ds, vld_ds <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Dataset(trn_x, trn_y), Dataset(vld_x, vld_y)</span>
@@ -4475,7 +4472,7 @@ font-style: inherit;">==</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(vld_x)</span></code></pre></div>
 </div>
-<div id="cell-275" class="cell">
+<div id="cell-275" class="cell" data-execution_count="181">
 <div class="sourceCode cell-code" id="cb278" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb278-1">xb, yb <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> trn_ds[<span class="dv" style="color: #AD0000;
@@ -4506,7 +4503,7 @@ font-style: inherit;">==</span> (<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>,)</span>
 <span id="cb278-4">xb, yb</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="182">
+<div class="cell-output cell-output-display" data-execution_count="181">
 <pre data-code-line-numbers=""><code>(tensor([[0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
@@ -4515,7 +4512,7 @@ font-style: inherit;">5</span>,)</span>
  tensor([5, 0, 4, 1, 9]))</code></pre>
 </div>
 </div>
-<div id="cell-276" class="cell">
+<div id="cell-276" class="cell" data-execution_count="182">
 <div class="sourceCode cell-code" id="cb280" data-source-line-numbers="nil" data-code-line-numbers="4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb280-1">model, opt <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_model()</span>
@@ -4557,9 +4554,9 @@ font-style: inherit;">=</span> loss_func(preds, yb)</span>
 <span id="cb280-9">    opt.zero_grad()</span>
 <span id="cb280-10">  report(loss, preds, yb)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 1.06; Accuracy: 0.72
-Loss: 0.46; Accuracy: 0.86
-Loss: 0.33; Accuracy: 0.88</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 1.19; Accuracy: 0.70
+Loss: 0.50; Accuracy: 0.88
+Loss: 0.34; Accuracy: 0.88</code></pre>
 </div>
 </div>
 </section>
@@ -4594,7 +4591,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">in</span> train_dl: </span>
 <span id="cb283-2">  ...</span></code></pre></div>
-<div id="cell-279" class="cell">
+<div id="cell-279" class="cell" data-execution_count="183">
 <div class="sourceCode cell-code" id="cb284" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb284-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4654,18 +4651,18 @@ font-style: inherit;">+</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.bs)]</span></code></pre></div>
 </div>
-<div id="cell-280" class="cell">
+<div id="cell-280" class="cell" data-execution_count="184">
 <div class="sourceCode cell-code" id="cb285" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb285-1">trn_dl, vld_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataLoader(trn_ds, bs), DataLoader(vld_ds, bs)</span></code></pre></div>
 </div>
-<div id="cell-281" class="cell">
+<div id="cell-281" class="cell" data-execution_count="185">
 <div class="sourceCode cell-code" id="cb286" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb286-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">next</span>(<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">iter</span>(vld_dl))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="186">
+<div class="cell-output cell-output-display" data-execution_count="185">
 <pre data-code-line-numbers=""><code>(tensor([[0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
@@ -4677,7 +4674,7 @@ font-style: inherit;">iter</span>(vld_dl))</span></code></pre></div>
          8, 3, 7, 7, 8, 4]))</code></pre>
 </div>
 </div>
-<div id="cell-282" class="cell">
+<div id="cell-282" class="cell" data-execution_count="186">
 <div class="sourceCode cell-code" id="cb288" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb288-1">xb, yb <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -4687,11 +4684,11 @@ background-color: null;
 font-style: inherit;">iter</span>(vld_dl))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> xb.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="187">
+<div class="cell-output cell-output-display" data-execution_count="186">
 <pre data-code-line-numbers=""><code>torch.Size([50, 784])</code></pre>
 </div>
 </div>
-<div id="cell-283" class="cell">
+<div id="cell-283" class="cell" data-execution_count="187">
 <div class="sourceCode cell-code" id="cb290" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb290-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> matplotlib.pyplot <span class="im" style="color: #00769E;
@@ -4708,7 +4705,7 @@ background-color: null;
 font-style: inherit;">;</span> yb[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="188">
+<div class="cell-output cell-output-display" data-execution_count="187">
 <pre data-code-line-numbers=""><code>tensor(3)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -4719,7 +4716,7 @@ font-style: inherit;">0</span>]</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="cell-284" class="cell">
+<div id="cell-284" class="cell" data-execution_count="188">
 <div class="sourceCode cell-code" id="cb292" data-source-line-numbers="nil" data-code-line-numbers="3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb292-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4751,15 +4748,15 @@ font-style: inherit;">=</span> loss_func(preds, yb)</span>
 <span id="cb292-8">      opt.zero_grad()</span>
 <span id="cb292-9">    report(loss, preds, yb)</span></code></pre></div>
 </div>
-<div id="cell-285" class="cell">
+<div id="cell-285" class="cell" data-execution_count="189">
 <div class="sourceCode cell-code" id="cb293" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb293-1">model, opt <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_model()</span>
 <span id="cb293-2">fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 1.15; Accuracy: 0.66
-Loss: 0.58; Accuracy: 0.80
-Loss: 0.29; Accuracy: 0.92</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 0.79; Accuracy: 0.82
+Loss: 0.49; Accuracy: 0.84
+Loss: 0.30; Accuracy: 0.88</code></pre>
 </div>
 </div>
 <p>And just like that, we have abstracted our loading logic from three lines…</p>
@@ -4801,7 +4798,7 @@ font-style: inherit;">in</span> trn_dl:</span>
 <h3 class="anchored" data-anchor-id="random-sampling">Random Sampling</h3>
 <p>Sampling is the method by which the dataloader selects indices from the dataset to load. Sampling from the training set should be random (due to the nature of our data), but not for the validation set.</p>
 <p>Therefore, we will need to create an additional class for the our dataloader; a component that tells the dataloader from which indices to load data from the dataset.</p>
-<div id="cell-289" class="cell">
+<div id="cell-289" class="cell" data-execution_count="190">
 <div class="sourceCode cell-code" id="cb297" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb297-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> random</span>
@@ -4818,7 +4815,7 @@ File:      ~/mambaforge/envs/default/lib/python3.10/random.py
 Type:      method</code></pre>
 </div>
 </div>
-<div id="cell-290" class="cell">
+<div id="cell-290" class="cell" data-execution_count="191">
 <div class="sourceCode cell-code" id="cb299" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb299-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4873,18 +4870,18 @@ font-style: inherit;">return</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">iter</span>(res)</span></code></pre></div>
 </div>
-<div id="cell-291" class="cell">
+<div id="cell-291" class="cell" data-execution_count="192">
 <div class="sourceCode cell-code" id="cb300" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb300-1">ss <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Sampler(trn_ds)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> ss</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="193">
-<pre data-code-line-numbers=""><code>&lt;__main__.Sampler at 0x283dde950&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="192">
+<pre data-code-line-numbers=""><code>&lt;__main__.Sampler at 0x150dddd80&gt;</code></pre>
 </div>
 </div>
 
-<div class="no-row-height column-margin column-container"><div id="cell-292" class="cell">
+<div class="no-row-height column-margin column-container"><div id="cell-292" class="cell" data-execution_count="193">
 <div class="sourceCode cell-code" id="cb302" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb302-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4902,7 +4899,7 @@ font-weight: bold;
 font-style: inherit;">pass</span></span></code></pre></div>
 </div><div class="">
 <p>This does not work because <code>__iter__</code> is not being called. <code>__iter__</code> only gets called when we wrap the class with <code>iter()</code>.</p>
-</div><div id="cell-294" class="cell">
+</div><div id="cell-294" class="cell" data-execution_count="194">
 <div class="sourceCode cell-code" id="cb303" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb303-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4925,7 +4922,7 @@ font-style: inherit;">pass</span></span></code></pre></div>
 </div>
 </div></div>
 
-<div id="cell-295" class="cell">
+<div id="cell-295" class="cell" data-execution_count="195">
 <div class="sourceCode cell-code" id="cb305" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb305-1">it <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -4933,11 +4930,11 @@ background-color: null;
 font-style: inherit;">iter</span>(ss)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> it</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="196">
-<pre data-code-line-numbers=""><code>&lt;list_iterator at 0x28184f010&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="195">
+<pre data-code-line-numbers=""><code>&lt;list_iterator at 0x150996fe0&gt;</code></pre>
 </div>
 </div>
-<div id="cell-296" class="cell">
+<div id="cell-296" class="cell" data-execution_count="196">
 <div class="sourceCode cell-code" id="cb307" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb307-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -4962,7 +4959,7 @@ font-style: inherit;">next</span>(it))</span></code></pre></div>
 </div>
 </div>
 <p>The <code>Sampler</code> currently returns a single index in each iteration. We need to change that so a number of indices (equal to our batch size) is returned in each iteration. We can do this through a fancy slicing function known as <code>islice</code>.</p>
-<div id="cell-298" class="cell">
+<div id="cell-298" class="cell" data-execution_count="197">
 <div class="sourceCode cell-code" id="cb309" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb309-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> itertools <span class="im" style="color: #00769E;
@@ -4986,18 +4983,18 @@ Subclasses:     </code></pre>
 </div>
 </div>
 <p><code>iter</code> returns a single element from an iterable at a time. <code>islice</code> is a type of iterator that returns <img src="https://latex.codecogs.com/png.latex?x"> elements from an iterable at a time. It is an, erm, iterative slice.</p>
-<div id="cell-300" class="cell">
+<div id="cell-300" class="cell" data-execution_count="198">
 <div class="sourceCode cell-code" id="cb311" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb311-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(islice(ss, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="199">
+<div class="cell-output cell-output-display" data-execution_count="198">
 <pre data-code-line-numbers=""><code>[0, 1, 2, 3, 4]</code></pre>
 </div>
 </div>
 <p>Let’s define an additional class that takes a sampler, and assembles its output into batches.</p>
-<div id="cell-302" class="cell">
+<div id="cell-302" class="cell" data-execution_count="199">
 <div class="sourceCode cell-code" id="annotated-cell-202" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-annotation-code code-with-copy code-annotated"><code class="sourceCode python"><span id="annotated-cell-202-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5048,7 +5045,7 @@ font-style: inherit;">self</span>.drop_last)</span><div class="code-annotation-g
 </div>
 </div>
 
-<div class="no-row-height column-margin column-container"><div id="cell-304" class="cell">
+<div class="no-row-height column-margin column-container"><div id="cell-304" class="cell" data-execution_count="200">
 <div class="sourceCode cell-code" id="cb313" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb313-1">??chunked</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Signature: chunked(it, chunk_sz=None, drop_last=False, n_chunks=None)
@@ -5065,17 +5062,17 @@ def chunked(it, chunk_sz=None, drop_last=False, n_chunks=None):
 File:      ~/mambaforge/envs/default/lib/python3.10/site-packages/fastcore/basics.py
 Type:      function</code></pre>
 </div>
-</div></div><div id="cell-305" class="cell">
+</div></div><div id="cell-305" class="cell" data-execution_count="201">
 <div class="sourceCode cell-code" id="cb315" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb315-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(islice(ss, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="202">
+<div class="cell-output cell-output-display" data-execution_count="201">
 <pre data-code-line-numbers=""><code>[0, 1, 2, 3, 4]</code></pre>
 </div>
 </div>
-<div id="cell-306" class="cell">
+<div id="cell-306" class="cell" data-execution_count="202">
 <div class="sourceCode cell-code" id="cb317" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb317-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">list</span>(chunked(ss, <span class="dv" style="color: #AD0000;
@@ -5083,7 +5080,7 @@ background-color: null;
 font-style: inherit;">5</span>))[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="203">
+<div class="cell-output cell-output-display" data-execution_count="202">
 <pre data-code-line-numbers=""><code>[[0, 1, 2, 3, 4],
  [5, 6, 7, 8, 9],
  [10, 11, 12, 13, 14],
@@ -5091,7 +5088,7 @@ font-style: inherit;">5</span>]</span></code></pre></div>
  [20, 21, 22, 23, 24]]</code></pre>
 </div>
 </div>
-<div id="cell-307" class="cell">
+<div id="cell-307" class="cell" data-execution_count="203">
 <div class="sourceCode cell-code" id="cb319" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb319-1">batches <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> BatchSampler(ss, <span class="dv" style="color: #AD0000;
@@ -5102,7 +5099,7 @@ background-color: null;
 font-style: inherit;">list</span>(islice(batches, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="204">
+<div class="cell-output cell-output-display" data-execution_count="203">
 <pre data-code-line-numbers=""><code>[[0, 1, 2, 3],
  [4, 5, 6, 7],
  [8, 9, 10, 11],
@@ -5114,7 +5111,7 @@ font-style: inherit;">5</span>))</span></code></pre></div>
 <section id="collation" class="level3">
 <h3 class="anchored" data-anchor-id="collation">Collation</h3>
 <p>There is one last piece of the puzzle left. Each sample in our <code>Dataset</code> also stores its associated target. We need to split these apart when dataloading. In other words, we need to split the data and target in each sample into their own batches; into an <code>x</code> batch and a <code>y</code> batch.</p>
-<div id="cell-310" class="cell">
+<div id="cell-310" class="cell" data-execution_count="204">
 <div class="sourceCode cell-code" id="cb321" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb321-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5131,7 +5128,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> torch.stack(xs), torch.stack(ys)</span></code></pre></div>
 </div>
-<div id="cell-311" class="cell">
+<div id="cell-311" class="cell" data-execution_count="205">
 <div class="sourceCode cell-code" id="cb322" data-source-line-numbers="nil" data-code-line-numbers="3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb322-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5180,7 +5177,7 @@ background-color: null;
 font-style: inherit;">self</span>.batches) </span></code></pre></div>
 </div>
 <p>Let’s breakdown the latter line and explore what it does, piece by piece.</p>
-<div id="cell-313" class="cell">
+<div id="cell-313" class="cell" data-execution_count="206">
 <div class="sourceCode cell-code" id="cb323" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb323-1">trn_samp <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> BatchSampler(Sampler(trn_ds, shuffle<span class="op" style="color: #5E5E5E;
@@ -5197,7 +5194,7 @@ background-color: null;
 font-style: inherit;">False</span>), bs)</span></code></pre></div>
 </div>
 <p><code>for b in self.batches</code>, we loop through each batch.</p>
-<div id="cell-315" class="cell">
+<div id="cell-315" class="cell" data-execution_count="207">
 <div class="sourceCode cell-code" id="cb324" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb324-1">b <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -5209,12 +5206,12 @@ background-color: null;
 font-style: inherit;">;</span> b[:<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="208">
+<div class="cell-output cell-output-display" data-execution_count="207">
 <pre data-code-line-numbers=""><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
 </div>
 </div>
 <p><code>self.ds[i] for i in b</code>; using the indices in each batch, we access the respective samples in the dataset.</p>
-<div id="cell-317" class="cell">
+<div id="cell-317" class="cell" data-execution_count="208">
 <div class="sourceCode cell-code" id="cb326" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb326-1">p <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [vld_ds[i] <span class="cf" style="color: #003B4F;
@@ -5228,16 +5225,16 @@ background-color: null;
 font-style: inherit;">;</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(p)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="209">
+<div class="cell-output cell-output-display" data-execution_count="208">
 <pre data-code-line-numbers=""><code>50</code></pre>
 </div>
 </div>
 <p>As can be seen below, <code>p</code> also stores the target.</p>
-<div id="cell-319" class="cell">
+<div id="cell-319" class="cell" data-execution_count="209">
 <div class="sourceCode cell-code" id="cb328" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb328-1">p[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="210">
+<div class="cell-output cell-output-display" data-execution_count="209">
 <pre data-code-line-numbers=""><code>(tensor([0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00,
          0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00,
          0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00,
@@ -5278,7 +5275,7 @@ font-style: inherit;">0</span>]</span></code></pre></div>
 </div>
 </div>
 <p>Then we simply run the collate function.</p>
-<div id="cell-321" class="cell">
+<div id="cell-321" class="cell" data-execution_count="210">
 <div class="sourceCode cell-code" id="cb330" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb330-1">xs, ys <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -5288,7 +5285,7 @@ background-color: null;
 font-style: inherit;">*</span>p)<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> ys</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="211">
+<div class="cell-output cell-output-display" data-execution_count="210">
 <pre data-code-line-numbers=""><code>(tensor(3),
  tensor(8),
  tensor(6),
@@ -5342,14 +5339,14 @@ font-style: inherit;">;</span> ys</span></code></pre></div>
 </div>
 </div>
 <p>And there we have our collated <code>x</code> and <code>y</code> batches!</p>
-<div id="cell-323" class="cell">
+<div id="cell-323" class="cell" data-execution_count="211">
 <div class="sourceCode cell-code" id="cb332" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb332-1">torch.stack(ys)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="212">
+<div class="cell-output cell-output-display" data-execution_count="211">
 <pre data-code-line-numbers=""><code>tensor([3, 8, 6, 9, 6, 4, 5, 3, 8, 4, 5, 2, 3, 8, 4, 8, 1, 5, 0, 5, 9, 7, 4, 1, 0, 3, 0, 6, 2, 9, 9, 4, 1, 3, 6, 8, 0, 7, 7, 6, 8, 9, 0, 3,
         8, 3, 7, 7, 8, 4])</code></pre>
 </div>
 </div>
-<div id="cell-324" class="cell">
+<div id="cell-324" class="cell" data-execution_count="212">
 <div class="sourceCode cell-code" id="cb334" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb334-1">trn_samp <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> BatchSampler(Sampler(trn_ds, shuffle<span class="op" style="color: #5E5E5E;
@@ -5365,7 +5362,7 @@ font-style: inherit;">=</span><span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">False</span>), bs)</span></code></pre></div>
 </div>
-<div id="cell-325" class="cell">
+<div id="cell-325" class="cell" data-execution_count="213">
 <div class="sourceCode cell-code" id="cb335" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb335-1">trn_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataLoader(trn_ds, batches<span class="op" style="color: #5E5E5E;
@@ -5377,7 +5374,7 @@ font-style: inherit;">=</span> DataLoader(vld_ds, batches<span class="op" style=
 background-color: null;
 font-style: inherit;">=</span>vld_samp)</span></code></pre></div>
 </div>
-<div id="cell-326" class="cell">
+<div id="cell-326" class="cell" data-execution_count="214">
 <div class="sourceCode cell-code" id="cb336" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb336-1">xb, yb <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -5395,7 +5392,7 @@ font-style: inherit;">28</span>))</span>
 <span id="cb336-3">yb[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="215">
+<div class="cell-output cell-output-display" data-execution_count="214">
 <pre data-code-line-numbers=""><code>tensor(3)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -5406,25 +5403,25 @@ font-style: inherit;">0</span>]</span></code></pre></div>
 </div>
 </div>
 </div>
-<div id="cell-327" class="cell">
+<div id="cell-327" class="cell" data-execution_count="215">
 <div class="sourceCode cell-code" id="cb338" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb338-1">xb.shape, yb.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="216">
+<div class="cell-output cell-output-display" data-execution_count="215">
 <pre data-code-line-numbers=""><code>(torch.Size([50, 784]), torch.Size([50]))</code></pre>
 </div>
 </div>
-<div id="cell-328" class="cell">
+<div id="cell-328" class="cell" data-execution_count="216">
 <div class="sourceCode cell-code" id="cb340" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb340-1">model, opt <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_model()</span>
 <span id="cb340-2">fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 0.83; Accuracy: 0.74
-Loss: 0.62; Accuracy: 0.80
-Loss: 0.64; Accuracy: 0.74</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 1.03; Accuracy: 0.74
+Loss: 0.46; Accuracy: 0.82
+Loss: 0.30; Accuracy: 0.90</code></pre>
 </div>
 </div>
 <p>We do not need to update the <code>fit()</code> function, as its logic remains the same despite our changes to the dataloader.</p>
-<div id="cell-330" class="cell">
+<div id="cell-330" class="cell" data-execution_count="217">
 <div class="sourceCode cell-code" id="cb342" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb342-1">??fit</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers="6"><code>Signature: fit()
@@ -5439,7 +5436,7 @@ def fit():
       opt.step()
       opt.zero_grad()
     report(loss, preds, yb)
-File:      /var/folders/fy/vg316qk1001227svr6d4d8l40000gn/T/ipykernel_18091/769712355.py
+File:      /var/folders/fy/vg316qk1001227svr6d4d8l40000gn/T/ipykernel_52843/769712355.py
 Type:      function</code></pre>
 </div>
 </div>
@@ -5447,7 +5444,7 @@ Type:      function</code></pre>
 <section id="multiprocessing-dataloader" class="level3">
 <h3 class="anchored" data-anchor-id="multiprocessing-dataloader">Multiprocessing DataLoader</h3>
 <p>We can speed up how quickly data is loaded by using multiple CPU cores.</p>
-<div id="cell-333" class="cell">
+<div id="cell-333" class="cell" data-execution_count="218">
 <div class="sourceCode cell-code" id="cb344" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb344-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%%</span>timeit</span>
@@ -5457,10 +5454,10 @@ font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">iter</span>(trn_dl)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>214 ns ± 15.8 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)</code></pre>
+<pre data-code-line-numbers=""><code>227 ns ± 1.45 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)</code></pre>
 </div>
 </div>
-<div id="cell-334" class="cell">
+<div id="cell-334" class="cell" data-execution_count="219">
 <div class="sourceCode cell-code" id="cb346" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb346-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> torch.multiprocessing <span class="im" style="color: #00769E;
@@ -5517,7 +5514,7 @@ font-style: inherit;">iter</span>(<span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.batches))</span></code></pre></div>
 </div>
-<div id="cell-335" class="cell">
+<div id="cell-335" class="cell" data-execution_count="220">
 <div class="sourceCode cell-code" id="cb347" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb347-1">trn_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataLoader(trn_ds, batches<span class="op" style="color: #5E5E5E;
@@ -5528,7 +5525,7 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>)</span></code></pre></div>
 </div>
-<div id="cell-336" class="cell">
+<div id="cell-336" class="cell" data-execution_count="221">
 <div class="sourceCode cell-code" id="cb348" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb348-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%%</span>timeit</span>
@@ -5538,12 +5535,12 @@ font-style: inherit;">=</span> <span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">iter</span>(trn_dl)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>205 ns ± 19.4 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)</code></pre>
+<pre data-code-line-numbers=""><code>197 ns ± 0.557 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)</code></pre>
 </div>
 </div>
 <p>Let’s break down how exactly our <code>__iter__</code> method works.</p>
 <p>We slice batches by specifying a list of indices.</p>
-<div id="cell-339" class="cell">
+<div id="cell-339" class="cell" data-execution_count="222">
 <div class="sourceCode cell-code" id="cb350" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb350-1">trn_ds[[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3</span>, <span class="dv" style="color: #AD0000;
@@ -5553,7 +5550,7 @@ background-color: null;
 font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="223">
+<div class="cell-output cell-output-display" data-execution_count="222">
 <pre data-code-line-numbers=""><code>(tensor([[0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
@@ -5562,7 +5559,7 @@ font-style: inherit;">1</span>]]</span></code></pre></div>
 </div>
 </div>
 <p>Behind the scenes, the square bracket notation calls the <code>__getitem__</code> dunder method.</p>
-<div id="cell-341" class="cell">
+<div id="cell-341" class="cell" data-execution_count="223">
 <div class="sourceCode cell-code" id="cb352" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb352-1">??trn_ds.<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">__getitem__</span></span></code></pre></div>
@@ -5570,12 +5567,12 @@ font-style: inherit;">__getitem__</span></span></code></pre></div>
 <pre data-code-line-numbers=""><code>Signature: trn_ds.__getitem__(i)
 Docstring: &lt;no docstring&gt;
 Source:      def __getitem__(self, i): return self.x[i], self.y[i]
-File:      /var/folders/fy/vg316qk1001227svr6d4d8l40000gn/T/ipykernel_18091/694427655.py
+File:      /var/folders/fy/vg316qk1001227svr6d4d8l40000gn/T/ipykernel_52843/694427655.py
 Type:      method</code></pre>
 </div>
 </div>
 <p>In fact, we can index directly using <code>__getitem__</code>.</p>
-<div id="cell-343" class="cell">
+<div id="cell-343" class="cell" data-execution_count="224">
 <div class="sourceCode cell-code" id="cb354" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb354-1">trn_ds.<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">__getitem__</span>([<span class="dv" style="color: #AD0000;
@@ -5587,7 +5584,7 @@ background-color: null;
 font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>])</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="225">
+<div class="cell-output cell-output-display" data-execution_count="224">
 <pre data-code-line-numbers=""><code>(tensor([[0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
@@ -5597,7 +5594,7 @@ font-style: inherit;">1</span>])</span></code></pre></div>
 </div>
 <p>Therefore, by dividing our batches into smaller sets, we can take advantage of the <code>__getitem__</code> dunder method to allow each CPU core to handle a separate set of items.</p>
 <p>So we can divide our batches into smaller sets that each CPU core can manage.</p>
-<div id="cell-345" class="cell">
+<div id="cell-345" class="cell" data-execution_count="225">
 <div class="sourceCode cell-code" id="cb356" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb356-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">len</span>(<span class="bu" style="color: null;
@@ -5615,11 +5612,11 @@ background-color: null;
 font-style: inherit;">8</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>]))))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="226">
+<div class="cell-output cell-output-display" data-execution_count="225">
 <pre data-code-line-numbers=""><code>2</code></pre>
 </div>
 </div>
-<div id="cell-346" class="cell">
+<div id="cell-346" class="cell" data-execution_count="226">
 <div class="sourceCode cell-code" id="cb358" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb358-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -5651,7 +5648,7 @@ font-style: inherit;">print</span>(o)</span></code></pre></div>
 </section>
 <section id="sampling-in-pytorch" class="level3">
 <h3 class="anchored" data-anchor-id="sampling-in-pytorch">Sampling in PyTorch</h3>
-<div id="cell-348" class="cell">
+<div id="cell-348" class="cell" data-execution_count="227">
 <div class="sourceCode cell-code" id="cb360" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb360-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> torch.utils.data <span class="im" style="color: #00769E;
@@ -5685,7 +5682,7 @@ Subclasses:     </code></pre>
 </div>
 </div>
 <p>PyTorch provides a wrapper which assembles the indices, sampled by our desired sampler, into batches.</p>
-<div id="cell-350" class="cell">
+<div id="cell-350" class="cell" data-execution_count="228">
 <div class="sourceCode cell-code" id="cb362" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb362-1">?RandomSampler</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Init signature:
@@ -5709,7 +5706,7 @@ Type:           type
 Subclasses:     </code></pre>
 </div>
 </div>
-<div id="cell-351" class="cell">
+<div id="cell-351" class="cell" data-execution_count="229">
 <div class="sourceCode cell-code" id="cb364" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb364-1">trn_samp <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> BatchSampler(    RandomSampler(trn_ds), bs, drop_last<span class="op" style="color: #5E5E5E;
@@ -5726,7 +5723,7 @@ background-color: null;
 font-style: inherit;">False</span>)</span></code></pre></div>
 </div>
 <p>To construct a dataloader with PyTorch, we have to provide the dataset and a sampler.</p>
-<div id="cell-353" class="cell">
+<div id="cell-353" class="cell" data-execution_count="230">
 <div class="sourceCode cell-code" id="cb365" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb365-1">?DataLoader</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Init signature:
@@ -5836,7 +5833,7 @@ Type:           type
 Subclasses:     </code></pre>
 </div>
 </div>
-<div id="cell-354" class="cell">
+<div id="cell-354" class="cell" data-execution_count="231">
 <div class="sourceCode cell-code" id="cb367" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb367-1">trn_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataLoader(trn_ds, batch_sampler<span class="op" style="color: #5E5E5E;
@@ -5852,23 +5849,23 @@ font-style: inherit;">=</span>vld_samp, collate_fn<span class="op" style="color:
 background-color: null;
 font-style: inherit;">=</span>collate)</span></code></pre></div>
 </div>
-<div id="cell-355" class="cell">
+<div id="cell-355" class="cell" data-execution_count="232">
 <div class="sourceCode cell-code" id="cb368" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb368-1">model, opt <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_model()</span>
 <span id="cb368-2">fit()</span>
 <span id="cb368-3">loss_func(model(xb), yb), accuracy(model(xb), yb)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 0.85; Accuracy: 0.72
-Loss: 0.52; Accuracy: 0.84
-Loss: 0.35; Accuracy: 0.88</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 1.05; Accuracy: 0.64
+Loss: 0.69; Accuracy: 0.72
+Loss: 0.55; Accuracy: 0.84</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="233">
-<pre data-code-line-numbers=""><code>(tensor(0.62, grad_fn=&lt;NllLossBackward0&gt;), tensor(0.80))</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="232">
+<pre data-code-line-numbers=""><code>(tensor(1.02, grad_fn=&lt;NllLossBackward0&gt;), tensor(0.66))</code></pre>
 </div>
 </div>
 <p>Instead of separately wrapping the <code>RandomSampler</code> and <code>SequentialSampler</code> classes, we can let the <code>DataLoader</code> class do this for us.</p>
-<div id="cell-357" class="cell">
+<div id="cell-357" class="cell" data-execution_count="233">
 <div class="sourceCode cell-code" id="cb371" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb371-1">trn_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataLoader(trn_ds, bs, sampler<span class="op" style="color: #5E5E5E;
@@ -5885,7 +5882,7 @@ background-color: null;
 font-style: inherit;">=</span>collate)</span></code></pre></div>
 </div>
 <p>In fact, we don’t even need to specify the sampler. All we have to do is toggle and set some parameters.</p>
-<div id="cell-359" class="cell">
+<div id="cell-359" class="cell" data-execution_count="234">
 <div class="sourceCode cell-code" id="cb372" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb372-1">trn_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataLoader(trn_ds, bs, shuffle<span class="op" style="color: #5E5E5E;
@@ -5913,22 +5910,22 @@ font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>)</span></code></pre></div>
 </div>
-<div id="cell-360" class="cell">
+<div id="cell-360" class="cell" data-execution_count="235">
 <div class="sourceCode cell-code" id="cb373" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb373-1">model, opt <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_model()<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> fit()</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>Loss: 1.09; Accuracy: 0.60
-Loss: 0.63; Accuracy: 0.74
-Loss: 0.34; Accuracy: 0.90</code></pre>
+<pre data-code-line-numbers=""><code>Loss: 0.80; Accuracy: 0.80
+Loss: 0.27; Accuracy: 0.94
+Loss: 0.40; Accuracy: 0.88</code></pre>
 </div>
 </div>
-<div id="cell-361" class="cell">
+<div id="cell-361" class="cell" data-execution_count="236">
 <div class="sourceCode cell-code" id="cb375" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb375-1">loss_func(model(xb), yb), accuracy(model(xb), yb)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="237">
-<pre data-code-line-numbers=""><code>(tensor(0.64, grad_fn=&lt;NllLossBackward0&gt;), tensor(0.78))</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="236">
+<pre data-code-line-numbers=""><code>(tensor(0.84, grad_fn=&lt;NllLossBackward0&gt;), tensor(0.68))</code></pre>
 </div>
 </div>
 <p>As our dataset already knows how to sample a batch of indices all at once, we can actually skip the <code>batch_sampler</code> and <code>collate_fn</code> entirely. 🙃</p>
@@ -5980,7 +5977,7 @@ background-color: null;
 font-style: inherit;">self</span>.x[i], <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">self</span>.y[i]</span></code></pre></div>
-<div id="cell-363" class="cell">
+<div id="cell-363" class="cell" data-execution_count="237">
 <div class="sourceCode cell-code" id="cb378" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb378-1">trn_ds[[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
@@ -5988,14 +5985,14 @@ background-color: null;
 font-style: inherit;">6</span>, <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">7</span>]]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="238">
+<div class="cell-output cell-output-display" data-execution_count="237">
 <pre data-code-line-numbers=""><code>(tensor([[0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.],
          [0., 0., 0.,  ..., 0., 0., 0.]]),
  tensor([9, 1, 3]))</code></pre>
 </div>
 </div>
-<div id="cell-364" class="cell">
+<div id="cell-364" class="cell" data-execution_count="238">
 <div class="sourceCode cell-code" id="cb380" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb380-1">trn_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataLoader(trn_ds, sampler<span class="op" style="color: #5E5E5E;
@@ -6007,7 +6004,7 @@ font-style: inherit;">=</span> DataLoader(vld_ds, sampler<span class="op" style=
 background-color: null;
 font-style: inherit;">=</span>vld_samp)</span></code></pre></div>
 </div>
-<div id="cell-365" class="cell">
+<div id="cell-365" class="cell" data-execution_count="239">
 <div class="sourceCode cell-code" id="cb381" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb381-1">xb, yb <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="bu" style="color: null;
@@ -6017,7 +6014,7 @@ background-color: null;
 font-style: inherit;">iter</span>(trn_dl))<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">;</span> xb.shape, yb.shape</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="240">
+<div class="cell-output cell-output-display" data-execution_count="239">
 <pre data-code-line-numbers=""><code>(torch.Size([1, 50, 784]), torch.Size([1, 50]))</code></pre>
 </div>
 </div>
@@ -6026,7 +6023,7 @@ font-style: inherit;">;</span> xb.shape, yb.shape</span></code></pre></div>
 <section id="validation" class="level2">
 <h2 class="anchored" data-anchor-id="validation">Validation</h2>
 <p>When training and evaluating a model, <code>model.train()</code> and <code>model.eval()</code> need to be called respectively. These methods are used by layers such as <code>nn.BatchNorm2d</code> and <code>nn.Dropout</code> to ensure appropriate behaviour during different phases of the process.</p>
-<div id="cell-368" class="cell">
+<div id="cell-368" class="cell" data-execution_count="240">
 <div class="sourceCode cell-code" id="cb383" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb383-1">?model.train</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>Signature: model.train(mode: bool = True) -&gt; ~T
@@ -6048,7 +6045,7 @@ File:      ~/mambaforge/envs/default/lib/python3.10/site-packages/torch/nn/modul
 Type:      method</code></pre>
 </div>
 </div>
-<div id="cell-369" class="cell">
+<div id="cell-369" class="cell" data-execution_count="241">
 <div class="sourceCode cell-code" id="cb385" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb385-1">?model.<span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">eval</span></span></code></pre></div>
@@ -6073,7 +6070,7 @@ File:      ~/mambaforge/envs/default/lib/python3.10/site-packages/torch/nn/modul
 Type:      method</code></pre>
 </div>
 </div>
-<div id="cell-370" class="cell">
+<div id="cell-370" class="cell" data-execution_count="242">
 <div class="sourceCode cell-code" id="cb387" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb387-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -6165,7 +6162,7 @@ font-style: inherit;">/</span>count, tot_acc<span class="op" style="color: #5E5E
 background-color: null;
 font-style: inherit;">/</span>count</span></code></pre></div>
 </div>
-<div id="cell-371" class="cell">
+<div id="cell-371" class="cell" data-execution_count="243">
 <div class="sourceCode cell-code" id="cb388" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb388-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -6194,7 +6191,7 @@ font-style: inherit;">2</span>,               <span class="op" style="color: #5E
 background-color: null;
 font-style: inherit;">**</span>kwargs))</span></code></pre></div>
 </div>
-<div id="cell-372" class="cell">
+<div id="cell-372" class="cell" data-execution_count="244">
 <div class="sourceCode cell-code" id="cb389" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb389-1">trn_dl, vld_dl <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> get_dls(trn_ds, vld_ds, bs)</span>
@@ -6202,7 +6199,7 @@ font-style: inherit;">=</span> get_dls(trn_ds, vld_ds, bs)</span>
 background-color: null;
 font-style: inherit;">=</span> get_model()</span></code></pre></div>
 </div>
-<div id="cell-373" class="cell">
+<div id="cell-373" class="cell" data-execution_count="245">
 <div class="sourceCode cell-code" id="cb390" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb390-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">%</span>time loss, acc <span class="op" style="color: #5E5E5E;
@@ -6211,13 +6208,13 @@ font-style: inherit;">=</span> fit(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>, model, loss_func, opt, trn_dl, vld_dl)</span></code></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre data-code-line-numbers=""><code>0 1.1472488164901733 0.6349999964237213
-1 0.9383704751729965 0.6940000057220459
-2 0.7185424894094468 0.7579999983310699
-3 0.6286074817180634 0.8139999985694886
-4 0.4982109546661377 0.85
-CPU times: user 899 ms, sys: 41.3 ms, total: 940 ms
-Wall time: 247 ms</code></pre>
+<pre data-code-line-numbers=""><code>0 1.3015430688858032 0.6180000007152557
+1 0.7089294970035553 0.7680000007152558
+2 0.6260120451450348 0.7990000009536743
+3 0.501511612534523 0.8490000128746032
+4 0.5909725487232208 0.8119999945163727
+CPU times: user 1.55 s, sys: 41.8 ms, total: 1.59 s
+Wall time: 358 ms</code></pre>
 </div>
 </div>
 </section>
