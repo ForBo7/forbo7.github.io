@@ -23,7 +23,7 @@ page-layout: full
 ---
 
 :::{.animate__animated .animate__slideInRight .animate__faster}
-*A curious soul navigating the realms of AI, exploring the intricacies of 3D computer graphics, fueled by an insatiable passion for learning. A devoted aficionado of science and technology, proudly wearing the badge of a “sci-tech geek”. In addition to unraveling the complexities of the digital world, I've ventured into real-world adventures across 15 countries so far, adding layers of cultural richness to my journey.*
+*A curious soul navigating the realms of AI, exploring the intricacies of Mandarin, fueled by an insatiable passion for learning. A devoted aficionado of science and technology, proudly wearing the badge of a “sci-tech geek”. In addition to unraveling the complexities of the digital world, I've ventured into real-world adventures across 15 countries so far, adding layers of cultural richness to my journey.*
 :::
 
 ::::{.animate__animated .animate__slideInUp .animate__faster}
