@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Using a trained model for predictions.">
+<meta name="description" content="A function that follows the linear function in a neuron, to introduce nonlinearity.">
 
-<title>ForBo7 // Salman Naqvi – Inference</title>
+<title>ForBo7 // Salman Naqvi – Activation Function</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,9 +69,38 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="ForBo7 // Salman Naqvi - Inference">
+<meta property="og:title" content="ForBo7 // Salman Naqvi - Activation Function">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/dictionary/terms/cover.png">
 <meta property="og:site_name" content="ForBo7 // Salman Naqvi">
@@ -144,12 +173,12 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Inference</h1>
+<h1 class="title">Activation Function</h1>
 </div>
 
 <div>
   <div class="description">
-    Using a trained <a href="../../dictionary/terms/model.html">model</a> for predictions.
+    A function that follows the <a href="../../dictionary/terms/linear_combination.html">linear function</a> in a <a href="../../dictionary/terms/neuron.html">neuron</a>, to introduce nonlinearity.
   </div>
 </div>
 
@@ -166,6 +195,34 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<hr>
+<p>If there existed no activation function, there would be no point in having individual neurons, as the entire network would become a single, big linear equation.</p>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+With Activation Function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(w_2 \cdot \text{activation}(w_1 x + b_1) + b_2\)</span></p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Without Activation Function
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(w_2 \cdot (w_1 x + b_1) + b_2 = w_2 w_1 x + w_2 b_1 + b_2\)</span></p>
+</div>
+</div>
 
 
 
