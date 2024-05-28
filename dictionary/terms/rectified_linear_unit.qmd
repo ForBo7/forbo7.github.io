@@ -2,7 +2,7 @@
 title: Rectified Linear Unit (ReLU)
 description: An [activation function](activation_function.qmd) that clips any value less than zero, to zero.
 execute: 
-  enabled: true
+  enabled: false
 ---
 
 ```{python}
