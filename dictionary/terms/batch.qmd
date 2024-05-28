@@ -1,0 +1,4 @@
+---
+title: Batch
+description: A small collection of data from the [dataset](dataset.qmd).
+---

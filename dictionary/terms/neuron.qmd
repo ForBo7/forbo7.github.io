@@ -1,0 +1,4 @@
+---
+title: Neuron
+description: A basic processor of information. It consists of the [linear combination](linear_combination.qmd) and an activation function.
+---

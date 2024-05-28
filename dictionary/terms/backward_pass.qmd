@@ -1,0 +1,4 @@
+---
+title: Backward Pass
+description: The pass that begins with the outputs, and ends with the gradients. Also see [forward pass](forward_pass.qmd). 
+---

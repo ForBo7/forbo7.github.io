@@ -1,0 +1,4 @@
+---
+title: Sample
+description: A row in a [dataset](dataset.qmd).
+---

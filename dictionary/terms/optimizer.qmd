@@ -1,0 +1,14 @@
+---
+title: Optimizer
+description: The name given to the algorithm that updates the weights in a model. Note that it does not compute the gradients, and hence is not part of [backpropagation](backpropagation.qmd).
+---
+
+---
+
+An optimizer in its most basic form looks like this.
+
+```py
+with torch.no_grad(): 
+  for p in model.parameters(): p -= p.grad * lr 
+  model.zero_grad() 
+```

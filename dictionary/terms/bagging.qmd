@@ -5,7 +5,7 @@ description: "An [ensembling](ensemble.qmd) technique. When bagging, each model 
 
 ---
 
-"with replacement" means that if a model, for examples, randomly chooses row number 5, another model can also randomly choose row number 5.
+"with replacement" means that if a model, for example, randomly chooses row number 5, another model can also randomly choose row number 5.
 
 :::{.callout-note appearance="simple" collapse="true"}
 # Note

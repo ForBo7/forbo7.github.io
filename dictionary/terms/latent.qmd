@@ -1,4 +1,4 @@
 ---
-term: Latent (Diffusion)
+title: Latent (Diffusion)
 description: A compressed image.
 ---

@@ -1,0 +1,8 @@
+---
+title: Dataloader
+description: An object that takes data from the [dataset](dataset.qmd), and assembles them into batches. Note that this object does not decide what indices to load from, and hence is not a [sampler](sampler.qmd).
+---
+
+---
+
+Metaphorically speaking, if we let a [dataset](dataset.qmd) be a warehouse, a dataloader be a human, a [batch](batch.qmd) be a crate, and the [sampler](sampler.qmd) be the manager, then the manager is responsible for informing the human what items to gather from the warehouse, who then puts them into crates.
