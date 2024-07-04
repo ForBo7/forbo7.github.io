@@ -31,7 +31,7 @@ page-layout: full
 
 # Notable Experience and Honors
 
-*Jun. 2024 – Jul. 2024* — **Educational Technology Innovator** | READily
+*Jun. 2024 – Jul. 2024* — **LLM Engineer** | READily
 
 *Mar. 2024* — **Intern** | Kids4Kids Hong Kong
 
