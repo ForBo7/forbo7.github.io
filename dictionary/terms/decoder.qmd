@@ -1,6 +1,6 @@
 ---
 title: Decoder (Transformers)
-description: "A compoent of a [trasnformer](transformer.qmd) that is used for generating text. An example is the autocomplete feature on a smartphone's keyboard."
+description: "A component of a [transformer](transformer.qmd) that is used for generating text. An example is the autocomplete feature on a smartphone's keyboard."
 ---
 
 ---
