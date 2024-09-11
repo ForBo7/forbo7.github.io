@@ -31,9 +31,7 @@ page-layout: full
 
 # Notable Experience and Honors
 
-*Jun. 2024 – Jul. 2024* — **LLM Engineer** | READily
-
-*Mar. 2024* — **Intern** | Kids4Kids Hong Kong
+*Jun. 12, 2024* – **Study Award from Hong Kong SAR Government** | Hong Kong SAR Government Scholarship Fund Reaching Out Award
 
 *Dec. 7, 2023* — **Invited Speaker at the Advanced Study Institute (ASI) Online Symposium** | The Education University of Hong Kong and Hong Kong Baptist University
 
@@ -59,11 +57,29 @@ page-layout: full
 
 *2018* — **Bronze Medal – Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan
 
+# Internships
+## *AI Engineer* | Jul. 2024 – Aug.2024
+Keweya Education Technology Limited – HKSTP Incubatee
+* Review and analysis of research papers
+* Diffusion models
+* App development
+
+## *LLM Researcher* | Jun. 2024 – Jul. 2024
+READily Limited – HKSTP Incubatee
+* Review, analysis, and implementation of research papers
+* Training and finetuning large language models
+
+## *Training Coordinator* | Mar. 2024
+Kids4Kids Hong Kong
+* Volunteer work
+* Workshop planning
+* Video editing
+
 # Skills
 
 **Programming**
 
-Python, Jupyter, nbdev, Quarto, fastai, PyTorch, Scikit-Learn, Pandas, NumPy
+Python, Jupyter, nbdev, Quarto, fastai, PyTorch, Hugging Face, Gradio Scikit-Learn, Pandas, NumPy
 
 **3D Computer Graphics**
 
@@ -103,7 +119,7 @@ Primary School | IB Primary Years Program — *Aug. 2009 – Jun. 2013*
 
 # Miscellaneous
 
-EdUHK Semester 1 GPA — 3.8/4.0
+EdUHK Year 1 GPA — 3.74/4.00
 
 EdUHK International Student Ambassador — *Sep 2023 – Current*
 
