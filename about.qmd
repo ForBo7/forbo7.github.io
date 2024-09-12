@@ -58,19 +58,22 @@ page-layout: full
 *2018* — **Bronze Medal – Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan
 
 # Internships
-*AI Engineer* | Jul. 2024 – Aug.2024
+**AI Engineer** | Jul. 2024 – Aug.2024
 Keweya Education Technology Limited – HKSTP Incubatee
+
 * Review and analysis of research papers
 * Diffusion models
 * App development
 
-*LLM Researcher* | Jun. 2024 – Jul. 2024
+**LLM Researcher** | Jun. 2024 – Jul. 2024
 READily Limited – HKSTP Incubatee
+
 * Review, analysis, and implementation of research papers
 * Training and finetuning large language models
 
-*Training Coordinator* | Mar. 2024
+**Training Coordinator** | Mar. 2024
 Kids4Kids Hong Kong
+
 * Volunteer work
 * Workshop planning
 * Video editing
