@@ -59,6 +59,7 @@ page-layout: full
 
 # Internships
 **AI Engineer** | Jul. 2024 – Aug.2024
+
 Keweya Education Technology Limited – HKSTP Incubatee
 
 * Review and analysis of research papers
@@ -66,12 +67,14 @@ Keweya Education Technology Limited – HKSTP Incubatee
 * App development
 
 **LLM Researcher** | Jun. 2024 – Jul. 2024
+
 READily Limited – HKSTP Incubatee
 
 * Review, analysis, and implementation of research papers
 * Training and finetuning large language models
 
 **Training Coordinator** | Mar. 2024
+
 Kids4Kids Hong Kong
 
 * Volunteer work
