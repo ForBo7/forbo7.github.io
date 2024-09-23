@@ -19,14 +19,87 @@
 <item>
   <title>What I Learned during my Second and Third Internships</title>
   <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/23_test.html</link>
+  <link>https://forbo7.github.io/forblog/posts/21_reflecting_on_my_internships.html</link>
   <description><![CDATA[ 
 
 
 
 
+<p><img src="https://forbo7.github.io/forblog/images/21_reflecting_on_my_internships/thumbnail.png" class="img-fluid" alt="a continuously expanding brain; there are lots of swirls swirling around the brain"></p>
+<p>I recently completed my second and third internships. These were quite hands on, and involved tasks such as finetuning LLMs to generate Cantonese lyrics to the topic and tones specified. Along the way, I learned <em>a lot</em>. Three months ago, I would not have been able to do what I did. You learn by doing.</p>
+<p>Let’s list out some of the things I learned (in no particular order).</p>
+<section id="training-strategies" class="level3">
+<h3 class="anchored" data-anchor-id="training-strategies">Training Strategies</h3>
+<p>I know it sounds really obvious, but one should never start the finetuning process on the full dataset with the largest model variant right out of the box. There will be issues. One may be under the assumption that they’ve implemented the tweaks they needed to on the model, in the first attempt. Or that the data is correctly processed and formatted. However, chances are that they’re not. Save time, money, and resources by finetuning on on a small subset of the data with a smaller model variant. Once it is known the whole process works correctly and as expected, then go ahead with the full finetune.</p>
+</section>
+<section id="bpe-tokenizers" class="level3">
+<h3 class="anchored" data-anchor-id="bpe-tokenizers">BPE Tokenizers</h3>
+<p>Byte Pair Encoding (BPE) tokenizers are “dynamic” tokenizers. That is, they do not tokenize text according to a preset vocabulary or set of rules. Rather, they tokenize according to an algorithm. In short, frequent sequences of characters are merged together to form tokens. These tokenizers also store their vocabulary in a data type known as byte strings.</p>
+</section>
+<section id="gpus" class="level3">
+<h3 class="anchored" data-anchor-id="gpus">GPUs</h3>
+<p>There are various types of GPUs. I got to try out the mighty A100 all the way to reliable T4. I found the L4 and 4090 to be the sweet spot, though I’d lean towards the latter. Also, if you’re simply going after a GPU, don’t go for the major cloud providers such as Google Cloud. The only reason our company was using Google Cloud was because they had obtained free credits. Otherwise, it’s, well, a rip off when compared to <a href="https://cloud-gpus.com/">other providers</a> (in the context of research).</p>
+</section>
+<section id="forward-hooks" class="level3">
+<h3 class="anchored" data-anchor-id="forward-hooks">Forward Hooks</h3>
+<p>A hook is a piece of code that can be inserted at predefined places of an algorithm to achieve extra functionality. In the context of deep learning, a forward hook is a piece of code that is run after the forward pass of a model. By creating a forward hook, one can directly play around with and tweak the computed logits before the loss is calculated.</p>
+</section>
+<section id="token-generation" class="level3">
+<h3 class="anchored" data-anchor-id="token-generation">Token Generation</h3>
+<p>With Hugging Face, at least, the way models generate tokens during training and inference is different. During training, all output tokens are generated simultaneously whereas during inference, generation occurs token by token.</p>
+<p>However, as I dug behind the scenes of the builtin <code>generate</code> method, I found that during inference, all tokens were actually generated simultaneously–in a way. Say, if 10 tokens were to be generated, for each token, 10 tokens would be generated with the remaining 9 being “filler” tokens.</p>
+</section>
+<section id="logit-processors" class="level3">
+<h3 class="anchored" data-anchor-id="logit-processors">Logit Processors</h3>
+<p>Logit processors are nifty objects that Hugging Face provides to be able to conveniently tweak a model’s logits during inference with the builtin <code>generate</code> method.</p>
+</section>
+<section id="handling-mistakes" class="level3">
+<h3 class="anchored" data-anchor-id="handling-mistakes">Handling Mistakes</h3>
+<p>Mistakes happen. Especially for challenging tasks. That’s normal. Mistakes should happen. What’s important is that one learns from their mistakes.</p>
+</section>
+<section id="fsdp" class="level3">
+<h3 class="anchored" data-anchor-id="fsdp">FSDP</h3>
+<p>Fully Sharded Data Parallel is a technique for splitting a model across multiple GPUs. Imagine literally splitting a model’s parameters into a bunch of different groups, and then putting those groups onto multiple GPUs that run simultaneously. When a layer is being computed on a GPU, all relevant parameters are copied to that GPU.</p>
+</section>
+<section id="lora" class="level3">
+<h3 class="anchored" data-anchor-id="lora">LoRA</h3>
+<p>Low Rank Adaptation (LoRA) is a LLM finetuning technique in which new layers are added onto the head of the existing model. These new layers are then trained to achieve a specific task, and form an, well, adapter of sorts. Think of a screwdriver handle onto which you can attach various heads, each head achieving a specific task. In the context of LLMs, these specific tasks could be increasing the performance of a model, reducing its resource usage, or changing what sort of output it generates.</p>
+</section>
+<section id="quantization" class="level3">
+<h3 class="anchored" data-anchor-id="quantization">Quantization</h3>
+<p>Quantization is a LLM inference technique whereby the weights in the remaining few layers of the model are stored in 4 or fewer bits, as opposed to the more typical 16 or 32 bits. This allows more weights to be stored in the same amount of memory, and larger models to be fit on smaller hardware, all whilst retaining the relative same level of performance.</p>
+</section>
+<section id="reading-papers" class="level3">
+<h3 class="anchored" data-anchor-id="reading-papers">Reading Papers</h3>
+<p>When browsing papers, one typically wants to read the abstract, headings, figures, and results. From this, one can determine whether a given paper is worthy for their goal or not.</p>
+<p>When reading a paper, one wants to do it iteratively. In the first iteration, also only read the abstract, figures, and results. In the next iteration, read the paper but not with too much focus. Don’t understand something? That’s fine, move on. In the third iteration, start reading more closely and try to make sense of what is going on. Get bogged down? Spend some more time on it, but not too much more–save it for the next iteration. And so on. As you do more iterations, it may be helpful to rephrase or summarize what each section discusses. This allows you to find gaps in your knowledge and determine whether you understand what you just wrote.</p>
+</section>
+<section id="looping-and-slicing" class="level3">
+<h3 class="anchored" data-anchor-id="looping-and-slicing">Looping and Slicing</h3>
+<p>Loops can be immensely slow. I managed to deflate my training time from 10+ hours to around 2 hours by replacing two nested for loops with a single slicing operation.</p>
+</section>
+<section id="llm-training-data-formats" class="level3">
+<h3 class="anchored" data-anchor-id="llm-training-data-formats">LLM Training Data Formats</h3>
+<p>There are different ways LLM training data can be formatted. The Alpaca format uses <code>'###'</code> as the delimiter, while ChatML uses the tokens <code>'&lt;|im_start|&gt;</code> and <code>'&lt;|im_end|&gt;'</code> as the delimiters.</p>
+</section>
+<section id="best-performing-open-source-models" class="level3">
+<h3 class="anchored" data-anchor-id="best-performing-open-source-models">Best Performing Open Source Models</h3>
+<p>The best performing open source models come from the other side of the Pacific ocean; from China. The AI scene there is quite vibrant, with most of the actual advances happening there. If you look at the latest papers, most of the authors will be from there too. During my internships, I came across so many models I never had heard off that were well performers or had interesting perks or quirks. Qwen is the best performing open source model. Deepseek is the most cost effective endpoint that exists. Then there are so many other models such as InternLM, Yi, PhotoMaker, and more.</p>
+</section>
+<section id="refactoring" class="level3">
+<h3 class="anchored" data-anchor-id="refactoring">Refactoring</h3>
+<p>Refactored code is abstracted code. Abstracted code is maintainable code. Abstracted code is understandable code. Abstracted code is good code.</p>
+</section>
+<section id="data" class="level3">
+<h3 class="anchored" data-anchor-id="data">Data</h3>
+<p>It’s stating the obvious, but data matters. It actually does influence the quality or manner of the model output.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
 
 
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Creating Models</category>
@@ -34,8 +107,9 @@
   <category>Papers</category>
   <category>Programming</category>
   <category>Transformers</category>
-  <guid>https://forbo7.github.io/forblog/posts/23_test.html</guid>
+  <guid>https://forbo7.github.io/forblog/posts/21_reflecting_on_my_internships.html</guid>
   <pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/21_reflecting_on_my_internships/thumbnail.png" medium="image" type="image/png"/>
 </item>
 <item>
   <title>Implementing a Neural Network from Scratch</title>
