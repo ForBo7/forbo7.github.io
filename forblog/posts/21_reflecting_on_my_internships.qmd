@@ -12,7 +12,6 @@ open-graph:
 twitter-card:
   description: You Learn by Doing
   image: ../images/21_reflecting_on_my_internships/thumbnail.png
-draft: true
 ---
 
 ![](../images/21_reflecting_on_my_internships/thumbnail.png){fig-alt="a continuously expanding brain; there are lots of swirls swirling around the brain"}
