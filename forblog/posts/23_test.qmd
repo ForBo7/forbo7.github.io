@@ -5,5 +5,4 @@ description: Brief summaries of various things I learned.
 author: Salman Naqvi
 date: '2024-09-14'
 categories: [Creating Models, LLMs, Papers, Programming, Transformers]
-draft: true
 ---
