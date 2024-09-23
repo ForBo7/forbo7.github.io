@@ -15,7 +15,28 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Sun, 26 May 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 14 Sep 2024 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>What I Learned during my Second and Third Internships</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/23_test.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Creating Models</category>
+  <category>LLMs</category>
+  <category>Papers</category>
+  <category>Programming</category>
+  <category>Transformers</category>
+  <guid>https://forbo7.github.io/forblog/posts/23_test.html</guid>
+  <pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Implementing a Neural Network from Scratch</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -18077,111 +18098,6 @@ font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
   <category>Creating Models</category>
   <guid>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</guid>
   <pubDate>Sat, 28 May 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>How to Approach Creating AI Models</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>This article was rewritten on <strong>Monday, 31 October 2022</strong>.</em></p>
-<p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/thumbnail.jpg" class="img-fluid" alt="A picture showing cogs and gears."></p>
-<section id="introduction" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>How you approach making models is crucial. The way AI methods are used in today’s landscape is very different. AI methods are created to solve small, atomic problems. And we’ve got most of the methods to handle these small tasks hammered down. Therefore, applied AI is not about creating models; it’s only a small part of it. It’s 80% problem solving and 20% implementing (I would not be surprised if it actually followed the 80-20 rule<sup>1</sup>).</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;<a href="https://en.wikipedia.org/wiki/Pareto_principle">The 80/20 Rule, also known as the Pareto Principle</a></p></div></div><p>Think of AI methods as a tool; think of it as a pencil. You can use pencils to draw, take notes, poke holes, and much more. There are also dozens of pencils out there. But what point is there in using any of those pencils if you don’t even know how to properly use a pencil in the first place? The art of creating pencils has already been perfected too.</p>
-<p>One highly successful approach is the <em>Drivetrain Approach</em>, created by Jeremy Howard — who’s widely known for his fastai course and library —, Margit Zwemer, and Mike Loukides.</p>
-<p>The goal of the <em>Drivetrain Approach</em> is to not just use data to generate more data — data that is in the form of predictions. But rather to use data to also generate actionable outcomes.</p>
-<p>The official blogpost goes into much more depth <a href="https://www.oreilly.com/radar/drivetrain-approach-data-products/">here</a>.</p>
-<p>In this post, I’ll be providing a short overview of my understanding of this approach by applying it to the <a href="https://www.elementsofai.com">Elements of AI</a> course’s final project (this online course was created by the University of Helsinki and Reaktor).</p>
-</section>
-<section id="overview-of-the-drivetrain-approach" class="level2">
-<h2 class="anchored" data-anchor-id="overview-of-the-drivetrain-approach">Overview of the Drivetrain Approach</h2>
-<p>There are four main steps to this approach:</p>
-<ul>
-<li>Define the objective</li>
-<li>Consider your possible actions</li>
-<li>Consider your data</li>
-<li>Create the models</li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/drivetrain_approach.png" class="img-fluid figure-img" alt="A diagram depicting the DrivetrainApproach as a flow chart."></p>
-<figcaption><a href="https://www.oreilly.%20com/radar/drivetrain-approach-data-products/">Image Source</a></figcaption>
-</figure>
-</div>
-<section id="define-the-objective" class="level3">
-<h3 class="anchored" data-anchor-id="define-the-objective">Define the objective</h3>
-<p>Write out what you are really trying to achieve. What is your goal? Writing it out puts it in a tangible manner.</p>
-</section>
-<section id="consider-your-actions" class="level3">
-<h3 class="anchored" data-anchor-id="consider-your-actions">Consider your actions</h3>
-<p>Think about what actions you can take to achieve your objective.</p>
-<p>Also think about what would happen if you did those actions.</p>
-<p>What would happen if I did <em>x</em>? Would <em>y</em> really be a good idea? What if <em>z</em> worked out <strong>too</strong> well? Will <em>x</em> lead to <em>y</em>? What would happen if <em>x</em> turned out poorly?</p>
-</section>
-<section id="consider-your-data" class="level3">
-<h3 class="anchored" data-anchor-id="consider-your-data">Consider your data</h3>
-<p>Think about the data you already have and how it could be used.</p>
-<p>Think about any further data that is needed and how it could be collected.</p>
-</section>
-<section id="create-the-models" class="level3">
-<h3 class="anchored" data-anchor-id="create-the-models">Create the models</h3>
-<p>Create models. But create models that produce actions. Actions that produce the best results for your objective.</p>
-</section>
-</section>
-<section id="endangered-language-chatbot" class="level2">
-<h2 class="anchored" data-anchor-id="endangered-language-chatbot">Endangered Language Chatbot</h2>
-<p>The final project of the Elements of AI course asked me to come up with my own AI method that would solve a problem, and how it would do so.</p>
-<p>The problem I tackled was the endangerment of languages. The solution I came up with was to create a chatbot that could converse in these endangered languages. I created an overview of how this could be done.</p>
-<p>The overview can be read <a href="https://github.com/ForBo7/Endangered-Language-Chatbot">here</a>.</p>
-<p>Let’s tackle this problem through the <em>Drivetrain Approach</em>.</p>
-<section id="define-the-objective-1" class="level3">
-<h3 class="anchored" data-anchor-id="define-the-objective-1">Define the objective</h3>
-<p>The objective is to preserve languages that are in danger of going extinct. Through preserving languages, histories and cultures can be preserved.</p>
-</section>
-<section id="consider-your-actions-1" class="level3">
-<h3 class="anchored" data-anchor-id="consider-your-actions-1">Consider your actions</h3>
-<p>One way this could be done is to create a chatbot that could converse in endangered languages. However, this would be a monumental task considering the amount of data needed to achieve this.</p>
-<p>Another action that could be taken is to create an information retrieval (IR) system of sorts. A corpus of written text of the language could be provided, from which insights about the language’s history, culture, and way of conversing could be gained. In turn the language is preserved.</p>
-<p>The latter action may be easier to achieve.</p>
-</section>
-<section id="consider-your-data-1" class="level3">
-<h3 class="anchored" data-anchor-id="consider-your-data-1">Consider your data</h3>
-<p>The obvious source of data would be a corpora of text.</p>
-<p>However, a major problem arises for those languages which are only spoken. Audio recordings of conversations would have to be made which would take a lot of time and effort. This would be especially difficult for those languages where very few speakers remain.</p>
-<p>Even if a language does have written text, gathering enough text for the language can also be a problem: the language may not have much written text. This may especially be the case for endangered languages. Again, one solution is to manually create texts — using an NLP method to create these texts is not viable.</p>
-<p>In short, for some languages, there may be no choice other than to manually create the data that would be fed into the system — this manual creation also has the chance to skew the performance of the model.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/images/1_how_to_approach_creating_ai_models/whistle_language.jpg" class="img-fluid figure-img" alt="An elderly man blowing a whistle."></p>
-<figcaption>Kuş dili, a whistled language spoken in Turkey. How would such a language be preserved? <a href="https://ich.unesco.org/en/USL/whistled-language-00658">Image Source</a></figcaption>
-</figure>
-</div>
-</section>
-<section id="create-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="create-the-model">Create the model</h3>
-<p>Either a chatbot needs to be created that speaks as accurately as a native speaker, or an IR system needs to be created that gives meaningful, correct insights into a language and its associated culture.</p>
-<p>This step may either be easy or hard, depending on the language. Most NLP or IR systems have been built on a few, select languages. Perhaps this step may be easy for those languages that are similar to languages on which NLP or IR systems have already been built on. It will most likely be harder for those languages which are not.</p>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>This concludes my understanding of the <em>Drivetrain Approach</em>, through an example.</p>
-<p>Approaches are crucial: you can have state-of-the-art tools, but they are useless if not correctly applied. The approach you take can either make it or break it. Putting it into a concrete, organized, tangible manner goes a long way.</p>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Approaching AI</category>
-  <guid>https://forbo7.github.io/forblog/posts/1_how_to_approach_creating_ai_models.html</guid>
-  <pubDate>Fri, 27 May 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
