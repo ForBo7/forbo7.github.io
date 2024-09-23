@@ -1,8 +1,0 @@
----
-title: Mean Columnwise Root Mean Squared Error (MCRMSE)
-description: A [metric](metric.qmd) used for those tasks where multiple targets need to be predicted. This metric simply takes the average of the [RMSE](root_mean_squared_error_rmse.qmd) of each target.
----
-
----
-
-Let's say a model had to predict the velocity, acceleration, and drag force for 3 cars.

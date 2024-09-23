@@ -1,4 +1,0 @@
----
-title: Document
-description: "The name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as [sequence](sequence.qmd)."
----

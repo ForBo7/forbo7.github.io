@@ -1,4 +1,0 @@
----
-title: Latent (Diffusion)
-description: A compressed image.
----

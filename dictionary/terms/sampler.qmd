@@ -1,8 +1,0 @@
----
-title: Sampler
-description: An algorithm that decides what indices of a [dataset](dataset.qmd) to load. Note that this algorithm does not load data, and hence is not a [dataloader](dataloader.qmd).
----
-
----
-
-Metaphorically speaking, if we let a [dataset](dataset.qmd) be a warehouse, a [dataloader](dataloader.qmd) be a human, a [batch](batch.qmd) be a crate, and the sampler be the manager, then the manager is responsible for informing the human what items to gather from the warehouse, who then puts them into crates.

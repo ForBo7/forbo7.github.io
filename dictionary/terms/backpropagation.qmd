@@ -1,4 +1,0 @@
----
-title: Backpropagation
-description: The name given to the algorithm that computes the gradients for the weights in a model. Note that it does not update the weights, and hence is not an [optimizer](optimizer.qmd)
----

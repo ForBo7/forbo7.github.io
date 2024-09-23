@@ -1,4 +1,0 @@
----
-title: Dataset
-description: A collection of data.
----

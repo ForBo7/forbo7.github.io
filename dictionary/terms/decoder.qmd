@@ -1,8 +1,0 @@
----
-title: Decoder (Transformers)
-description: "A component of a [transformer](transformer.qmd) that is used for generating text. An example is the autocomplete feature on a smartphone's keyboard."
----
-
----
-
-To learn more about decoders, you can read [this](https://forbo7.github.io/forblog/posts/9_transformers_explained.html#decoders) to the point rundown.

@@ -1,8 +1,0 @@
----
-title: Encoder (Transformers)
-description: 'A component of a [transformer](transformer.qmd) that is used for "understanding" text. Encoders are typically used for classifying sentences by sentiment and figuring out what parts of a sentence refers, for example, to a person or location.'
----
-
----
-
-To learn more about decoders, you can read [this](https://forbo7.github.io/forblog/posts/9_transformers_explained.html#encoders) to the point rundown.

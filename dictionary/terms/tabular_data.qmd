@@ -1,4 +1,0 @@
----
-title: Tabular Data
-description: Data in the form of a table.
----

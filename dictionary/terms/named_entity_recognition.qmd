@@ -1,8 +1,0 @@
----
-title: Named Entity Recognition (NER)
-description: "A NLP classification task where a sentence is broken into its components, and the [model](model.qmd) attempts to assign each component to a specific entity (e.g., person, place, organization)."
----
-
----
-
-Take the sentence "Tim went to the Moon." as an example. The sentence would first be broken into 'Tim', 'went', 'to', the', 'Moon'. The model could then give 'Tim' the label of 'person', and 'Moon' the label of 'location'.

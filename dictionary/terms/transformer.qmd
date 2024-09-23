@@ -1,8 +1,0 @@
----
-title: Transformer
-description: "The name given to a Natural Language Processing (NLP) [architecture](architecture.qmd) that, in a nutshell, either fills-in-the-blanks or autocompletes text. Transformers consist of either an [encoder](encoder.qmd), [decoder](decoder.qmd), or both."
----
-
----
-
-To learn more about transformers, you can read [this](https://forbo7.github.io/forblog/posts/9_transformers_explained.html) to the point rundown.
