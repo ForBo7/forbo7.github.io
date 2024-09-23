@@ -1,15 +1,11 @@
 toc: true
-# TODO: Tweak ToC depth
 toc-depth: 4
 number-sections: false
 reference-location: margin
 date-format: "dddd, DD MMMM YYYY"
 reading-time: true
-# Page navigation doesn't work.
-page-navigation: true
 website:
   reader-mode: true
-  # TODO: Not able to get per page footers.
   page-footer: 
     left: "[ForBlog](https://forbo7.github.io/forblog.html) © 2024 by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1) | [Site Version 2.0.0.0](https://forbo7.github.io/patch_notes.html/) | This site is powered by [Quarto](https://quarto.org)."
     right:
@@ -25,5 +21,3 @@ format:
   html:
     mermaid:
       theme: neutral
-
-# TODO: Try a word cloud for categories listing.
