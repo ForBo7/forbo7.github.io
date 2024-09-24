@@ -4,7 +4,7 @@ subtitle: You Learn by Doing
 description: Brief summaries of various things I learned.
 image: ../images/21_reflecting_on_my_internships/thumbnail.jpg
 author: Salman Naqvi
-date: '2024-09-14'
+date: '2024-09-24'
 categories: [Creating Models, LLMs, Papers, Programming, Transformers]
 open-graph:
   description: You Learn by Doing
