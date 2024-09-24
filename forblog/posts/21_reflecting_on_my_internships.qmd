@@ -2,19 +2,19 @@
 title: What I Learned during my Second and Third Internships
 subtitle: You Learn by Doing
 description: Brief summaries of various things I learned.
-image: ../images/21_reflecting_on_my_internships/thumbnail.png
+image: ../images/21_reflecting_on_my_internships/thumbnail.jpg
 author: Salman Naqvi
 date: '2024-09-14'
 categories: [Creating Models, LLMs, Papers, Programming, Transformers]
 open-graph:
   description: You Learn by Doing
-  image: ../images/21_reflecting_on_my_internships/thumbnail.png
+  image: ../images/21_reflecting_on_my_internships/thumbnail.jpg
 twitter-card:
   description: You Learn by Doing
-  image: ../images/21_reflecting_on_my_internships/thumbnail.png
+  image: ../images/21_reflecting_on_my_internships/thumbnail.jpg
 ---
 
-![](../images/21_reflecting_on_my_internships/thumbnail.png){fig-alt="a continuously expanding brain; there are lots of swirls swirling around the brain"}
+![](../images/21_reflecting_on_my_internships/thumbnail.jpg){fig-alt="a continuously expanding brain; there are lots of swirls swirling around the brain"}
 
 I recently completed my second and third internships. These were quite hands on, and involved tasks such as finetuning LLMs to generate Cantonese lyrics to the topic and tones specified. Along the way, I learned *a lot*. Three months ago, I would not have been able to do what I did. You learn by doing.
 
