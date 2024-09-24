@@ -15,7 +15,7 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.5.57</generator>
-<lastBuildDate>Sat, 14 Sep 2024 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Sep 2024 00:00:00 GMT</lastBuildDate>
 <item>
   <title>What I Learned during my Second and Third Internships</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -25,7 +25,7 @@
 
 
 
-<p><img src="https://forbo7.github.io/forblog/images/21_reflecting_on_my_internships/thumbnail.png" class="img-fluid" alt="a continuously expanding brain; there are lots of swirls swirling around the brain"></p>
+<p><img src="https://forbo7.github.io/forblog/images/21_reflecting_on_my_internships/thumbnail.jpg" class="img-fluid" alt="a continuously expanding brain; there are lots of swirls swirling around the brain"></p>
 <p>I recently completed my second and third internships. These were quite hands on, and involved tasks such as finetuning LLMs to generate Cantonese lyrics to the topic and tones specified. Along the way, I learned <em>a lot</em>. Three months ago, I would not have been able to do what I did. You learn by doing.</p>
 <p>Let’s list out some of the things I learned (in no particular order).</p>
 <section id="training-strategies" class="level3">
@@ -108,8 +108,8 @@
   <category>Programming</category>
   <category>Transformers</category>
   <guid>https://forbo7.github.io/forblog/posts/21_reflecting_on_my_internships.html</guid>
-  <pubDate>Sat, 14 Sep 2024 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/21_reflecting_on_my_internships/thumbnail.png" medium="image" type="image/png"/>
+  <pubDate>Tue, 24 Sep 2024 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/21_reflecting_on_my_internships/thumbnail.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
   <title>Implementing a Neural Network from Scratch</title>
