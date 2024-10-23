@@ -411,7 +411,7 @@ For each row $i$, iterate through each column $j$ and sum them.
 
 ##### **Einsum Notation**
 
-$ij \rightarrow j$
+$ij \rightarrow i$
 
 ---
 
@@ -423,7 +423,7 @@ For each column $j$, iterate through each row $i$ and sum them.
 
 ##### **Einsum Notation**
 
-$ij \rightarrow i$
+$ij \rightarrow j$
 
 ---
 
