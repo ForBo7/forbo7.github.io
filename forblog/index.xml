@@ -8823,7 +8823,7 @@ Expanded example
 </section>
 <section id="einsum-notation-9" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-9"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij%20%5Crightarrow%20j"></p>
+<p><img src="https://latex.codecogs.com/png.latex?ij%20%5Crightarrow%20i"></p>
 <hr>
 </section>
 </section>
@@ -8835,7 +8835,7 @@ Expanded example
 </section>
 <section id="einsum-notation-10" class="level5">
 <h5 class="anchored" data-anchor-id="einsum-notation-10"><strong>Einsum Notation</strong></h5>
-<p><img src="https://latex.codecogs.com/png.latex?ij%20%5Crightarrow%20i"></p>
+<p><img src="https://latex.codecogs.com/png.latex?ij%20%5Crightarrow%20j"></p>
 <hr>
 </section>
 </section>
