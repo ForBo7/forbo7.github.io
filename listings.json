@@ -1,6 +1,6 @@
 [
   {
-    "listing": "/index.html",
+    "listing": "/forblog/index.html",
     "items": [
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
@@ -22,18 +22,7 @@
       "/forblog/posts/4_data_quality_is_important.html",
       "/forblog/posts/3_the_confusion_matrix.html",
       "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
-    ]
-  },
-  {
-    "listing": "/web_apps/index.html",
-    "items": [
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
     ]
   },
   {
@@ -97,7 +86,7 @@
     ]
   },
   {
-    "listing": "/testing_page.html",
+    "listing": "/index.html",
     "items": [
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
@@ -126,7 +115,15 @@
     ]
   },
   {
-    "listing": "/forblog/index.html",
+    "listing": "/web_apps/index.html",
+    "items": [
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
+    ]
+  },
+  {
+    "listing": "/testing_page.html",
     "items": [
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
@@ -148,7 +145,10 @@
       "/forblog/posts/4_data_quality_is_important.html",
       "/forblog/posts/3_the_confusion_matrix.html",
       "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
     ]
   }
 ]
