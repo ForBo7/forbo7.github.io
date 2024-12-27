@@ -34,7 +34,7 @@ website:
       - icon: rss
         href: forblog/index.xml
   page-footer:
-    left: "[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2024 and ForBlog™ by [Salman Naqvi](https://forbo7.github.io/about.html)"
+    left: "[ForBo7 // Salman Naqvi](https://forbo7.github.io/) © 2022–2025 to ∞ and ForBlog™ by [Salman Naqvi](https://forbo7.github.io/about.html)"
     center:
       - icon: file-post-fill
         href: https://forums.fast.ai/u/forbo7/summary
