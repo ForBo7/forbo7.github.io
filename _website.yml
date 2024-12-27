@@ -19,9 +19,9 @@ website:
       - icon: newspaper
         text: ForBlog
         href: forblog/index.qmd
-      - icon: sliders2
-        text: Playground
-        href: web_apps/index.qmd
+      - icon: puzzle
+        text: Bits and Bobs
+        href: bitsandbobs/index.qmd
       - icon: book
         text: Dictionary
         href: dictionary/index.qmd

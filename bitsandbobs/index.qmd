@@ -1,0 +1,42 @@
+---
+title: '{{< animate bounceInDown "These are bits and bobs." duration-faster >}}'
+comments: false
+margin-header: "[ForBlog](https://forbo7.github.io/forblog/) © 2025–∞ by [Salman Naqvi](https://forbo7.github.io/about.html) is licensed under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1)"
+listing:
+  - id: posts
+    type: table
+    contents: posts
+    sort: 
+      - "date desc"
+      - "title asc"
+    categories: cloud
+    # if any bugs, it's categories
+    sort-ui: [title, date, categories]
+    filter-ui: [title, date, categories]
+    feed: true
+    page-size: 14
+    date-format: "DD MMMM YYYY"
+    fields: [title, description, date]
+format:
+  html:
+    page-layout: full
+website:
+  back-to-top-navigation: true
+open-graph:
+  description: "Bits and bobs I learned along the way. Maybe you'll find them useful too."
+twitter-card:
+  description: "Bits and bobs I learned along the way. Maybe you'll find them useful too."
+---
+
+{{< animate bounceInDown "Bits and bobs I learned along the way. Maybe you'll find them useful too." duration-faster >}}
+
+::::{.animate__animated .animate__bounceInUp .animate__duration-faster}
+
+:::{#posts}
+:::
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSetO4I9TtneTiZXNidTYHcAyqrVUeZzKAq00it7RbHMBGJ53g/viewform?embedded=true" width="100%" height="600vh" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+<br></br>
+
+::::
