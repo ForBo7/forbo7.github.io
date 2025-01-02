@@ -802,7 +802,21 @@
     "href": "patch_notes.html",
     "title": "Site Patch Notes",
     "section": "",
-    "text": "Detailed patchnotes are unavailable prior to site version 2.0.0.0."
+    "text": "Detailed patch notes are unavailable prior to site version 2.0.0.0."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.2.2.0-28-december-2024",
+    "href": "patch_notes.html#version-2.2.2.0-28-december-2024",
+    "title": "Site Patch Notes",
+    "section": "Version 2.2.2.0 | 28 December 2024",
+    "text": "Version 2.2.2.0 | 28 December 2024\n\nLaunched Bits and Bobs.\nUnlinked App Playground.\nReplaced App Playground with Bits and Bobs on landing page."
+  },
+  {
+    "objectID": "patch_notes.html#version-2.2.1.6-27-december-2024",
+    "href": "patch_notes.html#version-2.2.1.6-27-december-2024",
+    "title": "Site Patch Notes",
+    "section": "Version 2.2.1.6 | 27 December 2024",
+    "text": "Version 2.2.1.6 | 27 December 2024\n\nUpdated copyright notices for 2025 and beyond."
   },
   {
     "objectID": "patch_notes.html#version-2.2.1.5-26-may-2024",
