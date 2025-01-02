@@ -23,7 +23,7 @@ Detailed patch notes are unavailable prior to site version 2.0.0.0.
 
 * Updated copyright notices for 2025 and beyond.
 
-## Version 2.2.1.5 | 26 May 2024 {.animate__animated .animate__slideInLeft .animate__faster}
+## Version 2.2.2.0 | 26 May 2024 {.animate__animated .animate__slideInLeft .animate__faster}
 
 * Removed buttons.
 * Tweaked footer text.
