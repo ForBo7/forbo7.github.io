@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputeeabbb0e36b92aec – ForBo7 // Salman Naqvi</title>
+<title>quarto-input7ac64146a2b82105 – ForBo7 // Salman Naqvi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -106,9 +106,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-title','listing-description','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -286,7 +286,7 @@ window.Quarto = {
 <p>Click <a href="./forblog/index.html">here</a> to check out the latest on the ForBlog.</p>
 <div id="listing-landing-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q3JlYXRpbmclMjBNb2RlbHMlMkNMTE1zJTJDUGFwZXJzJTJDUHJvZ3JhbW1pbmclMkNUcmFuc2Zvcm1lcnM=" data-listing-date-sort="1727136000000" data-listing-file-modified-sort="1735803537931" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1108">
+<div class="quarto-post image-right" data-index="0" data-categories="Q3JlYXRpbmclMjBNb2RlbHMlMkNMTE1zJTJDUGFwZXJzJTJDUHJvZ3JhbW1pbmclMkNUcmFuc2Zvcm1lcnM=" data-listing-date-sort="1727136000000" data-listing-file-modified-sort="1735803828564" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1108">
 <div class="thumbnail">
 <p><a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external"></a></p><a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external">
 <p><img loading="lazy" src="./forblog/images/21_reflecting_on_my_internships/thumbnail.jpg" class="thumbnail-image"></p>
@@ -314,7 +314,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="Q3JlYXRpbmclMjBNb2RlbHMlMkNQcm9ncmFtbWluZyUyQ1B5dGhvbiUyQ1B5VG9yY2g=" data-listing-date-sort="1716681600000" data-listing-file-modified-sort="1735803537931" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3486">
+<div class="quarto-post image-right" data-index="1" data-categories="Q3JlYXRpbmclMjBNb2RlbHMlMkNQcm9ncmFtbWluZyUyQ1B5dGhvbiUyQ1B5VG9yY2g=" data-listing-date-sort="1716681600000" data-listing-file-modified-sort="1735803828564" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3486">
 <div class="thumbnail">
 <p><a href="./forblog/posts/20_models_from_scratch.html" class="no-external"></a></p><a href="./forblog/posts/20_models_from_scratch.html" class="no-external">
 <p><img loading="lazy" src="./forblog/images/20_model_from_scratch/thumbnail.jpeg" class="thumbnail-image"></p>
@@ -342,7 +342,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="TExNcyUyQ1RyYW5zZm9ybWVycw==" data-listing-date-sort="1706054400000" data-listing-file-modified-sort="1735803537930" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="878">
+<div class="quarto-post image-right" data-index="2" data-categories="TExNcyUyQ1RyYW5zZm9ybWVycw==" data-listing-date-sort="1706054400000" data-listing-file-modified-sort="1735803828563" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="878">
 <div class="thumbnail">
 <p><a href="./forblog/posts/19_tokenizers.html" class="no-external"></a></p><a href="./forblog/posts/19_tokenizers.html" class="no-external">
 <p><img loading="lazy" src="./forblog/images/19_tokenizers/thumbnail.png" class="thumbnail-image"></p>
@@ -381,6 +381,22 @@ No matching items
 <p>Click <a href="./bitsandbobs/index.html">here</a> to explore more bits and bobs.</p>
 <div id="listing-landing-bits" class="quarto-listing quarto-listing-container-table">
 <div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-landing-bits-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-landing-bits'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-date-sort" data-direction="asc">
+          Date - Oldest
+        </option>
+         <option value="listing-date-sort" data-direction="desc">
+          Date - Newest
+        </option>
+         <option value="listing-title-sort" data-direction="asc">
+          Title
+        </option>
+     </select>
+  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
@@ -390,17 +406,28 @@ No matching items
 <thead>
 <tr>
 <th>
-Title
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Title</a>
 </th>
 <th>
 Description
 </th>
 <th>
-Date
+<a class="sort" data-sort="listing-date-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Date</a>
 </th>
 </tr>
 </thead>
 <tbody class="list">
+<tr data-index="0" data-categories="TWFuZGFyaW4=" data-listing-date-sort="1735776000000" data-listing-file-modified-sort="1735803828256" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19" data-listing-title-sort="没几个" data-listing-filename-sort="2025-01-02-A.qmd">
+<td>
+<a href="./bitsandbobs/posts/2025-01-02-A.html" class="title listing-title">没几个</a>
+</td>
+<td>
+<span class="listing-description">The function of 没几个</span>
+</td>
+<td>
+<span class="listing-date">Jan 2, 2025</span>
+</td>
+</tr>
 </tbody>
 </table>
 <div class="listing-no-matching d-none">

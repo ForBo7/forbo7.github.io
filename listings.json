@@ -108,7 +108,8 @@
       "/forblog/posts/4_data_quality_is_important.html",
       "/forblog/posts/3_the_confusion_matrix.html",
       "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
+      "/bitsandbobs/posts/2025-01-02-A.html"
     ]
   },
   {
@@ -150,6 +151,8 @@
   },
   {
     "listing": "/bitsandbobs/index.html",
-    "items": []
+    "items": [
+      "/bitsandbobs/posts/2025-01-02-A.html"
+    ]
   }
 ]

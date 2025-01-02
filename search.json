@@ -760,7 +760,7 @@
     "href": "index.html#bits-and-bobs",
     "title": "Welcome to the world of ForBo7",
     "section": "Bits and Bobs",
-    "text": "Bits and Bobs\nClick here to explore more bits and bobs.\n\n\n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Bits and Bobs\nClick here to explore more bits and bobs.\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n没几个\n\n\nThe function of 没几个\n\n\nJan 2, 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "web_apps/index.html",
@@ -784,18 +784,11 @@
     "text": "A curious soul navigating the realms of AI, exploring the intricacies of Mandarin, fueled by an insatiable passion for learning. A devoted aficionado of science and technology, proudly wearing the badge of a “sci-tech geek”. In addition to unraveling the complexities of the digital world, I’ve ventured into real-world adventures across 15 countries so far, adding layers of cultural richness to my journey.\n\n\n\nNotable Experience and HonorsInternships and Part-timeSkillsLanguages\n\n\nJun. 12, 2024 – Study Award from Hong Kong SAR Government | Hong Kong SAR Government Scholarship Fund Reaching Out Award\nDec. 7, 2023 — Invited Speaker at the Advanced Study Institute (ASI) Online Symposium | The Education University of Hong Kong and Hong Kong Baptist University\nApr. 2023 – Nov. 2023 — Co-lead Online Study Group | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord\nNov. 2022 – Jun. 2023 — 1100+ Member AI Community Administrator | The Dataspace | Discord\nMar. 17, 2023 — Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan | KUAS-E Scholarship\nFeb. 24, 2023 — Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China | EdUHK Full Entrance Scholarship\nSep. 2022 – Mar. 2023 — Completed fast.ai Course Part 1: Practical Deep Learning for Coders\nJan. 17, 2023 — Placed in Top 12% of Contestants in Data Science Competition | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle\nSep. 2020 – May 2021 — Physics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nSep. 2020 – May 2021 — Mathematics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nJan. 2020 — Concert Marketing – Raised $8,400 |Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nAug. 2019 — Received 100% Scholarship for A-Level Program | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\n2018 — Bronze Medal – Honorable Distinction Award | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan\n\n\nResearch Assistant | Oct. 2024 – Current\nMultimodal Intelligence Laboratory, The Education University of Hong Kong\nAI Engineer | Jul. 2024 – Aug.2024\nKeweya Education Technology Limited – HKSTP Incubatee\n\nReview and analysis of research papers\nDiffusion models\nApp development\n\nLLM Researcher | Jun. 2024 – Jul. 2024\nREADily Limited – HKSTP Incubatee\n\nReview, analysis, and implementation of research papers\nTraining and finetuning large language models\n\nTraining Coordinator | Mar. 2024\nKids4Kids Hong Kong\n\nVolunteer work\nWorkshop planning\nVideo editing\n\n\n\nProgramming\nPython, Jupyter, nbdev, Quarto, fastai, PyTorch, Hugging Face, Gradio Scikit-Learn, Pandas, NumPy\n3D Computer Graphics\nBlender\nTeaching\nCan teach in a logical manner that fosters understanding and the solidification of concepts.\nArtificial Intelligence (fast.ai)\nSelf-learning since April 2022.\n\n\nEnglish | Native level fluency\nUrdu | Fluent\nMandarin | Basic proficiency\n\n\n\n\nEducationMiscellaneous\n\n\nCurrently studying BSc (Honors) in Artificial Intelligence and Educational Technology at The Education University of Hong Kong.\nHigh School | CAIE A-Level — Sep 2019 – Aug. 2021\nMiddle School | CAIE IGCSE — Aug 2015 – Aug. 2019\nMiddle School | IB Middle Years Program — Aug. 2013 – Jun. 2015\nPrimary School | IB Primary Years Program — Aug. 2009 – Jun. 2013\n\n\nEdUHK Year 1 GPA — 3.74/4.00\nEdUHK International Student Ambassador — Sep 2023 – Current\nIELTS — 8.5/9.0\n\n\n\n\n \n\n\n Back to top"
   },
   {
-    "objectID": "testing_page.html",
-    "href": "testing_page.html",
-    "title": "Testing Page",
+    "objectID": "bitsandbobs/posts/2025-01-02-A.html",
+    "href": "bitsandbobs/posts/2025-01-02-A.html",
+    "title": "没几个",
     "section": "",
-    "text": "Trying to change Quarto Version.\n\n\nForBlog\n\n\n\n\n\n\n\n\n\n\nWhat I Learned during my Second and Third Internships\n\n\nYou Learn by Doing\n\n\nBrief summaries of various things I learned.\n\n\n\n\n\nSep 24, 2024\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nImplementing a Neural Network from Scratch\n\n\nThe DIY Guide to Digital Brain Building\n\n\nFirst I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.\n\n\n\n\n\nMay 26, 2024\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nA Brief Token on Tokenizers\n\n\nThis limited time DLC post costs only 499 tokens to unlock.\n\n\nTokenizers in a high-level nutshell.\n\n\n\n\n\nJan 24, 2024\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPlayground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "feedback.html",
-    "href": "feedback.html",
-    "title": "Site Feedback",
-    "section": "",
-    "text": "Loading…"
+    "text": "没几个 is a way of saying a “very few” of something, rather than “not few”.\n我认识的人很多，但没几个好朋友。\nFrom the Immersive Chinese App.\n\n\n\n Back to top"
   },
   {
     "objectID": "patch_notes.html",
@@ -959,11 +952,25 @@
     "text": "Version 1.0.0.0 | 15 May 2022\n\nInitial release.\nSite is built on fastpages, by fastai."
   },
   {
+    "objectID": "feedback.html",
+    "href": "feedback.html",
+    "title": "Site Feedback",
+    "section": "",
+    "text": "Loading…"
+  },
+  {
+    "objectID": "testing_page.html",
+    "href": "testing_page.html",
+    "title": "Testing Page",
+    "section": "",
+    "text": "Trying to change Quarto Version.\n\n\nForBlog\n\n\n\n\n\n\n\n\n\n\nWhat I Learned during my Second and Third Internships\n\n\nYou Learn by Doing\n\n\nBrief summaries of various things I learned.\n\n\n\n\n\nSep 24, 2024\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nImplementing a Neural Network from Scratch\n\n\nThe DIY Guide to Digital Brain Building\n\n\nFirst I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.\n\n\n\n\n\nMay 26, 2024\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nA Brief Token on Tokenizers\n\n\nThis limited time DLC post costs only 499 tokens to unlock.\n\n\nTokenizers in a high-level nutshell.\n\n\n\n\n\nJan 24, 2024\n\n\nSalman Naqvi\n\n\n\n\n\n\nNo matching items\n\n\n\n\nPlayground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
     "objectID": "bitsandbobs/index.html",
     "href": "bitsandbobs/index.html",
     "title": "These are bits and bobs.",
     "section": "",
-    "text": "Bits and bobs I learned along the way. Maybe you'll find them useful too.\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n\nNo matching items\n\n\n\nLoading…\n\n\n\n\n\n\n\n Back to top"
+    "text": "Bits and bobs I learned along the way. Maybe you'll find them useful too.\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nTitle\n\n\nDescription\n\n\nDate\n\n\n\n\n\n\n没几个\n\n\nThe function of 没几个\n\n\n02 January 2025\n\n\n\n\n\nNo matching items\n\n\n\nLoading…\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "web_apps/apps/coming_soon.html",
