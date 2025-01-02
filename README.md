@@ -12,9 +12,9 @@ The landing page features a dynamic dual-listing in conjunction with the about m
 
 My blog where I post what I'm learning and what's on my mind!
 
-### App Playground
+### Bits and Bobs
 
-A place where I can display various apps and gizmos I make.
+A place where I share bits and bobs I learn along the way.
 
 ### More coming soon
 
