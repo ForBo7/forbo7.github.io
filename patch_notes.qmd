@@ -10,8 +10,18 @@ twitter-card:
 ---
 
 :::{.callout-note appearance="simple"}
-Detailed patchnotes are unavailable prior to site version 2.0.0.0.
+Detailed patch notes are unavailable prior to site version 2.0.0.0.
 :::
+
+## Version 2.2.2.0 | 28 December 2024 {.animate__animated .animate__slideInLeft .animate__faster}
+
+* Launched Bits and Bobs.
+* Unlinked App Playground.
+* Replaced App Playground with Bits and Bobs on landing page.
+
+## Version 2.2.1.6 | 27 December 2024 {.animate__animated .animate__slideInRight .animate__faster}
+
+* Updated copyright notices for 2025 and beyond.
 
 ## Version 2.2.1.5 | 26 May 2024 {.animate__animated .animate__slideInLeft .animate__faster}
 
