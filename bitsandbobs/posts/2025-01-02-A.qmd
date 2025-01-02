@@ -1,0 +1,12 @@
+---
+title: 没几个
+description: The function of 没几个
+date: 2025-01-02
+categories: [Mandarin]
+---
+
+没几个 is a way of saying a "very few" of something, rather than "not few".
+
+我认识的人很多，但没几个好朋友。
+
+From the [Immersive Chinese App](https://immersivechinese.com/).
