@@ -1,0 +1,10 @@
+---
+title: 小和年轻
+description: 小 and 年轻 carry different contations for age.
+date: 2025-01-14
+categories: [Mandarin]
+---
+
+小 can indicate whether one is young or old. For example, 她有一个小孩儿. However, you have to be careful when using 年轻, as it carries the connotation of being the opposite of old. If you're saying you're younger than someone, and you use 年轻, it also implies that the other person is old. 小 does not carry this connotation.
+
+[From the Chinese Grammar Wiki (including the example sentence).](https://resources.allsetlearning.com/chinese/vocabulary/Comparing_%22shao%22_and_%22xiao%22#To_express_.22young.22_as_an_adjective_use_.E5.B0.8F).
