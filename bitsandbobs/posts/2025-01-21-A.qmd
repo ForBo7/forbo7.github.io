@@ -14,3 +14,5 @@ A segmentation model is used to extract relevant objects from the robot's vision
 Next, for each stage of the task, interaction primitives and their spatial constraints are extracted. A single view 3D generation model is used to generate meshes for all objects relevant to the task. A pose estimation model is then used to canonicalize the objects. Interaction primitives and their corresponding constraints relevant for the task are then identified by the VLM. Along the way, a LLM is used to grade various primitives and constriants.
 
 Models hallucinate (in particular, the VLM). The world is not static. To overcome this, a closed loop system is introduced; a self correction mechanism based on resampling, rendering and checking. This method uses realtime feedback form the VLM, which is used to detect and then correct interaction errors. A pose tracking algorithm is also used to continuously update the poses of all relevant objects, allowing the robot to be dynamically adjusted.
+
+[Link to paper.](https://omnimanip.github.io/)
