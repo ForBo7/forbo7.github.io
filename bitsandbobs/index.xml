@@ -15,7 +15,29 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Tue, 14 Jan 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 21 Jan 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>OmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-01-21-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>OmniManip is a hot new paper from Agibot and Peking University. It’s about zero shot natural language robotic manipulation tasks. A current issue with this task, and current approaches the utilize VLMs, is that VLMs lack 3D spatial understanding. They’re only trained on 2D images and video after all.</p>
+<p>OmniManip utilizes an ensemble of models to achieve this goal. This is how it works at a high level.</p>
+<p>A segmentation model is used to extract the relevant objects from the robot’s vision. A VLM then filters out task relevant objects, and also breaks down the input task (input as text) into multiple stages.</p>
+<p>Next, interaction primitives and their spatial constraints, for each stage, are extracted. A single view 3D generation model is used to generate meshes for all objects relevant to the task. A pose estimation model is then use to canonicalize the objects. The VLM then extracts interaction primitives and their corresponding constraints from, that are relevant for the task. Along the way, a LLM is used to grade various primitives and constriants.</p>
+<p>Models hallucinate (in particular, the VLM). The world is not static. To overcome this, a closed loop system is introduced; a self correction mechanism based on resample, rendering and checking (RRC). The mechanism employs realtime feedback from the VLM to detect and correct interaction errors. A pose tracking algorithm is also used to continuously update the poses of all relevant objects, allowing the robot to be dynamically adjusted.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Robotics</category>
+  <category>Natural Language Processing</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-01-21-A.html</guid>
+  <pubDate>Tue, 21 Jan 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>小和年轻</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-01-14-A.html</link>
