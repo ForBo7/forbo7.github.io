@@ -1,0 +1,92 @@
+---
+title: "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces"
+description: A new dimension to current models is needed to understand space.
+date: 2025-01-21
+categories: [Robotics, Spatial Intelligence, Natural Language Processing, MLLM, VLM, Papers]
+---
+
+This paper tackles the issue that is the lack of spatial understanding and spatial reasoning that MLLM/VLMs.
+
+In this paper, the authors created a benchmark for spatial reasoning, consisting of over 5000 QnA pairs from 288 indoor videos. A variety of tasks are covered, including configurational (e.g,. object count, route planning), measurement estimation (e.g., room size), and spatiotempral reasoning (e.g., appearance order). 79% accuracy on the benchmark is needed to reach human level awareness. The authors found that their MLLM could only reach 49%.
+
+The resulting analysis from the paper shows that 71% of errors stem from spatial reasoning, rather than perception or language understanding. By generating spatial layout (cognitive maps), accuracy on distance related tasks improved by 10%. This outperforms linguistic prompting techniques such as CoT. In fact, CoT degraded performance on the benchmark.
+
+It was also found that MLLMs have strong *local* spatial awareness, but struggle with global awareness.
+
+Weaknesses in the study include reliance on 3D datasets that may contain annotation errors, video processing and langauge model evaluation being resource intensive, and the study focusing on indoor scenes and not outdoor scenes.
+
+Future directions encourage research into hybrid models that are both language and spatial memory, self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.
+
+[Link to paper](https://huggingface.co/papers/2412.14171).
+
+::: {.callout-note collapse="true" appearance="simple"}
+## Deepseek R1 Summary
+### Structured Summary of "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces"
+
+#### **Contextual Overview**  
+- **Research Question**: Can Multimodal Large Language Models (MLLMs) exhibit human-like visual-spatial intelligence (VSI) when reasoning about 3D spaces from videos?  
+- **Objective**: Develop a benchmark (VSI-Bench) to evaluate MLLMs’ ability to perceive, remember, and reason about spatial relationships in real-world indoor environments.  
+- **Domain**: Multimodal AI, spatial reasoning, video understanding.  
+- **Motivation**: Visual-spatial intelligence is critical for robotics, AR/VR, and autonomous systems, but existing MLLM benchmarks focus on 2D image/text understanding. This work addresses the gap in evaluating 3D spatial reasoning from video input.
+
+---
+
+#### **Key Contributions**  
+1. **VSI-Bench**: A novel benchmark with **5,000+ QA pairs** derived from **288 real indoor videos** (from ScanNet, ScanNet++, ARKitScenes). Tasks include configurational (e.g., object count, route planning), measurement estimation (e.g., room size), and spatiotemporal reasoning (e.g., appearance order).  
+2. **Spatial Reasoning as Bottleneck**: Analysis shows **71% of errors** stem from spatial reasoning (e.g., egocentric-allocentric transformations), not perception or language understanding.  
+3. **Cognitive Maps Enhance Performance**: Explicitly generating spatial layouts (cognitive maps) improves MLLMs’ accuracy on relative distance tasks by **10%**, outperforming linguistic prompting techniques like Chain-of-Thought.  
+4. **Failure of Linguistic Reasoning**: Prevailing methods (CoT, self-consistency, Tree-of-Thoughts) **degraded performance** on VSI-Bench, highlighting the distinct challenges of spatial reasoning.  
+5. **Local vs. Global Spatial Models**: MLLMs build strong **local spatial awareness** (64% accuracy for adjacent objects) but struggle with global consistency.  
+
+---
+
+#### **Methodology Deep Dive**  
+- **Data/Resources**:  
+  - Videos from ScanNet (24 FPS), ScanNet++, ARKitScenes (30 FPS), standardized to 640×480 resolution.  
+  - QA pairs auto-generated using templates and human annotation (for route planning).  
+- **Core Techniques**:  
+  - **Unified Meta-Information**: Structured annotations for object counts, bounding boxes, room size, and spatial relationships.  
+  - **Evaluation Metrics**: Accuracy (for multiple-choice), Mean Relative Accuracy (for numerical answers).  
+  - **Cognitive Map Generation**: Prompting MLLMs to output object positions on a 10×10 grid.  
+- **Validation**:  
+  - **15 MLLMs tested**, including GPT-4o, Gemini-1.5 Pro, and open-source models (LLaVA variants).  
+  - **Human baseline**: 79% accuracy vs. Gemini-1.5 Pro (45.4%).  
+  - **Blind evaluation** confirmed video input is critical (performance drops to chance level without it).  
+
+---
+
+#### **Strengths and Weaknesses**  
+- **Strengths**:  
+  - **Comprehensive Benchmark**: High-quality, diverse tasks with iterative human review.  
+  - **Novel Insights**: Identifies spatial reasoning as the key bottleneck and demonstrates cognitive maps’ utility.  
+  - **Reproducibility**: Public code, metrics, and standardized evaluation protocols.  
+- **Weaknesses**:  
+  - **Dataset Bias**: Relies on existing 3D datasets, which may inherit annotation errors.  
+  - **Compute Demands**: Video processing and large model evaluation are resource-intensive.  
+  - **Limited Generalization**: Focus on indoor scenes; outdoor/embodied settings unexplored.  
+
+---
+
+#### **Relevance to the Field**  
+- **Advances**: Establishes a foundation for evaluating and improving MLLMs’ spatial reasoning, crucial for embodied AI (e.g., robots, autonomous navigation).  
+- **Contrast with Prior Work**: Unlike image-based or text-only spatial benchmarks, VSI-Bench uses video to mirror real-world observation.  
+- **Future Directions**: Encourages research into hybrid models (language + spatial memory), self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.  
+
+---
+
+#### **Key Takeaways**  
+1. **MLLMs lag behind humans** in visual-spatial intelligence (45% vs. 79% accuracy) but show emerging capabilities.  
+2. **Spatial reasoning**—not perception or language—is the primary challenge for MLLMs.  
+3. **Cognitive maps** improve spatial reasoning, suggesting a path toward better world modeling.  
+4. **Linguistic prompting** (CoT, etc.) fails for spatial tasks, demanding new techniques tailored to visuospatial reasoning.  
+5. **Local spatial awareness** exists in MLLMs, but global consistency remains elusive.  
+
+--- 
+
+**Non-Technical Insights for Decision-Makers**:  
+- VSI-Bench is a critical tool for developers aiming to build MLLMs for real-world navigation or AR/VR.  
+- Spatial reasoning enhancements (e.g., cognitive maps) could bridge the gap between MLLMs and human-like spatial understanding.  
+- Open-source models (e.g., LLaVA-NeXT-Video-72B) are competitive with closed-source counterparts, offering cost-effective alternatives.  
+
+Let me know if you’d like to dive deeper into specific sections!
+:::
