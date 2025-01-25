@@ -23,13 +23,15 @@ page-layout: full
 ---
 
 :::{.animate__animated .animate__slideInRight .animate__faster}
-*A curious soul navigating the realms of AI, exploring the intricacies of Mandarin, fueled by an insatiable passion for learning. A devoted aficionado of science and technology, proudly wearing the badge of a “sci-tech geek”. In addition to unraveling the complexities of the digital world, I've ventured into real-world adventures across 15 countries so far, adding layers of cultural richness to my journey.*
+*A curious soul navigating the realms of AI, exploring the intricacies of 3D computer graphics, fueled by an insatiable passion for learning. A devoted aficionado of science and technology, proudly wearing the badge of a “sci-tech geek”. In addition to unraveling the complexities of the digital world, I've ventured into real-world adventures across 15 countries so far, adding layers of cultural richness to my journey.*
 :::
 
 ::::{.animate__animated .animate__slideInUp .animate__faster}
 :::{.panel-tabset}
 
 # Notable Experience and Honors
+
+*Dec. 27, 2024* – **Featured among "The EdUHK Rising Stars"** | EdUHK 30th Anniversary 2025
 
 *Jun. 12, 2024* – **Study Award from Hong Kong SAR Government** | Hong Kong SAR Government Scholarship Fund Reaching Out Award
 
@@ -62,19 +64,20 @@ page-layout: full
 
 Multimodal Intelligence Laboratory, The Education University of Hong Kong
 
+* Natural Language robot manipulation
+
 **AI Engineer** | Jul. 2024 – Aug.2024
 
 Keweya Education Technology Limited – HKSTP Incubatee
 
 * Review and analysis of research papers
-* Diffusion models
-* App development
+* Study of diffusion models, and app development
 
 **LLM Researcher** | Jun. 2024 – Jul. 2024
 
 READily Limited – HKSTP Incubatee
 
-* Review, analysis, and implementation of research papers
+* Research paper review and implementation
 * Training and finetuning large language models
 
 **Training Coordinator** | Mar. 2024
@@ -82,14 +85,13 @@ READily Limited – HKSTP Incubatee
 Kids4Kids Hong Kong
 
 * Volunteer work
-* Workshop planning
-* Video editing
+* Workshop planning and video editing
 
 # Skills
 
 **Programming**
 
-Python, Jupyter, nbdev, Quarto, fastai, PyTorch, Hugging Face, Gradio Scikit-Learn, Pandas, NumPy
+Python, PyTorch, Hugging Face, fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev
 
 **3D Computer Graphics**
 
@@ -105,11 +107,11 @@ Self-learning since April 2022.
 
 # Languages
 
-**English** | Native level fluency
+**English:** Native level fluency
 
-**Urdu** | Fluent
+**Urdu:** Fluent
 
-**Mandarin** | Basic proficiency
+**Mandarin:** Basic proficiency
 
 :::
 
@@ -129,9 +131,9 @@ Primary School | IB Primary Years Program — *Aug. 2009 – Jun. 2013*
 
 # Miscellaneous
 
-EdUHK Year 1 GPA — 3.74/4.00
-
 EdUHK International Student Ambassador — *Sep 2023 – Current*
+
+EdUHK Year 1 GPA — 3.74/4.00
 
 IELTS — 8.5/9.0
 
