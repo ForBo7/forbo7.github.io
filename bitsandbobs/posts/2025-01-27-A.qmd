@@ -1,0 +1,16 @@
+---
+title: 不 vs 没
+description: The age old connundrum.
+date: 2025-01-14
+categories: [Mandarin, Grammar]
+---
+
+In a nutshell.
+
+不:
+- Negates present and future
+- Negates habitual actions and adjectives
+
+没:
+- Negates past
+- Negates something that hasn't happened
