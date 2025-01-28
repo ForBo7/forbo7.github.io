@@ -24,3 +24,5 @@ However, as seen in the image above, the features are noisy. Therefore, the feat
 After the features have been refined, a [functional map](https://cse291-i.github.io/WI18/LectureSlides/L17_Functional_Map.pdf) is solved to compute correspondences.
 
 ![](../images/2025-01-28-A/5.png)
+
+[Link to paper](https://tea-lab.github.io/DenseMatcher/).
