@@ -15,7 +15,36 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Mon, 27 Jan 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 28 Jan 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-01-28-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>DenseMatcher is a method for generalization the “understanding” of one object to another. The best way to understand this, is to view the following images from the paper.</p>
+<p><img src="https://forbo7.github.io/bitsandbobs/images/2025-01-28-A/1.png" class="img-fluid"></p>
+<p><img src="https://forbo7.github.io/bitsandbobs/images/2025-01-28-A/2.png" class="img-fluid"></p>
+<p>In other words, DenseMatcher computes 3D correspondences between objects.</p>
+<p>It works by using SD-DINO (a combination of Stable Diffusion and DINO) to extract 2D features from different angles of the 3D asset. The features from different views are averaged, providing the feature for each vertex.</p>
+<p><img src="https://forbo7.github.io/bitsandbobs/images/2025-01-28-A/3.png" class="img-fluid"></p>
+<p>However, as seen in the image above, the features are noisy. Therefore, the features are then refined with DiffusionNet. This is an architecture meant for meshes.</p>
+<p><img src="https://forbo7.github.io/bitsandbobs/images/2025-01-28-A/4.png" class="img-fluid"></p>
+<p>After the features have been refined, a <a href="https://cse291-i.github.io/WI18/LectureSlides/L17_Functional_Map.pdf">functional map</a> is solved to compute correspondences.</p>
+<p><img src="https://forbo7.github.io/bitsandbobs/images/2025-01-28-A/5.png" class="img-fluid"></p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Papers</category>
+  <category>Robotics</category>
+  <category>Diffusion</category>
+  <category>Spatial Intelligence</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-01-28-A.html</guid>
+  <pubDate>Tue, 28 Jan 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>不 vs 没</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-01-27-A.html</link>
