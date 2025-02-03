@@ -3,7 +3,7 @@ title: "{{< animate fadeIn 'Salman Naqvi' duration=faster >}}"
 about:
   id: about-forbo7
   template: trestles
-  image: images/profile.jpg
+  image: images/profile_1.jpg
   image-shape: rounded
   links:
     - icon: file-post-fill
