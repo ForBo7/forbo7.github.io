@@ -65,6 +65,7 @@ page-layout: full
 Multimodal Intelligence Laboratory, The Education University of Hong Kong
 
 * Natural Language robot manipulation
+* Under [Dr. Fu Hong](https://repository.eduhk.hk/en/persons/hong%E5%82%85%E5%BC%98-fu)
 
 **AI Engineer** | Jul. 2024 – Aug.2024
 
