@@ -15,7 +15,28 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Tue, 28 Jan 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 13 Feb 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Deepseek R1 in 2 bullets</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-02-13-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Am currently reading through the research paper. From my current understanding: - R1-Zero is pure RL, with GRPO as the policy - R1 is pure RL, with GRPO as the policy, with some cold start data, and further refinement stages</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Papers</category>
+  <category>LLM</category>
+  <category>NLP</category>
+  <category>RL</category>
+  <category>Chain-of-Thought</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-02-13-A.html</guid>
+  <pubDate>Thu, 13 Feb 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-01-28-A.html</link>
@@ -215,7 +236,7 @@ Deepseek R1 Summary
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Robotics</category>
   <category>Spatial Intelligence</category>
-  <category>Natural Language Processing</category>
+  <category>NLP</category>
   <category>MLLM</category>
   <category>VLM</category>
   <category>Papers</category>
@@ -241,7 +262,7 @@ Deepseek R1 Summary
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
   <category>Robotics</category>
-  <category>Natural Language Processing</category>
+  <category>NLP</category>
   <category>MLLM</category>
   <category>VLM</category>
   <category>LLM</category>
