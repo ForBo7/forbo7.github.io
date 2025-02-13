@@ -1,0 +1,10 @@
+---
+title: Deepseek R1 in 2 bullets
+description: Deepseek R1 explained in a literal walnut shell
+date: 2025-02-13
+categories: [Papers, LLM, Natural Language Processing, Reinforcement Learning, Chain-of-Thought]
+---
+
+Am currently reading through the research paper. From my current understanding:
+- R1-Zero is pure RL, with GRPO as the policy
+- R1      is pure RL, with GRPO as the policy, with some cold start data, and further refinement stages
