@@ -2,7 +2,7 @@
 title: "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces"
 description: A new dimension to current models is needed to understand space.
 date: 2025-01-23
-categories: [Robotics, Spatial Intelligence, Natural Language Processing, MLLM, VLM, Papers]
+categories: [Robotics, Spatial Intelligence, NLP, MLLM, VLM, Papers]
 ---
 
 This paper tackles the issue that is the lack of spatial understanding and spatial reasoning that MLLM/VLMs.

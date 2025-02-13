@@ -2,7 +2,7 @@
 title: "OmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints"
 description: Using an ensemble to overcome the lack of 3D understanding
 date: 2025-01-21
-categories: [Robotics, Natural Language Processing, MLLM, VLM, LLM, Papers]
+categories: [Robotics, NLP, MLLM, VLM, LLM, Papers]
 ---
 
 OmniManip is a hot new paper from Agibot and Peking University. It's about zero shot natural language robotic manipulation tasks. A current issue with this task, and current approaches the utilize VLMs, is that VLMs lack 3D spatial understanding. They're only trained on 2D images and video after all.

@@ -2,7 +2,7 @@
 title: Deepseek R1 in 2 bullets
 description: Deepseek R1 explained in a literal walnut shell
 date: 2025-02-13
-categories: [Papers, LLM, Natural Language Processing, Reinforcement Learning, Chain-of-Thought]
+categories: [Papers, LLM, NLP, RL, Chain-of-Thought]
 ---
 
 Am currently reading through the research paper. From my current understanding:
