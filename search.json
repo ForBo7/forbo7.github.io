@@ -1621,7 +1621,7 @@
     "href": "bitsandbobs/posts/2025-02-13-A.html",
     "title": "Deepseek R1 in 2 bullets",
     "section": "",
-    "text": "Am currently reading through the research paper. From my current understanding: - R1-Zero is pure RL, with GRPO as the policy - R1 is unpure RL, with GRPO as the policy, with some SFT in the form of cold start data, and further refinement stages\n\n\n\n Back to top"
+    "text": "Am currently reading through the research paper. From my current understanding:\n\nR1-Zero is pure RL, with GRPO as the policy\nR1 is unpure RL, with GRPO as the policy, with some SFT in the form of cold start data, and further refinement stages\n\n\n\n\n Back to top"
   },
   {
     "objectID": "bitsandbobs/index.html",
