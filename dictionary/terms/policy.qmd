@@ -1,0 +1,6 @@
+---
+title: Policy (Reinforcement Learning)
+description: "The strategy the agent uses to choose actions based on its current state. The chosen actions aim to maximize the reward."
+---
+
+---
