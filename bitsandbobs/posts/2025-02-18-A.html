@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-02-18">
+<meta name="description" content="Thoughts that came to mind as I’m reading the Deepseek Maths paper">
 
-<title>Testing Page – ForBo7 // Salman Naqvi</title>
+<title>Seeking Deep Thoughts – ForBo7 // Salman Naqvi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-634e50ab935fa5440aaff779aa738fdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-634e50ab935fa5440aaff779aa738fdf.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,120 +68,30 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-landing-posts .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-landing-posts'] = new List('listing-landing-posts', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-landing-apps .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-landing-apps'] = new List('listing-landing-apps', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Testing Page – ForBo7 // Salman Naqvi">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Seeking Deep Thoughts – ForBo7 // Salman Naqvi">
 <meta property="og:description" content="The world of ForBo7!">
-<meta property="og:image" content="https://forbo7.github.io/cover.png">
+<meta property="og:image" content="https://forbo7.github.io/bitsandbobs/posts/cover.png">
 <meta property="og:site_name" content="ForBo7 // Salman Naqvi">
-<meta property="og:image:height" content="1024">
-<meta property="og:image:width" content="1024">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
 <meta name="twitter:description" content="The world of ForBo7!">
-<meta name="twitter:image" content="https://forbo7.github.io/cover.png">
+<meta name="twitter:image" content="https://forbo7.github.io/bitsandbobs/posts/cover.png">
 <meta name="twitter:creator" content="@ForBo7">
 <meta name="twitter:site" content="@ForBo7">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1024">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
   </div>
@@ -192,27 +102,27 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-house-door" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house-door" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./forblog/index.html"> <i class="bi bi-newspaper" role="img">
+    <a class="nav-link" href="../../forblog/index.html"> <i class="bi bi-newspaper" role="img">
 </i> 
 <span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bitsandbobs/index.html"> <i class="bi bi-puzzle" role="img">
+    <a class="nav-link" href="../../bitsandbobs/index.html"> <i class="bi bi-puzzle" role="img">
 </i> 
 <span class="menu-text">Bits and Bobs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dictionary/index.html"> <i class="bi bi-book" role="img">
+    <a class="nav-link" href="../../dictionary/index.html"> <i class="bi bi-book" role="img">
 </i> 
 <span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> <i class="bi bi-file-person" role="img">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-file-person" role="img">
 </i> 
 <span class="menu-text">About</span></a>
   </li>  
@@ -220,29 +130,47 @@ window.Quarto = {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://github.com/ForBo7/forbo7.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
-    <a href="./forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+    <a href="../../forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Testing Page</h1>
+<h1 class="title">Seeking Deep Thoughts</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Papers</div>
+    <div class="quarto-category">LLM</div>
+    <div class="quarto-category">NLP</div>
+    <div class="quarto-category">RL</div>
+    <div class="quarto-category">Thoughts</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Thoughts that came to mind as I’m reading the Deepseek Maths paper
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 18, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -252,176 +180,9 @@ window.Quarto = {
 </header>
 
 
-<p>Trying to change Quarto Version.</p>
-<div class="grid">
-<section id="forblog" class="level1 g-col-12 g-col-md-6">
-<h1>ForBlog</h1>
-<div id="listing-landing-posts" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q3JlYXRpbmclMjBNb2RlbHMlMkNMTE1zJTJDUGFwZXJzJTJDUHJvZ3JhbW1pbmclMkNUcmFuc2Zvcm1lcnM=" data-listing-date-sort="1727136000000" data-listing-file-modified-sort="1739854174638" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1108">
-<div class="thumbnail">
-<p><a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external"></a></p><a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external">
-<p><img loading="lazy" src="./forblog/images/21_reflecting_on_my_internships/thumbnail.jpg" class="thumbnail-image"></p>
-</a><p><a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title" data-anchor-id="forblog">
-<a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external">What I Learned during my Second and Third Internships</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external">You Learn by Doing</a>
-</div>
-<div class="listing-description">
-<a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external">Brief summaries of various things I learned.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./forblog/posts/21_reflecting_on_my_internships.html" class="no-external">
-<div class="listing-date">
-Sep 24, 2024
-</div>
-<div class="listing-author">
-Salman Naqvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="Q3JlYXRpbmclMjBNb2RlbHMlMkNQcm9ncmFtbWluZyUyQ1B5dGhvbiUyQ1B5VG9yY2g=" data-listing-date-sort="1716681600000" data-listing-file-modified-sort="1739854174637" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3486">
-<div class="thumbnail">
-<p><a href="./forblog/posts/20_models_from_scratch.html" class="no-external"></a></p><a href="./forblog/posts/20_models_from_scratch.html" class="no-external">
-<p><img loading="lazy" src="./forblog/images/20_model_from_scratch/thumbnail.jpeg" class="thumbnail-image"></p>
-</a><p><a href="./forblog/posts/20_models_from_scratch.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./forblog/posts/20_models_from_scratch.html" class="no-external">Implementing a Neural Network from Scratch</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./forblog/posts/20_models_from_scratch.html" class="no-external">The DIY Guide to Digital Brain Building</a>
-</div>
-<div class="listing-description">
-<a href="./forblog/posts/20_models_from_scratch.html" class="no-external">First I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./forblog/posts/20_models_from_scratch.html" class="no-external">
-<div class="listing-date">
-May 26, 2024
-</div>
-<div class="listing-author">
-Salman Naqvi
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="TExNcyUyQ1RyYW5zZm9ybWVycw==" data-listing-date-sort="1706054400000" data-listing-file-modified-sort="1739854174637" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="878">
-<div class="thumbnail">
-<p><a href="./forblog/posts/19_tokenizers.html" class="no-external"></a></p><a href="./forblog/posts/19_tokenizers.html" class="no-external">
-<p><img loading="lazy" src="./forblog/images/19_tokenizers/thumbnail.png" class="thumbnail-image"></p>
-</a><p><a href="./forblog/posts/19_tokenizers.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./forblog/posts/19_tokenizers.html" class="no-external">A Brief Token on Tokenizers</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./forblog/posts/19_tokenizers.html" class="no-external">This limited time DLC post costs only 499 tokens to unlock.</a>
-</div>
-<div class="listing-description">
-<a href="./forblog/posts/19_tokenizers.html" class="no-external">Tokenizers in a high-level nutshell.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./forblog/posts/19_tokenizers.html" class="no-external">
-<div class="listing-date">
-Jan 24, 2024
-</div>
-<div class="listing-author">
-Salman Naqvi
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</section>
-<section id="playground" class="level1 g-col-12 g-col-md-6">
-<h1>Playground</h1>
-<div id="listing-landing-apps" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1739854174759" data-listing-reading-time-sort="1" data-listing-word-count-sort="18">
-<a href="./web_apps/apps/coming_soon.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./web_apps/images/coming_soon/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title" data-anchor-id="playground">
-More apps coming soon…
-</h5>
-<div class="card-text listing-description">
-
-</div>
-<div class="card-attribution card-text-small start">
-<div class="listing-author">
-
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="SW1hZ2UlMjBDbGFzc2lmaWNhdGlvbg==" data-listing-date-sort="1663632000000" data-listing-file-modified-sort="1739854174759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="19">
-<a href="./web_apps/apps/flood_detector.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Flood Classifier
-</h5>
-<div class="card-text listing-description">
-How well can you classify floods?
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Salman Naqvi
-</div>
-<div class="listing-date">
-Sep 20, 2022
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div>
-</section>
-</div>
-<!-- ::::{.grid}
-
-:::{.g-col-6 .g-col-md-4}
-.g-col-6 .g-col-md-4
-:::
-
-:::{.g-col-6 .g-col-md-4}
-.g-col-6 .g-col-md-4
-:::
-
-:::{.g-col-6 .g-col-md-4}
-.g-col-6 .g-col-md-4
-:::
-
-:::: -->
-
+<p>I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:</p>
+<p>– R1 is successful simply because of the training process - Deepseek Math is worked really well because of data quality - GRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)</p>
+<p>Takeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.</p>
 
 
 
@@ -880,7 +641,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="./forblog/index.xml">
+    <a class="nav-link" href="../../forblog/index.xml">
       <i class="bi bi-rss" role="img">
 </i> 
     </a>
@@ -896,5 +657,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

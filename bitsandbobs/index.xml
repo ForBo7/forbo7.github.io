@@ -15,7 +15,30 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.6.40</generator>
-<lastBuildDate>Thu, 13 Feb 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 18 Feb 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Seeking Deep Thoughts</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-02-18-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:</p>
+<p>– R1 is successful simply because of the training process - Deepseek Math is worked really well because of data quality - GRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)</p>
+<p>Takeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Papers</category>
+  <category>LLM</category>
+  <category>NLP</category>
+  <category>RL</category>
+  <category>Thoughts</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-02-18-A.html</guid>
+  <pubDate>Tue, 18 Feb 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Deepseek R1 in 2 bullets</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-02-13-A.html</link>
