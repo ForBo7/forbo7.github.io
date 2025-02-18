@@ -1628,7 +1628,7 @@
     "href": "bitsandbobs/posts/2025-02-18-A.html",
     "title": "Seeking Deep Thoughts",
     "section": "",
-    "text": "I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:\n– R1 is successful simply because of the training process - Deepseek Math is worked really well because of data quality - GRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)\nTakeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.\n\n\n\n Back to top"
+    "text": "I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:\n\nR1 is successful simply because of the training process\nDeepseek Math is worked really well because of data quality\nGRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)\n\nTakeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.\n\n\n\n Back to top"
   },
   {
     "objectID": "bitsandbobs/index.html",

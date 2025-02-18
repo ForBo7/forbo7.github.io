@@ -25,7 +25,11 @@
 
 
 <p>I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:</p>
-<p>– R1 is successful simply because of the training process - Deepseek Math is worked really well because of data quality - GRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)</p>
+<ul>
+<li>R1 is successful simply because of the training process</li>
+<li>Deepseek Math is worked really well because of data quality</li>
+<li>GRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)</li>
+</ul>
 <p>Takeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.</p>
 
 
