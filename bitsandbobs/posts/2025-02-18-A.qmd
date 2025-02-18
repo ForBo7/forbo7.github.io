@@ -1,0 +1,14 @@
+---
+title: Seeking Deep Thoughts
+description: Thoughts that came to mind as I'm reading the Deepseek Maths paper
+date: 2025-02-18
+categories: [Papers, LLM, NLP, RL, Thoughts]
+---
+
+I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:
+
+– R1 is successful simply because of the training process
+- Deepseek Math is worked really well because of data quality
+- GRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)
+
+Takeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.
