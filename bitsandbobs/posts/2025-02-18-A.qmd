@@ -7,7 +7,7 @@ categories: [Papers, LLM, NLP, RL, Thoughts]
 
 I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:
 
-– R1 is successful simply because of the training process
+- R1 is successful simply because of the training process
 - Deepseek Math is worked really well because of data quality
 - GRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)
 
