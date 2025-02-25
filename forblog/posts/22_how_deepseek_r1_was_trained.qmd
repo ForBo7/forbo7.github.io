@@ -1,0 +1,107 @@
+---
+title: How Deepseek R1 was trained.
+subtitle: Capturing the Depth
+description: The training of R1 in a nutshell.
+image: ../images/22_how_deepseek_r1_was_trained/thumbnail.png
+author: Salman Naqvi
+date: '2025-02-25'
+categories: [LLMs, Papers, RL]
+open-graph:
+  description: The training of R1 in a nutshell.
+  image: ../images/22_how_deepseek_r1_was_trained/thumbnail.png
+twitter-card:
+  description: The training of R1 in a nutshell.
+  image: ../images/22_how_deepseek_r1_was_trained/thumbnail.png
+---
+
+![]( ../images/22_how_deepseek_r1_was_trained/thumbnail.png)
+
+## In a Nutshell
+
+- R1-Zero is a model created purely through reinforcement learning (RL), with 
+Group Relative Policy Optimization (GRPO) as the policy.
+- R1 is a model created with a combination of multiple RL and supervised finetuning (SFT) stages.
+
+## R1-Zero: The Pure RL Approach
+
+R1-Zero was a model developed exclusively through RL using GRPO as the policy. A rule based reward system was utilized with the following two rewards:
+
+- Accuracy rewards for factual correctness of responses.
+- Format rewards for pushing the model to put its thinking between `<think>` and `</think>` tags.
+
+The neural reward model^[A neural reward model is a neural network trained to predict human preferences or desirability of different actions or states, providing a numerical reward signal that guides RL agents to align with human values. It learns from human feedback, such as comparisons or rankings of different outcomes, to estimate rewards for the RL agent.] was left out so as to eliminate reward hacking. 
+
+In addition, a prompt template was used that required the model to first produce the reasoning process, after which, it could produce the answer:
+
+```
+A conversation between User and Assistant. The user asks a question, and the Assistant solves it.
+The assistant first thinks about the reasoning process in the mind and then provides the user
+with the answer. The reasoning process and answer are enclosed within <think> </think> and
+<answer> </answer> tags, respectively, i.e., <think> reasoning process here </think>
+<answer> answer here </answer>. User: prompt. Assistant:
+```
+
+### Issues
+
+There were certain issues that arose from a pure RL approach:
+
+- The output was not very readable.
+- There was language mixing.
+
+## R1: The Hybrid Training Pipeline
+
+In order to remedy these issues, a multi-stage training pipeline was introduced.
+
+```{mermaid}
+flowchart LR
+  A[SFT]-->B[RL]-->C[SFT]-->D[RL]
+  style A fill:#b3e6ff,stroke:#333
+  style C fill:#b3e6ff,stroke:#333
+  style B fill:#ffb3b3,stroke:#333
+  style D fill:#ffb3b3,stroke:#333
+```
+
+This process arose from wondering whether performance could be improved, convergence accelerated, or a coherent chain-of-thought (CoT) be produced through a small amount of high quality data.
+
+### Stage 1: Cold-start SFT
+
+This stage is performed to prevent the unstable cold start phase of RL. The tuning is done through a small amount of CoT data, which is collected by:
+
+- Few-shot prompting with a long CoT example.
+- Direct requests for detailed answers.
+- Gathering human refined R1-Zero outputs in a readable format.
+
+This stage allows for reduced language mixing, improved markdown formatting, and enhanced reader friendly outputs.
+
+:::{.callout}
+As I was reading this paper, it reminded how I previously read about iterative training processes. Such processes typically result in a better model.
+:::
+
+### Stage 2: Reasoning-oriented RL
+
+The goal of this RL stage is on enhancing reasoning capabilities. 
+
+A prominent issue found during the training of R1-Zero was language mixing. To alleviate this, a language consistency reward is introduced that is calculated as a proportion of the target language words in the CoT. The introduction of this reward results in a small performance decrease, but results in a significant human readability gain.
+
+The final reward in the RL pipeline was produced by summing the accuracy of the reasoning task with the language consistency reward.
+
+### Stage 3: Rejection Sampling SFT
+
+SFT is performed once more. In this stage, the checkpoint from the previous round is used to collect data for this stage. Rather than fully focusing on reasoning data like in the first stage, data from other domains is utilized to enhance capabilities in writing, role playing, and other general purpose tasks. In total, an additional 800k samples were collected.
+
+| Data Type        | Samples | Source                          | Filter Criteria                 |
+|------------------|---------|---------------------------------|---------------------------------|
+| Reasoning        | 600k    | Curated prompts + sampling      | Remove mixed-language/code CoT  |
+| General Purpose  | 200k    | DeepSeek V3 + CoT generation    | Simple queries without CoT      |
+
+### Stage 4: RL Alignment
+
+In this stage, RL was performed once more to futher align with human preferences, and to have better reasoning.
+
+To improve helpfulness, the final answer quality was evaluated, with an emphasis on utility and relevance. Focus was placed exclusively on the resulting answer so as to minimize interference with the reasoning process. Harmlessness was improved by analyzing the entire response (including CoT) to identify and mitigate any risks, biases, and harmful content.
+
+The RL pipeline in this stage integrated a multireward models, diverse prompt distributions, and was also based on the DeepSeek V3 pipeline.
+
+## Conclusion
+If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!
+
