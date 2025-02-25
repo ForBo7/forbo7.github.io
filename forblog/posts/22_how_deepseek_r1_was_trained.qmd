@@ -105,3 +105,4 @@ The RL pipeline in this stage integrated a multireward models, diverse prompt di
 ## Conclusion
 If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!
 
+[Read the Deepseek R1 paper here.](https://arxiv.org/abs/2501.12948).
