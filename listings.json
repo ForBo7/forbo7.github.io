@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
       "/forblog/posts/19_tokenizers.html",
@@ -105,6 +106,7 @@
   {
     "listing": "/forblog/index.html",
     "items": [
+      "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
       "/forblog/posts/19_tokenizers.html",
@@ -131,6 +133,7 @@
   {
     "listing": "/testing_page.html",
     "items": [
+      "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
       "/forblog/posts/19_tokenizers.html",

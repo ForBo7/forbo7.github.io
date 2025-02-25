@@ -14,8 +14,152 @@
 <title>ForBo7 // Salman Naqvi</title>
 <link>https://forbo7.github.io/forblog/</link>
 </image>
-<generator>quarto-1.6.40</generator>
-<lastBuildDate>Tue, 24 Sep 2024 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.6.42</generator>
+<lastBuildDate>Tue, 25 Feb 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>How Deepseek R1 was trained.</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/22_how_deepseek_r1_was_trained.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/22_how_deepseek_r1_was_trained/thumbnail.png" class="img-fluid"></p>
+<section id="in-a-nutshell" class="level2">
+<h2 class="anchored" data-anchor-id="in-a-nutshell">In a Nutshell</h2>
+<ul>
+<li>R1-Zero is a model created purely through reinforcement learning (RL), with Group Relative Policy Optimization (GRPO) as the policy.</li>
+<li>R1 is a model created with a combination of multiple RL and supervised finetuning (SFT) stages.</li>
+</ul>
+</section>
+<section id="r1-zero-the-pure-rl-approach" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="r1-zero-the-pure-rl-approach">R1-Zero: The Pure RL Approach</h2>
+<p>R1-Zero was a model developed exclusively through RL using GRPO as the policy. A rule based reward system was utilized with the following two rewards:</p>
+<ul>
+<li>Accuracy rewards for factual correctness of responses.</li>
+<li>Format rewards for pushing the model to put its thinking between <code>&lt;think&gt;</code> and <code>&lt;/think&gt;</code> tags.</li>
+</ul>
+<p>The neural reward model<sup>1</sup> was left out so as to eliminate reward hacking.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;A neural reward model is a neural network trained to predict human preferences or desirability of different actions or states, providing a numerical reward signal that guides RL agents to align with human values. It learns from human feedback, such as comparisons or rankings of different outcomes, to estimate rewards for the RL agent.</p></div></div><p>In addition, a prompt template was used that required the model to first produce the reasoning process, after which, it could produce the answer:</p>
+<pre><code>A conversation between User and Assistant. The user asks a question, and the Assistant solves it.
+The assistant first thinks about the reasoning process in the mind and then provides the user
+with the answer. The reasoning process and answer are enclosed within &lt;think&gt; &lt;/think&gt; and
+&lt;answer&gt; &lt;/answer&gt; tags, respectively, i.e., &lt;think&gt; reasoning process here &lt;/think&gt;
+&lt;answer&gt; answer here &lt;/answer&gt;. User: prompt. Assistant:</code></pre>
+<section id="issues" class="level3">
+<h3 class="anchored" data-anchor-id="issues">Issues</h3>
+<p>There were certain issues that arose from a pure RL approach:</p>
+<ul>
+<li>The output was not very readable.</li>
+<li>There was language mixing.</li>
+</ul>
+</section>
+</section>
+<section id="r1-the-hybrid-training-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="r1-the-hybrid-training-pipeline">R1: The Hybrid Training Pipeline</h2>
+<p>In order to remedy these issues, a multi-stage training pipeline was introduced.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[SFT]--&gt;B[RL]--&gt;C[SFT]--&gt;D[RL]
+  style A fill:#b3e6ff,stroke:#333
+  style C fill:#b3e6ff,stroke:#333
+  style B fill:#ffb3b3,stroke:#333
+  style D fill:#ffb3b3,stroke:#333
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>This process arose from wondering whether performance could be improved, convergence accelerated, or a coherent chain-of-thought (CoT) be produced through a small amount of high quality data.</p>
+<section id="stage-1-cold-start-sft" class="level3">
+<h3 class="anchored" data-anchor-id="stage-1-cold-start-sft">Stage 1: Cold-start SFT</h3>
+<p>This stage is performed to prevent the unstable cold start phase of RL. The tuning is done through a small amount of CoT data, which is collected by:</p>
+<ul>
+<li>Few-shot prompting with a long CoT example.</li>
+<li>Direct requests for detailed answers.</li>
+<li>Gathering human refined R1-Zero outputs in a readable format.</li>
+</ul>
+<p>This stage allows for reduced language mixing, improved markdown formatting, and enhanced reader friendly outputs.</p>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>As I was reading this paper, it reminded how I previously read about iterative training processes. Such processes typically result in a better model.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="stage-2-reasoning-oriented-rl" class="level3">
+<h3 class="anchored" data-anchor-id="stage-2-reasoning-oriented-rl">Stage 2: Reasoning-oriented RL</h3>
+<p>The goal of this RL stage is on enhancing reasoning capabilities.</p>
+<p>A prominent issue found during the training of R1-Zero was language mixing. To alleviate this, a language consistency reward is introduced that is calculated as a proportion of the target language words in the CoT. The introduction of this reward results in a small performance decrease, but results in a significant human readability gain.</p>
+<p>The final reward in the RL pipeline was produced by summing the accuracy of the reasoning task with the language consistency reward.</p>
+</section>
+<section id="stage-3-rejection-sampling-sft" class="level3">
+<h3 class="anchored" data-anchor-id="stage-3-rejection-sampling-sft">Stage 3: Rejection Sampling SFT</h3>
+<p>SFT is performed once more. In this stage, the checkpoint from the previous round is used to collect data for this stage. Rather than fully focusing on reasoning data like in the first stage, data from other domains is utilized to enhance capabilities in writing, role playing, and other general purpose tasks. In total, an additional 800k samples were collected.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 9%">
+<col style="width: 35%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data Type</th>
+<th>Samples</th>
+<th>Source</th>
+<th>Filter Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reasoning</td>
+<td>600k</td>
+<td>Curated prompts + sampling</td>
+<td>Remove mixed-language/code CoT</td>
+</tr>
+<tr class="even">
+<td>General Purpose</td>
+<td>200k</td>
+<td>DeepSeek V3 + CoT generation</td>
+<td>Simple queries without CoT</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="stage-4-rl-alignment" class="level3">
+<h3 class="anchored" data-anchor-id="stage-4-rl-alignment">Stage 4: RL Alignment</h3>
+<p>In this stage, RL was performed once more to futher align with human preferences, and to have better reasoning.</p>
+<p>To improve helpfulness, the final answer quality was evaluated, with an emphasis on utility and relevance. Focus was placed exclusively on the resulting answer so as to minimize interference with the reasoning process. Harmlessness was improved by analyzing the entire response (including CoT) to identify and mitigate any risks, biases, and harmful content.</p>
+<p>The RL pipeline in this stage integrated a multireward models, diverse prompt distributions, and was also based on the DeepSeek V3 pipeline.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>LLMs</category>
+  <category>Papers</category>
+  <category>RL</category>
+  <guid>https://forbo7.github.io/forblog/posts/22_how_deepseek_r1_was_trained.html</guid>
+  <pubDate>Tue, 25 Feb 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/22_how_deepseek_r1_was_trained/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>What I Learned during my Second and Third Internships</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -17536,642 +17680,6 @@ Note
   <category>Analyzing Models</category>
   <guid>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</guid>
   <pubDate>Fri, 03 Jun 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>My first AI model</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>This article was updated on <strong>Tuesday, 1 November 2022</strong>.</em></p>
-<p><img src="https://forbo7.github.io/forblog/images/2_bear_classifier_model/thumbnail.jpg" class="img-fluid" alt="A bear waving hello."></p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>This is my first attempt at creating an AI model: an image classifier. This classifier can tell whether a grizzly bear, black bear, or teddy bear is in an image.</p>
-<p>You can visit the classifier <a href="https://forbo7.github.io/web_apps/apps/bear_detector.html">here</a> to test it out for yourself!</p>
-</section>
-<section id="load-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
-<div id="cell-5" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># No need to fret! fastai is specifically designed to be used with import *.</span></span>
-<span id="cb1-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> fastbook <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span>
-<span id="cb1-3"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> fastai.vision.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">all</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span></code></pre></div>
-</div>
-</section>
-<section id="download-image-files" class="level2">
-<h2 class="anchored" data-anchor-id="download-image-files">Download image files</h2>
-<p>Specify the bear images we wish to download.</p>
-<div id="cell-8" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">bear_types <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> (<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'grizzly'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'black'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'teddy'</span>,)</span>
-<span id="cb2-2">path <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Path(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'bears'</span>)</span></code></pre></div>
-</div>
-<p>Download 200 of each bear (<code>search_images_ddg</code> defaults to 200 URLs) and assign them to a specific directory.</p>
-<div id="cell-10" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> path.exists():</span>
-<span id="cb3-2">    path.mkdir()</span>
-<span id="cb3-3">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> bear_type <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> bear_types:</span>
-<span id="cb3-4">        destination <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> (path <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> bear_type)</span>
-<span id="cb3-5">        destination.mkdir(exist_ok<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span>
-<span id="cb3-6">        urls <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> search_images_ddg(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>bear_type<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;"> bear"</span>)</span>
-<span id="cb3-7">        download_iamges(destination, urls<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>urls)</span></code></pre></div>
-</div>
-<p>Check if our folder has the image files.</p>
-<div id="cell-12" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">fns <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> get_image_files(path)</span>
-<span id="cb4-2">fns</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>(#802) [Path('bears/grizzly/00000238.jpg'),Path('bears/grizzly/00000047.jpg'),Path('bears/grizzly/00000199.jpg'),Path('bears/grizzly/00000237.jpg'),Path('bears/grizzly/00000055.jpg'),Path('bears/grizzly/00000000.png'),Path('bears/grizzly/00000235.jpg'),Path('bears/grizzly/00000159.jpg'),Path('bears/grizzly/00000268.jpg'),Path('bears/grizzly/00000266.jpg')...]</code></pre>
-</div>
-</div>
-<p>Check for corrupt images.</p>
-<div id="cell-14" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">corrupt_images <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> verify_images(fns)</span>
-<span id="cb6-2">corrupt_images</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>(#0) []</code></pre>
-</div>
-</div>
-<p>Remove corrupt images.</p>
-<div id="cell-16" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">corrupt_images.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">map</span>(pathlib.Path.unlink)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>(#0) []</code></pre>
-</div>
-</div>
-</section>
-<section id="load-image-files" class="level2">
-<h2 class="anchored" data-anchor-id="load-image-files">Load image files</h2>
-<p>The DataBlock API for creates the necessary <code>DataLoaders</code> for us.</p>
-<div id="cell-19" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">bears <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> DataBlock(</span>
-<span id="cb10-2">    blocks<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>(ImageBlock, CategoryBlock),</span>
-<span id="cb10-3">    get_items<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>get_image_files,</span>
-<span id="cb10-4">    splitter<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>RandomSplitter(valid_pct<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.2</span>, seed<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">42</span>),</span>
-<span id="cb10-5">    get_y<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>parent_label,</span>
-<span id="cb10-6">    item_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>Resize(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">128</span>),</span>
-<span id="cb10-7">)</span></code></pre></div>
-</div>
-<p>The <code>blocks</code> parameter allows us to specify the independent and dependent variables.</p>
-<p>The <code>get_items</code> parameter tells fastai how to obtain our data. We use the <code>get_image_files</code> function to obtain our images.</p>
-<p>The <code>splitter</code> parameter allows us to tell fastai how to split our data into training and validation sets. Since our data is one big set, we use the <code>RandomSplitter</code> class and tell it to use 20% of our data as the validation set. We specify a seed so the same split occurs each time.</p>
-<p>The <code>get_y</code> parameter obtains our labels. The <code>parent_label</code> function simply gets the name of the folder a file is in. Since we have organized our bear images into different folders, this will nicely handle our target labels.</p>
-<p>The <code>item_tfms</code> parameter allows us to specify a transform to apply to our data. Since we want all our images to be of the same size, we use the <code>Resize()</code> class.</p>
-<p>We now have a DataBlock object from which can load the data.</p>
-<div id="cell-22" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">dataloaders <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.dataloaders(path)</span></code></pre></div>
-</div>
-<p>Let us view a few images in the validation set.</p>
-<div id="cell-24" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">dataloaders.valid.show_batch(max_n<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, nrows<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="data-augmentation" class="level2">
-<h2 class="anchored" data-anchor-id="data-augmentation">Data Augmentation</h2>
-<p>Data augmentation refers to creating random variations to our input data. This produces new data points based on the existing data points. This allows each data point to look different, without changing their meaning.</p>
-<p>Typical examples of image augmentation include rotation, flipping, perspective warping, brightness changing, and contrast changing.</p>
-<section id="cropping" class="level3">
-<h3 class="anchored" data-anchor-id="cropping">Cropping</h3>
-<p>The validation set images shown above are cropped. We achieved this by specifying the <code>Resize</code> argument when defining the <code>DataBlock</code>. <code>Resize</code> crops images to the size specified.</p>
-<p>Cropping results in detail being lost.</p>
-<p>Alternatively, we can squish or stretch images, or pad them to a desired size.</p>
-</section>
-<section id="squishingstretching" class="level3">
-<h3 class="anchored" data-anchor-id="squishingstretching">Squishing/Stretching</h3>
-<p>The problem with squishing or stretching images is that the model will learn to “see” images the way they are not supposed to be.</p>
-<div id="cell-30" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1">bears <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>Resize(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">128</span>, ResizeMethod.Squish))</span>
-<span id="cb13-2">dataloaders <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.dataloaders(path)</span>
-<span id="cb13-3">dataloaders.valid.show_batch(max_n<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, nrows<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="padding" class="level3">
-<h3 class="anchored" data-anchor-id="padding">Padding</h3>
-<p>By padding, the image is surrounded typically by black, meaningless pixels. This results in extra, wasted computation.</p>
-<div id="cell-32" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">bears <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>Resize(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">128</span>, ResizeMethod.Pad, pad_mode<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'zeros'</span>))</span>
-<span id="cb14-2">dataloaders <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.dataloaders(path)</span>
-<span id="cb14-3">dataloaders.valid.show_batch(max_n<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, nrows<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The best approach is to take random crops of different parts of the same image. This makes sure that the model does not miss out on any details whilst letting it “know” how an object fully looks like.</p>
-<p>Below, we have <code>unique=True</code> so that the same image is repeated with different variations.</p>
-<div id="cell-34" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">bears <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>RandomResizedCrop(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">128</span>, min_scale<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.3</span>))</span>
-<span id="cb15-2">dataloaders <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.dataloaders(path)</span>
-<span id="cb15-3">dataloaders.train.show_batch(max_n<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, nrows<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, unique<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>fastai comes with a function that applies a variety of augmentations to images. This can allow a model to “see” and recognize images in a variety of scenarios.</p>
-<div id="cell-36" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">bears <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.new(item_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>Resize(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">128</span>), batch_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>aug_transforms(mult<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>))</span>
-<span id="cb16-2">dataloaders  <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.dataloaders(path)</span>
-<span id="cb16-3">dataloaders.train.show_batch(max_n<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>, nrows<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, unique<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>I have not used <code>RandomResizedCrop</code> here so that the different augmentations can be seen more clearly. <code>RandomResizedCrop</code> will be used when the model is trained.</p>
-<p><code>batch_tfms</code> tells fastai that we want to use these transforms on a batch.</p>
-</section>
-</section>
-<section id="training-the-model" class="level2">
-<h2 class="anchored" data-anchor-id="training-the-model">Training the model</h2>
-<p>We do not have a lot of data. Only 200 images of each bear at most. Therefore, we will augment our images not only to get more data, but so that the model can recognize data in a variety of situations.</p>
-<div id="cell-40" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">bears <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.new(</span>
-<span id="cb17-2">    item_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>RandomResizedCrop(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">224</span>, min_scale<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.5</span>),</span>
-<span id="cb17-3">    batch_tfms<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>aug_transforms(),</span>
-<span id="cb17-4">)</span>
-<span id="cb17-5">dataloaders <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> bears.dataloaders(path)</span></code></pre></div>
-</div>
-<p>We will now create our learner and fine-tune it.</p>
-<p>We will be using the ResNet18 architecture (which is a convolutional neural network, or CNN for short). Error rate will be the metric.</p>
-<div id="cell-42" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">learn <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> cnn_learner(dataloaders, resnet18, metrics<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>error_rate)</span>
-<span id="cb18-2">learn.fine_tune(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"5e2ebba3dfc945c9be0edd07e1196ebe","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-<div class="cell-output cell-output-display">
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">epoch</th>
-<th data-quarto-table-cell-role="th">train_loss</th>
-<th data-quarto-table-cell-role="th">valid_loss</th>
-<th data-quarto-table-cell-role="th">error_rate</th>
-<th data-quarto-table-cell-role="th">time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>0.985666</td>
-<td>0.104632</td>
-<td>0.025000</td>
-<td>00:20</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="cell-output cell-output-display">
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th">epoch</th>
-<th data-quarto-table-cell-role="th">train_loss</th>
-<th data-quarto-table-cell-role="th">valid_loss</th>
-<th data-quarto-table-cell-role="th">error_rate</th>
-<th data-quarto-table-cell-role="th">time</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>0.132230</td>
-<td>0.073527</td>
-<td>0.012500</td>
-<td>00:22</td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>0.106222</td>
-<td>0.054833</td>
-<td>0.018750</td>
-<td>00:22</td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>0.087129</td>
-<td>0.058497</td>
-<td>0.012500</td>
-<td>00:20</td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>0.069890</td>
-<td>0.058845</td>
-<td>0.018750</td>
-<td>00:19</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Our model only has a 1.9% error rate! Not bad! Though it seems if I had done an extra epoch, the error rate may have gone down to 1.3%, judging by the previous epochs’ error rates.</p>
-</section>
-<section id="visualizing-mistakes" class="level2">
-<h2 class="anchored" data-anchor-id="visualizing-mistakes">Visualizing mistakes</h2>
-<p>We can visualize the mistakes the model is making by a confusion matrix.</p>
-<div id="cell-46" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">interp <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> ClassificationInterpretation.from_learner(learn)</span>
-<span id="cb20-2">interp.plot_confusion_matrix()</span></code></pre></div>
-<div class="cell-output cell-output-display">
-
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-17-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>3 grizzly bears were misclassified as black bears.</p>
-<p>Let us see where the errors are occurring, so we can determine if they are due to a dataset problem or a model problem.</p>
-<p>To do this, we will sort images by their loss.</p>
-<div id="cell-49" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1">interp.plot_top_losses(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>, nrows<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/2_bear_classifier_model_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="data-cleaning" class="level2">
-<h2 class="anchored" data-anchor-id="data-cleaning">Data cleaning</h2>
-<p>The intuitive approach to data cleaning is to do it before training the model. However, a trained model can help us clean the data. For example, we can see some mislabaled bears in the above cases.</p>
-<p>fastai includes a GUI for data cleaning. This GUI allows you to choose a category/label and its associated training and validation sets. It then shows you images in order of highest-loss first, from which you can select images for removal or relabeling.</p>
-<div id="cell-52" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">cleaner <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> ImageClassifierCleaner(learn)</span>
-<span id="cb22-2">cleaner</span></code></pre></div>
-<div class="cell-output cell-output-display">
-
-</div>
-<div class="cell-output cell-output-display">
-
-</div>
-<div class="cell-output cell-output-display">
-<script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"7d3bc1c4ea394fceadf6ccbf4febb422","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
-</script>
-</div>
-</div>
-<p><code>ImageClassifierCleaner</code> does not actually delete or relabel. It just returns the indices that are to be deleted or relabeled.</p>
-<div id="cell-54" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Delete images selected for deletion.</span></span>
-<span id="cb23-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> index <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> cleaner.delete():</span>
-<span id="cb23-3">    cleaner.fns[index].unlink()</span>
-<span id="cb23-4"></span>
-<span id="cb23-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Relabel images selected for relabeling.</span></span>
-<span id="cb23-6"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> index, category <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> cleaner.change():</span>
-<span id="cb23-7">    shutil.move(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span>(cleaner.fns[index]), path<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>category)</span></code></pre></div>
-</div>
-<p>We can now retrain and better performance should be expected.</p>
-</section>
-<section id="saving-the-model" class="level2">
-<h2 class="anchored" data-anchor-id="saving-the-model">Saving the model</h2>
-<p>A model consists of two parts: the architecture and the parameters.</p>
-<p>When we use the <code>export()</code> method, both of these are saved.</p>
-<p>This method also saves the definition of our <code>DataLoaders</code>. This is done so that we do not have to redefine how to transform our data when the model is used in production.</p>
-<p>fastai uses our validation set <code>DataLoader</code> by default, so the data augmentation will not be applied, which is generally what is wanted.</p>
-<p>The <code>export()</code> method creates a file named “export.pkl”.</p>
-<div id="cell-58" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">learn.export()</span></code></pre></div>
-</div>
-<p>Let us check that the file exists.</p>
-<div id="cell-60" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1">path <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Path()</span>
-<span id="cb25-2">path.ls(file_exts<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'.pkl'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
-<pre><code>(#1) [Path('export.pkl')]</code></pre>
-</div>
-</div>
-<p>If you wish to deploy an app, this is the file you will need.</p>
-</section>
-<section id="loading-the-model-for-inference" class="level2">
-<h2 class="anchored" data-anchor-id="loading-the-model-for-inference">Loading the model for inference</h2>
-<p>Now obviously we do not need to load the model as we already have the <code>learner</code> variable. But I shall do so anyways.</p>
-<div id="cell-64" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1">learn_inf <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> load_learner(path<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'export.pkl'</span>)</span></code></pre></div>
-</div>
-<p>We generally do inference for a single image at a time.</p>
-<div id="cell-66" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">learn_inf.predict(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'images/grizzly.jpg'</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display">
-
-</div>
-<div class="cell-output cell-output-display" data-execution_count="31">
-<pre><code>('grizzly', TensorBase(1), TensorBase([1.4230e-06, 1.0000e+00, 3.9502e-08]))</code></pre>
-</div>
-</div>
-<p>Three things have been returned: the predicted category, the index of the predicted category, and the probabilities of each category.</p>
-<p>The order of each category is based on the order of the <em>vocabulary</em> of the <code>DataLoaders</code>; that is, the stored tuple of all possible categories.</p>
-<p>The <code>DataLoaders</code> can be accessed as an attribute of the <code>Learner</code>.</p>
-<div id="cell-68" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">learn_inf.dataloaders.vocab</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
-<pre><code>['black', 'grizzly', 'teddy']</code></pre>
-</div>
-</div>
-</section>
-<section id="why-cnns-work-so-well" class="level2">
-<h2 class="anchored" data-anchor-id="why-cnns-work-so-well">Why CNNs work so well</h2>
-<p>The ResNet18 architecture is a sort of CNN. Below is my understanding as to why CNNs work so well.</p>
-<p>A neural network is comprised of many layers. Each layer is comprised of many neurons. In a CNN, each neuron in the same layer is given the exact same weights, while being given different input data. This allows all neurons in a layer to fire upon detecting the same pattern.</p>
-<p>Because of this, CNNs can become really good at detecting objects in various patterns, orientations, shapes, positions, and so on.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Well then, that wraps up my first deep learning model! I have to say, it is much easier than I thought it would be to implement a model. You do not need to go into the nitty gritty details of artificial intelligence. A high level understanding can suffice in the beginning. It is like playing a sport: you do not need to understand the physics to be able to play it.</p>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Creating Models</category>
-  <guid>https://forbo7.github.io/forblog/posts/2_bear_classifier_model.html</guid>
-  <pubDate>Sat, 28 May 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
