@@ -31,15 +31,15 @@ page-layout: full
 
 # Notable Experience and Honors
 
-*Dec. 27, 2024* – [**Featured among "The EdUHK Rising Stars"**](https://www.youtube.com/watch?v=JrM6hwABAQ4) | EdUHK 30th Anniversary 2025
+*Feb. 21st 2025* – [**Meet Salman Naqvi: the bright spark in AI and EdTech**](https://flassnews.eduhk.hk/preview_article/WINTER_2024_ISSUE_11/Meet%20Salman%20Naqvi%20the%20bright%20spark%20in%20AI%20and%20EdTech) | See what the university's written about me!
+
+*Dec. 27, 2024* – [**Featured among "The EdUHK Rising Stars"**](https://www.youtube.com/watch?v=JrM6hwABAQ4) | See the university's mini documentary on me!
 
 *Jun. 12, 2024* – **Study Award from Hong Kong SAR Government** | Hong Kong SAR Government Scholarship Fund Reaching Out Award
 
 *Dec. 7, 2023* — **Invited Speaker at the Advanced Study Institute (ASI) Online Symposium** | The Education University of Hong Kong and Hong Kong Baptist University
 
 *Apr. 2023 – Nov. 2023* — **Co-lead Online Study Group** | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord
-
-*Nov. 2022 – Jun. 2023* — **1100+ Member AI Community Administrator** | The Dataspace | Discord
 
 *Mar. 17, 2023* — **Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan** | KUAS-E Scholarship
 
@@ -93,7 +93,7 @@ Kids4Kids Hong Kong
 
 **Programming**
 
-Python, PyTorch, Hugging Face, fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev
+Python, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev
 
 **3D Computer Graphics**
 
@@ -101,7 +101,7 @@ Blender
 
 **Teaching**
 
-Can teach in a logical manner that fosters understanding and the solidification of concepts.
+I know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.
 
 **Artificial Intelligence (fast.ai)**
 
