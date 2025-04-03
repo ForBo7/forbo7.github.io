@@ -61,7 +61,21 @@
     ]
   },
   {
-    "listing": "/index.html",
+    "listing": "/bitsandbobs/index.html",
+    "items": [
+      "/bitsandbobs/posts/2025-04-03-A.html",
+      "/bitsandbobs/posts/2025-02-18-A.html",
+      "/bitsandbobs/posts/2025-02-13-A.html",
+      "/bitsandbobs/posts/2025-01-28-A.html",
+      "/bitsandbobs/posts/2025-01-27-A.html",
+      "/bitsandbobs/posts/2025-01-23-A.html",
+      "/bitsandbobs/posts/2025-01-21-A.html",
+      "/bitsandbobs/posts/2025-01-14-A.html",
+      "/bitsandbobs/posts/2025-01-02-A.html"
+    ]
+  },
+  {
+    "listing": "/forblog/index.html",
     "items": [
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
@@ -84,15 +98,15 @@
       "/forblog/posts/4_data_quality_is_important.html",
       "/forblog/posts/3_the_confusion_matrix.html",
       "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
-      "/bitsandbobs/posts/2025-02-18-A.html",
-      "/bitsandbobs/posts/2025-02-13-A.html",
-      "/bitsandbobs/posts/2025-01-28-A.html",
-      "/bitsandbobs/posts/2025-01-27-A.html",
-      "/bitsandbobs/posts/2025-01-23-A.html",
-      "/bitsandbobs/posts/2025-01-21-A.html",
-      "/bitsandbobs/posts/2025-01-14-A.html",
-      "/bitsandbobs/posts/2025-01-02-A.html"
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
+    ]
+  },
+  {
+    "listing": "/web_apps/index.html",
+    "items": [
+      "/web_apps/apps/coming_soon.html",
+      "/web_apps/apps/flood_detector.html",
+      "/web_apps/apps/bear_detector.html"
     ]
   },
   {
@@ -126,15 +140,7 @@
     ]
   },
   {
-    "listing": "/web_apps/index.html",
-    "items": [
-      "/web_apps/apps/coming_soon.html",
-      "/web_apps/apps/flood_detector.html",
-      "/web_apps/apps/bear_detector.html"
-    ]
-  },
-  {
-    "listing": "/forblog/index.html",
+    "listing": "/index.html",
     "items": [
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
@@ -157,12 +163,8 @@
       "/forblog/posts/4_data_quality_is_important.html",
       "/forblog/posts/3_the_confusion_matrix.html",
       "/forblog/posts/2_bear_classifier_model.html",
-      "/forblog/posts/1_how_to_approach_creating_ai_models.html"
-    ]
-  },
-  {
-    "listing": "/bitsandbobs/index.html",
-    "items": [
+      "/forblog/posts/1_how_to_approach_creating_ai_models.html",
+      "/bitsandbobs/posts/2025-04-03-A.html",
       "/bitsandbobs/posts/2025-02-18-A.html",
       "/bitsandbobs/posts/2025-02-13-A.html",
       "/bitsandbobs/posts/2025-01-28-A.html",
