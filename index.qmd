@@ -1,5 +1,5 @@
 ---
-title: '{{< animate bounceIn "Welcome to the world of ForBo7" delay=1s duration=faster >}}'
+pagetitle: '{{< animate bounceIn "Welcome to the world of ForBo7" delay=1s duration=faster >}}'
 comments: False
 format:
   html:

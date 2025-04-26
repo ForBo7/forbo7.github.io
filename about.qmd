@@ -23,43 +23,14 @@ page-layout: full
 ---
 
 :::{.animate__animated .animate__slideInRight .animate__faster}
-*A curious soul navigating the realms of AI, exploring the intricacies of 3D computer graphics, fueled by an insatiable passion for learning. A devoted aficionado of science and technology, proudly wearing the badge of a “sci-tech geek”. In addition to unraveling the complexities of the digital world, I've ventured into real-world adventures across 15 countries so far, adding layers of cultural richness to my journey.*
+*An explorer who’s lived in 4 countries and traveled to 15. A master of 3 different language scripts. An enthusiast of science and technology, proudly wearing the badge of "sci-tech geek”. A curious soul unraveling the realms of AI, intricacies of 3D computer graphics, fueled by an insatiable passion for learning. Onward and upward, with tenacity and sincerity.*
 :::
 
 ::::{.animate__animated .animate__slideInUp .animate__faster}
 :::{.panel-tabset}
 
-# Notable Experience and Honors
+# Experience // 经验
 
-*Feb. 21st 2025* – [**Meet Salman Naqvi: the bright spark in AI and EdTech**](https://flassnews.eduhk.hk/preview_article/WINTER_2024_ISSUE_11/Meet%20Salman%20Naqvi%20the%20bright%20spark%20in%20AI%20and%20EdTech) | See what the university's written about me!
-
-*Dec. 27, 2024* – [**Featured among "The EdUHK Rising Stars"**](https://www.youtube.com/watch?v=JrM6hwABAQ4) | See the university's mini documentary on me!
-
-*Jun. 12, 2024* – **Study Award from Hong Kong SAR Government** | Hong Kong SAR Government Scholarship Fund Reaching Out Award
-
-*Dec. 7, 2023* — **Invited Speaker at the Advanced Study Institute (ASI) Online Symposium** | The Education University of Hong Kong and Hong Kong Baptist University
-
-*Apr. 2023 – Nov. 2023* — **Co-lead Online Study Group** | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord
-
-*Mar. 17, 2023* — **Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan** | KUAS-E Scholarship
-
-*Feb. 24, 2023* — **Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China** | EdUHK Full Entrance Scholarship
-
-*Sep. 2022 – Mar. 2023* — **Completed fast.ai Course Part 1: Practical Deep Learning for Coders**
-
-*Jan. 17, 2023* — **Placed in Top 12% of Contestants in Data Science Competition** | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle
-
-*Sep. 2020 – May 2021* — **Physics Teaching Assistant** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*Sep. 2020 – May 2021* — **Mathematics Teaching Assistant** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*Jan. 2020* —  **Concert Marketing – Raised $8,400** |Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*Aug. 2019* — **Received 100% Scholarship for A-Level Program** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*2018* — **Bronze Medal – Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan
-
-# Internships and Part-time
 **Research Assistant** | Oct. 2024 – Current
 
 Multimodal Intelligence Laboratory, The Education University of Hong Kong
@@ -89,7 +60,20 @@ Kids4Kids Hong Kong
 * Volunteer work
 * Workshop planning and video editing
 
-# Skills
+**Teaching Assistant** | Sep. 2020 – May. 2021
+
+Beaconhouse College Program
+
+* Teaching classes
+* 1-1 student sessions
+
+# Skills // 技能
+
+**Language**
+
+- English: Native level fluency
+- Mandarin: Basic proficiency
+- Urdu: Fluent
 
 **Programming**
 
@@ -107,37 +91,61 @@ I know how to succinctly convey concepts in an engaging manner that makes sense.
 
 Self-learning since April 2022.
 
-# Languages
+# Projects // 有趣项目
 
-**English:** Native level fluency
-
-**Urdu:** Fluent
-
-**Mandarin:** Basic proficiency
+- Trained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.
+- Reimplemented the DiffEdit research paper. Edit portions of an image via text only.
+- Reimplementing the PyTorch library myself.
+- Making back propagation an inherently easy topic to grasp.
+- Optimizing algorithms to run quicker on a GPU.
 
 :::
 
 :::{.panel-tabset}
 
-# Education
+# Other Interesting Stuff // 其他亮点
+
+*Feb. 21st 2025* – [**Meet Salman Naqvi: the bright spark in AI and EdTech**](https://flassnews.eduhk.hk/preview_article/WINTER_2024_ISSUE_11/Meet%20Salman%20Naqvi%20the%20bright%20spark%20in%20AI%20and%20EdTech) | See what the university's written about me!
+
+*Dec. 27, 2024* – [**Featured among "The EdUHK Rising Stars"**](https://www.youtube.com/watch?v=JrM6hwABAQ4) | See the university's mini documentary on me!
+
+*Jun. 12, 2024* – **Study Award from Hong Kong SAR Government** | Hong Kong SAR Government Scholarship Fund Reaching Out Award
+
+*Dec. 7, 2023* — **Invited Speaker at the Advanced Study Institute (ASI) Online Symposium** | The Education University of Hong Kong and Hong Kong Baptist University
+
+*Apr. 2023 – Nov. 2023* — **Co-lead Online Study Group** | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord
+
+*Mar. 17, 2023* — **Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan** | KUAS-E Scholarship
+
+*Feb. 24, 2023* — **Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China** | EdUHK Full Entrance Scholarship
+
+*Sep. 2022 – Mar. 2023* — **Completed fast.ai Course Part 1: Practical Deep Learning for Coders**
+
+*Jan. 17, 2023* — **Placed in Top 12% of Contestants in Data Science Competition** | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle
+
+*Sep. 2020 – May 2021* — **Physics Teaching Assistant** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
+
+*Sep. 2020 – May 2021* — **Mathematics Teaching Assistant** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
+
+*Jan. 2020* —  **Concert Marketing – Raised $8,400** |Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
+
+*Aug. 2019* — **Received 100% Scholarship for A-Level Program** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
+
+*2018* — **Bronze Medal – Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan
+
+# Education // 教育
 
 **Currently studying BSc (Honors) in Artificial Intelligence and Educational Technology at The Education University of Hong Kong.**
 
-High School | CAIE A-Level — *Sep 2019 – Aug. 2021*
+IELTS – 8.5/9.0
 
-Middle School | CAIE IGCSE — *Aug 2015 – Aug. 2019*
+Middle School and High School – CAIE IGCSE
 
-Middle School | IB Middle Years Program — *Aug. 2013 – Jun. 2015*
+Primary and Middle School – IB Primary and Middle Years Program
 
-Primary School | IB Primary Years Program — *Aug. 2009 – Jun. 2013*
+# 扫一扫
 
-# Miscellaneous
-
-EdUHK International Student Ambassador — *Sep 2023 – Current*
-
-EdUHK Year 1 GPA — 3.74/4.00
-
-IELTS — 8.5/9.0
+![](images/contact.png)
 
 :::
 ::::
