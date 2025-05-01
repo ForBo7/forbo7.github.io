@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.43">
+<meta name="generator" content="quarto-1.7.29">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,8 +23,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +36,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -66,15 +67,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../favicon.ico" rel="icon">
-<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-99a171036708221619d193c681161b33.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-9d328625eae6b2c2b67d09ca63512aee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -121,7 +123,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -256,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can view the dataset that was generated from this notebook <a href="https://www.kaggle.com/datasets/forbo7/spectrograms-birdclef-2023">here</a>.</p>
 <section id="setup" class="level2">
 <h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="0caf3fb0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:15:52.222983Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:15:52.221975Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:06.187026Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:06.185564Z&quot;}" data-papermill="{&quot;duration&quot;:13.988997,&quot;end_time&quot;:&quot;2023-04-05T11:16:06.190265&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:15:52.201268&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="1">
+<div id="0caf3fb0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:13.988997,&quot;end_time&quot;:&quot;2023-04-05T11:16:06.190265&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:15:52.201268&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>: <span class="im">from</span> fastkaggle <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ModuleNotFoundError</span>:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span> pip install <span class="op">-</span>Uqq fastkaggle</span>
@@ -267,11 +269,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>'Batch'</code></pre>
 </div>
 </div>
-<div id="63093885" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:06.219791Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:06.217738Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:19.085766Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:19.083703Z&quot;}" data-papermill="{&quot;duration&quot;:12.886205,&quot;end_time&quot;:&quot;2023-04-05T11:16:19.089359&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:06.203154&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="2">
+<div id="63093885" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:12.886205,&quot;end_time&quot;:&quot;2023-04-05T11:16:19.089359&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:06.203154&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>comp <span class="op">=</span> <span class="st">'birdclef-2023'</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>d_path <span class="op">=</span> setup_comp(comp, install<span class="op">=</span><span class="st">'nbdev'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="ebc08fc6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:19.119731Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:19.119242Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.763802Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.761810Z&quot;}" data-papermill="{&quot;duration&quot;:6.663933,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.766895&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:19.102962&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="3">
+<div id="ebc08fc6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:6.663933,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.766895&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:19.102962&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.imports <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -281,18 +283,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="paths" class="level3">
 <h3 class="anchored" data-anchor-id="paths">Paths</h3>
 <p>Let’s see all the files and directories we have.</p>
-<div id="4bd0ef53" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:25.878998Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:25.878488Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.888345Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.887118Z&quot;}" data-papermill="{&quot;duration&quot;:0.028396,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.891571&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.863175&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="4">
+<div id="4bd0ef53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.028396,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.891571&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.863175&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>d_path.ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>(#5) [Path('../input/birdclef-2023/sample_submission.csv'),Path('../input/birdclef-2023/train_audio'),Path('../input/birdclef-2023/eBird_Taxonomy_v2021.csv'),Path('../input/birdclef-2023/train_metadata.csv'),Path('../input/birdclef-2023/test_soundscapes')]</code></pre>
 </div>
 </div>
 <p>Let’s get the path to the audio files.</p>
-<div id="9c76ab57" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:25.947818Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:25.947204Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:25.953261Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:25.951813Z&quot;}" data-papermill="{&quot;duration&quot;:0.022977,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.956052&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.933075&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="5">
+<div id="9c76ab57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.022977,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.956052&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.933075&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>aud_files <span class="op">=</span> d_path<span class="op">/</span><span class="st">'train_audio'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And create a directory to store the spectrogram images.</p>
-<div id="5a2ce4d2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.012862Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.012021Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.022510Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.020324Z&quot;}" data-papermill="{&quot;duration&quot;:0.030052,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.026393&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.996341&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="6">
+<div id="5a2ce4d2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.030052,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.026393&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.996341&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mkdir(<span class="st">'/kaggle/train_images'</span>, exist_ok<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> Path(<span class="st">'/kaggle/train_images'</span>).exists()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>True</code></pre>
@@ -304,26 +306,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="single-image">Single Image</h2>
 <p>It’s always a good idea to try things out on a smaller scale; so let’s begin by converting only a single audio file.</p>
 <p>Let’s get the first audio file.</p>
-<div id="bfedbdd6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.113335Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.112824Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.142126Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.140480Z&quot;}" data-papermill="{&quot;duration&quot;:0.048533,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.145465&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.096932&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="7">
+<div id="bfedbdd6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.048533,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.145465&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.096932&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>aud_files.ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>(#264) [Path('../input/birdclef-2023/train_audio/yetgre1'),Path('../input/birdclef-2023/train_audio/moccha1'),Path('../input/birdclef-2023/train_audio/rostur1'),Path('../input/birdclef-2023/train_audio/walsta1'),Path('../input/birdclef-2023/train_audio/ratcis1'),Path('../input/birdclef-2023/train_audio/norfis1'),Path('../input/birdclef-2023/train_audio/macshr1'),Path('../input/birdclef-2023/train_audio/brrwhe3'),Path('../input/birdclef-2023/train_audio/crefra2'),Path('../input/birdclef-2023/train_audio/pabspa1')...]</code></pre>
 </div>
 </div>
-<div id="7f3ceaf8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.174836Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.174343Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.192704Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.190872Z&quot;}" data-papermill="{&quot;duration&quot;:0.035581,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.195419&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.159838&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="8">
+<div id="7f3ceaf8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.035581,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.195419&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.159838&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>aud_files.ls()[<span class="dv">0</span>].ls()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>(#27) [Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC574558.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403259.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498854.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC289493.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC716763.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498853.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC338717.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC349660.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403543.ogg')...]</code></pre>
 </div>
 </div>
-<div id="48581b2d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.226795Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.225378Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:26.237298Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:26.236003Z&quot;}" data-papermill="{&quot;duration&quot;:0.031014,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.240594&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.209580&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="9">
+<div id="48581b2d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.031014,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.240594&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.209580&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>aud <span class="op">=</span> aud_files.ls()[<span class="dv">0</span>].ls()[<span class="dv">0</span>]<span class="op">;</span> aud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg')</code></pre>
 </div>
 </div>
 <p>Now it’s time to load it in. What we get in return is the waveform and the sample rate.</p>
-<div id="b03284c6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:26.298265Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:26.297796Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.258464Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.256550Z&quot;}" data-papermill="{&quot;duration&quot;:0.980217,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.261269&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.281052&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="10">
+<div id="b03284c6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.980217,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.261269&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.281052&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchaudio</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>wvfrm, sr <span class="op">=</span> torchaudio.load(aud)<span class="op">;</span> wvfrm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
@@ -336,7 +338,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="birdclef-2023-clipping-the-audio-files">BirdCLEF 2023 — Clipping the Audio Files</h4>
 <p>This competition requires predictions to be submitted of all 5 second intervals in each audio clip. This means the audio files need to be clipped.</p>
 <p>Below is an easy way this can be done. We clip the first 5 seconds of the audio file.</p>
-<div id="21c9d464" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.375336Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.374863Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.383346Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.381728Z&quot;}" data-papermill="{&quot;duration&quot;:0.027009,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.386202&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.359193&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="11">
+<div id="21c9d464" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.027009,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.386202&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.359193&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>start_sec <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>end_sec <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>wvfrm <span class="op">=</span> wvfrm[:, start_sec<span class="op">*</span>sr:end_sec<span class="op">*</span>sr]</span>
@@ -348,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Sample rate is simply the number of frames recorded per second. The waveform that torchaudio returns is a tensor of frames. Therefore, we can easily select the desired range of frames by multiplying the sample rate with the desired start and end seconds.</p>
 <hr>
 <p>Now let’s create the spectrogram.</p>
-<div id="9a098823" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.503378Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.502883Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.586982Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.585599Z&quot;}" data-papermill="{&quot;duration&quot;:0.103329,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.589754&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.486425&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="12">
+<div id="9a098823" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.103329,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.589754&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.486425&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchaudio.transforms <span class="im">as</span> T</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> T.Spectrogram()(wvfrm)<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -368,7 +370,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Let’s scale it logarithmically. This allows for better viewing.</p>
-<div id="ff9d92c2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.649631Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.648891Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.674057Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.672720Z&quot;}" data-papermill="{&quot;duration&quot;:0.043955,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.676877&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.632922&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="13">
+<div id="ff9d92c2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.043955,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.676877&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.632922&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> T.AmplitudeToDB()(spec)<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>tensor([[[ -73.5684,  -80.8375, -100.0000,  ...,  -71.0643,  -77.5346,
@@ -387,13 +389,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>The PyTorch tensor needs to be converted into a NumPy array so it can then further be converted to an image. I’m using the <code>squeeze</code> method to remove the uneeded axis of length 1, as seen below.</p>
-<div id="95cb09a3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.740341Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.739507Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.749453Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.748268Z&quot;}" data-papermill="{&quot;duration&quot;:0.029094,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.752190&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.723096&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="14">
+<div id="95cb09a3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.029094,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.752190&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.723096&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>spec.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>torch.Size([1, 201, 801])</code></pre>
 </div>
 </div>
-<div id="b7ef75b4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.785837Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.784455Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.793653Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.792659Z&quot;}" data-papermill="{&quot;duration&quot;:0.028469,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.796037&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.767568&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="15">
+<div id="b7ef75b4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.028469,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.796037&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.767568&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> spec.squeeze().numpy()<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>array([[ -73.56842 ,  -80.83749 , -100.      , ...,  -71.064285,
@@ -411,14 +413,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         -100.      ,  -46.994343]], dtype=float32)</code></pre>
 </div>
 </div>
-<div id="f4fb0d9b" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.828702Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.827779Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.834763Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.833666Z&quot;}" data-papermill="{&quot;duration&quot;:0.026709,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.837709&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.811000&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="16">
+<div id="f4fb0d9b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.026709,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.837709&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.811000&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>spec.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>(201, 801)</code></pre>
 </div>
 </div>
 <p>The array now needs to be normalized so it contains integers between 0 and 255: the values needed for images.</p>
-<div id="8d29d563" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.900797Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.900280Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.913110Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.912123Z&quot;}" data-papermill="{&quot;duration&quot;:0.033373,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.916342&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.882969&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="17">
+<div id="8d29d563" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.033373,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.916342&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.882969&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> (spec <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">/</span> (spec.<span class="bu">max</span>() <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">*</span> <span class="dv">255</span><span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>array([[ 53.000538 ,  38.424625 ,   0.       , ...,  58.021824 ,
@@ -436,7 +438,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           0.       , 106.28681  ]], dtype=float32)</code></pre>
 </div>
 </div>
-<div id="22da16c3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:27.951841Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:27.949505Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:27.961525Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:27.960579Z&quot;}" data-papermill="{&quot;duration&quot;:0.032237,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.964842&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.932605&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="18">
+<div id="22da16c3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.032237,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.964842&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.932605&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>spec <span class="op">=</span> spec.astype(<span class="st">'uint8'</span>)<span class="op">;</span> spec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>array([[ 53,  38,   0, ...,  58,  45, 143],
@@ -449,7 +451,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Now we can finally convert the array to an image!</p>
-<div id="454f3e40" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.031056Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.029390Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.084834Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.083568Z&quot;}" data-papermill="{&quot;duration&quot;:0.07604,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.088714&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.012674&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="19">
+<div id="454f3e40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.07604,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.088714&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.012674&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> Image.fromarray(spec)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(img.shape)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -470,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="birdclef-2023-resizing-the-images" class="level4">
 <h4 class="anchored" data-anchor-id="birdclef-2023-resizing-the-images">BirdCLEF 2023 — Resizing the Images</h4>
 <p>To allow the images to easily be used by various models, I resized the spectrograms to be 512 by 512 pixels as shown below.</p>
-<div id="72d5f686" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.274501Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.273673Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.326587Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.324898Z&quot;}" data-papermill="{&quot;duration&quot;:0.078347,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.331168&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.252821&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="20">
+<div id="72d5f686" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.078347,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.331168&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.252821&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>img_size <span class="op">=</span> (<span class="dv">512</span>, <span class="dv">512</span>)</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> img.resize(img_size)</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(img.shape)<span class="op">;</span> img</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -487,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <hr>
 <p>To save the image, we can simply use the <code>save</code> method.</p>
-<div id="aaa70d8f" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.459626Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.459199Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.503231Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.501434Z&quot;}" data-papermill="{&quot;duration&quot;:0.069824,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.506489&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.436665&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="21">
+<div id="aaa70d8f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.069824,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.506489&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.436665&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>img.save(<span class="st">'img.png'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -495,7 +497,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="all-the-images" class="level2">
 <h2 class="anchored" data-anchor-id="all-the-images">All the Images</h2>
 <p>Now that we have verified that our algorithm works fine, we can extend it to convert all audio files.</p>
-<div id="0596ee0c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.643386Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.642940Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.655463Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.653781Z&quot;}" data-papermill="{&quot;duration&quot;:0.039189,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.658495&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.619306&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="22">
+<div id="0596ee0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.039189,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.658495&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.619306&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_imgs(duration, f):</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, duration, <span class="dv">5</span>):</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>        wvfrm, sr <span class="op">=</span> torchaudio.load(f)</span>
@@ -518,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>    spec <span class="op">=</span> ((spec <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">/</span> (spec.<span class="bu">max</span>() <span class="op">-</span> spec.<span class="bu">min</span>()) <span class="op">*</span> <span class="dv">255</span>).astype(<span class="st">'uint8'</span>)</span>
 <span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Image.fromarray(spec).resize(img_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d7bd67cb" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:28.704642Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:28.704142Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:28.713257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:28.711504Z&quot;}" data-papermill="{&quot;duration&quot;:0.036435,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.716300&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.679865&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="23">
+<div id="d7bd67cb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.036435,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.716300&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.679865&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> iskaggle:</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> bird <span class="kw">in</span> aud_files.ls().<span class="bu">sorted</span>():</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>        mkdir(<span class="ss">f'/kaggle/train_images/</span><span class="sc">{</span>bird<span class="sc">.</span>stem<span class="sc">}</span><span class="ss">'</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
@@ -564,11 +566,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="https://sat02pap002files.storage.live.com/y4m3RfkLD7cbynZIPmI7X17qmHTxar-hX5p-w5G70Z3YiRiIPzkzo3Z9h1Z4eWecrmmU88yl-HXUSRU7xUQ0LN2C-_wn_qmKDJFJyXSjNfhV7XjKpGbyhxXU9JCaTOxZhRwHGl4ghkykkhpMBTpoG-dxe7YlhPI40DQJT2dvCcuv1KZQkYkcOHIqiUI8SvwhL4Q?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
 <p>Repeat for your Kaggle username.</p>
 <p>Now we can set the keys for the notebook as shown below (input the name of your key into <code>get_secret</code>).</p>
-<div id="b4153a0e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.196185Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.195768Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:29.201245Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:29.199576Z&quot;}" data-papermill="{&quot;duration&quot;:0.032545,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.203954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.171409&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="24">
+<div id="b4153a0e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.032545,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.203954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.171409&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> kaggle_secrets <span class="im">import</span> UserSecretsClient</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="bf1fad86" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.247229Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.246767Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:29.732755Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:29.730826Z&quot;}" data-papermill="{&quot;duration&quot;:0.511238,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.735938&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.224700&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="25">
+<div id="bf1fad86" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.511238,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.735938&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.224700&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>secrets <span class="op">=</span> UserSecretsClient()</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'KAGGLE_USERNAME'</span>] <span class="op">=</span> secrets.get_secret(<span class="st">'KAGGLE_USERNAME'</span>)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'KAGGLE_KEY'</span>] <span class="op">=</span> secrets.get_secret(<span class="st">'KAGGLE_KEY'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -577,7 +579,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="push-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="push-dataset">Push Dataset</h2>
 <p>The <a href="fastkaggle">fastkaggle</a> library offers a convenient way to easily create and push a dataset to Kaggle.</p>
-<div id="074a8247" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:29.865172Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:29.864701Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.396398Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.394702Z&quot;}" data-papermill="{&quot;duration&quot;:0.558069,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.399675&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.841606&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="26">
+<div id="074a8247" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.558069,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.399675&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.841606&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>doc(mk_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <hr>
@@ -588,12 +590,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p><strong>Note:</strong> Ignore the <code>if not iskaggle</code> statement when replicating. I added it since I edited this notebook and needed to save changes without reproducing the entire dataset.</p>
 </blockquote>
-<div id="addc7c98" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:30.488813Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:30.487791Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.495264Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.494072Z&quot;}" data-papermill="{&quot;duration&quot;:0.034606,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.498618&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.464012&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="27">
+<div id="addc7c98" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.034606,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.498618&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.464012&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> iskaggle:</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    mk_dataset(<span class="st">'/kaggle/train_images'</span>, <span class="st">'spectrograms-birdclef-2023'</span>, force<span class="op">=</span><span class="va">True</span>, upload<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>And we can verify our dataset has been created by having a look at the generated metadata file.</p>
-<div id="82da7371" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-04-05T11:16:30.591890Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-04-05T11:16:30.591361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-04-05T11:16:30.597529Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-04-05T11:16:30.596042Z&quot;}" data-papermill="{&quot;duration&quot;:0.032864,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.600152&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.567288&quot;,&quot;status&quot;:&quot;completed&quot;}" data-tags="[]" data-execution_count="28">
+<div id="82da7371" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.032864,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.600152&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.567288&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> iskaggle:</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">!</span> cat <span class="op">/</span>kaggle<span class="op">/</span>train_images<span class="op">/</span>dataset<span class="op">-</span>metadata.json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -610,236 +612,242 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/forbo7\.github\.io\/");
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/forbo7\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -847,186 +855,182 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <script src="https://giscus.app/client.js" data-repo="ForBo7/forbo7.github.io" data-repo-id="R_kgDOICXnAA" data-category="Giscus Comments" data-category-id="DIC_kwDOICXnAM4CR8YX" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
+</script>
+<script type="application/javascript">
+  const giscusIframeObserver = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      mutation.addedNodes.forEach(function (addedNode) {
+        if (addedNode.matches && addedNode.matches('div.giscus')) {
+          const giscusIframe = addedNode.querySelector('iframe.giscus-frame');
+          if(giscusIframe) {
+            giscusIframe.addEventListener("load", function() {
+              window.setTimeout(() => {
+                toggleGiscusIfUsed(hasAlternateSentinel(), authorPrefersDark);
+              }, 100);
+            });
+            giscusIframeObserver.disconnect();
+          }
+        }
+      });
+    });
+  });
+  giscusIframeObserver.observe(document.body, { childList: true, subtree: true });
 </script>
 <input type="hidden" id="giscus-base-theme" value="light">
 <input type="hidden" id="giscus-alt-theme" value="light">
