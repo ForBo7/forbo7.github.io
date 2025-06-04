@@ -1,0 +1,4 @@
+---
+title: Cognitive Map
+description: "Simply put, a specialized [embedding](embedding.qmd) where each row is an object and each column is a location. Thus, each cell tells us whether a given object is at a given location."
+---

@@ -46,7 +46,7 @@ $$
 $$
 :::
 
-We have obtained the values $-1.15$, $1.47$, and $-0.3$ for each of the movies respectively. From this, we can deduce that _Cars_ ($1.47) is probably the best movie for Billy to watch, based on his taste.
+We have obtained the values $-1.15$, $1.47$, and $-0.3$ for each of the movies respectively. From this, we can deduce that _Cars_ ($1.47$) is probably the best movie for Billy to watch, based on his taste.
 
 After similarly calculating the dot product between Joe and each of the movies, we get the following respective values: $1.82$, $-0.55$, $1.82$. This tells us that both _The Lord of the Rings_ and _Interstellar_ are equally the best movies for Joe to watch.
 
