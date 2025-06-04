@@ -15,7 +15,26 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Sun, 11 May 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 03 Jun 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Cognitive Maps</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-06-03-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>In biology, cognitive maps are what provide us with spatial knowledge and perception. These maps are comprised of 4 cells that in conjuction provide us with a sense of spatial perception: place cells, grid cells, direction cells, and boundary cells. Place cells let us know when objects in a given location. Grid cells provide a coordinate-like system for mapping the environment.</p>
+<p>In the field of AI, one of the most common implementations of cognitive maps is akin to an embedding specialized for space. Each row is an object and each column is a location in a given space. Thus, a corresponding cell tells us whether a given object is at a given location.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Biology</category>
+  <category>Spatial Intelligence</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-06-03-A.html</guid>
+  <pubDate>Tue, 03 Jun 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>春节期间怎么祝福朋友</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-05-11-A.html</link>
