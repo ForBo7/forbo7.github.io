@@ -1,0 +1,10 @@
+---
+title: Cognitive Maps
+description: Cognitive maps in the context of biology and AI.
+date: 2025-06-03
+categories: [Biology, Spatial Intelligence]
+---
+
+In biology, cognitive maps are what provide us with spatial knowledge and perception. These maps are comprised of 4 cells that in conjuction provide us with a sense of spatial perception: place cells, grid cells, direction cells, and boundary cells. Place cells let us know when objects in a given location. Grid cells provide a coordinate-like system for mapping the environment.
+
+In the field of AI, one of the most common implementations of cognitive maps is akin to an embedding specialized for space. Each row is an object and each column is a location in a given space. Thus, a corresponding cell tells us whether a given object is at a given location.
