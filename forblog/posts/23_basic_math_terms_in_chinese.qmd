@@ -1,0 +1,76 @@
+---
+title: 中文里的一些基本数学术语
+description: Some basic mathematical expressions in Chinese.
+image: ../images/23_basic_math_terms_in_chinese/thumbnail.png
+author: Salman Naqvi
+date: '2025-06-08'
+categories: [Mandarin, Mathematics]
+open-graph:
+  description: Some basic mathematical expressions in Chinese.
+  image: ../images/23_basic_math_terms_in_chinese/thumbnail.png
+twitter-card:
+  description: Some basic mathematical expressions in Chinese.
+  image: ../images/23_basic_math_terms_in_chinese/thumbnail.png
+---
+
+![](../images/23_basic_math_terms_in_chinese/thumbnail.png)
+
+### 算术运算
+
+- $n + m$ 是 “n 加 m”.
+- $n - m$ 是 “n 减 m”.
+
+### 乘除法
+
+- **标准说法：** 
+  - $n \cdot m$ 是 “n 乘以 m”
+  - $n / m$ 是 “n 除以 m”
+
+- **传统用法：** 
+  - “n 乘 m” 可能表示 $m \cdot n$
+  - “n 除 m” 可能表示 $m / n$
+
+### 等式/相等
+
+- $=$ 是 “等于”
+- $≈$ 是 “约等于”
+- $≠$ 是 “不等于”
+- $<$ 是 “小于”
+- $>$ 是 “大于”
+- $\leq$ 是 “小于等于”
+- $\geq$ 是 “小于等于”
+
+### 负数
+- $-4.87$ 是 “负 4 点 87”
+
+### 几何
+- $\angle ABC$ 是 “角 ABC”
+- $\triangle ABC$ 是 “三角形 ABC”
+
+### 微积分
+- $\frac{dy}{dx}$ 是 “dy 除以 dx” 或者 “y 对 x 的导数”
+- $\int f(x) dx$ 是 “f(x) 的积分”
+
+### 集合论
+- $\in$ 是 “属于”
+- $\subset$ 是 “子集”
+
+### 组合数学
+- $C^{n}_{m}$ 是 “n 取 m” 或者 “从 n 个元素中取 m 个元素的组合数”
+
+### 阶乘与连乘
+- $1 \cdot 2 \cdot 3 \cdot \cdots$ 是 “1 乘 2 乘 3 乘 4 一直乘下去”
+- $1 \cdot 2 \cdot 3 \cdot 4 \cdots \cdot n = n!$ 是 “1 乘 2 乘 3 一直乘到 n” 或者 “n 的阶乘”
+
+### 分数
+- $\frac{a}{b}$ 是 “b 分之 a”
+- $c\frac{a}{b}$ 是 “c 又 b 分之 a”
+
+### 指数与根式
+- $n^{m}$ 是 “n 次方”
+- $\sqrt{n}$ 是 “根号 n”
+- $\sqrt[m]{n}$ 是 “n 的 m 次方根”
+
+---
+
+如果你有任何意见、问题、建议、反馈、批评、或更正，请在下方评论区留言！
