@@ -15,7 +15,118 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Tue, 25 Feb 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 08 Jun 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>中文里的一些基本数学术语</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/23_basic_math_terms_in_chinese.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/23_basic_math_terms_in_chinese/thumbnail.png" class="img-fluid"></p>
+<section id="算术运算" class="level3">
+<h3 class="anchored" data-anchor-id="算术运算">算术运算</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?n%20+%20m"> 是 “n 加 m”.</li>
+<li><img src="https://latex.codecogs.com/png.latex?n%20-%20m"> 是 “n 减 m”.</li>
+</ul>
+</section>
+<section id="乘除法" class="level3">
+<h3 class="anchored" data-anchor-id="乘除法">乘除法</h3>
+<ul>
+<li><strong>标准说法：</strong>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?n%20%5Ccdot%20m"> 是 “n 乘以 m”</li>
+<li><img src="https://latex.codecogs.com/png.latex?n%20/%20m"> 是 “n 除以 m”</li>
+</ul></li>
+<li><strong>传统用法：</strong>
+<ul>
+<li>“n 乘 m” 可能表示 <img src="https://latex.codecogs.com/png.latex?m%20%5Ccdot%20n"></li>
+<li>“n 除 m” 可能表示 <img src="https://latex.codecogs.com/png.latex?m%20/%20n"></li>
+</ul></li>
+</ul>
+</section>
+<section id="等式相等" class="level3">
+<h3 class="anchored" data-anchor-id="等式相等">等式/相等</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?="> 是 “等于”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%E2%89%88"> 是 “约等于”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%E2%89%A0"> 是 “不等于”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%3C"> 是 “小于”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%3E"> 是 “大于”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cleq"> 是 “小于等于”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cgeq"> 是 “小于等于”</li>
+</ul>
+</section>
+<section id="负数" class="level3">
+<h3 class="anchored" data-anchor-id="负数">负数</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?-4.87"> 是 “负 4 点 87”</li>
+</ul>
+</section>
+<section id="几何" class="level3">
+<h3 class="anchored" data-anchor-id="几何">几何</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cangle%20ABC"> 是 “角 ABC”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Ctriangle%20ABC"> 是 “三角形 ABC”</li>
+</ul>
+</section>
+<section id="微积分" class="level3">
+<h3 class="anchored" data-anchor-id="微积分">微积分</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bdy%7D%7Bdx%7D"> 是 “dy 除以 dx” 或者 “y 对 x 的导数”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cint%20f(x)%20dx"> 是 “f(x) 的积分”</li>
+</ul>
+</section>
+<section id="集合论" class="level3">
+<h3 class="anchored" data-anchor-id="集合论">集合论</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cin"> 是 “属于”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Csubset"> 是 “子集”</li>
+</ul>
+</section>
+<section id="组合数学" class="level3">
+<h3 class="anchored" data-anchor-id="组合数学">组合数学</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?C%5E%7Bn%7D_%7Bm%7D"> 是 “n 取 m” 或者 “从 n 个元素中取 m 个元素的组合数”</li>
+</ul>
+</section>
+<section id="阶乘与连乘" class="level3">
+<h3 class="anchored" data-anchor-id="阶乘与连乘">阶乘与连乘</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?1%20%5Ccdot%202%20%5Ccdot%203%20%5Ccdot%20%5Ccdots"> 是 “1 乘 2 乘 3 乘 4 一直乘下去”</li>
+<li><img src="https://latex.codecogs.com/png.latex?1%20%5Ccdot%202%20%5Ccdot%203%20%5Ccdot%204%20%5Ccdots%20%5Ccdot%20n%20=%20n!"> 是 “1 乘 2 乘 3 一直乘到 n” 或者 “n 的阶乘”</li>
+</ul>
+</section>
+<section id="分数" class="level3">
+<h3 class="anchored" data-anchor-id="分数">分数</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Ba%7D%7Bb%7D"> 是 “b 分之 a”</li>
+<li><img src="https://latex.codecogs.com/png.latex?c%5Cfrac%7Ba%7D%7Bb%7D"> 是 “c 又 b 分之 a”</li>
+</ul>
+</section>
+<section id="指数与根式" class="level3">
+<h3 class="anchored" data-anchor-id="指数与根式">指数与根式</h3>
+<ul>
+<li><img src="https://latex.codecogs.com/png.latex?n%5E%7Bm%7D"> 是 “n 次方”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Bn%7D"> 是 “根号 n”</li>
+<li><img src="https://latex.codecogs.com/png.latex?%5Csqrt%5Bm%5D%7Bn%7D"> 是 “n 的 m 次方根”</li>
+</ul>
+<hr>
+<p>如果你有任何意见、问题、建议、反馈、批评、或更正，请在下方评论区留言！</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Mandarin</category>
+  <category>Mathematics</category>
+  <guid>https://forbo7.github.io/forblog/posts/23_basic_math_terms_in_chinese.html</guid>
+  <pubDate>Sun, 08 Jun 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/23_basic_math_terms_in_chinese/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>How Deepseek R1 was trained.</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -18069,97 +18180,6 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
   <category>Analyzing Models</category>
   <guid>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</guid>
   <pubDate>Sat, 04 Jun 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>A No Nonsense Guide to Reading a Confusion Matrix</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>This article was updated on <strong>Thursday, 10 November 2022</strong>.</em></p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/thumbnail.jpg" class="img-fluid" alt="A meme from the Matrix film."></p>
-<p>Confusion matrices help model designers view what mistakes a model has made.</p>
-<p>In this post, I’ll be telling you how to easily read such matrices.</p>
-<p>Jump to Section&nbsp;2 for an ultra concise rundown.</p>
-<p>Ready? Here we go.</p>
-<section id="case-1-introduction" class="level2">
-<h2 class="anchored" data-anchor-id="case-1-introduction">Case 1: Introduction</h2>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1.png" class="img-fluid" style="width:65.0%"></p>
-<p>Ignore the “Actual” and “Predicted” labels for now.</p>
-<p>Let’s compare grizzly bears to black bears.</p>
-<p>All comparisons begin at the bottom, with the columns.</p>
-<p>First, highlight the grizzly bear column.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_1.png" class="img-fluid" style="width:65.0%"></p>
-<p>Next, highlight the black bear row.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_2.png" class="img-fluid" style="width:65.0%"></p>
-<p>Now find the common entry in the highlighted column and row.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_3.png" class="img-fluid" style="width:65.0%"></p>
-<p>This common entry is our required information.</p>
-<p>All entries in the diagonal going from the top left to the bottom right (blue) are correct classifications. All other entries are incorrect classifications.</p>
-<p>Our common entry does not lie in the main diagonal. Therefore, we are looking at incorrect classifications.</p>
-<p>We have compared grizzly bears to black bears. Therefore, from this deduction, <strong>three grizzly bears have been incorrectly classified as black bears</strong>.</p>
-<div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>There is a difference between comparing grizzly bears to black bears and black bears to grizzly bears.</strong></p>
-<p>Comparing grizzly bears to black bears means, “How many grizzly bears were misclassified as black bears?”</p>
-<p>Comparing black bears to grizzly bears means, “How many black bears were misclassified as grizzly bears?”</p>
-</div>
-</div>
-</section>
-<section id="sec-case2" class="level2">
-<h2 class="anchored" data-anchor-id="sec-case2">Case 2: Ultra Concise</h2>
-<p>Let’s compare black bears to grizzly bears.</p>
-<p>Highlight the black bear column.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_4.png" class="img-fluid" style="width:65.0%"></p>
-<p>Highlight the grizzly bear row.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_5.png" class="img-fluid" style="width:65.0%"></p>
-<p>Highlight the common entry.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_6.png" class="img-fluid" style="width:65.0%"></p>
-<p>Zero black bears were misclassified as grizzly bears.</p>
-</section>
-<section id="case-3-correct-classifications" class="level2">
-<h2 class="anchored" data-anchor-id="case-3-correct-classifications">Case 3: Correct Classifications</h2>
-<p>Let’s see how many teddy bears were correctly classified. We are essentially comparing teddy bears to teddy bears.</p>
-<p>Highlight the teddy bear column.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_7.png" class="img-fluid" style="width:65.0%"></p>
-<p>Highlight the teddy bear row.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_8.png" class="img-fluid" style="width:65.0%"></p>
-<p>Highlight the common entry.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_1_9.png" class="img-fluid" style="width:65.0%"></p>
-<p>Fifty three teddy bears were correctly classified as teddy bears.</p>
-</section>
-<section id="exercise-do-it-yourself" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-do-it-yourself">Exercise: Do It Yourself</h2>
-<p>Below is a confusion matrix of a car classifier that classifies cars into their brand.</p>
-<p><img src="https://forbo7.github.io/forblog/images/3_the_confusion_matrix/confusion_matrix_2.png" class="img-fluid" style="width:65.0%"></p>
-<p>You learn by doing!</p>
-<ul>
-<li>How many Lamborghinis were correctly classified?</li>
-<li>How many Jaguars were incorrectly classified?</li>
-<li>How many Chevrolets were misclassified as Fords?</li>
-<li>How many Fords were misclassified as Chevrolets?</li>
-<li>Which two car brands did the model have the most trouble differentiating between?</li>
-</ul>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Analyzing Models</category>
-  <guid>https://forbo7.github.io/forblog/posts/3_the_confusion_matrix.html</guid>
-  <pubDate>Fri, 03 Jun 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
