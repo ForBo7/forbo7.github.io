@@ -3,7 +3,7 @@ title: "{{< animate fadeIn 'Salman Naqvi' duration=faster >}}"
 about:
   id: about-forbo7
   template: trestles
-  image: images/profile_1.jpg
+  image: images/profile.jpg
   image-shape: rounded
   links:
     - icon: file-post-fill
@@ -29,29 +29,39 @@ page-layout: full
 ::::{.animate__animated .animate__slideInUp .animate__faster}
 :::{.panel-tabset}
 
+# Projects // 有趣项目
+
+- [Trained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.](forblog/posts/21_reflecting_on_my_internships.qmd)
+- [Reimplemented the DiffEdit research paper. Edit portions of an image via text only.](forblog/posts/15_un_successfully_implementing_diffedit.ipynb)
+- [Reimplementing the PyTorch library myself.](forblog/posts/20_models_from_scratch.ipynb)
+- [Making back propagation an inherently easy topic to grasp.](forblog/posts/18_backprop_from_scratch.qmd)
+- [Optimizing algorithms to run quicker on a GPU.](forblog/posts/18_backprop_from_scratch.qmd)
+
 # Experience // 经验
 
-**Research Assistant** | Oct. 2024 – Current
+**Embodied AI Researcher** | Oct. 2024 – Current
 
 Multimodal Intelligence Laboratory, The Education University of Hong Kong
 
 * Embodied AI
-* Natural language robot manipulation
+* General purpose robot manipulation and spatial intelligence
 * Under [Dr. Fu Hong](https://repository.eduhk.hk/en/persons/hong%E5%82%85%E5%BC%98-fu)
 
 **AI Engineer** | Jul. 2024 – Aug.2024
 
 Keweya Education Technology Limited – HKSTP Incubatee
 
+* Project lead
+* Studying, implementing, customizing diffusion models, and app development
 * Review and analysis of research papers
-* Study of diffusion models, and app development
 
 **LLM Researcher** | Jun. 2024 – Jul. 2024
 
 READily Limited – HKSTP Incubatee
 
+* Project co-lead
+* Intensive continued pretraining of large language models
 * Research paper review and implementation
-* Training and finetuning large language models
 
 **Training Coordinator** | Mar. 2024
 
@@ -75,6 +85,10 @@ Beaconhouse College Program
 - Mandarin: Basic proficiency
 - Urdu: Fluent
 
+**Teaching**
+
+I know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.
+
 **Programming**
 
 Python, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev
@@ -83,21 +97,13 @@ Python, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, pe
 
 Blender
 
-**Teaching**
-
-I know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.
-
 **Artificial Intelligence (fast.ai)**
 
 Self-learning since April 2022.
 
-# Projects // 有趣项目
+# 扫一扫
 
-- Trained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.
-- Reimplemented the DiffEdit research paper. Edit portions of an image via text only.
-- Reimplementing the PyTorch library myself.
-- Making back propagation an inherently easy topic to grasp.
-- Optimizing algorithms to run quicker on a GPU.
+![](images/contact.png)
 
 :::
 
@@ -119,6 +125,8 @@ Self-learning since April 2022.
 
 *Feb. 24, 2023* — **Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China** | EdUHK Full Entrance Scholarship
 
+*Nov. 2022 – Jun. 2023* – **Grew an AI community of over 1100+ members** | The Dataspace | Discord
+
 *Sep. 2022 – Mar. 2023* — **Completed fast.ai Course Part 1: Practical Deep Learning for Coders**
 
 *Jan. 17, 2023* — **Placed in Top 12% of Contestants in Data Science Competition** | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle
@@ -127,7 +135,7 @@ Self-learning since April 2022.
 
 *Sep. 2020 – May 2021* — **Mathematics Teaching Assistant** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
 
-*Jan. 2020* —  **Concert Marketing – Raised $8,400** |Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
+*Jan. 2020* —  **Concert Marketing – Raised $8,400** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
 
 *Aug. 2019* — **Received 100% Scholarship for A-Level Program** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
 
@@ -142,10 +150,6 @@ IELTS – 8.5/9.0
 Middle School and High School – CAIE IGCSE
 
 Primary and Middle School – IB Primary and Middle Years Program
-
-# 扫一扫
-
-![](images/contact.png)
 
 :::
 ::::
