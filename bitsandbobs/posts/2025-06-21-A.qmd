@@ -1,0 +1,18 @@
+---
+title: Terminal know-how.
+description: Know the basics of manipulating your terminal.
+date: 2025-06-20
+categories: [Shell]
+---
+
+- `$PATH` outputs the paths of all programs that can be executed directly by the name of the program. That is, it's not needed to type the fully path of the program every time.
+- `which` lets you know which path is in use.
+- Shift, rename, copy, and delete files with `mv`, `cp`, `rv`, and `rm`.
+- Stuck? Run `man` with the program name.
+- Pass data between files and programs with `>` and `<`.
+- Pass data between programs with `|`.
+- Remember `cd -` and `cd ~`.
+- Use `chmod` to change file permissions.
+- Use `touch` to create files, and change certain file metadata.
+- Use `cat` to view file contents, and concatenate files.
+- `!#` (shebang) calls for bash scripts to be interpreted.
