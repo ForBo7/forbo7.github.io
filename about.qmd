@@ -91,6 +91,8 @@ I know how to succinctly convey concepts in an engaging manner that makes sense.
 
 **Programming**
 
+I have a very particular manner and philosophy to programming. It's expository programming: literate, exploratory, and the way it should be done. See [here](https://docs.fast.ai/dev/style.html), [here](https://archive.vector.org.uk/art10000980), and [here](https://nbdev.fast.ai/). Writing code is not the focus, solving the problem at hand is.
+
 Python, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev
 
 **3D Computer Graphics**
