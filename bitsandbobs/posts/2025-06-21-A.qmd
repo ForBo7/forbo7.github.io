@@ -1,6 +1,6 @@
 ---
 title: Terminal know-how.
-description: Know the basics of manipulating your terminal.
+description: Know the basics of manipulating your shell.
 date: 2025-06-20
 categories: [Shell]
 ---
