@@ -15,7 +15,36 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Tue, 03 Jun 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 20 Jun 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Terminal know-how.</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-06-21-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<ul>
+<li><code>$PATH</code> outputs the paths of all programs that can be executed directly by the name of the program. That is, it’s not needed to type the fully path of the program every time.</li>
+<li><code>which</code> lets you know which path is in use.</li>
+<li>Shift, rename, copy, and delete files with <code>mv</code>, <code>cp</code>, <code>rv</code>, and <code>rm</code>.</li>
+<li>Stuck? Run <code>man</code> with the program name.</li>
+<li>Pass data between files and programs with <code>&gt;</code> and <code>&lt;</code>.</li>
+<li>Pass data between programs with <code>|</code>.</li>
+<li>Remember <code>cd -</code> and <code>cd ~</code>.</li>
+<li>Use <code>chmod</code> to change file permissions.</li>
+<li>Use <code>touch</code> to create files, and change certain file metadata.</li>
+<li>Use <code>cat</code> to view file contents, and concatenate files.</li>
+<li><code>!#</code> (shebang) calls for bash scripts to be interpreted.</li>
+</ul>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Shell</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-06-21-A.html</guid>
+  <pubDate>Fri, 20 Jun 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Cognitive Maps</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-06-03-A.html</link>
