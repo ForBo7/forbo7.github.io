@@ -15,7 +15,26 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Fri, 20 Jun 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 24 Jun 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Retrieval Augmented Generation in a nutshell.</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-01-24-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>RAG is simply a bunch of cosine similarity checks performed with the user’s query and the contexts provided to the LLM. This allows the LLM to determine which contexts are most useful for the LLM to answer the user’s query.</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>LLM</category>
+  <category>VLM</category>
+  <category>MLLM</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-01-24-A.html</guid>
+  <pubDate>Tue, 24 Jun 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Terminal know-how.</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-06-21-A.html</link>
