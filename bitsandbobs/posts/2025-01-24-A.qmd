@@ -1,0 +1,8 @@
+---
+title: Retrieval Augmented Generation in a nutshell.
+description: Don't let jargon fool you.
+date: 2025-06-24
+categories: [LLM, VLM, MLLM]
+---
+
+RAG is simply a bunch of cosine similarity checks performed with the user's query and the contexts provided to the LLM. This allows the LLM to determine which contexts are most useful for the LLM to answer the user's query.
