@@ -1,0 +1,70 @@
+---
+title: Shell hooks, uv, and Conda.
+description: Hooking uv and conda together.
+date: 2025-07-05
+categories: [Shell]
+---
+
+A shell hook is a piece of shell script that is called before or after the shell displays the prompt.
+
+I want to use conda and uv together. Conda's great as swithcing environments on the fly, and uv is great for speed. However, while `uv pip install` makes use of the current conda environment, `uv sync` and `uv add` don't
+
+I came across [this](https://github.com/warner-benjamin/uv-conda) rc script that sets the environment variable uv uses to allow it to work with conda.
+
+```bash
+# Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes
+conda_auto_env() {
+    if [[ -n "$CONDA_PREFIX" ]]; then
+        export UV_PROJECT_ENVIRONMENT="$CONDA_PREFIX"
+    else
+        unset UV_PROJECT_ENVIRONMENT
+    fi
+}
+
+# Run the function initially to set the variable immediately
+conda_auto_env
+
+# Hook into shell prompts
+if [[ -n "$ZSH_VERSION" ]]; then
+    # Ensure add-zsh-hook is available
+    autoload -Uz add-zsh-hook
+    # Avoid duplicate hooks
+    if ! [[ -v _conda_update_hook_added ]]; then
+        add-zsh-hook precmd conda_auto_env
+        _conda_update_hook_added=1
+    fi
+elif [[ -n "$BASH_VERSION" ]]; then
+    # Ensure PROMPT_COMMAND is updated only once
+    if [[ -z "$PROMPT_COMMAND" ]]; then
+        PROMPT_COMMAND="conda_auto_env"
+    elif [[ "$PROMPT_COMMAND" != *"conda_auto_env"* ]]; then
+        PROMPT_COMMAND="conda_auto_env; $PROMPT_COMMAND"
+    fi
+fi
+```
+
+Programming the shell is new to me, and I wanted to understand what exactly this script was doing. So after chatting with a LLM, I discovered the world of shell hooks.
+
+The script begins by first settings the `UV_PROJECT_ENVIRONMENT` to be the path that `$CONDA_PREFIX` uses.
+
+```bash
+conda_auto_env() {
+    if [[ -n "$CONDA_PREFIX" ]]; then
+        export UV_PROJECT_ENVIRONMENT="$CONDA_PREFIX"
+    else
+        unset UV_PROJECT_ENVIRONMENT
+    fi
+}
+```
+
+Then, a `precmd` shell hook is created. So the moment before a new prompt appears in the shell, `conda_auto_env` is run to set the uv environment to be the same as the conda environment. 
+
+```bash
+# Ensure add-zsh-hook is available
+autoload -Uz add-zsh-hook
+# Avoid duplicate hooks
+if ! [[ -v _conda_update_hook_added ]]; then
+    add-zsh-hook precmd conda_auto_env
+    _conda_update_hook_added=1
+fi
+```
