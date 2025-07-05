@@ -2,7 +2,7 @@
 title: Shell hooks, uv, and Conda.
 description: Hooking uv and conda together.
 date: 2025-07-05
-categories: [Shell]
+categories: [Shell， Python]
 ---
 
 A shell hook is a piece of shell script that is called before or after the shell displays the prompt.
