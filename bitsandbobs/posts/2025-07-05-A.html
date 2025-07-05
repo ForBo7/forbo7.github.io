@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>A shell hook is a piece of shell script that is called before or after the shell displays the prompt.</p>
 <p>I want to use conda and uv together. Conda’s great as swithcing environments on the fly, and uv is great for speed. However, while <code>uv pip install</code> makes use of the current conda environment, <code>uv sync</code> and <code>uv add</code> don’t</p>
-<p>I came across <a href="https://github.com/warner-benjamin/uv-conda">this</a> rc script that sets the environment variable uv uses to allow it to work with conda.</p>
+<p>I came across <a href="https://github.com/warner-benjamin/uv-conda">this</a> rc script from <a href="https://benjaminwarner.dev/">Benjamin Warner</a> that sets the environment variable uv uses to allow it to work with conda.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">conda_auto_env()</span> <span class="kw">{</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">[[</span> <span class="ot">-n</span> <span class="st">"</span><span class="va">$CONDA_PREFIX</span><span class="st">"</span> <span class="kw">]];</span> <span class="cf">then</span></span>
