@@ -9,7 +9,7 @@ A shell hook is a piece of shell script that is called before or after the shell
 
 I want to use conda and uv together. Conda's great as swithcing environments on the fly, and uv is great for speed. However, while `uv pip install` makes use of the current conda environment, `uv sync` and `uv add` don't
 
-I came across [this](https://github.com/warner-benjamin/uv-conda) rc script that sets the environment variable uv uses to allow it to work with conda.
+I came across [this](https://github.com/warner-benjamin/uv-conda) rc script from [Benjamin Warner](https://benjaminwarner.dev/) that sets the environment variable uv uses to allow it to work with conda.
 
 ```bash
 # Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes
