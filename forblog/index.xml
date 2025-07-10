@@ -15,7 +15,83 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Sun, 08 Jun 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 10 Jul 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>The State of Pose Estimation</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/24_the_state_of_pose_estimation.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/thumbnail.png" class="img-fluid"></p>
+<section id="foreword" class="level2">
+<h2 class="anchored" data-anchor-id="foreword">Foreword</h2>
+<p>In this post, I have annotated a presentation I gave at my univesity’s multimodal intelligence lab. I’m a newcomer to general purpose robotics, so I had a different mindset and perspective going in.</p>
+<p>At the end of this post, I provide another perspective that arose as I wrote these annotations.</p>
+</section>
+<section id="annotated-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="annotated-presentation">Annotated Presentation</h2>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/3.png" class="img-fluid"></p>
+<p>Here, I introduce the task assigned to me, which focused on addressing the limitations of VLMs in understanding object poses through fine-tuning on annotated videos.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/4.png" class="img-fluid"></p>
+<p>The core problem is that current vision-language models (VLMs) struggle with understanding object poses. When queried about an object’s orientation or directional changes, VLMs often fail when even simple complexity is introduced or they forget the object’s prior states.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/5.png" class="img-fluid"></p>
+<p>The goal is to fine-tune a VLM on videos annotated with pose information to improve its performance in understanding and reasoning about object poses.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/7.png" class="img-fluid"></p>
+<p>Two main obstacles exist: data and pose models.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/8.png" class="img-fluid"></p>
+<p>A major obstacle is the lack of existing annotated video datasets with object pose information. Self-recorded samples suffer from limited diversity and aren’t suitable for achieving generalizability. While off-the-shelf video datasets exist, they can’t be easily processed due to pose model requirements.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/9.png" class="img-fluid"></p>
+<p>Pose estimation models present significant friction due to their specialized input requirements (camera data, reference images, 3D models) and fragmented ecosystem. There’s no standardized text-to-pose interface, requiring manual masking and setup of different libraries/environments for each model.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/10.png" class="img-fluid"></p>
+<p>The current workflow involves too much friction and insufficient iteration, leading to a lack of confidence in the self-created dataset approach.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/11.png" class="img-fluid"></p>
+<p>Quick iteration is key. Quick iteration is key. Quick iteration is key.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/12.png" class="img-fluid"></p>
+<p>The workflow involves multiple steps with numerous variables: recording videos (sample count, duration, frames, pose complexity, object count), segmenting videos into frames, pose annotation (RGB, depth, mask frames, camera metadata), text annotation (QnA pairs), and finally fine-tuning. Each step introduces significant time investment and uncertainty.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/13.png" class="img-fluid"></p>
+<p>The creation of this dataset is a whole project of its own, with the pose model itself being the core component.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/14.png" class="img-fluid"></p>
+<p>So I suggested a different direction: why not test the underlying theory but with those pieces of data that have less friction.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/15.png" class="img-fluid"></p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/16.png" class="img-fluid"></p>
+<p>Given the challenges, a different direction maintaining the same core theory is proposed: testing whether annotating images (with RGBD or other data) improves VLM performance on specific tasks, rather than focusing on pose annotations.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/17.png" class="img-fluid"></p>
+<p>I also did a few experiments of my own, before I was assigned this project, on RGBD images to test for spatial understanding. An off-the-shelf VLM scored ~28% on a given benchmark, a 100 QnA pair finetune scored ~34%, and a 2000 QnA pair finetune scored ~12%.</p>
+<p>My current intuition for the discrepency on the larger sample size is that while there were 2000 samples, there were only 300 unique RGBD images. This is contrary to the 100 QnA pair set which had 100 unique images. The suggests diversity is indeed important, as I pointed out earlier in my presentation.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/18.png" class="img-fluid"></p>
+<p>Benefits a switching approaches is quicker iteration.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/19.png" class="img-fluid"></p>
+<p>This new direction enables quicker iteration, allowing me to try more ideas out. I had set up a pipeline in which I was able to conduct those 3 prior benchmarks in a couple of days. With quicker iteration, I was able to already test for diversity. With quicker iteration, I could also test out other ideas, such as: should I keep the RGB and depth images separate? should I overlay the depth image over the RGB image? does using multiple view points of a scene help increase spatial understanding?</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/20.png" class="img-fluid"></p>
+<p>So I am brought to my current perspective on the current state of general purpose robotics: better, more impactful directions exist. Directions that have small steps, but allow for interesting, quick iterations and explorations.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/21.jpeg" class="img-fluid"></p>
+<p>This is how I currently see the field. I see to many papers and people jumping to fancy pipelines, rather than iterating on the core pieces that underpin those fancy pipelines.</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/22.png" class="img-fluid"></p>
+<p>I’m surprised that the primary reason that these general purpose pipelines use VLMs for suck at the very specific reason. (I know this meme doesn’t match the original intent of the xkcd meme, but it appeared in my mind.)</p>
+<p><img src="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/23.png" class="img-fluid"></p>
+<p>The field seems to be jumping to complex pipeline integrations rather than conducting small, meaningful iteration experiments. There’s a lack of basic infrastructure for quick experimentation, such as pose estimation models being problematic. Without these basic components and pieces being ironed out, the more interesting directions cannot be explored.</p>
+<p>Better directions exist that focus on fundamental improvements through systematic testing rather than complex integrations.</p>
+</section>
+<section id="closing-words" class="level2">
+<h2 class="anchored" data-anchor-id="closing-words">Closing Words</h2>
+<p>As I annotated this presention, it just occured to me: overlay pose annotations on videos perhaps might not be needed at all. Current vision models and VLMs can pick out objects in images without the need for, say, a bounding box and label around the object in question. So perhaps, what needs to be done is that, perhaps, QnA pairs are created in a way that allows for the VLM to learn the concept of spaces, depth, poses, etc. The answer describes the manipulation of the object, the change in pose of the object, and so on.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Annotated Presentation</category>
+  <category>Approaching AI</category>
+  <category>Robotics</category>
+  <category>Thoughts</category>
+  <guid>https://forbo7.github.io/forblog/posts/24_the_state_of_pose_estimation.html</guid>
+  <pubDate>Thu, 10 Jul 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>中文里的一些基本数学术语</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -18102,84 +18178,6 @@ Image 6 is flooded with a probability of 100.00%.</code></pre>
   <category>Creating Models</category>
   <guid>https://forbo7.github.io/forblog/posts/5_detecting_floods_for_disaster_relief.html</guid>
   <pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Data Quality is Important | Car Classifier</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>This article was updated on <strong>Thursday, 10 November 2022</strong>.</em></p>
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/thumbnail.jpg" class="img-fluid" alt="A parking lot filled with cars."></p>
-<p>I recently created a car classifier that classified cars into their respective brands.</p>
-<p>Despite having almost 5000 images in my training set, I ended up trying out over a hundred layers in my model, and twenty epochs. Even then, I had an error rate of 17.4%.</p>
-<p>The culprit? My dataset.</p>
-<p>I scraped 5000 images of cars (500 for each company) from DuckDuckGo. Naturally, as expected, the data quality is not so good.</p>
-<p>Why? Below are some potential reasons:</p>
-<ul>
-<li>Noncar images present in dataset</li>
-<li>Cars of incorrect company present in dataset</li>
-<li>F1 cars present in dataset</li>
-<li>A large variety of cars from different time periods present in dataset</li>
-<li>Different companys’ cars look similar</li>
-<li>Modded cars present in dataset</li>
-<li>Concept cars present in dataset</li>
-<li>Multiple cars present in a single image</li>
-<li>Certain angles of cars appear more than others</li>
-<li>Cars appear in certain backgrounds more than others</li>
-<li>The search term <code>{car_brand} car</code> could be skewing results</li>
-</ul>
-<p>I could have absolutely achieved better results with fewer layers and fewer epochs if I trained the model on better quality data — or manually combed through the 5000 images 💀. However, I did use fastai’s GUI for data cleaning. This GUI sorts images by their loss which helps to determine if certain images should be relabeled or deleted.</p>
-<p>Below is the confusion matrix for this model.</p>
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/confusion_matrix.png" class="img-fluid" style="width:65.0%" alt="A confusion matrix of the model."></p>
-<p>It can be seen that this model “confuses” between quite a few different brands: Ford and Chevrolet, Chevrolet and Ford, Jaguar and Aston Martin, Renault and Ford.</p>
-<p>But <strong>why</strong> is data quality important? Because without good data, the model will not be able to “see” things the way they actually are, and in turn end up making worse predictions and not generalize to other data.</p>
-<p>Let’s say you did not know how, say, a toaster looked like. So I taught you by showing you pictures of a kettle. Then to test you, I showed you a set of pictures depicting various kitchen appliances and told you to find the toaster. You would not be able to.</p>
-<div class="quarto-layout-panel" data-layout-ncol="4">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_1.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_2.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_1.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_2.jpg" class="img-fluid"></p>
-</div>
-</div>
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_3.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/kettle_4.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_3.jpg" class="img-fluid"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 25.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/4_data_quality_is_important/toaster_4.jpg" class="img-fluid"></p>
-</div>
-</div>
-</div>
-<p>Extending upon this example, say I showed you toasters only from the last two years and from two brands only. You would not be able to identify toasters older than two years, and toasters from other brands to much success.</p>
-<p>Obviously, humans are smarter and can infer. AI methods can only infer to a certain degree, mainly based on what is in their dataset. This talk does start to become more philosophical.</p>
-<p>The point of this post is to emphasize the importance of data quality and different aspects to consider as to why data quality may not be good. You can have the best architecture in the world, but it is useless if you do not have good data.</p>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Data</category>
-  <category>Analyzing Models</category>
-  <guid>https://forbo7.github.io/forblog/posts/4_data_quality_is_important.html</guid>
-  <pubDate>Sat, 04 Jun 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

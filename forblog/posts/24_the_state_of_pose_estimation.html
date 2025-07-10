@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Salman Naqvi">
+<meta name="description" content="My thoughts on pose estimation, and the wider field of general purpose robotics, as a newbie to this field.">
+
+<title>The State of Pose Estimation – ForBo7 // Salman Naqvi</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-d8574c4f97ef2122fb358b04fcb99079.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="The State of Pose Estimation – ForBo7 // Salman Naqvi">
+<meta property="og:description" content="My thoughts on pose estimation, and the wider field of general purpose robotics, as a newbie to this field.">
+<meta property="og:image" content="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/thumbnail.png">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
+<meta name="twitter:title" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:description" content="My thoughts on pose estimation, and the wider field of general purpose robotics, as a newbie to this field.">
+<meta name="twitter:image" content="https://forbo7.github.io/forblog/images/24_the_state_of_pose_estimation/thumbnail.png">
+<meta name="twitter:creator" content="@ForBo7">
+<meta name="twitter:site" content="@ForBo7">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1024">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ForBo7 // Salman Naqvi</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house-door" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../forblog/index.html"> <i class="bi bi-newspaper" role="img">
+</i> 
+<span class="menu-text">ForBlog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bitsandbobs/index.html"> <i class="bi bi-puzzle" role="img">
+</i> 
+<span class="menu-text">Bits and Bobs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dictionary/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Dictionary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-file-person" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/ForBo7/forbo7.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
+    <a href="../../forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#foreword" id="toc-foreword" class="nav-link active" data-scroll-target="#foreword">Foreword</a></li>
+  <li><a href="#annotated-presentation" id="toc-annotated-presentation" class="nav-link" data-scroll-target="#annotated-presentation">Annotated Presentation</a></li>
+  <li><a href="#closing-words" id="toc-closing-words" class="nav-link" data-scroll-target="#closing-words">Closing Words</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The State of Pose Estimation</h1>
+<p class="subtitle lead">What pose is pose estimation in?</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Annotated Presentation</div>
+    <div class="quarto-category">Approaching AI</div>
+    <div class="quarto-category">Robotics</div>
+    <div class="quarto-category">Thoughts</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    My thoughts on pose estimation, and the wider field of general purpose robotics, as a newbie to this field.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Salman Naqvi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Thursday, 10 July 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><img src="../images/24_the_state_of_pose_estimation/thumbnail.png" class="img-fluid"></p>
+<section id="foreword" class="level2">
+<h2 class="anchored" data-anchor-id="foreword">Foreword</h2>
+<p>In this post, I have annotated a presentation I gave at my univesity’s multimodal intelligence lab. I’m a newcomer to general purpose robotics, so I had a different mindset and perspective going in.</p>
+<p>At the <a href="#closing-words">end of this post</a>, I provide another perspective that arose as I wrote these annotations.</p>
+</section>
+<section id="annotated-presentation" class="level2">
+<h2 class="anchored" data-anchor-id="annotated-presentation">Annotated Presentation</h2>
+<p><img src="../images/24_the_state_of_pose_estimation/3.png" class="img-fluid"></p>
+<p>Here, I introduce the task assigned to me, which focused on addressing the limitations of VLMs in understanding object poses through fine-tuning on annotated videos.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/4.png" class="img-fluid"></p>
+<p>The core problem is that current vision-language models (VLMs) struggle with understanding object poses. When queried about an object’s orientation or directional changes, VLMs often fail when even simple complexity is introduced or they forget the object’s prior states.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/5.png" class="img-fluid"></p>
+<p>The goal is to fine-tune a VLM on videos annotated with pose information to improve its performance in understanding and reasoning about object poses.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/7.png" class="img-fluid"></p>
+<p>Two main obstacles exist: data and pose models.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/8.png" class="img-fluid"></p>
+<p>A major obstacle is the lack of existing annotated video datasets with object pose information. Self-recorded samples suffer from limited diversity and aren’t suitable for achieving generalizability. While off-the-shelf video datasets exist, they can’t be easily processed due to pose model requirements.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/9.png" class="img-fluid"></p>
+<p>Pose estimation models present significant friction due to their specialized input requirements (camera data, reference images, 3D models) and fragmented ecosystem. There’s no standardized text-to-pose interface, requiring manual masking and setup of different libraries/environments for each model.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/10.png" class="img-fluid"></p>
+<p>The current workflow involves too much friction and insufficient iteration, leading to a lack of confidence in the self-created dataset approach.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/11.png" class="img-fluid"></p>
+<p>Quick iteration is key. Quick iteration is key. Quick iteration is key.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/12.png" class="img-fluid"></p>
+<p>The workflow involves multiple steps with numerous variables: recording videos (sample count, duration, frames, pose complexity, object count), segmenting videos into frames, pose annotation (RGB, depth, mask frames, camera metadata), text annotation (QnA pairs), and finally fine-tuning. Each step introduces significant time investment and uncertainty.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/13.png" class="img-fluid"></p>
+<p>The creation of this dataset is a whole project of its own, with the pose model itself being the core component.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/14.png" class="img-fluid"></p>
+<p>So I suggested a different direction: why not test the underlying theory but with those pieces of data that have less friction.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/15.png" class="img-fluid"></p>
+<p><img src="../images/24_the_state_of_pose_estimation/16.png" class="img-fluid"></p>
+<p>Given the challenges, a different direction maintaining the same core theory is proposed: testing whether annotating images (with RGBD or other data) improves VLM performance on specific tasks, rather than focusing on pose annotations.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/17.png" class="img-fluid"></p>
+<p>I also did a few experiments of my own, before I was assigned this project, on RGBD images to test for spatial understanding. An off-the-shelf VLM scored ~28% on a given benchmark, a 100 QnA pair finetune scored ~34%, and a 2000 QnA pair finetune scored ~12%.</p>
+<p>My current intuition for the discrepency on the larger sample size is that while there were 2000 samples, there were only 300 unique RGBD images. This is contrary to the 100 QnA pair set which had 100 unique images. The suggests diversity is indeed important, as I pointed out earlier in my presentation.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/18.png" class="img-fluid"></p>
+<p>Benefits a switching approaches is quicker iteration.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/19.png" class="img-fluid"></p>
+<p>This new direction enables quicker iteration, allowing me to try more ideas out. I had set up a pipeline in which I was able to conduct those 3 prior benchmarks in a couple of days. With quicker iteration, I was able to already test for diversity. With quicker iteration, I could also test out other ideas, such as: should I keep the RGB and depth images separate? should I overlay the depth image over the RGB image? does using multiple view points of a scene help increase spatial understanding?</p>
+<p><img src="../images/24_the_state_of_pose_estimation/20.png" class="img-fluid"></p>
+<p>So I am brought to my current perspective on the current state of general purpose robotics: better, more impactful directions exist. Directions that have small steps, but allow for interesting, quick iterations and explorations.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/21.jpeg" class="img-fluid"></p>
+<p>This is how I currently see the field. I see to many papers and people jumping to fancy pipelines, rather than iterating on the core pieces that underpin those fancy pipelines.</p>
+<p><img src="../images/24_the_state_of_pose_estimation/22.png" class="img-fluid"></p>
+<p>I’m surprised that the primary reason that these general purpose pipelines use VLMs for suck at the very specific reason. (I know this meme doesn’t match the original intent of the xkcd meme, but it appeared in my mind.)</p>
+<p><img src="../images/24_the_state_of_pose_estimation/23.png" class="img-fluid"></p>
+<p>The field seems to be jumping to complex pipeline integrations rather than conducting small, meaningful iteration experiments. There’s a lack of basic infrastructure for quick experimentation, such as pose estimation models being problematic. Without these basic components and pieces being ironed out, the more interesting directions cannot be explored.</p>
+<p>Better directions exist that focus on fundamental improvements through systematic testing rather than complex integrations.</p>
+</section>
+<section id="closing-words" class="level2">
+<h2 class="anchored" data-anchor-id="closing-words">Closing Words</h2>
+<p>As I annotated this presention, it just occured to me: overlay pose annotations on videos perhaps might not be needed at all. Current vision models and VLMs can pick out objects in images without the need for, say, a bounding box and label around the object in question. So perhaps, what needs to be done is that, perhaps, QnA pairs are created in a way that allows for the VLM to learn the concept of spaces, depth, poses, etc. The answer describes the manipulation of the object, the change in pose of the object, and so on.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/forbo7\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "ForBo7/forbo7.github.io";
+    script.dataset.repoId = "R_kgDOICXnAA";
+    script.dataset.category = "Giscus Comments";
+    script.dataset.categoryId = "DIC_kwDOICXnAM4CR8YX";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2022–2025 to ∞ and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a></p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://forums.fast.ai/u/forbo7/summary">
+      <i class="bi bi-file-post-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/ForBo7_">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.artstation.com/forbo7">
+      <i class="bi bi-brush" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:salmananaqvii+forblog@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../forblog/index.xml">
+      <i class="bi bi-rss" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p><a href="https://forbo7.github.io/patch_notes.html">Version 2.2.2.0</a> | <a href="https://forbo7.github.io/feedback.html">Feedback</a> | Website made with <a href="https://quarto.org/">Quarto</a>, by me!</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

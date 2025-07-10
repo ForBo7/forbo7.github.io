@@ -64,6 +64,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
@@ -108,6 +109,7 @@
   {
     "listing": "/forblog/index.html",
     "items": [
+      "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
@@ -144,6 +146,7 @@
   {
     "listing": "/testing_page.html",
     "items": [
+      "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
