@@ -18,6 +18,13 @@ twitter-card:
 
 I went through a bunch of papers I found relating to enhancing spatial understanding in VLMs to get an idea of what's going on. Here, I've simply extracted the main idea that was explored. I haven't evaluated the worthiness/effectiveness of the mentioned ideas.
 
+From what I've seen, I've noticed the following issues with VLMs:
+
+- The encoders themselves don't understand space
+- VLMs are langauge biased
+- VLMs place attention at the wrong places
+- The manner of training is important (i.e,. the dataset provided and the way predictions are made)
+
 ### 3D Understanding and Reconstruction
   
 - **3D geometric encoding for monocular images**: Use a 3D geometric encoder to produce 3D tokens from monocular images (RGB only images; no depth map). *[VLM-3R: Vision language models, augmented with instruction aligned 3D reconstruction]([arXiv link])*  
