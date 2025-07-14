@@ -1,0 +1,79 @@
+---
+title: "Current Ideas in Spatial Understanding"
+subtitle: "What is good, what is not?"
+description: "A collated set of current ideas."
+image: ../images/25_current_ideas_in_spatial_understanding/thumbnail.png
+author: "Salman Naqvi"
+date: "2025-07-14"
+categories: [Computer Vision, LLMs, Papers, Robotics]
+open-graph:
+  description: "A collated set of current ideas."
+  image: ../images/25_current_ideas_in_spatial_understanding/thumbnail.png
+twitter-card:
+  description: "A collated set of current ideas."
+  image: ../images/25_current_ideas_in_spatial_understanding/thumbnail.png
+---
+
+![](../images/25_current_ideas_in_spatial_understanding/thumbnail.png)
+
+I went through a bunch of papers I found relating to enhancing spatial understanding in VLMs to get an idea of what's going on. Here, I've simply extracted the main idea that was explored. I haven't evaluated the worthiness/effectiveness of the mentioned ideas.
+
+### 3D Understanding and Reconstruction
+  
+- **3D geometric encoding for monocular images**: Use a 3D geometric encoder to produce 3D tokens from monocular images (RGB only images; no depth map). *[VLM-3R: Vision language models, augmented with instruction aligned 3D reconstruction]([arXiv link])*  
+- **Evaluating 3D awareness in image models**: Explores whether image models can "see" in 3D. Finds self-supervised models are good at single-view awareness but fail at multiview awareness. *[Probing the 3D awareness of Visual Foundation Models]([arXiv link])*  
+- **CLIP-based 3D-text embedding mapping**: Using CLIP, create an embedding that maps text to 3D point clouds. *[Unified Representation Space for 3D Visual Grounding]([arXiv link])*  
+- **Dual-encoder system for 2D semantics and 3D structure**: Enhances spatial understanding with a 2D encoder (for visual semantics) and a 3D encoder (for 3D structure), eliminating the need for 3D data like depth maps, and "intelligently" selecting key frames. *[Spatial-MLLM: Boosting MLLM Capabilities in Visual-based Spatial Intelligence]([arXiv link])*  
+- **Intermediate perception token generation**: Trains a VLM to output intermediate perception tokens (e.g., depth tokens) to facilitate its reasoning process. *[Perception tokens and enhance visual reasoning in multimodal language models]([arXiv link])*  
+- **Enhanced CLIP with intermediate layers and video support**: A stronger CLIP variant that works on video, uses intermediate layers, scales well, aligns for VL and spatial tasks, and includes a dataset. *[Perception Encoder: The best visual embeddings are not at the output of the network]([arXiv link])*  
+
+
+### Spatial Reasoning Enhancements  
+
+- **Incorporating horizontal lines and row-wise scanning**: Introduce horizontal lines to input images, and prompt to scan row-by-row to improve spatial performance. *[Visual Structures Helps Visual Reasoning: Addressing the Binding Problem in VLMs]([arXiv link])*  
+- **Implicit Perception Loss for policy optimization**: Extends GRPO by introducing "Implicit Perception Loss" to encourage the model to rely more on visual input. *[Perception-Aware Policy Optimization for Multimodal Reasoning]([arXiv link])*  
+- **Latent visual token-based reasoning**: Enables VLMs to "imagine" scenes using latent visual tokens (without outputting pixels). *[Machine Mental Imagery: Empower Multimodal Reasoning with Latent Visual Tokens]([arXiv link])*  
+
+
+### Datasets and Benchmarks for Spatial Understanding  
+
+- **Spatial detail-rich QnA dataset finetuning**: Mixes existing VLMs with a custom image QnA dataset containing object details (presence, depth, 3D positions). *[SpatialVLM: Endowing VLMs with Spatial Reasoning Capabilities]([arXiv link])*   
+- **Spatial relationship dataset for robotics**: A dataset to help VLMs learn spatial relationships better. *[RoboSpatial: Teaching Spatial Understanding to 2D and 3D Vision-Language Models for Robotics]([arXiv link])*  
+- **Simulated dynamic spatial dataset**: A dataset produced from simulations to help VLMs improve understanding of space and movement. *[SAT: Dynamic Spatial Aptitude Training for Multimodal Language Models]([arXiv link])*  
+- **Multi-modal spatial perception benchmark**: Tests how well VLMs understand objects in space and their relation to other images. *[MIRAGE: A Multi-modal Benchmark for Spatial Perception, Reasoning, and Intelligence]([arXiv link])*  
+- **Multi-image spatial intelligence benchmark**: Evaluates VLM spatial understanding using multiple images of the same scene. *[MMSI-Bench: A benchmark for multi-image spatial intelligence]([arXiv link])*  
+- **Spatial intelligence evaluation framework**: A benchmark to test VLM spatial intelligence. *[SITE: Towards spatial intelligence through evaluation]([arXiv link])*  
+- **Multi-view understanding evaluation**: A benchmark to assess VLM performance across varied angles of the same scene, finding VLMs struggle with this. *[Seeing from Another Perspective: Evaluating Mutli-View Understanding in MLLMs]([arXiv link])*  
+- **Hierarchical spatial weakness evaluation**: A framework to identify VLM weaknesses, finding VLMs struggle with depth perception, view switching (first/third-person), and physical reasoning (e.g., occlusion). *[SPHERE: Unveiling Spatial Blindspots in VLMs through Hierarchical Evaluation]([arXiv link])*  
+- **Depth and object annotation dataset for 3D finetuning**: Creates a custom dataset to finetune a VLM on depth images and object annotations. *[MM-Spatial: Exploring 3D Spatial Understanding in MLLMs]([arXiv link])*  
+- **Depth map-annotated dataset finetuning**: Finetunes a VLM on a custom dataset of annotated RGB images + depth maps. *[SpatialRGPT: Grounded Spatial Reasoning in Vision-Language Models]([arXiv link])* 
+
+
+### Attention Mechanisms and Visual Feature Utilization  
+
+- **Attention logit temperature adjustment**: Guides attention to relevant image parts by increasing the temperature of attention logits in confident answers. *[Why is Spatial Reasoning Hard for VLMs? An Attention Mechanism Perspective on Focus Areas]([arXiv link])*  
+- **Improving visual feature utilization**: Highlights that VLM vision encoders outperform the VLM itself, as VLMs fail to effectively use vision encoder outputs, relying instead on language biases. *[Hidden in plain sight: VLMs overlook their visual representations]([arXiv link])*  
+- **Teacher-student training with refiner modules**: Refines CLIP’s spatial awareness using a teacher/student model and a refiner module to remove semantic contamination (noise from irrelevant context). *[Refining CLIP's spatial awareness: A Visual-centric Perspective]([arXiv link])*  
+
+
+### Multimodal and Temporal Spatial Reasoning  
+
+- **Temporal event prediction and segmentation**: Teaches a model to infer missing parts in video events via cause and effect, and to split videos into non-overlapping events with detailed timestamps. *[Tempura: Temporal event masked prediction and understanding for reasoning in action]([arXiv link])*  
+- **Multiframe depth and correspondence learning**: Improves VLMs’ understanding of spatial relationships between frames by teaching depth perception, visual correspondence, and dynamic perception. *[Multi-SpatialMLLM: Multiframe Spatial Understanding with MLLMs]([arXiv link])*  
+- **Human motion and video finetuning**: Finetunes a VLM on videos of human actions + skeleton sequences or 3D human movement models, enabling it to output text describing motions. *[MotionLLM: Understanding Human Behaviors from Human Motions and Videos]([arXiv link])*  
+
+
+### Novel Prompting and Interaction Methods  
+
+- **Iterative visual prompting ("hot and cold")**: Elicits actionable knowledge from VLMs by having them iteratively select from the best visual suggestions (e.g., arrows/markers on images) instead of outputting actions directly. *[PIVOT: Iterative Visual Prompting Elicits Actionable Knowledge for VLMs]([arXiv link])*  
+- **VLM cropping (scanning-like behavior)**: A technique reminiscent of CNN scanning. *[VLM Cropping](https://x.com/gabriberton/status/1920362156127555673)*  
+
+
+### Cognitive and Mental Models of Space 
+
+- **Cognitive map exploration**: Explores "cognitive maps" as a way for VLMs to visualize and encode space, studying how they see, remember, and recall spaces. *[Thinking in Space: How MLLMs See, Remember, and Recall Spaces]([arXiv link])*  
+- **Latent visual token-based imagination**: Enables VLMs to "imagine" scenes using latent visual tokens (without outputting pixels). *[Machine Mental Imagery: Empower Multimodal Reasoning with Latent Visual Tokens]([arXiv link])*
+
+## Conclusion
+
+If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!
