@@ -5,11 +5,13 @@ date: 2025-07-15
 categories: [Shell, Programming]
 ---
 
+## Variables
 - Variables are denoted by `$`
 - `foo = bar` fails since spaces denote arguments
 - `echo '$foo'` outputs `$foo`
 - `echo "$foo"` outputs `bar`
 
+## Reserved Variables
 - Reserve variables include, but are not limited to:
   - `$0`: name of the script
   - `$1` to `$9`: arguments passed to the script
@@ -20,11 +22,13 @@ categories: [Shell, Programming]
 - `$$`: process ID (pid) of the current script
 - `!!`: rerun the entire last command 
 
+## Command and Process Substitutions
 - Command/process substitutions are like f-strings in Python
-- Different between command and process substitution is that the later will place the output in a temporary file
+- Difference between command and process substitution is that the latter will place the output in a temporary file
 - Command substitution: `$(command)`
 - Process substitution: `<(command)`
 
+## Comparisons and Brace Expansions
 - When doing comparisons in bash, use `[[ ]]` rather than `[ ]`; apparently, chances of mistakes are lower this way
 - Use `{}` for common substrings in commands 
   - `convert image.{png,jpg}`
@@ -32,6 +36,7 @@ categories: [Shell, Programming]
   - `mv *{.py,.sh} folder`
   - `touch {foo,bar}/{a..h}`
 
+## Functions vs Scripts
 - Functions are executed in the current environment, whereas scripts aren't
-- Thus, functions can modify environment variables whereas scripts cant
+- Thus, functions can modify environment variables whereas scripts can't
 - Scripts can only access environment variables that are exported with [export](https://www.man7.org/linux/man-pages/man1/export.1p.html)

@@ -1,0 +1,42 @@
+---
+title: Nifty Shell Tools
+description: Pocket tools to keep in your pocket.
+date: 2025-07-15
+categories: [Shell]
+---
+
+## File Searching Tools
+- `find` to find files and directories, and perform actions on them
+- `fd`, an alternative to `find` that provides abstractions
+
+## Path and Command Lookup
+- `which` to know which path is in use
+
+## Text Searching
+- `grep` to match patterns in input text
+- `ripgrep`, an alternative to `grep` that filters generally unwanted files by default
+
+## Documentation Tools
+- `man` to view the manual of a tool
+- `tldr`, an alternative to `man` that provides concise and practical summaries
+
+## File Operations
+- `chmod` to change file permissions
+- `touch` to create files, and change certain file metadata
+- `cat` to view file contents, and concatenate files
+
+## Shell History
+- `history` to view your shell history; alternatively, most shells will allow the same functionality with `ctrl + R`
+
+## Directory Visualization
+- `tree` to visualize directories as a tree
+- `broot` to visualize and navigate directories in a tree-like structure
+
+## File Managers
+- `nnn` and `ranger` as file managers
+
+## Shell Enhancements
+- `fzf`, an add-on to search based actions that introduces fuzzy matching
+- `zsh-autosuggestions`, an add-on to zsh that introduces autosuggestions
+
+
