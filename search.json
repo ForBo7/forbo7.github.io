@@ -228,7 +228,7 @@
     "href": "index.html#bits-and-bobs",
     "title": "ForBo7 // Salman Naqvi",
     "section": "Bits and Bobs",
-    "text": "Bits and Bobs\nClick here to explore more bits and bobs.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\nJul 15, 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\nJul 5, 2025\n\n\n\n\n\n\nRetrieval Augmented Generation in a nutshell.\n\n\nDon’t let jargon fool you.\n\n\nJun 24, 2025\n\n\n\n\n\n\nTerminal know-how.\n\n\nKnow the basics of manipulating your shell.\n\n\nJun 20, 2025\n\n\n\n\n\n\nCognitive Maps\n\n\nCognitive maps in the context of biology and AI.\n\n\nJun 3, 2025\n\n\n\n\n\n\n春节期间怎么祝福朋友\n\n\nHow to greet others during the Spring Festival.\n\n\nMay 11, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Bits and Bobs\nClick here to explore more bits and bobs.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nNifty Shell Tools\n\n\nPocket tools to keep in your pocket.\n\n\nJul 15, 2025\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\nJul 15, 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\nJul 5, 2025\n\n\n\n\n\n\nRetrieval Augmented Generation in a nutshell.\n\n\nDon’t let jargon fool you.\n\n\nJun 24, 2025\n\n\n\n\n\n\nTerminal know-how.\n\n\nKnow the basics of manipulating your shell.\n\n\nJun 20, 2025\n\n\n\n\n\n\nCognitive Maps\n\n\nCognitive maps in the context of biology and AI.\n\n\nJun 3, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#forblog",
@@ -700,109 +700,46 @@
     "text": "没几个 is a way of saying a “very few” of something, rather than “not few”.\n我认识的人很多，但没几个好朋友。\nFrom the Immersive Chinese App.\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-23-A.html",
-    "href": "bitsandbobs/posts/2025-01-23-A.html",
-    "title": "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces",
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html",
+    "href": "bitsandbobs/posts/2025-07-15-A.html",
+    "title": "Nuances in Shell Scripting",
     "section": "",
-    "text": "This paper tackles the issue that is the lack of spatial understanding and spatial reasoning that MLLM/VLMs.\nIn this paper, the authors created a benchmark for spatial reasoning, consisting of over 5000 QnA pairs from 288 indoor videos. A variety of tasks are covered, including configurational (e.g,. object count, route planning), measurement estimation (e.g., room size), and spatiotempral reasoning (e.g., appearance order). 79% accuracy on the benchmark is needed to reach human level awareness. The authors found that their MLLM could only reach 49%.\nThe resulting analysis from the paper shows that 71% of errors stem from spatial reasoning, rather than perception or language understanding. By generating spatial layout (cognitive maps), accuracy on distance related tasks improved by 10%. This outperforms linguistic prompting techniques such as CoT. In fact, CoT degraded performance on the benchmark.\nIt was also found that MLLMs have strong local spatial awareness, but struggle with global awareness.\nWeaknesses in the study include reliance on 3D datasets that may contain annotation errors, video processing and langauge model evaluation being resource intensive, and the study focusing on indoor scenes and not outdoor scenes.\nFuture directions encourage research into hybrid models that are both language and spatial memory, self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\nLink to paper.\n\n\n\n\n\n\nDeepseek R1 Summary\n\n\n\n\n\nStructured Summary of “Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces”\n\nContextual Overview\n\nResearch Question: Can Multimodal Large Language Models (MLLMs) exhibit human-like visual-spatial intelligence (VSI) when reasoning about 3D spaces from videos?\n\nObjective: Develop a benchmark (VSI-Bench) to evaluate MLLMs’ ability to perceive, remember, and reason about spatial relationships in real-world indoor environments.\n\nDomain: Multimodal AI, spatial reasoning, video understanding.\n\nMotivation: Visual-spatial intelligence is critical for robotics, AR/VR, and autonomous systems, but existing MLLM benchmarks focus on 2D image/text understanding. This work addresses the gap in evaluating 3D spatial reasoning from video input.\n\n\n\n\nKey Contributions\n\nVSI-Bench: A novel benchmark with 5,000+ QA pairs derived from 288 real indoor videos (from ScanNet, ScanNet++, ARKitScenes). Tasks include configurational (e.g., object count, route planning), measurement estimation (e.g., room size), and spatiotemporal reasoning (e.g., appearance order).\n\nSpatial Reasoning as Bottleneck: Analysis shows 71% of errors stem from spatial reasoning (e.g., egocentric-allocentric transformations), not perception or language understanding.\n\nCognitive Maps Enhance Performance: Explicitly generating spatial layouts (cognitive maps) improves MLLMs’ accuracy on relative distance tasks by 10%, outperforming linguistic prompting techniques like Chain-of-Thought.\n\nFailure of Linguistic Reasoning: Prevailing methods (CoT, self-consistency, Tree-of-Thoughts) degraded performance on VSI-Bench, highlighting the distinct challenges of spatial reasoning.\n\nLocal vs. Global Spatial Models: MLLMs build strong local spatial awareness (64% accuracy for adjacent objects) but struggle with global consistency.\n\n\n\n\nMethodology Deep Dive\n\nData/Resources:\n\nVideos from ScanNet (24 FPS), ScanNet++, ARKitScenes (30 FPS), standardized to 640×480 resolution.\n\nQA pairs auto-generated using templates and human annotation (for route planning).\n\n\nCore Techniques:\n\nUnified Meta-Information: Structured annotations for object counts, bounding boxes, room size, and spatial relationships.\n\nEvaluation Metrics: Accuracy (for multiple-choice), Mean Relative Accuracy (for numerical answers).\n\nCognitive Map Generation: Prompting MLLMs to output object positions on a 10×10 grid.\n\n\nValidation:\n\n15 MLLMs tested, including GPT-4o, Gemini-1.5 Pro, and open-source models (LLaVA variants).\n\nHuman baseline: 79% accuracy vs. Gemini-1.5 Pro (45.4%).\n\nBlind evaluation confirmed video input is critical (performance drops to chance level without it).\n\n\n\n\n\nStrengths and Weaknesses\n\nStrengths:\n\nComprehensive Benchmark: High-quality, diverse tasks with iterative human review.\n\nNovel Insights: Identifies spatial reasoning as the key bottleneck and demonstrates cognitive maps’ utility.\n\nReproducibility: Public code, metrics, and standardized evaluation protocols.\n\n\nWeaknesses:\n\nDataset Bias: Relies on existing 3D datasets, which may inherit annotation errors.\n\nCompute Demands: Video processing and large model evaluation are resource-intensive.\n\nLimited Generalization: Focus on indoor scenes; outdoor/embodied settings unexplored.\n\n\n\n\n\nRelevance to the Field\n\nAdvances: Establishes a foundation for evaluating and improving MLLMs’ spatial reasoning, crucial for embodied AI (e.g., robots, autonomous navigation).\n\nContrast with Prior Work: Unlike image-based or text-only spatial benchmarks, VSI-Bench uses video to mirror real-world observation.\n\nFuture Directions: Encourages research into hybrid models (language + spatial memory), self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\n\n\n\n\nKey Takeaways\n\nMLLMs lag behind humans in visual-spatial intelligence (45% vs. 79% accuracy) but show emerging capabilities.\n\nSpatial reasoning—not perception or language—is the primary challenge for MLLMs.\n\nCognitive maps improve spatial reasoning, suggesting a path toward better world modeling.\n\nLinguistic prompting (CoT, etc.) fails for spatial tasks, demanding new techniques tailored to visuospatial reasoning.\n\nLocal spatial awareness exists in MLLMs, but global consistency remains elusive.\n\n\nNon-Technical Insights for Decision-Makers:\n- VSI-Bench is a critical tool for developers aiming to build MLLMs for real-world navigation or AR/VR.\n- Spatial reasoning enhancements (e.g., cognitive maps) could bridge the gap between MLLMs and human-like spatial understanding.\n- Open-source models (e.g., LLaVA-NeXT-Video-72B) are competitive with closed-source counterparts, offering cost-effective alternatives.\nLet me know if you’d like to dive deeper into specific sections!\n\n\n\n\n\n\n\n Back to top"
+    "text": "Variables are denoted by $\nfoo = bar fails since spaces denote arguments\necho '$foo' outputs $foo\necho \"$foo\" outputs bar"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-04-28-A.html",
-    "href": "bitsandbobs/posts/2025-04-28-A.html",
-    "title": "饭后百步走，活到九十九",
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#variables",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#variables",
+    "title": "Nuances in Shell Scripting",
     "section": "",
-    "text": "Back to top"
+    "text": "Variables are denoted by $\nfoo = bar fails since spaces denote arguments\necho '$foo' outputs $foo\necho \"$foo\" outputs bar"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-04-03-A.html",
-    "href": "bitsandbobs/posts/2025-04-03-A.html",
-    "title": "鱼与熊掌",
-    "section": "",
-    "text": "Full version: 鱼与熊掌不可兼得.\nIn other words, you can’t have the fish and the bear’s paw too.\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#reserved-variables",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#reserved-variables",
+    "title": "Nuances in Shell Scripting",
+    "section": "Reserved Variables",
+    "text": "Reserved Variables\n\nReserve variables include, but are not limited to:\n\n$0: name of the script\n$1 to $9: arguments passed to the script\n\n$#: number of arguments passed to the script\n$@: all arguments passed to the script\n$?: exit status of the last command\n$_: last argument of the previous command; can also be accessed by Esc + . or alt + .\n$$: process ID (pid) of the current script\n!!: rerun the entire last command"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-24-A.html",
-    "href": "bitsandbobs/posts/2025-01-24-A.html",
-    "title": "Retrieval Augmented Generation in a nutshell.",
-    "section": "",
-    "text": "RAG is simply a bunch of cosine similarity checks performed with the user’s query and the contexts provided to the LLM. This allows the LLM to determine which contexts are most useful for the LLM to answer the user’s query.\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#command-and-process-substitutions",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#command-and-process-substitutions",
+    "title": "Nuances in Shell Scripting",
+    "section": "Command and Process Substitutions",
+    "text": "Command and Process Substitutions\n\nCommand/process substitutions are like f-strings in Python\nDifference between command and process substitution is that the latter will place the output in a temporary file\nCommand substitution: $(command)\nProcess substitution: &lt;(command)"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-02-18-A.html",
-    "href": "bitsandbobs/posts/2025-02-18-A.html",
-    "title": "Seeking Deep Thoughts",
-    "section": "",
-    "text": "I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:\n\nR1 is successful simply because of the training process\nDeepseek Math is worked really well because of data quality\nGRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)\n\nTakeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#comparisons-and-brace-expansions",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#comparisons-and-brace-expansions",
+    "title": "Nuances in Shell Scripting",
+    "section": "Comparisons and Brace Expansions",
+    "text": "Comparisons and Brace Expansions\n\nWhen doing comparisons in bash, use [[ ]] rather than [ ]; apparently, chances of mistakes are lower this way\nUse {} for common substrings in commands\n\nconvert image.{png,jpg}\ncp /path/to/project/{foo,bar,baz}.sh /newpath\nmv *{.py,.sh} folder\ntouch {foo,bar}/{a..h}"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-21-A.html",
-    "href": "bitsandbobs/posts/2025-01-21-A.html",
-    "title": "OmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints",
-    "section": "",
-    "text": "OmniManip is a hot new paper from Agibot and Peking University. It’s about zero shot natural language robotic manipulation tasks. A current issue with this task, and current approaches the utilize VLMs, is that VLMs lack 3D spatial understanding. They’re only trained on 2D images and video after all.\nOmniManip utilizes an ensemble of models to achieve this goal. This is how it works at a high level.\nA segmentation model is used to extract relevant objects from the robot’s vision. A VLM then filters out task relevant objects, and also breaks down the input task (input as text) into multiple stages.\nNext, for each stage of the task, interaction primitives and their spatial constraints are extracted. A single view 3D generation model is used to generate meshes for all objects relevant to the task. A pose estimation model is then used to canonicalize the objects. Interaction primitives and their corresponding constraints relevant for the task are then identified by the VLM. Along the way, a LLM is used to grade various primitives and constriants.\nModels hallucinate (in particular, the VLM). The world is not static. To overcome this, a closed loop system is introduced; a self correction mechanism based on resampling, rendering and checking. This method uses realtime feedback form the VLM, which is used to detect and then correct interaction errors. A pose tracking algorithm is also used to continuously update the poses of all relevant objects, allowing the robot to be dynamically adjusted.\nLink to paper.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-01-28-A.html",
-    "href": "bitsandbobs/posts/2025-01-28-A.html",
-    "title": "Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation",
-    "section": "",
-    "text": "DenseMatcher is a method for generalization the “understanding” of one object to another. The best way to understand this, is to view the following images from the paper.\n\n\nIn other words, DenseMatcher computes 3D correspondences between objects.\nIt works by using SD-DINO (a combination of Stable Diffusion and DINO) to extract 2D features from different angles of the 3D asset. The features from different views are averaged, providing the feature for each vertex.\n\nHowever, as seen in the image above, the features are noisy. Therefore, the features are then refined with DiffusionNet. This is an architecture meant for meshes.\n\nAfter the features have been refined, a functional map is solved to compute correspondences.\n\nLink to paper. All images in this post are from the paper.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "unsubscribe.html",
-    "href": "unsubscribe.html",
-    "title": "Unsubscribe from ForBlog and App Playground Notifications",
-    "section": "",
-    "text": "Loading…\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Salman Naqvi",
-    "section": "",
-    "text": "An explorer who’s lived in 4 countries and traveled to 15. A master of 3 different language scripts. An enthusiast of science and technology, proudly wearing the badge of “sci-tech geek”. A curious soul unraveling the realms of AI, intricacies of 3D computer graphics, fueled by an insatiable passion for learning. Onward and upward, with tenacity and sincerity.\n\n\n\nProjects // 有趣项目Experience // 经验Skills // 技能扫一扫\n\n\n\nTrained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.\nReimplemented the DiffEdit research paper. Edit portions of an image via text only.\nReimplementing the PyTorch library myself.\nMaking back propagation an inherently easy topic to grasp.\nOptimizing algorithms to run quicker on a GPU.\n\n\n\nEmbodied AI Researcher | Oct. 2024 – Current\nMultimodal Intelligence Laboratory, The Education University of Hong Kong\n\nEmbodied AI\nGeneral purpose robot manipulation and spatial intelligence\nUnder Dr. Fu Hong\n\nAI Engineer | Jul. 2024 – Aug.2024\nKeweya Education Technology Limited – HKSTP Incubatee\n\nProject lead\nStudying, implementing, customizing diffusion models, and app development\nReview and analysis of research papers\n\nLLM Researcher | Jun. 2024 – Jul. 2024\nREADily Limited – HKSTP Incubatee\n\nProject co-lead\nIntensive continued pretraining of large language models\nResearch paper review and implementation\n\nTraining Coordinator | Mar. 2024\nKids4Kids Hong Kong\n\nVolunteer work\nWorkshop planning and video editing\n\nTeaching Assistant | Sep. 2020 – May. 2021\nBeaconhouse College Program\n\nTeaching classes\n1-1 student sessions\n\n\n\nLanguage\n\nEnglish: Native level fluency\nMandarin: Basic proficiency\nUrdu: Fluent\n\nTeaching\nI know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.\nProgramming\nI have a very particular manner and philosophy to programming. It’s expository programming: literate, exploratory, and the way it should be done. See here, here, and here. Writing code is not the focus, solving the problem at hand is.\nPython, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev\n3D Computer Graphics\nBlender\nArtificial Intelligence (fast.ai)\nSelf-learning since April 2022.\n\n\n\n\n\n\n\nOther Interesting Stuff // 其他亮点Education // 教育\n\n\nFeb. 21st 2025 – Meet Salman Naqvi: the bright spark in AI and EdTech | See what the university’s written about me!\nDec. 27, 2024 – Featured among “The EdUHK Rising Stars” | See the university’s mini documentary on me!\nJun. 12, 2024 – Study Award from Hong Kong SAR Government | Hong Kong SAR Government Scholarship Fund Reaching Out Award\nDec. 7, 2023 — Invited Speaker at the Advanced Study Institute (ASI) Online Symposium | The Education University of Hong Kong and Hong Kong Baptist University\nApr. 2023 – Nov. 2023 — Co-lead Online Study Group | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord\nMar. 17, 2023 — Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan | KUAS-E Scholarship\nFeb. 24, 2023 — Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China | EdUHK Full Entrance Scholarship\nNov. 2022 – Jun. 2023 – Grew an AI community of over 1100+ members | The Dataspace | Discord\nSep. 2022 – Mar. 2023 — Completed fast.ai Course Part 1: Practical Deep Learning for Coders\nJan. 17, 2023 — Placed in Top 12% of Contestants in Data Science Competition | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle\nSep. 2020 – May 2021 — Physics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nSep. 2020 – May 2021 — Mathematics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nJan. 2020 — Concert Marketing – Raised $8,400 | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nAug. 2019 — Received 100% Scholarship for A-Level Program | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\n2018 — Bronze Medal – Honorable Distinction Award | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan\n\n\nCurrently studying BSc (Honors) in Artificial Intelligence and Educational Technology at The Education University of Hong Kong.\nIELTS – 8.5/9.0\nMiddle School and High School – CAIE IGCSE\nPrimary and Middle School – IB Primary and Middle Years Program\n\n\n\n\n \n\n\n Back to top"
-  },
-  {
-    "objectID": "bitsandbobs/index.html",
-    "href": "bitsandbobs/index.html",
-    "title": "These are bits and bobs.",
-    "section": "",
-    "text": "Bits and bobs I learned along the way. Maybe you'll find them useful too.\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\n15 July 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\n05 July 2025\n\n\n\n\n\n\nRetrieval Augmented Generation in a nutshell.\n\n\nDon’t let jargon fool you.\n\n\n24 June 2025\n\n\n\n\n\n\nTerminal know-how.\n\n\nKnow the basics of manipulating your shell.\n\n\n20 June 2025\n\n\n\n\n\n\nCognitive Maps\n\n\nCognitive maps in the context of biology and AI.\n\n\n03 June 2025\n\n\n\n\n\n\n春节期间怎么祝福朋友\n\n\nHow to greet others during the Spring Festival.\n\n\n11 May 2025\n\n\n\n\n\n\n茶好客常来\n\n\n只要东西好，顾客就会喜欢。\n\n\n01 May 2025\n\n\n\n\n\n\n饭后百步走，活到九十九\n\n\nA walk after dinner makes one live to 99.\n\n\n28 April 2025\n\n\n\n\n\n\n鱼与熊掌\n\n\nYou can’t have your cake and eat it too.\n\n\n03 April 2025\n\n\n\n\n\n\nSeeking Deep Thoughts\n\n\nThoughts that came to mind as I’m reading the Deepseek Maths paper\n\n\n18 February 2025\n\n\n\n\n\n\nDeepseek R1 in 2 bullets\n\n\nDeepseek R1 explained in a literal walnut shell\n\n\n13 February 2025\n\n\n\n\n\n\nRobo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation\n\n\nTransfering the perception of an object, to other objects.\n\n\n28 January 2025\n\n\n\n\n\n\n不 vs 没\n\n\nThe age old connundrum.\n\n\n27 January 2025\n\n\n\n\n\n\nThinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces\n\n\nA new dimension to current models is needed to understand space.\n\n\n23 January 2025\n\n\n\n\n\n\nOmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints\n\n\nUsing an ensemble to overcome the lack of 3D understanding\n\n\n21 January 2025\n\n\n\n\n\n\n小和年轻\n\n\n小 and 年轻 carry different contations for age.\n\n\n14 January 2025\n\n\n\n\n\n\n没几个\n\n\nThe function of 没几个\n\n\n02 January 2025\n\n\n\n\n\n\nNo matching items\n\n  \n\n\n\nLoading…\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-06-03-A.html",
-    "href": "bitsandbobs/posts/2025-06-03-A.html",
-    "title": "Cognitive Maps",
-    "section": "",
-    "text": "In biology, cognitive maps are what provide us with spatial knowledge and perception. These maps are comprised of 4 cells that in conjuction provide us with a sense of spatial perception: place cells, grid cells, direction cells, and boundary cells. Place cells let us know when objects in a given location. Grid cells provide a coordinate-like system for mapping the environment.\nIn the field of AI, one of the most common implementations of cognitive maps is akin to an embedding specialized for space. Each row is an object and each column is a location in a given space. Thus, a corresponding cell tells us whether a given object is at a given location.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-06-21-A.html",
-    "href": "bitsandbobs/posts/2025-06-21-A.html",
-    "title": "Terminal know-how.",
-    "section": "",
-    "text": "$PATH outputs the paths of all programs that can be executed directly by the name of the program. That is, it’s not needed to type the fully path of the program every time.\nwhich lets you know which path is in use.\nShift, rename, copy, and delete files with mv, cp, rv, and rm.\nStuck? Run man with the program name.\nPass data between files and programs with &gt; and &lt;.\nPass data between programs with |.\nRemember cd - and cd ~.\nUse chmod to change file permissions.\nUse touch to create files, and change certain file metadata.\nUse cat to view file contents, and concatenate files.\n!# (shebang) calls for bash scripts to be interpreted.\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-05-01-A.html",
-    "href": "bitsandbobs/posts/2025-05-01-A.html",
-    "title": "茶好客常来",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-05-A.html",
-    "href": "bitsandbobs/posts/2025-07-05-A.html",
-    "title": "Shell hooks, uv, and Conda.",
-    "section": "",
-    "text": "A shell hook is a piece of shell script that is called before or after the shell displays the prompt.\nI want to use conda and uv together. Conda’s great as swithcing environments on the fly, and uv is great for speed. However, while uv pip install makes use of the current conda environment, uv sync and uv add don’t\nI came across this rc script from Benjamin Warner that sets the environment variable uv uses to allow it to work with conda.\n# Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\n\n# Run the function initially to set the variable immediately\nconda_auto_env\n\n# Hook into shell prompts\nif [[ -n \"$ZSH_VERSION\" ]]; then\n    # Ensure add-zsh-hook is available\n    autoload -Uz add-zsh-hook\n    # Avoid duplicate hooks\n    if ! [[ -v _conda_update_hook_added ]]; then\n        add-zsh-hook precmd conda_auto_env\n        _conda_update_hook_added=1\n    fi\nelif [[ -n \"$BASH_VERSION\" ]]; then\n    # Ensure PROMPT_COMMAND is updated only once\n    if [[ -z \"$PROMPT_COMMAND\" ]]; then\n        PROMPT_COMMAND=\"conda_auto_env\"\n    elif [[ \"$PROMPT_COMMAND\" != *\"conda_auto_env\"* ]]; then\n        PROMPT_COMMAND=\"conda_auto_env; $PROMPT_COMMAND\"\n    fi\nfi\nProgramming the shell is new to me, and I wanted to understand what exactly this script was doing. So after chatting with a LLM, I discovered the world of shell hooks.\nThe script begins by first settings the UV_PROJECT_ENVIRONMENT to be the path that $CONDA_PREFIX uses.\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\nThen, a precmd shell hook is created. So the moment before a new prompt appears in the shell, conda_auto_env is run to set the uv environment to be the same as the conda environment.\n# Ensure add-zsh-hook is available\nautoload -Uz add-zsh-hook\n# Avoid duplicate hooks\nif ! [[ -v _conda_update_hook_added ]]; then\n    add-zsh-hook precmd conda_auto_env\n    _conda_update_hook_added=1\nfi\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-01-27-A.html",
-    "href": "bitsandbobs/posts/2025-01-27-A.html",
-    "title": "不 vs 没",
-    "section": "",
-    "text": "In a nutshell.\n不: - Negates present and future - Negates habitual actions and adjectives\n没: - Negates past - Negates something that hasn’t happened\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#functions-vs-scripts",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#functions-vs-scripts",
+    "title": "Nuances in Shell Scripting",
+    "section": "Functions vs Scripts",
+    "text": "Functions vs Scripts\n\nFunctions are executed in the current environment, whereas scripts aren’t\nThus, functions can modify environment variables whereas scripts can’t\nScripts can only access environment variables that are exported with export"
   },
   {
     "objectID": "bitsandbobs/posts/2025-02-13-A.html",
@@ -812,11 +749,179 @@
     "text": "Am currently reading through the research paper. From my current understanding:\n\nR1-Zero is pure RL, with GRPO as the policy\nR1 is unpure RL, with GRPO as the policy, with some SFT in the form of cold start data, and further refinement stages\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-15-A.html",
-    "href": "bitsandbobs/posts/2025-07-15-A.html",
-    "title": "Nuances in Shell Scripting",
+    "objectID": "bitsandbobs/posts/2025-01-27-A.html",
+    "href": "bitsandbobs/posts/2025-01-27-A.html",
+    "title": "不 vs 没",
     "section": "",
-    "text": "Variables are denoted by $\nfoo = bar fails since spaces denote arguments\necho '$foo' outputs $foo\necho \"$foo\" outputs bar\nReserve variables include, but are not limited to:\n\n$0: name of the script\n$1 to $9: arguments passed to the script\n\n$#: number of arguments passed to the script\n$@: all arguments passed to the script\n$?: exit status of the last command\n$_: last argument of the previous command; can also be accessed by Esc + . or alt + .\n$$: process ID (pid) of the current script\n!!: rerun the entire last command\nCommand/process substitutions are like f-strings in Python\nDifferent between command and process substitution is that the later will place the output in a temporary file\nCommand substitution: $(command)\nProcess substitution: &lt;(command)\nWhen doing comparisons in bash, use [[ ]] rather than [ ]; apparently, chances of mistakes are lower this way\nUse {} for common substrings in commands\n\nconvert image.{png,jpg}\ncp /path/to/project/{foo,bar,baz}.sh /newpath\nmv *{.py,.sh} folder\ntouch {foo,bar}/{a..h}\n\nFunctions are executed in the current environment, whereas scripts aren’t\nThus, functions can modify environment variables whereas scripts cant\nScripts can only access environment variables that are exported with export\n\n\n\n\n Back to top"
+    "text": "In a nutshell.\n不: - Negates present and future - Negates habitual actions and adjectives\n没: - Negates past - Negates something that hasn’t happened\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-05-A.html",
+    "href": "bitsandbobs/posts/2025-07-05-A.html",
+    "title": "Shell hooks, uv, and Conda.",
+    "section": "",
+    "text": "A shell hook is a piece of shell script that is called before or after the shell displays the prompt.\nI want to use conda and uv together. Conda’s great as swithcing environments on the fly, and uv is great for speed. However, while uv pip install makes use of the current conda environment, uv sync and uv add don’t\nI came across this rc script from Benjamin Warner that sets the environment variable uv uses to allow it to work with conda.\n# Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\n\n# Run the function initially to set the variable immediately\nconda_auto_env\n\n# Hook into shell prompts\nif [[ -n \"$ZSH_VERSION\" ]]; then\n    # Ensure add-zsh-hook is available\n    autoload -Uz add-zsh-hook\n    # Avoid duplicate hooks\n    if ! [[ -v _conda_update_hook_added ]]; then\n        add-zsh-hook precmd conda_auto_env\n        _conda_update_hook_added=1\n    fi\nelif [[ -n \"$BASH_VERSION\" ]]; then\n    # Ensure PROMPT_COMMAND is updated only once\n    if [[ -z \"$PROMPT_COMMAND\" ]]; then\n        PROMPT_COMMAND=\"conda_auto_env\"\n    elif [[ \"$PROMPT_COMMAND\" != *\"conda_auto_env\"* ]]; then\n        PROMPT_COMMAND=\"conda_auto_env; $PROMPT_COMMAND\"\n    fi\nfi\nProgramming the shell is new to me, and I wanted to understand what exactly this script was doing. So after chatting with a LLM, I discovered the world of shell hooks.\nThe script begins by first settings the UV_PROJECT_ENVIRONMENT to be the path that $CONDA_PREFIX uses.\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\nThen, a precmd shell hook is created. So the moment before a new prompt appears in the shell, conda_auto_env is run to set the uv environment to be the same as the conda environment.\n# Ensure add-zsh-hook is available\nautoload -Uz add-zsh-hook\n# Avoid duplicate hooks\nif ! [[ -v _conda_update_hook_added ]]; then\n    add-zsh-hook precmd conda_auto_env\n    _conda_update_hook_added=1\nfi\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-05-01-A.html",
+    "href": "bitsandbobs/posts/2025-05-01-A.html",
+    "title": "茶好客常来",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-06-21-A.html",
+    "href": "bitsandbobs/posts/2025-06-21-A.html",
+    "title": "Terminal know-how.",
+    "section": "",
+    "text": "$PATH outputs the paths of all programs that can be executed directly by the name of the program. That is, it’s not needed to type the fully path of the program every time.\nwhich lets you know which path is in use.\nShift, rename, copy, and delete files with mv, cp, rv, and rm.\nStuck? Run man with the program name.\nPass data between files and programs with &gt; and &lt;.\nPass data between programs with |.\nRemember cd - and cd ~.\nUse chmod to change file permissions.\nUse touch to create files, and change certain file metadata.\nUse cat to view file contents, and concatenate files.\n!# (shebang) calls for bash scripts to be interpreted.\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-06-03-A.html",
+    "href": "bitsandbobs/posts/2025-06-03-A.html",
+    "title": "Cognitive Maps",
+    "section": "",
+    "text": "In biology, cognitive maps are what provide us with spatial knowledge and perception. These maps are comprised of 4 cells that in conjuction provide us with a sense of spatial perception: place cells, grid cells, direction cells, and boundary cells. Place cells let us know when objects in a given location. Grid cells provide a coordinate-like system for mapping the environment.\nIn the field of AI, one of the most common implementations of cognitive maps is akin to an embedding specialized for space. Each row is an object and each column is a location in a given space. Thus, a corresponding cell tells us whether a given object is at a given location.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/index.html",
+    "href": "bitsandbobs/index.html",
+    "title": "These are bits and bobs.",
+    "section": "",
+    "text": "Bits and bobs I learned along the way. Maybe you'll find them useful too.\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nNifty Shell Tools\n\n\nPocket tools to keep in your pocket.\n\n\n15 July 2025\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\n15 July 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\n05 July 2025\n\n\n\n\n\n\nRetrieval Augmented Generation in a nutshell.\n\n\nDon’t let jargon fool you.\n\n\n24 June 2025\n\n\n\n\n\n\nTerminal know-how.\n\n\nKnow the basics of manipulating your shell.\n\n\n20 June 2025\n\n\n\n\n\n\nCognitive Maps\n\n\nCognitive maps in the context of biology and AI.\n\n\n03 June 2025\n\n\n\n\n\n\n春节期间怎么祝福朋友\n\n\nHow to greet others during the Spring Festival.\n\n\n11 May 2025\n\n\n\n\n\n\n茶好客常来\n\n\n只要东西好，顾客就会喜欢。\n\n\n01 May 2025\n\n\n\n\n\n\n饭后百步走，活到九十九\n\n\nA walk after dinner makes one live to 99.\n\n\n28 April 2025\n\n\n\n\n\n\n鱼与熊掌\n\n\nYou can’t have your cake and eat it too.\n\n\n03 April 2025\n\n\n\n\n\n\nSeeking Deep Thoughts\n\n\nThoughts that came to mind as I’m reading the Deepseek Maths paper\n\n\n18 February 2025\n\n\n\n\n\n\nDeepseek R1 in 2 bullets\n\n\nDeepseek R1 explained in a literal walnut shell\n\n\n13 February 2025\n\n\n\n\n\n\nRobo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation\n\n\nTransfering the perception of an object, to other objects.\n\n\n28 January 2025\n\n\n\n\n\n\n不 vs 没\n\n\nThe age old connundrum.\n\n\n27 January 2025\n\n\n\n\n\n\nThinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces\n\n\nA new dimension to current models is needed to understand space.\n\n\n23 January 2025\n\n\n\n\n\n\nOmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints\n\n\nUsing an ensemble to overcome the lack of 3D understanding\n\n\n21 January 2025\n\n\n\n\n\n\n小和年轻\n\n\n小 and 年轻 carry different contations for age.\n\n\n14 January 2025\n\n\n\n\n\n\n没几个\n\n\nThe function of 没几个\n\n\n02 January 2025\n\n\n\n\n\n\nNo matching items\n\n  \n\n\n\nLoading…\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Salman Naqvi",
+    "section": "",
+    "text": "An explorer who’s lived in 4 countries and traveled to 15. A master of 3 different language scripts. An enthusiast of science and technology, proudly wearing the badge of “sci-tech geek”. A curious soul unraveling the realms of AI, intricacies of 3D computer graphics, fueled by an insatiable passion for learning. Onward and upward, with tenacity and sincerity.\n\n\n\nProjects // 有趣项目Experience // 经验Skills // 技能扫一扫\n\n\n\nTrained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.\nReimplemented the DiffEdit research paper. Edit portions of an image via text only.\nReimplementing the PyTorch library myself.\nMaking back propagation an inherently easy topic to grasp.\nOptimizing algorithms to run quicker on a GPU.\n\n\n\nEmbodied AI Researcher | Oct. 2024 – Current\nMultimodal Intelligence Laboratory, The Education University of Hong Kong\n\nEmbodied AI\nGeneral purpose robot manipulation and spatial intelligence\nUnder Dr. Fu Hong\n\nAI Engineer | Jul. 2024 – Aug.2024\nKeweya Education Technology Limited – HKSTP Incubatee\n\nProject lead\nStudying, implementing, customizing diffusion models, and app development\nReview and analysis of research papers\n\nLLM Researcher | Jun. 2024 – Jul. 2024\nREADily Limited – HKSTP Incubatee\n\nProject co-lead\nIntensive continued pretraining of large language models\nResearch paper review and implementation\n\nTraining Coordinator | Mar. 2024\nKids4Kids Hong Kong\n\nVolunteer work\nWorkshop planning and video editing\n\nTeaching Assistant | Sep. 2020 – May. 2021\nBeaconhouse College Program\n\nTeaching classes\n1-1 student sessions\n\n\n\nLanguage\n\nEnglish: Native level fluency\nMandarin: Basic proficiency\nUrdu: Fluent\n\nTeaching\nI know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.\nProgramming\nI have a very particular manner and philosophy to programming. It’s expository programming: literate, exploratory, and the way it should be done. See here, here, and here. Writing code is not the focus, solving the problem at hand is.\nPython, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev\n3D Computer Graphics\nBlender\nArtificial Intelligence (fast.ai)\nSelf-learning since April 2022.\n\n\n\n\n\n\n\nOther Interesting Stuff // 其他亮点Education // 教育\n\n\nFeb. 21st 2025 – Meet Salman Naqvi: the bright spark in AI and EdTech | See what the university’s written about me!\nDec. 27, 2024 – Featured among “The EdUHK Rising Stars” | See the university’s mini documentary on me!\nJun. 12, 2024 – Study Award from Hong Kong SAR Government | Hong Kong SAR Government Scholarship Fund Reaching Out Award\nDec. 7, 2023 — Invited Speaker at the Advanced Study Institute (ASI) Online Symposium | The Education University of Hong Kong and Hong Kong Baptist University\nApr. 2023 – Nov. 2023 — Co-lead Online Study Group | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord\nMar. 17, 2023 — Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan | KUAS-E Scholarship\nFeb. 24, 2023 — Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China | EdUHK Full Entrance Scholarship\nNov. 2022 – Jun. 2023 – Grew an AI community of over 1100+ members | The Dataspace | Discord\nSep. 2022 – Mar. 2023 — Completed fast.ai Course Part 1: Practical Deep Learning for Coders\nJan. 17, 2023 — Placed in Top 12% of Contestants in Data Science Competition | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle\nSep. 2020 – May 2021 — Physics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nSep. 2020 – May 2021 — Mathematics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nJan. 2020 — Concert Marketing – Raised $8,400 | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nAug. 2019 — Received 100% Scholarship for A-Level Program | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\n2018 — Bronze Medal – Honorable Distinction Award | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan\n\n\nCurrently studying BSc (Honors) in Artificial Intelligence and Educational Technology at The Education University of Hong Kong.\nIELTS – 8.5/9.0\nMiddle School and High School – CAIE IGCSE\nPrimary and Middle School – IB Primary and Middle Years Program\n\n\n\n\n \n\n\n Back to top"
+  },
+  {
+    "objectID": "unsubscribe.html",
+    "href": "unsubscribe.html",
+    "title": "Unsubscribe from ForBlog and App Playground Notifications",
+    "section": "",
+    "text": "Loading…\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-01-28-A.html",
+    "href": "bitsandbobs/posts/2025-01-28-A.html",
+    "title": "Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation",
+    "section": "",
+    "text": "DenseMatcher is a method for generalization the “understanding” of one object to another. The best way to understand this, is to view the following images from the paper.\n\n\nIn other words, DenseMatcher computes 3D correspondences between objects.\nIt works by using SD-DINO (a combination of Stable Diffusion and DINO) to extract 2D features from different angles of the 3D asset. The features from different views are averaged, providing the feature for each vertex.\n\nHowever, as seen in the image above, the features are noisy. Therefore, the features are then refined with DiffusionNet. This is an architecture meant for meshes.\n\nAfter the features have been refined, a functional map is solved to compute correspondences.\n\nLink to paper. All images in this post are from the paper.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-01-21-A.html",
+    "href": "bitsandbobs/posts/2025-01-21-A.html",
+    "title": "OmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints",
+    "section": "",
+    "text": "OmniManip is a hot new paper from Agibot and Peking University. It’s about zero shot natural language robotic manipulation tasks. A current issue with this task, and current approaches the utilize VLMs, is that VLMs lack 3D spatial understanding. They’re only trained on 2D images and video after all.\nOmniManip utilizes an ensemble of models to achieve this goal. This is how it works at a high level.\nA segmentation model is used to extract relevant objects from the robot’s vision. A VLM then filters out task relevant objects, and also breaks down the input task (input as text) into multiple stages.\nNext, for each stage of the task, interaction primitives and their spatial constraints are extracted. A single view 3D generation model is used to generate meshes for all objects relevant to the task. A pose estimation model is then used to canonicalize the objects. Interaction primitives and their corresponding constraints relevant for the task are then identified by the VLM. Along the way, a LLM is used to grade various primitives and constriants.\nModels hallucinate (in particular, the VLM). The world is not static. To overcome this, a closed loop system is introduced; a self correction mechanism based on resampling, rendering and checking. This method uses realtime feedback form the VLM, which is used to detect and then correct interaction errors. A pose tracking algorithm is also used to continuously update the poses of all relevant objects, allowing the robot to be dynamically adjusted.\nLink to paper.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-02-18-A.html",
+    "href": "bitsandbobs/posts/2025-02-18-A.html",
+    "title": "Seeking Deep Thoughts",
+    "section": "",
+    "text": "I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:\n\nR1 is successful simply because of the training process\nDeepseek Math is worked really well because of data quality\nGRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)\n\nTakeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-01-24-A.html",
+    "href": "bitsandbobs/posts/2025-01-24-A.html",
+    "title": "Retrieval Augmented Generation in a nutshell.",
+    "section": "",
+    "text": "RAG is simply a bunch of cosine similarity checks performed with the user’s query and the contexts provided to the LLM. This allows the LLM to determine which contexts are most useful for the LLM to answer the user’s query.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-04-03-A.html",
+    "href": "bitsandbobs/posts/2025-04-03-A.html",
+    "title": "鱼与熊掌",
+    "section": "",
+    "text": "Full version: 鱼与熊掌不可兼得.\nIn other words, you can’t have the fish and the bear’s paw too.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-04-28-A.html",
+    "href": "bitsandbobs/posts/2025-04-28-A.html",
+    "title": "饭后百步走，活到九十九",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-01-23-A.html",
+    "href": "bitsandbobs/posts/2025-01-23-A.html",
+    "title": "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces",
+    "section": "",
+    "text": "This paper tackles the issue that is the lack of spatial understanding and spatial reasoning that MLLM/VLMs.\nIn this paper, the authors created a benchmark for spatial reasoning, consisting of over 5000 QnA pairs from 288 indoor videos. A variety of tasks are covered, including configurational (e.g,. object count, route planning), measurement estimation (e.g., room size), and spatiotempral reasoning (e.g., appearance order). 79% accuracy on the benchmark is needed to reach human level awareness. The authors found that their MLLM could only reach 49%.\nThe resulting analysis from the paper shows that 71% of errors stem from spatial reasoning, rather than perception or language understanding. By generating spatial layout (cognitive maps), accuracy on distance related tasks improved by 10%. This outperforms linguistic prompting techniques such as CoT. In fact, CoT degraded performance on the benchmark.\nIt was also found that MLLMs have strong local spatial awareness, but struggle with global awareness.\nWeaknesses in the study include reliance on 3D datasets that may contain annotation errors, video processing and langauge model evaluation being resource intensive, and the study focusing on indoor scenes and not outdoor scenes.\nFuture directions encourage research into hybrid models that are both language and spatial memory, self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\nLink to paper.\n\n\n\n\n\n\nDeepseek R1 Summary\n\n\n\n\n\nStructured Summary of “Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces”\n\nContextual Overview\n\nResearch Question: Can Multimodal Large Language Models (MLLMs) exhibit human-like visual-spatial intelligence (VSI) when reasoning about 3D spaces from videos?\n\nObjective: Develop a benchmark (VSI-Bench) to evaluate MLLMs’ ability to perceive, remember, and reason about spatial relationships in real-world indoor environments.\n\nDomain: Multimodal AI, spatial reasoning, video understanding.\n\nMotivation: Visual-spatial intelligence is critical for robotics, AR/VR, and autonomous systems, but existing MLLM benchmarks focus on 2D image/text understanding. This work addresses the gap in evaluating 3D spatial reasoning from video input.\n\n\n\n\nKey Contributions\n\nVSI-Bench: A novel benchmark with 5,000+ QA pairs derived from 288 real indoor videos (from ScanNet, ScanNet++, ARKitScenes). Tasks include configurational (e.g., object count, route planning), measurement estimation (e.g., room size), and spatiotemporal reasoning (e.g., appearance order).\n\nSpatial Reasoning as Bottleneck: Analysis shows 71% of errors stem from spatial reasoning (e.g., egocentric-allocentric transformations), not perception or language understanding.\n\nCognitive Maps Enhance Performance: Explicitly generating spatial layouts (cognitive maps) improves MLLMs’ accuracy on relative distance tasks by 10%, outperforming linguistic prompting techniques like Chain-of-Thought.\n\nFailure of Linguistic Reasoning: Prevailing methods (CoT, self-consistency, Tree-of-Thoughts) degraded performance on VSI-Bench, highlighting the distinct challenges of spatial reasoning.\n\nLocal vs. Global Spatial Models: MLLMs build strong local spatial awareness (64% accuracy for adjacent objects) but struggle with global consistency.\n\n\n\n\nMethodology Deep Dive\n\nData/Resources:\n\nVideos from ScanNet (24 FPS), ScanNet++, ARKitScenes (30 FPS), standardized to 640×480 resolution.\n\nQA pairs auto-generated using templates and human annotation (for route planning).\n\n\nCore Techniques:\n\nUnified Meta-Information: Structured annotations for object counts, bounding boxes, room size, and spatial relationships.\n\nEvaluation Metrics: Accuracy (for multiple-choice), Mean Relative Accuracy (for numerical answers).\n\nCognitive Map Generation: Prompting MLLMs to output object positions on a 10×10 grid.\n\n\nValidation:\n\n15 MLLMs tested, including GPT-4o, Gemini-1.5 Pro, and open-source models (LLaVA variants).\n\nHuman baseline: 79% accuracy vs. Gemini-1.5 Pro (45.4%).\n\nBlind evaluation confirmed video input is critical (performance drops to chance level without it).\n\n\n\n\n\nStrengths and Weaknesses\n\nStrengths:\n\nComprehensive Benchmark: High-quality, diverse tasks with iterative human review.\n\nNovel Insights: Identifies spatial reasoning as the key bottleneck and demonstrates cognitive maps’ utility.\n\nReproducibility: Public code, metrics, and standardized evaluation protocols.\n\n\nWeaknesses:\n\nDataset Bias: Relies on existing 3D datasets, which may inherit annotation errors.\n\nCompute Demands: Video processing and large model evaluation are resource-intensive.\n\nLimited Generalization: Focus on indoor scenes; outdoor/embodied settings unexplored.\n\n\n\n\n\nRelevance to the Field\n\nAdvances: Establishes a foundation for evaluating and improving MLLMs’ spatial reasoning, crucial for embodied AI (e.g., robots, autonomous navigation).\n\nContrast with Prior Work: Unlike image-based or text-only spatial benchmarks, VSI-Bench uses video to mirror real-world observation.\n\nFuture Directions: Encourages research into hybrid models (language + spatial memory), self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\n\n\n\n\nKey Takeaways\n\nMLLMs lag behind humans in visual-spatial intelligence (45% vs. 79% accuracy) but show emerging capabilities.\n\nSpatial reasoning—not perception or language—is the primary challenge for MLLMs.\n\nCognitive maps improve spatial reasoning, suggesting a path toward better world modeling.\n\nLinguistic prompting (CoT, etc.) fails for spatial tasks, demanding new techniques tailored to visuospatial reasoning.\n\nLocal spatial awareness exists in MLLMs, but global consistency remains elusive.\n\n\nNon-Technical Insights for Decision-Makers:\n- VSI-Bench is a critical tool for developers aiming to build MLLMs for real-world navigation or AR/VR.\n- Spatial reasoning enhancements (e.g., cognitive maps) could bridge the gap between MLLMs and human-like spatial understanding.\n- Open-source models (e.g., LLaVA-NeXT-Video-72B) are competitive with closed-source counterparts, offering cost-effective alternatives.\nLet me know if you’d like to dive deeper into specific sections!\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html",
+    "href": "bitsandbobs/posts/2025-07-15-B.html",
+    "title": "Nifty Shell Tools",
+    "section": "",
+    "text": "find to find files and directories, and perform actions on them\nfd, an alternative to find that provides abstractions"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-searching-tools",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#file-searching-tools",
+    "title": "Nifty Shell Tools",
+    "section": "",
+    "text": "find to find files and directories, and perform actions on them\nfd, an alternative to find that provides abstractions"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#path-and-command-lookup",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#path-and-command-lookup",
+    "title": "Nifty Shell Tools",
+    "section": "Path and Command Lookup",
+    "text": "Path and Command Lookup\n\nwhich to know which path is in use"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#text-searching",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#text-searching",
+    "title": "Nifty Shell Tools",
+    "section": "Text Searching",
+    "text": "Text Searching\n\ngrep to match patterns in input text\nripgrep, an alternative to grep that filters generally unwanted files by default"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#documentation-tools",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#documentation-tools",
+    "title": "Nifty Shell Tools",
+    "section": "Documentation Tools",
+    "text": "Documentation Tools\n\nman to view the manual of a tool\ntldr, an alternative to man that provides concise and practical summaries"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-operations",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#file-operations",
+    "title": "Nifty Shell Tools",
+    "section": "File Operations",
+    "text": "File Operations\n\nchmod to change file permissions\ntouch to create files, and change certain file metadata\ncat to view file contents, and concatenate files"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#shell-history",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#shell-history",
+    "title": "Nifty Shell Tools",
+    "section": "Shell History",
+    "text": "Shell History\n\nhistory to view your shell history; alternatively, most shells will allow the same functionality with ctrl + R"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#directory-visualization",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#directory-visualization",
+    "title": "Nifty Shell Tools",
+    "section": "Directory Visualization",
+    "text": "Directory Visualization\n\ntree to visualize directories as a tree\nbroot to visualize and navigate directories in a tree-like structure"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-managers",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#file-managers",
+    "title": "Nifty Shell Tools",
+    "section": "File Managers",
+    "text": "File Managers\n\nnnn and ranger as file managers"
+  },
+  {
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#shell-enhancements",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#shell-enhancements",
+    "title": "Nifty Shell Tools",
+    "section": "Shell Enhancements",
+    "text": "Shell Enhancements\n\nfzf, an add-on to search based actions that introduces fuzzy matching\nzsh-autosuggestions, an add-on to zsh that introduces autosuggestions"
   },
   {
     "objectID": "bitsandbobs/posts/2025-01-14-A.html",
