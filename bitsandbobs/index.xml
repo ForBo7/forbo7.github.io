@@ -15,7 +15,56 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Sat, 05 Jul 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 15 Jul 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Nuances in Shell Scripting</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-07-15-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<ul>
+<li><p>Variables are denoted by <code>$</code></p></li>
+<li><p><code>foo = bar</code> fails since spaces denote arguments</p></li>
+<li><p><code>echo '$foo'</code> outputs <code>$foo</code></p></li>
+<li><p><code>echo "$foo"</code> outputs <code>bar</code></p></li>
+<li><p>Reserve variables include, but are not limited to:</p>
+<ul>
+<li><code>$0</code>: name of the script</li>
+<li><code>$1</code> to <code>$9</code>: arguments passed to the script</li>
+</ul></li>
+<li><p><code>$#</code>: number of arguments passed to the script</p></li>
+<li><p><code>$@</code>: all arguments passed to the script</p></li>
+<li><p><code>$?</code>: exit status of the last command</p></li>
+<li><p><code>$_</code>: last argument of the previous command; can also be accessed by <code>Esc + .</code> or <code>alt + .</code></p></li>
+<li><p><code>$$</code>: process ID (pid) of the current script</p></li>
+<li><p><code>!!</code>: rerun the entire last command</p></li>
+<li><p>Command/process substitutions are like f-strings in Python</p></li>
+<li><p>Different between command and process substitution is that the later will place the output in a temporary file</p></li>
+<li><p>Command substitution: <code>$(command)</code></p></li>
+<li><p>Process substitution: <code>&lt;(command)</code></p></li>
+<li><p>When doing comparisons in bash, use <code>[[ ]]</code> rather than <code>[ ]</code>; apparently, chances of mistakes are lower this way</p></li>
+<li><p>Use <code>{}</code> for common substrings in commands</p>
+<ul>
+<li><code>convert image.{png,jpg}</code></li>
+<li><code>cp /path/to/project/{foo,bar,baz}.sh /newpath</code></li>
+<li><code>mv *{.py,.sh} folder</code></li>
+<li><code>touch {foo,bar}/{a..h}</code></li>
+</ul></li>
+<li><p>Functions are executed in the current environment, whereas scripts aren’t</p></li>
+<li><p>Thus, functions can modify environment variables whereas scripts cant</p></li>
+<li><p>Scripts can only access environment variables that are exported with <a href="https://www.man7.org/linux/man-pages/man1/export.1p.html">export</a></p></li>
+</ul>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Shell</category>
+  <category>Programming</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-07-15-A.html</guid>
+  <pubDate>Tue, 15 Jul 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Shell hooks, uv, and Conda.</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-07-05-A.html</link>
