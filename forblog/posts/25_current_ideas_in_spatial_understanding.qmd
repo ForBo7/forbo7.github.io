@@ -14,6 +14,8 @@ twitter-card:
   image: ../images/25_current_ideas_in_spatial_understanding/thumbnail.png
 ---
 
+_This post was updated with a new paper on **Friday, 18 July 2025**._
+
 ![](../images/25_current_ideas_in_spatial_understanding/thumbnail.png)
 
 I went through a bunch of papers I found relating to enhancing spatial understanding in VLMs to get an idea of what's going on. Here, I've simply extracted the main idea that was explored. I haven't evaluated the worthiness/effectiveness of the mentioned ideas.
@@ -54,6 +56,7 @@ From what I've seen, I've noticed the following issues with VLMs:
 - **Hierarchical spatial weakness evaluation**: A framework to identify VLM weaknesses, finding VLMs struggle with depth perception, view switching (first/third-person), and physical reasoning (e.g., occlusion). *[SPHERE: Unveiling Spatial Blindspots in VLMs through Hierarchical Evaluation](https://arxiv.org/abs/2412.12693)*  
 - **Depth and object annotation dataset for 3D finetuning**: Creates a custom dataset to finetune a VLM on depth images and object annotations. *[MM-Spatial: Exploring 3D Spatial Understanding in MLLMs](https://arxiv.org/abs/2503.13111)*  
 - **Depth map-annotated dataset finetuning**: Finetunes a VLM on a custom dataset of annotated RGB images + depth maps. *[SpatialRGPT: Grounded Spatial Reasoning in Vision-Language Models](https://arxiv.org/abs/2406.01584)* 
+- **RGBD QnA dataset finetuning**: Finetunes a VLM on a custom dataset of annotated RGB images + depth maps + QnA. *[SpatialBot: Precise Spatial Understanding with Vision Language Models](https://arxiv.org/pdf/2406.13642v1)*
 
 
 ### Attention Mechanisms and Visual Feature Utilization  
