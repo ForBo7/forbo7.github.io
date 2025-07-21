@@ -25,7 +25,7 @@
 
 
 
-<p><em>This post was updated with a new paper on <strong>Friday, 18 July 2025</strong>.</em></p>
+<p><em>This post was updated with a new paper on <strong>Friday, 18 July 2025</strong>.</em> <em>This post was updated with a new paper on <strong>Monday, 21 July 2025</strong>.</em></p>
 <p><img src="https://forbo7.github.io/forblog/images/25_current_ideas_in_spatial_understanding/thumbnail.png" class="img-fluid"></p>
 <p>I went through a bunch of papers I found relating to enhancing spatial understanding in VLMs to get an idea of what’s going on. Here, I’ve simply extracted the main idea that was explored. I haven’t evaluated the worthiness/effectiveness of the mentioned ideas.</p>
 <p>From what I’ve seen, I’ve noticed the following issues with VLMs:</p>
@@ -48,7 +48,9 @@
 </li>
 <li><strong>Intermediate perception token generation</strong>: Trains a VLM to output intermediate perception tokens (e.g., depth tokens) to facilitate its reasoning process. <em><a href="https://arxiv.org/abs/2412.03548">Perception tokens and enhance visual reasoning in multimodal language models</a></em><br>
 </li>
-<li><strong>Enhanced CLIP with intermediate layers and video support</strong>: A stronger CLIP variant that works on video, uses intermediate layers, scales well, aligns for VL and spatial tasks, and includes a dataset. <em><a href="https://arxiv.org/abs/2504.13181">Perception Encoder: The best visual embeddings are not at the output of the network</a></em></li>
+<li><strong>Enhanced CLIP with intermediate layers and video support</strong>: A stronger CLIP variant that works on video, uses intermediate layers, scales well, aligns for VL and spatial tasks, and includes a dataset. <em><a href="https://arxiv.org/abs/2504.13181">Perception Encoder: The best visual embeddings are not at the output of the network</a></em><br>
+</li>
+<li><strong>View-aware spatial reasoning for vision-language models</strong>: Enables vision-language models to answer spatial questions about 3D scenes by generating and using imagined views from different perspectives, paired with a world model for view synthesis. <em><a href="https://arxiv.org/pdf/2507.12508">Mental Exploration: Augmenting Vision-Language Models with View Synthesis for Spatial Reasoning</a></em></li>
 </ul>
 </section>
 <section id="spatial-reasoning-enhancements" class="level3">
