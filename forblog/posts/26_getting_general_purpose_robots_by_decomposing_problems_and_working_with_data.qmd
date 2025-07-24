@@ -1,29 +1,29 @@
 ---
-title: "Robo: decomposable problems and working with the data"
+title: "Getting General Purpose Robots by Decomposing Problems and Working with Data"
 subtitle: "roboOS®, powered by roboBrain™"
 description: "Why these Robo series of papers are cold drink in a desert of hobbled pipelines"
-image: ../images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png
+image: ../images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/thumbnail.png
 author: "Salman Naqvi"
-date: "2025-07-23"
+date: "2025-07-24"
 categories: [Analyzing Models, Creating Models, Data, Papers, Robotics, Thoughts]
 open-graph:
-  description: "A collated set of current ideas."
-  image: ../images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png
+  description: "Why these Robo series of papers are cold drink in a desert of hobbled pipelines"
+  image: ../images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/thumbnail.png
 twitter-card:
-  description: "A collated set of current ideas."
-  image: ../images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png
+  description: "Why these Robo series of papers are cold drink in a desert of hobbled pipelines"
+  image: ../images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/thumbnail.png
 ---
 
-![](../images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png)
+![](../images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/thumbnail.png)
 
 I've been going through the RoboOS, RoboBrain, and Robobrain 2.0 papers from the [Beijing Academy of Artificial Intelligence (BAAI)](https://www.baai.ac.cn/).
 
 Most robotic solutions I've encountered so far leave me feeling like I'm watching yet another Jenga tower of hacks: blocks ducktaped together for the purpose of solving the previous block's issues. All without fixing the actual fundamental issue that is the VLM.
 
 ::: {layout-ncol=2}
-![](../images/26_robo_decomposable_problems_and_working_with_the_data/1.png)
+![](../images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/1.png)
 
-![](../images/26_robo_decomposable_problems_and_working_with_the_data/2.png)
+![](../images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/2.png)
 
 *My view on the current landscape of general purpose robotics.*
 :::
