@@ -15,7 +15,131 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Mon, 14 Jul 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 23 Jul 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Robo: decomposable problems and working with the data</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/26_robo_decomposable_problems_and_working_with_the_data.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png" class="img-fluid"></p>
+<p>I’ve been going through the RoboOS, RoboBrain, and Robobrain 2.0 papers from the <a href="https://www.baai.ac.cn/">Beijing Academy of Artificial Intelligence (BAAI)</a>.</p>
+<p>Most robotic solutions I’ve encountered so far leave me feeling like I’m watching yet another Jenga tower of hacks: blocks ducktaped together for the purpose of solving the previous block’s issues. All without fixing the actual fundamental issue that is the VLM.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/1.png" class="img-fluid"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<p><img src="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<p><em>My view on the current landscape of general purpose robotics.</em></p>
+</div>
+</div>
+</div>
+<p>These series of papers do something that feels like cold drink in a desert of hobbling together complicated pipelines and towers: the papers identify issues with VLMs, and then solve those issues by working with the data.</p>
+<p>RoboOS is an overarching system for managing embodied robotic systems. RoboBrain is the VLM/MLLM that executes the plans.</p>
+<section id="roboos-a-3-piece-kit-instead-of-a-300-piece-puzzle" class="level2">
+<h2 class="anchored" data-anchor-id="roboos-a-3-piece-kit-instead-of-a-300-piece-puzzle">RoboOS: A 3-piece kit instead of a 300-piece puzzle</h2>
+<p>RoboOS decomposes the generalizability problem of robotics into three clean layers:</p>
+<ul>
+<li>The Embodied Brain: A cloud-deployed MLLM that thinks globally–planning, replanning, and correcting errors in real time.</li>
+<li>The Cerebellum Skill Library: A plug-and-play toolkit that enables various actions, allowing the robot to perform different functions.</li>
+<li>Real-Time Shared Memory: Helps maintain spatial memory, temporal memory, and embodiment memory.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 44%">
+<col style="width: 36%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Component</th>
+<th>Analogy</th>
+<th>Job</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Embodied Brain</strong> (cloud LLM)</td>
+<td>Control Center</td>
+<td>high-level planning, error recovery</td>
+</tr>
+<tr class="even">
+<td><strong>Cerebellum Skill Library</strong> (edge containers)</td>
+<td>Toolbox</td>
+<td>low-latency skills like grasping, SLAM</td>
+</tr>
+<tr class="odd">
+<td><strong>Real-Time Shared Memory</strong></td>
+<td>Whiteboard</td>
+<td>spatial, temporal, and robot-state cache</td>
+</tr>
+</tbody>
+</table>
+<p>There are three manageable chunks that allows for the creation of systems that are general enough for specialized tasks, but not overly general that its bad at everything. It might not allow for novel actions, but it can allow for known actions. And it allows for each of these pieces to be iterated on through their own merits.</p>
+<p>In addition, RoboOS allows for multiple different robots to coordinate with each other. What occured in my mind is that that doesn’t have to be individual separate robots; it could be different pieces of the same robot (e.g., the legs and the hands of a robot).</p>
+</section>
+<section id="robobrain-solve-the-foundations-and-work-with-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="robobrain-solve-the-foundations-and-work-with-the-data">RoboBrain: solve the foundations, and work with the data</h2>
+<p>Many general purpose robotic solutions try to remedy issues with VLMs with all sorts of pipelines, gadgets, and gizmos. Rather than actually solving the foundational issue that is the VLM itself. Many solutions use VLMs for purposes that they are exactly bad for. VLMs are langauge biased, spatially blind, and temporally naive.</p>
+<p>RoboBrain 1.0 tackled:</p>
+<ul>
+<li>task planning by using QA pairs that decompose long horizon tasks (“make coffee”) into atomic steps (“reach mug → grasp handle → lift → …”)</li>
+<li>affordance identification by using 6k images with bounding boxes of “where you’d actually touch the mug” and LoRA-tuning the LLM</li>
+<li>trajectory planning by feeding the LLM start / goal 2-D points and asking it to regress waypoints</li>
+</ul>
+<p>RoboBrain 2.0 doubles down on this philosophy with improvements in three aspects:</p>
+<ul>
+<li>Spatial understanding with multiview static images, visual grounding, object pointing, and spatial referring examples</li>
+<li>Temporal modeling by linking video frames with positional encoding that tracks both the space and time of each frame, multi-robot planning examples, close-loop interaction examples, and ego-view planning</li>
+<li>Reasoning chains</li>
+</ul>
+<p>What was done for both models was construct a dataset that forced the model to learn these skills.</p>
+<p>In addition, the RoboBrain papers did a bunch of data curating so as to ensure desired outputs were obtained: truncating examples, increasing throughput of other examples, limiting certain annotations, ensuring diversity of certain examples, mixing data from various stages, and more. In addition, RoboBrain 2.0 is able to output in a wide variety of modalities, making it suitable for a wide range of embodied robotic tasks.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The most prominent parts of these papers that stuck out to me is the focus on decomposing problems into much smaller manageable ones, and fixing problems by working with the data.</p>
+<ul>
+<li>RoboOS: a minimal, composable OS</li>
+<li>RoboBrain: a VLM trained for robotics. Not a VLM adapted to robotics.</li>
+</ul>
+<p>Maybe this is the viable road to allow enough generalizability in robots.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+</section>
+<section id="links" class="level2">
+<h2 class="anchored" data-anchor-id="links">Links</h2>
+<ul>
+<li><a href="https://www.baai.ac.cn/en/">BAAI (English)</a></li>
+<li><a href="https://www.baai.ac.cn/">BAAI (中文)</a></li>
+<li><a href="https://github.com/FlagOpen/RoboOS">RoboOS</a></li>
+<li><a href="https://huggingface.co/collections/BAAI/robobrain-681e1389c64d06b3e4a45e44">Robobrain</a></li>
+<li><a href="https://huggingface.co/collections/BAAI/robobrain20-6841eeb1df55c207a4ea0036">RoboBrain 2.0</a></li>
+</ul>
+<p>In addition, RoboBrain 2 contains information about their training and inference infrastructure.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Analyzing Models</category>
+  <category>Creating Models</category>
+  <category>Data</category>
+  <category>Papers</category>
+  <category>Robotics</category>
+  <category>Thoughts</category>
+  <guid>https://forbo7.github.io/forblog/posts/26_robo_decomposable_problems_and_working_with_the_data.html</guid>
+  <pubDate>Wed, 23 Jul 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png" medium="image" type="image/png" height="257" width="144"/>
+</item>
 <item>
   <title>Current Ideas in Spatial Understanding</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -16165,546 +16289,6 @@ Before you hit that send button!
   <guid>https://forbo7.github.io/forblog/posts/7_blog_subscriptions.html</guid>
   <pubDate>Fri, 23 Dec 2022 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/7_blog_subscriptions/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>AI in a Nutshell</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>This blog post was updated on <strong>Saturday, 12 November 2022</strong>.</em></p>
-<p><img src="https://forbo7.github.io/forblog/images/6_ai_in_a_nutshell/thumbnail.png" class="img-fluid" alt="A circuit board inside a walnut."></p>
-<p>Artificial Intelligence. Machine Learning. Neural Networks. Deep Learning. Fancy Words. Deceptively Simple. All really the same.</p>
-<p>The basic workflow to create such a system is below.</p>
-<div class="grid">
-<div class="g-col-4">
-
-</div>
-<div class="g-col-4">
-<div class="cell" data-fig-width="2" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-    A[Function] -- fits --&gt; B[Data]
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-<div class="g-col-4">
-
-</div>
-</div>
-<p>Very simple, eh? Of course, it’s a very high level abstraction, but this high level view will make this seemingly complex topic very simple.</p>
-<p>First, what’s the main thing modern AI methods try to do? They try to make predictions about certain things.</p>
-<p>So a <strong>function</strong> of sorts is needed to achieve this. A function that can make these predictions. Think of a function as a machine. You put something into the machine and then, with whatever was input, the machine then produces an output.</p>
-<p>The machine that we will be working with has two input slots: one slot is for <strong>training</strong> and the other slot is for predictions.</p>
-<p>To create a function that produces predictions, we need to tell the function what sort of predictions it needs to make.</p>
-<p>To do that, we can pour some data into the <strong>training</strong> slot. This data will tell the function what sort of predictions to output. This process is known as <strong>fitting</strong> the function to the data.</p>
-<p>To fit the function onto data, you <strong>train</strong> the function.</p>
-<section id="simple-case-quadratic-function" class="level2">
-<h2 class="anchored" data-anchor-id="simple-case-quadratic-function">Simple Case: Quadratic Function</h2>
-<p><em>Gasp!</em> A quadratic?? What’s this nonsense!</p>
-<p>A quadratic is a very simple equation. When shown on a graph, it looks like this.</p>
-<div id="8fc36543" class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We’ll be using this equation to demonstrate a very simple example.</p>
-<p>The basic workflow for fitting a function to data is below.</p>
-<div class="grid">
-<div class="g-col-2">
-
-</div>
-<div class="g-col-8">
-<div class="cell" data-fig-width="3.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-    B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-<div class="g-col-2">
-
-</div>
-</div>
-<p>It can seem like a lot at first glance; quite a few new terms too.</p>
-<p>We’ll break this down by going over the very simple example.</p>
-<p>Let’s say we have the following data points that describe, say, the speed of an object with respect to time. We want to predict what the speed of an object would be outside these data points.</p>
-<p>The horizontal axis is time and the vertical axis is the object’s speed.</p>
-<div id="f959959d-cd81-4531-ae30-04bbcbfcd1ce" class="cell" data-tags="[]" data-execution_count="7">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We can see that the data looks like the quadratic function shown above! Therefore, we could use the quadratic to predict what the speed of the object would be after 2.0 s and before -2.0 s.</p>
-<p>A quadratic equation includes three numbers which we will call <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c">. These three numbers affect or control how our quadratic function will end up looking. <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> are our <strong>parameters</strong>.</p>
-<p>Let’s let <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> all equal <img src="https://latex.codecogs.com/png.latex?1"> to begin with.</p>
-<div id="f7175b28-a8b7-42da-9717-0c35c891724c" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Hmm, not a very good fit.</p>
-<p>Let’s try another set of values for the parameters: <img src="https://latex.codecogs.com/png.latex?2">, <img src="https://latex.codecogs.com/png.latex?1">, <img src="https://latex.codecogs.com/png.latex?1.5">.</p>
-<div id="bea84315-2cbf-46a5-b908-ac315bcde997" class="cell" data-tags="[]" data-execution_count="9">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Looking much better now!</p>
-<p>Let’s see what <img src="https://latex.codecogs.com/png.latex?2">, <img src="https://latex.codecogs.com/png.latex?0">, and <img src="https://latex.codecogs.com/png.latex?1.5"> gives us.</p>
-<div id="56db2757-accb-4bbf-9a4b-6bc5c78bc26c" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Eyeballing this is difficult. A certain set of parameters we use may be good by looking at the resulting graph, but in reality, it may not be.</p>
-<p>What we need is something that can tell us how good our function is; something that tells us whether the changes we are making are actually good or not. To do this, we can calculate a number called the <strong>loss</strong>. The smaller the loss, the better the function is.</p>
-<p>There are many different ways loss can be calculated. The way we will be doing it is known as <strong>mean absolute error (MAE)</strong>. In simple terms, it tells us how far off each prediction is from the actual value. For example, if we have a MAE of 1, this means that, on average, each prediction we make is 1 unit off from the real value.</p>
-<p>In our case, a MAE of 1 would mean that each prediction is on average 1 m/s off from the real value.</p>
-<p>Let’s repeat what we did above, but this time, we’ll also see what the MAE is.</p>
-<div id="76e029bd" class="cell" data-execution_count="12">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Again, this means that on average, each prediction we will make is 2.61 m/s off from the real value.</p>
-<div id="676b9af7" class="cell" data-execution_count="13">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>That’s a big jump!</p>
-<div id="6b25e46c" class="cell" data-execution_count="14">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Hmm, things got worse.</p>
-<p>Doing this process by hand is very tedious. How do we know if the new set of parameters we are using would improve the function? There needs to be a way to automate this so we don’t have to sit down and do this by hand.</p>
-<p>What we can do is update the parameters based on the loss. This would in turn create new parameters that would decrease the loss.</p>
-<div class="grid">
-<div class="g-col-4">
-
-</div>
-<div class="g-col-4">
-<div class="cell" data-fig-width="2.2" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-    A[Loss] -- Updates ---&gt; B[Parameters] -- Updates ---&gt; A
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-<div class="g-col-4">
-
-</div>
-</div>
-<p>Let’s give <img src="https://latex.codecogs.com/png.latex?a">, <img src="https://latex.codecogs.com/png.latex?b">, and <img src="https://latex.codecogs.com/png.latex?c"> an arbitrary set of parameters <img src="https://latex.codecogs.com/png.latex?1.1">, <img src="https://latex.codecogs.com/png.latex?1.1">, and <img src="https://latex.codecogs.com/png.latex?1.1">.</p>
-<p>Now let’s create a quadratic with this set of parameters and calculate its mean absolute error.</p>
-<div id="bb00c846" class="cell" data-execution_count="16">
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The MAE is 2.42.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Now comes the next step: how do we update the parameters based on this loss we have calculated?</p>
-<p>To do this, we calculate a new set of quantities known as the gradients. Each parameter has its own gradient.</p>
-<p>Let’s say <img src="https://latex.codecogs.com/png.latex?a"> has the value of <img src="https://latex.codecogs.com/png.latex?1">. If <img src="https://latex.codecogs.com/png.latex?a"> has a gradient of value <img src="https://latex.codecogs.com/png.latex?0.5">, this would mean that if we increase <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1">, the loss would increase by <img src="https://latex.codecogs.com/png.latex?0.5">. Therefore, if we <em>decrease</em> <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1">, this would mean the loss would decrease by <img src="https://latex.codecogs.com/png.latex?0.5">, which is what we want!</p>
-<p>Read over this once more and it’ll make sense!</p>
-<p>Let’s quickly go over the inverse: if <img src="https://latex.codecogs.com/png.latex?a"> has a gradient of value <img src="https://latex.codecogs.com/png.latex?-0.5">, increasing <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1"> would decrease the loss by <img src="https://latex.codecogs.com/png.latex?0.5"> — again, this is what we want! Similarly, decreasing <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1"> would increase the loss by <img src="https://latex.codecogs.com/png.latex?0.5">.</p>
-<p>The gradients are calculated from the loss. Then the gradients, the current parameters, and along with another value, the parameters are updated to new values. The “another value” is known as the <strong>learning rate</strong>. The learning rate controls how much the gradients update the parameters.</p>
-<div class="grid">
-<div class="g-col-2">
-
-</div>
-<div class="g-col-8">
-<div class="cell" data-fig-width="5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-    A[Gradients]
-    B[Current Parameters]
-    C[Learning Rate]
-    D[Magical Box]
-    E[Updated Paramters]
-    A &amp; B &amp; C ---&gt; D ---&gt; E
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-<div class="g-col-2">
-
-</div>
-</div>
-<p>Lets see this tangibly.</p>
-<div id="59621e10" class="cell" data-execution_count="17">
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The gradients for each parameter respectively are [-1.35, -0.03, -0.5].</p>
-</div>
-</div>
-</div>
-</div>
-<p>Okay, let’s break this down. The gradient for the first parameter <img src="https://latex.codecogs.com/png.latex?a"> is <img src="https://latex.codecogs.com/png.latex?-1.35">. This tells us that if we increase the parameter <img src="https://latex.codecogs.com/png.latex?a"> by <img src="https://latex.codecogs.com/png.latex?1">, our loss will decrease by <img src="https://latex.codecogs.com/png.latex?-1.35">. Similary, if we increase the parameter <img src="https://latex.codecogs.com/png.latex?b"> by <img src="https://latex.codecogs.com/png.latex?1">, this will result in the loss being decreased by <img src="https://latex.codecogs.com/png.latex?-0.03">. The same logic holds for <img src="https://latex.codecogs.com/png.latex?c">.</p>
-<p>Let’s now update the parameters. Remember, the current set of parameters, their gradients, and the learning rate all update the current set of parameters to new values.</p>
-<div id="e650f22a" class="cell" data-execution_count="18">
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The new parameters are [1.11, 1.1, 1.11].</p>
-</div>
-</div>
-</div>
-</div>
-<p>We can now repeat the process as many times as desired. Let’s do it 4 times.</p>
-<div id="8435fb11" class="cell" data-execution_count="19">
-<div class="cell-output cell-output-stdout">
-<pre><code>Pass: 0; Loss: 2.4010409560416095
-Pass: 1; Loss: 1.9847692009423128
-Pass: 2; Loss: 1.498316818239171
-Pass: 3; Loss: 1.171195547258246</code></pre>
-</div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The MAE after 4 passes is 1.17.</p>
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-19-output-3.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>And there you go! An even better fitting quadratic!</p>
-<p>Let’s see what the object’s speed is at 1 second.</p>
-<div id="680a267b" class="cell" data-execution_count="20">
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The object’s velocity at 1 seconds is 5.65 m/s.</p>
-</div>
-</div>
-</div>
-</div>
-<p>That roughly seems right!</p>
-<p>Let’s see what the object’s speed would be at 3 seconds.</p>
-<div id="651f8feb" class="cell" data-execution_count="21">
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The object’s velocity at 1 seconds is 30.31 m/s.</p>
-</div>
-</div>
-</div>
-</div>
-<p>And now, the diagram below should make sense!</p>
-<div class="grid">
-<div class="g-col-2">
-
-</div>
-<div class="g-col-8">
-<div class="cell" data-fig-width="3.5" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class="figure"><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart TB
-    B[Calculate Loss] --&gt; C[Calculate Gradients] --&gt; D[Update Parameters] --&gt; B
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</div>
-<div class="g-col-2">
-
-</div>
-</div>
-</section>
-<section id="the-cool-case-relus" class="level2">
-<h2 class="anchored" data-anchor-id="the-cool-case-relus">The Cool Case: ReLUs</h2>
-<p>The quadratic example above is a nice, simple way to get a grasp of things. However, you may be wondering, “What if the data doesn’t follow a quadratic shape? What do we do then?”</p>
-<p>And that’s a good question! What if our data doesn’t follow any sort of mathematical shape? What if we don’t even know the shape the data will follow? How do we know what function to use in that case?</p>
-<p>There is a solution to that! There is an easy way to create a function that bends and twists itself to fit the data; an “unbound” function of sorts, as I like to call it.</p>
-<p>This can be achieved by using another equation known as the <strong>ReLU</strong>. Another fancy word that can make you sound like a professional, while also being really simple. ReLU is short for <strong>Rectified Linear Unit</strong>.</p>
-<p>The ReLU takes any value that is less than 0, and converts to 0.</p>
-<p>Let’s see this.</p>
-<p>Take the following line. It has both positive and negative values on the vertical axis.</p>
-<div id="11928802" class="cell" data-execution_count="22">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>When we use a ReLU, all negative values are converted to zero.</p>
-<div id="a280f3aa" class="cell" data-execution_count="23">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Let’s return to our original data.</p>
-<div id="e0c3728b" class="cell" data-execution_count="24">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Now a single ReLU won’t work as seen below.</p>
-<div id="abe007b3" class="cell" data-execution_count="25">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Even after we try to fit it.</p>
-<div id="d721709d" class="cell" data-execution_count="26">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>But look at what happens when two ReLUs are, literally, added together!</p>
-<div id="6268423d" class="cell" data-execution_count="27">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<!-- - Seed 22; 196 passes; lr=0.01
-- Seed 33; 49 passes; lr=0.1
-- Seed 16; 20 passes; lr=0.5 -->
-<p>Pretty neat, hey?</p>
-<p>Let’s add a third ReLU to the mix.</p>
-<!-- #| output: false
-- Seed 16; 35 passes; lr=0.5
-- Seed 33: 35 passes; lr=0.1
-- Seed 10: 45 passes; lr=0.1
-- Seed 33; 50 passes; lr=0.05
-- Seed 38, 196 passes; lr=0.01 -->
-<div id="dba7b121" class="cell" data-execution_count="31">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-31-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>You can see here how the function is adapting to the shape of the data.</p>
-<p>With some extra experimentation, I was able to get the loss down to 1.08!</p>
-<div id="56738df9" class="cell" data-execution_count="32">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>That said, it’s not too much of a difference when compared to two ReLUs.</p>
-<p>What if we add 5 more to the mix, for a total of 8?</p>
-<div id="24319274" class="cell" data-execution_count="35">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Nice! The MAE has gone below 1!</p>
-<p>It’s even beat the quadratic function from before! With some expermimenting, I had managed to get the quadratic’s loss down to 1.03.</p>
-<div id="6a4d960f" class="cell" data-execution_count="36">
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<!-- - Seed 16; 36 passes; lr=0.1
-- Seed 42; 37 passes; lr=0.5 -->
-<p>Let’s use the model that has 8 ReLUs to predict what the object’s velocity would be at 1 second.</p>
-<div id="25348510" class="cell" data-execution_count="39">
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="callout callout-style-default callout-tip no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Code Output
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The object’s speed at 1 s is 4.9 m/s.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Hmm, yes, that is a bit off. But that is fine because overall, the function is a lot more accurate for all the datapoints.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>See how easy this stuff all is? All those fancy terms makes this feel complex when in reality, it’s all really simple.</p>
-<p>Why not now go and venture off to learn more and implement your own models!</p>
-<p>Below are two free courses I can recommend:</p>
-<ul>
-<li><p><a href="https://www.elementsofai.com">Elements of AI</a></p>
-<p>A great primer into AI. The course goes over the history, the implementations, and the implications of this field, all without needing the knowledge of programming or complex mathematics.</p></li>
-<li><p><a href="https://course.fast.ai">Practical Deep Learning for Coders</a></p>
-<p>This course is different from other AI courses you’ll find. How? Because instead of starting off with the nitty gritty basics, you begin by actually implementing your own simple image classifier (a model that can tell what thing is in an image). You’ll be surprised at how simple it is to implement models with minimal code, and how little you need to know to get started (hint: you only really need high-school maths).</p></li>
-</ul>
-<p><strong>If you have any questions, comments, suggestions, or feedback, please do post them down in the comment section below!</strong></p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p>This article was inspired by the <a href="https://www.kaggle.com/code/jhoward/how-does-a-neural-net-really-work/notebook">How does a neural net really work</a> Kaggle Notebook by <a href="https://www.kaggle.com/jhoward">Jeremy Howard</a>, and lesson 3 of <a href="https://course.fast.ai/Lessons/lesson3.html">Practical Deep Learning for Coders</a>.</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Creating Models</category>
-  <guid>https://forbo7.github.io/forblog/posts/6_ai_in_a_nutshell.html</guid>
-  <pubDate>Tue, 04 Oct 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

@@ -72,6 +72,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/forblog/posts/26_robo_decomposable_problems_and_working_with_the_data.html",
       "/forblog/posts/25_current_ideas_in_spatial_understanding.html",
       "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
@@ -118,31 +119,9 @@
     ]
   },
   {
-    "listing": "/bitsandbobs/index.html",
-    "items": [
-      "/bitsandbobs/posts/2025-07-15-B.html",
-      "/bitsandbobs/posts/2025-07-15-A.html",
-      "/bitsandbobs/posts/2025-07-05-A.html",
-      "/bitsandbobs/posts/2025-01-24-A.html",
-      "/bitsandbobs/posts/2025-06-21-A.html",
-      "/bitsandbobs/posts/2025-06-03-A.html",
-      "/bitsandbobs/posts/2025-05-11-A.html",
-      "/bitsandbobs/posts/2025-05-01-A.html",
-      "/bitsandbobs/posts/2025-04-28-A.html",
-      "/bitsandbobs/posts/2025-04-03-A.html",
-      "/bitsandbobs/posts/2025-02-18-A.html",
-      "/bitsandbobs/posts/2025-02-13-A.html",
-      "/bitsandbobs/posts/2025-01-28-A.html",
-      "/bitsandbobs/posts/2025-01-27-A.html",
-      "/bitsandbobs/posts/2025-01-23-A.html",
-      "/bitsandbobs/posts/2025-01-21-A.html",
-      "/bitsandbobs/posts/2025-01-14-A.html",
-      "/bitsandbobs/posts/2025-01-02-A.html"
-    ]
-  },
-  {
     "listing": "/forblog/index.html",
     "items": [
+      "/forblog/posts/26_robo_decomposable_problems_and_working_with_the_data.html",
       "/forblog/posts/25_current_ideas_in_spatial_understanding.html",
       "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
@@ -171,8 +150,32 @@
     ]
   },
   {
+    "listing": "/bitsandbobs/index.html",
+    "items": [
+      "/bitsandbobs/posts/2025-07-15-B.html",
+      "/bitsandbobs/posts/2025-07-15-A.html",
+      "/bitsandbobs/posts/2025-07-05-A.html",
+      "/bitsandbobs/posts/2025-01-24-A.html",
+      "/bitsandbobs/posts/2025-06-21-A.html",
+      "/bitsandbobs/posts/2025-06-03-A.html",
+      "/bitsandbobs/posts/2025-05-11-A.html",
+      "/bitsandbobs/posts/2025-05-01-A.html",
+      "/bitsandbobs/posts/2025-04-28-A.html",
+      "/bitsandbobs/posts/2025-04-03-A.html",
+      "/bitsandbobs/posts/2025-02-18-A.html",
+      "/bitsandbobs/posts/2025-02-13-A.html",
+      "/bitsandbobs/posts/2025-01-28-A.html",
+      "/bitsandbobs/posts/2025-01-27-A.html",
+      "/bitsandbobs/posts/2025-01-23-A.html",
+      "/bitsandbobs/posts/2025-01-21-A.html",
+      "/bitsandbobs/posts/2025-01-14-A.html",
+      "/bitsandbobs/posts/2025-01-02-A.html"
+    ]
+  },
+  {
     "listing": "/testing_page.html",
     "items": [
+      "/forblog/posts/26_robo_decomposable_problems_and_working_with_the_data.html",
       "/forblog/posts/25_current_ideas_in_spatial_understanding.html",
       "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
