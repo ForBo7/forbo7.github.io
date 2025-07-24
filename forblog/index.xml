@@ -15,26 +15,26 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.7.32</generator>
-<lastBuildDate>Wed, 23 Jul 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 24 Jul 2025 00:00:00 GMT</lastBuildDate>
 <item>
-  <title>Robo: decomposable problems and working with the data</title>
+  <title>Getting General Purpose Robots by Decomposing Problems and Working with Data</title>
   <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/26_robo_decomposable_problems_and_working_with_the_data.html</link>
+  <link>https://forbo7.github.io/forblog/posts/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data.html</link>
   <description><![CDATA[ 
 
 
 
 
-<p><img src="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png" class="img-fluid"></p>
+<p><img src="https://forbo7.github.io/forblog/images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/thumbnail.png" class="img-fluid"></p>
 <p>I’ve been going through the RoboOS, RoboBrain, and Robobrain 2.0 papers from the <a href="https://www.baai.ac.cn/">Beijing Academy of Artificial Intelligence (BAAI)</a>.</p>
 <p>Most robotic solutions I’ve encountered so far leave me feeling like I’m watching yet another Jenga tower of hacks: blocks ducktaped together for the purpose of solving the previous block’s issues. All without fixing the actual fundamental issue that is the VLM.</p>
 <div class="quarto-layout-panel" data-layout-ncol="2">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/1.png" class="img-fluid"></p>
+<p><img src="https://forbo7.github.io/forblog/images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/1.png" class="img-fluid"></p>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
-<p><img src="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/2.png" class="img-fluid"></p>
+<p><img src="https://forbo7.github.io/forblog/images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/2.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="quarto-layout-row">
@@ -136,9 +136,9 @@
   <category>Papers</category>
   <category>Robotics</category>
   <category>Thoughts</category>
-  <guid>https://forbo7.github.io/forblog/posts/26_robo_decomposable_problems_and_working_with_the_data.html</guid>
-  <pubDate>Wed, 23 Jul 2025 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/26_robo_decomposable_problems_and_working_with_the_data/thumbnail.png" medium="image" type="image/png" height="257" width="144"/>
+  <guid>https://forbo7.github.io/forblog/posts/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data.html</guid>
+  <pubDate>Thu, 24 Jul 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/thumbnail.png" medium="image" type="image/png" height="257" width="144"/>
 </item>
 <item>
   <title>Current Ideas in Spatial Understanding</title>
