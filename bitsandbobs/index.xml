@@ -14,8 +14,41 @@
 <title>ForBo7 // Salman Naqvi</title>
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
-<generator>quarto-1.7.32</generator>
-<lastBuildDate>Tue, 15 Jul 2025 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.7.33</generator>
+<lastBuildDate>Mon, 11 Aug 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>The journey of an image in a VLM</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-08-11-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The VLM has three pieces: the vision encoder, the pooler/projector, and the LLM.</p>
+<ol type="1">
+<li>The input image has size 644x476</li>
+<li>The model has kernel size 14x14</li>
+<li>The total number of image patches is therefore (644/14)·(476/14)=46·34=1564</li>
+<li>These patches are processed into feature vectors by the vision encoder</li>
+<li>The pooling/projection layer downsizes the number of image feature vectors</li>
+</ol>
+<ul>
+<li>Qwen 2.5 VL combines a 2x2 block image feature vectors/patches into a single block</li>
+<li>Pooling/projection is done to create a more informative token</li>
+</ul>
+<ol type="1">
+<li>The result is (46/2)·(34/2)=391</li>
+<li>391 matches the number of image tokens created by the tokenizer</li>
+</ol>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>LLM</category>
+  <category>VLM</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-08-11-A.html</guid>
+  <pubDate>Mon, 11 Aug 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Nifty Shell Tools</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-07-15-B.html</link>
