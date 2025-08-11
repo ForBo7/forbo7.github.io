@@ -1,0 +1,18 @@
+---
+title: The journey of an image in a VLM
+description: My understand regarding how images in VLMs are processed.
+date: 2025-08-11
+categories: [LLM, VLM]
+---
+
+The VLM has three pieces: the vision encoder, the pooler/projector, and the LLM.
+
+1. The input image has size 644x476
+1. The model has kernel size 14x14
+1. The total number of image patches is therefore (644/14)·(476/14)=46·34=1564
+1. These patches are processed into feature vectors by the vision encoder
+1. The pooling/projection layer downsizes the number of image feature vectors
+  - Qwen 2.5 VL combines a 2x2 block image feature vectors/patches into a single block
+  - Pooling/projection is done to create a more informative token
+1. The result is (46/2)·(34/2)=391
+1. 391 matches the number of image tokens created by the tokenizer
