@@ -14,41 +14,8 @@
 <title>ForBo7 // Salman Naqvi</title>
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
-<generator>quarto-1.7.33</generator>
-<lastBuildDate>Mon, 11 Aug 2025 00:00:00 GMT</lastBuildDate>
-<item>
-  <title>The journey of an image in a VLM</title>
-  <link>https://forbo7.github.io/bitsandbobs/posts/2025-08-11-A.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>The VLM has three pieces: the vision encoder, the pooler/projector, and the LLM.</p>
-<ol type="1">
-<li>The input image has size 644x476</li>
-<li>The model has kernel size 14x14</li>
-<li>The total number of image patches is therefore (644/14)·(476/14)=46·34=1564</li>
-<li>These patches are processed into feature vectors by the vision encoder</li>
-<li>The pooling/projection layer downsizes the number of image feature vectors</li>
-</ol>
-<ul>
-<li>Qwen 2.5 VL combines a 2x2 block image feature vectors/patches into a single block</li>
-<li>Pooling/projection is done to create a more informative token</li>
-</ul>
-<ol type="1">
-<li>The result is (46/2)·(34/2)=391</li>
-<li>391 matches the number of image tokens created by the tokenizer</li>
-</ol>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>LLM</category>
-  <category>VLM</category>
-  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-08-11-A.html</guid>
-  <pubDate>Mon, 11 Aug 2025 00:00:00 GMT</pubDate>
-</item>
+<generator>quarto-1.8.25</generator>
+<lastBuildDate>Tue, 15 Jul 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Nifty Shell Tools</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-07-15-B.html</link>
@@ -209,7 +176,7 @@
 <p>A shell hook is a piece of shell script that is called before or after the shell displays the prompt.</p>
 <p>I want to use conda and uv together. Conda’s great as swithcing environments on the fly, and uv is great for speed. However, while <code>uv pip install</code> makes use of the current conda environment, <code>uv sync</code> and <code>uv add</code> don’t</p>
 <p>I came across <a href="https://github.com/warner-benjamin/uv-conda">this</a> rc script from <a href="https://benjaminwarner.dev/">Benjamin Warner</a> that sets the environment variable uv uses to allow it to work with conda.</p>
-<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes</span></span>
 <span id="cb1-2"><span class="fu" style="color: #4758AB;
@@ -438,10 +405,10 @@ font-style: inherit;">fi</span></span>
 <span id="cb1-29"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">fi</span></span></code></pre></div>
+font-style: inherit;">fi</span></span></code></pre></div></div>
 <p>Programming the shell is new to me, and I wanted to understand what exactly this script was doing. So after chatting with a LLM, I discovered the world of shell hooks.</p>
 <p>The script begins by first settings the <code>UV_PROJECT_ENVIRONMENT</code> to be the path that <code>$CONDA_PREFIX</code> uses.</p>
-<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">conda_auto_env()</span> <span class="kw" style="color: #003B4F;
 background-color: null;
@@ -497,9 +464,9 @@ font-style: inherit;">fi</span></span>
 <span id="cb2-7"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">}</span></span></code></pre></div>
+font-style: inherit;">}</span></span></code></pre></div></div>
 <p>Then, a <code>precmd</code> shell hook is created. So the moment before a new prompt appears in the shell, <code>conda_auto_env</code> is run to set the uv environment to be the same as the conda environment.</p>
-<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Ensure add-zsh-hook is available</span></span>
 <span id="cb3-2"><span class="ex" style="color: null;
@@ -538,7 +505,7 @@ font-style: inherit;">=</span>1</span>
 <span id="cb3-7"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">fi</span></span></code></pre></div>
+font-style: inherit;">fi</span></span></code></pre></div></div>
 
 
 
@@ -833,12 +800,12 @@ font-style: inherit;">fi</span></span></code></pre></div>
 <p>Future directions encourage research into hybrid models that are both language and spatial memory, self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.</p>
 <p><a href="https://huggingface.co/papers/2412.14171">Link to paper</a>.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Deepseek R1 Summary
+<span class="screen-reader-only">Note</span>Deepseek R1 Summary
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>

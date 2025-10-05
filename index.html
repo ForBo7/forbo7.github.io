@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -34,13 +34,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-bc10828d2ff678a099ff32dc6bf2b6f7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7c1e9744246cb75393526fa05decce7b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/animate-4.1.1/animate.min.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -150,7 +151,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -190,6 +191,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
@@ -323,20 +326,7 @@ Description
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="TExNJTJDVkxN" data-listing-date-sort="1754870400000" data-listing-file-modified-sort="1754899285391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="97" data-listing-title-sort="The journey of an image in a VLM" data-listing-filename-sort="2025-08-11-A.qmd">
-<td>
-<a href="./bitsandbobs/posts/2025-08-11-A.html" class="title listing-title">The journey of an image in a VLM</a>
-</td>
-<td>
-<span class="listing-description">My understand regarding how images in VLMs are processed.</span>
-</td>
-<td>
-<span class="listing-date">Aug 11, 2025</span>
-</td>
-
-</tr>
-
-<tr data-index="1" data-categories="U2hlbGw=" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1754899285391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="166" data-listing-title-sort="Nifty Shell Tools" data-listing-filename-sort="2025-07-15-B.qmd">
+<tr data-index="0" data-categories="U2hlbGw=" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1759630507737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="166" data-listing-title-sort="Nifty Shell Tools" data-listing-filename-sort="2025-07-15-B.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-07-15-B.html" class="title listing-title">Nifty Shell Tools</a>
 </td>
@@ -349,7 +339,7 @@ Description
 
 </tr>
 
-<tr data-index="2" data-categories="U2hlbGwlMkNQcm9ncmFtbWluZw==" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1754899285391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="223" data-listing-title-sort="Nuances in Shell Scripting" data-listing-filename-sort="2025-07-15-A.qmd">
+<tr data-index="1" data-categories="U2hlbGwlMkNQcm9ncmFtbWluZw==" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1759630507737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="223" data-listing-title-sort="Nuances in Shell Scripting" data-listing-filename-sort="2025-07-15-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-07-15-A.html" class="title listing-title">Nuances in Shell Scripting</a>
 </td>
@@ -362,7 +352,7 @@ Description
 
 </tr>
 
-<tr data-index="3" data-categories="U2hlbGwlMkNQeXRob24=" data-listing-date-sort="1751673600000" data-listing-file-modified-sort="1754899285391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="382" data-listing-title-sort="Shell hooks, uv, and Conda." data-listing-filename-sort="2025-07-05-A.qmd">
+<tr data-index="2" data-categories="U2hlbGwlMkNQeXRob24=" data-listing-date-sort="1751673600000" data-listing-file-modified-sort="1759630507737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="382" data-listing-title-sort="Shell hooks, uv, and Conda." data-listing-filename-sort="2025-07-05-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-07-05-A.html" class="title listing-title">Shell hooks, uv, and Conda.</a>
 </td>
@@ -375,7 +365,7 @@ Description
 
 </tr>
 
-<tr data-index="4" data-categories="TExNJTJDVkxNJTJDTUxMTQ==" data-listing-date-sort="1750723200000" data-listing-file-modified-sort="1754899285391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="40" data-listing-title-sort="Retrieval Augmented Generation in a nutshell." data-listing-filename-sort="2025-01-24-A.qmd">
+<tr data-index="3" data-categories="TExNJTJDVkxNJTJDTUxMTQ==" data-listing-date-sort="1750723200000" data-listing-file-modified-sort="1759630507737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="40" data-listing-title-sort="Retrieval Augmented Generation in a nutshell." data-listing-filename-sort="2025-01-24-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-01-24-A.html" class="title listing-title">Retrieval Augmented Generation in a nutshell.</a>
 </td>
@@ -388,7 +378,7 @@ Description
 
 </tr>
 
-<tr data-index="5" data-categories="U2hlbGw=" data-listing-date-sort="1750377600000" data-listing-file-modified-sort="1754899285391" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118" data-listing-title-sort="Terminal know-how." data-listing-filename-sort="2025-06-21-A.qmd">
+<tr data-index="4" data-categories="U2hlbGw=" data-listing-date-sort="1750377600000" data-listing-file-modified-sort="1759630507737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="118" data-listing-title-sort="Terminal know-how." data-listing-filename-sort="2025-06-21-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-06-21-A.html" class="title listing-title">Terminal know-how.</a>
 </td>
@@ -397,6 +387,19 @@ Description
 </td>
 <td>
 <span class="listing-date">Jun 20, 2025</span>
+</td>
+
+</tr>
+
+<tr data-index="5" data-categories="QmlvbG9neSUyQ1NwYXRpYWwlMjBJbnRlbGxpZ2VuY2U=" data-listing-date-sort="1748908800000" data-listing-file-modified-sort="1759630507737" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="112" data-listing-title-sort="Cognitive Maps" data-listing-filename-sort="2025-06-03-A.qmd">
+<td>
+<a href="./bitsandbobs/posts/2025-06-03-A.html" class="title listing-title">Cognitive Maps</a>
+</td>
+<td>
+<span class="listing-description">Cognitive maps in the context of biology and AI.</span>
+</td>
+<td>
+<span class="listing-date">Jun 3, 2025</span>
 </td>
 
 </tr>
@@ -411,7 +414,7 @@ Description
 <p>Click <a href="./forblog/index.html">here</a> to check out the latest on the ForBlog.</p>
 <div id="listing-landing-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Q29udmVyc2F0aW9uJTJDQ29tcHV0ZXIlMjBWaXNpb24lMkNMTE1zJTJDVHJhbnNmb3JtZXJz" data-listing-date-sort="1754265600000" data-listing-file-modified-sort="1754899285764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="663">
+<div class="quarto-post image-right" data-index="0" data-categories="Q29udmVyc2F0aW9uJTJDQ29tcHV0ZXIlMjBWaXNpb24lMkNMTE1zJTJDVHJhbnNmb3JtZXJz" data-listing-date-sort="1754265600000" data-listing-file-modified-sort="1759630508107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="663">
 <div class="thumbnail"><a href="./forblog/posts/27_pulling_back_the_curtain_on_vlm_attention.html" class="no-external">
 
 <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
@@ -439,7 +442,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="QW5hbHl6aW5nJTIwTW9kZWxzJTJDQ3JlYXRpbmclMjBNb2RlbHMlMkNEYXRhJTJDUGFwZXJzJTJDUm9ib3RpY3MlMkNUaG91Z2h0cw==" data-listing-date-sort="1753315200000" data-listing-file-modified-sort="1754899285764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
+<div class="quarto-post image-right" data-index="1" data-categories="QW5hbHl6aW5nJTIwTW9kZWxzJTJDQ3JlYXRpbmclMjBNb2RlbHMlMkNEYXRhJTJDUGFwZXJzJTJDUm9ib3RpY3MlMkNUaG91Z2h0cw==" data-listing-date-sort="1753315200000" data-listing-file-modified-sort="1759630508107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="687">
 <div class="thumbnail"><a href="./forblog/posts/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data.html" class="no-external">
 
 <img loading="lazy" src="./forblog/images/26_getting_general_purpose_robots_by_decomposing_problems_and_working_with_data/thumbnail.png" class="thumbnail-image">
@@ -467,7 +470,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="Q29tcHV0ZXIlMjBWaXNpb24lMkNMTE1zJTJDUGFwZXJzJTJDUm9ib3RpY3M=" data-listing-date-sort="1752451200000" data-listing-file-modified-sort="1754899285764" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1187">
+<div class="quarto-post image-right" data-index="2" data-categories="Q29tcHV0ZXIlMjBWaXNpb24lMkNMTE1zJTJDUGFwZXJzJTJDUm9ib3RpY3M=" data-listing-date-sort="1752451200000" data-listing-file-modified-sort="1759630508107" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1187">
 <div class="thumbnail"><a href="./forblog/posts/25_current_ideas_in_spatial_understanding.html" class="no-external">
 
 <img loading="lazy" src="./forblog/images/25_current_ideas_in_spatial_understanding/thumbnail.png" class="thumbnail-image">
@@ -550,13 +553,14 @@ Salman Naqvi
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
