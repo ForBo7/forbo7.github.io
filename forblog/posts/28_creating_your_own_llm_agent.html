@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Salman Naqvi">
+<meta name="description" content="Demystifying agents so you can create your own from scratch. It’s simpler than you think.">
+
+<title>Creating Your Own LLM Agent – ForBo7 // Salman Naqvi</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7c1e9744246cb75393526fa05decce7b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Creating Your Own LLM Agent – ForBo7 // Salman Naqvi">
+<meta property="og:description" content="Where does a VLM actually look at when looking at an image?">
+<meta property="og:image" content="https://forbo7.github.io/forblog/images/28_creating_your_own_llm_agent/thumbnail.png">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
+<meta name="twitter:title" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:description" content="Where does a VLM actually look at when looking at an image?">
+<meta name="twitter:image" content="https://forbo7.github.io/forblog/images/28_creating_your_own_llm_agent/thumbnail.png">
+<meta name="twitter:creator" content="@ForBo7">
+<meta name="twitter:site" content="@ForBo7">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1024">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">ForBo7 // Salman Naqvi</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house-door" role="img">
+</i> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../forblog/index.html"> <i class="bi bi-newspaper" role="img">
+</i> 
+<span class="menu-text">ForBlog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../bitsandbobs/index.html"> <i class="bi bi-puzzle" role="img">
+</i> 
+<span class="menu-text">Bits and Bobs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../dictionary/index.html"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text">Dictionary</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-file-person" role="img">
+</i> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/ForBo7/forbo7.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
+    <a href="../../forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#creating-your-own-llm-agent" id="toc-creating-your-own-llm-agent" class="nav-link active" data-scroll-target="#creating-your-own-llm-agent">Creating Your Own LLM Agent</a>
+  <ul>
+  <li><a href="#what-are-agents" id="toc-what-are-agents" class="nav-link" data-scroll-target="#what-are-agents">What are Agents?</a>
+  <ul class="collapse">
+  <li><a href="#the-core-loop" id="toc-the-core-loop" class="nav-link" data-scroll-target="#the-core-loop">The Core Loop</a></li>
+  <li><a href="#walkthrough" id="toc-walkthrough" class="nav-link" data-scroll-target="#walkthrough">Walkthrough</a>
+  <ul class="collapse">
+  <li><a href="#step-1-send-message-and-available-tools-to-llm" id="toc-step-1-send-message-and-available-tools-to-llm" class="nav-link" data-scroll-target="#step-1-send-message-and-available-tools-to-llm">Step 1: Send Message and Available Tools to LLM</a></li>
+  <li><a href="#step-2-make-the-first-api-call" id="toc-step-2-make-the-first-api-call" class="nav-link" data-scroll-target="#step-2-make-the-first-api-call">Step 2: Make the First API Call</a></li>
+  <li><a href="#step-3-check-if-a-tool-call-was-requested" id="toc-step-3-check-if-a-tool-call-was-requested" class="nav-link" data-scroll-target="#step-3-check-if-a-tool-call-was-requested">Step 3: Check if a Tool Call was Requested</a></li>
+  <li><a href="#step-4-execute-it" id="toc-step-4-execute-it" class="nav-link" data-scroll-target="#step-4-execute-it">Step 4: Execute It</a></li>
+  <li><a href="#step-5-build-history" id="toc-step-5-build-history" class="nav-link" data-scroll-target="#step-5-build-history">Step 5: Build History</a></li>
+  <li><a href="#and-thats-all" id="toc-and-thats-all" class="nav-link" data-scroll-target="#and-thats-all">And that’s all!</a></li>
+  <li><a href="#refactored" id="toc-refactored" class="nav-link" data-scroll-target="#refactored">Refactored</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#using-lisette" id="toc-using-lisette" class="nav-link" data-scroll-target="#using-lisette">Using Lisette</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="28_creating_your_own_llm_agent.out.ipynb" download="28_creating_your_own_llm_agent.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Creating Your Own LLM Agent</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">LLMs</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Demystifying agents so you can create your own from scratch. It’s simpler than you think.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Salman Naqvi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">Monday, 24 November 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="creating-your-own-llm-agent" class="level1">
+<h1>Creating Your Own LLM Agent</h1>
+<p>In this notebook, I’ll show you how simple LLM “agents” are, that they’re just LLMs in a while loop calling functions, and how to implement a tool-loop yourself using the <a href="https://lisette.answer.ai/">Lisette</a> and <a href="https://answerdotai.github.io/toolslm/">toolslm</a> libraries.</p>
+<section id="what-are-agents" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-agents">What are Agents?</h2>
+<p><strong>“An AI agent is just an LLM in a while loop.”</strong></p>
+<p>That’s it. The LLM requests to run a function (or in other words, the tool), you run it, give back the result, and repeat until the LLM no longer requests. No fancy frameworks needed.</p>
+<section id="the-core-loop" class="level3">
+<h3 class="anchored" data-anchor-id="the-core-loop">The Core Loop</h3>
+<p>At its core, it’s simple 4 step loop:</p>
+<ol type="1">
+<li>Send message + available tools to the LLM</li>
+<li>LLM responds with either the answer OR tool request</li>
+<li>If tool is requested: execute the relevant function and add the result to the chat history</li>
+<li>Go back to step 1.</li>
+</ol>
+<pre class="mermaid" data-code-line-numbers=""><code>flowchart TD
+    Start([Start]) --&gt; Call[Call LLM with message + tools]
+    Call --&gt; Check{Tool requested?}
+    Check --&gt;|Yes| Execute[Execute tool function]
+    Execute --&gt; Add[Add result to history]
+    Add --&gt; Call
+    Check --&gt;|No| Done([Done])</code></pre>
+</section>
+<section id="walkthrough" class="level3">
+<h3 class="anchored" data-anchor-id="walkthrough">Walkthrough</h3>
+<section id="step-1-send-message-and-available-tools-to-llm" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-send-message-and-available-tools-to-llm">Step 1: Send Message and Available Tools to LLM</h4>
+<p>To do this, we first need to setup the tools by: - Tossing all the tools into a list - Defining the metadata about those tools - Making the tools available in a “namespace” through which they can directly be called.</p>
+<p>Let’s first define two tools.</p>
+<div id="c9bc1e05" class="cell" data-time_run="2025-11-24T00:25:20.265772+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multer(a:<span class="bu">float</span>,b:<span class="bu">float</span>)<span class="op">-&gt;</span><span class="bu">float</span>:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'Take the product of two numbers'</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>b</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>multer(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>6</code></pre>
+</div>
+</div>
+<div id="877916b9" class="cell" data-time_run="2025-11-24T00:25:20.355435+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="bu">pow</span>(a:<span class="bu">float</span>,b:<span class="bu">float</span>)<span class="op">-&gt;</span><span class="bu">float</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'Return a to the power of b'</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">**</span>b</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>8</code></pre>
+</div>
+</div>
+<p>And then add it to the list of available tools.</p>
+<div id="e20a4af5" class="cell" data-time_run="2025-11-24T00:25:20.454907+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tools <span class="op">=</span> [multer,<span class="bu">pow</span>]<span class="op">;</span> tools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[&lt;function __main__.multer(a: float, b: float) -&gt; float&gt;,
+ &lt;function __main__.pow(a: float, b: float) -&gt; float&gt;]</code></pre>
+</div>
+</div>
+<p>We’ll now create the metadata about this tool.</p>
+<div id="d3e755ad" class="cell" data-time_run="2025-11-24T00:25:23.352646+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lisette <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><a href="https://lisette.answer.ai/">Lisette</a> is a wonderful library that abstracts away a lot of the boilerplate when working the LLMs in Python. The library is a wrapper around LiteLLM.</p>
+<p>Later in the notebook, I’ll demonstrate how to use Lisette’s <code>Chat</code> class directly to make tool calls with an LLM. For now, I’m using some of the library’s other functions.</p>
+<div id="f2e144a2" class="cell" data-time_run="2025-11-24T00:25:23.435856+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>schemas <span class="op">=</span> [lite_mk_func(t) <span class="cf">for</span> t <span class="kw">in</span> tools]<span class="op">;</span> schemas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[{'type': 'function',
+  'function': {'name': 'multer',
+   'description': 'Take the product of two numbers\n\nReturns:\n- type: number',
+   'parameters': {'type': 'object',
+    'properties': {'a': {'type': 'number', 'description': ''},
+     'b': {'type': 'number', 'description': ''}},
+    'required': ['a', 'b']}}},
+ {'type': 'function',
+  'function': {'name': 'pow',
+   'description': 'Return a to the power of b\n\nReturns:\n- type: number',
+   'parameters': {'type': 'object',
+    'properties': {'a': {'type': 'number', 'description': ''},
+     'b': {'type': 'number', 'description': ''}},
+    'required': ['a', 'b']}}}]</code></pre>
+</div>
+</div>
+<div id="b824e782" class="cell" data-time_run="2025-11-24T00:25:23.538485+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>??lite_mk_func</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lite_mk_func(f):</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(f, <span class="bu">dict</span>): <span class="cf">return</span> f</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'type'</span>:<span class="st">'function'</span>, <span class="st">'function'</span>:get_schema(f, pname<span class="op">=</span><span class="st">'parameters'</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/lisette/core.py</code></p>
+</div>
+</div>
+<p>I’ll now define the namespace.</p>
+<div id="e811638b" class="cell" data-time_run="2025-11-24T00:25:23.582397+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> toolslm.funccall <span class="im">import</span> mk_ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><a href="https://answerdotai.github.io/toolslm/">toolslm</a> is a helper library used by Lisette.</p>
+<div id="88b8938d" class="cell" data-time_run="2025-11-24T00:25:23.628505+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> mk_ns(tools)<span class="op">;</span> ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'multer': &lt;function __main__.multer(a: float, b: float) -&gt; float&gt;,
+ 'pow': &lt;function __main__.pow(a: float, b: float) -&gt; float&gt;}</code></pre>
+</div>
+</div>
+<div id="311d299b" class="cell" data-time_run="2025-11-24T00:25:23.670956+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>??mk_ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_ns(fs):</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(fs, abc.Mapping): <span class="cf">return</span> fs</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    merged <span class="op">=</span> {}</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> o <span class="kw">in</span> listify(fs):</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(o, <span class="bu">dict</span>): merged <span class="op">|=</span> o</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">callable</span>(o) <span class="kw">and</span> <span class="bu">hasattr</span>(o, <span class="st">'__name__'</span>): merged <span class="op">|=</span> {o.<span class="va">__name__</span>: o}</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merged</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/toolslm/funccall.py</code></p>
+</div>
+</div>
+</section>
+<section id="step-2-make-the-first-api-call" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-make-the-first-api-call">Step 2: Make the First API Call</h4>
+<p>We’ll now send a message to the LLM endpoint asking it to complete a somewhat complex calculation.</p>
+<div id="d452cd28" class="cell" data-time_run="2025-11-24T00:25:23.720247+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'MOONSHOT_API_BASE'</span>] <span class="op">=</span> <span class="st">'https://api.moonshot.cn/v1'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Here I’ve just changed my API end-point from <code>'https://api.moonshot.ai/v1'</code> to <code>'https://api.moonshot.cn/v1'</code> as my API key is only compatible with servers based in China.</p>
+<div id="37e14439" class="cell" data-time_run="2025-11-24T00:25:30.810956+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> litellm <span class="im">import</span> completion</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>hist <span class="op">=</span> [{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'Calculate 2*2353**5*1/2'</span>}]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> completion(model<span class="op">=</span><span class="st">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op">=</span>hist, tools<span class="op">=</span>schemas)<span class="op">;</span> r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
+<p>I need to calculate 2 * 2353^5 * 1/2.</p>
+<p>Let me break this down: - First, I’ll calculate 2353^5 - Then multiply by 2 - Then multiply by 1/2 (which is the same as dividing by 2)</p>
+<p>Let me start with 2353^5:</p>
+<p>🔧 pow({“a”: 2353, “b”: 5})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a5f5ce7148a79dfc95ba</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=93, prompt_tokens=111, total_tokens=204, completion_tokens_details=None, prompt_tokens_details=None)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<div id="b7429b59" class="cell" data-time_run="2025-11-24T00:25:30.894256+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>ModelResponse(id='chatcmpl-6923a5f5ce7148a79dfc95ba', created=1763943925, model='moonshot/kimi-k2-0711-preview', object='chat.completion', system_fingerprint=None, choices=[Choices(finish_reason='tool_calls', index=0, message=Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[ChatCompletionMessageToolCall(index=0, function=Function(arguments='{"a": 2353, "b": 5}', name='pow'), id='pow:0', type='function')], function_call=None, provider_specific_fields={'refusal': None}), provider_specific_fields={})], usage=Usage(completion_tokens=93, prompt_tokens=111, total_tokens=204, completion_tokens_details=None, prompt_tokens_details=None), service_tier=None)</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-check-if-a-tool-call-was-requested" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-check-if-a-tool-call-was-requested">Step 3: Check if a Tool Call was Requested</h4>
+<p>We can see that a tool call was requested.</p>
+<div id="757530b1" class="cell" data-time_run="2025-11-24T00:25:30.966136+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>r.choices[<span class="dv">0</span>].finish_reason</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'tool_calls'</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-execute-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-execute-it">Step 4: Execute It</h4>
+<p>All that’s left is, well, to execute it.</p>
+<div id="5e4d1893" class="cell" data-time_run="2025-11-24T00:25:31.039256+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tc <span class="op">=</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()<span class="op">;</span> tc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'index': 0,
+ 'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'},
+ 'id': 'pow:0',
+ 'type': 'function'}</code></pre>
+</div>
+</div>
+<div id="7d208b68" class="cell" data-time_run="2025-11-24T00:25:31.105164+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> ns[tc[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(tc[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))<span class="op">;</span> res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>72128954282026993</code></pre>
+</div>
+</div>
+</section>
+<section id="step-5-build-history" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-build-history">Step 5: Build History</h4>
+<div id="b0123f2f" class="cell" data-time_run="2025-11-24T00:25:31.157276+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>hist.append(r.choices[<span class="dv">0</span>].message)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>hist.append(mk_tc_result(tc, <span class="bu">str</span>(res)))<span class="op">;</span> hist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[{'role': 'user', 'content': 'Calculate 2*2353**5*1/2'},
+ Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[ChatCompletionMessageToolCall(index=0, function=Function(arguments='{"a": 2353, "b": 5}', name='pow'), id='pow:0', type='function')], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'pow:0',
+  'role': 'tool',
+  'name': 'pow',
+  'content': '72128954282026993'}]</code></pre>
+</div>
+</div>
+</section>
+<section id="and-thats-all" class="level4">
+<h4 class="anchored" data-anchor-id="and-thats-all">And that’s all!</h4>
+<p>Now we just have to keep looping until the query is solved.</p>
+<div id="641e9cfc" class="cell" data-time_run="2025-11-24T00:25:35.420250+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> r.choices[<span class="dv">0</span>].finish_reason<span class="op">!=</span><span class="st">'stop'</span>:</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    mtcd <span class="op">=</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    o <span class="op">=</span> ns[mtcd[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(mtcd[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    tc_res <span class="op">=</span> mk_tc_result(mtcd, <span class="bu">str</span>(o))</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    hist.append(r.choices[<span class="dv">0</span>].message)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    hist.append(tc_res)</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> completion(model<span class="op">=</span><span class="st">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op">=</span>hist, tools<span class="op">=</span>schemas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="2c8c7e01" class="cell" data-time_run="2025-11-24T00:25:35.491295+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>r.choices[<span class="dv">0</span>].finish_reason</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'stop'</code></pre>
+</div>
+</div>
+<div id="2df5c4b0" class="cell" data-time_run="2025-11-24T00:25:35.583480+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint <span class="im">as</span> pp</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>pp(hist)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>[{'content': 'Calculate 2*2353**5*1/2', 'role': 'user'},
+ Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'content': '72128954282026993',
+  'name': 'pow',
+  'role': 'tool',
+  'tool_call_id': 'pow:0'},
+ Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'content': '72128954282026993',
+  'name': 'pow',
+  'role': 'tool',
+  'tool_call_id': 'pow:0'}]</code></pre>
+</div>
+</div>
+</section>
+<section id="refactored" class="level4">
+<h4 class="anchored" data-anchor-id="refactored">Refactored</h4>
+<div id="6bd09ca3" class="cell" data-time_run="2025-11-24T00:25:35.626918+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_tools(tools):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    tools <span class="op">=</span> listify(tools)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    schemas <span class="op">=</span> [lite_mk_func(t) <span class="cf">for</span> t <span class="kw">in</span> tools]</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    ns <span class="op">=</span> mk_ns(tools)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tools, schemas, ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8efe9bf9" class="cell" data-time_run="2025-11-24T00:25:35.709152+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_query(m,h,s):</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> completion(model<span class="op">=</span>m, messages<span class="op">=</span>h, tools<span class="op">=</span>s)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="262a0962" class="cell" data-time_run="2025-11-24T00:25:35.747420+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tc2dict(r):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="b1212b7e" class="cell" data-time_run="2025-11-24T00:25:35.796245+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_tool(tc,ns):</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ns[tc[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(tc[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="e8d2565a" class="cell" data-time_run="2025-11-24T00:27:40.672431+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_hist(h,r,tc_res):</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    h.append(r.choices[<span class="dv">0</span>].message)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    h.append(mk_tc_result(r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>],<span class="bu">str</span>(tc_res)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="0b881a40" class="cell" data-time_run="2025-11-24T00:25:35.898853+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>hist <span class="op">=</span> [{<span class="st">'role'</span>:<span class="st">'user'</span>, <span class="st">'content'</span>:<span class="st">'Determine 2*3**4**5'</span>}]</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tools, schemas, ns <span class="op">=</span> set_tools([multer,<span class="bu">pow</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="55f4cfcf" class="cell" data-time_run="2025-11-24T00:25:40.608935+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> make_query(<span class="st">'moonshot/kimi-k2-0711-preview'</span>,hist,schemas)<span class="op">;</span> r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
+<p>I’ll solve this step by step, following the order of operations for exponentiation (which is right-associative). The expression 2*3<strong>4</strong>5 means 2×(3<sup>(4</sup>5)).</p>
+<p>🔧 pow({“a”: 4, “b”: 5})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a600bd9f0794473f54b0</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=65, prompt_tokens=108, total_tokens=173, completion_tokens_details=None, prompt_tokens_details=None, cached_tokens=108)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<div id="a18263ea" class="cell" data-time_run="2025-11-24T00:28:09.511287+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> r.choices[<span class="dv">0</span>].finish_reason <span class="op">!=</span> <span class="st">'stop'</span>:</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    tc <span class="op">=</span> tc2dict(r)</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    tc_res <span class="op">=</span> run_tool(tc, ns)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    build_hist(hist,r,tc_res)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> make_query(<span class="st">'moonshot/kimi-k2-0711-preview'</span>, hist, schemas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="34bfce4a" class="cell" data-time_run="2025-11-24T00:29:11.534551+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>hist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[{'role': 'user', 'content': 'Determine 2*3**4**5'},
+ Message(content="I'll solve this step by step, following the order of operations for exponentiation (which is right-associative). The expression 2*3**4**5 means 2×(3^(4^5)).", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 4, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'pow:0', 'role': 'tool', 'name': 'pow', 'content': '1024'},
+ Message(content="Now I'll calculate 3^1024:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 3, "b": 1024}', 'name': 'pow'}, 'id': 'pow:1', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'pow:1',
+  'role': 'tool',
+  'name': 'pow',
+  'content': '373391848741020043532959754184866588225409776783734007750636931722079040617265251229993688938803977220468765065431475158108727054592160858581351336982809187314191748594262580938807019951956404285571818041046681288797402925517668012340617298396574731619152386723046235125934896058590588284654793540505936202376547807442730582144527058988756251452817793413352141920744623027518729185432862375737063985485319476416926263819972887006907013899256524297198527698749274196276811060702333710356481'},
+ Message(content="Finally, I'll multiply this by 2:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 2, "b": 373391848741020043532959754184866588225409776783734007750636931722079040617265251229993688938803977220468765065431475158108727054592160858581351336982809187314191748594262580938807019951956404285571818041046681288797402925517668012340617298396574731619152386723046235125934896058590588284654793540505936202376547807442730582144527058988756251452817793413352141920744623027518729185432862375737063985485319476416926263819972887006907013899256524297198527698749274196276811060702333710356481}', 'name': 'multer'}, 'id': 'multer:2', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'multer:2',
+  'role': 'tool',
+  'name': 'multer',
+  'content': '746783697482040087065919508369733176450819553567468015501273863444158081234530502459987377877607954440937530130862950316217454109184321717162702673965618374628383497188525161877614039903912808571143636082093362577594805851035336024681234596793149463238304773446092470251869792117181176569309587081011872404753095614885461164289054117977512502905635586826704283841489246055037458370865724751474127970970638952833852527639945774013814027798513048594397055397498548392553622121404667420712962'}]</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="using-lisette" class="level2">
+<h2 class="anchored" data-anchor-id="using-lisette">Using Lisette</h2>
+<p>Lisette is pretty concise. In only 2 lines of code, you can have a tool-loop up and running</p>
+<div id="44bd8122" class="cell" data-time_run="2025-11-24T00:31:36.983238+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="st">'moonshot/kimi-k2-0711-preview'</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Chat(m)<span class="op">;</span> c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>&lt;lisette.core.Chat at 0x7f45865da300&gt;</code></pre>
+</div>
+</div>
+<div id="4dd6f809" class="cell" data-time_run="2025-11-24T00:31:48.167077+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> c(<span class="st">'Who are you?'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="e7a2a8de" class="cell" data-time_run="2025-11-24T00:35:50.413499+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Chat(m, tools<span class="op">=</span>[multer,<span class="bu">pow</span>])</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>o <span class="op">=</span> c(<span class="st">"What's the result of (13**2)*25.5?"</span>, max_steps<span class="op">=</span><span class="dv">10</span>, return_all<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> display(<span class="op">*</span>o)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>I’ll calculate this step by step. First, I’ll compute 13 squared (13**2), and then multiply the result by 25.5.</p>
+<p>🔧 pow({“a”: 13, “b”: 2})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a854bd9f0794473f563c</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=51, prompt_tokens=112, total_tokens=163, completion_tokens_details=None, prompt_tokens_details=None, cached_tokens=112)</code></li>
+</ul>
+</details>
+</div>
+<div class="cell-output cell-output-display">
+<pre data-code-line-numbers=""><code>{'tool_call_id': 'pow:0', 'role': 'tool', 'name': 'pow', 'content': '169'}</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Now I’ll multiply 169 by 25.5:</p>
+<p>🔧 multer({“a”: 169, “b”: 25.5})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a861655ccdf1f78a3fd1</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=35, prompt_tokens=180, total_tokens=215, completion_tokens_details=None, prompt_tokens_details=None)</code></li>
+</ul>
+</details>
+</div>
+<div class="cell-output cell-output-display">
+<pre data-code-line-numbers=""><code>{'tool_call_id': 'multer:1',
+ 'role': 'tool',
+ 'name': 'multer',
+ 'content': '4309.5'}</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>The result of (13²)×25.5 is <strong>4309.5</strong>.</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a864ce7148a79dfc97f4</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>stop</code></li>
+<li>usage: <code>Usage(completion_tokens=18, prompt_tokens=236, total_tokens=254, completion_tokens_details=None, prompt_tokens_details=None)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<p>The only thing to note here is the <code>max_steps</code> parameter. That determines the length of the tool-loop.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Building a LLM agent is simpler than it looks seem—at its core, it’s just a LLM calling functions in a loop.</p>
+<p>By repeatedly calling the model, executing requested tools, and feeding results back into the conversation history, you create a system that can solve complex multi-step problems.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/forbo7\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "ForBo7/forbo7.github.io";
+    script.dataset.repoId = "R_kgDOICXnAA";
+    script.dataset.category = "Giscus Comments";
+    script.dataset.categoryId = "DIC_kwDOICXnAM4CR8YX";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><a href="https://forbo7.github.io/">ForBo7 // Salman Naqvi</a> © 2022–2025 to ∞ and ForBlog™ by <a href="https://forbo7.github.io/about.html">Salman Naqvi</a></p>
+</div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://forums.fast.ai/u/forbo7/summary">
+      <i class="bi bi-file-post-fill" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/ForBo7_">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.artstation.com/forbo7">
+      <i class="bi bi-brush" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:salmananaqvii+forblog@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../forblog/index.xml">
+      <i class="bi bi-rss" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+<p><a href="https://forbo7.github.io/patch_notes.html">Version 2.2.2.0</a> | <a href="https://forbo7.github.io/feedback.html">Feedback</a> | Website made with <a href="https://quarto.org/">Quarto</a>, by me!</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>

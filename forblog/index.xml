@@ -15,7 +15,818 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Mon, 04 Aug 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 24 Nov 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Creating Your Own LLM Agent</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/28_creating_your_own_llm_agent.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="creating-your-own-llm-agent" class="level1">
+<h1>Creating Your Own LLM Agent</h1>
+<p>In this notebook, I’ll show you how simple LLM “agents” are, that they’re just LLMs in a while loop calling functions, and how to implement a tool-loop yourself using the <a href="https://lisette.answer.ai/">Lisette</a> and <a href="https://answerdotai.github.io/toolslm/">toolslm</a> libraries.</p>
+<section id="what-are-agents" class="level2">
+<h2 class="anchored" data-anchor-id="what-are-agents">What are Agents?</h2>
+<p><strong>“An AI agent is just an LLM in a while loop.”</strong></p>
+<p>That’s it. The LLM requests to run a function (or in other words, the tool), you run it, give back the result, and repeat until the LLM no longer requests. No fancy frameworks needed.</p>
+<section id="the-core-loop" class="level3">
+<h3 class="anchored" data-anchor-id="the-core-loop">The Core Loop</h3>
+<p>At its core, it’s simple 4 step loop:</p>
+<ol type="1">
+<li>Send message + available tools to the LLM</li>
+<li>LLM responds with either the answer OR tool request</li>
+<li>If tool is requested: execute the relevant function and add the result to the chat history</li>
+<li>Go back to step 1.</li>
+</ol>
+<pre class="mermaid" data-code-line-numbers=""><code>flowchart TD
+    Start([Start]) --&gt; Call[Call LLM with message + tools]
+    Call --&gt; Check{Tool requested?}
+    Check --&gt;|Yes| Execute[Execute tool function]
+    Execute --&gt; Add[Add result to history]
+    Add --&gt; Call
+    Check --&gt;|No| Done([Done])</code></pre>
+</section>
+<section id="walkthrough" class="level3">
+<h3 class="anchored" data-anchor-id="walkthrough">Walkthrough</h3>
+<section id="step-1-send-message-and-available-tools-to-llm" class="level4">
+<h4 class="anchored" data-anchor-id="step-1-send-message-and-available-tools-to-llm">Step 1: Send Message and Available Tools to LLM</h4>
+<p>To do this, we first need to setup the tools by: - Tossing all the tools into a list - Defining the metadata about those tools - Making the tools available in a “namespace” through which they can directly be called.</p>
+<p>Let’s first define two tools.</p>
+<div id="c9bc1e05" class="cell" data-time_run="2025-11-24T00:25:20.265772+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> multer(a:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>,b:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>:</span>
+<span id="cb2-2">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">'Take the product of two numbers'</span></span>
+<span id="cb2-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> a<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>b</span>
+<span id="cb2-4">multer(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>6</code></pre>
+</div>
+</div>
+<div id="877916b9" class="cell" data-time_run="2025-11-24T00:25:20.355435+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pow</span>(a:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>,b:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">float</span>:</span>
+<span id="cb4-2">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">'Return a to the power of b'</span></span>
+<span id="cb4-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> a<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>b</span>
+<span id="cb4-4"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pow</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>8</code></pre>
+</div>
+</div>
+<p>And then add it to the list of available tools.</p>
+<div id="e20a4af5" class="cell" data-time_run="2025-11-24T00:25:20.454907+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">tools <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [multer,<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pow</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> tools</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[&lt;function __main__.multer(a: float, b: float) -&gt; float&gt;,
+ &lt;function __main__.pow(a: float, b: float) -&gt; float&gt;]</code></pre>
+</div>
+</div>
+<p>We’ll now create the metadata about this tool.</p>
+<div id="d3e755ad" class="cell" data-time_run="2025-11-24T00:25:23.352646+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> lisette <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span></code></pre></div></div>
+</div>
+<p><a href="https://lisette.answer.ai/">Lisette</a> is a wonderful library that abstracts away a lot of the boilerplate when working the LLMs in Python. The library is a wrapper around LiteLLM.</p>
+<p>Later in the notebook, I’ll demonstrate how to use Lisette’s <code>Chat</code> class directly to make tool calls with an LLM. For now, I’m using some of the library’s other functions.</p>
+<div id="f2e144a2" class="cell" data-time_run="2025-11-24T00:25:23.435856+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">schemas <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [lite_mk_func(t) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> t <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> schemas</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[{'type': 'function',
+  'function': {'name': 'multer',
+   'description': 'Take the product of two numbers\n\nReturns:\n- type: number',
+   'parameters': {'type': 'object',
+    'properties': {'a': {'type': 'number', 'description': ''},
+     'b': {'type': 'number', 'description': ''}},
+    'required': ['a', 'b']}}},
+ {'type': 'function',
+  'function': {'name': 'pow',
+   'description': 'Return a to the power of b\n\nReturns:\n- type: number',
+   'parameters': {'type': 'object',
+    'properties': {'a': {'type': 'number', 'description': ''},
+     'b': {'type': 'number', 'description': ''}},
+    'required': ['a', 'b']}}}]</code></pre>
+</div>
+</div>
+<div id="b824e782" class="cell" data-time_run="2025-11-24T00:25:23.538485+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">??lite_mk_func</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> lite_mk_func(f):</span>
+<span id="cb12-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">isinstance</span>(f, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>): <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> f</span>
+<span id="cb12-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> {<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'type'</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>:get_schema(f, pname<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'parameters'</span>)}</span></code></pre></div></div>
+<p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/lisette/core.py</code></p>
+</div>
+</div>
+<p>I’ll now define the namespace.</p>
+<div id="e811638b" class="cell" data-time_run="2025-11-24T00:25:23.582397+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> toolslm.funccall <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> mk_ns</span></code></pre></div></div>
+</div>
+<p><a href="https://answerdotai.github.io/toolslm/">toolslm</a> is a helper library used by Lisette.</p>
+<div id="88b8938d" class="cell" data-time_run="2025-11-24T00:25:23.628505+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">ns <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mk_ns(tools)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> ns</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'multer': &lt;function __main__.multer(a: float, b: float) -&gt; float&gt;,
+ 'pow': &lt;function __main__.pow(a: float, b: float) -&gt; float&gt;}</code></pre>
+</div>
+</div>
+<div id="311d299b" class="cell" data-time_run="2025-11-24T00:25:23.670956+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">??mk_ns</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> mk_ns(fs):</span>
+<span id="cb17-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">isinstance</span>(fs, abc.Mapping): <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> fs</span>
+<span id="cb17-3">    merged <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> {}</span>
+<span id="cb17-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> o <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> listify(fs):</span>
+<span id="cb17-5">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">isinstance</span>(o, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">dict</span>): merged <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|=</span> o</span>
+<span id="cb17-6">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">elif</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">callable</span>(o) <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">hasattr</span>(o, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'__name__'</span>): merged <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|=</span> {o.<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">__name__</span>: o}</span>
+<span id="cb17-7">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> merged</span></code></pre></div></div>
+<p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/toolslm/funccall.py</code></p>
+</div>
+</div>
+</section>
+<section id="step-2-make-the-first-api-call" class="level4">
+<h4 class="anchored" data-anchor-id="step-2-make-the-first-api-call">Step 2: Make the First API Call</h4>
+<p>We’ll now send a message to the LLM endpoint asking it to complete a somewhat complex calculation.</p>
+<div id="d452cd28" class="cell" data-time_run="2025-11-24T00:25:23.720247+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastcore.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">all</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb18-2">os.environ[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'MOONSHOT_API_BASE'</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://api.moonshot.cn/v1'</span></span></code></pre></div></div>
+</div>
+<p>Here I’ve just changed my API end-point from <code>'https://api.moonshot.ai/v1'</code> to <code>'https://api.moonshot.cn/v1'</code> as my API key is only compatible with servers based in China.</p>
+<div id="37e14439" class="cell" data-time_run="2025-11-24T00:25:30.810956+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> litellm <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> completion</span>
+<span id="cb19-2">hist <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [{<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'role'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'user'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'content'</span>: <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Calculate 2*2353**5*1/2'</span>}]</span>
+<span id="cb19-3">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> completion(model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>hist, tools<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>schemas)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> r</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
+<p>I need to calculate 2 * 2353^5 * 1/2.</p>
+<p>Let me break this down: - First, I’ll calculate 2353^5 - Then multiply by 2 - Then multiply by 1/2 (which is the same as dividing by 2)</p>
+<p>Let me start with 2353^5:</p>
+<p>🔧 pow({“a”: 2353, “b”: 5})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a5f5ce7148a79dfc95ba</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=93, prompt_tokens=111, total_tokens=204, completion_tokens_details=None, prompt_tokens_details=None)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<div id="b7429b59" class="cell" data-time_run="2025-11-24T00:25:30.894256+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(r)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>ModelResponse(id='chatcmpl-6923a5f5ce7148a79dfc95ba', created=1763943925, model='moonshot/kimi-k2-0711-preview', object='chat.completion', system_fingerprint=None, choices=[Choices(finish_reason='tool_calls', index=0, message=Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[ChatCompletionMessageToolCall(index=0, function=Function(arguments='{"a": 2353, "b": 5}', name='pow'), id='pow:0', type='function')], function_call=None, provider_specific_fields={'refusal': None}), provider_specific_fields={})], usage=Usage(completion_tokens=93, prompt_tokens=111, total_tokens=204, completion_tokens_details=None, prompt_tokens_details=None), service_tier=None)</code></pre>
+</div>
+</div>
+</section>
+<section id="step-3-check-if-a-tool-call-was-requested" class="level4">
+<h4 class="anchored" data-anchor-id="step-3-check-if-a-tool-call-was-requested">Step 3: Check if a Tool Call was Requested</h4>
+<p>We can see that a tool call was requested.</p>
+<div id="757530b1" class="cell" data-time_run="2025-11-24T00:25:30.966136+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].finish_reason</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'tool_calls'</code></pre>
+</div>
+</div>
+</section>
+<section id="step-4-execute-it" class="level4">
+<h4 class="anchored" data-anchor-id="step-4-execute-it">Step 4: Execute It</h4>
+<p>All that’s left is, well, to execute it.</p>
+<div id="5e4d1893" class="cell" data-time_run="2025-11-24T00:25:31.039256+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">tc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.tool_calls[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].to_dict()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> tc</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'index': 0,
+ 'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'},
+ 'id': 'pow:0',
+ 'type': 'function'}</code></pre>
+</div>
+</div>
+<div id="7d208b68" class="cell" data-time_run="2025-11-24T00:25:31.105164+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> json</span>
+<span id="cb26-2">res <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> ns[tc[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'name'</span>]](<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>json.loads(tc[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'arguments'</span>]))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> res</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>72128954282026993</code></pre>
+</div>
+</div>
+</section>
+<section id="step-5-build-history" class="level4">
+<h4 class="anchored" data-anchor-id="step-5-build-history">Step 5: Build History</h4>
+<div id="b0123f2f" class="cell" data-time_run="2025-11-24T00:25:31.157276+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">hist.append(r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message)</span>
+<span id="cb28-2">hist.append(mk_tc_result(tc, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(res)))<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> hist</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[{'role': 'user', 'content': 'Calculate 2*2353**5*1/2'},
+ Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[ChatCompletionMessageToolCall(index=0, function=Function(arguments='{"a": 2353, "b": 5}', name='pow'), id='pow:0', type='function')], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'pow:0',
+  'role': 'tool',
+  'name': 'pow',
+  'content': '72128954282026993'}]</code></pre>
+</div>
+</div>
+</section>
+<section id="and-thats-all" class="level4">
+<h4 class="anchored" data-anchor-id="and-thats-all">And that’s all!</h4>
+<p>Now we just have to keep looping until the query is solved.</p>
+<div id="641e9cfc" class="cell" data-time_run="2025-11-24T00:25:35.420250+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].finish_reason<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'stop'</span>:</span>
+<span id="cb30-2">    mtcd <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.tool_calls[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].to_dict()</span>
+<span id="cb30-3">    o <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> ns[mtcd[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'name'</span>]](<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>json.loads(mtcd[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'arguments'</span>]))</span>
+<span id="cb30-4">    tc_res <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mk_tc_result(mtcd, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(o))</span>
+<span id="cb30-5">    hist.append(r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message)</span>
+<span id="cb30-6">    hist.append(tc_res)</span>
+<span id="cb30-7">    r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> completion(model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>hist, tools<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>schemas)</span></code></pre></div></div>
+</div>
+<div id="2c8c7e01" class="cell" data-time_run="2025-11-24T00:25:35.491295+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1">r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].finish_reason</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'stop'</code></pre>
+</div>
+</div>
+<div id="2df5c4b0" class="cell" data-time_run="2025-11-24T00:25:35.583480+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> pprint <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> pprint <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> pp</span>
+<span id="cb33-2">pp(hist)</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>[{'content': 'Calculate 2*2353**5*1/2', 'role': 'user'},
+ Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'content': '72128954282026993',
+  'name': 'pow',
+  'role': 'tool',
+  'tool_call_id': 'pow:0'},
+ Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'content': '72128954282026993',
+  'name': 'pow',
+  'role': 'tool',
+  'tool_call_id': 'pow:0'}]</code></pre>
+</div>
+</div>
+</section>
+<section id="refactored" class="level4">
+<h4 class="anchored" data-anchor-id="refactored">Refactored</h4>
+<div id="6bd09ca3" class="cell" data-time_run="2025-11-24T00:25:35.626918+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> set_tools(tools):</span>
+<span id="cb35-2">    tools <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> listify(tools)</span>
+<span id="cb35-3">    schemas <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [lite_mk_func(t) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> t <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> tools]</span>
+<span id="cb35-4">    ns <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> mk_ns(tools)</span>
+<span id="cb35-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> tools, schemas, ns</span></code></pre></div></div>
+</div>
+<div id="8efe9bf9" class="cell" data-time_run="2025-11-24T00:25:35.709152+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> make_query(m,h,s):</span>
+<span id="cb36-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> completion(model<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>m, messages<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>h, tools<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>s)</span></code></pre></div></div>
+</div>
+<div id="262a0962" class="cell" data-time_run="2025-11-24T00:25:35.747420+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> tc2dict(r):</span>
+<span id="cb37-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.tool_calls[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].to_dict()</span></code></pre></div></div>
+</div>
+<div id="b1212b7e" class="cell" data-time_run="2025-11-24T00:25:35.796245+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> run_tool(tc,ns):</span>
+<span id="cb38-2">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> ns[tc[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'name'</span>]](<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>json.loads(tc[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'function'</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'arguments'</span>]))</span></code></pre></div></div>
+</div>
+<div id="e8d2565a" class="cell" data-time_run="2025-11-24T00:27:40.672431+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> build_hist(h,r,tc_res):</span>
+<span id="cb39-2">    h.append(r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message)</span>
+<span id="cb39-3">    h.append(mk_tc_result(r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.tool_calls[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>],<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>(tc_res)))</span></code></pre></div></div>
+</div>
+<div id="0b881a40" class="cell" data-time_run="2025-11-24T00:25:35.898853+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1">hist <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [{<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'role'</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'user'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'content'</span>:<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Determine 2*3**4**5'</span>}]</span>
+<span id="cb40-2">tools, schemas, ns <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> set_tools([multer,<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pow</span>])</span></code></pre></div></div>
+</div>
+<div id="55f4cfcf" class="cell" data-time_run="2025-11-24T00:25:40.608935+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> make_query(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'moonshot/kimi-k2-0711-preview'</span>,hist,schemas)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> r</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
+<p>I’ll solve this step by step, following the order of operations for exponentiation (which is right-associative). The expression 2*3<strong>4</strong>5 means 2×(3<sup>(4</sup>5)).</p>
+<p>🔧 pow({“a”: 4, “b”: 5})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a600bd9f0794473f54b0</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=65, prompt_tokens=108, total_tokens=173, completion_tokens_details=None, prompt_tokens_details=None, cached_tokens=108)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<div id="a18263ea" class="cell" data-time_run="2025-11-24T00:28:09.511287+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">while</span> r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].finish_reason <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'stop'</span>:</span>
+<span id="cb42-2">    tc <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> tc2dict(r)</span>
+<span id="cb42-3">    tc_res <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> run_tool(tc, ns)</span>
+<span id="cb42-4">    build_hist(hist,r,tc_res)</span>
+<span id="cb42-5">    r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> make_query(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'moonshot/kimi-k2-0711-preview'</span>, hist, schemas)</span></code></pre></div></div>
+</div>
+<div id="34bfce4a" class="cell" data-time_run="2025-11-24T00:29:11.534551+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1">hist</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>[{'role': 'user', 'content': 'Determine 2*3**4**5'},
+ Message(content="I'll solve this step by step, following the order of operations for exponentiation (which is right-associative). The expression 2*3**4**5 means 2×(3^(4^5)).", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 4, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'pow:0', 'role': 'tool', 'name': 'pow', 'content': '1024'},
+ Message(content="Now I'll calculate 3^1024:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 3, "b": 1024}', 'name': 'pow'}, 'id': 'pow:1', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'pow:1',
+  'role': 'tool',
+  'name': 'pow',
+  'content': '373391848741020043532959754184866588225409776783734007750636931722079040617265251229993688938803977220468765065431475158108727054592160858581351336982809187314191748594262580938807019951956404285571818041046681288797402925517668012340617298396574731619152386723046235125934896058590588284654793540505936202376547807442730582144527058988756251452817793413352141920744623027518729185432862375737063985485319476416926263819972887006907013899256524297198527698749274196276811060702333710356481'},
+ Message(content="Finally, I'll multiply this by 2:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 2, "b": 373391848741020043532959754184866588225409776783734007750636931722079040617265251229993688938803977220468765065431475158108727054592160858581351336982809187314191748594262580938807019951956404285571818041046681288797402925517668012340617298396574731619152386723046235125934896058590588284654793540505936202376547807442730582144527058988756251452817793413352141920744623027518729185432862375737063985485319476416926263819972887006907013899256524297198527698749274196276811060702333710356481}', 'name': 'multer'}, 'id': 'multer:2', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
+ {'tool_call_id': 'multer:2',
+  'role': 'tool',
+  'name': 'multer',
+  'content': '746783697482040087065919508369733176450819553567468015501273863444158081234530502459987377877607954440937530130862950316217454109184321717162702673965618374628383497188525161877614039903912808571143636082093362577594805851035336024681234596793149463238304773446092470251869792117181176569309587081011872404753095614885461164289054117977512502905635586826704283841489246055037458370865724751474127970970638952833852527639945774013814027798513048594397055397498548392553622121404667420712962'}]</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="using-lisette" class="level2">
+<h2 class="anchored" data-anchor-id="using-lisette">Using Lisette</h2>
+<p>Lisette is pretty concise. In only 2 lines of code, you can have a tool-loop up and running</p>
+<div id="44bd8122" class="cell" data-time_run="2025-11-24T00:31:36.983238+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1">m <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'moonshot/kimi-k2-0711-preview'</span></span>
+<span id="cb45-2">c <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Chat(m)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> c</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>&lt;lisette.core.Chat at 0x7f45865da300&gt;</code></pre>
+</div>
+</div>
+<div id="4dd6f809" class="cell" data-time_run="2025-11-24T00:31:48.167077+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1">r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> c(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Who are you?'</span>)</span></code></pre></div></div>
+</div>
+<div id="e7a2a8de" class="cell" data-time_run="2025-11-24T00:35:50.413499+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> IPython.display <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> display</span>
+<span id="cb48-2">c <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Chat(m, tools<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[multer,<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">pow</span>])</span>
+<span id="cb48-3">o <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> c(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"What's the result of (13**2)*25.5?"</span>, max_steps<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, return_all<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> display(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>o)</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>I’ll calculate this step by step. First, I’ll compute 13 squared (13**2), and then multiply the result by 25.5.</p>
+<p>🔧 pow({“a”: 13, “b”: 2})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a854bd9f0794473f563c</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=51, prompt_tokens=112, total_tokens=163, completion_tokens_details=None, prompt_tokens_details=None, cached_tokens=112)</code></li>
+</ul>
+</details>
+</div>
+<div class="cell-output cell-output-display">
+<pre data-code-line-numbers=""><code>{'tool_call_id': 'pow:0', 'role': 'tool', 'name': 'pow', 'content': '169'}</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Now I’ll multiply 169 by 25.5:</p>
+<p>🔧 multer({“a”: 169, “b”: 25.5})</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a861655ccdf1f78a3fd1</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>tool_calls</code></li>
+<li>usage: <code>Usage(completion_tokens=35, prompt_tokens=180, total_tokens=215, completion_tokens_details=None, prompt_tokens_details=None)</code></li>
+</ul>
+</details>
+</div>
+<div class="cell-output cell-output-display">
+<pre data-code-line-numbers=""><code>{'tool_call_id': 'multer:1',
+ 'role': 'tool',
+ 'name': 'multer',
+ 'content': '4309.5'}</code></pre>
+</div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>The result of (13²)×25.5 is <strong>4309.5</strong>.</p>
+<details>
+<ul>
+<li>id: <code>chatcmpl-6923a864ce7148a79dfc97f4</code></li>
+<li>model: <code>moonshot/kimi-k2-0711-preview</code></li>
+<li>finish_reason: <code>stop</code></li>
+<li>usage: <code>Usage(completion_tokens=18, prompt_tokens=236, total_tokens=254, completion_tokens_details=None, prompt_tokens_details=None)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<p>The only thing to note here is the <code>max_steps</code> parameter. That determines the length of the tool-loop.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Building a LLM agent is simpler than it looks seem—at its core, it’s just a LLM calling functions in a loop.</p>
+<p>By repeatedly calling the model, executing requested tools, and feeding results back into the conversation history, you create a system that can solve complex multi-step problems.</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>LLMs</category>
+  <guid>https://forbo7.github.io/forblog/posts/28_creating_your_own_llm_agent.html</guid>
+  <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/28_creating_your_own_llm_agent/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Pulling Back the Curtain on VLM Attention</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -15895,212 +16706,6 @@ font-style: inherit;">-</span>metadata.json</span></code></pre></div></div>
   <guid>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</guid>
   <pubDate>Tue, 28 Feb 2023 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/9_transformers_explained/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>A No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><em>This blog post was updated on <strong>Saturday, 28 January 2023</strong>.</em></p>
-<p><img src="https://forbo7.github.io/forblog/images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" class="img-fluid" alt="A picture of a snake that has taken a bite out of an apple, and whose tail is a burning torch."></p>
-<p>If you have one of those fancy Macs with an M-Series chip (M1/M2, etc.), here’s how to make use of its GPU in PyTorch for increased performance.</p>
-<p>It’s a bit annoying and a little tedious, but here we go.</p>
-<section id="requirements" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="requirements"><span class="header-section-number">1</span> Requirements</h2>
-<ul>
-<li>Have an M-Series chip</li>
-<li>Have at least PyTorch 1.12</li>
-<li>Have at least macOS Monterey 12.3</li>
-</ul>
-</section>
-<section id="installing-pytorch" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="installing-pytorch"><span class="header-section-number">2</span> Installing PyTorch</h2>
-<p>Install PyTorch as you usually would. Just make sure it’s PyTorch 1.12.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Installing with Pip.</span></span>
-<span id="cb1-2"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> pip3 install torch torchvision torchaudio</span>
-<span id="cb1-3"></span>
-<span id="cb1-4"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Installing using Conda.</span></span>
-<span id="cb1-5"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> conda install pytorch torchvision torchaudio <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">-c</span> pytorch</span></code></pre></div></div>
-<p>By using these commands, the latest version of the library is installed so there is no need to specify the version number.</p>
-<p>However, if you have an existing installation, you can run the following Pip command instead.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
-background-color: null;
-font-style: inherit;">$</span> pip3 install <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">--upgrade</span> torch torchvision torchaudio</span></code></pre></div></div>
-</section>
-<section id="import-pytorch" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="import-pytorch"><span class="header-section-number">3</span> Import PyTorch</h2>
-<div class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torch</span></code></pre></div></div>
-</div>
-</section>
-<section id="check-requirements-are-met" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="check-requirements-are-met"><span class="header-section-number">4</span> Check Requirements are Met</h2>
-<p>Below is a convenient code snippet taken from the PyTorch documentation that checks whether requirements are met.</p>
-<div class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> torch.backends.mps.is_available():</span>
-<span id="cb4-2">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> torch.backends.mps.is_built():</span>
-<span id="cb4-3">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MPS not available because the current PyTorch install was not built with MPS enabled."</span>)</span>
-<span id="cb4-4">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span>:</span>
-<span id="cb4-5">        <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"MPS not available because the current MacOS version is not 12.3+ and/or you do not have an MPS-enabled device on this machine."</span>)</span></code></pre></div></div>
-</div>
-<p>If neither of the two above messages print, you’re good to go!</p>
-</section>
-<section id="the-annoying-part-enabling-the-gpu" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="the-annoying-part-enabling-the-gpu"><span class="header-section-number">5</span> The Annoying Part: Enabling the GPU</h2>
-<p>As far as I know, you must explicitly enable the use of the GPU for whatever model or tensor you wish to use the GPU for.</p>
-<p>There are different ways you can do this.</p>
-<p><strong>Use a string.</strong></p>
-<div class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">t <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.tensor([<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>], device<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'mps'</span>)</span></code></pre></div></div>
-</div>
-<div class="cell" data-execution_count="5">
-<div class="cell-output cell-output-display" data-execution_count="5">
-<blockquote class="blockquote">
-<p><code>tensor([1, 2, 3], device='mps:0')</code></p>
-</blockquote>
-</div>
-</div>
-<p><strong>Store as a variable.</strong></p>
-<div class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">device<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'mps'</span></span>
-<span id="cb6-2">t <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.tensor([<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>], device<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>device)</span></code></pre></div></div>
-</div>
-<div class="cell" data-execution_count="7">
-<div class="cell-output cell-output-display" data-execution_count="7">
-<blockquote class="blockquote">
-<p><code>tensor([1, 2, 3], device='mps:0')</code></p>
-</blockquote>
-</div>
-</div>
-<p><strong>Convert existing objects.</strong></p>
-<div class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">t <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torch.tensor([<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>])</span>
-<span id="cb7-2">t.to(device)</span></code></pre></div></div>
-</div>
-<div class="cell" data-execution_count="9">
-<div class="cell-output cell-output-display" data-execution_count="9">
-<blockquote class="blockquote">
-<p><code>tensor([1, 2, 3], device='mps:0')</code></p>
-</blockquote>
-</div>
-</div>
-<p>Note that converting existing objects creates a copy and does not modify the original.</p>
-<div class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">t</span></code></pre></div></div>
-</div>
-<div class="cell" data-execution_count="11">
-<div class="cell-output cell-output-display" data-execution_count="11">
-<blockquote class="blockquote">
-<p><code>tensor([1, 2, 3])</code></p>
-</blockquote>
-</div>
-</div>
-<p>Though the above operations have been performed on tensors, they can also be performed on models.</p>
-</section>
-<section id="points-to-note" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="points-to-note"><span class="header-section-number">6</span> Points to Note</h2>
-<ul>
-<li><p>GPU enabled means operations are done on the GPU.</p></li>
-<li><p>A GPU enabled tensor can only perform operations with another GPU enabled tensor.</p></li>
-<li><p>As of writing this, GPU support is still in its early stages. So certain features are unsupported and further optimizations await.</p></li>
-</ul>
-</section>
-<section id="relevant-links" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="relevant-links">Relevant Links</h2>
-<p>Relevant links:</p>
-<ul>
-<li><p>Installing PyTorch: <a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p></li>
-<li><p>Docs on using GPU: <a href="https://pytorch.org/docs/stable/notes/mps.html">https://pytorch.org/docs/stable/notes/mps.html</a></p></li>
-<li><p>Performance gains (note that nightly builds are no longer needed): <a href="https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/">https://pytorch.org/blog/introducing-accelerated-pytorch-training-on-mac/</a></p></li>
-</ul>
-</section>
-<section id="closing-words" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="closing-words">Closing Words</h2>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>PyTorch</category>
-  <guid>https://forbo7.github.io/forblog/posts/8_how_to_use_apple_gpu_with_pytorch.html</guid>
-  <pubDate>Thu, 26 Jan 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/8_how_to_use_apple_gpu_with_pytorch/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
 </rss>
