@@ -107,6 +107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<meta name="mermaid-theme" content="neutral">
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -266,13 +270,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>If tool is requested: execute the relevant function and add the result to the chat history</li>
 <li>Go back to step 1.</li>
 </ol>
-<pre class="mermaid" data-code-line-numbers=""><code>flowchart TD
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
     Start([Start]) --&gt; Call[Call LLM with message + tools]
     Call --&gt; Check{Tool requested?}
     Check --&gt;|Yes| Execute[Execute tool function]
     Execute --&gt; Add[Add result to history]
     Add --&gt; Call
-    Check --&gt;|No| Done([Done])</code></pre>
+    Check --&gt;|No| Done([Done])
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
 <section id="walkthrough" class="level3">
 <h3 class="anchored" data-anchor-id="walkthrough">Walkthrough</h3>
@@ -281,26 +296,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>To do this, we first need to setup the tools by: - Tossing all the tools into a list - Defining the metadata about those tools - Making the tools available in a “namespace” through which they can directly be called.</p>
 <p>Let’s first define two tools.</p>
 <div id="c9bc1e05" class="cell" data-time_run="2025-11-24T00:25:20.265772+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multer(a:<span class="bu">float</span>,b:<span class="bu">float</span>)<span class="op">-&gt;</span><span class="bu">float</span>:</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'Take the product of two numbers'</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>b</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>multer(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multer(a:<span class="bu">float</span>,b:<span class="bu">float</span>)<span class="op">-&gt;</span><span class="bu">float</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'Take the product of two numbers'</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">*</span>b</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>multer(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>6</code></pre>
 </div>
 </div>
 <div id="877916b9" class="cell" data-time_run="2025-11-24T00:25:20.355435+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="bu">pow</span>(a:<span class="bu">float</span>,b:<span class="bu">float</span>)<span class="op">-&gt;</span><span class="bu">float</span>:</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'Return a to the power of b'</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">**</span>b</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="bu">pow</span>(a:<span class="bu">float</span>,b:<span class="bu">float</span>)<span class="op">-&gt;</span><span class="bu">float</span>:</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">'Return a to the power of b'</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">**</span>b</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">pow</span>(<span class="dv">2</span>,<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>8</code></pre>
 </div>
 </div>
 <p>And then add it to the list of available tools.</p>
 <div id="e20a4af5" class="cell" data-time_run="2025-11-24T00:25:20.454907+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>tools <span class="op">=</span> [multer,<span class="bu">pow</span>]<span class="op">;</span> tools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tools <span class="op">=</span> [multer,<span class="bu">pow</span>]<span class="op">;</span> tools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>[&lt;function __main__.multer(a: float, b: float) -&gt; float&gt;,
  &lt;function __main__.pow(a: float, b: float) -&gt; float&gt;]</code></pre>
@@ -308,12 +323,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>We’ll now create the metadata about this tool.</p>
 <div id="d3e755ad" class="cell" data-time_run="2025-11-24T00:25:23.352646+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lisette <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lisette <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="https://lisette.answer.ai/">Lisette</a> is a wonderful library that abstracts away a lot of the boilerplate when working the LLMs in Python. The library is a wrapper around LiteLLM.</p>
 <p>Later in the notebook, I’ll demonstrate how to use Lisette’s <code>Chat</code> class directly to make tool calls with an LLM. For now, I’m using some of the library’s other functions.</p>
 <div id="f2e144a2" class="cell" data-time_run="2025-11-24T00:25:23.435856+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>schemas <span class="op">=</span> [lite_mk_func(t) <span class="cf">for</span> t <span class="kw">in</span> tools]<span class="op">;</span> schemas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>schemas <span class="op">=</span> [lite_mk_func(t) <span class="cf">for</span> t <span class="kw">in</span> tools]<span class="op">;</span> schemas</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>[{'type': 'function',
   'function': {'name': 'multer',
@@ -332,36 +347,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="b824e782" class="cell" data-time_run="2025-11-24T00:25:23.538485+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>??lite_mk_func</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>??lite_mk_func</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lite_mk_func(f):</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(f, <span class="bu">dict</span>): <span class="cf">return</span> f</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'type'</span>:<span class="st">'function'</span>, <span class="st">'function'</span>:get_schema(f, pname<span class="op">=</span><span class="st">'parameters'</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> lite_mk_func(f):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(f, <span class="bu">dict</span>): <span class="cf">return</span> f</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {<span class="st">'type'</span>:<span class="st">'function'</span>, <span class="st">'function'</span>:get_schema(f, pname<span class="op">=</span><span class="st">'parameters'</span>)}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/lisette/core.py</code></p>
 </div>
 </div>
 <p>I’ll now define the namespace.</p>
 <div id="e811638b" class="cell" data-time_run="2025-11-24T00:25:23.582397+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> toolslm.funccall <span class="im">import</span> mk_ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> toolslm.funccall <span class="im">import</span> mk_ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><a href="https://answerdotai.github.io/toolslm/">toolslm</a> is a helper library used by Lisette.</p>
 <div id="88b8938d" class="cell" data-time_run="2025-11-24T00:25:23.628505+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> mk_ns(tools)<span class="op">;</span> ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> mk_ns(tools)<span class="op">;</span> ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>{'multer': &lt;function __main__.multer(a: float, b: float) -&gt; float&gt;,
  'pow': &lt;function __main__.pow(a: float, b: float) -&gt; float&gt;}</code></pre>
 </div>
 </div>
 <div id="311d299b" class="cell" data-time_run="2025-11-24T00:25:23.670956+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>??mk_ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>??mk_ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display cell-output-markdown">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_ns(fs):</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(fs, abc.Mapping): <span class="cf">return</span> fs</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    merged <span class="op">=</span> {}</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> o <span class="kw">in</span> listify(fs):</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(o, <span class="bu">dict</span>): merged <span class="op">|=</span> o</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">callable</span>(o) <span class="kw">and</span> <span class="bu">hasattr</span>(o, <span class="st">'__name__'</span>): merged <span class="op">|=</span> {o.<span class="va">__name__</span>: o}</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merged</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_ns(fs):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(fs, abc.Mapping): <span class="cf">return</span> fs</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    merged <span class="op">=</span> {}</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> o <span class="kw">in</span> listify(fs):</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(o, <span class="bu">dict</span>): merged <span class="op">|=</span> o</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> <span class="bu">callable</span>(o) <span class="kw">and</span> <span class="bu">hasattr</span>(o, <span class="st">'__name__'</span>): merged <span class="op">|=</span> {o.<span class="va">__name__</span>: o}</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> merged</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/toolslm/funccall.py</code></p>
 </div>
 </div>
@@ -370,14 +385,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="step-2-make-the-first-api-call">Step 2: Make the First API Call</h4>
 <p>We’ll now send a message to the LLM endpoint asking it to complete a somewhat complex calculation.</p>
 <div id="d452cd28" class="cell" data-time_run="2025-11-24T00:25:23.720247+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'MOONSHOT_API_BASE'</span>] <span class="op">=</span> <span class="st">'https://api.moonshot.cn/v1'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'MOONSHOT_API_BASE'</span>] <span class="op">=</span> <span class="st">'https://api.moonshot.cn/v1'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here I’ve just changed my API end-point from <code>'https://api.moonshot.ai/v1'</code> to <code>'https://api.moonshot.cn/v1'</code> as my API key is only compatible with servers based in China.</p>
 <div id="37e14439" class="cell" data-time_run="2025-11-24T00:25:30.810956+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> litellm <span class="im">import</span> completion</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>hist <span class="op">=</span> [{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'Calculate 2*2353**5*1/2'</span>}]</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> completion(model<span class="op">=</span><span class="st">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op">=</span>hist, tools<span class="op">=</span>schemas)<span class="op">;</span> r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> litellm <span class="im">import</span> completion</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>hist <span class="op">=</span> [{<span class="st">'role'</span>: <span class="st">'user'</span>, <span class="st">'content'</span>: <span class="st">'Calculate 2*2353**5*1/2'</span>}]</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> completion(model<span class="op">=</span><span class="st">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op">=</span>hist, tools<span class="op">=</span>schemas)<span class="op">;</span> r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
 <p>I need to calculate 2 * 2353^5 * 1/2.</p>
 <p>Let me break this down: - First, I’ll calculate 2353^5 - Then multiply by 2 - Then multiply by 1/2 (which is the same as dividing by 2)</p>
@@ -394,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="b7429b59" class="cell" data-time_run="2025-11-24T00:25:30.894256+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>ModelResponse(id='chatcmpl-6923a5f5ce7148a79dfc95ba', created=1763943925, model='moonshot/kimi-k2-0711-preview', object='chat.completion', system_fingerprint=None, choices=[Choices(finish_reason='tool_calls', index=0, message=Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[ChatCompletionMessageToolCall(index=0, function=Function(arguments='{"a": 2353, "b": 5}', name='pow'), id='pow:0', type='function')], function_call=None, provider_specific_fields={'refusal': None}), provider_specific_fields={})], usage=Usage(completion_tokens=93, prompt_tokens=111, total_tokens=204, completion_tokens_details=None, prompt_tokens_details=None), service_tier=None)</code></pre>
 </div>
@@ -404,7 +419,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="step-3-check-if-a-tool-call-was-requested">Step 3: Check if a Tool Call was Requested</h4>
 <p>We can see that a tool call was requested.</p>
 <div id="757530b1" class="cell" data-time_run="2025-11-24T00:25:30.966136+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>r.choices[<span class="dv">0</span>].finish_reason</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>r.choices[<span class="dv">0</span>].finish_reason</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>'tool_calls'</code></pre>
 </div>
@@ -414,7 +429,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="step-4-execute-it">Step 4: Execute It</h4>
 <p>All that’s left is, well, to execute it.</p>
 <div id="5e4d1893" class="cell" data-time_run="2025-11-24T00:25:31.039256+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tc <span class="op">=</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()<span class="op">;</span> tc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>tc <span class="op">=</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()<span class="op">;</span> tc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>{'index': 0,
  'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'},
@@ -423,8 +438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="7d208b68" class="cell" data-time_run="2025-11-24T00:25:31.105164+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> ns[tc[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(tc[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))<span class="op">;</span> res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>res <span class="op">=</span> ns[tc[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(tc[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))<span class="op">;</span> res</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>72128954282026993</code></pre>
 </div>
@@ -433,8 +448,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-5-build-history" class="level4">
 <h4 class="anchored" data-anchor-id="step-5-build-history">Step 5: Build History</h4>
 <div id="b0123f2f" class="cell" data-time_run="2025-11-24T00:25:31.157276+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>hist.append(r.choices[<span class="dv">0</span>].message)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>hist.append(mk_tc_result(tc, <span class="bu">str</span>(res)))<span class="op">;</span> hist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>hist.append(r.choices[<span class="dv">0</span>].message)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>hist.append(mk_tc_result(tc, <span class="bu">str</span>(res)))<span class="op">;</span> hist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>[{'role': 'user', 'content': 'Calculate 2*2353**5*1/2'},
  Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[ChatCompletionMessageToolCall(index=0, function=Function(arguments='{"a": 2353, "b": 5}', name='pow'), id='pow:0', type='function')], function_call=None, provider_specific_fields={'refusal': None}),
@@ -449,23 +464,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="and-thats-all">And that’s all!</h4>
 <p>Now we just have to keep looping until the query is solved.</p>
 <div id="641e9cfc" class="cell" data-time_run="2025-11-24T00:25:35.420250+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> r.choices[<span class="dv">0</span>].finish_reason<span class="op">!=</span><span class="st">'stop'</span>:</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    mtcd <span class="op">=</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    o <span class="op">=</span> ns[mtcd[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(mtcd[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    tc_res <span class="op">=</span> mk_tc_result(mtcd, <span class="bu">str</span>(o))</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    hist.append(r.choices[<span class="dv">0</span>].message)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    hist.append(tc_res)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> completion(model<span class="op">=</span><span class="st">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op">=</span>hist, tools<span class="op">=</span>schemas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> r.choices[<span class="dv">0</span>].finish_reason<span class="op">!=</span><span class="st">'stop'</span>:</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    mtcd <span class="op">=</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    o <span class="op">=</span> ns[mtcd[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(mtcd[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    tc_res <span class="op">=</span> mk_tc_result(mtcd, <span class="bu">str</span>(o))</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    hist.append(r.choices[<span class="dv">0</span>].message)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    hist.append(tc_res)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> completion(model<span class="op">=</span><span class="st">'moonshot/kimi-k2-0711-preview'</span>, messages<span class="op">=</span>hist, tools<span class="op">=</span>schemas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="2c8c7e01" class="cell" data-time_run="2025-11-24T00:25:35.491295+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>r.choices[<span class="dv">0</span>].finish_reason</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>r.choices[<span class="dv">0</span>].finish_reason</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>'stop'</code></pre>
 </div>
 </div>
 <div id="2df5c4b0" class="cell" data-time_run="2025-11-24T00:25:35.583480+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint <span class="im">as</span> pp</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>pp(hist)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint <span class="im">as</span> pp</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>pp(hist)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre data-code-line-numbers=""><code>[{'content': 'Calculate 2*2353**5*1/2', 'role': 'user'},
  Message(content="I need to calculate 2 * 2353^5 * 1/2.\n\nLet me break this down:\n- First, I'll calculate 2353^5\n- Then multiply by 2\n- Then multiply by 1/2 (which is the same as dividing by 2)\n\nLet me start with 2353^5:", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 2353, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
@@ -484,35 +499,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="refactored" class="level4">
 <h4 class="anchored" data-anchor-id="refactored">Refactored</h4>
 <div id="6bd09ca3" class="cell" data-time_run="2025-11-24T00:25:35.626918+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_tools(tools):</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    tools <span class="op">=</span> listify(tools)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    schemas <span class="op">=</span> [lite_mk_func(t) <span class="cf">for</span> t <span class="kw">in</span> tools]</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    ns <span class="op">=</span> mk_ns(tools)</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tools, schemas, ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> set_tools(tools):</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    tools <span class="op">=</span> listify(tools)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    schemas <span class="op">=</span> [lite_mk_func(t) <span class="cf">for</span> t <span class="kw">in</span> tools]</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    ns <span class="op">=</span> mk_ns(tools)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tools, schemas, ns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="8efe9bf9" class="cell" data-time_run="2025-11-24T00:25:35.709152+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_query(m,h,s):</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> completion(model<span class="op">=</span>m, messages<span class="op">=</span>h, tools<span class="op">=</span>s)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_query(m,h,s):</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> completion(model<span class="op">=</span>m, messages<span class="op">=</span>h, tools<span class="op">=</span>s)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="262a0962" class="cell" data-time_run="2025-11-24T00:25:35.747420+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tc2dict(r):</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tc2dict(r):</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>].to_dict()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="b1212b7e" class="cell" data-time_run="2025-11-24T00:25:35.796245+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_tool(tc,ns):</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ns[tc[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(tc[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> run_tool(tc,ns):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ns[tc[<span class="st">'function'</span>][<span class="st">'name'</span>]](<span class="op">**</span>json.loads(tc[<span class="st">'function'</span>][<span class="st">'arguments'</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="e8d2565a" class="cell" data-time_run="2025-11-24T00:27:40.672431+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_hist(h,r,tc_res):</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    h.append(r.choices[<span class="dv">0</span>].message)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    h.append(mk_tc_result(r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>],<span class="bu">str</span>(tc_res)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build_hist(h,r,tc_res):</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>    h.append(r.choices[<span class="dv">0</span>].message)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    h.append(mk_tc_result(r.choices[<span class="dv">0</span>].message.tool_calls[<span class="dv">0</span>],<span class="bu">str</span>(tc_res)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="0b881a40" class="cell" data-time_run="2025-11-24T00:25:35.898853+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>hist <span class="op">=</span> [{<span class="st">'role'</span>:<span class="st">'user'</span>, <span class="st">'content'</span>:<span class="st">'Determine 2*3**4**5'</span>}]</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>tools, schemas, ns <span class="op">=</span> set_tools([multer,<span class="bu">pow</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>hist <span class="op">=</span> [{<span class="st">'role'</span>:<span class="st">'user'</span>, <span class="st">'content'</span>:<span class="st">'Determine 2*3**4**5'</span>}]</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>tools, schemas, ns <span class="op">=</span> set_tools([multer,<span class="bu">pow</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="55f4cfcf" class="cell" data-time_run="2025-11-24T00:25:40.608935+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> make_query(<span class="st">'moonshot/kimi-k2-0711-preview'</span>,hist,schemas)<span class="op">;</span> r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> make_query(<span class="st">'moonshot/kimi-k2-0711-preview'</span>,hist,schemas)<span class="op">;</span> r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
 <p>I’ll solve this step by step, following the order of operations for exponentiation (which is right-associative). The expression 2*3<strong>4</strong>5 means 2×(3<sup>(4</sup>5)).</p>
 <p>🔧 pow({“a”: 4, “b”: 5})</p>
@@ -527,14 +542,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div id="a18263ea" class="cell" data-time_run="2025-11-24T00:28:09.511287+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> r.choices[<span class="dv">0</span>].finish_reason <span class="op">!=</span> <span class="st">'stop'</span>:</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>    tc <span class="op">=</span> tc2dict(r)</span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    tc_res <span class="op">=</span> run_tool(tc, ns)</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    build_hist(hist,r,tc_res)</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> make_query(<span class="st">'moonshot/kimi-k2-0711-preview'</span>, hist, schemas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> r.choices[<span class="dv">0</span>].finish_reason <span class="op">!=</span> <span class="st">'stop'</span>:</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    tc <span class="op">=</span> tc2dict(r)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    tc_res <span class="op">=</span> run_tool(tc, ns)</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    build_hist(hist,r,tc_res)</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> make_query(<span class="st">'moonshot/kimi-k2-0711-preview'</span>, hist, schemas)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="34bfce4a" class="cell" data-time_run="2025-11-24T00:29:11.534551+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>hist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>hist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>[{'role': 'user', 'content': 'Determine 2*3**4**5'},
  Message(content="I'll solve this step by step, following the order of operations for exponentiation (which is right-associative). The expression 2*3**4**5 means 2×(3^(4^5)).", role='assistant', tool_calls=[{'index': 0, 'function': {'arguments': '{"a": 4, "b": 5}', 'name': 'pow'}, 'id': 'pow:0', 'type': 'function'}], function_call=None, provider_specific_fields={'refusal': None}),
@@ -558,19 +573,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="using-lisette">Using Lisette</h2>
 <p>Lisette is pretty concise. In only 2 lines of code, you can have a tool-loop up and running</p>
 <div id="44bd8122" class="cell" data-time_run="2025-11-24T00:31:36.983238+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="st">'moonshot/kimi-k2-0711-preview'</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Chat(m)<span class="op">;</span> c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="st">'moonshot/kimi-k2-0711-preview'</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Chat(m)<span class="op">;</span> c</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre data-code-line-numbers=""><code>&lt;lisette.core.Chat at 0x7f45865da300&gt;</code></pre>
 </div>
 </div>
 <div id="4dd6f809" class="cell" data-time_run="2025-11-24T00:31:48.167077+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> c(<span class="st">'Who are you?'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> c(<span class="st">'Who are you?'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div id="e7a2a8de" class="cell" data-time_run="2025-11-24T00:35:50.413499+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Chat(m, tools<span class="op">=</span>[multer,<span class="bu">pow</span>])</span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>o <span class="op">=</span> c(<span class="st">"What's the result of (13**2)*25.5?"</span>, max_steps<span class="op">=</span><span class="dv">10</span>, return_all<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> display(<span class="op">*</span>o)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Chat(m, tools<span class="op">=</span>[multer,<span class="bu">pow</span>])</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>o <span class="op">=</span> c(<span class="st">"What's the result of (13**2)*25.5?"</span>, max_steps<span class="op">=</span><span class="dv">10</span>, return_all<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> display(<span class="op">*</span>o)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display cell-output-markdown">
 <p>I’ll calculate this step by step. First, I’ll compute 13 squared (13**2), and then multiply the result by 25.5.</p>
 <p>🔧 pow({“a”: 13, “b”: 2})</p>
