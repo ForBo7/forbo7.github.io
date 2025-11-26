@@ -301,7 +301,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="walkthrough">Walkthrough</h3>
 <section id="step-1-send-message-and-available-tools-to-llm" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-send-message-and-available-tools-to-llm">Step 1: Send Message and Available Tools to LLM</h4>
-<p>To do this, we first need to setup the tools by: - Tossing all the tools into a list - Defining the metadata about those tools - Making the tools available in a “namespace” through which they can directly be called.</p>
+<p>To do this, we first need to setup the tools by:</p>
+<ul>
+<li>Tossing all the tools into a list</li>
+<li>Defining the metadata about those tools</li>
+<li>Making the tools available in a “namespace” through which they can directly be called.</li>
+</ul>
 <p>Let’s first define two tools.</p>
 <div id="c9bc1e05" class="cell" data-time_run="2025-11-24T00:25:20.265772+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> multer(a:<span class="bu">float</span>,b:<span class="bu">float</span>)<span class="op">-&gt;</span><span class="bu">float</span>:</span>
