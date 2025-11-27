@@ -15,7 +15,671 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Mon, 24 Nov 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 27 Nov 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Let’s build an AI model</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/29_lets_build_an_ai_model.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/29_lets_build_an_ai_model/thumbnail.png" class="img-fluid"></p>
+<section id="the-requirement" class="level2">
+<h2 class="anchored" data-anchor-id="the-requirement">The Requirement</h2>
+<p>The bar is low. It looks complicated, but it’s not. This is the reality to get started making your own AI models:</p>
+<p><strong>Math:</strong> None. Really.</p>
+<p><strong>Data:</strong> You can go miles with only 50 items.</p>
+<p><strong>Computing power:</strong> You can get state of the art computing for free.</p>
+<p><strong>Experience:</strong> If you can write basic code and understand what a function is, you’re ready.</p>
+<p>Just kidding–these aren’t the real requirements. The real requirement is being okay with not understanding everything immediately. You’ll learn by doing first, understanding later.</p>
+<p>When you play soccer, do you sit in a physics classroom or starting kicking a ball?</p>
+</section>
+<section id="lets-kick-the-ball" class="level2">
+<h2 class="anchored" data-anchor-id="lets-kick-the-ball">Let’s Kick the Ball</h2>
+<p>To get started: - Head to <a href="kaggle.com">Kaggle</a>, sign up, and verify your phone number (that’s how you get access to fancy GPUs) - Create a notebook - Then in the first cell, run <code>!uv pip install ddg</code>–this is just setting up the equipment in the soccer pitch</p>
+<p>In 2015, this XKCD comic made a joke: distinguishing birds from non-birds in photos was “nearly impossible” for computers. Everyone laughed because it was obvioulsy true.</p>
+<p><img src="https://imgs.xkcd.com/comics/tasks.png" class="img-fluid"></p>
+<p>Let’s build that exact system, in minutes. If you think it’ll be hard, it’ll be hard. If you think it’ll be easy, it’ll be easy.</p>
+<p>We’ll need to: 1. Get some data 2. Process the data 3. Fine-tune an AI model 4. Use the model</p>
+<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:15:47.111858Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:15:47.111546Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:15:48.302866Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:15:48.301471Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:15:47.111830Z&quot;}}" data-trusted="true" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span> uv pip install ddgs</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>Using Python 3.11.13 environment at: /usr
+
+Resolved <span style="font-weight:bold;opacity:0.7">17 packages</span> in 370ms                                        
+
+Prepared <span style="font-weight:bold;opacity:0.7">4 packages</span> in 229ms                                             
+
+Uninstalled <span style="font-weight:bold;opacity:0.7">1 package</span> in 21ms
+
+Installed <span style="font-weight:bold;opacity:0.7">4 packages</span> in 11ms                                
+
+ <span class="ansi-green-fg">+</span> <span class="ansi-bold">ddgs</span>==9.8.0
+
+ <span class="ansi-red-fg">-</span> <span class="ansi-bold">lxml</span>==5.4.0
+
+ <span class="ansi-green-fg">+</span> <span class="ansi-bold">lxml</span>==6.0.2
+
+ <span class="ansi-green-fg">+</span> <span class="ansi-bold">primp</span>==0.15.0
+
+ <span class="ansi-green-fg">+</span> <span class="ansi-bold">socksio</span>==1.0.0
+</pre>
+</div>
+</div>
+</div>
+<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:15:50.414673Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:15:50.413740Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:15:50.419705Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:15:50.418705Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:15:50.414595Z&quot;}}" data-trusted="true" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> logging</span>
+<span id="cb2-2">logging.disable(logging.WARNING)</span></code></pre></div></div>
+</div>
+<section id="step-1-getting-some-images" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-getting-some-images">Step 1: Getting some Images</h3>
+<p>We need some images to teach the model what’s a bird and what’s a first.</p>
+<p>Rather than manually searching for photos by hand, let’s programmatically do it.</p>
+<p>First, let’s search for a single photo to make sure our search works.</p>
+<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:22:48.736711Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:22:48.736386Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:22:49.296458Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:22:49.295415Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:22:48.736669Z&quot;}}" data-trusted="true" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> ddgs <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> DDGS</span>
+<span id="cb3-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastcore.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">all</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb3-3"></span>
+<span id="cb3-4"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> search_images(keywords, max_images<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">200</span>):</span>
+<span id="cb3-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> L(DDGS().images(keywords, max_results<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>max_images)).itemgot(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'image'</span>)</span>
+<span id="cb3-6"></span>
+<span id="cb3-7">urls <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> search_images(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird photos'</span>, max_images<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span></code></pre></div></div>
+</div>
+<p>Let’s download it and have a look.</p>
+<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:16:21.821697Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:16:21.821450Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:16:40.176279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:16:40.175122Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:16:21.821661Z&quot;}}" data-trusted="true" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastdownload <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> download_url</span>
+<span id="cb4-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> fastai.vision.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">all</span> <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb4-3"></span>
+<span id="cb4-4">download_url(urls[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>], <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird.jpg'</span>, show_progress<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>)</span>
+<span id="cb4-5">im <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Image.<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">open</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird.jpg'</span>)</span>
+<span id="cb4-6">im.to_thumb(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>/usr/local/lib/python3.11/dist-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/usr/local/lib/python3.11/dist-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/29_lets_build_an_ai_model_files/figure-html/cell-5-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now grab 200 bird photos and 200 forest photos (our ‘not bird’ category).</p>
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:22:54.153798Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:22:54.153262Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:23:07.789087Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:23:07.787877Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:22:54.153746Z&quot;}}" data-trusted="true" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">searches <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'forest'</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird'</span></span>
+<span id="cb6-2">path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Path(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird_or_not'</span>)</span>
+<span id="cb6-3"></span>
+<span id="cb6-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> o <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> searches:</span>
+<span id="cb6-5">    dest <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o)</span>
+<span id="cb6-6">    dest.mkdir(exist_ok<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, parents<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb6-7">    download_images(dest, urls<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>search_images(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>o<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> photo'</span>))</span>
+<span id="cb6-8">    resize_images(path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o, max_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">400</span>, dest<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o)</span></code></pre></div></div>
+</div>
+</section>
+<section id="step-2-create-a-datablock" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-create-a-datablock">Step 2: Create a DataBlock</h3>
+<p>Here, we’ll be performing a bunch of processes on the data.</p>
+<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:23:37.584007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:23:37.583650Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:23:38.446116Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:23:38.445140Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:23:37.583965Z&quot;}}" data-trusted="true" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">dls <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> DataBlock(</span>
+<span id="cb7-2">    blocks<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(ImageBlock, CategoryBlock), </span>
+<span id="cb7-3">    get_items<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>get_image_files, </span>
+<span id="cb7-4">    splitter<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>RandomSplitter(valid_pct<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>, seed<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>),</span>
+<span id="cb7-5">    get_y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>parent_label,</span>
+<span id="cb7-6">    item_tfms<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[Resize(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">192</span>, method<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'squish'</span>)]</span>
+<span id="cb7-7">).dataloaders(path, bs<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>)</span>
+<span id="cb7-8"></span>
+<span id="cb7-9">dls.show_batch(max_n<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/29_lets_build_an_ai_model_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What this means: - <strong>blocks</strong>: inputs are images, outputs are categories - <strong>get_items</strong>: find all image files - <strong>splitter</strong>: randomly hold out 20% for testing - <strong>get_y</strong>: label comes from folder name (bird/forest) - <strong>item_tfms</strong>: resize everything to 192×192</p>
+</section>
+<section id="step-3-train" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-train">Step 3: Train</h3>
+<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:24:15.636679Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:24:15.636400Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:25:10.580052Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:25:10.578748Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:24:15.636640Z&quot;}}" data-trusted="true" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">learn <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vision_learner(dls, resnet18, metrics<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>error_rate)</span>
+<span id="cb8-2">learn.fine_tune(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-stderr">
+<pre data-code-line-numbers=""><code>Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to /root/.cache/torch/hub/checkpoints/resnet18-f37072fd.pth
+100%|██████████| 44.7M/44.7M [00:00&lt;00:00, 149MB/s] </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">error_rate</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.928233</td>
+<td>0.830080</td>
+<td>0.205128</td>
+<td>00:10</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">error_rate</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.421934</td>
+<td>0.592662</td>
+<td>0.153846</td>
+<td>00:14</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.265431</td>
+<td>0.519274</td>
+<td>0.128205</td>
+<td>00:14</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.191559</td>
+<td>0.445995</td>
+<td>0.102564</td>
+<td>00:14</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Done. You trained a model.</p>
+</section>
+<section id="step-4-use-the-model" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-use-the-model">Step 4: Use the Model</h3>
+<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:25:48.684717Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:25:48.684474Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:25:48.710526Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:25:48.709494Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:25:48.684692Z&quot;}}" data-trusted="true" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">im.to_thumb(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>,<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">256</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<div>
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/posts/29_lets_build_an_ai_model_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:25:10.582275Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:25:10.582074Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:25:10.731532Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:25:10.730671Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:25:10.582254Z&quot;}}" data-trusted="true" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">is_bird,_,probs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> learn.predict(PILImage.create(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird.jpg'</span>))</span>
+<span id="cb11-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"This is a: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>is_bird<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">."</span>)</span>
+<span id="cb11-3"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"Probability it's a bird: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>probs[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:.4f}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>This is a: bird.
+Probability it's a bird: 1.0000</code></pre>
+</div>
+</div>
+<p>That’s it. From joke to reality.</p>
+</section>
+</section>
+<section id="what-just-happened" class="level2">
+<h2 class="anchored" data-anchor-id="what-just-happened">What Just Happened?</h2>
+<p><strong>Datasets and splits</strong></p>
+<p>We used DuckDuckGo to find image URLs, then downloaded them. You created your very own dataset.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode py code-with-copy"><code class="sourceCode python"><span id="cb13-1">searches <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'forest'</span>,<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird'</span></span>
+<span id="cb13-2">path <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Path(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird_or_not'</span>)</span>
+<span id="cb13-3"></span>
+<span id="cb13-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> o <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> searches:</span>
+<span id="cb13-5">    dest <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> (path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o)</span>
+<span id="cb13-6">    dest.mkdir(exist_ok<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, parents<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>)</span>
+<span id="cb13-7">    download_images(dest, urls<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>search_images(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>o<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> photo'</span>))</span>
+<span id="cb13-8">    resize_images(path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o, max_size<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">400</span>, dest<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>path<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>o)</span></code></pre></div></div>
+<p>Machine learning models need two things: data to learn from (training set) and data to test accuracy (validation set). We split our 400 images 80/20:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">splitter<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>RandomSplitter(valid_pct<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.2</span>, seed<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">42</span>)</span></code></pre></div></div>
+<p>The model never sees validation images during training. This tells us if it actually learned or just memorized.</p>
+<p><strong>DataBlocks and DataLoaders</strong></p>
+<p>A <code>DataBlock</code> is a block of data. It says “here’s how to handle my data”:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">DataBlock(</span>
+<span id="cb15-2">    blocks<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>(ImageBlock, CategoryBlock),  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># what type of data</span></span>
+<span id="cb15-3">    get_items<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>get_image_files,           <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># how to find it</span></span>
+<span id="cb15-4">    splitter<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>RandomSplitter(...),        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># how to split it</span></span>
+<span id="cb15-5">    get_y<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>parent_label,                  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># how to label it</span></span>
+<span id="cb15-6">    item_tfms<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[Resize(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">192</span>, ...)]         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># how to transform it</span></span>
+<span id="cb15-7">)</span></code></pre></div></div>
+<p>Think of it like a crate with items inside. The crate has a sticker informing us how to handle the items within.</p>
+<p>Think of <code>.dataloaders</code> like the dude unpacking the crate.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">DataBlock(</span>
+<span id="cb16-2">    ...</span>
+<span id="cb16-3">).dataloaders(path, bs<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">32</span>)</span></code></pre></div></div>
+<p><code>bs</code>, short for batch size, tells the dude how many items to unpack from the crate and put at the shelf at any given moment.</p>
+<p>More technically, <code>DataLoaders</code> turns this block into actual iterators that feed batches of data to your model during training.</p>
+<p><strong>Pre-trained models</strong></p>
+<p>You may have noticed that our <code>vision_learner</code> was passed <code>resnet18</code>. This is an already existing model, already trained on ImageNet—1 million images across 1000 categories. It already knows edges, textures, shapes, even some animals.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">learn <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> vision_learner(dls, resnet18, metrics<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>error_rate)</span></code></pre></div></div>
+<p>When you create a learner, fastai downloads those pre-trained weights automatically.</p>
+<p><strong>Fine-tuning</strong></p>
+<p>You’re not training from scratch. You’re adjusting an expert:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">learn.fine_tune(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div></div>
+<p>Models have something called weights. They guide the model to the correct answer. For our case, that’s bird or forest. In three loops, the model tweaks the weights so it getes better at determining what’s a bird and what’s a forest.</p>
+<p>The model already knows “bird-like features.” You’re just teaching it: “these specific birds, not those specific forests.”</p>
+<p>That’s why it can take 30 seconds instead of 30 hours.</p>
+<p><strong>Predictions</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">is_bird, _, probs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> learn.predict(PILImage.create(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'bird.jpg'</span>))</span></code></pre></div></div>
+<p>Returns three things: the predicted label, the label index, and probabilities for each category.</p>
+<p><strong>The process, start to finish:</strong></p>
+<ol type="1">
+<li><strong>Collect data</strong> – Download images, organize into folders by category</li>
+<li><strong>Process Data</strong> – Tell fastai: input type, output type, how to find files, how to split, how to label</li>
+<li><strong>Load Data</strong> – Package the data into batches the model can consume</li>
+<li><strong>Create learner</strong> – Combine your data with a pre-trained model (like resnet18)</li>
+<li><strong>Fine-tune</strong> – Adjust the pre-trained weights to your specific task</li>
+<li><strong>Predict</strong> – Use the trained model on new images</li>
+</ol>
+<p>This pattern works for almost any image classification problem. Different images, same steps.</p>
+</section>
+<section id="beyond-birds" class="level2">
+<h2 class="anchored" data-anchor-id="beyond-birds">Beyond Birds</h2>
+<p>The same six-step pattern works for completely different problems.</p>
+<p><strong>Segmentation</strong> – Label every pixel in an image by what it represents. Point at a road scene and the model colors cars brown, roads gray, buildings red, sky blue. Same process: organize pixel-labeled images, create DataLoaders, use a segmentation learner, fine-tune.</p>
+<p><strong>Tabular data</strong> – Predict outcomes from spreadsheets. Will this customer churn? What salary range fits these demographics? Organize your CSV, tell fastai which columns are categories vs numbers, create a tabular learner, fit. No pre-trained models here—every table is unique.</p>
+<p><strong>Collaborative filtering</strong> – Recommend products based on what similar users liked. “Users who rated movie X highly also liked movie Y.” Organize user-item-rating data, create collaborative filtering DataLoaders, fine-tune. This powers Netflix, Spotify, Amazon.</p>
+<p><strong>Text classification</strong> – Detect sentiment, filter spam, categorize documents. Organize labeled text, create text DataLoaders, use a text classifier (pre-trained on Wikipedia), fine-tune to your specific task.</p>
+<p>Different domains, same structure. The pattern is portable.</p>
+<p>For detailed examples, see the <a href="https://docs.fast.ai/">fastai docs</a>.</p>
+</section>
+<section id="your-turn" class="level2">
+<h2 class="anchored" data-anchor-id="your-turn">Your Turn</h2>
+<p>You now know enough to build your own classifier. Pick something you care about:</p>
+<ul>
+<li>Healthy vs diseased plants</li>
+<li>Your handwriting vs someone else’s</li>
+<li>Cats vs dogs (classic, but effective)</li>
+<li>Different types of clouds</li>
+<li>Your face vs not your face</li>
+</ul>
+<p>The steps are the same:</p>
+<ol type="1">
+<li>Search and download 50-200 images per category</li>
+<li>Create a DataBlock</li>
+<li>Make DataLoaders and check with <code>show_batch()</code></li>
+<li>Create a vision learner with resnet18</li>
+<li>Fine-tune for 3-5 epochs</li>
+<li>Test predictions</li>
+</ol>
+<p>Start simple. Two categories. Small dataset. Get something working in the next hour.</p>
+<p><strong>What to do next:</strong></p>
+<ul>
+<li>Read <a href="https://github.com/fastai/fastbook">Chapter 1 of the fastai book</a> - same material, different angle</li>
+<li>Try the <a href="https://course.fast.ai/">official fastai course</a> for video walkthroughs</li>
+<li>Share your project on the <a href="https://forums.fast.ai/">fastai forums</a> - the community is helpful and encouraging</li>
+</ul>
+<p>Don’t wait until you understand everything. Build first, understand later. That’s how you actually learn.</p>
+<hr>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+<p>This notebook is a remix of <a href="https://www.kaggle.com/code/jhoward/is-it-a-bird-creating-a-model-from-your-own-data">this notebook</a> by <a href="https://solve.it.com/">Jeremy Howard</a></p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://forbo7.github.io/forblog/posts/29_lets_build_an_ai_model.html</guid>
+  <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/29_lets_build_an_ai_model/thumbnail.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
 <item>
   <title>Creating Your Own LLM Agent</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -16682,56 +17346,6 @@ font-style: inherit;">-</span>metadata.json</span></code></pre></div></div>
   <guid>https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html</guid>
   <pubDate>Wed, 05 Apr 2023 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Transformers, Simply Explained</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><img src="https://forbo7.github.io/forblog/images/9_transformers_explained/thumbnail.png" class="img-fluid" alt="A picture of Transformers — the ones that transform from a robot into cars — posing as English alphabets."></p>
-<section id="at-a-high-view" class="level2">
-<h2 class="anchored" data-anchor-id="at-a-high-view">At a High View</h2>
-<p>Transformers are all the rage right now. They’re what’s powering the current wave of chat bots. Here’s a high level view of how transformers work, so you know how these bots really work.</p>
-<p>Simply put, a transformer is a type of architecture used for Natural Language Processing (NLP) tasks that either fills-in-the-blanks or autocompletes.</p>
-<p>Transformers consist of either an encoder, decoder, or both. Encoders and decoders contain attention layers.</p>
-<p>Language models need numbers to work. Text is given a numerical representation after breaking it down into smaller pieces. To keep this explanation simple, these pieces are words.</p>
-<p>The numerical representation given to a word describes the word itself and its relation to the surrounding words.</p>
-</section>
-<section id="encoders" class="level2">
-<h2 class="anchored" data-anchor-id="encoders">Encoders</h2>
-<p>Encoder-only transformers are good for “understanding” text, such as classifying sentences by sentiment or figuring out what parts of a sentence refers, for example, to a person or location.</p>
-<p>When training encoders, words are given a numerical representation by the attention layers considering adjacent words. For example, let’s say we have the sentence, “I am really hungry.”. The attention layers consider the words ‘am’ and ‘hungry’ when giving the word ‘really’ a numerical representation.</p>
-<p>The goal of training encoders is to predict words omitted from text (e.g., “I … really hungry.”). This is how encoders can “understand” text.</p>
-</section>
-<section id="decoders" class="level2">
-<h2 class="anchored" data-anchor-id="decoders">Decoders</h2>
-<p>Decoder-only transformers are good for text generation. An example is the autocomplete feature on a smartphone’s keyboard.</p>
-<p>Decoders similary give text a numerical representation, except that the attention layers consider only the previous words. When giving ‘am’ a numerical representation from “I am hungry.”, the attention layers will only consider the word ‘I’. When giving ‘hungry’ a numerical representation, the attention layers will consider the words ‘I’ and ‘am’.</p>
-<p>The goal of training decoders is to predict the most likely word to continue a piece of text (e.g., “I am ….”). All generated words are used in conjunction to generate the next word.</p>
-</section>
-<section id="encoders-and-decoders" class="level2">
-<h2 class="anchored" data-anchor-id="encoders-and-decoders">Encoders and Decoders</h2>
-<p>Transformers that use both encoders and decoders are known as encoder-decoder models or sequence-to-sequence models. Such models are good for translation and summarization.</p>
-<p>Encoder-decoder models are trained by first letting the encoder give the input text a numerical representation. Next, this representation is input to the decoder which generates text as described above. The encoder part of the model provides the “understanding”, while the decoder part of the model generates based off of this “understanding”.</p>
-</section>
-<section id="closing-words" class="level2">
-<h2 class="anchored" data-anchor-id="closing-words">Closing Words</h2>
-<p>And there you have it! It’s as simple as that!</p>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>LLMs</category>
-  <category>Transformers</category>
-  <guid>https://forbo7.github.io/forblog/posts/9_transformers_explained.html</guid>
-  <pubDate>Tue, 28 Feb 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/9_transformers_explained/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
 </rss>
