@@ -26,8 +26,15 @@
 
 
 <p><img src="https://forbo7.github.io/forblog/images/29_lets_build_an_ai_model/thumbnail.png" class="img-fluid"></p>
-<div class="callout-info" data-appearance="simple">
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
 <p>This notebook is a remix of <a href="https://www.kaggle.com/code/jhoward/is-it-a-bird-creating-a-model-from-your-own-data">fastai Lesson 1</a> by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a>, using the writing techniques taught in the <a href="https://solve.it.com/">SolveIt course</a>, led by Jeremy Howard and <a href="https://www.johnowhitaker.com/">Johnothan Whitaker</a>. SolveIt is also a brilliant problem-solving framework and interactive platform, that puts you in control–not the LLM.</p>
+</div>
+</div>
 </div>
 <section id="the-requirement" class="level2">
 <h2 class="anchored" data-anchor-id="the-requirement">The Requirement</h2>
@@ -41,11 +48,22 @@
 </section>
 <section id="lets-kick-the-ball" class="level2">
 <h2 class="anchored" data-anchor-id="lets-kick-the-ball">Let’s Kick the Ball</h2>
-<p>To get started: - Head to <a href="kaggle.com">Kaggle</a>, sign up, and verify your phone number (that’s how you get access to fancy GPUs) - Create a notebook - Then in the first cell, run <code>!uv pip install ddg</code>–this is just setting up the equipment in the soccer pitch</p>
+<p>To get started:</p>
+<ul>
+<li>Head to <a href="kaggle.com">Kaggle</a>, sign up, and verify your phone number (that’s how you get access to fancy GPUs)</li>
+<li>Create a notebook</li>
+<li>Then in the first cell, run <code>!uv pip install ddg</code>–this is just setting up the equipment in the soccer pitch</li>
+</ul>
 <p>In 2015, this XKCD comic made a joke: distinguishing birds from non-birds in photos was “nearly impossible” for computers. Everyone laughed because it was obvioulsy true.</p>
 <p><img src="https://imgs.xkcd.com/comics/tasks.png" class="img-fluid"></p>
 <p>Let’s build that exact system, in minutes. If you think it’ll be hard, it’ll be hard. If you think it’ll be easy, it’ll be easy.</p>
-<p>We’ll need to: 1. Get some data 2. Process the data 3. Fine-tune an AI model 4. Use the model</p>
+<p>We’ll need to:</p>
+<ol type="1">
+<li>Get some data</li>
+<li>Process the data</li>
+<li>Fine-tune an AI model</li>
+<li>Use the model</li>
+</ol>
 <div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:15:47.111858Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:15:47.111546Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:15:48.302866Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:15:48.301471Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:15:47.111830Z&quot;}}" data-trusted="true" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -296,7 +314,14 @@ font-style: inherit;">6</span>)</span></code></pre></div></div>
 </div>
 </div>
 </div>
-<p>What this means: - <strong>blocks</strong>: inputs are images, outputs are categories - <strong>get_items</strong>: find all image files - <strong>splitter</strong>: randomly hold out 20% for testing - <strong>get_y</strong>: label comes from folder name (bird/forest) - <strong>item_tfms</strong>: resize everything to 192×192</p>
+<p>What this means:</p>
+<ul>
+<li><strong>blocks</strong>: inputs are images, outputs are categories</li>
+<li><strong>get_items</strong>: find all image files</li>
+<li><strong>splitter</strong>: randomly hold out 20% for testing</li>
+<li><strong>get_y</strong>: label comes from folder name (bird/forest)</li>
+<li><strong>item_tfms</strong>: resize everything to 192×192</li>
+</ul>
 </section>
 <section id="step-3-train" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-train">Step 3: Train</h3>
