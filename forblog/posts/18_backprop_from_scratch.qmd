@@ -19,6 +19,10 @@ _**This post was edited on Wednesday, 9 August 2023**_
 
 ![](../images/18_backprop_from_scratch/thumbnail.png){fig-alt="A red rocket ship being propelled through space by mathematical symbols propagating out of its boosters."}
 
+:::{.callout-note appearance="simple"}
+This post would not be possible if not for the elegant deconstruction of backpropagation in fastai Course Part 2 taught by [Jeremy Howard](https://solve.it.com/#im-jeremy-howard-from-fastai), and for the elegant deconstruction also present in [The Matrix Calculus You Need for Deep Learning] by [Terence Parr](https://www.linkedin.com/in/terence-parr/) and also Jeremy Howard.
+:::
+
 :::{.callout-important appearance="simple"}
 This guide assumes a basic understanding of derivatives and matrices.
 :::
