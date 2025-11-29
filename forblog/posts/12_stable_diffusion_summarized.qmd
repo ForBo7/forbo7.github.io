@@ -18,6 +18,10 @@ _**This post was edited on Sunday, 30 April 2023**_
 
 ![](../images/12_stable_diffusion_summarized/thumbnail.jpeg)
 
+:::{.callout-note appearance="simple"}
+This post would not be possible if not for the elegant deconstruction of Stable Diffusion in [Lesson 9](https://course.fast.ai/Lessons/lesson9.html) and [Lesson 10](https://course.fast.ai/Lessons/lesson10.html) of the [fastai Course Part 2](https://course.fast.ai/Lessons/part2.html) taught by [Jeremy Howard](https://solve.it.com/#im-jeremy-howard-from-fastai), who created the first LLM ULMFiT in 2016.
+:::
+
 Here, I explain the workings of stable diffusion at a high level.
 
 ## Components
