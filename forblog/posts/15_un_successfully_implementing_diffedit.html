@@ -262,6 +262,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
 <p><img src="../images/15_un_successfully_implementing_diffedit/thumbnail.png" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This notebook is based on the contents taught in part 2 of the <a href="https://course.fast.ai/Lessons/part2.html">fastai Course</a>, by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a> who created the first LLM, ULMFiT in 2016.</p>
+</div>
+</div>
+</div>
 <p>Well, my implementation was a partial success: I managed to generate a mask, but failed to apply it. If you don’t understand, hold on as I’ll explain DiffEdit.</p>
 <p>In this notebook, I try to implement the <a href="https://arxiv.org/abs/2210.11427">DiffEdit</a> paper: a diffusion algorithm that allows us to replace the subject of an image with another subject, simply through a text prompt.</p>
 <div class="callout callout-style-simple callout-warning">

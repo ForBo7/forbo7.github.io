@@ -1813,13 +1813,6 @@
     "text": "Conclusion\nSee how easy this stuff all is? All those fancy terms makes this feel complex when in reality, it’s all really simple.\nWhy not now go and venture off to learn more and implement your own models!\nBelow are two free courses I can recommend:\n\nElements of AI\nA great primer into AI. The course goes over the history, the implementations, and the implications of this field, all without needing the knowledge of programming or complex mathematics.\nPractical Deep Learning for Coders\nThis course is different from other AI courses you’ll find. How? Because instead of starting off with the nitty gritty basics, you begin by actually implementing your own simple image classifier (a model that can tell what thing is in an image). You’ll be surprised at how simple it is to implement models with minimal code, and how little you need to know to get started (hint: you only really need high-school maths).\n\nIf you have any questions, comments, suggestions, or feedback, please do post them down in the comment section below!"
   },
   {
-    "objectID": "forblog/posts/6_ai_in_a_nutshell.html#acknowledgements",
-    "href": "forblog/posts/6_ai_in_a_nutshell.html#acknowledgements",
-    "title": "AI in a Nutshell",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\nThis article was inspired by the How does a neural net really work Kaggle Notebook by Jeremy Howard, and lesson 3 of Practical Deep Learning for Coders."
-  },
-  {
     "objectID": "forblog/posts/16_einstein_summation_notation.html",
     "href": "forblog/posts/16_einstein_summation_notation.html",
     "title": "Intuitively Approaching Einstein Summation Notation",

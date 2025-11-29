@@ -2291,6 +2291,16 @@ with the answer. The reasoning process and answer are enclosed within &lt;think&
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
 <p><img src="https://forbo7.github.io/forblog/images/20_model_from_scratch/thumbnail.jpeg" class="img-fluid" alt="The image features a person engaged in wood carving, with their face hidden by a color block. They are wearing an orange robe and using a chisel to create intricate designs on wood. The setting blends elements of a forest and architectural columns, with dramatic lighting that accentuates the carver and their craft. The scene evokes a sense of both indoor and outdoor space, with a focus on the artistry of wood carving."></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This notebook is based on the contents taught in part 2 of the <a href="https://course.fast.ai/Lessons/part2.html">fastai Course</a>, led by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a> who created the first LLM, ULMFiT in 2016.</p>
+</div>
+</div>
+</div>
 <p>In this notebook, I will implement a neural network from scratch, and iteratively reimplement with PyTorch. That is, I will implement each element of the training and inference process from scratch, before then using the corresponding element in PyTorch. This notebook assumes a prior understanding of the flow and pieces of a neural network.</p>
 <p>To recap, the complete training loop of a neural network looks like this.</p>
 <div class="grid">
@@ -9237,6 +9247,16 @@ font-style: inherit;">;</span> dec_seq</span></code></pre></div></div>
 
 <p><em><strong>This post was edited on Wednesday, 9 August 2023</strong></em></p>
 <p><img src="https://forbo7.github.io/forblog/images/18_backprop_from_scratch/thumbnail.png" class="img-fluid" alt="A red rocket ship being propelled through space by mathematical symbols propagating out of its boosters."></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This post would not be possible if not for the elegant deconstruction of backpropagation in fastai Course Part 2 taught by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a>, and for the elegant deconstruction also present in [The Matrix Calculus You Need for Deep Learning] by <a href="https://www.linkedin.com/in/terence-parr/">Terence Parr</a> and also Jeremy Howard.</p>
+</div>
+</div>
+</div>
 <div class="callout callout-style-simple callout-important">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -9559,6 +9579,16 @@ font-style: inherit;">sum</span>()</span></code></pre></div></div>
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
 <p><img src="https://forbo7.github.io/forblog/images/17_meanshift_clustering/thumbnail.png" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This notebook is based on the contents taught in <a href="https://course.fast.ai/Lessons/lesson12.html">Lesson 12</a> of part 2 of the <a href="https://course.fast.ai/Lessons/part2.html">fastai Course</a>, by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a> who created the first LLM, ULMFiT in 2016.</p>
+</div>
+</div>
+</div>
 <p>Meanshift clustering is a technique for unsupervised learning. Give this algorithm a bunch of data and it will figure out what groups the data can be sorted into. It does this by iteratively moving all data points until they converge to a single point.</p>
 <p>The steps of the algorithm can be summarized as follows:</p>
 <ol type="1">
@@ -11571,6 +11601,16 @@ font-style: inherit;">10</span> meanshift(data)</span></code></pre></div></div>
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
 <p><img src="https://forbo7.github.io/forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This notebook is based on the contents taught in part 2 of the <a href="https://course.fast.ai/Lessons/part2.html">fastai Course</a>, by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a> who created the first LLM, ULMFiT in 2016.</p>
+</div>
+</div>
+</div>
 <p>Well, my implementation was a partial success: I managed to generate a mask, but failed to apply it. If you don’t understand, hold on as I’ll explain DiffEdit.</p>
 <p>In this notebook, I try to implement the <a href="https://arxiv.org/abs/2210.11427">DiffEdit</a> paper: a diffusion algorithm that allows us to replace the subject of an image with another subject, simply through a text prompt.</p>
 <div class="callout callout-style-simple callout-warning">
@@ -13686,6 +13726,16 @@ Cell <span class="ansi-green-fg">In[17], line 1</span>
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
 <p><img src="https://forbo7.github.io/forblog/images/13_implementing_stable_diffusion_from_its_components/thumbnail.png" class="img-fluid" alt="A hooded programmer diffusing a stick of red dynamite by pinching the flame on the fuse; oil pastel drawing"></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This notebook is based on the contents taught in part 2 of the <a href="https://course.fast.ai/Lessons/part2.html">fastai Course</a>, by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a> who created the first LLM, ULMFiT in 2016.</p>
+</div>
+</div>
+</div>
 <p>In this notebook, we’ll implement stable diffusion from its various components through the <a href="https://huggingface.co/docs/diffusers/index">Hugging Face Diffusers</a> library.</p>
 <p>At the end, we’ll have our own custom stable diffusion class, from which we can generate images as simply as <code>diffuser.diffuse()</code>.</p>
 <p>If you would like a refresher, I’ve summarized at a high level how a diffuser is trained in <a href="../../forblog/posts/12_stable_diffusion_summarized.html">this</a> post. Though this notebook focuses on inference and not the training aspect, the linked summary may be helpful.</p>
@@ -16316,6 +16366,16 @@ font-style: inherit;">0</span>])</span></code></pre></div></div>
 
 <p><em><strong>This post was edited on Sunday, 30 April 2023</strong></em></p>
 <p><img src="https://forbo7.github.io/forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" class="img-fluid"></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This post would not be possible if not for the elegant deconstruction of Stable Diffusion in <a href="https://course.fast.ai/Lessons/lesson9.html">Lesson 9</a> and <a href="https://course.fast.ai/Lessons/lesson10.html">Lesson 10</a> of the <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a> taught by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a>, who created the first LLM ULMFiT in 2016.</p>
+</div>
+</div>
+</div>
 <p>Here, I explain the workings of stable diffusion at a high level.</p>
 <section id="components" class="level2">
 <h2 class="anchored" data-anchor-id="components">Components</h2>

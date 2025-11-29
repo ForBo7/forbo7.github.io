@@ -272,6 +272,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
 </blockquote>
 <p><img src="../images/13_implementing_stable_diffusion_from_its_components/thumbnail.png" class="img-fluid" alt="A hooded programmer diffusing a stick of red dynamite by pinching the flame on the fuse; oil pastel drawing"></p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>This notebook is based on the contents taught in part 2 of the <a href="https://course.fast.ai/Lessons/part2.html">fastai Course</a>, by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a> who created the first LLM, ULMFiT in 2016.</p>
+</div>
+</div>
+</div>
 <p>In this notebook, we’ll implement stable diffusion from its various components through the <a href="https://huggingface.co/docs/diffusers/index">Hugging Face Diffusers</a> library.</p>
 <p>At the end, we’ll have our own custom stable diffusion class, from which we can generate images as simply as <code>diffuser.diffuse()</code>.</p>
 <p>If you would like a refresher, I’ve summarized at a high level how a diffuser is trained in <a href="../../forblog/posts/12_stable_diffusion_summarized.html">this</a> post. Though this notebook focuses on inference and not the training aspect, the linked summary may be helpful.</p>
