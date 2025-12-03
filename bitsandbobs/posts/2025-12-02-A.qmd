@@ -1,0 +1,30 @@
+---
+title: The Intracices of the Python Modulo Operator
+description: Modulating the Modulator
+date: 2025-12-02
+categories: [Programming, Python]
+---
+
+Divisor larger than dividend:
+
+- `5%2=1`
+- `158%100=58`
+
+Divisor smaller than dividend:
+
+- `2%5=2`
+- `100%158=100`
+
+Negative divisor (in Python, the remainder must always be positive):
+
+- `-18%100=82`
+- `-188%100=100`
+
+Handy template expression to use: `divisor = ? * dividend + remainder`, where `?` is the number of times the dividend fits into the divisor.
+- `158%100`: `158 = ? * 100 + remainder`
+- `-18%100`: `-18 = ? * 100 + remainder`
+  - In Python, the remainder must always be positive. Thus, `?` in this case is `-1`.
+
+
+How to read modulo expressions in Chinese:
+- `158%100`: 158模100 或 158对100取模
