@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-12-02">
+<meta name="description" content="Modulating the Modulator">
 
-<title>quarto-inputc80eec6ec98ef98 – ForBo7 // Salman Naqvi</title>
+<title>The Intracices of the Python Modulo Operator – ForBo7 // Salman Naqvi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./favicon.ico" rel="icon">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-7c1e9744246cb75393526fa05decce7b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/animate-4.1.1/animate.min.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../favicon.ico" rel="icon">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7c1e9744246cb75393526fa05decce7b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,37 +71,29 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
-<style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
-<style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
-<style>:root{--animate-duration:3s;--animate-delay:2s;--animate-repeat:1}</style>
 
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Site Feedback – ForBo7 // Salman Naqvi">
-<meta property="og:description" content="You feed it back into the site.">
-<meta property="og:image" content="https://forbo7.github.io/cover.png">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="The Intracices of the Python Modulo Operator – ForBo7 // Salman Naqvi">
+<meta property="og:description" content="The world of ForBo7!">
+<meta property="og:image" content="https://forbo7.github.io/bitsandbobs/posts/cover.png">
 <meta property="og:site_name" content="ForBo7 // Salman Naqvi">
-<meta property="og:image:height" content="1024">
-<meta property="og:image:width" content="1024">
 <meta name="twitter:title" content="ForBo7 // Salman Naqvi">
-<meta name="twitter:description" content="You feed it back into the site.">
-<meta name="twitter:image" content="https://forbo7.github.io/cover.png">
+<meta name="twitter:description" content="The world of ForBo7!">
+<meta name="twitter:image" content="https://forbo7.github.io/bitsandbobs/posts/cover.png">
 <meta name="twitter:creator" content="@ForBo7">
 <meta name="twitter:site" content="@ForBo7">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1024">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ForBo7 // Salman Naqvi</span>
     </a>
   </div>
@@ -111,27 +104,27 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> <i class="bi bi-house-door" role="img">
+    <a class="nav-link" href="../../index.html"> <i class="bi bi-house-door" role="img">
 </i> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./forblog/index.html"> <i class="bi bi-newspaper" role="img">
+    <a class="nav-link" href="../../forblog/index.html"> <i class="bi bi-newspaper" role="img">
 </i> 
 <span class="menu-text">ForBlog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./bitsandbobs/index.html"> <i class="bi bi-puzzle" role="img">
+    <a class="nav-link" href="../../bitsandbobs/index.html"> <i class="bi bi-puzzle" role="img">
 </i> 
 <span class="menu-text">Bits and Bobs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dictionary/index.html"> <i class="bi bi-book" role="img">
+    <a class="nav-link" href="../../dictionary/index.html"> <i class="bi bi-book" role="img">
 </i> 
 <span class="menu-text">Dictionary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> <i class="bi bi-file-person" role="img">
+    <a class="nav-link" href="../../about.html"> <i class="bi bi-file-person" role="img">
 </i> 
 <span class="menu-text">About</span></a>
   </li>  
@@ -139,30 +132,44 @@ ul.task-list li input[type="checkbox"] {
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://github.com/ForBo7/forbo7.github.io" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-code-slash"></i></a>
-    <a href="./forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
+    <a href="../../forblog/index.xml" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-rss"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="animate__animated animate__bounceIn" style="display: inline-block;">Site Feedback</span></h1>
-<p class="subtitle lead"><span class="animate__animated animate__bounceIn" style="display: inline-block;">You feed it back into the site.</span></p>
+<h1 class="title">The Intracices of the Python Modulo Operator</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Programming</div>
+    <div class="quarto-category">Python</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Modulating the Modulator
+  </div>
 </div>
 
 
-
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 2, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -172,15 +179,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="animate__animate animate__bounceIn animate__duration-faster animate__delay-1s">
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfLjkhl1pPBhEArBEvXykpfxwaZ2IeCSBnfydLEhBUt9nesOw/viewform?embedded=true" width="100%" height="750vh" frameborder="0" marginheight="0" marginwidth="0">
-Loading…
-</iframe>
-</div>
+<p>Divisor larger than dividend:</p>
+<ul>
+<li><code>5%2=1</code></li>
+<li><code>158%100=58</code></li>
+</ul>
+<p>Divisor smaller than dividend:</p>
+<ul>
+<li><code>2%5=2</code></li>
+<li><code>100%158=100</code></li>
+</ul>
+<p>Negative divisor (in Python, the remainder must always be positive):</p>
+<ul>
+<li><code>-18%100=82</code></li>
+<li><code>-188%100=100</code></li>
+</ul>
+<p>Handy template expression to use: <code>divisor = ? * dividend + remainder</code>, where <code>?</code> is the number of times the dividend fits into the divisor. - <code>158%100</code>: <code>158 = ? * 100 + remainder</code> - <code>-18%100</code>: <code>-18 = ? * 100 + remainder</code> - In Python, the remainder must always be positive. Thus, <code>?</code> in this case is <code>-1</code>.</p>
+<p>How to read modulo expressions in Chinese: - <code>158%100</code>: 158模100 或 158对100取模</p>
 
 
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -581,6 +600,35 @@ Loading…
     }
   });
   </script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="light">
+<script>
+  function loadGiscus() {
+    // Function to get the theme based on body class
+    const getTheme = () => {
+      let baseTheme = document.getElementById('giscus-base-theme').value;
+      let altTheme = document.getElementById('giscus-alt-theme').value;
+      return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+    };
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "ForBo7/forbo7.github.io";
+    script.dataset.repoId = "R_kgDOICXnAA";
+    script.dataset.category = "Giscus Comments";
+    script.dataset.categoryId = "DIC_kwDOICXnAM4CR8YX";
+    script.dataset.mapping = "title";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  }
+  loadGiscus();
+</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -614,7 +662,7 @@ Loading…
     </a>
   </li>  
     <li class="nav-item compact">
-    <a class="nav-link" href="./forblog/index.xml">
+    <a class="nav-link" href="../../forblog/index.xml">
       <i class="bi bi-rss" role="img">
 </i> 
     </a>
@@ -630,5 +678,5 @@ Loading…
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

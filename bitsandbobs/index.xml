@@ -15,7 +15,41 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Tue, 15 Jul 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 02 Dec 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>The Intracices of the Python Modulo Operator</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-12-02-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Divisor larger than dividend:</p>
+<ul>
+<li><code>5%2=1</code></li>
+<li><code>158%100=58</code></li>
+</ul>
+<p>Divisor smaller than dividend:</p>
+<ul>
+<li><code>2%5=2</code></li>
+<li><code>100%158=100</code></li>
+</ul>
+<p>Negative divisor (in Python, the remainder must always be positive):</p>
+<ul>
+<li><code>-18%100=82</code></li>
+<li><code>-188%100=100</code></li>
+</ul>
+<p>Handy template expression to use: <code>divisor = ? * dividend + remainder</code>, where <code>?</code> is the number of times the dividend fits into the divisor. - <code>158%100</code>: <code>158 = ? * 100 + remainder</code> - <code>-18%100</code>: <code>-18 = ? * 100 + remainder</code> - In Python, the remainder must always be positive. Thus, <code>?</code> in this case is <code>-1</code>.</p>
+<p>How to read modulo expressions in Chinese: - <code>158%100</code>: 158模100 或 158对100取模</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Programming</category>
+  <category>Python</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-12-02-A.html</guid>
+  <pubDate>Tue, 02 Dec 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Nifty Shell Tools</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-07-15-B.html</link>
