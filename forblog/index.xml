@@ -15,7 +15,504 @@
 <link>https://forbo7.github.io/forblog/</link>
 </image>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Thu, 27 Nov 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 07 Dec 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Translating SolveIt Dialogues</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/30_translating_solveit_dialogues.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/30_translating_solveit_dialogues/thumbnail.png" class="img-fluid"></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this notebook I’ll be demonstrating how one can update messages in SolveIt dialogues and do further work with them. At the same time also demonstrating how SolveIt dialogue messages can be translated with a LLM.</p>
+<p>I’m currently teaching myself Chinese, and I’ve found to learn a language, one has to use the language. So I make the LLM respond in Chinese.</p>
+<p>I’ll be using <a href="https://lisette.answer.ai/">lisette</a> for working with the LLM, DeepSeek as the model, and <a href="https://answerdotai.github.io/dialoghelper/">dialoghelper</a> to process the dialogue messages.</p>
+</section>
+<section id="sample-dialogue" class="level2">
+<h2 class="anchored" data-anchor-id="sample-dialogue">Sample Dialogue</h2>
+<p>I’ll create a rough, short dialogue that I can work upon.</p>
+<p>Hey there, who are you?</p>
+<section id="reply" class="level5">
+<h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠</p>
+<p>你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。</p>
+<p>你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。</p>
+<hr>
+<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
+<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
+<hr>
+<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
+<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
+<p>Let me flip it around: what do <em>you</em> want to study? What’re <em>you</em> currently interested in?</p>
+</section>
+<section id="reply-1" class="level5">
+<h5 class="anchored" data-anchor-id="reply-1">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>哈哈，这个问题很有意思！</p>
+<p>其实我对很多东西都感兴趣。最近我特别喜欢思考这些问题：</p>
+<ul>
+<li>人们怎么学习新东西？什么方法最有效？</li>
+<li>复杂的问题怎么分解成简单的部分？</li>
+<li>不同领域的知识怎么连接起来？</li>
+</ul>
+<p>但是，我在这儿是为了帮助你学习和探索。你的好奇心和兴趣才是最重要的！</p>
+<p>所以，咱们可以一起探索一个你感兴趣的话题。你现在想学什么？或者你正在做什么项目？</p>
+<hr>
+<p>Haha, that’s a really interesting question!</p>
+<p>Actually, I’m interested in a lot of things. Lately, I’ve been particularly fond of thinking about these questions:</p>
+<ul>
+<li>How do people learn new things? What methods are most effective?</li>
+<li>How can complex problems be broken down into simpler parts?</li>
+<li>How is knowledge from different fields connected?</li>
+</ul>
+<p>However, I’m here to help <em>you</em> learn and explore. Your curiosity and interests are what matter most!</p>
+<p>So, we can explore a topic you’re interested in together. What would you like to learn right now? Or are you working on any projects?</p>
+</section>
+</section>
+<section id="translation" class="level2">
+<h2 class="anchored" data-anchor-id="translation">Translation</h2>
+<div id="1dda5de7" class="cell" data-time_run="2025-12-05T03:00:23.374270+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> dialoghelper <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span></code></pre></div></div>
+</div>
+<div id="6a74d977" class="cell" data-time_run="2025-12-05T02:27:14.303180+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">?find_msgs</span></code></pre></div></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span>
+find_msgs(
+    re_pattern: str = <span class="ansi-yellow-fg">''</span>,
+    msg_type: str = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    limit: int = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    include_output: bool = <span style="font-weight:bold;color:rgb(0,135,0)">True</span>,
+    dname: str = <span class="ansi-yellow-fg">''</span>,
+)
+<span class="ansi-red-fg">Docstring:</span> Find `list[dict]` of messages in current specific dialog that contain the given information. To refer to a message found later, use its `id` field.
+<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.12/site-packages/dialoghelper/core.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
+<p>We can use <code>find_msgs</code> to filter out those message types that are prompts.</p>
+<div id="fe19e3d1" class="cell" data-time_run="2025-12-05T02:27:16.279909+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">o <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> find_msgs(msg_type<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'prompt'</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'id': '_4dcda3fa',
+ 'input_tokens': 10,
+ 'output_tokens': 94,
+ 'time_run': '',
+ 'is_exported': False,
+ 'skipped': False,
+ 'hidden': False,
+ 'bookmark': None,
+ 'i_collapsed': False,
+ 'o_collapsed': False,
+ 'heading_collapsed': False,
+ 'i_clamp': False,
+ 'o_clamp': False,
+ 'pinned': False,
+ 'use_thinking': True,
+ 'attachments': [],
+ 'oob': None,
+ 'run': None,
+ 'scroll': False,
+ 'order': 3,
+ 'content': 'Hey there, who are you?',
+ 'output': '🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。',
+ 'msg_type': 'prompt'}</code></pre>
+</div>
+</div>
+<div id="82fe760e" class="cell" data-time_run="2025-12-05T02:27:19.558714+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。'</code></pre>
+</div>
+</div>
+<p>And then when we are iterating through all the prompt messages we can fetch the respective message ID and update it using <code>update_msg</code>.</p>
+<div id="6ab909d1" class="cell" data-time_run="2025-12-05T02:27:23.443791+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">?update_msg</span></code></pre></div></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span>
+update_msg(
+    msgid: str = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    msg: Optional[Dict] = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    dname: str = <span class="ansi-yellow-fg">''</span>,
+    *,
+    content: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    msg_type: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    output: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    time_run: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    is_exported: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    skipped: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    i_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    o_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    heading_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    pinned: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+)
+<span class="ansi-red-fg">Docstring:</span>
+Update an existing message. Provide either `msg` OR field key/values to update.
+- Use `content` param to update contents.
+- Only include parameters to update--missing ones will be left unchanged.
+<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.12/site-packages/dialoghelper/core.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
+<p>I’ll be formatting the new updated prompt output as <code>original + '\n\n---\n\n' + translated</code>.</p>
+<p>In a nutshell, the core loop is:</p>
+<ol type="1">
+<li>Fetch a prompt message.</li>
+<li>Access the output content of that message.</li>
+<li>Translate.</li>
+<li>Reformat output content</li>
+<li>Update the respective message.</li>
+</ol>
+<p>I’ll begin with a single example.</p>
+<div id="ab787b9d" class="cell" data-time_run="2025-12-05T02:32:58.835233+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> lisette.core <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb8-2">sys_prmpt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"You'll receive a series of messages that are responses in a dialogue. I need you to aptly translate those responses to English, whilst maintaining the same tone/style and minimal loss of information. If you encoutner any brain emojies, skip them. Do not re-output the original message."</span></span>
+<span id="cb8-3">chat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Chat(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'deepseek/deepseek-chat'</span>, hist<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[sys_prmpt])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> chat</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>&lt;lisette.core.Chat at 0x7da9f8871160&gt;</code></pre>
+</div>
+</div>
+<div id="5b7ba778" class="cell" data-time_run="2025-12-05T02:33:07.421033+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">res <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> chat(o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>])</span>
+<span id="cb10-2">display(res)</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
+<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
+<details>
+<ul>
+<li>id: <code>22a761da-f8a1-43a4-be6f-06a54db8ca0f</code></li>
+<li>model: <code>deepseek-chat</code></li>
+<li>finish_reason: <code>stop</code></li>
+<li>usage: <code>Usage(completion_tokens=57, prompt_tokens=155, total_tokens=212, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetailsWrapper(audio_tokens=None, cached_tokens=64, text_tokens=None, image_tokens=None), prompt_cache_hit_tokens=64, prompt_cache_miss_tokens=91)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<div id="8faa61ce" class="cell" data-time_run="2025-12-05T02:33:17.480820+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">display(chat(o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]))</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Haha, that’s a very interesting question!</p>
+<p>Actually, I’m interested in a lot of things. Lately, I’ve been particularly fond of pondering these questions:</p>
+<ul>
+<li>How do people learn new things? What methods are most effective?</li>
+<li>How can complex problems be broken down into simpler parts?</li>
+<li>How is knowledge from different fields connected?</li>
+</ul>
+<p>However, I’m here to help <em>you</em> learn and explore. Your curiosity and interests are what matter most!</p>
+<p>So, we can explore a topic you’re interested in together. What would you like to learn right now? Or are you working on any projects?</p>
+<details>
+<ul>
+<li>id: <code>cb9c2af2-e7ed-48cf-ae27-dbf56bd1684c</code></li>
+<li>model: <code>deepseek-chat</code></li>
+<li>finish_reason: <code>stop</code></li>
+<li>usage: <code>Usage(completion_tokens=123, prompt_tokens=300, total_tokens=423, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetailsWrapper(audio_tokens=None, cached_tokens=128, text_tokens=None, image_tokens=None), prompt_cache_hit_tokens=128, prompt_cache_miss_tokens=172)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<p>So that’s how the translations look. Let’s now update the messages themselves.</p>
+<div id="e7fd3bae" class="cell" data-time_run="2025-12-05T02:33:28.427891+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">??update_msg</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">@delegates</span>(_umsg)</span>
+<span id="cb13-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> update_msg(</span>
+<span id="cb13-3">    msgid:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># id of message to update (if None, uses current message)</span></span>
+<span id="cb13-4">    msg:Optional[Dict]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Dictionary of field keys/values to update</span></span>
+<span id="cb13-5">    dname:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Running dialog to get info for; defaults to current dialog</span></span>
+<span id="cb13-6">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>kwargs):</span>
+<span id="cb13-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""Update an existing message. Provide either `msg` OR field key/values to update.</span></span>
+<span id="cb13-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    - Use `content` param to update contents.</span></span>
+<span id="cb13-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    - Only include parameters to update--missing ones will be left unchanged."""</span></span>
+<span id="cb13-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> msgid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> msg: <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">raise</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">TypeError</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"update_msg needs either a dict message or `msgid=`"</span>)</span>
+<span id="cb13-11">    res <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> call_endp(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'update_msg_'</span>, dname, msgid<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>msgid, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>kwargs)</span>
+<span id="cb13-12">    set_var(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'__msg_id'</span>, res)</span>
+<span id="cb13-13">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> res</span></code></pre></div></div>
+<p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/dialoghelper/core.py</code></p>
+</div>
+</div>
+<div id="17fb74cb" class="cell" data-time_run="2025-12-05T02:33:30.090629+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">trans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> res.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> trans</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>"Hello! I'm solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.\n\nWhat would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better."</code></pre>
+</div>
+</div>
+<div id="bfceadd8" class="cell" data-time_run="2025-12-05T02:33:31.864824+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">new_out <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">---</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>trans<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> new_out</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>"🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。\n\n---\n\nHello! I'm solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.\n\nWhat would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better."</code></pre>
+</div>
+</div>
+<div id="cec13353" class="cell" data-time_run="2025-12-05T02:33:38.659461+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">update_msg(msgid<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'id'</span>], output<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>new_out)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'_4dcda3fa'</code></pre>
+</div>
+</div>
+<div id="a4e3261c" class="cell" data-time_run="2025-12-05T02:38:45.742724+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'id': '_4dcda3fa',
+ 'input_tokens': 10,
+ 'output_tokens': 94,
+ 'time_run': '',
+ 'is_exported': False,
+ 'skipped': False,
+ 'hidden': False,
+ 'bookmark': None,
+ 'i_collapsed': False,
+ 'o_collapsed': False,
+ 'heading_collapsed': False,
+ 'i_clamp': False,
+ 'o_clamp': False,
+ 'pinned': False,
+ 'use_thinking': True,
+ 'attachments': [],
+ 'oob': None,
+ 'run': None,
+ 'scroll': False,
+ 'order': 3,
+ 'content': 'Hey there, who are you?',
+ 'output': '🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。',
+ 'msg_type': 'prompt'}</code></pre>
+</div>
+</div>
+<p>The message has been updated! <a href="javascript:document.getElementById('_4dcda3fa').scrollIntoView({behavior: 'smooth'})">Click here</a> to jump to it and see the update.</p>
+<p>Now we can package everything up into a loop.</p>
+<div id="819b2f3f" class="cell" data-time_run="2025-12-05T02:49:25.924848+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">chat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Chat(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'deepseek/deepseek-chat'</span>, hist<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[sys_prmpt])</span>
+<span id="cb22-2">outs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> find_msgs(msg_type<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'prompt'</span>)</span>
+<span id="cb22-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> o <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> outs:</span>
+<span id="cb22-4">    r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> chat(o[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>])</span>
+<span id="cb22-5">    trans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content</span>
+<span id="cb22-6">    new_o <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> o[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">---</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>trans</span>
+<span id="cb22-7">    update_msg(msgid<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>o[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'id'</span>], output<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>new_o)</span></code></pre></div></div>
+</div>
+<p>Some areas for improvement: - [ ] The reformatted output includes collapsable/folding blocks - [ ] Figure out how to use <a href="https://github.com/AnswerDotAI/fastprogress">fastprogress</a> view translation progress.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And it’s as simple as that!</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>SolveIt</category>
+  <guid>https://forbo7.github.io/forblog/posts/30_translating_solveit_dialogues.html</guid>
+  <pubDate>Sun, 07 Dec 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/30_translating_solveit_dialogues/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
 <item>
   <title>Let’s build an AI model</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -707,503 +1204,6 @@ font-style: inherit;">'bird.jpg'</span>))</span></code></pre></div></div>
   <guid>https://forbo7.github.io/forblog/posts/29_lets_build_an_ai_model.html</guid>
   <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/29_lets_build_an_ai_model/thumbnail.png" medium="image" type="image/png" height="81" width="144"/>
-</item>
-<item>
-  <title>Translating SolveIt Dialogues</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/30_translating_solveit_dialogues.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><img src="https://forbo7.github.io/forblog/images/30_translating_solveit_dialogues/thumbnail.png" class="img-fluid"></p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In this notebook I’ll be demonstrating how one can update messages in SolveIt dialogues and do further work with them. At the same time also demonstrating how SolveIt dialogue messages can be translated with a LLM.</p>
-<p>I’m currently teaching myself Chinese, and I’ve found to learn a language, one has to use the language. So I make the LLM respond in Chinese.</p>
-<p>I’ll be using <a href="https://lisette.answer.ai/">lisette</a> for working with the LLM, DeepSeek as the model, and <a href="https://answerdotai.github.io/dialoghelper/">dialoghelper</a> to process the dialogue messages.</p>
-</section>
-<section id="sample-dialogue" class="level2">
-<h2 class="anchored" data-anchor-id="sample-dialogue">Sample Dialogue</h2>
-<p>I’ll create a rough, short dialogue that I can work upon.</p>
-<p>Hey there, who are you?</p>
-<section id="reply" class="level5">
-<h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
-<p>🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠</p>
-<p>你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。</p>
-<p>你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。</p>
-<hr>
-<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
-<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
-<hr>
-<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
-<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
-<p>Let me flip it around: what do <em>you</em> want to study? What’re <em>you</em> currently interested in?</p>
-</section>
-<section id="reply-1" class="level5">
-<h5 class="anchored" data-anchor-id="reply-1">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
-<p>哈哈，这个问题很有意思！</p>
-<p>其实我对很多东西都感兴趣。最近我特别喜欢思考这些问题：</p>
-<ul>
-<li>人们怎么学习新东西？什么方法最有效？</li>
-<li>复杂的问题怎么分解成简单的部分？</li>
-<li>不同领域的知识怎么连接起来？</li>
-</ul>
-<p>但是，我在这儿是为了帮助你学习和探索。你的好奇心和兴趣才是最重要的！</p>
-<p>所以，咱们可以一起探索一个你感兴趣的话题。你现在想学什么？或者你正在做什么项目？</p>
-<hr>
-<p>Haha, that’s a really interesting question!</p>
-<p>Actually, I’m interested in a lot of things. Lately, I’ve been particularly fond of thinking about these questions:</p>
-<ul>
-<li>How do people learn new things? What methods are most effective?</li>
-<li>How can complex problems be broken down into simpler parts?</li>
-<li>How is knowledge from different fields connected?</li>
-</ul>
-<p>However, I’m here to help <em>you</em> learn and explore. Your curiosity and interests are what matter most!</p>
-<p>So, we can explore a topic you’re interested in together. What would you like to learn right now? Or are you working on any projects?</p>
-</section>
-</section>
-<section id="translation" class="level2">
-<h2 class="anchored" data-anchor-id="translation">Translation</h2>
-<div id="1dda5de7" class="cell" data-time_run="2025-12-05T03:00:23.374270+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> dialoghelper <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span></code></pre></div></div>
-</div>
-<div id="6a74d977" class="cell" data-time_run="2025-12-05T02:27:14.303180+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">?find_msgs</span></code></pre></div></div>
-<div class="cell-output cell-output-display">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">Signature:</span>
-find_msgs(
-    re_pattern: str = <span class="ansi-yellow-fg">''</span>,
-    msg_type: str = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    limit: int = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    include_output: bool = <span style="font-weight:bold;color:rgb(0,135,0)">True</span>,
-    dname: str = <span class="ansi-yellow-fg">''</span>,
-)
-<span class="ansi-red-fg">Docstring:</span> Find `list[dict]` of messages in current specific dialog that contain the given information. To refer to a message found later, use its `id` field.
-<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.12/site-packages/dialoghelper/core.py
-<span class="ansi-red-fg">Type:</span>      function</pre>
-</div>
-</div>
-</div>
-<p>We can use <code>find_msgs</code> to filter out those message types that are prompts.</p>
-<div id="fe19e3d1" class="cell" data-time_run="2025-12-05T02:27:16.279909+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> find_msgs(msg_type<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'prompt'</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> o[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre data-code-line-numbers=""><code>{'id': '_4dcda3fa',
- 'input_tokens': 10,
- 'output_tokens': 94,
- 'time_run': '',
- 'is_exported': False,
- 'skipped': False,
- 'hidden': False,
- 'bookmark': None,
- 'i_collapsed': False,
- 'o_collapsed': False,
- 'heading_collapsed': False,
- 'i_clamp': False,
- 'o_clamp': False,
- 'pinned': False,
- 'use_thinking': True,
- 'attachments': [],
- 'oob': None,
- 'run': None,
- 'scroll': False,
- 'order': 3,
- 'content': 'Hey there, who are you?',
- 'output': '🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。',
- 'msg_type': 'prompt'}</code></pre>
-</div>
-</div>
-<div id="82fe760e" class="cell" data-time_run="2025-12-05T02:27:19.558714+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">o[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'output'</span>]</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre data-code-line-numbers=""><code>'🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。'</code></pre>
-</div>
-</div>
-<p>And then when we are iterating through all the prompt messages we can fetch the respective message ID and update it using <code>update_msg</code>.</p>
-<div id="6ab909d1" class="cell" data-time_run="2025-12-05T02:27:23.443791+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">?update_msg</span></code></pre></div></div>
-<div class="cell-output cell-output-display">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">Signature:</span>
-update_msg(
-    msgid: str = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    msg: Optional[Dict] = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    dname: str = <span class="ansi-yellow-fg">''</span>,
-    *,
-    content: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    msg_type: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    output: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    time_run: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    is_exported: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    skipped: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    i_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    o_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    heading_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-    pinned: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
-)
-<span class="ansi-red-fg">Docstring:</span>
-Update an existing message. Provide either `msg` OR field key/values to update.
-- Use `content` param to update contents.
-- Only include parameters to update--missing ones will be left unchanged.
-<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.12/site-packages/dialoghelper/core.py
-<span class="ansi-red-fg">Type:</span>      function</pre>
-</div>
-</div>
-</div>
-<p>I’ll be formatting the new updated prompt output as <code>original + '\n\n---\n\n' + translated</code>.</p>
-<p>In a nutshell, the core loop is:</p>
-<ol type="1">
-<li>Fetch a prompt message.</li>
-<li>Access the output content of that message.</li>
-<li>Translate.</li>
-<li>Reformat output content</li>
-<li>Update the respective message.</li>
-</ol>
-<p>I’ll begin with a single example.</p>
-<div id="ab787b9d" class="cell" data-time_run="2025-12-05T02:32:58.835233+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> lisette.core <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span>
-<span id="cb8-2">sys_prmpt <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"You'll receive a series of messages that are responses in a dialogue. I need you to aptly translate those responses to English, whilst maintaining the same tone/style and minimal loss of information. If you encoutner any brain emojies, skip them. Do not re-output the original message."</span></span>
-<span id="cb8-3">chat <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Chat(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'deepseek/deepseek-chat'</span>, hist<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>[sys_prmpt])<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> chat</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre data-code-line-numbers=""><code>&lt;lisette.core.Chat at 0x7da9f8871160&gt;</code></pre>
-</div>
-</div>
-<div id="5b7ba778" class="cell" data-time_run="2025-12-05T02:33:07.421033+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">res <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> chat(o[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'output'</span>])</span>
-<span id="cb10-2">display(res)</span></code></pre></div></div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
-<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
-<details>
-<ul>
-<li>id: <code>22a761da-f8a1-43a4-be6f-06a54db8ca0f</code></li>
-<li>model: <code>deepseek-chat</code></li>
-<li>finish_reason: <code>stop</code></li>
-<li>usage: <code>Usage(completion_tokens=57, prompt_tokens=155, total_tokens=212, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetailsWrapper(audio_tokens=None, cached_tokens=64, text_tokens=None, image_tokens=None), prompt_cache_hit_tokens=64, prompt_cache_miss_tokens=91)</code></li>
-</ul>
-</details>
-</div>
-</div>
-<div id="8faa61ce" class="cell" data-time_run="2025-12-05T02:33:17.480820+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">display(chat(o[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>][<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'output'</span>]))</span></code></pre></div></div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<p>Haha, that’s a very interesting question!</p>
-<p>Actually, I’m interested in a lot of things. Lately, I’ve been particularly fond of pondering these questions:</p>
-<ul>
-<li>How do people learn new things? What methods are most effective?</li>
-<li>How can complex problems be broken down into simpler parts?</li>
-<li>How is knowledge from different fields connected?</li>
-</ul>
-<p>However, I’m here to help <em>you</em> learn and explore. Your curiosity and interests are what matter most!</p>
-<p>So, we can explore a topic you’re interested in together. What would you like to learn right now? Or are you working on any projects?</p>
-<details>
-<ul>
-<li>id: <code>cb9c2af2-e7ed-48cf-ae27-dbf56bd1684c</code></li>
-<li>model: <code>deepseek-chat</code></li>
-<li>finish_reason: <code>stop</code></li>
-<li>usage: <code>Usage(completion_tokens=123, prompt_tokens=300, total_tokens=423, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetailsWrapper(audio_tokens=None, cached_tokens=128, text_tokens=None, image_tokens=None), prompt_cache_hit_tokens=128, prompt_cache_miss_tokens=172)</code></li>
-</ul>
-</details>
-</div>
-</div>
-<p>So that’s how the translations look. Let’s now update the messages themselves.</p>
-<div id="e7fd3bae" class="cell" data-time_run="2025-12-05T02:33:28.427891+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">??update_msg</span></code></pre></div></div>
-<div class="cell-output cell-output-display cell-output-markdown">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">@delegates</span>(_umsg)</span>
-<span id="cb13-2"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> update_msg(</span>
-<span id="cb13-3">    msgid:<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># id of message to update (if None, uses current message)</span></span>
-<span id="cb13-4">    msg:Optional[Dict]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Dictionary of field keys/values to update</span></span>
-<span id="cb13-5">    dname:<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">''</span>, <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Running dialog to get info for; defaults to current dialog</span></span>
-<span id="cb13-6">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">**</span>kwargs):</span>
-<span id="cb13-7">    <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">"""Update an existing message. Provide either `msg` OR field key/values to update.</span></span>
-<span id="cb13-8"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    - Use `content` param to update contents.</span></span>
-<span id="cb13-9"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">    - Only include parameters to update--missing ones will be left unchanged."""</span></span>
-<span id="cb13-10">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> msgid <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">and</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> msg: <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">raise</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">TypeError</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"update_msg needs either a dict message or `msgid=`"</span>)</span>
-<span id="cb13-11">    res <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> call_endp(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'update_msg_'</span>, dname, msgid<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>msgid, <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">**</span>kwargs)</span>
-<span id="cb13-12">    set_var(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'__msg_id'</span>, res)</span>
-<span id="cb13-13">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> res</span></code></pre></div></div>
-<p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/dialoghelper/core.py</code></p>
-</div>
-</div>
-<div id="17fb74cb" class="cell" data-time_run="2025-12-05T02:33:30.090629+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">trans <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> res.choices[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>].message.content<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> trans</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre data-code-line-numbers=""><code>"Hello! I'm solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.\n\nWhat would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better."</code></pre>
-</div>
-</div>
-<div id="bfceadd8" class="cell" data-time_run="2025-12-05T02:33:31.864824+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">new_out <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> o[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'output'</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">---</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span>trans<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> new_out</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre data-code-line-numbers=""><code>"🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。\n\n---\n\nHello! I'm solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.\n\nWhat would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better."</code></pre>
-</div>
-</div>
-<div id="cec13353" class="cell" data-time_run="2025-12-05T02:33:38.659461+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">update_msg(msgid<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>o[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'id'</span>], output<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>new_out)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre data-code-line-numbers=""><code>'_4dcda3fa'</code></pre>
-</div>
-</div>
-<div id="a4e3261c" class="cell" data-time_run="2025-12-05T02:38:45.742724+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">o[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre data-code-line-numbers=""><code>{'id': '_4dcda3fa',
- 'input_tokens': 10,
- 'output_tokens': 94,
- 'time_run': '',
- 'is_exported': False,
- 'skipped': False,
- 'hidden': False,
- 'bookmark': None,
- 'i_collapsed': False,
- 'o_collapsed': False,
- 'heading_collapsed': False,
- 'i_clamp': False,
- 'o_clamp': False,
- 'pinned': False,
- 'use_thinking': True,
- 'attachments': [],
- 'oob': None,
- 'run': None,
- 'scroll': False,
- 'order': 3,
- 'content': 'Hey there, who are you?',
- 'output': '🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。',
- 'msg_type': 'prompt'}</code></pre>
-</div>
-</div>
-<p>The message has been updated! <a href="javascript:document.getElementById('_4dcda3fa').scrollIntoView({behavior: 'smooth'})">Click here</a> to jump to it and see the update.</p>
-<p>Now we can package everything up into a loop.</p>
-<div id="819b2f3f" class="cell" data-time_run="2025-12-05T02:49:25.924848+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">chat <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Chat(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'deepseek/deepseek-chat'</span>, hist<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>[sys_prmpt])</span>
-<span id="cb22-2">outs <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> find_msgs(msg_type<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'prompt'</span>)</span>
-<span id="cb22-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> o <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> outs:</span>
-<span id="cb22-4">    r <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> chat(o[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'output'</span>])</span>
-<span id="cb22-5">    trans <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> r.choices[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>].message.content</span>
-<span id="cb22-6">    new_o <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> o[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'output'</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">---</span><span class="ch" style="color: #20794D;
-background-color: null;
-font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span>trans</span>
-<span id="cb22-7">    update_msg(msgid<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>o[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'id'</span>], output<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>new_o)</span></code></pre></div></div>
-</div>
-<p>Some areas for improvement: - [ ] The reformatted output includes collapsable/folding blocks - [ ] Figure out how to use <a href="https://github.com/AnswerDotAI/fastprogress">fastprogress</a> view translation progress.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>And it’s as simple as that!</p>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>SolveIt</category>
-  <guid>https://forbo7.github.io/forblog/posts/30_translating_solveit_dialogues.html</guid>
-  <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/30_translating_solveit_dialogues/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
   <title>Creating Your Own LLM Agent</title>
