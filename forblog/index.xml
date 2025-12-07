@@ -35,6 +35,9 @@
 <section id="sample-dialogue" class="level2">
 <h2 class="anchored" data-anchor-id="sample-dialogue">Sample Dialogue</h2>
 <p>I’ll create a rough, short dialogue that I can work upon.</p>
+<blockquote class="blockquote">
+<p>You’ll see that the English translations are already appended. See the SolveIt dialogue <a href="https://share.solve.it.com/d/24bf30f133c01f37feae1a1e22e27bcc">here</a>.</p>
+</blockquote>
 <p>Hey there, who are you?</p>
 <section id="reply" class="level5">
 <h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
