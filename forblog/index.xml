@@ -709,6 +709,503 @@ font-style: inherit;">'bird.jpg'</span>))</span></code></pre></div></div>
   <media:content url="https://forbo7.github.io/forblog/images/29_lets_build_an_ai_model/thumbnail.png" medium="image" type="image/png" height="81" width="144"/>
 </item>
 <item>
+  <title>Translating SolveIt Dialogues</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/30_translating_solveit_dialogues.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/30_translating_solveit_dialogues/thumbnail.png" class="img-fluid"></p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this notebook I’ll be demonstrating how one can update messages in SolveIt dialogues and do further work with them. At the same time also demonstrating how SolveIt dialogue messages can be translated with a LLM.</p>
+<p>I’m currently teaching myself Chinese, and I’ve found to learn a language, one has to use the language. So I make the LLM respond in Chinese.</p>
+<p>I’ll be using <a href="https://lisette.answer.ai/">lisette</a> for working with the LLM, DeepSeek as the model, and <a href="https://answerdotai.github.io/dialoghelper/">dialoghelper</a> to process the dialogue messages.</p>
+</section>
+<section id="sample-dialogue" class="level2">
+<h2 class="anchored" data-anchor-id="sample-dialogue">Sample Dialogue</h2>
+<p>I’ll create a rough, short dialogue that I can work upon.</p>
+<p>Hey there, who are you?</p>
+<section id="reply" class="level5">
+<h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠</p>
+<p>你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。</p>
+<p>你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。</p>
+<hr>
+<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
+<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
+<hr>
+<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
+<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
+<p>Let me flip it around: what do <em>you</em> want to study? What’re <em>you</em> currently interested in?</p>
+</section>
+<section id="reply-1" class="level5">
+<h5 class="anchored" data-anchor-id="reply-1">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>哈哈，这个问题很有意思！</p>
+<p>其实我对很多东西都感兴趣。最近我特别喜欢思考这些问题：</p>
+<ul>
+<li>人们怎么学习新东西？什么方法最有效？</li>
+<li>复杂的问题怎么分解成简单的部分？</li>
+<li>不同领域的知识怎么连接起来？</li>
+</ul>
+<p>但是，我在这儿是为了帮助你学习和探索。你的好奇心和兴趣才是最重要的！</p>
+<p>所以，咱们可以一起探索一个你感兴趣的话题。你现在想学什么？或者你正在做什么项目？</p>
+<hr>
+<p>Haha, that’s a really interesting question!</p>
+<p>Actually, I’m interested in a lot of things. Lately, I’ve been particularly fond of thinking about these questions:</p>
+<ul>
+<li>How do people learn new things? What methods are most effective?</li>
+<li>How can complex problems be broken down into simpler parts?</li>
+<li>How is knowledge from different fields connected?</li>
+</ul>
+<p>However, I’m here to help <em>you</em> learn and explore. Your curiosity and interests are what matter most!</p>
+<p>So, we can explore a topic you’re interested in together. What would you like to learn right now? Or are you working on any projects?</p>
+</section>
+</section>
+<section id="translation" class="level2">
+<h2 class="anchored" data-anchor-id="translation">Translation</h2>
+<div id="1dda5de7" class="cell" data-time_run="2025-12-05T03:00:23.374270+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> dialoghelper <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span></code></pre></div></div>
+</div>
+<div id="6a74d977" class="cell" data-time_run="2025-12-05T02:27:14.303180+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">?find_msgs</span></code></pre></div></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span>
+find_msgs(
+    re_pattern: str = <span class="ansi-yellow-fg">''</span>,
+    msg_type: str = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    limit: int = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    include_output: bool = <span style="font-weight:bold;color:rgb(0,135,0)">True</span>,
+    dname: str = <span class="ansi-yellow-fg">''</span>,
+)
+<span class="ansi-red-fg">Docstring:</span> Find `list[dict]` of messages in current specific dialog that contain the given information. To refer to a message found later, use its `id` field.
+<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.12/site-packages/dialoghelper/core.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
+<p>We can use <code>find_msgs</code> to filter out those message types that are prompts.</p>
+<div id="fe19e3d1" class="cell" data-time_run="2025-12-05T02:27:16.279909+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">o <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> find_msgs(msg_type<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'prompt'</span>)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'id': '_4dcda3fa',
+ 'input_tokens': 10,
+ 'output_tokens': 94,
+ 'time_run': '',
+ 'is_exported': False,
+ 'skipped': False,
+ 'hidden': False,
+ 'bookmark': None,
+ 'i_collapsed': False,
+ 'o_collapsed': False,
+ 'heading_collapsed': False,
+ 'i_clamp': False,
+ 'o_clamp': False,
+ 'pinned': False,
+ 'use_thinking': True,
+ 'attachments': [],
+ 'oob': None,
+ 'run': None,
+ 'scroll': False,
+ 'order': 3,
+ 'content': 'Hey there, who are you?',
+ 'output': '🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。',
+ 'msg_type': 'prompt'}</code></pre>
+</div>
+</div>
+<div id="82fe760e" class="cell" data-time_run="2025-12-05T02:27:19.558714+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。'</code></pre>
+</div>
+</div>
+<p>And then when we are iterating through all the prompt messages we can fetch the respective message ID and update it using <code>update_msg</code>.</p>
+<div id="6ab909d1" class="cell" data-time_run="2025-12-05T02:27:23.443791+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">?update_msg</span></code></pre></div></div>
+<div class="cell-output cell-output-display">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">Signature:</span>
+update_msg(
+    msgid: str = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    msg: Optional[Dict] = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    dname: str = <span class="ansi-yellow-fg">''</span>,
+    *,
+    content: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    msg_type: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    output: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    time_run: str | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    is_exported: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    skipped: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    i_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    o_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    heading_collapsed: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+    pinned: int | <span style="font-weight:bold;color:rgb(0,135,0)">None</span> = <span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+)
+<span class="ansi-red-fg">Docstring:</span>
+Update an existing message. Provide either `msg` OR field key/values to update.
+- Use `content` param to update contents.
+- Only include parameters to update--missing ones will be left unchanged.
+<span class="ansi-red-fg">File:</span>      /usr/local/lib/python3.12/site-packages/dialoghelper/core.py
+<span class="ansi-red-fg">Type:</span>      function</pre>
+</div>
+</div>
+</div>
+<p>I’ll be formatting the new updated prompt output as <code>original + '\n\n---\n\n' + translated</code>.</p>
+<p>In a nutshell, the core loop is:</p>
+<ol type="1">
+<li>Fetch a prompt message.</li>
+<li>Access the output content of that message.</li>
+<li>Translate.</li>
+<li>Reformat output content</li>
+<li>Update the respective message.</li>
+</ol>
+<p>I’ll begin with a single example.</p>
+<div id="ab787b9d" class="cell" data-time_run="2025-12-05T02:32:58.835233+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> lisette.core <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span></span>
+<span id="cb8-2">sys_prmpt <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"You'll receive a series of messages that are responses in a dialogue. I need you to aptly translate those responses to English, whilst maintaining the same tone/style and minimal loss of information. If you encoutner any brain emojies, skip them. Do not re-output the original message."</span></span>
+<span id="cb8-3">chat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Chat(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'deepseek/deepseek-chat'</span>, hist<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[sys_prmpt])<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> chat</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>&lt;lisette.core.Chat at 0x7da9f8871160&gt;</code></pre>
+</div>
+</div>
+<div id="5b7ba778" class="cell" data-time_run="2025-12-05T02:33:07.421033+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">res <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> chat(o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>])</span>
+<span id="cb10-2">display(res)</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Hello! I’m solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.</p>
+<p>What would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better.</p>
+<details>
+<ul>
+<li>id: <code>22a761da-f8a1-43a4-be6f-06a54db8ca0f</code></li>
+<li>model: <code>deepseek-chat</code></li>
+<li>finish_reason: <code>stop</code></li>
+<li>usage: <code>Usage(completion_tokens=57, prompt_tokens=155, total_tokens=212, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetailsWrapper(audio_tokens=None, cached_tokens=64, text_tokens=None, image_tokens=None), prompt_cache_hit_tokens=64, prompt_cache_miss_tokens=91)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<div id="8faa61ce" class="cell" data-time_run="2025-12-05T02:33:17.480820+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">display(chat(o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]))</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p>Haha, that’s a very interesting question!</p>
+<p>Actually, I’m interested in a lot of things. Lately, I’ve been particularly fond of pondering these questions:</p>
+<ul>
+<li>How do people learn new things? What methods are most effective?</li>
+<li>How can complex problems be broken down into simpler parts?</li>
+<li>How is knowledge from different fields connected?</li>
+</ul>
+<p>However, I’m here to help <em>you</em> learn and explore. Your curiosity and interests are what matter most!</p>
+<p>So, we can explore a topic you’re interested in together. What would you like to learn right now? Or are you working on any projects?</p>
+<details>
+<ul>
+<li>id: <code>cb9c2af2-e7ed-48cf-ae27-dbf56bd1684c</code></li>
+<li>model: <code>deepseek-chat</code></li>
+<li>finish_reason: <code>stop</code></li>
+<li>usage: <code>Usage(completion_tokens=123, prompt_tokens=300, total_tokens=423, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetailsWrapper(audio_tokens=None, cached_tokens=128, text_tokens=None, image_tokens=None), prompt_cache_hit_tokens=128, prompt_cache_miss_tokens=172)</code></li>
+</ul>
+</details>
+</div>
+</div>
+<p>So that’s how the translations look. Let’s now update the messages themselves.</p>
+<div id="e7fd3bae" class="cell" data-time_run="2025-12-05T02:33:28.427891+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">??update_msg</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">@delegates</span>(_umsg)</span>
+<span id="cb13-2"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> update_msg(</span>
+<span id="cb13-3">    msgid:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># id of message to update (if None, uses current message)</span></span>
+<span id="cb13-4">    msg:Optional[Dict]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Dictionary of field keys/values to update</span></span>
+<span id="cb13-5">    dname:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">''</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Running dialog to get info for; defaults to current dialog</span></span>
+<span id="cb13-6">    <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>kwargs):</span>
+<span id="cb13-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">"""Update an existing message. Provide either `msg` OR field key/values to update.</span></span>
+<span id="cb13-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    - Use `content` param to update contents.</span></span>
+<span id="cb13-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">    - Only include parameters to update--missing ones will be left unchanged."""</span></span>
+<span id="cb13-10">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> msgid <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">and</span> <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">not</span> msg: <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">raise</span> <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">TypeError</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"update_msg needs either a dict message or `msgid=`"</span>)</span>
+<span id="cb13-11">    res <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> call_endp(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'update_msg_'</span>, dname, msgid<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>msgid, <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">**</span>kwargs)</span>
+<span id="cb13-12">    set_var(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'__msg_id'</span>, res)</span>
+<span id="cb13-13">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> res</span></code></pre></div></div>
+<p><strong>File:</strong> <code>/usr/local/lib/python3.12/site-packages/dialoghelper/core.py</code></p>
+</div>
+</div>
+<div id="17fb74cb" class="cell" data-time_run="2025-12-05T02:33:30.090629+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">trans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> res.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> trans</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>"Hello! I'm solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.\n\nWhat would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better."</code></pre>
+</div>
+</div>
+<div id="bfceadd8" class="cell" data-time_run="2025-12-05T02:33:31.864824+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">new_out <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">---</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>trans<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> new_out</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>"🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。\n\n---\n\nHello! I'm solveit, a learning assistant. I can help you learn all sorts of things—math, programming, writing, or anything else.\n\nWhat would you like to learn? What are you interested in? Tell me a little about yourself so I can help you better."</code></pre>
+</div>
+</div>
+<div id="cec13353" class="cell" data-time_run="2025-12-05T02:33:38.659461+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">update_msg(msgid<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'id'</span>], output<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>new_out)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>'_4dcda3fa'</code></pre>
+</div>
+</div>
+<div id="a4e3261c" class="cell" data-time_run="2025-12-05T02:38:45.742724+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">o[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre data-code-line-numbers=""><code>{'id': '_4dcda3fa',
+ 'input_tokens': 10,
+ 'output_tokens': 94,
+ 'time_run': '',
+ 'is_exported': False,
+ 'skipped': False,
+ 'hidden': False,
+ 'bookmark': None,
+ 'i_collapsed': False,
+ 'o_collapsed': False,
+ 'heading_collapsed': False,
+ 'i_clamp': False,
+ 'o_clamp': False,
+ 'pinned': False,
+ 'use_thinking': True,
+ 'attachments': [],
+ 'oob': None,
+ 'run': None,
+ 'scroll': False,
+ 'order': 3,
+ 'content': 'Hey there, who are you?',
+ 'output': '🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠\n\n你好！我是 solveit，一个学习助手。我可以帮你学习各种各样的东西——数学、编程、写作，或者别的什么。\n\n你想学什么呢？你对什么感兴趣？告诉我一点儿关于你自己的情况吧，这样我可以更好地帮助你。',
+ 'msg_type': 'prompt'}</code></pre>
+</div>
+</div>
+<p>The message has been updated! <a href="javascript:document.getElementById('_4dcda3fa').scrollIntoView({behavior: 'smooth'})">Click here</a> to jump to it and see the update.</p>
+<p>Now we can package everything up into a loop.</p>
+<div id="819b2f3f" class="cell" data-time_run="2025-12-05T02:49:25.924848+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">chat <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Chat(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'deepseek/deepseek-chat'</span>, hist<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>[sys_prmpt])</span>
+<span id="cb22-2">outs <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> find_msgs(msg_type<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'prompt'</span>)</span>
+<span id="cb22-3"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> o <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> outs:</span>
+<span id="cb22-4">    r <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> chat(o[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>])</span>
+<span id="cb22-5">    trans <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> r.choices[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>].message.content</span>
+<span id="cb22-6">    new_o <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> o[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'output'</span>]<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">---</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>trans</span>
+<span id="cb22-7">    update_msg(msgid<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>o[<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'id'</span>], output<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span>new_o)</span></code></pre></div></div>
+</div>
+<p>Some areas for improvement: - [ ] The reformatted output includes collapsable/folding blocks - [ ] Figure out how to use <a href="https://github.com/AnswerDotAI/fastprogress">fastprogress</a> view translation progress.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And it’s as simple as that!</p>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>SolveIt</category>
+  <guid>https://forbo7.github.io/forblog/posts/30_translating_solveit_dialogues.html</guid>
+  <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/30_translating_solveit_dialogues/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
   <title>Creating Your Own LLM Agent</title>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/28_creating_your_own_llm_agent.html</link>
@@ -16037,802 +16534,6 @@ font-style: inherit;">0</span>])</span></code></pre></div></div>
   <guid>https://forbo7.github.io/forblog/posts/12_stable_diffusion_summarized.html</guid>
   <pubDate>Thu, 13 Apr 2023 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/12_stable_diffusion_summarized/thumbnail.jpeg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>How to Convert Audio to Spectrogram Images</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><strong>You can find this notebook on Kaggle <a href="https://www.kaggle.com/code/forbo7/how-to-convert-audio-to-spectrogram-images">here</a>.</strong></p>
-<blockquote class="blockquote">
-<p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html#style-guide">fastai style conventions</a>.</p>
-</blockquote>
-<p><img src="https://forbo7.github.io/forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" class="img-fluid" alt="A generated image of a colorful East African bird."></p>
-<p>In this to-the-point notebook, I go over how one can create images of spectrograms from audio files using the PyTorch torchaudio module.</p>
-<p>The notebook also goes over how I created the spectrogram images for the BirdCLEF 2023 competition, and how one can create and push a dataset right on Kaggle (useful if your local machine doesn’t have enough storage).</p>
-<p>You can view the dataset that was generated from this notebook <a href="https://www.kaggle.com/datasets/forbo7/spectrograms-birdclef-2023">here</a>.</p>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<div id="0caf3fb0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:13.988997,&quot;end_time&quot;:&quot;2023-04-05T11:16:06.190265&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:15:52.201268&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">try</span>: <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> fastkaggle <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span>
-<span id="cb1-2"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">except</span> <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">ModuleNotFoundError</span>:</span>
-<span id="cb1-3">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span> pip install <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>Uqq fastkaggle</span>
-<span id="cb1-4">    <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> fastkaggle <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span>
-<span id="cb1-5"></span>
-<span id="cb1-6">iskaggle</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="1">
-<pre><code>'Batch'</code></pre>
-</div>
-</div>
-<div id="63093885" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:12.886205,&quot;end_time&quot;:&quot;2023-04-05T11:16:19.089359&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:06.203154&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">comp <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'birdclef-2023'</span></span>
-<span id="cb3-2">d_path <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> setup_comp(comp, install<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'nbdev'</span>)</span></code></pre></div></div>
-</div>
-<div id="ebc08fc6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:6.663933,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.766895&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:19.102962&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> fastai.imports <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span>
-<span id="cb4-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> fastai.vision.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">all</span> <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span></span></code></pre></div></div>
-</div>
-</section>
-<section id="data" class="level2">
-<h2 class="anchored" data-anchor-id="data">Data</h2>
-<section id="paths" class="level3">
-<h3 class="anchored" data-anchor-id="paths">Paths</h3>
-<p>Let’s see all the files and directories we have.</p>
-<div id="4bd0ef53" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.028396,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.891571&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.863175&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1">d_path.ls()</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>(#5) [Path('../input/birdclef-2023/sample_submission.csv'),Path('../input/birdclef-2023/train_audio'),Path('../input/birdclef-2023/eBird_Taxonomy_v2021.csv'),Path('../input/birdclef-2023/train_metadata.csv'),Path('../input/birdclef-2023/test_soundscapes')]</code></pre>
-</div>
-</div>
-<p>Let’s get the path to the audio files.</p>
-<div id="9c76ab57" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.022977,&quot;end_time&quot;:&quot;2023-04-05T11:16:25.956052&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.933075&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">aud_files <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> d_path<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'train_audio'</span></span></code></pre></div></div>
-</div>
-<p>And create a directory to store the spectrogram images.</p>
-<div id="5a2ce4d2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.030052,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.026393&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:25.996341&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">mkdir(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'/kaggle/train_images'</span>, exist_ok<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> Path(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'/kaggle/train_images'</span>).exists()</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>True</code></pre>
-</div>
-</div>
-</section>
-</section>
-<section id="single-image" class="level2">
-<h2 class="anchored" data-anchor-id="single-image">Single Image</h2>
-<p>It’s always a good idea to try things out on a smaller scale; so let’s begin by converting only a single audio file.</p>
-<p>Let’s get the first audio file.</p>
-<div id="bfedbdd6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.048533,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.145465&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.096932&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">aud_files.ls()</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>(#264) [Path('../input/birdclef-2023/train_audio/yetgre1'),Path('../input/birdclef-2023/train_audio/moccha1'),Path('../input/birdclef-2023/train_audio/rostur1'),Path('../input/birdclef-2023/train_audio/walsta1'),Path('../input/birdclef-2023/train_audio/ratcis1'),Path('../input/birdclef-2023/train_audio/norfis1'),Path('../input/birdclef-2023/train_audio/macshr1'),Path('../input/birdclef-2023/train_audio/brrwhe3'),Path('../input/birdclef-2023/train_audio/crefra2'),Path('../input/birdclef-2023/train_audio/pabspa1')...]</code></pre>
-</div>
-</div>
-<div id="7f3ceaf8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.035581,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.195419&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.159838&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">aud_files.ls()[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>].ls()</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>(#27) [Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC574558.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403259.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498854.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC289493.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC716763.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC498853.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC338717.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC349660.ogg'),Path('../input/birdclef-2023/train_audio/yetgre1/XC403543.ogg')...]</code></pre>
-</div>
-</div>
-<div id="48581b2d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.031014,&quot;end_time&quot;:&quot;2023-04-05T11:16:26.240594&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.209580&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1">aud <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> aud_files.ls()[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>].ls()[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>]<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> aud</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>Path('../input/birdclef-2023/train_audio/yetgre1/XC247367.ogg')</code></pre>
-</div>
-</div>
-<p>Now it’s time to load it in. What we get in return is the waveform and the sample rate.</p>
-<div id="b03284c6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.980217,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.261269&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:26.281052&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torchaudio</span>
-<span id="cb16-2">wvfrm, sr <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torchaudio.load(aud)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> wvfrm</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>tensor([[0.0000e+00, 0.0000e+00, 0.0000e+00,  ..., 3.0518e-05, 0.0000e+00,
-         0.0000e+00]])</code></pre>
-</div>
-</div>
-<hr>
-<section id="birdclef-2023-clipping-the-audio-files" class="level4">
-<h4 class="anchored" data-anchor-id="birdclef-2023-clipping-the-audio-files">BirdCLEF 2023 — Clipping the Audio Files</h4>
-<p>This competition requires predictions to be submitted of all 5 second intervals in each audio clip. This means the audio files need to be clipped.</p>
-<p>Below is an easy way this can be done. We clip the first 5 seconds of the audio file.</p>
-<div id="21c9d464" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.027009,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.386202&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.359193&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="11">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">start_sec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb18-2">end_sec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span></span>
-<span id="cb18-3">wvfrm <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> wvfrm[:, start_sec<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>sr:end_sec<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>sr]</span>
-<span id="cb18-4">wvfrm.shape[<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> sr</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>5.0</code></pre>
-</div>
-</div>
-<p>Sample rate is simply the number of frames recorded per second. The waveform that torchaudio returns is a tensor of frames. Therefore, we can easily select the desired range of frames by multiplying the sample rate with the desired start and end seconds.</p>
-<hr>
-<p>Now let’s create the spectrogram.</p>
-<div id="9a098823" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.103329,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.589754&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.486425&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="12">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> torchaudio.transforms <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">as</span> T</span>
-<span id="cb20-2">spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> T.Spectrogram()(wvfrm)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> spec</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>tensor([[[4.3970e-08, 8.2461e-09, 4.7306e-11,  ..., 7.8266e-08,
-          1.7642e-08, 1.5016e-03],
-         [6.3310e-09, 6.5514e-10, 1.6958e-08,  ..., 4.3492e-09,
-          3.6019e-08, 1.5231e-03],
-         [1.1548e-08, 1.7308e-08, 6.5956e-08,  ..., 2.9340e-06,
-          1.2277e-06, 1.4124e-03],
-         ...,
-         [2.4446e-07, 6.1277e-09, 1.4932e-09,  ..., 1.4665e-08,
-          1.0110e-08, 1.8980e-05],
-         [3.1582e-07, 1.4777e-09, 1.2275e-08,  ..., 1.3213e-08,
-          1.9035e-09, 2.0009e-05],
-         [3.1673e-07, 1.1897e-10, 2.7457e-09,  ..., 1.0001e-08,
-          6.0452e-14, 1.9979e-05]]])</code></pre>
-</div>
-</div>
-<p>Let’s scale it logarithmically. This allows for better viewing.</p>
-<div id="ff9d92c2" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.043955,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.676877&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.632922&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="13">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1">spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> T.AmplitudeToDB()(spec)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> spec</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>tensor([[[ -73.5684,  -80.8375, -100.0000,  ...,  -71.0643,  -77.5346,
-           -28.2346],
-         [ -81.9853,  -91.8367,  -77.7063,  ...,  -83.6159,  -74.4347,
-           -28.1726],
-         [ -79.3751,  -77.6177,  -71.8074,  ...,  -55.3254,  -59.1092,
-           -28.5005],
-         ...,
-         [ -66.1180,  -82.1270,  -88.2588,  ...,  -78.3373,  -79.9524,
-           -47.2170],
-         [ -65.0056,  -88.3043,  -79.1097,  ...,  -78.7899,  -87.2045,
-           -46.9877],
-         [ -64.9931,  -99.2458,  -85.6135,  ...,  -79.9997, -100.0000,
-           -46.9943]]])</code></pre>
-</div>
-</div>
-<p>The PyTorch tensor needs to be converted into a NumPy array so it can then further be converted to an image. I’m using the <code>squeeze</code> method to remove the uneeded axis of length 1, as seen below.</p>
-<div id="95cb09a3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.029094,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.752190&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.723096&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="14">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">spec.shape</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>torch.Size([1, 201, 801])</code></pre>
-</div>
-</div>
-<div id="b7ef75b4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.028469,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.796037&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.767568&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="15">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1">spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> spec.squeeze().numpy()<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> spec</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>array([[ -73.56842 ,  -80.83749 , -100.      , ...,  -71.064285,
-         -77.53463 ,  -28.234562],
-       [ -81.98525 ,  -91.83666 ,  -77.706314, ...,  -83.615875,
-         -74.43467 ,  -28.172626],
-       [ -79.37505 ,  -77.61765 ,  -71.80743 , ...,  -55.32541 ,
-         -59.109177,  -28.500452],
-       ...,
-       [ -66.118   ,  -82.127014,  -88.25883 , ...,  -78.33732 ,
-         -79.95244 ,  -47.21705 ],
-       [ -65.00563 ,  -88.30426 ,  -79.10974 , ...,  -78.78989 ,
-         -87.20445 ,  -46.987743],
-       [ -64.99306 ,  -99.24575 ,  -85.61355 , ...,  -79.99969 ,
-        -100.      ,  -46.994343]], dtype=float32)</code></pre>
-</div>
-</div>
-<div id="f4fb0d9b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.026709,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.837709&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.811000&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="16">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1">spec.shape</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>(201, 801)</code></pre>
-</div>
-</div>
-<p>The array now needs to be normalized so it contains integers between 0 and 255: the values needed for images.</p>
-<div id="8d29d563" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.033373,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.916342&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.882969&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="17">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1">spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> (spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> spec.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">min</span>()) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> (spec.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">max</span>() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> spec.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">min</span>()) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">255</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> spec</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>array([[ 53.000538 ,  38.424625 ,   0.       , ...,  58.021824 ,
-         45.047504 , 143.90388  ],
-       [ 36.123127 ,  16.369104 ,  44.703243 , ...,  32.853405 ,
-         51.263535 , 144.02808  ],
-       [ 41.35709  ,  44.881027 ,  56.53168  , ...,  89.581375 ,
-         81.99417  , 143.37071  ],
-       ...,
-       [ 67.94011  ,  35.838867 ,  23.543371 , ...,  43.437954 ,
-         40.199318 , 105.84024  ],
-       [ 70.17062  ,  23.452267 ,  41.889095 , ...,  42.530468 ,
-         25.6576   , 106.30005  ],
-       [ 70.19584  ,   1.5124193,  28.847677 , ...,  40.104576 ,
-          0.       , 106.28681  ]], dtype=float32)</code></pre>
-</div>
-</div>
-<div id="22da16c3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.032237,&quot;end_time&quot;:&quot;2023-04-05T11:16:27.964842&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:27.932605&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="18">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1">spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> spec.astype(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'uint8'</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> spec</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>array([[ 53,  38,   0, ...,  58,  45, 143],
-       [ 36,  16,  44, ...,  32,  51, 144],
-       [ 41,  44,  56, ...,  89,  81, 143],
-       ...,
-       [ 67,  35,  23, ...,  43,  40, 105],
-       [ 70,  23,  41, ...,  42,  25, 106],
-       [ 70,   1,  28, ...,  40,   0, 106]], dtype=uint8)</code></pre>
-</div>
-</div>
-<p>Now we can finally convert the array to an image!</p>
-<div id="454f3e40" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.07604,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.088714&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.012674&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="19">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1">img <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Image.fromarray(spec)</span>
-<span id="cb34-2"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(img.shape)</span>
-<span id="cb34-3">img</span></code></pre></div></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(201, 801)</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="19">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-20-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Cool, hey? We’ve just visualized audio!</p>
-<hr>
-</section>
-<section id="birdclef-2023-resizing-the-images" class="level4">
-<h4 class="anchored" data-anchor-id="birdclef-2023-resizing-the-images">BirdCLEF 2023 — Resizing the Images</h4>
-<p>To allow the images to easily be used by various models, I resized the spectrograms to be 512 by 512 pixels as shown below.</p>
-<div id="72d5f686" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.078347,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.331168&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.252821&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="20">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1">img_size <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> (<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">512</span>)</span>
-<span id="cb36-2">img <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> img.resize(img_size)</span>
-<span id="cb36-3"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">print</span>(img.shape)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> img</span></code></pre></div></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(512, 512)</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="20">
-<div>
-<figure class="figure">
-<p><img src="https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images_files/figure-html/cell-21-output-2.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-<p>To save the image, we can simply use the <code>save</code> method.</p>
-<div id="aaa70d8f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.069824,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.506489&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.436665&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="21">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1">img.save(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'img.png'</span>)</span></code></pre></div></div>
-</div>
-</section>
-</section>
-<section id="all-the-images" class="level2">
-<h2 class="anchored" data-anchor-id="all-the-images">All the Images</h2>
-<p>Now that we have verified that our algorithm works fine, we can extend it to convert all audio files.</p>
-<div id="0596ee0c" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.039189,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.658495&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.619306&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="22">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> create_imgs(duration, f):</span>
-<span id="cb39-2">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> step <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, duration, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>):</span>
-<span id="cb39-3">        wvfrm, sr <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torchaudio.load(f)</span>
-<span id="cb39-4">        wvfrm <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> cut_wvfrm(wvfrm, sr, step)</span>
-<span id="cb39-5">        spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> create_spec(wvfrm)</span>
-<span id="cb39-6">        img <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> spec2img(spec)</span>
-<span id="cb39-7">        end_sec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> step <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span></span>
-<span id="cb39-8">        img.save(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'/kaggle/train_images/</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>bird<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span>stem<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">/</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>f<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span>stem<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">_</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>end_sec<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">.png'</span>)</span>
-<span id="cb39-9"></span>
-<span id="cb39-10"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> cut_wvfrm(wvfrm, sr, step):</span>
-<span id="cb39-11">    start_sec, end_sec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> step, step <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span></span>
-<span id="cb39-12">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> wvfrm[:, start_sec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> sr: end_sec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> sr]</span>
-<span id="cb39-13">            </span>
-<span id="cb39-14"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> create_spec(wvfrm):</span>
-<span id="cb39-15">    spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> T.Spectrogram()(wvfrm)</span>
-<span id="cb39-16">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> T.AmplitudeToDB()(spec)</span>
-<span id="cb39-17">        </span>
-<span id="cb39-18"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> spec2img(spec, img_size<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">512</span>, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">512</span>)):</span>
-<span id="cb39-19">    spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> np.real(spec.squeeze().numpy())</span>
-<span id="cb39-20">    spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> ((spec <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> spec.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">min</span>()) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> (spec.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">max</span>() <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> spec.<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">min</span>()) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">255</span>).astype(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'uint8'</span>)</span>
-<span id="cb39-21">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">return</span> Image.fromarray(spec).resize(img_size)</span></code></pre></div></div>
-</div>
-<div id="d7bd67cb" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.036435,&quot;end_time&quot;:&quot;2023-04-05T11:16:28.716300&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:28.679865&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="23">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> iskaggle:</span>
-<span id="cb40-2">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> bird <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> aud_files.ls().<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sorted</span>():</span>
-<span id="cb40-3">        mkdir(<span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">f'/kaggle/train_images/</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">{</span>bird<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.</span>stem<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">}</span><span class="ss" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'</span>, exist_ok<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span>
-<span id="cb40-4">        <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> f <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> bird.ls().<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">sorted</span>():</span>
-<span id="cb40-5">            info <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torchaudio.info(f)</span>
-<span id="cb40-6">            duration <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> info.num_frames <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> info.sample_rate</span>
-<span id="cb40-7">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> duration <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>:</span>
-<span id="cb40-8">                create_imgs(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">round</span>(duration<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>, f)</span>
-<span id="cb40-9">            <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span>: <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">continue</span></span></code></pre></div></div>
-</div>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> Ignore the <code>if not iskaggle</code> statement when replicating. I added it since I edited this notebook and needed to save changes without reproducing the entire dataset.</p>
-</blockquote>
-<p>In the first <code>for</code> loop below, we loop through all the bird folders. For each folder, a folder with the same name is created in the directory where we want to store the images.</p>
-<p>In the second <code>for</code> loop, we loop through all audio files within the folder and then convert them to spectrogram images through the <code>create_images</code> function I defined.</p>
-<hr>
-<section id="birdclef-2023-clipping-the-audio-files-1" class="level4">
-<h4 class="anchored" data-anchor-id="birdclef-2023-clipping-the-audio-files-1">BirdCLEF 2023 — Clipping the Audio Files</h4>
-<p>Some audio files in the training set are of different durations. Therefore, we obtain the duration of the audio file so it can correctly be clipped into 5 second intervals.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1">info <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> torchaudio.info(f)</span>
-<span id="cb41-2">duration <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> info.num_frames <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> info.sample_rate</span>
-<span id="cb41-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> duration <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>:</span>
-<span id="cb41-4">    create_images(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">round</span>(duration<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>, f)</span>
-<span id="cb41-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">else</span>: <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">continue</span></span></code></pre></div></div>
-<p>Again, since sample rate is the number of frames recorded per second, we can divide the total number of frames by the sample rate to obtain the duration in seconds of a clip.</p>
-<p><code>duration = info.num_frames / info.sample_rate</code></p>
-<p>Then we round the duration to the nearest 5 for easy clipping.</p>
-<p><code>round(duration/5)*5</code></p>
-<hr>
-<p>The images now created! The rest of this notebook covers how one can generate a dataset in a Kaggle Notebook and push it directly to Kaggle within it.</p>
-</section>
-</section>
-<section id="api-setup" class="level2">
-<h2 class="anchored" data-anchor-id="api-setup">API Setup</h2>
-<p>We need to configure the user keys so we can push to the correct account.</p>
-<p>To do this, first obtain your Kaggle API key. Then, while in the notebook editor, click Add-ons -&gt; Secrets -&gt; Add a New Secret…</p>
-<p><img src="https://sat02pap002files.storage.live.com/y4mY_6mu6XXxmpkR_MwTxHxfEGRV9QOqlxkCF8i6T90WkRadthJc9yeOxUG3k21bT-QQ4CxJcP1W-MHuAhX_tKvf-gcZqUvkLONiKPeumqZCTezKhwXJXs0OFuTDBnedbcViCOeeIkzjVjYJiBc3J7ib0AqG5v247vovXQP1JYv-8RmfWMFytuyCgwvLNt_5MSP?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
-<p><img src="https://sat02pap002files.storage.live.com/y4mBCKZg2xbmSClGOAWdxf6vXcrgLKV0TNe-SuLaS37nzKAuHpzMZsXL0lEAuauWYrrKnZVx2qGStH3ZjVn-E0xARzTUW7UN9Em3gx_X3qivCHIX_85Z0aQc0xQYrl2dJPvyPOHwuCm0ML5188bFuemgoQik3jn_TVih1YKxYw9Z79fDahzG8wD9Yu-zbizRsVS?width=1024&amp;height=640&amp;cropmode=none" width="75%" height="100%"></p>
-<p><img src="https://sat02pap002files.storage.live.com/y4mgCDqODGoakfC1zbSK1tEGy1gcUPMpzzw5DEFHJnQPZIWZpWn2WKLT48EGRky-kXSmBYt-BYSgVxO7jMVT321_gqOYjX0daxumANws9LpNOvwdG3ce9nKJFT8ZkSEjtb5Q93leY75dKLk2CumNpmRGi4WoZr5jsTPPEV42yTlNPURAMrSsl09XeKqGaBjJO0u?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
-<p>…input your key and give it a name…</p>
-<p><img src="https://sat02pap002files.storage.live.com/y4mz3E2oKRG9H8n6cSwx-uk8ZAuIB8WSExJX92_w8ZoqYkX4f72QXKM2AFjjn7n_UaS30btHk6ueSi9VTRD_us_pUp3CSo3MkBM0mRBZqeqYDrSY4GRGamkrYnNKtxfZ-PQKJEvjOr8r8N97cftsJ3-9fEUcO3jv8kVGniKNPHWx_aVpIElx4_qgVq-aRt30PSD?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
-<p>…and click save. Then click the checkbox next to the secret to activate it for your notebook.</p>
-<p><img src="https://sat02pap002files.storage.live.com/y4m3RfkLD7cbynZIPmI7X17qmHTxar-hX5p-w5G70Z3YiRiIPzkzo3Z9h1Z4eWecrmmU88yl-HXUSRU7xUQ0LN2C-_wn_qmKDJFJyXSjNfhV7XjKpGbyhxXU9JCaTOxZhRwHGl4ghkykkhpMBTpoG-dxe7YlhPI40DQJT2dvCcuv1KZQkYkcOHIqiUI8SvwhL4Q?width=2880&amp;height=1800&amp;cropmode=none" width="75%" height="100%"></p>
-<p>Repeat for your Kaggle username.</p>
-<p>Now we can set the keys for the notebook as shown below (input the name of your key into <code>get_secret</code>).</p>
-<div id="b4153a0e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.032545,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.203954&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.171409&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="24">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> os</span>
-<span id="cb42-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> kaggle_secrets <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> UserSecretsClient</span></code></pre></div></div>
-</div>
-<div id="bf1fad86" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.511238,&quot;end_time&quot;:&quot;2023-04-05T11:16:29.735938&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.224700&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="25">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1">secrets <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> UserSecretsClient()</span>
-<span id="cb43-2">os.environ[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'KAGGLE_USERNAME'</span>] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> secrets.get_secret(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'KAGGLE_USERNAME'</span>)</span>
-<span id="cb43-3">os.environ[<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'KAGGLE_KEY'</span>] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> secrets.get_secret(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'KAGGLE_KEY'</span>)</span></code></pre></div></div>
-</div>
-</section>
-<section id="push-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="push-dataset">Push Dataset</h2>
-<p>The <a href="fastkaggle">fastkaggle</a> library offers a convenient way to easily create and push a dataset to Kaggle.</p>
-<div id="074a8247" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.558069,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.399675&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:29.841606&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="26">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1">doc(mk_dataset)</span></code></pre></div></div>
-<div class="cell-output cell-output-display">
-<hr>
-<h3 class="anchored">mk_dataset</h3>
-<blockquote class="blockquote"><pre><code>mk_dataset(dataset_path, title, force=False, upload=True)</code></pre></blockquote><p>Creates minimal dataset metadata needed to push new dataset to kaggle</p>
-</div>
-</div>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> Ignore the <code>if not iskaggle</code> statement when replicating. I added it since I edited this notebook and needed to save changes without reproducing the entire dataset.</p>
-</blockquote>
-<div id="addc7c98" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.034606,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.498618&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.464012&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="27">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> iskaggle:</span>
-<span id="cb45-2">    mk_dataset(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'/kaggle/train_images'</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">'spectrograms-birdclef-2023'</span>, force<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>, upload<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="va" style="color: #111111;
-background-color: null;
-font-style: inherit;">True</span>)</span></code></pre></div></div>
-</div>
-<p>And we can verify our dataset has been created by having a look at the generated metadata file.</p>
-<div id="82da7371" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;papermill&quot;,&quot;value&quot;:{&quot;duration&quot;:0.032864,&quot;end_time&quot;:&quot;2023-04-05T11:16:30.600152&quot;,&quot;exception&quot;:false,&quot;start_time&quot;:&quot;2023-04-05T11:16:30.567288&quot;,&quot;status&quot;:&quot;completed&quot;}}" data-tags="[]" data-execution_count="28">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">if</span> <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">not</span> iskaggle:</span>
-<span id="cb46-2">    <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">!</span> cat <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>kaggle<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>train_images<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span>dataset<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>metadata.json</span></code></pre></div></div>
-</div>
-<p>From here, we can go directly to the dataset page on Kaggle and fill out the rest of the details.</p>
-</section>
-<section id="and-there-you-have-it" class="level2">
-<h2 class="anchored" data-anchor-id="and-there-you-have-it">And there you have it!</h2>
-<p>In summary, you saw how to: * Generate spectrogram images from audio files using torchaudio and fastai * How to cut audio tracks * And how to create and push a dataset directly on Kaggle</p>
-<p>You can view the dataset that was generated from this notebook <a href="https://www.kaggle.com/datasets/forbo7/spectrograms-birdclef-2023">here</a>.</p>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Computer Vision</category>
-  <category>Data</category>
-  <category>PyTorch</category>
-  <guid>https://forbo7.github.io/forblog/posts/10_how_to_convert_audio_to_spectrogram_images.html</guid>
-  <pubDate>Wed, 05 Apr 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/10_how_to_convert_audio_to_spectrogram_images/thumbnail.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
