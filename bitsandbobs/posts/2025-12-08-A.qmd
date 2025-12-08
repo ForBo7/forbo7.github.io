@@ -1,0 +1,11 @@
+---
+title: Interesting Bits from AoC 2025 Day 1
+description: The dictionary accumulates modulating integers.s
+date: 2025-12-08
+categories: [Programming, Python, Advent of Code, Mathematics]
+---
+
+- Modulo division can be a way to loop through a list of numbers without needing a `for` loop. For examples, using `%100` to rotate through a list of numbers from 0-99.
+- Integer division can be used to check the number of times a list of numbers loops through a certain number, without needing a `for` loop. For example, using `//100` to count the number of times 0 has been looped through in a list of numbers from 0-99.
+- Use `itertools.accumulate` to perfom accumulation on a list of numbers
+- Dictionaries, such as `{'L':-1, 'R':1}`, can be used to replace `if/elif` blocks
