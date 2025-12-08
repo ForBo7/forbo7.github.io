@@ -15,7 +15,32 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Tue, 02 Dec 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 08 Dec 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Interesting Bits from AoC 2025 Day 1</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-12-08-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<ul>
+<li>Modulo division can be a way to loop through a list of numbers without needing a <code>for</code> loop. For examples, using <code>%100</code> to rotate through a list of numbers from 0-99.</li>
+<li>Integer division can be used to check the number of times a list of numbers loops through a certain number, without needing a <code>for</code> loop. For example, using <code>//100</code> to count the number of times 0 has been looped through in a list of numbers from 0-99.</li>
+<li>Use <code>itertools.accumulate</code> to perfom accumulation on a list of numbers</li>
+<li>Dictionaries, such as <code>{'L':-1, 'R':1}</code>, can be used to replace <code>if/elif</code> blocks</li>
+</ul>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Programming</category>
+  <category>Python</category>
+  <category>Advent of Code</category>
+  <category>Mathematics</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-12-08-A.html</guid>
+  <pubDate>Mon, 08 Dec 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>The Intracices of the Python Modulo Operator</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-12-02-A.html</link>
