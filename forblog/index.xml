@@ -532,7 +532,7 @@ font-style: inherit;">=</span>new_o)</span></code></pre></div></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>This notebook is a remix of <a href="https://www.kaggle.com/code/jhoward/is-it-a-bird-creating-a-model-from-your-own-data">fastai Lesson 1</a> by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a>, using the writing techniques taught in the <a href="https://solve.it.com/">SolveIt course</a>, led by Jeremy Howard and <a href="https://www.johnowhitaker.com/">Johnothan Whitaker</a>. SolveIt is also a brilliant problem-solving framework and interactive platform, that puts you in control–not the LLM.</p>
+<p>This notebook is a remix of <a href="https://www.kaggle.com/code/jhoward/is-it-a-bird-creating-a-model-from-your-own-data">fastai Lesson 1’s ‘Is it a Bird’ notebook</a> by <a href="https://solve.it.com/#im-jeremy-howard-from-fastai">Jeremy Howard</a>, as a way to practice the writing techniques taught in the <a href="https://solve.it.com/">SolveIt course</a>, led by Jeremy Howard and <a href="https://www.johnowhitaker.com/">Johnothan Whitaker</a>. SolveIt is also a brilliant problem-solving framework and interactive platform, that puts you in control–not the LLM.</p>
 </div>
 </div>
 </div>
