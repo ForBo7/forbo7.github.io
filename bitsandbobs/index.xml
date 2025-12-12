@@ -15,7 +15,30 @@
 <link>https://forbo7.github.io/bitsandbobs/</link>
 </image>
 <generator>quarto-1.8.26</generator>
-<lastBuildDate>Mon, 08 Dec 2025 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 12 Dec 2025 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>GET vs POST Requests</title>
+  <link>https://forbo7.github.io/bitsandbobs/posts/2025-12-11-A.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<ul>
+<li>GET/POST deal only with requests, not responses</li>
+<li>Think of the browser requesting the server</li>
+<li>GET reads the state of the server</li>
+<li>POST can modify the state of the server</li>
+<li>The response of GET/POST is all the same: they both can return HTML and modify a webpage</li>
+</ul>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Web Development</category>
+  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-12-11-A.html</guid>
+  <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Interesting Bits from AoC 2025 Day 1</title>
   <link>https://forbo7.github.io/bitsandbobs/posts/2025-12-08-A.html</link>
@@ -1043,25 +1066,6 @@ font-style: inherit;">fi</span></span></code></pre></div></div>
   <category>Mandarin</category>
   <guid>https://forbo7.github.io/bitsandbobs/posts/2025-01-14-A.html</guid>
   <pubDate>Tue, 14 Jan 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>没几个</title>
-  <link>https://forbo7.github.io/bitsandbobs/posts/2025-01-02-A.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>没几个 is a way of saying a “very few” of something, rather than “not few”.</p>
-<p>我认识的人很多，但没几个好朋友。</p>
-<p>From the <a href="https://immersivechinese.com/">Immersive Chinese App</a>.</p>
-
-
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Mandarin</category>
-  <guid>https://forbo7.github.io/bitsandbobs/posts/2025-01-02-A.html</guid>
-  <pubDate>Thu, 02 Jan 2025 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

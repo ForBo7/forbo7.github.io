@@ -567,179 +567,557 @@
     "text": "Here you can experience my various ventures into learning, as well as read about other various useful tid-bits.\n\nSpecial thanks to Shayan Naqvi for helping me manage my blog.\n\n\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nTranslating SolveIt Dialogues\n\n\nMoving between Languages\n\n\nDirectly editing SolveIt Dialogues using dialoghelper\n\n\n\n\n\n07 December 2025\n\n\nSalman Naqvi\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nLet’s build an AI model\n\n\nUsing AI, fast\n\n\nMiddle school maths is all you need to get started\n\n\n\n\n\n27 November 2025\n\n\nSalman Naqvi\n\n7 min\n\n\n\n\n\n\n\n\n\n\n\nCreating Your Own LLM Agent\n\n\n\n\n\nDemystifying agents so you can create your own from scratch. It’s simpler than you think.\n\n\n\n\n\n24 November 2025\n\n\nSalman Naqvi\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nPulling Back the Curtain on VLM Attention\n\n\nUnderstanding LLM Attention and Vision Encoder Attention\n\n\nA LLM narrates our conversation.\n\n\n\n\n\n04 August 2025\n\n\nSalman Naqvi\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\nGetting General Purpose Robots by Decomposing Problems and Working with Data\n\n\nroboOS®, powered by roboBrain™\n\n\nWhy these Robo series of papers are cold drink in a desert of hobbled pipelines\n\n\n\n\n\n24 July 2025\n\n\nSalman Naqvi\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\nCurrent Ideas in Spatial Understanding\n\n\nWhat is good, what is not?\n\n\nA collated set of current ideas.\n\n\n\n\n\n14 July 2025\n\n\nSalman Naqvi\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nThe State of Pose Estimation\n\n\nWhat pose is pose estimation in?\n\n\nMy thoughts on pose estimation, and the wider field of general purpose robotics, as a newbie to this field.\n\n\n\n\n\n10 July 2025\n\n\nSalman Naqvi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\n中文里的一些基本数学术语\n\n\n\n\n\nSome basic mathematical expressions in Chinese.\n\n\n\n\n\n08 June 2025\n\n\nSalman Naqvi\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nHow Deepseek R1 was trained.\n\n\nCapturing the Depth\n\n\nThe training of R1 in a nutshell.\n\n\n\n\n\n25 February 2025\n\n\nSalman Naqvi\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\nWhat I Learned during my Second and Third Internships\n\n\nYou Learn by Doing\n\n\nBrief summaries of various things I learned.\n\n\n\n\n\n24 September 2024\n\n\nSalman Naqvi\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nImplementing a Neural Network from Scratch\n\n\nThe DIY Guide to Digital Brain Building\n\n\nFirst I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.\n\n\n\n\n\n26 May 2024\n\n\nSalman Naqvi\n\n18 min\n\n\n\n\n\n\n\n\n\n\n\nA Brief Token on Tokenizers\n\n\nThis limited time DLC post costs only 499 tokens to unlock.\n\n\nTokenizers in a high-level nutshell.\n\n\n\n\n\n24 January 2024\n\n\nSalman Naqvi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nBackpropagation Explained using English Words*\n\n\nPropagating you all way the from the back.\n\n\n*Most words are in English.\n\n\n\n\n\n07 August 2023\n\n\nSalman Naqvi\n\n12 min\n\n\n\n\n\n\n\n\n\n\n\nImplementing and Optimizing Meanshift Clustering\n\n\nThis post includes a cool animation.\n\n\nA guide to grouping data together — fast.\n\n\n\n\n\n21 June 2023\n\n\nSalman Naqvi\n\n7 min\n\n\n\n\n\n\n\n\n\n\n\nIntuitively Approaching Einstein Summation Notation\n\n\nPutting it in an einsum-ple manner.\n\n\nAn alternative way to write matrix operations.\n\n\n\n\n\n06 June 2023\n\n\nSalman Naqvi\n\n10 min\n\n\n\n\n\n\n\n\n\n\n\n(Un)successfully Implementing DiffEdit\n\n\nThe (Un)expected Difficulties of Editing\n\n\nAn attempt at implementing the DiffEdit paper.\n\n\n\n\n\n29 May 2023\n\n\nSalman Naqvi\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nIterators and Generators\n\n\nIteratively Generating Iterative Generators\n\n\nIterators and generators shown by example.\n\n\n\n\n\n03 May 2023\n\n\nSalman Naqvi\n\n1 min\n\n\n\n\n\n\n\n\n\n\n\nImplementing Stable Diffusion From Its Components\n\n\nCreating a Diffuser that Diffuses Stable-y\n\n\nImplementing stable diffusion from the 🤗 🧨 library.\n\n\n\n\n\n28 April 2023\n\n\nSalman Naqvi\n\n7 min\n\n\n\n\n\n\n\n\n\n\n\nMy Musings Through Stable Diffusion\n\n\nDiffusing the Musings\n\n\nExploring the various knobs and dials of stable diffusion.\n\n\n\n\n\n13 April 2023\n\n\nSalman Naqvi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nStable Diffusion, Summarized\n\n\nTaking a Look at how Diffusers Dream\n\n\nA concise, high level overview on the mechanisms of stable diffusion.\n\n\n\n\n\n13 April 2023\n\n\nSalman Naqvi\n\n8 min\n\n\n\n\n\n\n\n\n\n\n\nHow to Convert Audio to Spectrogram Images\n\n\nVisualizing Sound\n\n\nA no nonsense guide to creating spectrograms from audio with PyTorch torchaudio.\n\n\n\n\n\n05 April 2023\n\n\nSalman Naqvi\n\n5 min\n\n\n\n\n\n\n\n\n\n\n\nTransformers, Simply Explained\n\n\nAutobots or Decepticons?\n\n\nAll transformers really do is fill in the blanks and autocomplete.\n\n\n\n\n\n28 February 2023\n\n\nSalman Naqvi\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nA No Nonsense Guide on how to use an M-Series Mac GPU with PyTorch\n\n\nM-Series Macs is better than saying M1/M2 Macs\n\n\nSqueezing out that extra performance.\n\n\n\n\n\n26 January 2023\n\n\nSalman Naqvi\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nAdding Subscriptions to a Quarto Site\n\n\nSubscribable Subscriptions\n\n\nA no nonsense, to the point guide to implementing subscriptions in your Quarto site.\n\n\n\n\n\n23 December 2022\n\n\nIsaac Flath, Salman Naqvi\n\n7 min\n\n\n\n\n\n\n\n\n\n\n\nAI in a Nutshell\n\n\nThis nutshell contains very little math!\n\n\nAI models are much, much simpler than you think.\n\n\n\n\n\n04 October 2022\n\n\nSalman Naqvi\n\n9 min\n\n\n\n\n\n\n\n\n\n\n\nDetecting Floods for Disaster Relief\n\n\nHow good are you at detecting floods?\n\n\nA rundown of the creation of my flood classifier.\n\n\n\n\n\n12 September 2022\n\n\nSalman Naqvi\n\n4 min\n\n\n\n\n\n\n\n\n\n\n\nData Quality is Important | Car Classifier\n\n\nClassy Cars\n\n\nMost of the time, data matters more than the model.\n\n\n\n\n\n04 June 2022\n\n\nSalman Naqvi\n\n3 min\n\n\n\n\n\n\n\n\n\n\n\nA No Nonsense Guide to Reading a Confusion Matrix\n\n\nAre you confused yet?\n\n\nA straight to the point guide about reading a confusion matrix.\n\n\n\n\n\n03 June 2022\n\n\nSalman Naqvi\n\n2 min\n\n\n\n\n\n\n\n\n\n\n\nMy first AI model\n\n\nCan you bare reading through this bear classifier?\n\n\nA rundown on my first attempt at creating model.\n\n\n\n\n\n28 May 2022\n\n\nSalman Naqvi\n\n6 min\n\n\n\n\n\n\n\n\n\n\n\nHow to Approach Creating AI Models\n\n\nPutting the Drive into the Train\n\n\nThere’s more to AI than just creating models.\n\n\n\n\n\n27 May 2022\n\n\nSalman Naqvi\n\n5 min\n\n\n\n\nNo matching items\n\n  \n\n\n\nLoading…\n\n\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html",
-    "href": "bitsandbobs/posts/2025-07-15-B.html",
-    "title": "Nifty Shell Tools",
+    "objectID": "bitsandbobs/posts/2025-06-03-A.html",
+    "href": "bitsandbobs/posts/2025-06-03-A.html",
+    "title": "Cognitive Maps",
     "section": "",
-    "text": "find to find files and directories, and perform actions on them\nfd, an alternative to find that provides abstractions"
+    "text": "In biology, cognitive maps are what provide us with spatial knowledge and perception. These maps are comprised of 4 cells that in conjuction provide us with a sense of spatial perception: place cells, grid cells, direction cells, and boundary cells. Place cells let us know when objects in a given location. Grid cells provide a coordinate-like system for mapping the environment.\nIn the field of AI, one of the most common implementations of cognitive maps is akin to an embedding specialized for space. Each row is an object and each column is a location in a given space. Thus, a corresponding cell tells us whether a given object is at a given location.\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-searching-tools",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#file-searching-tools",
-    "title": "Nifty Shell Tools",
+    "objectID": "bitsandbobs/posts/2025-06-21-A.html",
+    "href": "bitsandbobs/posts/2025-06-21-A.html",
+    "title": "Terminal know-how.",
     "section": "",
-    "text": "find to find files and directories, and perform actions on them\nfd, an alternative to find that provides abstractions"
+    "text": "$PATH outputs the paths of all programs that can be executed directly by the name of the program. That is, it’s not needed to type the fully path of the program every time.\nwhich lets you know which path is in use.\nShift, rename, copy, and delete files with mv, cp, rv, and rm.\nStuck? Run man with the program name.\nPass data between files and programs with &gt; and &lt;.\nPass data between programs with |.\nRemember cd - and cd ~.\nUse chmod to change file permissions.\nUse touch to create files, and change certain file metadata.\nUse cat to view file contents, and concatenate files.\n!# (shebang) calls for bash scripts to be interpreted.\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#path-and-command-lookup",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#path-and-command-lookup",
-    "title": "Nifty Shell Tools",
-    "section": "Path and Command Lookup",
-    "text": "Path and Command Lookup\n\nwhich to know which path is in use"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#text-searching",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#text-searching",
-    "title": "Nifty Shell Tools",
-    "section": "Text Searching",
-    "text": "Text Searching\n\ngrep to match patterns in input text\nripgrep, an alternative to grep that filters generally unwanted files by default"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#documentation-tools",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#documentation-tools",
-    "title": "Nifty Shell Tools",
-    "section": "Documentation Tools",
-    "text": "Documentation Tools\n\nman to view the manual of a tool\ntldr, an alternative to man that provides concise and practical summaries"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-operations",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#file-operations",
-    "title": "Nifty Shell Tools",
-    "section": "File Operations",
-    "text": "File Operations\n\nchmod to change file permissions\ntouch to create files, and change certain file metadata\ncat to view file contents, and concatenate files"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#shell-history",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#shell-history",
-    "title": "Nifty Shell Tools",
-    "section": "Shell History",
-    "text": "Shell History\n\nhistory to view your shell history; alternatively, most shells will allow the same functionality with ctrl + R"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#directory-visualization",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#directory-visualization",
-    "title": "Nifty Shell Tools",
-    "section": "Directory Visualization",
-    "text": "Directory Visualization\n\ntree to visualize directories as a tree\nbroot to visualize and navigate directories in a tree-like structure"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-managers",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#file-managers",
-    "title": "Nifty Shell Tools",
-    "section": "File Managers",
-    "text": "File Managers\n\nnnn and ranger as file managers"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-B.html#shell-enhancements",
-    "href": "bitsandbobs/posts/2025-07-15-B.html#shell-enhancements",
-    "title": "Nifty Shell Tools",
-    "section": "Shell Enhancements",
-    "text": "Shell Enhancements\n\nfzf, an add-on to search based actions that introduces fuzzy matching\nzsh-autosuggestions, an add-on to zsh that introduces autosuggestions"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-01-28-A.html",
-    "href": "bitsandbobs/posts/2025-01-28-A.html",
-    "title": "Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation",
+    "objectID": "bitsandbobs/posts/2025-07-05-A.html",
+    "href": "bitsandbobs/posts/2025-07-05-A.html",
+    "title": "Shell hooks, uv, and Conda.",
     "section": "",
-    "text": "DenseMatcher is a method for generalization the “understanding” of one object to another. The best way to understand this, is to view the following images from the paper.\n\n\nIn other words, DenseMatcher computes 3D correspondences between objects.\nIt works by using SD-DINO (a combination of Stable Diffusion and DINO) to extract 2D features from different angles of the 3D asset. The features from different views are averaged, providing the feature for each vertex.\n\nHowever, as seen in the image above, the features are noisy. Therefore, the features are then refined with DiffusionNet. This is an architecture meant for meshes.\n\nAfter the features have been refined, a functional map is solved to compute correspondences.\n\nLink to paper. All images in this post are from the paper.\n\n\n\n Back to top"
+    "text": "A shell hook is a piece of shell script that is called before or after the shell displays the prompt.\nI want to use conda and uv together. Conda’s great as swithcing environments on the fly, and uv is great for speed. However, while uv pip install makes use of the current conda environment, uv sync and uv add don’t\nI came across this rc script from Benjamin Warner that sets the environment variable uv uses to allow it to work with conda.\n# Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\n\n# Run the function initially to set the variable immediately\nconda_auto_env\n\n# Hook into shell prompts\nif [[ -n \"$ZSH_VERSION\" ]]; then\n    # Ensure add-zsh-hook is available\n    autoload -Uz add-zsh-hook\n    # Avoid duplicate hooks\n    if ! [[ -v _conda_update_hook_added ]]; then\n        add-zsh-hook precmd conda_auto_env\n        _conda_update_hook_added=1\n    fi\nelif [[ -n \"$BASH_VERSION\" ]]; then\n    # Ensure PROMPT_COMMAND is updated only once\n    if [[ -z \"$PROMPT_COMMAND\" ]]; then\n        PROMPT_COMMAND=\"conda_auto_env\"\n    elif [[ \"$PROMPT_COMMAND\" != *\"conda_auto_env\"* ]]; then\n        PROMPT_COMMAND=\"conda_auto_env; $PROMPT_COMMAND\"\n    fi\nfi\nProgramming the shell is new to me, and I wanted to understand what exactly this script was doing. So after chatting with a LLM, I discovered the world of shell hooks.\nThe script begins by first settings the UV_PROJECT_ENVIRONMENT to be the path that $CONDA_PREFIX uses.\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\nThen, a precmd shell hook is created. So the moment before a new prompt appears in the shell, conda_auto_env is run to set the uv environment to be the same as the conda environment.\n# Ensure add-zsh-hook is available\nautoload -Uz add-zsh-hook\n# Avoid duplicate hooks\nif ! [[ -v _conda_update_hook_added ]]; then\n    add-zsh-hook precmd conda_auto_env\n    _conda_update_hook_added=1\nfi\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-05-11-A.html",
-    "href": "bitsandbobs/posts/2025-05-11-A.html",
-    "title": "春节期间怎么祝福朋友",
+    "objectID": "bitsandbobs/posts/2025-01-02-A.html",
+    "href": "bitsandbobs/posts/2025-01-02-A.html",
+    "title": "没几个",
     "section": "",
-    "text": "见到了朋友\n\n新年好\n春节好\n\n\n\n去某个长辈家里\n\n给您拜年了\n\n\n\n大年/正月初五时\n\n祝你财源广进\n\n\n\n去吃饭买东西\n\n对老板说，“祝你生意兴隆”\n\n\n\n如果不知道\n\n“祝你 X 年大吉”，X 就是年份\n\n\n\n\n\n Back to top"
+    "text": "没几个 is a way of saying a “very few” of something, rather than “not few”.\n我认识的人很多，但没几个好朋友。\nFrom the Immersive Chinese App.\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-14-A.html",
-    "href": "bitsandbobs/posts/2025-01-14-A.html",
-    "title": "小和年轻",
+    "objectID": "bitsandbobs/posts/2025-04-28-A.html",
+    "href": "bitsandbobs/posts/2025-04-28-A.html",
+    "title": "饭后百步走，活到九十九",
     "section": "",
-    "text": "小 can indicate whether one is young or old. For example, 她有一个小孩儿. However, you have to be careful when using 年轻, as it carries the connotation of being the opposite of old. If you’re saying you’re younger than someone, and you use 年轻, it also implies that the other person is old. 小 does not carry this connotation.\nFrom the Chinese Grammar Wiki (including the example sentence)..\n\n\n\n Back to top"
+    "text": "Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-12-08-A.html",
-    "href": "bitsandbobs/posts/2025-12-08-A.html",
-    "title": "Interesting Bits from AoC 2025 Day 1",
+    "objectID": "bitsandbobs/posts/2025-02-13-A.html",
+    "href": "bitsandbobs/posts/2025-02-13-A.html",
+    "title": "Deepseek R1 in 2 bullets",
     "section": "",
-    "text": "Modulo division can be a way to loop through a list of numbers without needing a for loop. For examples, using %100 to rotate through a list of numbers from 0-99.\nInteger division can be used to check the number of times a list of numbers loops through a certain number, without needing a for loop. For example, using //100 to count the number of times 0 has been looped through in a list of numbers from 0-99.\nUse itertools.accumulate to perfom accumulation on a list of numbers\nDictionaries, such as {'L':-1, 'R':1}, can be used to replace if/elif blocks\n\n\n\n\n Back to top"
+    "text": "Am currently reading through the research paper. From my current understanding:\n\nR1-Zero is pure RL, with GRPO as the policy\nR1 is unpure RL, with GRPO as the policy, with some SFT in the form of cold start data, and further refinement stages\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-15-A.html",
-    "href": "bitsandbobs/posts/2025-07-15-A.html",
-    "title": "Nuances in Shell Scripting",
+    "objectID": "bitsandbobs/posts/2025-12-02-A.html",
+    "href": "bitsandbobs/posts/2025-12-02-A.html",
+    "title": "The Intracices of the Python Modulo Operator",
     "section": "",
-    "text": "Variables are denoted by $\nfoo = bar fails since spaces denote arguments\necho '$foo' outputs $foo\necho \"$foo\" outputs bar"
+    "text": "Divisor larger than dividend:\n\n5%2=1\n158%100=58\n\nDivisor smaller than dividend:\n\n2%5=2\n100%158=100\n\nNegative divisor (in Python, the remainder must always be positive):\n\n-18%100=82\n-188%100=100\n\nHandy template expression to use: divisor = ? * dividend + remainder, where ? is the number of times the dividend fits into the divisor. - 158%100: 158 = ? * 100 + remainder - -18%100: -18 = ? * 100 + remainder - In Python, the remainder must always be positive. Thus, ? in this case is -1.\nHow to read modulo expressions in Chinese: - 158%100: 158模100 或 158对100取模\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-15-A.html#variables",
-    "href": "bitsandbobs/posts/2025-07-15-A.html#variables",
-    "title": "Nuances in Shell Scripting",
+    "objectID": "bitsandbobs/posts/2025-05-01-A.html",
+    "href": "bitsandbobs/posts/2025-05-01-A.html",
+    "title": "茶好客常来",
     "section": "",
-    "text": "Variables are denoted by $\nfoo = bar fails since spaces denote arguments\necho '$foo' outputs $foo\necho \"$foo\" outputs bar"
+    "text": "Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-15-A.html#reserved-variables",
-    "href": "bitsandbobs/posts/2025-07-15-A.html#reserved-variables",
-    "title": "Nuances in Shell Scripting",
-    "section": "Reserved Variables",
-    "text": "Reserved Variables\n\nReserve variables include, but are not limited to:\n\n$0: name of the script\n$1 to $9: arguments passed to the script\n\n$#: number of arguments passed to the script\n$@: all arguments passed to the script\n$?: exit status of the last command\n$_: last argument of the previous command; can also be accessed by Esc + . or alt + .\n$$: process ID (pid) of the current script\n!!: rerun the entire last command"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-A.html#command-and-process-substitutions",
-    "href": "bitsandbobs/posts/2025-07-15-A.html#command-and-process-substitutions",
-    "title": "Nuances in Shell Scripting",
-    "section": "Command and Process Substitutions",
-    "text": "Command and Process Substitutions\n\nCommand/process substitutions are like f-strings in Python\nDifference between command and process substitution is that the latter will place the output in a temporary file\nCommand substitution: $(command)\nProcess substitution: &lt;(command)"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-A.html#comparisons-and-brace-expansions",
-    "href": "bitsandbobs/posts/2025-07-15-A.html#comparisons-and-brace-expansions",
-    "title": "Nuances in Shell Scripting",
-    "section": "Comparisons and Brace Expansions",
-    "text": "Comparisons and Brace Expansions\n\nWhen doing comparisons in bash, use [[ ]] rather than [ ]; apparently, chances of mistakes are lower this way\nUse {} for common substrings in commands\n\nconvert image.{png,jpg}\ncp /path/to/project/{foo,bar,baz}.sh /newpath\nmv *{.py,.sh} folder\ntouch {foo,bar}/{a..h}"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-07-15-A.html#functions-vs-scripts",
-    "href": "bitsandbobs/posts/2025-07-15-A.html#functions-vs-scripts",
-    "title": "Nuances in Shell Scripting",
-    "section": "Functions vs Scripts",
-    "text": "Functions vs Scripts\n\nFunctions are executed in the current environment, whereas scripts aren’t\nThus, functions can modify environment variables whereas scripts can’t\nScripts can only access environment variables that are exported with export"
-  },
-  {
-    "objectID": "bitsandbobs/posts/2025-04-03-A.html",
-    "href": "bitsandbobs/posts/2025-04-03-A.html",
-    "title": "鱼与熊掌",
+    "objectID": "bitsandbobs/posts/2025-01-24-A.html",
+    "href": "bitsandbobs/posts/2025-01-24-A.html",
+    "title": "Retrieval Augmented Generation in a nutshell.",
     "section": "",
-    "text": "Full version: 鱼与熊掌不可兼得.\nIn other words, you can’t have the fish and the bear’s paw too.\n\n\n\n Back to top"
+    "text": "RAG is simply a bunch of cosine similarity checks performed with the user’s query and the contexts provided to the LLM. This allows the LLM to determine which contexts are most useful for the LLM to answer the user’s query.\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-23-A.html",
-    "href": "bitsandbobs/posts/2025-01-23-A.html",
-    "title": "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces",
+    "objectID": "bitsandbobs/posts/2025-02-18-A.html",
+    "href": "bitsandbobs/posts/2025-02-18-A.html",
+    "title": "Seeking Deep Thoughts",
     "section": "",
-    "text": "This paper tackles the issue that is the lack of spatial understanding and spatial reasoning that MLLM/VLMs.\nIn this paper, the authors created a benchmark for spatial reasoning, consisting of over 5000 QnA pairs from 288 indoor videos. A variety of tasks are covered, including configurational (e.g,. object count, route planning), measurement estimation (e.g., room size), and spatiotempral reasoning (e.g., appearance order). 79% accuracy on the benchmark is needed to reach human level awareness. The authors found that their MLLM could only reach 49%.\nThe resulting analysis from the paper shows that 71% of errors stem from spatial reasoning, rather than perception or language understanding. By generating spatial layout (cognitive maps), accuracy on distance related tasks improved by 10%. This outperforms linguistic prompting techniques such as CoT. In fact, CoT degraded performance on the benchmark.\nIt was also found that MLLMs have strong local spatial awareness, but struggle with global awareness.\nWeaknesses in the study include reliance on 3D datasets that may contain annotation errors, video processing and langauge model evaluation being resource intensive, and the study focusing on indoor scenes and not outdoor scenes.\nFuture directions encourage research into hybrid models that are both language and spatial memory, self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\nLink to paper.\n\n\n\n\n\n\nNoteDeepseek R1 Summary\n\n\n\n\n\nStructured Summary of “Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces”\n\nContextual Overview\n\nResearch Question: Can Multimodal Large Language Models (MLLMs) exhibit human-like visual-spatial intelligence (VSI) when reasoning about 3D spaces from videos?\n\nObjective: Develop a benchmark (VSI-Bench) to evaluate MLLMs’ ability to perceive, remember, and reason about spatial relationships in real-world indoor environments.\n\nDomain: Multimodal AI, spatial reasoning, video understanding.\n\nMotivation: Visual-spatial intelligence is critical for robotics, AR/VR, and autonomous systems, but existing MLLM benchmarks focus on 2D image/text understanding. This work addresses the gap in evaluating 3D spatial reasoning from video input.\n\n\n\n\nKey Contributions\n\nVSI-Bench: A novel benchmark with 5,000+ QA pairs derived from 288 real indoor videos (from ScanNet, ScanNet++, ARKitScenes). Tasks include configurational (e.g., object count, route planning), measurement estimation (e.g., room size), and spatiotemporal reasoning (e.g., appearance order).\n\nSpatial Reasoning as Bottleneck: Analysis shows 71% of errors stem from spatial reasoning (e.g., egocentric-allocentric transformations), not perception or language understanding.\n\nCognitive Maps Enhance Performance: Explicitly generating spatial layouts (cognitive maps) improves MLLMs’ accuracy on relative distance tasks by 10%, outperforming linguistic prompting techniques like Chain-of-Thought.\n\nFailure of Linguistic Reasoning: Prevailing methods (CoT, self-consistency, Tree-of-Thoughts) degraded performance on VSI-Bench, highlighting the distinct challenges of spatial reasoning.\n\nLocal vs. Global Spatial Models: MLLMs build strong local spatial awareness (64% accuracy for adjacent objects) but struggle with global consistency.\n\n\n\n\nMethodology Deep Dive\n\nData/Resources:\n\nVideos from ScanNet (24 FPS), ScanNet++, ARKitScenes (30 FPS), standardized to 640×480 resolution.\n\nQA pairs auto-generated using templates and human annotation (for route planning).\n\n\nCore Techniques:\n\nUnified Meta-Information: Structured annotations for object counts, bounding boxes, room size, and spatial relationships.\n\nEvaluation Metrics: Accuracy (for multiple-choice), Mean Relative Accuracy (for numerical answers).\n\nCognitive Map Generation: Prompting MLLMs to output object positions on a 10×10 grid.\n\n\nValidation:\n\n15 MLLMs tested, including GPT-4o, Gemini-1.5 Pro, and open-source models (LLaVA variants).\n\nHuman baseline: 79% accuracy vs. Gemini-1.5 Pro (45.4%).\n\nBlind evaluation confirmed video input is critical (performance drops to chance level without it).\n\n\n\n\n\nStrengths and Weaknesses\n\nStrengths:\n\nComprehensive Benchmark: High-quality, diverse tasks with iterative human review.\n\nNovel Insights: Identifies spatial reasoning as the key bottleneck and demonstrates cognitive maps’ utility.\n\nReproducibility: Public code, metrics, and standardized evaluation protocols.\n\n\nWeaknesses:\n\nDataset Bias: Relies on existing 3D datasets, which may inherit annotation errors.\n\nCompute Demands: Video processing and large model evaluation are resource-intensive.\n\nLimited Generalization: Focus on indoor scenes; outdoor/embodied settings unexplored.\n\n\n\n\n\nRelevance to the Field\n\nAdvances: Establishes a foundation for evaluating and improving MLLMs’ spatial reasoning, crucial for embodied AI (e.g., robots, autonomous navigation).\n\nContrast with Prior Work: Unlike image-based or text-only spatial benchmarks, VSI-Bench uses video to mirror real-world observation.\n\nFuture Directions: Encourages research into hybrid models (language + spatial memory), self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\n\n\n\n\nKey Takeaways\n\nMLLMs lag behind humans in visual-spatial intelligence (45% vs. 79% accuracy) but show emerging capabilities.\n\nSpatial reasoning—not perception or language—is the primary challenge for MLLMs.\n\nCognitive maps improve spatial reasoning, suggesting a path toward better world modeling.\n\nLinguistic prompting (CoT, etc.) fails for spatial tasks, demanding new techniques tailored to visuospatial reasoning.\n\nLocal spatial awareness exists in MLLMs, but global consistency remains elusive.\n\n\nNon-Technical Insights for Decision-Makers:\n- VSI-Bench is a critical tool for developers aiming to build MLLMs for real-world navigation or AR/VR.\n- Spatial reasoning enhancements (e.g., cognitive maps) could bridge the gap between MLLMs and human-like spatial understanding.\n- Open-source models (e.g., LLaVA-NeXT-Video-72B) are competitive with closed-source counterparts, offering cost-effective alternatives.\nLet me know if you’d like to dive deeper into specific sections!\n\n\n\n\n\n\n\n Back to top"
+    "text": "I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:\n\nR1 is successful simply because of the training process\nDeepseek Math is worked really well because of data quality\nGRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)\n\nTakeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-27-A.html",
-    "href": "bitsandbobs/posts/2025-01-27-A.html",
-    "title": "不 vs 没",
+    "objectID": "bitsandbobs/index.html",
+    "href": "bitsandbobs/index.html",
+    "title": "These are bits and bobs.",
     "section": "",
-    "text": "In a nutshell.\n不: - Negates present and future - Negates habitual actions and adjectives\n没: - Negates past - Negates something that hasn’t happened\n\n\n\n Back to top"
+    "text": "Bits and bobs I learned along the way. Maybe you'll find them useful too.\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nGET vs POST Requests\n\n\nDo you get what you’re posting?\n\n\n12 December 2025\n\n\n\n\n\n\nInteresting Bits from AoC 2025 Day 1\n\n\nThe dictionary accumulates modulating integers.s\n\n\n08 December 2025\n\n\n\n\n\n\nThe Intracices of the Python Modulo Operator\n\n\nModulating the Modulator\n\n\n02 December 2025\n\n\n\n\n\n\nNifty Shell Tools\n\n\nPocket tools to keep in your pocket.\n\n\n15 July 2025\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\n15 July 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\n05 July 2025\n\n\n\n\n\n\nRetrieval Augmented Generation in a nutshell.\n\n\nDon’t let jargon fool you.\n\n\n24 June 2025\n\n\n\n\n\n\nTerminal know-how.\n\n\nKnow the basics of manipulating your shell.\n\n\n20 June 2025\n\n\n\n\n\n\nCognitive Maps\n\n\nCognitive maps in the context of biology and AI.\n\n\n03 June 2025\n\n\n\n\n\n\n春节期间怎么祝福朋友\n\n\nHow to greet others during the Spring Festival.\n\n\n11 May 2025\n\n\n\n\n\n\n茶好客常来\n\n\n只要东西好，顾客就会喜欢。\n\n\n01 May 2025\n\n\n\n\n\n\n饭后百步走，活到九十九\n\n\nA walk after dinner makes one live to 99.\n\n\n28 April 2025\n\n\n\n\n\n\n鱼与熊掌\n\n\nYou can’t have your cake and eat it too.\n\n\n03 April 2025\n\n\n\n\n\n\nSeeking Deep Thoughts\n\n\nThoughts that came to mind as I’m reading the Deepseek Maths paper\n\n\n18 February 2025\n\n\n\n\n\n\nDeepseek R1 in 2 bullets\n\n\nDeepseek R1 explained in a literal walnut shell\n\n\n13 February 2025\n\n\n\n\n\n\nRobo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation\n\n\nTransfering the perception of an object, to other objects.\n\n\n28 January 2025\n\n\n\n\n\n\n不 vs 没\n\n\nThe age old connundrum.\n\n\n27 January 2025\n\n\n\n\n\n\nThinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces\n\n\nA new dimension to current models is needed to understand space.\n\n\n23 January 2025\n\n\n\n\n\n\nOmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints\n\n\nUsing an ensemble to overcome the lack of 3D understanding\n\n\n21 January 2025\n\n\n\n\n\n\n小和年轻\n\n\n小 and 年轻 carry different contations for age.\n\n\n14 January 2025\n\n\n\n\n\n\n没几个\n\n\nThe function of 没几个\n\n\n02 January 2025\n\n\n\n\n\n\nNo matching items\n\n  \n\n\n\nLoading…\n\n\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-21-A.html",
-    "href": "bitsandbobs/posts/2025-01-21-A.html",
-    "title": "OmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "Salman Naqvi",
     "section": "",
-    "text": "OmniManip is a hot new paper from Agibot and Peking University. It’s about zero shot natural language robotic manipulation tasks. A current issue with this task, and current approaches the utilize VLMs, is that VLMs lack 3D spatial understanding. They’re only trained on 2D images and video after all.\nOmniManip utilizes an ensemble of models to achieve this goal. This is how it works at a high level.\nA segmentation model is used to extract relevant objects from the robot’s vision. A VLM then filters out task relevant objects, and also breaks down the input task (input as text) into multiple stages.\nNext, for each stage of the task, interaction primitives and their spatial constraints are extracted. A single view 3D generation model is used to generate meshes for all objects relevant to the task. A pose estimation model is then used to canonicalize the objects. Interaction primitives and their corresponding constraints relevant for the task are then identified by the VLM. Along the way, a LLM is used to grade various primitives and constriants.\nModels hallucinate (in particular, the VLM). The world is not static. To overcome this, a closed loop system is introduced; a self correction mechanism based on resampling, rendering and checking. This method uses realtime feedback form the VLM, which is used to detect and then correct interaction errors. A pose tracking algorithm is also used to continuously update the poses of all relevant objects, allowing the robot to be dynamically adjusted.\nLink to paper.\n\n\n\n Back to top"
+    "text": "An explorer who’s lived in 4 countries and traveled to 15. A master of 3 different language scripts. An enthusiast of science and technology, proudly wearing the badge of “sci-tech geek”. A curious soul unraveling the realms of AI, intricacies of 3D computer graphics, fueled by an insatiable passion for learning. Onward and upward, with tenacity and sincerity.\n\n\n\nProjects // 有趣项目Experience // 经验Skills // 技能扫一扫\n\n\n\nTrained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.\nReimplemented the DiffEdit research paper. Edit portions of an image via text only.\nReimplementing the PyTorch library myself.\nMaking back propagation an inherently easy topic to grasp.\nOptimizing algorithms to run quicker on a GPU.\n\n\n\nEmbodied AI Researcher | Oct. 2024 – Current\nMultimodal Intelligence Laboratory, The Education University of Hong Kong\n\nEmbodied AI\nGeneral purpose robot manipulation and spatial intelligence\nUnder Dr. Fu Hong\n\nAI Engineer | Jul. 2024 – Aug.2024\nKeweya Education Technology Limited – HKSTP Incubatee\n\nProject lead\nStudying, implementing, customizing diffusion models, and app development\nReview and analysis of research papers\n\nLLM Researcher | Jun. 2024 – Jul. 2024\nREADily Limited – HKSTP Incubatee\n\nProject co-lead\nIntensive continued pretraining of large language models\nResearch paper review and implementation\n\nTraining Coordinator | Mar. 2024\nKids4Kids Hong Kong\n\nVolunteer work\nWorkshop planning and video editing\n\nTeaching Assistant | Sep. 2020 – May. 2021\nBeaconhouse College Program\n\nTeaching classes\n1-1 student sessions\n\n\n\nLanguage\n\nEnglish: Native level fluency\nMandarin: Basic proficiency\nUrdu: Fluent\n\nTeaching\nI know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.\nProgramming\nI have a very particular manner and philosophy to programming. It’s expository programming: literate, exploratory, and the way it should be done. See here, here, and here. Writing code is not the focus, solving the problem at hand is.\nPython, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev\n3D Computer Graphics\nBlender\nArtificial Intelligence (fast.ai)\nSelf-learning since April 2022.\n\n\n\n\n\n\n\nOther Interesting Stuff // 其他亮点Education // 教育\n\n\nFeb. 21st 2025 – Meet Salman Naqvi: the bright spark in AI and EdTech | See what the university’s written about me!\nDec. 27, 2024 – Featured among “The EdUHK Rising Stars” | See the university’s mini documentary on me!\nJun. 12, 2024 – Study Award from Hong Kong SAR Government | Hong Kong SAR Government Scholarship Fund Reaching Out Award\nDec. 7, 2023 — Invited Speaker at the Advanced Study Institute (ASI) Online Symposium | The Education University of Hong Kong and Hong Kong Baptist University\nApr. 2023 – Nov. 2023 — Co-lead Online Study Group | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord\nMar. 17, 2023 — Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan | KUAS-E Scholarship\nFeb. 24, 2023 — Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China | EdUHK Full Entrance Scholarship\nNov. 2022 – Jun. 2023 – Grew an AI community of over 1100+ members | The Dataspace | Discord\nSep. 2022 – Mar. 2023 — Completed fast.ai Course Part 1: Practical Deep Learning for Coders\nJan. 17, 2023 — Placed in Top 12% of Contestants in Data Science Competition | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle\nSep. 2020 – May 2021 — Physics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nSep. 2020 – May 2021 — Mathematics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nJan. 2020 — Concert Marketing – Raised $8,400 | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nAug. 2019 — Received 100% Scholarship for A-Level Program | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\n2018 — Bronze Medal – Honorable Distinction Award | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan\n\n\nCurrently studying BSc (Honors) in Artificial Intelligence and Educational Technology at The Education University of Hong Kong.\nIELTS – 8.5/9.0\nMiddle School and High School – CAIE IGCSE\nPrimary and Middle School – IB Primary and Middle Years Program\n\n\n\n\n \n\n\n Back to top"
   },
   {
-    "objectID": "feedback.html",
-    "href": "feedback.html",
-    "title": "Site Feedback",
+    "objectID": "dictionary/terms/error_rate.html",
+    "href": "dictionary/terms/error_rate.html",
+    "title": "Error Rate",
     "section": "",
-    "text": "Loading…"
+    "text": "It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of incorrect predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nError rate is also 1 - accuracy.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/activation_function.html",
+    "href": "dictionary/terms/activation_function.html",
+    "title": "Activation Function",
+    "section": "",
+    "text": "If there existed no activation function, there would be no point in having individual neurons, as the entire network would become a single, big linear equation.\n\n\n\n\n\n\nNoteWith Activation Function\n\n\n\n\\(w_2 \\cdot \\text{activation}(w_1 x + b_1) + b_2\\)\n\n\n\n\n\n\n\n\nNoteWithout Activation Function\n\n\n\n\\(w_2 \\cdot (w_1 x + b_1) + b_2 = w_2 w_1 x + w_2 b_1 + b_2\\)\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/bagging.html",
+    "href": "dictionary/terms/bagging.html",
+    "title": "Bagging",
+    "section": "",
+    "text": "“with replacement” means that if a model, for example, randomly chooses row number 5, another model can also randomly choose row number 5.\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThrough this technique, each model ends up training on roughly 63% of the entire dataset.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/transformer.html",
+    "href": "dictionary/terms/transformer.html",
+    "title": "Transformer",
+    "section": "",
+    "text": "To learn more about transformers, you can read this to the point rundown.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/architecture.html",
+    "href": "dictionary/terms/architecture.html",
+    "title": "Architecture",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/sequence.html",
+    "href": "dictionary/terms/sequence.html",
+    "title": "Sequence",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/backpropagation.html",
+    "href": "dictionary/terms/backpropagation.html",
+    "title": "Backpropagation",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/sampler.html",
+    "href": "dictionary/terms/sampler.html",
+    "title": "Sampler",
+    "section": "",
+    "text": "Metaphorically speaking, if we let a dataset be a warehouse, a dataloader be a human, a batch be a crate, and the sampler be the manager, then the manager is responsible for informing the human what items to gather from the warehouse, who then puts them into crates.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/oner_classifier.html",
+    "href": "dictionary/terms/oner_classifier.html",
+    "title": "OneR Classifier",
+    "section": "",
+    "text": "Below is an example determining whether a car is fast or slow.\n\n\n\n\n\nflowchart TB\n  A([Weight &lt; 2000kg])\n  B([Car Is Fast])\n  C([Car Is Slow])\n\n  A -- Yes --&gt; B\n  A -- No --&gt; C\n\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/sample.html",
+    "href": "dictionary/terms/sample.html",
+    "title": "Sample",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/gradient_accumulation.html",
+    "href": "dictionary/terms/gradient_accumulation.html",
+    "title": "Gradient Accumulation",
+    "section": "",
+    "text": "Let’s say you want to use a batch size of 64, but the model doesn’t fit with that size on your GPU.\n\nFirst determine the largest possible batch size that can fit on your GPU. Let’s say it’s 16. It may be better to use batch sizes that are a power of 2.\nCalculate the gradients for \\(X\\) batches without updating the parameters.\n\n\\(X\\) is your desired batch size divided by the batch size you are using.\nDesired batch size is 64; batch size we are using is 16.\n\\(64 ÷ 16 = 4\\)\n\\(X\\) is 4. This is because the size of 4 batches, in this case, sums to 64.\n\nNext, sum all respective gradients — hence the term ‘gradient accumulation’.\nNow update your parameters based on these summed gradients. This will have the same effect as if you used a batch size of 64.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nUsing a smaller batch size to fit a larger model onto your GPU isn’t optimal. A smaller batch size means you would have to tweak your optimal hyperparameters, such as the learning rate. Your loss would also become less accurate since it is being calculated on a smaller group of items.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/dot_product.html",
+    "href": "dictionary/terms/dot_product.html",
+    "title": "Dot Product",
+    "section": "",
+    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/model.html",
+    "href": "dictionary/terms/model.html",
+    "title": "Model",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/dataloader.html",
+    "href": "dictionary/terms/dataloader.html",
+    "title": "Dataloader",
+    "section": "",
+    "text": "Metaphorically speaking, if we let a dataset be a warehouse, a dataloader be a human, a batch be a crate, and the sampler be the manager, then the manager is responsible for informing the human what items to gather from the warehouse, who then puts them into crates.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/optimizer.html",
+    "href": "dictionary/terms/optimizer.html",
+    "title": "Optimizer",
+    "section": "",
+    "text": "An optimizer in its most basic form looks like this.\nwith torch.no_grad(): \n  for p in model.parameters(): p -= p.grad * lr \n  model.zero_grad() \n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/embedding.html",
+    "href": "dictionary/terms/embedding.html",
+    "title": "Embedding",
+    "section": "",
+    "text": "An example of how two embeddings can be combined together is shown below.\nLet’s say we have an embedding of users, where each column represents a feature about movies. Users like certain features of movies, and a value between -1 and 1 represents this.\n\n\n\nUser\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nBilly\n-0.9\n0.3\n0.2\n0.8\n0.25\n\n\nBob\n-0.85\n1\n-0.25\n0\n0.75\n\n\nJoe\n0.9\n0.85\n0.95\n0.35\n1\n\n\n\nNow let’s say we have an embedding of movies, where each column represents a feature about movies.\n\n\n\n\n\n\n\n\n\n\n\nMovie\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nThe Lord of the Rings\n1\n-1\n1\n-0.5\n1\n\n\nCars\n-0.9\n-1\n0.8\n1\n0\n\n\nInterstellar\n0.75\n1\n0\n0\n0.3\n\n\n\nWe want to find out which movie would be the best for Billy to watch. To do so, let’s take the dot product between Billy and each of the respective movies.\n\n\n\n\n\n\nNoteBilly & The Lord of the Rings\n\n\n\n\n\n\\[\n(-0.9 \\cdot 1) + (0.3 \\cdot -1) + (0.2 \\cdot 1) + (0.8 \\cdot -0.5) + (0.25 \\cdot 1) = -1.15\n\\]\n\n\n\n\n\n\n\n\n\nNoteBilly & Cars\n\n\n\n\n\n\\[\n(-0.9 \\cdot -0.9) + (0.3 \\cdot -1) + (0.2 \\cdot 0.8) + (0.8 \\cdot 1) + (0.25 \\cdot 0) = 1.47\n\\]\n\n\n\n\n\n\n\n\n\nNoteBilly & Interstellar\n\n\n\n\n\n\\[\n(-0.9 \\cdot 0.75) + (0.3 \\cdot 1) + (0.2 \\cdot 0) + (0.8 \\cdot 0) + (0.25 \\cdot 0.3) = -0.3\n\\]\n\n\n\nWe have obtained the values \\(-1.15\\), \\(1.47\\), and \\(-0.3\\) for each of the movies respectively. From this, we can deduce that Cars (\\(1.47\\)) is probably the best movie for Billy to watch, based on his taste.\nAfter similarly calculating the dot product between Joe and each of the movies, we get the following respective values: \\(1.82\\), \\(-0.55\\), \\(1.82\\). This tells us that both The Lord of the Rings and Interstellar are equally the best movies for Joe to watch.\nAs for Bob, it would be Interstellar.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/mean_columnwise_root_mean_square_error_mcrmse.html",
+    "href": "dictionary/terms/mean_columnwise_root_mean_square_error_mcrmse.html",
+    "title": "Mean Columnwise Root Mean Squared Error (MCRMSE)",
+    "section": "",
+    "text": "Let’s say a model had to predict the velocity, acceleration, and drag force for 3 cars.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/random_forest.html",
+    "href": "dictionary/terms/random_forest.html",
+    "title": "Random Forest",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/decoder.html",
+    "href": "dictionary/terms/decoder.html",
+    "title": "Decoder (Transformers)",
+    "section": "",
+    "text": "To learn more about decoders, you can read this to the point rundown.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/ensemble.html",
+    "href": "dictionary/terms/ensemble.html",
+    "title": "Ensemble",
+    "section": "",
+    "text": "The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others’ errors.\nThere are different methods for ensembling.\n\n\n\n\n\n\nEnsembling only works when all models are independent of each other. That is, the models do not depend on one another.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/latent.html",
+    "href": "dictionary/terms/latent.html",
+    "title": "Latent (Diffusion)",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/weight_decay.html",
+    "href": "dictionary/terms/weight_decay.html",
+    "title": "Weight Decay",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/document.html",
+    "href": "dictionary/terms/document.html",
+    "title": "Document",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/accuracy.html",
+    "href": "dictionary/terms/accuracy.html",
+    "title": "Accuracy",
+    "section": "",
+    "text": "It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of correct predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nAccuracy is also 1 - error rate.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/forward_pass.html",
+    "href": "dictionary/terms/forward_pass.html",
+    "title": "Forward Pass",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/tokenization.html",
+    "href": "dictionary/terms/tokenization.html",
+    "title": "Tokenization",
+    "section": "",
+    "text": "NoteNote\n\n\n\n\n\nIf a word is too long or very uncommon, the word itself may be split. Take the word “supercalifragilisticexpialidocious” as an example. It could be split into “super”, “cali”, “fragilistic”, “expi”, “ali”, and “docious”.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/loss.html",
+    "href": "dictionary/terms/loss.html",
+    "title": "Loss",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/neuron.html",
+    "href": "dictionary/terms/neuron.html",
+    "title": "Neuron",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/linear_combination.html",
+    "href": "dictionary/terms/linear_combination.html",
+    "title": "Linear Combination",
+    "section": "",
+    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "unsubscribe.html",
+    "href": "unsubscribe.html",
+    "title": "Unsubscribe from ForBlog and App Playground Notifications",
+    "section": "",
+    "text": "Loading…\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "web_apps/apps/coming_soon.html",
+    "href": "web_apps/apps/coming_soon.html",
+    "title": "More apps coming soon…",
+    "section": "",
+    "text": "I never told you how soon…\n\n\n\nThis image was generated by Dall-E 2!\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "web_apps/apps/bear_detector.html",
+    "href": "web_apps/apps/bear_detector.html",
+    "title": "Bear Classifier",
+    "section": "",
+    "text": "This webapp was remade on Tuesday, 8 November 2022.\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ForBo7 // Salman Naqvi",
+    "section": "",
+    "text": "Onward and upward, with tenacity and sincerity.\nRead more about me here.\nAnd feel free to contact me with one of the fancy buttons below!\n\n \n  \n   \n  \n    \n     fastai Forums\n  \n  \n    \n     Twitter\n  \n  \n    \n     Artstation\n  \n  \n    \n     Email"
+  },
+  {
+    "objectID": "index.html#bits-and-bobs",
+    "href": "index.html#bits-and-bobs",
+    "title": "ForBo7 // Salman Naqvi",
+    "section": "Bits and Bobs",
+    "text": "Bits and Bobs\nClick here to explore more bits and bobs.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nGET vs POST Requests\n\n\nDo you get what you’re posting?\n\n\nDec 12, 2025\n\n\n\n\n\n\nInteresting Bits from AoC 2025 Day 1\n\n\nThe dictionary accumulates modulating integers.s\n\n\nDec 8, 2025\n\n\n\n\n\n\nThe Intracices of the Python Modulo Operator\n\n\nModulating the Modulator\n\n\nDec 2, 2025\n\n\n\n\n\n\nNifty Shell Tools\n\n\nPocket tools to keep in your pocket.\n\n\nJul 15, 2025\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\nJul 15, 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\nJul 5, 2025\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#forblog",
+    "href": "index.html#forblog",
+    "title": "ForBo7 // Salman Naqvi",
+    "section": "ForBlog",
+    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n\n\n\n\n\n\nTranslating SolveIt Dialogues\n\n\nMoving between Languages\n\n\nDirectly editing SolveIt Dialogues using dialoghelper\n\n\n\n\n\nDec 7, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s build an AI model\n\n\nUsing AI, fast\n\n\nMiddle school maths is all you need to get started\n\n\n\n\n\nNov 27, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nCreating Your Own LLM Agent\n\n\n\n\n\nDemystifying agents so you can create your own from scratch. It’s simpler than you think.\n\n\n\n\n\nNov 24, 2025\n\n\nSalman Naqvi\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "testing_page.html",
+    "href": "testing_page.html",
+    "title": "Testing Page",
+    "section": "",
+    "text": "Trying to change Quarto Version.\n\n\nForBlog\n\n\n\n\n\n\n\n\n\n\nTranslating SolveIt Dialogues\n\n\nMoving between Languages\n\n\nDirectly editing SolveIt Dialogues using dialoghelper\n\n\n\n\n\nDec 7, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s build an AI model\n\n\nUsing AI, fast\n\n\nMiddle school maths is all you need to get started\n\n\n\n\n\nNov 27, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nCreating Your Own LLM Agent\n\n\n\n\n\nDemystifying agents so you can create your own from scratch. It’s simpler than you think.\n\n\n\n\n\nNov 24, 2025\n\n\nSalman Naqvi\n\n\n\n\n\nNo matching items\n\n\n\nPlayground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "web_apps/apps/flood_detector.html",
+    "href": "web_apps/apps/flood_detector.html",
+    "title": "Flood Classifier",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "web_apps/index.html",
+    "href": "web_apps/index.html",
+    "title": "App Playground",
+    "section": "",
+    "text": "Here you can view various apps and gizmos I’ve created. Have a play through some of them let me know what you think!\nMore apps coming soon.™\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\n\nImage Classification\n\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nTuesday, 20 September 2022 | 2022-09-20\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\n\nImage Classification\n\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nSaturday, 30 April 2022 | 2022-04-30\n\n\n\n\n\n\nNo matching items\n\n\n\nLoading…"
+  },
+  {
+    "objectID": "dictionary/terms/inference.html",
+    "href": "dictionary/terms/inference.html",
+    "title": "Inference",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "href": "dictionary/terms/gradient_boosting_machine_gbm.html",
+    "title": "Gradient Boosting Machine (GBM)",
+    "section": "",
+    "text": "The first model produces a prediction.\nThe difference between this prediction and the actual value is obtained.\nThe difference is now set as the target.\nThe next model now attempts to predict this difference.\nRepeat steps 2-4 for as many models as desired.\nSum all obtained differences.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nWhile this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/metric.html",
+    "href": "dictionary/terms/metric.html",
+    "title": "Metric",
+    "section": "",
+    "text": "Examples of metrics are, but not limited to, accuracy, error rate, MAE, and MSE\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/softmax.html",
+    "href": "dictionary/terms/softmax.html",
+    "title": "Softmax",
+    "section": "",
+    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\nVehicle\nPrediction\n\n\n\n\ncar\n\\(-4.89\\)\n\n\nbus\n\\(2.60\\)\n\n\ntruck\n\\(0.59\\)\n\n\nmotorbike\n\\(-2.07\\)\n\n\nbicycle\n\\(-4.57\\)\n\n\n\nThese predictions aren’t very meaningful to us as humans. So what we can do is convert these predictions into probabilities. The steps to do this are below.\n1. Take the exponent of each prediction to base \\(e\\). So for the car category, \\(e^{-4.89} \\approx 7.52 \\cdot 10^{-3}\\).\nThe results of the calculations below are displayed with 3 significant figures.\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\n\n\n2. Sum all the calculated values.\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\n\n\n3. For each respective category, divide \\(e^{\\text{prediction}}\\) by \\(\\text{sum of} e^{\\text{prediction}}\\). This is your probability. So the probability of the vehicle in the picture being a car is\n\\[\n\\frac{7.52 \\cdot 10^{-3}}{15.4} \\approx 4.88 \\cdot 10^{-4} = 0.000488 = 0.0488 \\%\n\\]\n\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\\(\\frac{e^{\\text{prediction}}}{\\text{sum of}e^{\\text{prediction}}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\\(0.874\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\\(0.117\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nFrom the table above, it can be seen that the vehicle in the picture is most likely a bus with probability \\(87.4\\%\\).\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/backward_pass.html",
+    "href": "dictionary/terms/backward_pass.html",
+    "title": "Backward Pass",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/gradient.html",
+    "href": "dictionary/terms/gradient.html",
+    "title": "Gradient",
+    "section": "",
+    "text": "The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the learning rate.\nA positive gradient tells us that increasing the parameters will increase the loss. On the other hand, decreasing the parameters will decrease the loss.\nA negative gradient tells us that decreasing the parameters will increase the loss On the other hand, increasing the parameters will decrease the loss.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/matrix.html",
+    "href": "dictionary/terms/matrix.html",
+    "title": "Matrix",
+    "section": "",
+    "text": "The order of a matrix is row by column.\nBelow is \\(3 \\times 2\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 \\\\\n3 & 4 \\\\\n5 & 6 \\\\\n\\end{bmatrix}\n\\]\nBelow is \\(2 \\times 3\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 & 3 \\\\\n4 & 5 & 6 \\\\\n\\] \\end{bmatrix}\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/policy.html",
+    "href": "dictionary/terms/policy.html",
+    "title": "Policy (Reinforcement Learning)",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/root_mean_squared_error_rmse.html",
+    "href": "dictionary/terms/root_mean_squared_error_rmse.html",
+    "title": "Root Mean Squared Error (RMSE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nTaking the average.\nAnd finally taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\\(\\sqrt{1.25} \\approx 1.12\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.12\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MSE and RMSE is that RMSE undoes the squaring step by taking the square root.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/batch.html",
+    "href": "dictionary/terms/batch.html",
+    "title": "Batch",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/tabular_model.html",
+    "href": "dictionary/terms/tabular_model.html",
+    "title": "Tabular Model",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/encoder.html",
+    "href": "dictionary/terms/encoder.html",
+    "title": "Encoder (Transformers)",
+    "section": "",
+    "text": "To learn more about decoders, you can read this to the point rundown.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/mean_absolute_error_mae.html",
+    "href": "dictionary/terms/mean_absolute_error_mae.html",
+    "title": "Mean Absolute Error (MAE)",
+    "section": "",
+    "text": "It is calculated by: 1. First taking the difference between each respective predicted and actual value. 1. Then removing all negative signs — this is known as taking the absolute value. 1. And finally taking the average.\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\(|0|, |-2|, |0|, |1| = 0, 2, 0, 1\\)\n\\(\\frac{0 + 2 + 0 + 1}{4} = \\frac{2}{4} = 0.5\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.5\\) units off from the actual values.\nIn a nutshell, you take the mean of the absolute differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the absolute value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the absolute value, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/cognitive_map.html",
+    "href": "dictionary/terms/cognitive_map.html",
+    "title": "Cognitive Map",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/numericalization.html",
+    "href": "dictionary/terms/numericalization.html",
+    "title": "Numericalization",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/vector.html",
+    "href": "dictionary/terms/vector.html",
+    "title": "Vector",
+    "section": "",
+    "text": "The order of a vector is row by column.\nBelow is a \\(1 \\times 3\\) column vector. \\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\]\nBelow is a \\(3 \\times 1\\) row vector. \\[\n\\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}\n\\]\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "href": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
+    "title": "Root Mean Squared Logarithmic Error (RMSLE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the logarithm of all predicted values.\nTaking the logarithm of all actual values.\nThen taking the difference between each respective predicted and actual value.\nNext squaring all obtained values.\nTaking the averge.\nAnd lastly taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(\\ln(1), \\ln(2), \\ln(3), \\ln(4) \\approx 0, 0.69, 1.10, 1.39\\)\n\\(\\ln(1), \\ln(4), \\ln(3), \\ln(3) \\approx 0, 1.39, 1.10, 1.10\\)\n\\(0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29\\)\n\\((0)^2, (-0.70)^2, (0)^2, (0.29)^2 \\approx 0, 0.49, 0, 0.08\\)\n\\(\\frac{0 + 0.49 + 0 + 0.08}{4} = \\frac{0.57}{4}\\)\n\\(\\sqrt{\\frac{0.57}{4}} \\approx 0.38\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.38\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between RMSE and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/one_hot_encoding.html",
+    "href": "dictionary/terms/one_hot_encoding.html",
+    "title": "One Hot Encoding",
+    "section": "",
+    "text": "Let’s say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/rectified_linear_unit.html",
+    "href": "dictionary/terms/rectified_linear_unit.html",
+    "title": "Rectified Linear Unit (ReLU)",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/dataset.html",
+    "href": "dictionary/terms/dataset.html",
+    "title": "Dataset",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/k_fold_cross_validation.html",
+    "href": "dictionary/terms/k_fold_cross_validation.html",
+    "title": "K-Fold Cross Validation",
+    "section": "",
+    "text": "Another way to think of it is that the dataset is split into \\(K\\) pieces. Then each model is trained on a different set of \\(K-1\\) pieces.\nFor example, let’s say that the dataset is split into 5 pieces. Then each model is trained on a different set of 4 pieces.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/mean_squared_error_mse.html",
+    "href": "dictionary/terms/mean_squared_error_mse.html",
+    "title": "Mean Squared Error (MSE)",
+    "section": "",
+    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nAnd finally taking the average.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.25\\) units off from the actual values.\nIn a nutshell, you take the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/named_entity_recognition.html",
+    "href": "dictionary/terms/named_entity_recognition.html",
+    "title": "Named Entity Recognition (NER)",
+    "section": "",
+    "text": "Take the sentence “Tim went to the Moon.” as an example. The sentence would first be broken into ‘Tim’, ‘went’, ‘to’, the’, ‘Moon’. The model could then give ‘Tim’ the label of ‘person’, and ‘Moon’ the label of ‘location’.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/decision_tree.html",
+    "href": "dictionary/terms/decision_tree.html",
+    "title": "Decision Tree",
+    "section": "",
+    "text": "A split is made for each feature in the data. If the feature of a certain data sample is larger than or less than the split for that respective feature, the next appropriate split is made.\nBelow is an example determining whether a car is fast or slow.\n\n\n\n\n\nflowchart TB\n  A([Weight &lt; 2000kg])\n  B([Is Engine Powerful])\n  C([Is Windy Day])\n  D1([Car Is Fast])\n  E1([Car Is Slow])\n  D2([Car Is Fast])\n  E2([Car Is Slow])\n\n\n  A -- Yes --&gt; B\n  A -- No --&gt; C\n  B -- Yes --&gt; D1\n  B -- No --&gt; E1\n  C -- Yes --&gt; E2\n  C -- No --&gt; D2\n\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/learning_rate.html",
+    "href": "dictionary/terms/learning_rate.html",
+    "title": "Learning Rate",
+    "section": "",
+    "text": "The learning rate controls how much the gradients adjust the parameters by multiplying the learning rate and gradients together.\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nA learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.\nA learning rate that is too low can cause the training system to take a very long time to reach the optimal weights.\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/cross_entropy_loss.html",
+    "href": "dictionary/terms/cross_entropy_loss.html",
+    "title": "Cross Entropy Loss",
+    "section": "",
+    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\n\nbus\n1\n\\(2.60\\)\n\n\ntruck\n0\n\\(0.59\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\n\n\nActuals is a one hot encoded column that tells us what is the correct vehicle in the picture.\nTo convert these predictions into loss, first take the softmax of each prediction.\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nNext take the logarithm of each softmax value.\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\n\n\nMultiply the actuals with the computed logarithms.\n\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\\(\\text{Actuals} \\cdot \\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\\(0\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\\(0\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\\(0\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\\(0\\)\n\n\n\nSum the the results of the multiplications.\n\\[\n0 + -1.35 + 0 + 0 + 0 = -1.35\n\\]\nAnd there you have your loss!\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/zero_shot.html",
+    "href": "dictionary/terms/zero_shot.html",
+    "title": "Zero-shot",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/terms/tabular_data.html",
+    "href": "dictionary/terms/tabular_data.html",
+    "title": "Tabular Data",
+    "section": "",
+    "text": "Back to top"
+  },
+  {
+    "objectID": "dictionary/index.html",
+    "href": "dictionary/index.html",
+    "title": "The AI Dictionary",
+    "section": "",
+    "text": "I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.\nClick terms to view expanded definitions.\nDo let me know of any corrections and improvements, and of any terms you would like added!\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nAccuracy\n\n\nA type of metric. It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better.\n\n\n\n\n\n\n\n\n\n\nActivation Function\n\n\nA function that follows the linear function in a neuron, to introduce nonlinearity.\n\n\n\n\n\n\n\n\n\n\nArchitecture\n\n\nA model that is used as a template or a starting point for another model.\n\n\n\n\n\n\n\n\n\n\nBackpropagation\n\n\nThe name given to the algorithm that computes the gradients for the weights in a model. Note that it does not update the weights, and hence is not an optimizer\n\n\n\n\n\n\n\n\n\n\nBackward Pass\n\n\nThe pass that begins with the outputs, and ends with the gradients. Also see forward pass.\n\n\n\n\n\n\n\n\n\n\nBagging\n\n\nAn ensembling technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement.\n\n\n\n\n\n\n\n\n\n\nBatch\n\n\nA small collection of data from the dataset.\n\n\n\n\n\n\n\n\n\n\nCognitive Map\n\n\nSimply put, a specialized embedding where each row is an object and each column is a location. Thus, each cell tells us whether a given object is at a given location.\n\n\n\n\n\n\n\n\n\n\nCross Entropy Loss\n\n\nA technique for calculating the loss for categorical models with multiple categories.\n\n\n\n\n\n\n\n\n\n\nDataloader\n\n\nAn object that takes data from the dataset, and assembles them into batches. Note that this object does not decide what indices to load from, and hence is not a sampler.\n\n\n\n\n\n\n\n\n\n\nDataset\n\n\nA collection of data.\n\n\n\n\n\n\n\n\n\n\nDecision Tree\n\n\nA type of model that acts like an if-else statement.\n\n\n\n\n\n\n\n\n\n\nDecoder (Transformers)\n\n\nA component of a transformer that is used for generating text. An example is the autocomplete feature on a smartphone’s keyboard.\n\n\n\n\n\n\n\n\n\n\nDocument\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as sequence.\n\n\n\n\n\n\n\n\n\n\nDot Product\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as linear combination.\n\n\n\n\n\n\n\n\n\n\nEmbedding\n\n\nA table, or matrix, where each row represents an item and each column describes the items in some way. The real magic of embeddings happen when you combine two embeddings together in some way to obtain further information.\n\n\n\n\n\n\n\n\n\n\nEncoder (Transformers)\n\n\nA component of a transformer that is used for “understanding” text. Encoders are typically used for classifying sentences by sentiment and figuring out what parts of a sentence refers, for example, to a person or location.\n\n\n\n\n\n\n\n\n\n\nEnsemble\n\n\nA collection of models whos’ predictions are averaged to obtain the final prediction.\n\n\n\n\n\n\n\n\n\n\nError Rate\n\n\nA type of metric. It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better.\n\n\n\n\n\n\n\n\n\n\nForward Pass\n\n\nThe pass that begins with the inputs, and ends with the outputs and loss. Also see backward pass.\n\n\n\n\n\n\n\n\n\n\nGradient\n\n\nA numerical value that informs us how to adjust a parameter of the model.\n\n\n\n\n\n\n\n\n\n\nGradient Accumulation\n\n\nA technique for running or fitting large models on a not-so-powerful GPU.\n\n\n\n\n\n\n\n\n\n\nGradient Boosting Machine (GBM)\n\n\nAn ensembling technique where instead of averaging the predictions of all models, each successive model predicts the error of the previous model. The errors are then summed to obtain the final prediction.\n\n\n\n\n\n\n\n\n\n\nInference\n\n\nUsing a trained model for predictions.\n\n\n\n\n\n\n\n\n\n\nK-Fold Cross Validation\n\n\nAn ensembling technique where models are trained on a different set percent of the dataset. For example each model is trained on a different 80% of the dataset.\n\n\n\n\n\n\n\n\n\n\nLatent (Diffusion)\n\n\nA compressed image.\n\n\n\n\n\n\n\n\n\n\nLearning Rate\n\n\nA numerical value which controls how much the gradients update the parameters of a model.\n\n\n\n\n\n\n\n\n\n\nLinear Combination\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as dot product.\n\n\n\n\n\n\n\n\n\n\nLoss\n\n\nA measure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.\n\n\n\n\n\n\n\n\n\n\nMatrix\n\n\nA table of values. See also vector\n\n\n\n\n\n\n\n\n\n\nMean Absolute Error (MAE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MAE, the better.\n\n\n\n\n\n\n\n\n\n\nMean Columnwise Root Mean Squared Error (MCRMSE)\n\n\nA metric used for those tasks where multiple targets need to be predicted. This metric simply takes the average of the RMSE of each target.\n\n\n\n\n\n\n\n\n\n\nMean Squared Error (MSE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better.\n\n\n\n\n\n\n\n\n\n\nMetric\n\n\nA measure of performance of a model. It is used by humans to judge the performance of the model.\n\n\n\n\n\n\n\n\n\n\nModel\n\n\nA mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.\n\n\n\n\n\n\n\n\n\n\nNamed Entity Recognition (NER)\n\n\nA NLP classification task where a sentence is broken into its components, and the model attempts to assign each component to a specific entity (e.g., person, place, organization).\n\n\n\n\n\n\n\n\n\n\nNeuron\n\n\nA basic processor of information. It consists of the linear combination and an activation function.\n\n\n\n\n\n\n\n\n\n\nNumericalization\n\n\nA process where numbers are assigned to each token. Occurs after tokenization.\n\n\n\n\n\n\n\n\n\n\nOne Hot Encoding\n\n\nA data processing technique where each class in a categorical feature is given its own column that contains true and false values.\n\n\n\n\n\n\n\n\n\n\nOneR Classifier\n\n\nThe simplest type of decision tree. The tree only contains a single split.\n\n\n\n\n\n\n\n\n\n\nOptimizer\n\n\nThe name given to the algorithm that updates the weights in a model. Note that it does not compute the gradients, and hence is not part of backpropagation.\n\n\n\n\n\n\n\n\n\n\nPolicy (Reinforcement Learning)\n\n\nThe strategy the agent uses to choose actions based on its current state. The chosen actions aim to maximize the reward.\n\n\n\n\n\n\n\n\n\n\nRandom Forest\n\n\nThe name given to a bagged ensemble of decision trees.\n\n\n\n\n\n\n\n\n\n\nRectified Linear Unit (ReLU)\n\n\nAn activation function that clips any value less than zero, to zero.\n\n\n\n\n\n\n\n\n\n\nRoot Mean Squared Error (RMSE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSE, the better.\n\n\n\n\n\n\n\n\n\n\nRoot Mean Squared Logarithmic Error (RMSLE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better.\n\n\n\n\n\n\n\n\n\n\nSample\n\n\nA row in a dataset.\n\n\n\n\n\n\n\n\n\n\nSampler\n\n\nAn algorithm that decides what indices of a dataset to load. Note that this algorithm does not load data, and hence is not a dataloader.\n\n\n\n\n\n\n\n\n\n\nSequence\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as document.\n\n\n\n\n\n\n\n\n\n\nSoftmax\n\n\nA function that calculates the probabilities of a set of predictions.\n\n\n\n\n\n\n\n\n\n\nTabular Data\n\n\nData in the form of a table.\n\n\n\n\n\n\n\n\n\n\nTabular Model\n\n\nA model trained on tabular data. It is used to predict a specified column in the data.\n\n\n\n\n\n\n\n\n\n\nTokenization\n\n\nSplitting a document into its component words.\n\n\n\n\n\n\n\n\n\n\nTransformer\n\n\nThe name given to a Natural Language Processing (NLP) architecture that, in a nutshell, either fills-in-the-blanks or autocompletes text. Transformers consist of either an encoder, decoder, or both.\n\n\n\n\n\n\n\n\n\n\nVector\n\n\nA table of values that has either a single row or a single column. See also matrix.\n\n\n\n\n\n\n\n\n\n\nWeight Decay\n\n\nA technique for making sure weights do not grow too large, and in turn overfit the data.\n\n\n\n\n\n\n\n\n\n\nZero-shot\n\n\nA prefix given to a pretrained model that can be used without finetuning.\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "patch_notes.html",
@@ -903,557 +1281,186 @@
     "text": "Version 1.0.0.0 | 15 May 2022\n\nInitial release.\nSite is built on fastpages, by fastai."
   },
   {
-    "objectID": "dictionary/index.html",
-    "href": "dictionary/index.html",
-    "title": "The AI Dictionary",
+    "objectID": "feedback.html",
+    "href": "feedback.html",
+    "title": "Site Feedback",
     "section": "",
-    "text": "I often find explanations online to be more complicated than they need to be. Here, I hope to fix that. New terms will continue to be added over time.\nClick terms to view expanded definitions.\nDo let me know of any corrections and improvements, and of any terms you would like added!\n\n\n\n    \n      \n      \n    \n\n\n\n\n\nAccuracy\n\n\nA type of metric. It is a value that tells us how often a model produces correct predictions. The higher the accuracy, the better.\n\n\n\n\n\n\n\n\n\n\nActivation Function\n\n\nA function that follows the linear function in a neuron, to introduce nonlinearity.\n\n\n\n\n\n\n\n\n\n\nArchitecture\n\n\nA model that is used as a template or a starting point for another model.\n\n\n\n\n\n\n\n\n\n\nBackpropagation\n\n\nThe name given to the algorithm that computes the gradients for the weights in a model. Note that it does not update the weights, and hence is not an optimizer\n\n\n\n\n\n\n\n\n\n\nBackward Pass\n\n\nThe pass that begins with the outputs, and ends with the gradients. Also see forward pass.\n\n\n\n\n\n\n\n\n\n\nBagging\n\n\nAn ensembling technique. When bagging, each model is trained on random subset of the rows, and a random subset of the columns, with replacement.\n\n\n\n\n\n\n\n\n\n\nBatch\n\n\nA small collection of data from the dataset.\n\n\n\n\n\n\n\n\n\n\nCognitive Map\n\n\nSimply put, a specialized embedding where each row is an object and each column is a location. Thus, each cell tells us whether a given object is at a given location.\n\n\n\n\n\n\n\n\n\n\nCross Entropy Loss\n\n\nA technique for calculating the loss for categorical models with multiple categories.\n\n\n\n\n\n\n\n\n\n\nDataloader\n\n\nAn object that takes data from the dataset, and assembles them into batches. Note that this object does not decide what indices to load from, and hence is not a sampler.\n\n\n\n\n\n\n\n\n\n\nDataset\n\n\nA collection of data.\n\n\n\n\n\n\n\n\n\n\nDecision Tree\n\n\nA type of model that acts like an if-else statement.\n\n\n\n\n\n\n\n\n\n\nDecoder (Transformers)\n\n\nA component of a transformer that is used for generating text. An example is the autocomplete feature on a smartphone’s keyboard.\n\n\n\n\n\n\n\n\n\n\nDocument\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as sequence.\n\n\n\n\n\n\n\n\n\n\nDot Product\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as linear combination.\n\n\n\n\n\n\n\n\n\n\nEmbedding\n\n\nA table, or matrix, where each row represents an item and each column describes the items in some way. The real magic of embeddings happen when you combine two embeddings together in some way to obtain further information.\n\n\n\n\n\n\n\n\n\n\nEncoder (Transformers)\n\n\nA component of a transformer that is used for “understanding” text. Encoders are typically used for classifying sentences by sentiment and figuring out what parts of a sentence refers, for example, to a person or location.\n\n\n\n\n\n\n\n\n\n\nEnsemble\n\n\nA collection of models whos’ predictions are averaged to obtain the final prediction.\n\n\n\n\n\n\n\n\n\n\nError Rate\n\n\nA type of metric. It is a value that tells us how often a model produces incorrect predictions. The lower the error rate, the better.\n\n\n\n\n\n\n\n\n\n\nForward Pass\n\n\nThe pass that begins with the inputs, and ends with the outputs and loss. Also see backward pass.\n\n\n\n\n\n\n\n\n\n\nGradient\n\n\nA numerical value that informs us how to adjust a parameter of the model.\n\n\n\n\n\n\n\n\n\n\nGradient Accumulation\n\n\nA technique for running or fitting large models on a not-so-powerful GPU.\n\n\n\n\n\n\n\n\n\n\nGradient Boosting Machine (GBM)\n\n\nAn ensembling technique where instead of averaging the predictions of all models, each successive model predicts the error of the previous model. The errors are then summed to obtain the final prediction.\n\n\n\n\n\n\n\n\n\n\nInference\n\n\nUsing a trained model for predictions.\n\n\n\n\n\n\n\n\n\n\nK-Fold Cross Validation\n\n\nAn ensembling technique where models are trained on a different set percent of the dataset. For example each model is trained on a different 80% of the dataset.\n\n\n\n\n\n\n\n\n\n\nLatent (Diffusion)\n\n\nA compressed image.\n\n\n\n\n\n\n\n\n\n\nLearning Rate\n\n\nA numerical value which controls how much the gradients update the parameters of a model.\n\n\n\n\n\n\n\n\n\n\nLinear Combination\n\n\nThe operation given to the process of taking the product of each corresponding element in a vector, and summing all products. Also known as dot product.\n\n\n\n\n\n\n\n\n\n\nLoss\n\n\nA measure of performance of a model. It is used by the model to improve itself. Typically, the lower the loss, the better.\n\n\n\n\n\n\n\n\n\n\nMatrix\n\n\nA table of values. See also vector\n\n\n\n\n\n\n\n\n\n\nMean Absolute Error (MAE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MAE, the better.\n\n\n\n\n\n\n\n\n\n\nMean Columnwise Root Mean Squared Error (MCRMSE)\n\n\nA metric used for those tasks where multiple targets need to be predicted. This metric simply takes the average of the RMSE of each target.\n\n\n\n\n\n\n\n\n\n\nMean Squared Error (MSE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the MSE, the better.\n\n\n\n\n\n\n\n\n\n\nMetric\n\n\nA measure of performance of a model. It is used by humans to judge the performance of the model.\n\n\n\n\n\n\n\n\n\n\nModel\n\n\nA mathematical equation that mimicks a real life phenomenon. This equation can be used to predict desired quantities.\n\n\n\n\n\n\n\n\n\n\nNamed Entity Recognition (NER)\n\n\nA NLP classification task where a sentence is broken into its components, and the model attempts to assign each component to a specific entity (e.g., person, place, organization).\n\n\n\n\n\n\n\n\n\n\nNeuron\n\n\nA basic processor of information. It consists of the linear combination and an activation function.\n\n\n\n\n\n\n\n\n\n\nNumericalization\n\n\nA process where numbers are assigned to each token. Occurs after tokenization.\n\n\n\n\n\n\n\n\n\n\nOne Hot Encoding\n\n\nA data processing technique where each class in a categorical feature is given its own column that contains true and false values.\n\n\n\n\n\n\n\n\n\n\nOneR Classifier\n\n\nThe simplest type of decision tree. The tree only contains a single split.\n\n\n\n\n\n\n\n\n\n\nOptimizer\n\n\nThe name given to the algorithm that updates the weights in a model. Note that it does not compute the gradients, and hence is not part of backpropagation.\n\n\n\n\n\n\n\n\n\n\nPolicy (Reinforcement Learning)\n\n\nThe strategy the agent uses to choose actions based on its current state. The chosen actions aim to maximize the reward.\n\n\n\n\n\n\n\n\n\n\nRandom Forest\n\n\nThe name given to a bagged ensemble of decision trees.\n\n\n\n\n\n\n\n\n\n\nRectified Linear Unit (ReLU)\n\n\nAn activation function that clips any value less than zero, to zero.\n\n\n\n\n\n\n\n\n\n\nRoot Mean Squared Error (RMSE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSE, the better.\n\n\n\n\n\n\n\n\n\n\nRoot Mean Squared Logarithmic Error (RMSLE)\n\n\nA type of metric. It is a value that tells us, on average, how close a set of predicted values is from the actual values. The smaller the RMSLE, the better.\n\n\n\n\n\n\n\n\n\n\nSample\n\n\nA row in a dataset.\n\n\n\n\n\n\n\n\n\n\nSampler\n\n\nAn algorithm that decides what indices of a dataset to load. Note that this algorithm does not load data, and hence is not a dataloader.\n\n\n\n\n\n\n\n\n\n\nSequence\n\n\nThe name given to a piece or collection of text. It can range from anything from a single word to a sentence to a paragraph to a page of text to a full book, and so on. Also referred to as document.\n\n\n\n\n\n\n\n\n\n\nSoftmax\n\n\nA function that calculates the probabilities of a set of predictions.\n\n\n\n\n\n\n\n\n\n\nTabular Data\n\n\nData in the form of a table.\n\n\n\n\n\n\n\n\n\n\nTabular Model\n\n\nA model trained on tabular data. It is used to predict a specified column in the data.\n\n\n\n\n\n\n\n\n\n\nTokenization\n\n\nSplitting a document into its component words.\n\n\n\n\n\n\n\n\n\n\nTransformer\n\n\nThe name given to a Natural Language Processing (NLP) architecture that, in a nutshell, either fills-in-the-blanks or autocompletes text. Transformers consist of either an encoder, decoder, or both.\n\n\n\n\n\n\n\n\n\n\nVector\n\n\nA table of values that has either a single row or a single column. See also matrix.\n\n\n\n\n\n\n\n\n\n\nWeight Decay\n\n\nA technique for making sure weights do not grow too large, and in turn overfit the data.\n\n\n\n\n\n\n\n\n\n\nZero-shot\n\n\nA prefix given to a pretrained model that can be used without finetuning.\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
+    "text": "Loading…"
   },
   {
-    "objectID": "dictionary/terms/tabular_data.html",
-    "href": "dictionary/terms/tabular_data.html",
-    "title": "Tabular Data",
+    "objectID": "bitsandbobs/posts/2025-01-21-A.html",
+    "href": "bitsandbobs/posts/2025-01-21-A.html",
+    "title": "OmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints",
     "section": "",
-    "text": "Back to top"
+    "text": "OmniManip is a hot new paper from Agibot and Peking University. It’s about zero shot natural language robotic manipulation tasks. A current issue with this task, and current approaches the utilize VLMs, is that VLMs lack 3D spatial understanding. They’re only trained on 2D images and video after all.\nOmniManip utilizes an ensemble of models to achieve this goal. This is how it works at a high level.\nA segmentation model is used to extract relevant objects from the robot’s vision. A VLM then filters out task relevant objects, and also breaks down the input task (input as text) into multiple stages.\nNext, for each stage of the task, interaction primitives and their spatial constraints are extracted. A single view 3D generation model is used to generate meshes for all objects relevant to the task. A pose estimation model is then used to canonicalize the objects. Interaction primitives and their corresponding constraints relevant for the task are then identified by the VLM. Along the way, a LLM is used to grade various primitives and constriants.\nModels hallucinate (in particular, the VLM). The world is not static. To overcome this, a closed loop system is introduced; a self correction mechanism based on resampling, rendering and checking. This method uses realtime feedback form the VLM, which is used to detect and then correct interaction errors. A pose tracking algorithm is also used to continuously update the poses of all relevant objects, allowing the robot to be dynamically adjusted.\nLink to paper.\n\n\n\n Back to top"
   },
   {
-    "objectID": "dictionary/terms/zero_shot.html",
-    "href": "dictionary/terms/zero_shot.html",
-    "title": "Zero-shot",
+    "objectID": "bitsandbobs/posts/2025-01-27-A.html",
+    "href": "bitsandbobs/posts/2025-01-27-A.html",
+    "title": "不 vs 没",
     "section": "",
-    "text": "Back to top"
+    "text": "In a nutshell.\n不: - Negates present and future - Negates habitual actions and adjectives\n没: - Negates past - Negates something that hasn’t happened\n\n\n\n Back to top"
   },
   {
-    "objectID": "dictionary/terms/cross_entropy_loss.html",
-    "href": "dictionary/terms/cross_entropy_loss.html",
-    "title": "Cross Entropy Loss",
+    "objectID": "bitsandbobs/posts/2025-01-23-A.html",
+    "href": "bitsandbobs/posts/2025-01-23-A.html",
+    "title": "Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces",
     "section": "",
-    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\n\nbus\n1\n\\(2.60\\)\n\n\ntruck\n0\n\\(0.59\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\n\n\nActuals is a one hot encoded column that tells us what is the correct vehicle in the picture.\nTo convert these predictions into loss, first take the softmax of each prediction.\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nNext take the logarithm of each softmax value.\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\n\n\nMultiply the actuals with the computed logarithms.\n\n\n\n\n\n\n\n\n\n\n\nVehicle\nActuals\nPrediction\nSoftmax\n\\(\\ln(\\text{Softmax})\\)\n\\(\\text{Actuals} \\cdot \\ln(\\text{Softmax})\\)\n\n\n\n\ncar\n0\n\\(-4.89\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\\(-7.63\\)\n\\(0\\)\n\n\nbus\n1\n\\(2.60\\)\n\\(0.874\\)\n\\(-1.35\\)\n\\(-1.35\\)\n\n\ntruck\n0\n\\(0.59\\)\n\\(0.117\\)\n\\(-2.14\\)\n\\(0\\)\n\n\nmotorbike\n0\n\\(-2.07\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\\(-4.81\\)\n\\(0\\)\n\n\nbicycle\n0\n\\(-4.57\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\\(-7.31\\)\n\\(0\\)\n\n\n\nSum the the results of the multiplications.\n\\[\n0 + -1.35 + 0 + 0 + 0 = -1.35\n\\]\nAnd there you have your loss!\n\n\n\n Back to top"
+    "text": "This paper tackles the issue that is the lack of spatial understanding and spatial reasoning that MLLM/VLMs.\nIn this paper, the authors created a benchmark for spatial reasoning, consisting of over 5000 QnA pairs from 288 indoor videos. A variety of tasks are covered, including configurational (e.g,. object count, route planning), measurement estimation (e.g., room size), and spatiotempral reasoning (e.g., appearance order). 79% accuracy on the benchmark is needed to reach human level awareness. The authors found that their MLLM could only reach 49%.\nThe resulting analysis from the paper shows that 71% of errors stem from spatial reasoning, rather than perception or language understanding. By generating spatial layout (cognitive maps), accuracy on distance related tasks improved by 10%. This outperforms linguistic prompting techniques such as CoT. In fact, CoT degraded performance on the benchmark.\nIt was also found that MLLMs have strong local spatial awareness, but struggle with global awareness.\nWeaknesses in the study include reliance on 3D datasets that may contain annotation errors, video processing and langauge model evaluation being resource intensive, and the study focusing on indoor scenes and not outdoor scenes.\nFuture directions encourage research into hybrid models that are both language and spatial memory, self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\nLink to paper.\n\n\n\n\n\n\nNoteDeepseek R1 Summary\n\n\n\n\n\nStructured Summary of “Thinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces”\n\nContextual Overview\n\nResearch Question: Can Multimodal Large Language Models (MLLMs) exhibit human-like visual-spatial intelligence (VSI) when reasoning about 3D spaces from videos?\n\nObjective: Develop a benchmark (VSI-Bench) to evaluate MLLMs’ ability to perceive, remember, and reason about spatial relationships in real-world indoor environments.\n\nDomain: Multimodal AI, spatial reasoning, video understanding.\n\nMotivation: Visual-spatial intelligence is critical for robotics, AR/VR, and autonomous systems, but existing MLLM benchmarks focus on 2D image/text understanding. This work addresses the gap in evaluating 3D spatial reasoning from video input.\n\n\n\n\nKey Contributions\n\nVSI-Bench: A novel benchmark with 5,000+ QA pairs derived from 288 real indoor videos (from ScanNet, ScanNet++, ARKitScenes). Tasks include configurational (e.g., object count, route planning), measurement estimation (e.g., room size), and spatiotemporal reasoning (e.g., appearance order).\n\nSpatial Reasoning as Bottleneck: Analysis shows 71% of errors stem from spatial reasoning (e.g., egocentric-allocentric transformations), not perception or language understanding.\n\nCognitive Maps Enhance Performance: Explicitly generating spatial layouts (cognitive maps) improves MLLMs’ accuracy on relative distance tasks by 10%, outperforming linguistic prompting techniques like Chain-of-Thought.\n\nFailure of Linguistic Reasoning: Prevailing methods (CoT, self-consistency, Tree-of-Thoughts) degraded performance on VSI-Bench, highlighting the distinct challenges of spatial reasoning.\n\nLocal vs. Global Spatial Models: MLLMs build strong local spatial awareness (64% accuracy for adjacent objects) but struggle with global consistency.\n\n\n\n\nMethodology Deep Dive\n\nData/Resources:\n\nVideos from ScanNet (24 FPS), ScanNet++, ARKitScenes (30 FPS), standardized to 640×480 resolution.\n\nQA pairs auto-generated using templates and human annotation (for route planning).\n\n\nCore Techniques:\n\nUnified Meta-Information: Structured annotations for object counts, bounding boxes, room size, and spatial relationships.\n\nEvaluation Metrics: Accuracy (for multiple-choice), Mean Relative Accuracy (for numerical answers).\n\nCognitive Map Generation: Prompting MLLMs to output object positions on a 10×10 grid.\n\n\nValidation:\n\n15 MLLMs tested, including GPT-4o, Gemini-1.5 Pro, and open-source models (LLaVA variants).\n\nHuman baseline: 79% accuracy vs. Gemini-1.5 Pro (45.4%).\n\nBlind evaluation confirmed video input is critical (performance drops to chance level without it).\n\n\n\n\n\nStrengths and Weaknesses\n\nStrengths:\n\nComprehensive Benchmark: High-quality, diverse tasks with iterative human review.\n\nNovel Insights: Identifies spatial reasoning as the key bottleneck and demonstrates cognitive maps’ utility.\n\nReproducibility: Public code, metrics, and standardized evaluation protocols.\n\n\nWeaknesses:\n\nDataset Bias: Relies on existing 3D datasets, which may inherit annotation errors.\n\nCompute Demands: Video processing and large model evaluation are resource-intensive.\n\nLimited Generalization: Focus on indoor scenes; outdoor/embodied settings unexplored.\n\n\n\n\n\nRelevance to the Field\n\nAdvances: Establishes a foundation for evaluating and improving MLLMs’ spatial reasoning, crucial for embodied AI (e.g., robots, autonomous navigation).\n\nContrast with Prior Work: Unlike image-based or text-only spatial benchmarks, VSI-Bench uses video to mirror real-world observation.\n\nFuture Directions: Encourages research into hybrid models (language + spatial memory), self-supervised objectives for spatial learning, and fine-tuning for VSI tasks.\n\n\n\n\nKey Takeaways\n\nMLLMs lag behind humans in visual-spatial intelligence (45% vs. 79% accuracy) but show emerging capabilities.\n\nSpatial reasoning—not perception or language—is the primary challenge for MLLMs.\n\nCognitive maps improve spatial reasoning, suggesting a path toward better world modeling.\n\nLinguistic prompting (CoT, etc.) fails for spatial tasks, demanding new techniques tailored to visuospatial reasoning.\n\nLocal spatial awareness exists in MLLMs, but global consistency remains elusive.\n\n\nNon-Technical Insights for Decision-Makers:\n- VSI-Bench is a critical tool for developers aiming to build MLLMs for real-world navigation or AR/VR.\n- Spatial reasoning enhancements (e.g., cognitive maps) could bridge the gap between MLLMs and human-like spatial understanding.\n- Open-source models (e.g., LLaVA-NeXT-Video-72B) are competitive with closed-source counterparts, offering cost-effective alternatives.\nLet me know if you’d like to dive deeper into specific sections!\n\n\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "dictionary/terms/learning_rate.html",
-    "href": "dictionary/terms/learning_rate.html",
-    "title": "Learning Rate",
+    "objectID": "bitsandbobs/posts/2025-04-03-A.html",
+    "href": "bitsandbobs/posts/2025-04-03-A.html",
+    "title": "鱼与熊掌",
     "section": "",
-    "text": "The learning rate controls how much the gradients adjust the parameters by multiplying the learning rate and gradients together.\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nA learning rate that is too high can cause the training system to either get stuck in a loop or diverge from the optimal weights.\nA learning rate that is too low can cause the training system to take a very long time to reach the optimal weights.\n\n\n\n\n\n\n Back to top"
+    "text": "Full version: 鱼与熊掌不可兼得.\nIn other words, you can’t have the fish and the bear’s paw too.\n\n\n\n Back to top"
   },
   {
-    "objectID": "dictionary/terms/decision_tree.html",
-    "href": "dictionary/terms/decision_tree.html",
-    "title": "Decision Tree",
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html",
+    "href": "bitsandbobs/posts/2025-07-15-A.html",
+    "title": "Nuances in Shell Scripting",
     "section": "",
-    "text": "A split is made for each feature in the data. If the feature of a certain data sample is larger than or less than the split for that respective feature, the next appropriate split is made.\nBelow is an example determining whether a car is fast or slow.\n\n\n\n\n\nflowchart TB\n  A([Weight &lt; 2000kg])\n  B([Is Engine Powerful])\n  C([Is Windy Day])\n  D1([Car Is Fast])\n  E1([Car Is Slow])\n  D2([Car Is Fast])\n  E2([Car Is Slow])\n\n\n  A -- Yes --&gt; B\n  A -- No --&gt; C\n  B -- Yes --&gt; D1\n  B -- No --&gt; E1\n  C -- Yes --&gt; E2\n  C -- No --&gt; D2\n\n\n\n\n\n\n\n\n\n Back to top"
+    "text": "Variables are denoted by $\nfoo = bar fails since spaces denote arguments\necho '$foo' outputs $foo\necho \"$foo\" outputs bar"
   },
   {
-    "objectID": "dictionary/terms/named_entity_recognition.html",
-    "href": "dictionary/terms/named_entity_recognition.html",
-    "title": "Named Entity Recognition (NER)",
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#variables",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#variables",
+    "title": "Nuances in Shell Scripting",
     "section": "",
-    "text": "Take the sentence “Tim went to the Moon.” as an example. The sentence would first be broken into ‘Tim’, ‘went’, ‘to’, the’, ‘Moon’. The model could then give ‘Tim’ the label of ‘person’, and ‘Moon’ the label of ‘location’.\n\n\n\n Back to top"
+    "text": "Variables are denoted by $\nfoo = bar fails since spaces denote arguments\necho '$foo' outputs $foo\necho \"$foo\" outputs bar"
   },
   {
-    "objectID": "dictionary/terms/mean_squared_error_mse.html",
-    "href": "dictionary/terms/mean_squared_error_mse.html",
-    "title": "Mean Squared Error (MSE)",
-    "section": "",
-    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nAnd finally taking the average.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.25\\) units off from the actual values.\nIn a nutshell, you take the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/k_fold_cross_validation.html",
-    "href": "dictionary/terms/k_fold_cross_validation.html",
-    "title": "K-Fold Cross Validation",
-    "section": "",
-    "text": "Another way to think of it is that the dataset is split into \\(K\\) pieces. Then each model is trained on a different set of \\(K-1\\) pieces.\nFor example, let’s say that the dataset is split into 5 pieces. Then each model is trained on a different set of 4 pieces.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/dataset.html",
-    "href": "dictionary/terms/dataset.html",
-    "title": "Dataset",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/rectified_linear_unit.html",
-    "href": "dictionary/terms/rectified_linear_unit.html",
-    "title": "Rectified Linear Unit (ReLU)",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/one_hot_encoding.html",
-    "href": "dictionary/terms/one_hot_encoding.html",
-    "title": "One Hot Encoding",
-    "section": "",
-    "text": "Let’s say we have a categorical feature, speed, that can be either slow or fast. Instead of assigning a value of 0 to slow and a value of 1 to fast, a slow column can be created and a fast column can be created. If the speed is slow, slow is true and fast is false. If the speed is fast, slow is false and fast is true.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
-    "href": "dictionary/terms/root_mean_squared_logarithmic_error_rmsle.html",
-    "title": "Root Mean Squared Logarithmic Error (RMSLE)",
-    "section": "",
-    "text": "It is calculated by:\n\nFirst taking the logarithm of all predicted values.\nTaking the logarithm of all actual values.\nThen taking the difference between each respective predicted and actual value.\nNext squaring all obtained values.\nTaking the averge.\nAnd lastly taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(\\ln(1), \\ln(2), \\ln(3), \\ln(4) \\approx 0, 0.69, 1.10, 1.39\\)\n\\(\\ln(1), \\ln(4), \\ln(3), \\ln(3) \\approx 0, 1.39, 1.10, 1.10\\)\n\\(0-0, 0.69-1.39, 1.10-1.10, 1.39-1.10 = 0, -0.70, 0, 0.29\\)\n\\((0)^2, (-0.70)^2, (0)^2, (0.29)^2 \\approx 0, 0.49, 0, 0.08\\)\n\\(\\frac{0 + 0.49 + 0 + 0.08}{4} = \\frac{0.57}{4}\\)\n\\(\\sqrt{\\frac{0.57}{4}} \\approx 0.38\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.38\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between RMSE and RMSLE is that RMSLE works better for very large values, since the logarithm of the predicted values and actual values is taken. The downside is that negative values will not work, since the logarithm of a negative value is undefined.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/vector.html",
-    "href": "dictionary/terms/vector.html",
-    "title": "Vector",
-    "section": "",
-    "text": "The order of a vector is row by column.\nBelow is a \\(1 \\times 3\\) column vector. \\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\]\nBelow is a \\(3 \\times 1\\) row vector. \\[\n\\begin{bmatrix}\n1 & 2 & 3\n\\end{bmatrix}\n\\]\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/numericalization.html",
-    "href": "dictionary/terms/numericalization.html",
-    "title": "Numericalization",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/cognitive_map.html",
-    "href": "dictionary/terms/cognitive_map.html",
-    "title": "Cognitive Map",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/mean_absolute_error_mae.html",
-    "href": "dictionary/terms/mean_absolute_error_mae.html",
-    "title": "Mean Absolute Error (MAE)",
-    "section": "",
-    "text": "It is calculated by: 1. First taking the difference between each respective predicted and actual value. 1. Then removing all negative signs — this is known as taking the absolute value. 1. And finally taking the average.\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\(|0|, |-2|, |0|, |1| = 0, 2, 0, 1\\)\n\\(\\frac{0 + 2 + 0 + 1}{4} = \\frac{2}{4} = 0.5\\)\n\nThis tells us, that on average, our set of predicted values is \\(0.5\\) units off from the actual values.\nIn a nutshell, you take the mean of the absolute differences between the predicted and actual values.\n\nThe main difference between MAE and MSE is that MSE penalizes smaller differences more heavily.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the absolute value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the absolute value, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/encoder.html",
-    "href": "dictionary/terms/encoder.html",
-    "title": "Encoder (Transformers)",
-    "section": "",
-    "text": "To learn more about decoders, you can read this to the point rundown.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/tabular_model.html",
-    "href": "dictionary/terms/tabular_model.html",
-    "title": "Tabular Model",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/batch.html",
-    "href": "dictionary/terms/batch.html",
-    "title": "Batch",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/root_mean_squared_error_rmse.html",
-    "href": "dictionary/terms/root_mean_squared_error_rmse.html",
-    "title": "Root Mean Squared Error (RMSE)",
-    "section": "",
-    "text": "It is calculated by:\n\nFirst taking the difference between each respective predicted and actual value.\nThen the squaring all obtained values.\nTaking the average.\nAnd finally taking the square root.\n\nLet’s say we have a set of predicted values \\(1, 2, 3, 4\\). The set of actual values is \\(1, 4, 3, 3\\)\n\n\\(1-1, 2-4, 3-3, 4-3, = 0, -2, 0, 1\\)\n\\((0)^2, (-2)^2, (0)^2, (1)^2 = 0, 4, 0, 1\\)\n\\(\\frac{0 + 4 + 0 + 1}{4} = \\frac{5}{4} = 1.25\\)\n\\(\\sqrt{1.25} \\approx 1.12\\)\n\nThis tells us, that on average, our set of predicted values is \\(1.12\\) units off from the actual values.\nIn a nutshell, you take the root of the mean of the square of the differences between the predicted and actual values.\n\nThe main difference between MSE and RMSE is that RMSE undoes the squaring step by taking the square root.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThe reason the square value is taken is due to the averaging step. Let’s say the first predicted value is off from the first actual value by \\(-3\\) units. And let’s say that the second predicted value is off from the second actual value by \\(3\\) units.\nIf we didn’t take the square, the average would be zero \\(\\left( \\frac{-3 + 3}{2} = \\frac{0}{2} = 0 \\right)\\). This is incorrect as both values are off from the actual value.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/policy.html",
-    "href": "dictionary/terms/policy.html",
-    "title": "Policy (Reinforcement Learning)",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/matrix.html",
-    "href": "dictionary/terms/matrix.html",
-    "title": "Matrix",
-    "section": "",
-    "text": "The order of a matrix is row by column.\nBelow is \\(3 \\times 2\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 \\\\\n3 & 4 \\\\\n5 & 6 \\\\\n\\end{bmatrix}\n\\]\nBelow is \\(2 \\times 3\\) matrix. \\[\n\\begin{bmatrix}\n1 & 2 & 3 \\\\\n4 & 5 & 6 \\\\\n\\] \\end{bmatrix}\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/gradient.html",
-    "href": "dictionary/terms/gradient.html",
-    "title": "Gradient",
-    "section": "",
-    "text": "The gradients update the parameters by multiplying the two together. How much the gradients update the parameters is controlled by the learning rate.\nA positive gradient tells us that increasing the parameters will increase the loss. On the other hand, decreasing the parameters will decrease the loss.\nA negative gradient tells us that decreasing the parameters will increase the loss On the other hand, increasing the parameters will decrease the loss.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/backward_pass.html",
-    "href": "dictionary/terms/backward_pass.html",
-    "title": "Backward Pass",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/softmax.html",
-    "href": "dictionary/terms/softmax.html",
-    "title": "Softmax",
-    "section": "",
-    "text": "Let’s say that we have a model that tells us what sort of vehicle is in a picture. It outputs the following predictions.\n\n\n\n\n\n\n\nVehicle\nPrediction\n\n\n\n\ncar\n\\(-4.89\\)\n\n\nbus\n\\(2.60\\)\n\n\ntruck\n\\(0.59\\)\n\n\nmotorbike\n\\(-2.07\\)\n\n\nbicycle\n\\(-4.57\\)\n\n\n\nThese predictions aren’t very meaningful to us as humans. So what we can do is convert these predictions into probabilities. The steps to do this are below.\n1. Take the exponent of each prediction to base \\(e\\). So for the car category, \\(e^{-4.89} \\approx 7.52 \\cdot 10^{-3}\\).\nThe results of the calculations below are displayed with 3 significant figures.\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\n\n\n2. Sum all the calculated values.\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\n\n\n3. For each respective category, divide \\(e^{\\text{prediction}}\\) by \\(\\text{sum of} e^{\\text{prediction}}\\). This is your probability. So the probability of the vehicle in the picture being a car is\n\\[\n\\frac{7.52 \\cdot 10^{-3}}{15.4} \\approx 4.88 \\cdot 10^{-4} = 0.000488 = 0.0488 \\%\n\\]\n\n\n\n\n\n\n\n\n\n\nVehicle\nPrediction\n\\(e^{\\text{prediction}}\\)\n\\(\\text{sum of} e^{\\text{prediction}}\\)\n\\(\\frac{e^{\\text{prediction}}}{\\text{sum of}e^{\\text{prediction}}}\\)\n\n\n\n\ncar\n\\(-4.89\\)\n\\(7.52 \\cdot 10^{-3}\\)\n\\(15.4\\)\n\\(4.88 \\cdot 10^{-4}\\)\n\n\nbus\n\\(2.60\\)\n\\(13.4\\)\n\\(15.4\\)\n\\(0.874\\)\n\n\ntruck\n\\(0.59\\)\n\\(1.80\\)\n\\(15.4\\)\n\\(0.117\\)\n\n\nmotorbike\n\\(-2.07\\)\n\\(0.126\\)\n\\(15.4\\)\n\\(8.19 \\cdot 10^{-3}\\)\n\n\nbicycle\n\\(-4.57\\)\n\\(0.010\\)\n\\(15.4\\)\n\\(6.72 \\cdot 10^{-4}\\)\n\n\n\nFrom the table above, it can be seen that the vehicle in the picture is most likely a bus with probability \\(87.4\\%\\).\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/metric.html",
-    "href": "dictionary/terms/metric.html",
-    "title": "Metric",
-    "section": "",
-    "text": "Examples of metrics are, but not limited to, accuracy, error rate, MAE, and MSE\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/gradient_boosting_machine_gbm.html",
-    "href": "dictionary/terms/gradient_boosting_machine_gbm.html",
-    "title": "Gradient Boosting Machine (GBM)",
-    "section": "",
-    "text": "The first model produces a prediction.\nThe difference between this prediction and the actual value is obtained.\nThe difference is now set as the target.\nThe next model now attempts to predict this difference.\nRepeat steps 2-4 for as many models as desired.\nSum all obtained differences.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nWhile this technique tends to produce better results, is more likely to overfit. This is because the machine is trying to minimize the difference between the predictions and actual values in the training set.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/inference.html",
-    "href": "dictionary/terms/inference.html",
-    "title": "Inference",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "web_apps/index.html",
-    "href": "web_apps/index.html",
-    "title": "App Playground",
-    "section": "",
-    "text": "Here you can view various apps and gizmos I’ve created. Have a play through some of them let me know what you think!\nMore apps coming soon.™\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Author\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\n\nImage Classification\n\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nTuesday, 20 September 2022 | 2022-09-20\n\n\n\n\n\n\n\n\n\n\n\n\n\nBear Classifier\n\n\n\nImage Classification\n\n\n\nCan you spot a black bear in a black night?\n\n\n\nSalman Naqvi\n\n\nSaturday, 30 April 2022 | 2022-04-30\n\n\n\n\n\n\nNo matching items\n\n\n\nLoading…"
-  },
-  {
-    "objectID": "web_apps/apps/flood_detector.html",
-    "href": "web_apps/apps/flood_detector.html",
-    "title": "Flood Classifier",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "testing_page.html",
-    "href": "testing_page.html",
-    "title": "Testing Page",
-    "section": "",
-    "text": "Trying to change Quarto Version.\n\n\nForBlog\n\n\n\n\n\n\n\n\n\n\nTranslating SolveIt Dialogues\n\n\nMoving between Languages\n\n\nDirectly editing SolveIt Dialogues using dialoghelper\n\n\n\n\n\nDec 7, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s build an AI model\n\n\nUsing AI, fast\n\n\nMiddle school maths is all you need to get started\n\n\n\n\n\nNov 27, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nCreating Your Own LLM Agent\n\n\n\n\n\nDemystifying agents so you can create your own from scratch. It’s simpler than you think.\n\n\n\n\n\nNov 24, 2025\n\n\nSalman Naqvi\n\n\n\n\n\nNo matching items\n\n\n\nPlayground\n\n\n\n\n\n\n\n\n\n\nMore apps coming soon…\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFlood Classifier\n\n\nHow well can you classify floods?\n\n\n\nSalman Naqvi\n\n\nSep 20, 2022\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ForBo7 // Salman Naqvi",
-    "section": "",
-    "text": "Onward and upward, with tenacity and sincerity.\nRead more about me here.\nAnd feel free to contact me with one of the fancy buttons below!\n\n \n  \n   \n  \n    \n     fastai Forums\n  \n  \n    \n     Twitter\n  \n  \n    \n     Artstation\n  \n  \n    \n     Email"
-  },
-  {
-    "objectID": "index.html#bits-and-bobs",
-    "href": "index.html#bits-and-bobs",
-    "title": "ForBo7 // Salman Naqvi",
-    "section": "Bits and Bobs",
-    "text": "Bits and Bobs\nClick here to explore more bits and bobs.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n      \n        Title\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nInteresting Bits from AoC 2025 Day 1\n\n\nThe dictionary accumulates modulating integers.s\n\n\nDec 8, 2025\n\n\n\n\n\n\nThe Intracices of the Python Modulo Operator\n\n\nModulating the Modulator\n\n\nDec 2, 2025\n\n\n\n\n\n\nNifty Shell Tools\n\n\nPocket tools to keep in your pocket.\n\n\nJul 15, 2025\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\nJul 15, 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\nJul 5, 2025\n\n\n\n\n\n\nRetrieval Augmented Generation in a nutshell.\n\n\nDon’t let jargon fool you.\n\n\nJun 24, 2025\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#forblog",
-    "href": "index.html#forblog",
-    "title": "ForBo7 // Salman Naqvi",
-    "section": "ForBlog",
-    "text": "ForBlog\nClick here to check out the latest on the ForBlog.\n\n\n\n\n\n\n\n\n\n\nTranslating SolveIt Dialogues\n\n\nMoving between Languages\n\n\nDirectly editing SolveIt Dialogues using dialoghelper\n\n\n\n\n\nDec 7, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nLet’s build an AI model\n\n\nUsing AI, fast\n\n\nMiddle school maths is all you need to get started\n\n\n\n\n\nNov 27, 2025\n\n\nSalman Naqvi\n\n\n\n\n\n\n\n\n\n\n\n\nCreating Your Own LLM Agent\n\n\n\n\n\nDemystifying agents so you can create your own from scratch. It’s simpler than you think.\n\n\n\n\n\nNov 24, 2025\n\n\nSalman Naqvi\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "web_apps/apps/bear_detector.html",
-    "href": "web_apps/apps/bear_detector.html",
-    "title": "Bear Classifier",
-    "section": "",
-    "text": "This webapp was remade on Tuesday, 8 November 2022.\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "web_apps/apps/coming_soon.html",
-    "href": "web_apps/apps/coming_soon.html",
-    "title": "More apps coming soon…",
-    "section": "",
-    "text": "I never told you how soon…\n\n\n\nThis image was generated by Dall-E 2!\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "unsubscribe.html",
-    "href": "unsubscribe.html",
-    "title": "Unsubscribe from ForBlog and App Playground Notifications",
-    "section": "",
-    "text": "Loading…\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/linear_combination.html",
-    "href": "dictionary/terms/linear_combination.html",
-    "title": "Linear Combination",
-    "section": "",
-    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/neuron.html",
-    "href": "dictionary/terms/neuron.html",
-    "title": "Neuron",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/loss.html",
-    "href": "dictionary/terms/loss.html",
-    "title": "Loss",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/tokenization.html",
-    "href": "dictionary/terms/tokenization.html",
-    "title": "Tokenization",
-    "section": "",
-    "text": "NoteNote\n\n\n\n\n\nIf a word is too long or very uncommon, the word itself may be split. Take the word “supercalifragilisticexpialidocious” as an example. It could be split into “super”, “cali”, “fragilistic”, “expi”, “ali”, and “docious”.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/forward_pass.html",
-    "href": "dictionary/terms/forward_pass.html",
-    "title": "Forward Pass",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/accuracy.html",
-    "href": "dictionary/terms/accuracy.html",
-    "title": "Accuracy",
-    "section": "",
-    "text": "It can be calculated by dividing the number of correct predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of correct predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nAccuracy is also 1 - error rate.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/document.html",
-    "href": "dictionary/terms/document.html",
-    "title": "Document",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/weight_decay.html",
-    "href": "dictionary/terms/weight_decay.html",
-    "title": "Weight Decay",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/latent.html",
-    "href": "dictionary/terms/latent.html",
-    "title": "Latent (Diffusion)",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/ensemble.html",
-    "href": "dictionary/terms/ensemble.html",
-    "title": "Ensemble",
-    "section": "",
-    "text": "The reason why this works is that some models will overestimate while others will underestimate, cancelling out each others’ errors.\nThere are different methods for ensembling.\n\n\n\n\n\n\nEnsembling only works when all models are independent of each other. That is, the models do not depend on one another.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/decoder.html",
-    "href": "dictionary/terms/decoder.html",
-    "title": "Decoder (Transformers)",
-    "section": "",
-    "text": "To learn more about decoders, you can read this to the point rundown.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/random_forest.html",
-    "href": "dictionary/terms/random_forest.html",
-    "title": "Random Forest",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/mean_columnwise_root_mean_square_error_mcrmse.html",
-    "href": "dictionary/terms/mean_columnwise_root_mean_square_error_mcrmse.html",
-    "title": "Mean Columnwise Root Mean Squared Error (MCRMSE)",
-    "section": "",
-    "text": "Let’s say a model had to predict the velocity, acceleration, and drag force for 3 cars.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/embedding.html",
-    "href": "dictionary/terms/embedding.html",
-    "title": "Embedding",
-    "section": "",
-    "text": "An example of how two embeddings can be combined together is shown below.\nLet’s say we have an embedding of users, where each column represents a feature about movies. Users like certain features of movies, and a value between -1 and 1 represents this.\n\n\n\nUser\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nBilly\n-0.9\n0.3\n0.2\n0.8\n0.25\n\n\nBob\n-0.85\n1\n-0.25\n0\n0.75\n\n\nJoe\n0.9\n0.85\n0.95\n0.35\n1\n\n\n\nNow let’s say we have an embedding of movies, where each column represents a feature about movies.\n\n\n\n\n\n\n\n\n\n\n\nMovie\nLong Duration\nSci-Fi\nFantasy\nAnimated\nAction\n\n\n\n\nThe Lord of the Rings\n1\n-1\n1\n-0.5\n1\n\n\nCars\n-0.9\n-1\n0.8\n1\n0\n\n\nInterstellar\n0.75\n1\n0\n0\n0.3\n\n\n\nWe want to find out which movie would be the best for Billy to watch. To do so, let’s take the dot product between Billy and each of the respective movies.\n\n\n\n\n\n\nNoteBilly & The Lord of the Rings\n\n\n\n\n\n\\[\n(-0.9 \\cdot 1) + (0.3 \\cdot -1) + (0.2 \\cdot 1) + (0.8 \\cdot -0.5) + (0.25 \\cdot 1) = -1.15\n\\]\n\n\n\n\n\n\n\n\n\nNoteBilly & Cars\n\n\n\n\n\n\\[\n(-0.9 \\cdot -0.9) + (0.3 \\cdot -1) + (0.2 \\cdot 0.8) + (0.8 \\cdot 1) + (0.25 \\cdot 0) = 1.47\n\\]\n\n\n\n\n\n\n\n\n\nNoteBilly & Interstellar\n\n\n\n\n\n\\[\n(-0.9 \\cdot 0.75) + (0.3 \\cdot 1) + (0.2 \\cdot 0) + (0.8 \\cdot 0) + (0.25 \\cdot 0.3) = -0.3\n\\]\n\n\n\nWe have obtained the values \\(-1.15\\), \\(1.47\\), and \\(-0.3\\) for each of the movies respectively. From this, we can deduce that Cars (\\(1.47\\)) is probably the best movie for Billy to watch, based on his taste.\nAfter similarly calculating the dot product between Joe and each of the movies, we get the following respective values: \\(1.82\\), \\(-0.55\\), \\(1.82\\). This tells us that both The Lord of the Rings and Interstellar are equally the best movies for Joe to watch.\nAs for Bob, it would be Interstellar.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/optimizer.html",
-    "href": "dictionary/terms/optimizer.html",
-    "title": "Optimizer",
-    "section": "",
-    "text": "An optimizer in its most basic form looks like this.\nwith torch.no_grad(): \n  for p in model.parameters(): p -= p.grad * lr \n  model.zero_grad() \n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/dataloader.html",
-    "href": "dictionary/terms/dataloader.html",
-    "title": "Dataloader",
-    "section": "",
-    "text": "Metaphorically speaking, if we let a dataset be a warehouse, a dataloader be a human, a batch be a crate, and the sampler be the manager, then the manager is responsible for informing the human what items to gather from the warehouse, who then puts them into crates.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/model.html",
-    "href": "dictionary/terms/model.html",
-    "title": "Model",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/dot_product.html",
-    "href": "dictionary/terms/dot_product.html",
-    "title": "Dot Product",
-    "section": "",
-    "text": "\\[\n\\begin{bmatrix}\n1 \\\\\n2 \\\\\n3 \\\\\n\\end{bmatrix}\n\\cdot\n\\begin{bmatrix}\n4 \\\\\n5 \\\\\n6 \\\\\n\\end{bmatrix}\n= (1 \\cdot 4) + (2 \\cdot 5) + (3 \\cdot 6) = 32\n\\]\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/gradient_accumulation.html",
-    "href": "dictionary/terms/gradient_accumulation.html",
-    "title": "Gradient Accumulation",
-    "section": "",
-    "text": "Let’s say you want to use a batch size of 64, but the model doesn’t fit with that size on your GPU.\n\nFirst determine the largest possible batch size that can fit on your GPU. Let’s say it’s 16. It may be better to use batch sizes that are a power of 2.\nCalculate the gradients for \\(X\\) batches without updating the parameters.\n\n\\(X\\) is your desired batch size divided by the batch size you are using.\nDesired batch size is 64; batch size we are using is 16.\n\\(64 ÷ 16 = 4\\)\n\\(X\\) is 4. This is because the size of 4 batches, in this case, sums to 64.\n\nNext, sum all respective gradients — hence the term ‘gradient accumulation’.\nNow update your parameters based on these summed gradients. This will have the same effect as if you used a batch size of 64.\n\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nUsing a smaller batch size to fit a larger model onto your GPU isn’t optimal. A smaller batch size means you would have to tweak your optimal hyperparameters, such as the learning rate. Your loss would also become less accurate since it is being calculated on a smaller group of items.\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/sample.html",
-    "href": "dictionary/terms/sample.html",
-    "title": "Sample",
-    "section": "",
-    "text": "Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/oner_classifier.html",
-    "href": "dictionary/terms/oner_classifier.html",
-    "title": "OneR Classifier",
-    "section": "",
-    "text": "Below is an example determining whether a car is fast or slow.\n\n\n\n\n\nflowchart TB\n  A([Weight &lt; 2000kg])\n  B([Car Is Fast])\n  C([Car Is Slow])\n\n  A -- Yes --&gt; B\n  A -- No --&gt; C\n\n\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/sampler.html",
-    "href": "dictionary/terms/sampler.html",
-    "title": "Sampler",
-    "section": "",
-    "text": "Metaphorically speaking, if we let a dataset be a warehouse, a dataloader be a human, a batch be a crate, and the sampler be the manager, then the manager is responsible for informing the human what items to gather from the warehouse, who then puts them into crates.\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "dictionary/terms/backpropagation.html",
-    "href": "dictionary/terms/backpropagation.html",
-    "title": "Backpropagation",
-    "section": "",
-    "text": "Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#reserved-variables",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#reserved-variables",
+    "title": "Nuances in Shell Scripting",
+    "section": "Reserved Variables",
+    "text": "Reserved Variables\n\nReserve variables include, but are not limited to:\n\n$0: name of the script\n$1 to $9: arguments passed to the script\n\n$#: number of arguments passed to the script\n$@: all arguments passed to the script\n$?: exit status of the last command\n$_: last argument of the previous command; can also be accessed by Esc + . or alt + .\n$$: process ID (pid) of the current script\n!!: rerun the entire last command"
   },
   {
-    "objectID": "dictionary/terms/sequence.html",
-    "href": "dictionary/terms/sequence.html",
-    "title": "Sequence",
-    "section": "",
-    "text": "Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#command-and-process-substitutions",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#command-and-process-substitutions",
+    "title": "Nuances in Shell Scripting",
+    "section": "Command and Process Substitutions",
+    "text": "Command and Process Substitutions\n\nCommand/process substitutions are like f-strings in Python\nDifference between command and process substitution is that the latter will place the output in a temporary file\nCommand substitution: $(command)\nProcess substitution: &lt;(command)"
   },
   {
-    "objectID": "dictionary/terms/architecture.html",
-    "href": "dictionary/terms/architecture.html",
-    "title": "Architecture",
-    "section": "",
-    "text": "Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#comparisons-and-brace-expansions",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#comparisons-and-brace-expansions",
+    "title": "Nuances in Shell Scripting",
+    "section": "Comparisons and Brace Expansions",
+    "text": "Comparisons and Brace Expansions\n\nWhen doing comparisons in bash, use [[ ]] rather than [ ]; apparently, chances of mistakes are lower this way\nUse {} for common substrings in commands\n\nconvert image.{png,jpg}\ncp /path/to/project/{foo,bar,baz}.sh /newpath\nmv *{.py,.sh} folder\ntouch {foo,bar}/{a..h}"
   },
   {
-    "objectID": "dictionary/terms/transformer.html",
-    "href": "dictionary/terms/transformer.html",
-    "title": "Transformer",
-    "section": "",
-    "text": "To learn more about transformers, you can read this to the point rundown.\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-A.html#functions-vs-scripts",
+    "href": "bitsandbobs/posts/2025-07-15-A.html#functions-vs-scripts",
+    "title": "Nuances in Shell Scripting",
+    "section": "Functions vs Scripts",
+    "text": "Functions vs Scripts\n\nFunctions are executed in the current environment, whereas scripts aren’t\nThus, functions can modify environment variables whereas scripts can’t\nScripts can only access environment variables that are exported with export"
   },
   {
-    "objectID": "dictionary/terms/bagging.html",
-    "href": "dictionary/terms/bagging.html",
-    "title": "Bagging",
+    "objectID": "bitsandbobs/posts/2025-12-08-A.html",
+    "href": "bitsandbobs/posts/2025-12-08-A.html",
+    "title": "Interesting Bits from AoC 2025 Day 1",
     "section": "",
-    "text": "“with replacement” means that if a model, for example, randomly chooses row number 5, another model can also randomly choose row number 5.\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nThrough this technique, each model ends up training on roughly 63% of the entire dataset.\n\n\n\n\n\n\n Back to top"
+    "text": "Modulo division can be a way to loop through a list of numbers without needing a for loop. For examples, using %100 to rotate through a list of numbers from 0-99.\nInteger division can be used to check the number of times a list of numbers loops through a certain number, without needing a for loop. For example, using //100 to count the number of times 0 has been looped through in a list of numbers from 0-99.\nUse itertools.accumulate to perfom accumulation on a list of numbers\nDictionaries, such as {'L':-1, 'R':1}, can be used to replace if/elif blocks\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "dictionary/terms/activation_function.html",
-    "href": "dictionary/terms/activation_function.html",
-    "title": "Activation Function",
+    "objectID": "bitsandbobs/posts/2025-01-14-A.html",
+    "href": "bitsandbobs/posts/2025-01-14-A.html",
+    "title": "小和年轻",
     "section": "",
-    "text": "If there existed no activation function, there would be no point in having individual neurons, as the entire network would become a single, big linear equation.\n\n\n\n\n\n\nNoteWith Activation Function\n\n\n\n\\(w_2 \\cdot \\text{activation}(w_1 x + b_1) + b_2\\)\n\n\n\n\n\n\n\n\nNoteWithout Activation Function\n\n\n\n\\(w_2 \\cdot (w_1 x + b_1) + b_2 = w_2 w_1 x + w_2 b_1 + b_2\\)\n\n\n\n\n\n Back to top"
+    "text": "小 can indicate whether one is young or old. For example, 她有一个小孩儿. However, you have to be careful when using 年轻, as it carries the connotation of being the opposite of old. If you’re saying you’re younger than someone, and you use 年轻, it also implies that the other person is old. 小 does not carry this connotation.\nFrom the Chinese Grammar Wiki (including the example sentence)..\n\n\n\n Back to top"
   },
   {
-    "objectID": "dictionary/terms/error_rate.html",
-    "href": "dictionary/terms/error_rate.html",
-    "title": "Error Rate",
+    "objectID": "bitsandbobs/posts/2025-05-11-A.html",
+    "href": "bitsandbobs/posts/2025-05-11-A.html",
+    "title": "春节期间怎么祝福朋友",
     "section": "",
-    "text": "It can be calculated by dividing the number of incorrect predictions by the number of total predictions. Optionally multiply the result by 100 to obtain a percentage.\n\\[\n\\frac{\\text{number of incorrect predictions}}{\\text{number of total predictions}}\n\\]\n\n\n\n\n\n\nNoteNote\n\n\n\n\n\nError rate is also 1 - accuracy.\n\n\n\n\n\n\n Back to top"
+    "text": "见到了朋友\n\n新年好\n春节好\n\n\n\n去某个长辈家里\n\n给您拜年了\n\n\n\n大年/正月初五时\n\n祝你财源广进\n\n\n\n去吃饭买东西\n\n对老板说，“祝你生意兴隆”\n\n\n\n如果不知道\n\n“祝你 X 年大吉”，X 就是年份\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Salman Naqvi",
+    "objectID": "bitsandbobs/posts/2025-01-28-A.html",
+    "href": "bitsandbobs/posts/2025-01-28-A.html",
+    "title": "Robo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation",
     "section": "",
-    "text": "An explorer who’s lived in 4 countries and traveled to 15. A master of 3 different language scripts. An enthusiast of science and technology, proudly wearing the badge of “sci-tech geek”. A curious soul unraveling the realms of AI, intricacies of 3D computer graphics, fueled by an insatiable passion for learning. Onward and upward, with tenacity and sincerity.\n\n\n\nProjects // 有趣项目Experience // 经验Skills // 技能扫一扫\n\n\n\nTrained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.\nReimplemented the DiffEdit research paper. Edit portions of an image via text only.\nReimplementing the PyTorch library myself.\nMaking back propagation an inherently easy topic to grasp.\nOptimizing algorithms to run quicker on a GPU.\n\n\n\nEmbodied AI Researcher | Oct. 2024 – Current\nMultimodal Intelligence Laboratory, The Education University of Hong Kong\n\nEmbodied AI\nGeneral purpose robot manipulation and spatial intelligence\nUnder Dr. Fu Hong\n\nAI Engineer | Jul. 2024 – Aug.2024\nKeweya Education Technology Limited – HKSTP Incubatee\n\nProject lead\nStudying, implementing, customizing diffusion models, and app development\nReview and analysis of research papers\n\nLLM Researcher | Jun. 2024 – Jul. 2024\nREADily Limited – HKSTP Incubatee\n\nProject co-lead\nIntensive continued pretraining of large language models\nResearch paper review and implementation\n\nTraining Coordinator | Mar. 2024\nKids4Kids Hong Kong\n\nVolunteer work\nWorkshop planning and video editing\n\nTeaching Assistant | Sep. 2020 – May. 2021\nBeaconhouse College Program\n\nTeaching classes\n1-1 student sessions\n\n\n\nLanguage\n\nEnglish: Native level fluency\nMandarin: Basic proficiency\nUrdu: Fluent\n\nTeaching\nI know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.\nProgramming\nI have a very particular manner and philosophy to programming. It’s expository programming: literate, exploratory, and the way it should be done. See here, here, and here. Writing code is not the focus, solving the problem at hand is.\nPython, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev\n3D Computer Graphics\nBlender\nArtificial Intelligence (fast.ai)\nSelf-learning since April 2022.\n\n\n\n\n\n\n\nOther Interesting Stuff // 其他亮点Education // 教育\n\n\nFeb. 21st 2025 – Meet Salman Naqvi: the bright spark in AI and EdTech | See what the university’s written about me!\nDec. 27, 2024 – Featured among “The EdUHK Rising Stars” | See the university’s mini documentary on me!\nJun. 12, 2024 – Study Award from Hong Kong SAR Government | Hong Kong SAR Government Scholarship Fund Reaching Out Award\nDec. 7, 2023 — Invited Speaker at the Advanced Study Institute (ASI) Online Symposium | The Education University of Hong Kong and Hong Kong Baptist University\nApr. 2023 – Nov. 2023 — Co-lead Online Study Group | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord\nMar. 17, 2023 — Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan | KUAS-E Scholarship\nFeb. 24, 2023 — Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China | EdUHK Full Entrance Scholarship\nNov. 2022 – Jun. 2023 – Grew an AI community of over 1100+ members | The Dataspace | Discord\nSep. 2022 – Mar. 2023 — Completed fast.ai Course Part 1: Practical Deep Learning for Coders\nJan. 17, 2023 — Placed in Top 12% of Contestants in Data Science Competition | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle\nSep. 2020 – May 2021 — Physics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nSep. 2020 – May 2021 — Mathematics Teaching Assistant | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nJan. 2020 — Concert Marketing – Raised $8,400 | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\nAug. 2019 — Received 100% Scholarship for A-Level Program | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan\n2018 — Bronze Medal – Honorable Distinction Award | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan\n\n\nCurrently studying BSc (Honors) in Artificial Intelligence and Educational Technology at The Education University of Hong Kong.\nIELTS – 8.5/9.0\nMiddle School and High School – CAIE IGCSE\nPrimary and Middle School – IB Primary and Middle Years Program\n\n\n\n\n \n\n\n Back to top"
+    "text": "DenseMatcher is a method for generalization the “understanding” of one object to another. The best way to understand this, is to view the following images from the paper.\n\n\nIn other words, DenseMatcher computes 3D correspondences between objects.\nIt works by using SD-DINO (a combination of Stable Diffusion and DINO) to extract 2D features from different angles of the 3D asset. The features from different views are averaged, providing the feature for each vertex.\n\nHowever, as seen in the image above, the features are noisy. Therefore, the features are then refined with DiffusionNet. This is an architecture meant for meshes.\n\nAfter the features have been refined, a functional map is solved to compute correspondences.\n\nLink to paper. All images in this post are from the paper.\n\n\n\n Back to top"
   },
   {
-    "objectID": "bitsandbobs/index.html",
-    "href": "bitsandbobs/index.html",
-    "title": "These are bits and bobs.",
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html",
+    "href": "bitsandbobs/posts/2025-07-15-B.html",
+    "title": "Nifty Shell Tools",
     "section": "",
-    "text": "Bits and bobs I learned along the way. Maybe you'll find them useful too.\n\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\n\nTitle\n\n\n\nDescription\n\n\n\nDate\n\n\n\n\n\n\n\n\nInteresting Bits from AoC 2025 Day 1\n\n\nThe dictionary accumulates modulating integers.s\n\n\n08 December 2025\n\n\n\n\n\n\nThe Intracices of the Python Modulo Operator\n\n\nModulating the Modulator\n\n\n02 December 2025\n\n\n\n\n\n\nNifty Shell Tools\n\n\nPocket tools to keep in your pocket.\n\n\n15 July 2025\n\n\n\n\n\n\nNuances in Shell Scripting\n\n\nShell’s just another programming language.\n\n\n15 July 2025\n\n\n\n\n\n\nShell hooks, uv, and Conda.\n\n\nHooking uv and conda together.\n\n\n05 July 2025\n\n\n\n\n\n\nRetrieval Augmented Generation in a nutshell.\n\n\nDon’t let jargon fool you.\n\n\n24 June 2025\n\n\n\n\n\n\nTerminal know-how.\n\n\nKnow the basics of manipulating your shell.\n\n\n20 June 2025\n\n\n\n\n\n\nCognitive Maps\n\n\nCognitive maps in the context of biology and AI.\n\n\n03 June 2025\n\n\n\n\n\n\n春节期间怎么祝福朋友\n\n\nHow to greet others during the Spring Festival.\n\n\n11 May 2025\n\n\n\n\n\n\n茶好客常来\n\n\n只要东西好，顾客就会喜欢。\n\n\n01 May 2025\n\n\n\n\n\n\n饭后百步走，活到九十九\n\n\nA walk after dinner makes one live to 99.\n\n\n28 April 2025\n\n\n\n\n\n\n鱼与熊掌\n\n\nYou can’t have your cake and eat it too.\n\n\n03 April 2025\n\n\n\n\n\n\nSeeking Deep Thoughts\n\n\nThoughts that came to mind as I’m reading the Deepseek Maths paper\n\n\n18 February 2025\n\n\n\n\n\n\nDeepseek R1 in 2 bullets\n\n\nDeepseek R1 explained in a literal walnut shell\n\n\n13 February 2025\n\n\n\n\n\n\nRobo-ABC: Affordance Generalization Beyond Categories via Semantic Correspondence for Robot Manipulation\n\n\nTransfering the perception of an object, to other objects.\n\n\n28 January 2025\n\n\n\n\n\n\n不 vs 没\n\n\nThe age old connundrum.\n\n\n27 January 2025\n\n\n\n\n\n\nThinking in Space: How Multimodal Large Language Models See, Remember, and Recall Spaces\n\n\nA new dimension to current models is needed to understand space.\n\n\n23 January 2025\n\n\n\n\n\n\nOmniManip: Towards General Robotic Manipulation via Object-Centric Interaction Primitives as Spatial Constraints\n\n\nUsing an ensemble to overcome the lack of 3D understanding\n\n\n21 January 2025\n\n\n\n\n\n\n小和年轻\n\n\n小 and 年轻 carry different contations for age.\n\n\n14 January 2025\n\n\n\n\n\n\n没几个\n\n\nThe function of 没几个\n\n\n02 January 2025\n\n\n\n\n\n\nNo matching items\n\n  \n\n\n\nLoading…\n\n\n\n\n\n\n\n Back to top"
+    "text": "find to find files and directories, and perform actions on them\nfd, an alternative to find that provides abstractions"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-02-18-A.html",
-    "href": "bitsandbobs/posts/2025-02-18-A.html",
-    "title": "Seeking Deep Thoughts",
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-searching-tools",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#file-searching-tools",
+    "title": "Nifty Shell Tools",
     "section": "",
-    "text": "I started reading the Deepseek Math paper, after recently finishing the R1 paper. The following thoughts started coming to mind:\n\nR1 is successful simply because of the training process\nDeepseek Math is worked really well because of data quality\nGRPO is used only to reduce memory usage (still reading the Deepseek Math paper; I could be wrong)\n\nTakeaway is that a lot can be done by simply flipping and rearranging all the existing levers and switches we already have.\n\n\n\n Back to top"
+    "text": "find to find files and directories, and perform actions on them\nfd, an alternative to find that provides abstractions"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-24-A.html",
-    "href": "bitsandbobs/posts/2025-01-24-A.html",
-    "title": "Retrieval Augmented Generation in a nutshell.",
-    "section": "",
-    "text": "RAG is simply a bunch of cosine similarity checks performed with the user’s query and the contexts provided to the LLM. This allows the LLM to determine which contexts are most useful for the LLM to answer the user’s query.\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#path-and-command-lookup",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#path-and-command-lookup",
+    "title": "Nifty Shell Tools",
+    "section": "Path and Command Lookup",
+    "text": "Path and Command Lookup\n\nwhich to know which path is in use"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-05-01-A.html",
-    "href": "bitsandbobs/posts/2025-05-01-A.html",
-    "title": "茶好客常来",
-    "section": "",
-    "text": "Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#text-searching",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#text-searching",
+    "title": "Nifty Shell Tools",
+    "section": "Text Searching",
+    "text": "Text Searching\n\ngrep to match patterns in input text\nripgrep, an alternative to grep that filters generally unwanted files by default"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-12-02-A.html",
-    "href": "bitsandbobs/posts/2025-12-02-A.html",
-    "title": "The Intracices of the Python Modulo Operator",
-    "section": "",
-    "text": "Divisor larger than dividend:\n\n5%2=1\n158%100=58\n\nDivisor smaller than dividend:\n\n2%5=2\n100%158=100\n\nNegative divisor (in Python, the remainder must always be positive):\n\n-18%100=82\n-188%100=100\n\nHandy template expression to use: divisor = ? * dividend + remainder, where ? is the number of times the dividend fits into the divisor. - 158%100: 158 = ? * 100 + remainder - -18%100: -18 = ? * 100 + remainder - In Python, the remainder must always be positive. Thus, ? in this case is -1.\nHow to read modulo expressions in Chinese: - 158%100: 158模100 或 158对100取模\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#documentation-tools",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#documentation-tools",
+    "title": "Nifty Shell Tools",
+    "section": "Documentation Tools",
+    "text": "Documentation Tools\n\nman to view the manual of a tool\ntldr, an alternative to man that provides concise and practical summaries"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-02-13-A.html",
-    "href": "bitsandbobs/posts/2025-02-13-A.html",
-    "title": "Deepseek R1 in 2 bullets",
-    "section": "",
-    "text": "Am currently reading through the research paper. From my current understanding:\n\nR1-Zero is pure RL, with GRPO as the policy\nR1 is unpure RL, with GRPO as the policy, with some SFT in the form of cold start data, and further refinement stages\n\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-operations",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#file-operations",
+    "title": "Nifty Shell Tools",
+    "section": "File Operations",
+    "text": "File Operations\n\nchmod to change file permissions\ntouch to create files, and change certain file metadata\ncat to view file contents, and concatenate files"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-04-28-A.html",
-    "href": "bitsandbobs/posts/2025-04-28-A.html",
-    "title": "饭后百步走，活到九十九",
-    "section": "",
-    "text": "Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#shell-history",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#shell-history",
+    "title": "Nifty Shell Tools",
+    "section": "Shell History",
+    "text": "Shell History\n\nhistory to view your shell history; alternatively, most shells will allow the same functionality with ctrl + R"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-01-02-A.html",
-    "href": "bitsandbobs/posts/2025-01-02-A.html",
-    "title": "没几个",
-    "section": "",
-    "text": "没几个 is a way of saying a “very few” of something, rather than “not few”.\n我认识的人很多，但没几个好朋友。\nFrom the Immersive Chinese App.\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#directory-visualization",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#directory-visualization",
+    "title": "Nifty Shell Tools",
+    "section": "Directory Visualization",
+    "text": "Directory Visualization\n\ntree to visualize directories as a tree\nbroot to visualize and navigate directories in a tree-like structure"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-07-05-A.html",
-    "href": "bitsandbobs/posts/2025-07-05-A.html",
-    "title": "Shell hooks, uv, and Conda.",
-    "section": "",
-    "text": "A shell hook is a piece of shell script that is called before or after the shell displays the prompt.\nI want to use conda and uv together. Conda’s great as swithcing environments on the fly, and uv is great for speed. However, while uv pip install makes use of the current conda environment, uv sync and uv add don’t\nI came across this rc script from Benjamin Warner that sets the environment variable uv uses to allow it to work with conda.\n# Function to update UV_PROJECT_ENVIRONMENT when Conda environment changes\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\n\n# Run the function initially to set the variable immediately\nconda_auto_env\n\n# Hook into shell prompts\nif [[ -n \"$ZSH_VERSION\" ]]; then\n    # Ensure add-zsh-hook is available\n    autoload -Uz add-zsh-hook\n    # Avoid duplicate hooks\n    if ! [[ -v _conda_update_hook_added ]]; then\n        add-zsh-hook precmd conda_auto_env\n        _conda_update_hook_added=1\n    fi\nelif [[ -n \"$BASH_VERSION\" ]]; then\n    # Ensure PROMPT_COMMAND is updated only once\n    if [[ -z \"$PROMPT_COMMAND\" ]]; then\n        PROMPT_COMMAND=\"conda_auto_env\"\n    elif [[ \"$PROMPT_COMMAND\" != *\"conda_auto_env\"* ]]; then\n        PROMPT_COMMAND=\"conda_auto_env; $PROMPT_COMMAND\"\n    fi\nfi\nProgramming the shell is new to me, and I wanted to understand what exactly this script was doing. So after chatting with a LLM, I discovered the world of shell hooks.\nThe script begins by first settings the UV_PROJECT_ENVIRONMENT to be the path that $CONDA_PREFIX uses.\nconda_auto_env() {\n    if [[ -n \"$CONDA_PREFIX\" ]]; then\n        export UV_PROJECT_ENVIRONMENT=\"$CONDA_PREFIX\"\n    else\n        unset UV_PROJECT_ENVIRONMENT\n    fi\n}\nThen, a precmd shell hook is created. So the moment before a new prompt appears in the shell, conda_auto_env is run to set the uv environment to be the same as the conda environment.\n# Ensure add-zsh-hook is available\nautoload -Uz add-zsh-hook\n# Avoid duplicate hooks\nif ! [[ -v _conda_update_hook_added ]]; then\n    add-zsh-hook precmd conda_auto_env\n    _conda_update_hook_added=1\nfi\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#file-managers",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#file-managers",
+    "title": "Nifty Shell Tools",
+    "section": "File Managers",
+    "text": "File Managers\n\nnnn and ranger as file managers"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-06-21-A.html",
-    "href": "bitsandbobs/posts/2025-06-21-A.html",
-    "title": "Terminal know-how.",
-    "section": "",
-    "text": "$PATH outputs the paths of all programs that can be executed directly by the name of the program. That is, it’s not needed to type the fully path of the program every time.\nwhich lets you know which path is in use.\nShift, rename, copy, and delete files with mv, cp, rv, and rm.\nStuck? Run man with the program name.\nPass data between files and programs with &gt; and &lt;.\nPass data between programs with |.\nRemember cd - and cd ~.\nUse chmod to change file permissions.\nUse touch to create files, and change certain file metadata.\nUse cat to view file contents, and concatenate files.\n!# (shebang) calls for bash scripts to be interpreted.\n\n\n\n\n Back to top"
+    "objectID": "bitsandbobs/posts/2025-07-15-B.html#shell-enhancements",
+    "href": "bitsandbobs/posts/2025-07-15-B.html#shell-enhancements",
+    "title": "Nifty Shell Tools",
+    "section": "Shell Enhancements",
+    "text": "Shell Enhancements\n\nfzf, an add-on to search based actions that introduces fuzzy matching\nzsh-autosuggestions, an add-on to zsh that introduces autosuggestions"
   },
   {
-    "objectID": "bitsandbobs/posts/2025-06-03-A.html",
-    "href": "bitsandbobs/posts/2025-06-03-A.html",
-    "title": "Cognitive Maps",
+    "objectID": "bitsandbobs/posts/2025-12-11-A.html",
+    "href": "bitsandbobs/posts/2025-12-11-A.html",
+    "title": "GET vs POST Requests",
     "section": "",
-    "text": "In biology, cognitive maps are what provide us with spatial knowledge and perception. These maps are comprised of 4 cells that in conjuction provide us with a sense of spatial perception: place cells, grid cells, direction cells, and boundary cells. Place cells let us know when objects in a given location. Grid cells provide a coordinate-like system for mapping the environment.\nIn the field of AI, one of the most common implementations of cognitive maps is akin to an embedding specialized for space. Each row is an object and each column is a location in a given space. Thus, a corresponding cell tells us whether a given object is at a given location.\n\n\n\n Back to top"
+    "text": "GET/POST deal only with requests, not responses\nThink of the browser requesting the server\nGET reads the state of the server\nPOST can modify the state of the server\nThe response of GET/POST is all the same: they both can return HTML and modify a webpage\n\n\n\n\n Back to top"
   },
   {
     "objectID": "forblog/posts/3_the_confusion_matrix.html",
