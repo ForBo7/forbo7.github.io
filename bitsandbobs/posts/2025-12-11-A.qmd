@@ -1,0 +1,12 @@
+---
+title: GET vs POST Requests
+description: Do you get what you're posting?
+date: 2025-12-12
+categories: [Web Development]
+---
+
+- GET/POST deal only with requests, not responses
+- Think of the browser requesting the server
+- GET reads the state of the server
+- POST can modify the state of the server
+- The response of GET/POST is all the same: they both can return HTML and modify a webpage
