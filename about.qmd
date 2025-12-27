@@ -29,7 +29,12 @@ page-layout: full
 ::::{.animate__animated .animate__slideInUp .animate__faster}
 :::{.panel-tabset}
 
-# Projects // 有趣项目
+# Projects
+
+**GPU Algorithm Optimization**
+
+- Optimized Meanshift clustering algorithm achieving 6x speedup (1.5s → 0.25s) through batch processing and other GPU acceleration techniques
+- [Read more](forblog/posts/17_meanshift_clustering.html)
 
 **DiffEdit Implementation**
 
@@ -54,12 +59,7 @@ page-layout: full
 - Authored technical blog post deriving backpropagation from first principles using plain language
 - [Read more](forblog/posts/18_backprop_from_scratch.qmd)
 
-**GPU Algorithm Optimization**
-
-- Optimized Meanshift clustering algorithm achieving 6x speedup (1.5s → 0.25s) through batch processing and other GPU acceleration techniques
-- [Read more](forblog/posts/17_meanshift_clustering.html)
-
-# Experience // 经验
+# Experience
 
 **VLM Researcher (Project Lead)** | Jun. 2025 – Aug. 2025
 
@@ -95,29 +95,13 @@ READily Limited – HKSTP Incubatee
 - Implemented distributed training on 8-GPU cluster using FSDP and QDoRA
 - Reverse-engineered BPE tokenizer and developed custom layer hooks for tonal control
 
-**Training Coordinator** | Mar. 2024
-
-Kids4Kids Hong Kong
-
-* Volunteer work
-* Workshop planning and video editing
-
-**Teaching Assistant** | Sep. 2020 – May. 2021
-
-Beaconhouse College Program
-
-* Teaching classes
-* 1-1 student sessions
-
-# Skills // 技能
+# Skills
 
 **Programming Languages:** Python
 
 **ML/AI Frameworks:** PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate), fastai
 
-**Tools & Libraries:** Pandas, NumPy, Scikit-Learn, Gradio, Jupyter, nbdev, Quarto, FSDP, QDoRA
-
-**AI Tools:** Dialog engineering, prompt engineering, AI-assisted development
+**Tools & Libraries:** Pandas, NumPy, Scikit-Learn, Gradio, Jupyter, nbdev, FastHTML Quarto
 
 **Other:** 3D Graphics (Blender), Technical Writing, Teaching
 
@@ -152,10 +136,6 @@ Beaconhouse College Program
 *Feb. 24, 2023* — **EdUHK Full Entrance Scholarship** | The Education University of Hong Kong
 
 *Nov. 2022 – Jun. 2023* – **Built AI community "The Dataspace" - 1100+ members** | Discord
-
-*Sep. 2022 – Mar. 2023* — **Completed fast.ai Course Part 1: Practical Deep Learning for Coders**
-
-*Jan. 17, 2023* — **Top 12% in Kaggle Data Science Competition** | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset
 
 # Education // 教育
 
