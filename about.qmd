@@ -23,7 +23,7 @@ page-layout: full
 ---
 
 :::{.animate__animated .animate__slideInRight .animate__faster}
-*An explorer who’s lived in 4 countries and traveled to 15. A master of 3 different language scripts. An enthusiast of science and technology, proudly wearing the badge of "sci-tech geek”. A curious soul unraveling the realms of AI, intricacies of 3D computer graphics, fueled by an insatiable passion for learning. Onward and upward, with tenacity and sincerity.*
+*AI researcher bridging theory with practice in vision-language models, embodied AI systems, and diffusion models. Strong background in distributed training, model optimization, and leveraging AI tools to enhance development workflows. Currently pursuing B.Sc. in AI & EdTech at EdUHK as a full scholarship recipient.*
 :::
 
 ::::{.animate__animated .animate__slideInUp .animate__faster}
@@ -31,37 +31,69 @@ page-layout: full
 
 # Projects // 有趣项目
 
-- [Trained an LLM in 1.5 months that could output Cantonese lyrics that were constrained by the desired 6-9 Cantonese tones.](forblog/posts/21_reflecting_on_my_internships.qmd)
-- [Reimplemented the DiffEdit research paper. Edit portions of an image via text only.](forblog/posts/15_un_successfully_implementing_diffedit.ipynb)
-- [Reimplementing the PyTorch library myself.](forblog/posts/20_models_from_scratch.ipynb)
-- [Making back propagation an inherently easy topic to grasp.](forblog/posts/18_backprop_from_scratch.qmd)
-- [Optimizing algorithms to run quicker on a GPU.](forblog/posts/18_backprop_from_scratch.qmd)
+**DiffEdit Implementation**
+
+- Implemented DiffEdit paper from scratch, building a complete text-based image editing pipeline with Stable Diffusion
+- Successfully generated segmentation masks and identified VAE compression artifacts in latent space
+- [Read more](forblog/posts/15_un_successfully_implementing_diffedit.ipynb)
+
+**PyTorch Reimplementation**
+
+- Reimplemented PyTorch core neural network components from scratch (layers, backpropagation, autograd, optimizers, dataloaders)
+- Progressively rebuilt with PyTorch to understand modular architecture
+- [Read more](forblog/posts/20_models_from_scratch.ipynb)
+
+**Stable Diffusion Implementation**
+
+- Built custom Stable Diffusion pipeline from components (CLIP, U-Net, VAE)
+- Implemented classifier-free guidance and negative prompts
+- [Read more](forblog/posts/13_implementing_stable_diffusion_from_its_components.html)
+
+**Backpropagation Tutorial**
+
+- Authored technical blog post deriving backpropagation from first principles using plain language
+- [Read more](forblog/posts/18_backprop_from_scratch.qmd)
+
+**GPU Algorithm Optimization**
+
+- Optimized Meanshift clustering algorithm achieving 6x speedup (1.5s → 0.25s) through batch processing and other GPU acceleration techniques
+- [Read more](forblog/posts/17_meanshift_clustering.html)
 
 # Experience // 经验
 
-**Embodied AI Researcher** | Oct. 2024 – Current
+**VLM Researcher (Project Lead)** | Jun. 2025 – Aug. 2025
+
+Focus Tech Lab (2025 HK Techathon Gold Medalist)
+
+- Diagnosed core bottleneck in robotic arm pipeline: VLM's inability to interpret 3D spatial relationships
+- Integrated RoboBrain 2.0, saving weeks of development time
+- Built attention heatmap visualization tool to diagnose VLM failures
+- Developed attention-steering framework to manipulate VLM focus at inference time
+
+**Embodied AI Researcher** | Oct. 2024 – Jun. 2025
 
 Multimodal Intelligence Laboratory, The Education University of Hong Kong
 
-* Embodied AI
-* General purpose robot manipulation and spatial intelligence
-* Under [Dr. Fu Hong](https://repository.eduhk.hk/en/persons/hong%E5%82%85%E5%BC%98-fu)
+- Fine-tuned Qwen2.5VL-3B on RGB-D images, improving spatial reasoning accuracy by ~6%
+- Identified fundamental limitations in VLMs for spatial intelligence tasks
+- Findings directly informed subsequent spatial intelligence work at Focus Tech Lab
+- Analyzed state-of-the-art methods in robot manipulation (under [Dr. Fu Hong](https://repository.eduhk.hk/en/persons/hong%E5%82%85%E5%BC%98-fu))
 
-**AI Engineer** | Jul. 2024 – Aug.2024
+**AI Engineer (Project Lead)** | Jul. 2024 – Aug. 2024
 
-Keweya Education Technology Limited – HKSTP Incubatee
+Keweya Education Technology Limited – HKSTP Incubatee
 
-* Project lead
-* Studying, implementing, customizing diffusion models, and app development
-* Review and analysis of research papers
+- Built a career visualization app using PhotoMaker V2 and Stable Diffusion XL, allowing students to see themselves in future careers
+- Integrated face embedding for personalized image generation with LoRA modules
+- Developed a publicly accessible web-hosted full-stack Gradio application with story generation mode
 
-**LLM Researcher** | Jun. 2024 – Jul. 2024
+**LLM Researcher (Project Co-Lead)** | Jun. 2024 – Jul. 2024
 
 READily Limited – HKSTP Incubatee
 
-* Project co-lead
-* Intensive continued pretraining of large language models
-* Research paper review and implementation
+- Fine-tuned 70B+ parameter LLMs to generate tone-constrained Cantonese lyrics (novel task)
+- Implemented distributed training on 8-GPU cluster using FSDP and QDoRA
+- Reverse-engineered BPE tokenizer and developed custom layer hooks for tonal control
 
 **Training Coordinator** | Mar. 2024
 
@@ -79,29 +111,21 @@ Beaconhouse College Program
 
 # Skills // 技能
 
-**Language**
+**Programming Languages:** Python
 
-- English: Native level fluency
-- Mandarin: Basic proficiency
+**ML/AI Frameworks:** PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate), fastai
+
+**Tools & Libraries:** Pandas, NumPy, Scikit-Learn, Gradio, Jupyter, nbdev, Quarto, FSDP, QDoRA
+
+**AI Tools:** Dialog engineering, prompt engineering, AI-assisted development
+
+**Other:** 3D Graphics (Blender), Technical Writing, Teaching
+
+**Languages:**
+
+- English: Native
+- Mandarin: Conversational proficiency, can read technical documentation (approx. new HSK 5)
 - Urdu: Fluent
-
-**Teaching**
-
-I know how to succinctly convey concepts in an engaging manner that makes sense. I don’t read a speech from PPT slides.
-
-**Programming**
-
-I have a very particular manner and philosophy to programming. It's expository programming: literate, exploratory, and the way it should be done. See [here](https://docs.fast.ai/dev/style.html), [here](https://archive.vector.org.uk/art10000980), and [here](https://nbdev.fast.ai/). Writing code is not the focus, solving the problem at hand is.
-
-Python, PyTorch, Hugging Face (transformers, diffusers, datasets, tokenizers, peft, accelerate, etc), fastai, Pandas, NumPy, Scikit-Learn, Gradio, Quarto, Jupyter, nbdev
-
-**3D Computer Graphics**
-
-Blender
-
-**Artificial Intelligence (fast.ai)**
-
-Self-learning since April 2022.
 
 # 扫一扫
 
@@ -111,47 +135,39 @@ Self-learning since April 2022.
 
 :::{.panel-tabset}
 
-# Other Interesting Stuff // 其他亮点
+# Awards & Honors // 其他亮点
 
 *Feb. 21st 2025* – [**Meet Salman Naqvi: the bright spark in AI and EdTech**](https://flassnews.eduhk.hk/preview_article/WINTER_2024_ISSUE_11/Meet%20Salman%20Naqvi%20the%20bright%20spark%20in%20AI%20and%20EdTech) | See what the university's written about me!
 
-*Dec. 27, 2024* – [**Featured among "The EdUHK Rising Stars"**](https://www.youtube.com/watch?v=JrM6hwABAQ4) | See the university's mini documentary on me!
+*Dec. 27, 2024* – [**Featured among "The EdUHK Rising Stars" - EdUHK 30th Anniversary**](https://www.youtube.com/watch?v=JrM6hwABAQ4) | See the university's mini documentary on me!
 
-*Jun. 12, 2024* – **Study Award from Hong Kong SAR Government** | Hong Kong SAR Government Scholarship Fund Reaching Out Award
+*Jun. 12, 2024* – **Hong Kong SAR Government Scholarship Fund Reaching Out Award**
 
 *Dec. 7, 2023* — **Invited Speaker at the Advanced Study Institute (ASI) Online Symposium** | The Education University of Hong Kong and Hong Kong Baptist University
 
-*Apr. 2023 – Nov. 2023* — **Co-lead Online Study Group** | fast.ai Course Part 2: From Deep Learning Foundations to Stable Diffusion | Discord
+*Apr. 2023 – Nov. 2023* — **Co-lead fast.ai Part 2 Online Study Group** | From Deep Learning Foundations to Stable Diffusion | Discord
 
-*Mar. 17, 2023* — **Study Scholarship Offer from Kyoto University of Advanced Sciences, Kyoto, Japan** | KUAS-E Scholarship
+*Mar. 17, 2023* — **KUAS-E Scholarship Offer** | Kyoto University of Advanced Sciences, Japan
 
-*Feb. 24, 2023* — **Study Scholarship Offer from The Eduation University of Hong Kong, Hong Kong SAR, China** | EdUHK Full Entrance Scholarship
+*Feb. 24, 2023* — **EdUHK Full Entrance Scholarship** | The Education University of Hong Kong
 
-*Nov. 2022 – Jun. 2023* – **Grew an AI community of over 1100+ members** | The Dataspace | Discord
+*Nov. 2022 – Jun. 2023* – **Built AI community "The Dataspace" - 1100+ members** | Discord
 
 *Sep. 2022 – Mar. 2023* — **Completed fast.ai Course Part 1: Practical Deep Learning for Coders**
 
-*Jan. 17, 2023* — **Placed in Top 12% of Contestants in Data Science Competition** | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset | Kaggle
-
-*Sep. 2020 – May 2021* — **Physics Teaching Assistant** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*Sep. 2020 – May 2021* — **Mathematics Teaching Assistant** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*Jan. 2020* —  **Concert Marketing – Raised $8,400** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*Aug. 2019* — **Received 100% Scholarship for A-Level Program** | Beaconhouse College Program Potohar Campus, Islamabad, Pakistan
-
-*2018* — **Bronze Medal – Honorable Distinction Award** | 15th International Kangaroo Linguistic Contest, Islamabad, Pakistan
+*Jan. 17, 2023* — **Top 12% in Kaggle Data Science Competition** | Playground Series Season 3, EP2 | Tabular Classification with a Stroke Prediction Dataset
 
 # Education // 教育
 
-**Currently studying BSc (Honors) in Artificial Intelligence and Educational Technology at The Education University of Hong Kong.**
+**The Education University of Hong Kong**
 
-IELTS – 8.5/9.0
+B.Sc. (Honors) in Artificial Intelligence and Educational Technology
 
-Middle School and High School – CAIE IGCSE
+Expected Graduation: May 2027
 
-Primary and Middle School – IB Primary and Middle Years Program
+- EdUHK Full Entrance Scholarship (Feb 2023)
+
+IELTS – 8.5/9.0
 
 :::
 ::::
