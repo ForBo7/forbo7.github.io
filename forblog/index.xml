@@ -14,7 +14,7 @@
 <title>ForBo7 // Salman Naqvi</title>
 <link>https://forbo7.github.io/forblog/</link>
 </image>
-<generator>quarto-1.8.26</generator>
+<generator>quarto-1.8.27</generator>
 <lastBuildDate>Sun, 07 Dec 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Translating SolveIt Dialogues</title>
@@ -564,7 +564,7 @@ font-style: inherit;">=</span>new_o)</span></code></pre></div></div>
 <li>Fine-tune an AI model</li>
 <li>Use the model</li>
 </ol>
-<div id="cell-5" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:15:47.111858Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:15:47.111546Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:15:48.302866Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:15:48.301471Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:15:47.111830Z&quot;}}" data-trusted="true" data-execution_count="1">
+<div id="c7441058" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span> uv pip install ddgs</span></code></pre></div></div>
@@ -593,7 +593,7 @@ Installed <span style="font-weight:bold;opacity:0.7">4 packages</span> in 11ms
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:15:50.414673Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:15:50.413740Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:15:50.419705Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:15:50.418705Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:15:50.414595Z&quot;}}" data-trusted="true" data-execution_count="2">
+<div id="3b3a1319" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> logging</span>
@@ -604,7 +604,7 @@ font-style: inherit;">import</span> logging</span>
 <p>We need some images to teach the model what’s a bird and what’s a first.</p>
 <p>Rather than manually searching for photos by hand, let’s programmatically do it.</p>
 <p>First, let’s search for a single photo to make sure our search works.</p>
-<div id="cell-9" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:22:48.736711Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:22:48.736386Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:22:49.296458Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:22:49.295415Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:22:48.736669Z&quot;}}" data-trusted="true" data-execution_count="5">
+<div id="605dee3e" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> ddgs <span class="im" style="color: #00769E;
@@ -648,7 +648,7 @@ background-color: null;
 font-style: inherit;">1</span>)</span></code></pre></div></div>
 </div>
 <p>Let’s download it and have a look.</p>
-<div id="cell-11" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:16:21.821697Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:16:21.821450Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:16:40.176279Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:16:40.175122Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:16:21.821661Z&quot;}}" data-trusted="true" data-execution_count="4">
+<div id="f2b62eb4" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> fastdownload <span class="im" style="color: #00769E;
@@ -700,7 +700,7 @@ font-style: inherit;">256</span>)</span></code></pre></div></div>
 </div>
 </div>
 <p>Now grab 200 bird photos and 200 forest photos (our ‘not bird’ category).</p>
-<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:22:54.153798Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:22:54.153262Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:23:07.789087Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:23:07.787877Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:22:54.153746Z&quot;}}" data-trusted="true" data-execution_count="6">
+<div id="4d133e8f" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1">searches <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
@@ -762,7 +762,7 @@ font-style: inherit;">/</span>o)</span></code></pre></div></div>
 <section id="step-2-create-a-datablock" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-create-a-datablock">Step 2: Create a DataBlock</h3>
 <p>Here, we’ll be performing a bunch of processes on the data.</p>
-<div id="cell-15" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:23:37.584007Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:23:37.583650Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:23:38.446116Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:23:38.445140Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:23:37.583965Z&quot;}}" data-trusted="true" data-execution_count="7">
+<div id="4c008c10" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1">dls <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> DataBlock(</span>
@@ -825,7 +825,7 @@ font-style: inherit;">6</span>)</span></code></pre></div></div>
 </section>
 <section id="step-3-train" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-train">Step 3: Train</h3>
-<div id="cell-18" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:24:15.636679Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:24:15.636400Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:25:10.580052Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:25:10.578748Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:24:15.636640Z&quot;}}" data-trusted="true" data-execution_count="8">
+<div id="068fb871" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1">learn <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> vision_learner(dls, resnet18, metrics<span class="op" style="color: #5E5E5E;
@@ -937,7 +937,7 @@ font-style: inherit;">3</span>)</span></code></pre></div></div>
 </section>
 <section id="step-4-use-the-model" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-use-the-model">Step 4: Use the Model</h3>
-<div id="cell-21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:25:48.684717Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:25:48.684474Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:25:48.710526Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:25:48.709494Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:25:48.684692Z&quot;}}" data-trusted="true" data-execution_count="11">
+<div id="16e874e5" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">im.to_thumb(<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">256</span>,<span class="dv" style="color: #AD0000;
@@ -951,7 +951,7 @@ font-style: inherit;">256</span>)</span></code></pre></div></div>
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-11-09T01:25:10.582275Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-11-09T01:25:10.582074Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-11-09T01:25:10.731532Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-11-09T01:25:10.730671Z&quot;,&quot;shell.execute_reply.started&quot;:&quot;2025-11-09T01:25:10.582254Z&quot;}}" data-trusted="true" data-execution_count="9">
+<div id="f0b322a7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1">is_bird,_,probs <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> learn.predict(PILImage.create(<span class="st" style="color: #20794D;
