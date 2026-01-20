@@ -72,7 +72,6 @@
   {
     "listing": "/testing_page.html",
     "items": [
-      "/forblog/posts/31_solveit_in_solveit.html",
       "/forblog/posts/30_translating_solveit_dialogues.html",
       "/forblog/posts/29_lets_build_an_ai_model.html",
       "/forblog/posts/28_creating_your_own_llm_agent.html",
@@ -82,6 +81,7 @@
       "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
+      "/forblog/posts/31_solveit_in_solveit.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
       "/forblog/posts/19_tokenizers.html",
@@ -111,7 +111,6 @@
   {
     "listing": "/index.html",
     "items": [
-      "/forblog/posts/31_solveit_in_solveit.html",
       "/forblog/posts/30_translating_solveit_dialogues.html",
       "/forblog/posts/29_lets_build_an_ai_model.html",
       "/forblog/posts/28_creating_your_own_llm_agent.html",
@@ -121,6 +120,7 @@
       "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
+      "/forblog/posts/31_solveit_in_solveit.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
       "/forblog/posts/19_tokenizers.html",
@@ -194,7 +194,6 @@
   {
     "listing": "/forblog/index.html",
     "items": [
-      "/forblog/posts/31_solveit_in_solveit.html",
       "/forblog/posts/30_translating_solveit_dialogues.html",
       "/forblog/posts/29_lets_build_an_ai_model.html",
       "/forblog/posts/28_creating_your_own_llm_agent.html",
@@ -204,6 +203,7 @@
       "/forblog/posts/24_the_state_of_pose_estimation.html",
       "/forblog/posts/23_basic_math_terms_in_chinese.html",
       "/forblog/posts/22_how_deepseek_r1_was_trained.html",
+      "/forblog/posts/31_solveit_in_solveit.html",
       "/forblog/posts/21_reflecting_on_my_internships.html",
       "/forblog/posts/20_models_from_scratch.html",
       "/forblog/posts/19_tokenizers.html",
