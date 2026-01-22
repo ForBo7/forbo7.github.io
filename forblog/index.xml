@@ -7255,7 +7255,12 @@ htmx.onLoad(hljs.highlightAll);&lt;/script&gt;   &lt;/head&gt;
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Agents, Approaching AI, LLMs, SolveIt, Programming, HTML</category>
+  <category>Agents</category>
+  <category>Approaching AI</category>
+  <category>LLMs</category>
+  <category>SolveIt</category>
+  <category>Programming</category>
+  <category>HTML</category>
   <guid>https://forbo7.github.io/forblog/posts/31_solveit_in_solveit.html</guid>
   <pubDate>Wed, 22 Jan 2025 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/31_solveit_in_solveit/thumbnail.png" medium="image" type="image/png" height="115" width="144"/>
