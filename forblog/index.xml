@@ -7266,6 +7266,1673 @@ with the answer. The reasoning process and answer are enclosed within &lt;think&
   <media:content url="https://forbo7.github.io/forblog/images/22_how_deepseek_r1_was_trained/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 <item>
+  <title>Ways to Pull Repos into LLM Context</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/32_ways_to_pull_repos_into_LLM_context.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/32_ways_to_pull_repos_into_LLM_context/thumbnail.png" class="img-fluid"></p>
+<p>Good context is key when working with LLMs, no matter if you’re coding, writing, planning, problem solving, and what not. The LLM needs to know your context to you help you effectively.</p>
+<p>This guide will explore different ways one can pull a GitHub repo or a local repo in particular into a format LLMs can use.</p>
+<section id="githubq" class="level2">
+<h2 class="anchored" data-anchor-id="githubq">GitHubq</h2>
+<p>GitHubq is a web service from <a href="https://www.answer.ai/">Answer.Ai</a> that allows you to easily make GitHub repos available as context for LLMs. The basic way to use the service is to change <code>github.com</code> to <code>githubq.com</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/images/32_ways_to_pull_repos_into_LLM_context/1.png" class="img-fluid figure-img"></p>
+<figcaption>Viewing the Shell Sage GitHub repo as LLM context</figcaption>
+</figure>
+</div>
+<p>You can change what you get back with various parameters. For instance,</p>
+<ul>
+<li><code>exts=py</code> returns only files ending with <code>.py</code></li>
+<li><code>sigs_only=True</code> returns only function signatures and their docstrings.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://forbo7.github.io/forblog/images/32_ways_to_pull_repos_into_LLM_context/2.png" class="img-fluid figure-img"></p>
+<figcaption>Only Python files with function signatures are visible</figcaption>
+</figure>
+</div>
+</section>
+<section id="toolslm.xml" class="level2">
+<h2 class="anchored" data-anchor-id="toolslm.xml"><code>toolslm.xml</code></h2>
+<section id="repo2ctx" class="level3">
+<h3 class="anchored" data-anchor-id="repo2ctx"><code>repo2ctx</code></h3>
+<p>Githubq is great if you want to paste a link to a LLM that will then retrieve what’s on the link, or if you want to save one-off files here and there. What if you want to programmatically work with the context? That’s where <code>toolslm</code>, and more specifically the <code>toolslm.xml</code> module comes in.</p>
+<div id="5bddf20f" class="cell" data-time_run="2026-01-17T02:42:20.228964+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> toolslm.xml <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> repo2ctx</span>
+<span id="cb1-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(repo2ctx(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://github.com/AnswerDotAI/shell_sage'</span>, exts<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'py'</span>)[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>&lt;documents title="GitHub repository contents from AnswerDotAI/shell_sage/main (filters applied -- ex</code></pre>
+</div>
+</div>
+<p>Behind the scenes, GitHubq uses <code>repo2ctx</code>. So parameters from <code>repo2ctx</code> should work as query parameters when accessing <code>GitHubq</code>.</p>
+<div id="8f5d8fcb" class="cell" data-time_run="2026-01-17T02:43:21.673991+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">?repo2ctx</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> repo2ctx(</span>
+<span id="cb4-2">    owner:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># GitHub repo owner or "owner/repo" or a full github URL</span></span>
+<span id="cb4-3">    repo:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># GitHub repo name (leave empty if using "owner/repo" or URL format for owner param)</span></span>
+<span id="cb4-4">    ref:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Git ref (branch/tag/sha) (get from URL not provided); defaults to repo's default branch</span></span>
+<span id="cb4-5">    folder:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only include files under this path (get from URL not provided)</span></span>
+<span id="cb4-6">    show_filters:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include filter info in title?</span></span>
+<span id="cb4-7">    token:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># GitHub token (uses GITHUB_TOKEN env var if None)</span></span>
+<span id="cb4-8">    prefix:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include Anthropic's suggested prose intro?</span></span>
+<span id="cb4-9">    out:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include notebook cell outputs?</span></span>
+<span id="cb4-10">    include_base:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include full path in src?</span></span>
+<span id="cb4-11">    title:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Optional title attr for Documents element</span></span>
+<span id="cb4-12">    max_size:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100000</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files larger than this (bytes)</span></span>
+<span id="cb4-13">    max_total:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000000</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Max total output size in bytes</span></span>
+<span id="cb4-14">    readme_first:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prioritize README files at start of context?</span></span>
+<span id="cb4-15">    files_only:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Return dict of {filename: size} instead of context?</span></span>
+<span id="cb4-16">    sigs_only:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Return signatures instead of full text for python files?</span></span>
+<span id="cb4-17">    ids:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include cell ids in notebooks?</span></span>
+<span id="cb4-18">    recursive:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># search subfolders</span></span>
+<span id="cb4-19">    symlinks:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># follow symlinks?</span></span>
+<span id="cb4-20">    file_glob:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only include files matching glob</span></span>
+<span id="cb4-21">    file_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only include files matching regex</span></span>
+<span id="cb4-22">    folder_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only enter folders matching regex</span></span>
+<span id="cb4-23">    skip_file_glob:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files matching glob</span></span>
+<span id="cb4-24">    skip_file_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files matching regex</span></span>
+<span id="cb4-25">    skip_folder_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip folders matching regex,</span></span>
+<span id="cb4-26">    ret_folders:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># return folders, not just files</span></span>
+<span id="cb4-27">    sort:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># sort files by name within each folder</span></span>
+<span id="cb4-28">    types:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span> \<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># list or comma-separated str of ext types from: py, js, java, c, cpp, rb, r, ex, sh, web, doc, cfg</span></span>
+<span id="cb4-29">    exts:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span> \<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># list or comma-separated str of exts to include</span></span>
+<span id="cb4-30">)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span>Union: <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># XML for LM context, or dict of file sizes</span></span></code></pre></div></div>
+<pre data-code-line-numbers=""><code>Convert GitHub repo to XML context without cloning</code></pre>
+<p><strong>File:</strong> <code>~/.local/lib/python3.12/site-packages/toolslm/xml.py</code></p>
+<p><strong>Type:</strong> function</p>
+</div>
+</div>
+<div id="4a00baa8" class="cell" data-time_run="2026-01-17T02:44:11.205004+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>ls </span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> folder2ctx(</span>
+<span id="cb7-2">    path:Union, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Folder to read</span></span>
+<span id="cb7-3">    prefix:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include Anthropic's suggested prose intro?</span></span>
+<span id="cb7-4">    out:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include notebook cell outputs?</span></span>
+<span id="cb7-5">    include_base:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include full path in src?</span></span>
+<span id="cb7-6">    title:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Optional title attr for Documents element</span></span>
+<span id="cb7-7">    max_size:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100000</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files larger than this (bytes)</span></span>
+<span id="cb7-8">    max_total:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000000</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Max total output size in bytes</span></span>
+<span id="cb7-9">    readme_first:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prioritize README files at start of context?</span></span>
+<span id="cb7-10">    files_only:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Return dict of {filename: size} instead of context?</span></span>
+<span id="cb7-11">    sigs_only:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Return signatures instead of full text for python files?</span></span>
+<span id="cb7-12">    ids:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include cell ids in notebooks?</span></span>
+<span id="cb7-13">    recursive:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># search subfolders</span></span>
+<span id="cb7-14">    symlinks:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># follow symlinks?</span></span>
+<span id="cb7-15">    file_glob:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only include files matching glob</span></span>
+<span id="cb7-16">    file_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only include files matching regex</span></span>
+<span id="cb7-17">    folder_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only enter folders matching regex</span></span>
+<span id="cb7-18">    skip_file_glob:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files matching glob</span></span>
+<span id="cb7-19">    skip_file_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files matching regex</span></span>
+<span id="cb7-20">    skip_folder_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip folders matching regex,</span></span>
+<span id="cb7-21">    ret_folders:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># return folders, not just files</span></span>
+<span id="cb7-22">    sort:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># sort files by name within each folder</span></span>
+<span id="cb7-23">    types:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span> \<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># list or comma-separated str of ext types from: py, js, java, c, cpp, rb, r, ex, sh, web, doc, cfg</span></span>
+<span id="cb7-24">    exts:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span> \<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># list or comma-separated str of exts to include</span></span>
+<span id="cb7-25">)<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span>Union:</span></code></pre></div></div>
+<pre data-code-line-numbers=""><code>Convert folder contents to XML context, handling notebooks</code></pre>
+<p><strong>File:</strong> <code>~/.local/lib/python3.12/site-packages/toolslm/xml.py</code></p>
+<p><strong>Type:</strong> function</p>
+</div>
+</div>
+</section>
+<section id="folder2ctx" class="level3">
+<h3 class="anchored" data-anchor-id="folder2ctx"><code>folder2ctx</code></h3>
+<p>Now this is great for remote repositories. If you have a local folder, you can turn that into context with <code>folder2ctx</code>.</p>
+<div id="d324925f" class="cell" data-time_run="2026-01-17T02:45:39.304580+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">!</span>ls</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>'00-09 系统'   70ec03a05ceeffe770a8d00297fa241a   solveit_settings.json
+'20-29 大学'   jobs.csv                 test
+'30–39 学习'   shell_sage           暂时对话</code></pre>
+</div>
+</div>
+<div id="c857f4bc" class="cell" data-time_run="2026-01-17T02:45:26.293637+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> toolslm.xml <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> folder2ctx</span>
+<span id="cb11-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(folder2ctx(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'shell_sage'</span>, exts<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'py'</span>)[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>&lt;documents&gt;&lt;document index="1"&gt;&lt;src&gt;
+shell_sage/setup.py
+&lt;/src&gt;&lt;document-content&gt;
+from pkg_resources import parse_version
+from configparser import ConfigParser
+import setuptools, shlex
+assert parse_version(setuptools.__version__)&gt;=parse_version('36.2</code></pre>
+</div>
+</div>
+</section>
+<section id="py2sigs" class="level3">
+<h3 class="anchored" data-anchor-id="py2sigs"><code>py2sigs</code></h3>
+<p><code>py2sigs</code> can let us directly get function signature from a given Python file.</p>
+<div id="3ff06d87" class="cell" data-time_run="2026-01-17T02:46:58.144939+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> toolslm.xml <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> py2sigs</span>
+<span id="cb13-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(py2sigs(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'shell_sage/shell_sage/core.py'</span>)[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>def __rich_console__(self:CodeBlock, console, options):
+
+def Chat(*arg, **kw):
+    "Lazy load lisette to make ssage more responsive"
+
+def _aliases(shell):
+
+def _sys_info():
+
+def get_pane(n, pid=None):
+    "Get output from a tmux pane"
+
+def get_panes(</code></pre>
+</div>
+</div>
+</section>
+<section id="sym2pkgctx" class="level3">
+<h3 class="anchored" data-anchor-id="sym2pkgctx"><code>sym2pkgctx</code></h3>
+<p>If you have a package already installed, you can use <code>toolslm</code>’s <code>sym2pkgctx</code> to pull that package in as context. The entire root package is returned.</p>
+<div id="38123c07" class="cell" data-time_run="2026-01-17T02:58:14.248533+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(sym2pkgctx(sc.ShellSageConfig)[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>&lt;documents&gt;&lt;document index="1"&gt;&lt;src&gt;
+/usr/local/lib/python3.12/site-packages/shell_sage/__init__.py
+&lt;/src&gt;&lt;document-content&gt;
+__version__ = "1.0.4"
+&lt;/document-content&gt;&lt;/document&gt;&lt;document index="2"&gt;&lt;src&gt;
+/usr/local/lib/python3.12/site-packages/shell_s</code></pre>
+</div>
+</div>
+</section>
+<section id="sym2folderctx" class="level3">
+<h3 class="anchored" data-anchor-id="sym2folderctx"><code>sym2folderctx</code></h3>
+<p><code>sym2folderctx</code> is similar to <code>sym2pkgctx</code>. However, the difference is that the former returns the returns the context of the folder where the symbol is defined.</p>
+<div id="c290df66" class="cell" data-time_run="2026-01-19T00:22:44.367952+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> toolslm.xml <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> sym2folderctx</span>
+<span id="cb17-2"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(sym2folderctx(sc.ShellSageConfig)[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>&lt;documents&gt;&lt;document index="1"&gt;&lt;src&gt;
+/usr/local/lib/python3.12/site-packages/shell_sage/__init__.py
+&lt;/src&gt;&lt;document-content&gt;
+__version__ = "1.0.4"
+&lt;/document-content&gt;&lt;/document&gt;&lt;document index="2"&gt;&lt;src&gt;
+/usr/local/lib/python3.12/site-packages/shell_s</code></pre>
+</div>
+</div>
+<div id="49e809c4" class="cell" data-time_run="2026-01-19T00:22:54.443764+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1">?sym2pkgctx</span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> sym2pkgctx(</span>
+<span id="cb20-2">    sym,</span>
+<span id="cb20-3">    types:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span> \<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'py'</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># list or comma-separated str of ext types from: py, js, java, c, cpp, rb, r, ex, sh, web, doc, cfg</span></span>
+<span id="cb20-4">    skip_file_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'^_mod'</span>, prefix:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include Anthropic's suggested prose intro?</span></span>
+<span id="cb20-5">    out:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include notebook cell outputs?</span></span>
+<span id="cb20-6">    include_base:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include full path in src?</span></span>
+<span id="cb20-7">    title:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Optional title attr for Documents element</span></span>
+<span id="cb20-8">    max_size:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100000</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files larger than this (bytes)</span></span>
+<span id="cb20-9">    max_total:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10000000</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Max total output size in bytes</span></span>
+<span id="cb20-10">    readme_first:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prioritize README files at start of context?</span></span>
+<span id="cb20-11">    files_only:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Return dict of {filename: size} instead of context?</span></span>
+<span id="cb20-12">    sigs_only:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Return signatures instead of full text for python files?</span></span>
+<span id="cb20-13">    ids:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Include cell ids in notebooks?</span></span>
+<span id="cb20-14">    recursive:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># search subfolders</span></span>
+<span id="cb20-15">    symlinks:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># follow symlinks?</span></span>
+<span id="cb20-16">    file_glob:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only include files matching glob</span></span>
+<span id="cb20-17">    file_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only include files matching regex</span></span>
+<span id="cb20-18">    folder_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Only enter folders matching regex</span></span>
+<span id="cb20-19">    skip_file_glob:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip files matching glob</span></span>
+<span id="cb20-20">    skip_folder_re:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Skip folders matching regex,</span></span>
+<span id="cb20-21">    ret_folders:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">False</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># return folders, not just files</span></span>
+<span id="cb20-22">    sort:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bool</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">True</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># sort files by name within each folder</span></span>
+<span id="cb20-23">    exts:<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span> \<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># list or comma-separated str of exts to include</span></span>
+<span id="cb20-24">):</span></code></pre></div></div>
+<pre data-code-line-numbers=""><code>Return repo context for a symbol's root package</code></pre>
+<p><strong>File:</strong> <code>~/.local/lib/python3.12/site-packages/toolslm/xml.py</code></p>
+<p><strong>Type:</strong> function</p>
+</div>
+</div>
+</section>
+</section>
+<section id="contextkit" class="level2">
+<h2 class="anchored" data-anchor-id="contextkit"><code>contextkit</code></h2>
+<p>Next up is <code>contextkit</code>’s <code>read</code> module. However, this approach is much more hands on as the module’s functions do not return XML formatted contents. Though this does allow you to perform your own processing/handling. You will need to have a SSH key set up between your machine and GitHub as the functions in <code>read</code> create temporary clones of the GitHub repo.</p>
+<p><code>contextkit.read</code>s <code>read_gh_repo</code> returns a dictionary in the format of <code>{'path': 'contents'}</code>.</p>
+<div id="49216ec4" class="cell" data-time_run="2026-01-17T02:55:40.914215+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> contextkit.read <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">as</span> rd</span>
+<span id="cb22-2">rd.read_gh_repo(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://github.com/AnswerDotAI/shell_sage'</span>).keys()</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="0">
+<pre data-code-line-numbers=""><code>dict_keys(['/app/data/.cache/contextkit_git_clones/shell_sage/settings.ini', '/app/data/.cache/contextkit_git_clones/shell_sage/CONTRIBUTING.md', '/app/data/.cache/contextkit_git_clones/shell_sage/LICENSE', '/app/data/.cache/contextkit_git_clones/shell_sage/README.md', '/app/data/.cache/contextkit_git_clones/shell_sage/pyproject.toml', '/app/data/.cache/contextkit_git_clones/shell_sage/uv.lock', '/app/data/.cache/contextkit_git_clones/shell_sage/MANIFEST.in', '/app/data/.cache/contextkit_git_clones/shell_sage/setup.py', '/app/data/.cache/contextkit_git_clones/shell_sage/CHANGELOG.md', '/app/data/.cache/contextkit_git_clones/shell_sage/ipython/00-init.py', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/_quarto.yml', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/CNAME', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/sidebar.yml', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/tmux.conf', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/01_config.ipynb', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/00_core.ipynb', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/styles.css', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/index.ipynb', '/app/data/.cache/contextkit_git_clones/shell_sage/nbs/nbdev.yml', '/app/data/.cache/contextkit_git_clones/shell_sage/shell_sage/core.py', '/app/data/.cache/contextkit_git_clones/shell_sage/shell_sage/__init__.py', '/app/data/.cache/contextkit_git_clones/shell_sage/shell_sage/_modidx.py', '/app/data/.cache/contextkit_git_clones/shell_sage/shell_sage/config.py', '/app/data/.cache/contextkit_git_clones/shell_sage/debug/aliases.py', '/app/data/.cache/contextkit_git_clones/shell_sage/debug/safe_aliases.py', '/app/data/.cache/contextkit_git_clones/shell_sage/debug/probe_tty.py'])</code></pre>
+</div>
+</div>
+<p><code>read_gh_file</code> returns the contents of the file as a string.</p>
+<div id="4163bbb4" class="cell" data-time_run="2026-01-17T02:55:54.029355+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1">rd.read_gh_file(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://github.com/AnswerDotAI/shell_sage/blob/main/shell_sage/core.py'</span>)[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>]</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="0">
+<pre data-code-line-numbers=""><code>"# AUTOGENERATED! DO NOT EDIT! File to edit: ../nbs/00_core.ipynb.\n\n# %% auto 0\n__all__ = ['console', 'print', 'sp', 'ssp', 'default_cfg', 'tools', 'sps', 'log_path', 'Chat', 'get_pane', 'get_panes',\n           'tmux_history_lim', 'get_history', 'get_"</code></pre>
+</div>
+</div>
+<div id="6072f3bf" class="cell" data-time_run="2026-01-17T02:55:26.009402+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">print</span>(rd.read_gh_file(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'https://github.com/AnswerDotAI/shell_sage/blob/main/shell_sage/core.py'</span>)[:<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">250</span>])</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code># AUTOGENERATED! DO NOT EDIT! File to edit: ../nbs/00_core.ipynb.
+
+# %% auto 0
+__all__ = ['console', 'print', 'sp', 'ssp', 'default_cfg', 'tools', 'sps', 'log_path', 'Chat', 'get_pane', 'get_panes',
+           'tmux_history_lim', 'get_history', 'get_</code></pre>
+</div>
+</div>
+</section>
+<section id="solveit" class="level2">
+<h2 class="anchored" data-anchor-id="solveit">SolveIt</h2>
+<p>If you’re in SolveIt, you can also change directory and ask the LLM to directly read through a particular directory for you with its builtin tools. Note that you should use <code>%</code> rather than <code>!</code> so the directory switches in a non-temporary manner.</p>
+<div id="13933d07" class="cell" data-time_run="2026-01-17T02:59:23.582168+00:00">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%</span>cd shell_sage</span></code></pre></div></div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>/app/data/shell_sage</code></pre>
+</div>
+</div>
+<p>Can you look through the directory and tell me what are the key functions of the shell sage library?</p>
+<section id="reply" class="level5">
+<h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠</p>
+<p>让我看看这个目录的结构：</p>
+<details class="tool-usage-details">
+<summary>
+view(path=.)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb30-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb30-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"toolu_01TcJme7ugD8Xzq3rBZLjinR"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb30-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"call"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb30-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"function"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"view"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb30-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"arguments"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb30-6">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"path"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"."</span></span>
+<span id="cb30-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb30-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb30-9">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"result"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"'Directory contents of /app/&lt;TRUNCATED&gt;"</span></span>
+<span id="cb30-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+</details>
+<p>主要代码在 <code>shell_sage/</code> 文件夹里。让我看看 <code>core.py</code> 的签名：</p>
+<details class="tool-usage-details">
+<summary>
+view(path=shell_sage/core.py, view_range=[1, 50])
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb31-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb31-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"toolu_01N9i48X1GWBFrBj9awo8qzk"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb31-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"call"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb31-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"function"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"view"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb31-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"arguments"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb31-6">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"path"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"shell_sage/core.py"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb31-7">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"view_range"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"[1, 50]"</span></span>
+<span id="cb31-8">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb31-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb31-10">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"result"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"'# AUTOGENERATED! DO NOT EDIT! File to edit: ../nbs/00_core.ipynb.</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n# %% auto 0</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n__all__ = [</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'console</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'print</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'sp</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'ssp</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'default_cfg</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'tools</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'sps</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'log_path</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Chat</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'get_pane</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'get_panes</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">',</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n           </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'tmux_history_lim</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'get_history</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'get_opts</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'with_permission</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'get_sage</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'get_res</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'Log</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'mk_db</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">',</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n           </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'main</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'extract_cf</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">', </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'extract</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">']</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n# %% ../nbs/00_core.ipynb 3</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nfrom datetime import datetime</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nfrom itertools import accumulate</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nfrom fastcore.script import *</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nfrom fastcore.tools import *</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nfrom fastcore.utils import *</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nfro&lt;TRUNCATED&gt;"</span></span>
+<span id="cb31-11"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+</details>
+<hr>
+<p><strong>Shell Sage 的主要功能：</strong></p>
+<p>根据 <code>__all__</code> 导出列表，关键函数包括：</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>main</code></td>
+<td>主入口点（CLI 命令 <code>ssage</code>）</td>
+</tr>
+<tr class="even">
+<td><code>get_pane</code>, <code>get_panes</code></td>
+<td>获取 tmux 窗格信息</td>
+</tr>
+<tr class="odd">
+<td><code>get_history</code></td>
+<td>获取 tmux 历史记录</td>
+</tr>
+<tr class="even">
+<td><code>get_sage</code></td>
+<td>获取 AI 响应</td>
+</tr>
+<tr class="odd">
+<td><code>Chat</code></td>
+<td>延迟加载 LLM 聊天功能</td>
+</tr>
+<tr class="even">
+<td><code>Log</code>, <code>mk_db</code></td>
+<td>日志和数据库功能</td>
+</tr>
+<tr class="odd">
+<td><code>extract</code>, <code>extract_cf</code></td>
+<td>从响应中提取代码</td>
+</tr>
+</tbody>
+</table>
+<p>简单说：<strong>Shell Sage 是一个 AI 命令行助手，它能读取你的 tmux 终端历史，然后用 LLM 帮你解决 shell 问题。</strong></p>
+<p>You can of course also directly paste in a URL and the LLM will look through it.</p>
+<p>What’s this GitHub repo about? https://github.com/AnswerDotAI/shell_sage</p>
+</section>
+<section id="reply-1" class="level5">
+<h5 class="anchored" data-anchor-id="reply-1">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
+<p>🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠🧠</p>
+<details class="tool-usage-details">
+<summary>
+read_url(url=https://github.com/AnswerDotAI/shell_sage)
+</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb32-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb32-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"id"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"toolu_011DD4XT7Yge4mwqi49s3u6Z"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb32-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"call"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb32-4">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"function"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"read_url"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">,</span></span>
+<span id="cb32-5">    <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"arguments"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">{</span></span>
+<span id="cb32-6">      <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"url"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"https://github.com/AnswerDotAI/shell_sage"</span></span>
+<span id="cb32-7">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb32-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">},</span></span>
+<span id="cb32-9">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">"result"</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">:</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"'# AnswerDotAI/shell_sage</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nShellSage saves sysadmins</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\u2019</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> sanity by solving shell script snafus super swiftly</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n## / Files</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\ud83d\udcc1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> .github</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- .gitignore</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- CHANGELOG.md</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- CONTRIBUTING.md</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- LICENSE</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- MANIFEST.in</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- README.md</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\ud83d\udcc1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> debug</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\ud83d\udcc1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> ipython</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\ud83d\udcc1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> nbs</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- pyproject.toml</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\ud83d\udcc1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> screenshots</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- settings.ini</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- setup.py</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- </span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\ud83d\udcc1</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> shell_sage</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n- uv.lock</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n## README</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n# ShellSage</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n&lt;!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! --&gt;</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">n</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nShellSage is an AI-powered command-line assistant that integrates</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">nseamlessly with your terminal workflow through tmux. It provides</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">ncontextual help for shell ope&lt;TRUNCATED&gt;"</span></span>
+<span id="cb32-10"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">}</span></span></code></pre></div></div>
+</details>
+<p><strong>Shell Sage</strong> 是一个 AI 驱动的命令行助手，通过 tmux 集成到你的终端工作流中。</p>
+<p><strong>主要特点：</strong> - 用 <code>ssage</code> 命令在终端里问问题 - 能自动读取 tmux 历史记录来提供上下文帮助 - 支持多种 LLM 提供商（Claude、GPT、Ollama 等） - 可以分析管道输入（piped input） - 有个有趣的 “sassy mode”（GLaDOS 风格的回复）</p>
+<p><strong>安装：</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><span class="ex" style="color: null;
+background-color: null;
+font-style: inherit;">pip</span> install shell-sage</span></code></pre></div></div>
+</section>
+</section>
+<section id="at-an-overview" class="level2">
+<h2 class="anchored" data-anchor-id="at-an-overview">At an Overview</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 28%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Input</th>
+<th>Best For</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><code>githubq</code></strong></td>
+<td>Change URL to githubq.com</td>
+<td>Quick browser-based access</td>
+</tr>
+<tr class="even">
+<td><strong><code>repo2ctx</code></strong></td>
+<td>GitHub URL</td>
+<td>Programmatic access to remote repos</td>
+</tr>
+<tr class="odd">
+<td><strong><code>folder2ctx</code></strong></td>
+<td>Local path</td>
+<td>Processing local folders</td>
+</tr>
+<tr class="even">
+<td><strong><code>py2sigs</code></strong></td>
+<td>Python file path</td>
+<td>Single file signatures</td>
+</tr>
+<tr class="odd">
+<td><strong><code>contextkit.read_gh_repo</code></strong></td>
+<td>GitHub URL</td>
+<td>Raw dict of full repo contents</td>
+</tr>
+<tr class="even">
+<td><strong><code>contextkit.read_gh_file</code></strong></td>
+<td>File URL</td>
+<td>Single file contents</td>
+</tr>
+<tr class="odd">
+<td><strong><code>sym2pkgctx</code></strong></td>
+<td>Class/function object</td>
+<td>Installed packages</td>
+</tr>
+<tr class="even">
+<td><strong><code>sym2folderctx</code></strong></td>
+<td>Class/function object</td>
+<td>Folder containing a symbol</td>
+</tr>
+<tr class="odd">
+<td><strong><code>read_url</code></strong> (SolveIt)</td>
+<td>GitHub URL</td>
+<td>Quick repo overview + README</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other-toolslm.xml-goodies" class="level2">
+<h2 class="anchored" data-anchor-id="other-toolslm.xml-goodies">Other <code>toolslm.xml</code> Goodies</h2>
+<p>Beyond the functions we’ve covered, <code>toolslm.xml</code> has other interesting functions:</p>
+<p><strong>Additional Functions:</strong> - <code>files2ctx</code> — Pass in a specific list of files rather than an entire folder - <code>nb2xml</code> — Convert Jupyter notebooks to XML format - <code>json_to_xml</code> — Convert JSON or Python dicts to XML - <code>sym2file</code> — Get the source file contents for any class or function</p>
+<p><strong>Useful Parameters:</strong> - <code>prefix=True</code> — Prepends Anthropic’s recommended preamble for document context - <code>nums=True</code> — Adds line numbers to code (handy for referencing specific lines)</p>
+<p><strong>Command Line Support:</strong> Both <code>folder2ctx</code> and <code>repo2ctx</code> are available as CLI tools, so you can use them directly from your terminal without writing Python.</p>
+<p>There’s plenty more to discover. Explore the full module at the <a href="https://answerdotai.github.io/toolslm/xml.html">docs</a> by pulling it into a LLM with the techniques we’ve learned here!</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <guid>https://forbo7.github.io/forblog/posts/32_ways_to_pull_repos_into_LLM_context.html</guid>
+  <pubDate>Sat, 25 Jan 2025 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/32_ways_to_pull_repos_into_LLM_context/thumbnail.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
+<item>
   <title>What I Learned during my Second and Third Internships</title>
   <dc:creator>Salman Naqvi</dc:creator>
   <link>https://forbo7.github.io/forblog/posts/21_reflecting_on_my_internships.html</link>
@@ -20698,143 +22365,6 @@ font-style: inherit;">0</span>])</span></code></pre></div></div>
   <guid>https://forbo7.github.io/forblog/posts/13_implementing_stable_diffusion_from_its_components.html</guid>
   <pubDate>Fri, 28 Apr 2023 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/13_implementing_stable_diffusion_from_its_components/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>My Musings Through Stable Diffusion</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/11_musings_through_stable_diffusion.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<blockquote class="blockquote">
-<p><strong>Quick tip:</strong> Click or tap the images to view them up close.</p>
-</blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/thumbnail.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips."></a></p>
-</figure>
-</div>
-<p>I recently began <a href="https://course.fast.ai/Lessons/part2.html">fastai Course Part 2</a>: a course where one dives into the deeper workings of deep learning by fully implementing stable diffusion.</p>
-<p>In the first lesson, we play around with diffusers using the <a href="https://huggingface.co/docs/diffusers/index">Hugging Face Diffusers</a> library. Below are things I have noticed; my musings.</p>
-<section id="steps" class="level2">
-<h2 class="anchored" data-anchor-id="steps">Steps</h2>
-<p>Diffusion is simply a process whereby noise is progressively removed from a noisy image. A single step can be thought of a single portion of noise being removed.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.png" class="img-fluid figure-img" alt="A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald."></a></p>
-<figcaption>A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.</figcaption>
-</figure>
-</div>
-<p>Below is the evolution of the image above in 48 steps. Each new image has less and less noise (what the diffuser thinks is noise).</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="The gif itself has artefacts due to compression…"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring.gif" class="img-fluid figure-img" alt="A gif showing how the diffuser came to generating the image 'A depiction of a ring comprised of interwined serpents, topped with a single jewel of emerald.'"></a></p>
-<figcaption>The gif itself has artefacts due to compression…</figcaption>
-</figure>
-</div>
-<p><a href="../images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/serpent_ring_grid.jpeg" class="img-fluid" alt="This image displays all images in the gif above in a grid."></a></p>
-<p>It still managed to generate a pretty good image despite the misspelling of “intertwined”!</p>
-</section>
-<section id="when-it-doesnt-work-well" class="level2">
-<h2 class="anchored" data-anchor-id="when-it-doesnt-work-well">When It Doesn’t Work Well</h2>
-<p>I’ve found that a diffuser doesn’t work well when one prompts it for things, which I assume, it hasn’t “seen” or hasn’t been trained on before. It sounds obvious, but it’s really interesting when you see the result of it.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="A grasshopper riding a bunny."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_1.png" class="img-fluid figure-img" alt="A grasshopper riding a bunny."></a></p>
-<figcaption>A grasshopper riding a bunny.</figcaption>
-</figure>
-</div>
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_2.png" class="img-fluid" alt="A grasshopper riding a bunny."></a></p>
-<p>A quick Google search also doesn’t return any images matching the prompt in the top results.</p>
-<p><a href="../images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/grasshopper_and_bunny_3.png" class="img-fluid" alt="A screenshot of Google Image Search results showing no picture of a grasshopper riding a bunny."></a></p>
-</section>
-<section id="cfg-classifier-free-guidance" class="level2">
-<h2 class="anchored" data-anchor-id="cfg-classifier-free-guidance">CFG (Classifier Free Guidance)</h2>
-<p>Or simply known as guidance, CFG is a value which tells the diffuser how much it should stick to the prompt.</p>
-<p>A lower guidance leads to more varied and random images that are loosely related to the prompt. A higher guidance produces more relevant images.</p>
-<p>I’ve found that too high of a guidenace leads to images having too much contrast.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/guidance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/guidance.png" class="img-fluid figure-img" alt="A grid of images generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' Each rows shows images generated with increased guidance."></a></p>
-<figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
-</figure>
-</div>
-<p>The image above shows rows with increasing levels of guidance (1, 2.5, 5, 7.5, 10, 25, 50). 7.5 is the sweetspot.</p>
-</section>
-<section id="negative-prompts" class="level2">
-<h2 class="anchored" data-anchor-id="negative-prompts">Negative Prompts</h2>
-<p>The best way to think about negative prompts is that a negative prompt <em>guides</em> a diffuser away from generating a certain entity.</p>
-<p>Take the image below as an example.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="An antique 18th century painting of a gorilla eating a plate of chips."><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_1.png" class="img-fluid figure-img" alt="Another variation generated from the prompt, 'An antique 18th century painting of a gorilla eating a plate of chips.' There is a yellow circle around the gorilla."></a></p>
-<figcaption>An antique 18th century painting of a gorilla eating a plate of chips.</figcaption>
-</figure>
-</div>
-<p>I generated the image again using the exact same seed and prompt, but also used the following negative prompt, “yellow circle”.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/negative_prompt_2.png" class="img-fluid figure-img" alt="The same prompt used again, but the negative prompt now removes the yellow circle and adds a rectangular border around the gorilla."></a></p>
-<figcaption>Prompt: An antique 18th century painting of a gorilla eating a plate of chips. | Negative Prompt: yellow circle</figcaption>
-</figure>
-</div>
-</section>
-<section id="image-to-image" class="level2">
-<h2 class="anchored" data-anchor-id="image-to-image">Image to Image</h2>
-<p>Instead of starting from noise, one can make a diffuser begin from an existing image. The diffuser follows the image as guide and doesn’t match it 1 to 1.</p>
-<p>I quickly mocked up the following image.</p>
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_0.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_0.png" class="img-fluid" alt="Clip art of a bench and a tree behind a sky and on top of grass. There is the sun and a couple of clouds in the sky."></a></p>
-<p>I input it to a diffuser with a prompt, and it output the following.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="A bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_1.png" class="img-fluid figure-img" alt="A bench under a tree in a park"></a></p>
-<figcaption>A bench under a tree in a park</figcaption>
-</figure>
-</div>
-<p>I then further generated another image from this one.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/img_to_img_2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13" title="A low poly 3D render of a bench under a tree in a park"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/img_to_img_2.png" class="img-fluid figure-img" alt="A low poly 3D render of a bench under a tree in a park"></a></p>
-<figcaption>A low poly 3D render of a bench under a tree in a park</figcaption>
-</figure>
-</div>
-</section>
-<section id="further-adapting-a-diffuser" class="level2">
-<h2 class="anchored" data-anchor-id="further-adapting-a-diffuser">Further Adapting a Diffuser</h2>
-<p>There are two ways one can further customize a diffuser to produce desired images: textual inversion and dreambooth.</p>
-<section id="textual-inversion" class="level3">
-<h3 class="anchored" data-anchor-id="textual-inversion">Textual Inversion</h3>
-<p>A diffuser contains a text encoder. This encoder is responsible for parsing the prompt and giving it a mathematical representation.</p>
-<p>A text encoder can only parse according to its vocabulary. If it encounters words not in its vocabulary, the diffuser will be unable to produce an image relevant to the prompt.</p>
-<p>In a nutshell, textual inversion adds new words to the vocabulary of the text encoder so it can parse prompts with those new words.</p>
-<p>I managed to generate the image below by adding the word “<a href="https://mrdoodle.com">Mr Doodle</a>” to the vocabulary of the diffuser’s text encoder.</p>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="../images/11_musings_through_stable_diffusion/textual_inversion.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14" title="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"><img src="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/textual_inversion.png" class="img-fluid figure-img" alt="An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle"></a></p>
-<figcaption>An antique 18th century painting of a gorilla eating a plate of chips in the style of Mr Doodle</figcaption>
-</figure>
-</div>
-</section>
-<section id="dreambooth" class="level3">
-<h3 class="anchored" data-anchor-id="dreambooth">Dreambooth</h3>
-<p>Dreambooth is more akin to traditional fine-tuning methods. A diffuser is further trained on images one supplies to it.</p>
-</section>
-</section>
-<section id="so-end-my-musings" class="level2">
-<h2 class="anchored" data-anchor-id="so-end-my-musings">So End my Musings</h2>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Diffusion</category>
-  <category>Analyzing Models</category>
-  <guid>https://forbo7.github.io/forblog/posts/11_musings_through_stable_diffusion.html</guid>
-  <pubDate>Thu, 13 Apr 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/11_musings_through_stable_diffusion/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
 </item>
 </channel>
 </rss>
