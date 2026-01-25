@@ -51,6 +51,7 @@
 </section>
 <section id="toolslm.xml" class="level2">
 <h2 class="anchored" data-anchor-id="toolslm.xml"><code>toolslm.xml</code></h2>
+<p>See the full documentation of Answer.AI’s <code>toolslm</code> library <a href="https://answerdotai.github.io/toolslm/">here</a>.</p>
 <section id="repo2ctx" class="level3">
 <h3 class="anchored" data-anchor-id="repo2ctx"><code>repo2ctx</code></h3>
 <p>Githubq is great if you want to paste a link to a LLM that will then retrieve what’s on the link, or if you want to save one-off files here and there. What if you want to programmatically work with the context? That’s where <code>toolslm</code>, and more specifically the <code>toolslm.xml</code> module comes in.</p>
@@ -955,6 +956,7 @@ __all__ = ['console', 'print', 'sp', 'ssp', 'default_cfg', 'tools', 'sps', 'log_
            'tmux_history_lim', 'get_history', 'get_</code></pre>
 </div>
 </div>
+<p>See the full documentation of Answer.AI’s <code>contextkit</code> library <a href="https://github.com/AnswerDotAI/contextkit">here</a>.</p>
 </section>
 <section id="solveit" class="level2">
 <h2 class="anchored" data-anchor-id="solveit">SolveIt</h2>
@@ -967,6 +969,7 @@ font-style: inherit;">%</span>cd shell_sage</span></code></pre></div></div>
 <pre data-code-line-numbers=""><code>/app/data/shell_sage</code></pre>
 </div>
 </div>
+<hr>
 <p>Can you look through the directory and tell me what are the key functions of the shell sage library?</p>
 <section id="reply" class="level5">
 <h5 class="anchored" data-anchor-id="reply">🤖Reply🤖<!-- SOLVEIT_SEPARATOR_7f3a9b2c --></h5>
@@ -1378,7 +1381,9 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 </tbody>
 </table>
 <p>简单说：<strong>Shell Sage 是一个 AI 命令行助手，它能读取你的 tmux 终端历史，然后用 LLM 帮你解决 shell 问题。</strong></p>
+<hr>
 <p>You can of course also directly paste in a URL and the LLM will look through it.</p>
+<hr>
 <p>What’s this GitHub repo about? https://github.com/AnswerDotAI/shell_sage</p>
 </section>
 <section id="reply-1" class="level5">
@@ -1597,6 +1602,7 @@ font-style: inherit;">}</span></span></code></pre></div></div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">pip</span> install shell-sage</span></code></pre></div></div>
+<hr>
 </section>
 </section>
 <section id="at-an-overview" class="level2">
