@@ -182,7 +182,7 @@ font-style: inherit;">print</span>(run_cmd(<span class="st" style="color: #20794
 background-color: null;
 font-style: inherit;">'ssh'</span>, <span class="ss" style="color: #20794D;
 background-color: null;
-font-style: inherit;">f'salmannaqvi@bore.pub -p </span><span class="sc" style="color: #5E5E5E;
+font-style: inherit;">f'YOUR_USERNAME@bore.pub -p </span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">{</span>port<span class="sc" style="color: #5E5E5E;
 background-color: null;
