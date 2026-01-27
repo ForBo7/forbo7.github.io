@@ -213,7 +213,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#main-page" id="toc-main-page" class="nav-link" data-scroll-target="#main-page">Main Page</a></li>
   <li><a href="#deploy" id="toc-deploy" class="nav-link" data-scroll-target="#deploy">Deploy</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="31_solveit_in_solveit.out.ipynb" download="31_solveit_in_solveit.out.ipynb"><i class="bi bi-journal-code"></i>Jupyter</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -223,12 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1 class="title">Building SolveIt in SolveIt</h1>
 <p class="subtitle lead">I give you a challenge: can you build SolveIt in SolveIt in SolveIt?</p>
   <div class="quarto-categories">
-    <div class="quarto-category">Agents</div>
-    <div class="quarto-category">Approaching AI</div>
-    <div class="quarto-category">LLMs</div>
-    <div class="quarto-category">SolveIt</div>
-    <div class="quarto-category">Programming</div>
-    <div class="quarto-category">HTML</div>
+    <div class="quarto-category">Agents, Approaching AI, LLMs, SolveIt, Programming, HTML</div>
   </div>
   </div>
 
@@ -251,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Thursday, 22 January 2026</p>
+      <p class="date">Wednesday, 22 January 2025</p>
     </div>
   </div>
   
@@ -303,20 +298,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="settings-and-headers" class="level3">
 <h3 class="anchored" data-anchor-id="settings-and-headers">Settings and Headers</h3>
-<div id="243ffab3" class="cell" data-time_run="2026-01-22T00:33:56.461282+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fasthtml.common <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="f9ccd095" class="cell" data-time_run="2026-01-22T00:33:56.462308+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bsc_hdrs <span class="op">=</span> (</span>
+<p>::: {#243ffab3 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:56.461282+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fasthtml.common <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
+<p>::: {#f9ccd095 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:56.462308+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bsc_hdrs <span class="op">=</span> (</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    Script(src<span class="op">=</span><span class="st">"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"</span>),  <span class="co"># Need to download first.</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    Link(rel<span class="op">=</span><span class="st">'stylesheet'</span>, href<span class="op">=</span><span class="st">'https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/basecoat.cdn.min.css'</span>),</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Script(src<span class="op">=</span><span class="st">'https://cdn.jsdelivr.net/npm/basecoat-css@0.3.6/dist/js/all.min.js'</span>, defer<span class="op">=</span><span class="va">True</span>),</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="7d1e280a" class="cell" data-time_run="2026-01-22T00:33:56.482447+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastHTML(hdrs<span class="op">=</span>(bsc_hdrs, MarkdownJS(), HighlightJS(langs<span class="op">=</span>[<span class="st">'python'</span>])), session_cookie<span class="op">=</span><span class="st">'mysessioncookie'</span>, debug<span class="op">=</span><span class="va">True</span>)</span>
+<p>:::</p>
+<p>::: {#7d1e280a .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:56.482447+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>app <span class="op">=</span> FastHTML(hdrs<span class="op">=</span>(bsc_hdrs, MarkdownJS(), HighlightJS(langs<span class="op">=</span>[<span class="st">'python'</span>])), session_cookie<span class="op">=</span><span class="st">'mysessioncookie'</span>, debug<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rt <span class="op">=</span> app.route</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p>A custom session cookie needs to be set for FastHTML sessions to work in SolveIt as SolveIt currently uses the default one.</p>
 </section>
 <section id="preview" class="level3">
@@ -351,26 +346,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="database" class="level3">
 <h3 class="anchored" data-anchor-id="database">Database</h3>
 <p>Creating a database to store users and their dialogs, with dialogs linked to users via <code>uid</code>.</p>
-<div id="1f39f676" class="cell" data-time_run="2026-01-22T00:33:56.637473+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastlite <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="88d6aa36" class="cell" data-time_run="2026-01-22T00:33:56.668265+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> database(<span class="st">'solvish.db'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#1f39f676 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:56.637473+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastlite <span class="im">import</span> <span class="op">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
+<p>::: {#88d6aa36 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:56.668265+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>db <span class="op">=</span> database(<span class="st">'solvish.db'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="bfa6f9fd" class="cell" data-time_run="2026-01-22T00:33:56.699037+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>db</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
 <pre data-code-line-numbers=""><code>&lt;Database &lt;apsw.Connection object "/app/data/forbo7.github.io/forblog/posts/solvish.db" at 0x70ee23760500&gt;&gt;</code></pre>
 </div>
 </div>
-<div id="dd112d66" class="cell" data-time_run="2026-01-22T00:33:57.092178+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User: <span class="bu">id</span>:<span class="bu">int</span><span class="op">;</span> restore_code:<span class="bu">str</span></span>
+<p>::: {#dd112d66 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:57.092178+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> User: <span class="bu">id</span>:<span class="bu">int</span><span class="op">;</span> restore_code:<span class="bu">str</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Dialog: <span class="bu">id</span>:<span class="bu">int</span><span class="op">;</span> uid:<span class="bu">int</span><span class="op">;</span> dialog_num:<span class="bu">int</span><span class="op">;</span> name:<span class="bu">str</span><span class="op">;</span> messages:<span class="bu">str</span><span class="op">;</span> server_session:<span class="bu">str</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="6bd3be8e" class="cell" data-time_run="2026-01-22T00:33:57.093191+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> db.create(User, transform<span class="op">=</span><span class="va">True</span>)</span>
+<p>:::</p>
+<p>::: {#6bd3be8e .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:57.093191+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> db.create(User, transform<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dialogs <span class="op">=</span> db.create(Dialog, pk<span class="op">=</span>(<span class="st">'uid'</span>, <span class="st">'dialog_num'</span>), transform<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p>Tables will not be overwritten as <code>db.create()</code> is idempotent.</p>
 <div id="3638ca94" class="cell" data-time_run="2026-01-22T00:33:57.124593+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>users.delete_where()</span>
@@ -384,13 +379,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="new-dialog" class="level3">
 <h3 class="anchored" data-anchor-id="new-dialog">New Dialog</h3>
 <p>Creating a new dialog first auto-increments <code>dialog_num</code> based on the user’s existing dialogs, then sets <code>session['current_dialog']</code> to track which dialog is active. The dialog is stored in the <code>dialogs</code> table for persistence across sessions, while also being loaded into <code>user_chats</code> as a live chat object for the current server session.</p>
-<div id="b7b8f919" class="cell" data-time_run="2026-01-22T00:33:57.163073+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lisette.core <span class="im">import</span> <span class="op">*</span></span>
+<p>::: {#b7b8f919 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:57.163073+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lisette.core <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> toolslm.shell <span class="im">import</span> get_shell</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>sp <span class="op">=</span> <span class="st">'Respond in the language the user uses; The user has access to a Python interpreter that you can view; NEVER copy the format of the code interpreter messsages in your response.'</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_chat(hist<span class="op">=</span>[]): <span class="cf">return</span> Chat(<span class="st">'moonshot/kimi-k2-0711-preview'</span>, hist<span class="op">=</span>hist, sp<span class="op">=</span>sp), get_shell()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="1bfb32c4" class="cell" data-time_run="2026-01-22T00:33:58.698358+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>make_chat()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -399,9 +394,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>As my Kimi API key is compatable with servers in China, I have to change the Moonshoot endpoint.</p>
-<div id="35143833" class="cell" data-time_run="2026-01-22T00:33:58.702646+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'MOONSHOT_API_BASE'</span>] <span class="op">=</span> <span class="st">'https://api.moonshot.cn/v1'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#35143833 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:33:58.702646+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">'MOONSHOT_API_BASE'</span>] <span class="op">=</span> <span class="st">'https://api.moonshot.cn/v1'</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="7528bd96" class="cell" data-time_run="2026-01-22T00:33:58.706844+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from cachy import enable_cachy; enable_cachy()</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -420,8 +415,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </div>
-<div id="50efa44f" class="cell" data-time_run="2026-01-22T00:34:01.492003+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> coolname <span class="im">import</span> generate_slug</span>
+<p>::: {#50efa44f .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.492003+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> coolname <span class="im">import</span> generate_slug</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_dialog(session):</span>
@@ -432,22 +427,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    dialogs.insert(uid<span class="op">=</span>uid, dialog_num<span class="op">=</span>dnum, name<span class="op">=</span>generate_slug(<span class="dv">2</span>), messages<span class="op">=</span><span class="st">'[]'</span>)</span>
 <span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    user_chats[(uid,dnum)] <span class="op">=</span> make_chat()</span>
 <span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Div(hx_get<span class="op">=</span><span class="ss">f'/dialog?dnum=</span><span class="sc">{</span>dnum<span class="sc">}</span><span class="ss">'</span>, hx_trigger<span class="op">=</span><span class="st">'load'</span>, hx_target<span class="op">=</span><span class="st">'#content'</span>, hx_swap<span class="op">=</span><span class="st">'innerHTML'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 </section>
 <section id="session-persistance" class="level3">
 <h3 class="anchored" data-anchor-id="session-persistance">Session Persistance</h3>
-<div id="67b4dc4e" class="cell" data-time_run="2026-01-22T00:34:01.506942+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>user_chats <span class="op">=</span> {}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#67b4dc4e .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.506942+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>user_chats <span class="op">=</span> {}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <p>I’ll be handling session persistance with this <code>user_chats</code> dictionary. If my server restarts, it means <code>user_chats</code> will be erased and thus a new session will be created for all users. Users can input their restore code to retrieve back their data.</p>
-<div id="89ceda80" class="cell" data-time_run="2026-01-22T00:34:01.511262+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ensure_user(session):</span>
+<p>::: {#89ceda80 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.511262+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ensure_user(session):</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    uid <span class="op">=</span> session.get(<span class="st">'userid'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> uid <span class="kw">or</span> uid <span class="kw">not</span> <span class="kw">in</span> users:</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>        u <span class="op">=</span> users.insert(restore_code<span class="op">=</span>generate_slug(<span class="dv">3</span>))</span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        session[<span class="st">'userid'</span>] <span class="op">=</span> u.<span class="bu">id</span></span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> session[<span class="st">'userid'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="cec05240" class="cell" data-time_run="2026-01-22T00:34:01.515256+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fake_session <span class="op">=</span> {}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -458,8 +453,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre data-code-line-numbers=""><code>({'userid': 1}, 1)</code></pre>
 </div>
 </div>
-<div id="9ac5a9ef" class="cell" data-time_run="2026-01-22T00:34:01.526400+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
+<p>::: {#9ac5a9ef .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.526400+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastcore.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ensure_dialog(session):</span>
@@ -469,7 +464,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        d <span class="op">=</span> dialogs[(uid, dnum)]</span>
 <span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        user_chats[(uid, dnum)] <span class="op">=</span> make_chat(json.loads(d.messages))</span>
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: create_dialog(session)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p><code>ensure_dialog</code> acts as a lazy loader for chat sessions. It first checks whether the user’s current dialog is already active in memory—if so, there’s nothing to do. If the dialog exists in the database but hasn’t been loaded yet, it retrieves the stored messages and reconstructs the chat object. Otherwise, when no dialog exists at all, it creates a fresh one for the user.</p>
 <div id="34873f4b" class="cell" data-time_run="2026-01-22T00:34:01.530255+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>ensure_dialog(fake_session)</span>
@@ -479,21 +474,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   &lt;IPython.terminal.interactiveshell.TerminalInteractiveShell at 0x70ee225f31a0&gt;)}</code></pre>
 </div>
 </div>
-<div id="f4bf5236" class="cell" data-time_run="2026-01-22T00:34:01.546425+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> contextvars <span class="im">import</span> ContextVar</span>
+<p>::: {#f4bf5236 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.546425+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> contextvars <span class="im">import</span> ContextVar</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>current_lang <span class="op">=</span> ContextVar(<span class="st">'lang'</span>, default<span class="op">=</span><span class="st">'en'</span>)<span class="op">;</span> current_lang</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
 <pre data-code-line-numbers=""><code>&lt;ContextVar name='lang' default='en' at 0x70ee19141df0&gt;</code></pre>
 </div>
-</div>
+<p>:::</p>
 <p>Every time a request is made, a new <code>ContextVar</code> is created. This is a way I can keep language preferences seperate for each user.</p>
-<div id="f4830cbf" class="cell" data-time_run="2026-01-22T00:34:01.551464+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#f4830cbf .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.551464+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> setsession(session):</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    current_lang.<span class="bu">set</span>(session.setdefault(<span class="st">'lang'</span>, <span class="st">'en'</span>))</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    uid <span class="op">=</span> ensure_user(session)</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    ensure_dialog(session)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="217c47ba" class="cell" data-time_run="2026-01-22T00:34:01.559257+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>prev(setsession)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -546,8 +541,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="localization" class="level3">
 <h3 class="anchored" data-anchor-id="localization">Localization</h3>
 <p>A translation dictionary stores the strings for both Chinese and English. The helper function <code>t()</code> performs the localization.</p>
-<div id="95173331" class="cell" data-hide_input="true" data-time_run="2026-01-22T00:34:01.589178+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> {</span>
+<p>::: {#95173331 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ hide_input=‘true’ time_run=‘2026-01-22T00:34:01.589178+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> {</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'zh'</span>: {</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'input_placeholder'</span>: <span class="st">'输入内容···'</span>,</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'submit'</span>: <span class="st">'提交'</span>,</span>
@@ -593,12 +588,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb43-44"><a href="#cb43-44" aria-hidden="true" tabindex="-1"></a>        <span class="st">'enter_restore_code'</span>: <span class="st">'Enter restore code...'</span>,</span>
 <span id="cb43-45"><a href="#cb43-45" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb43-46"><a href="#cb43-46" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="f66dc855" class="cell" data-time_run="2026-01-22T00:34:01.593643+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> t(key, session<span class="op">=</span><span class="va">None</span>): </span>
+<p>:::</p>
+<p>::: {#f66dc855 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.593643+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> t(key, session<span class="op">=</span><span class="va">None</span>): </span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    lang <span class="op">=</span> session.get(<span class="st">'lang'</span>, <span class="st">'zh'</span>) <span class="cf">if</span> session <span class="cf">else</span> current_lang.get()</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> T[lang].get(key, key)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="e3eddbdf" class="cell" data-time_run="2026-01-22T00:34:01.598015+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>t(<span class="st">'ask_model'</span>, {<span class="st">'lang'</span>:<span class="st">'zh'</span>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -609,8 +604,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="chat-bubbles" class="level3">
 <h3 class="anchored" data-anchor-id="chat-bubbles">Chat Bubbles</h3>
 <p>Bubbles that display the dialog content. Each bubble type has its own color scheme—blue for code, red for prompts, and green for notes.</p>
-<div id="4a5b2004" class="cell" data-time_run="2026-01-22T00:34:01.603161+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Bubble(text, color, <span class="bu">type</span><span class="op">=</span><span class="st">'q'</span>, marked<span class="op">=</span><span class="va">True</span>):</span>
+<p>::: {#4a5b2004 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.603161+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Bubble(text, color, <span class="bu">type</span><span class="op">=</span><span class="st">'q'</span>, marked<span class="op">=</span><span class="va">True</span>):</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    colors <span class="op">=</span> {</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'code'</span>: <span class="st">'border-blue-500 bg-blue-50'</span>,</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'note'</span>: <span class="st">'border-green-500 bg-green-50'</span>,</span>
@@ -618,7 +613,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    cls <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span><span class="st">'marked'</span> <span class="cf">if</span> marked <span class="cf">else</span> <span class="st">''</span><span class="sc">}</span><span class="ss"> </span><span class="sc">{</span><span class="st">'ml-6'</span> <span class="cf">if</span> <span class="bu">type</span><span class="op">==</span><span class="st">'r'</span> <span class="cf">else</span> <span class="st">''</span><span class="sc">}</span><span class="ss"> flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm border-2 </span><span class="sc">{</span>colors[color]<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Div(text, cls<span class="op">=</span>cls)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="8576ee05" class="cell" data-time_run="2026-01-22T00:34:01.608117+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>prev(Bubble(<span class="st">'**嗨喽**'</span>, <span class="st">'note'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -754,14 +749,14 @@ print('嗨！！！')
 </section>
 <section id="component-wrappers" class="level3">
 <h3 class="anchored" data-anchor-id="component-wrappers">Component Wrappers</h3>
-<div id="06830b37" class="cell" data-time_run="2026-01-22T00:34:01.636405+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fasthtml.components <span class="im">as</span> fc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="0db9e155" class="cell" data-time_run="2026-01-22T00:34:01.640925+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_comp(name, def_cls):</span>
+<p>::: {#06830b37 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.636405+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fasthtml.components <span class="im">as</span> fc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
+<p>::: {#0db9e155 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.640925+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_comp(name, def_cls):</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    comp <span class="op">=</span> <span class="bu">getattr</span>(fc, name)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">globals</span>()[name] <span class="op">=</span> <span class="kw">lambda</span> <span class="op">*</span>args, var<span class="op">=</span><span class="st">''</span>, cls<span class="op">=</span><span class="st">''</span>, <span class="op">**</span>kwargs: comp(<span class="op">*</span>args, cls<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>def_cls<span class="sc">}{</span><span class="st">"-"</span><span class="op">+</span>var <span class="cf">if</span> var <span class="cf">else</span> <span class="st">""</span><span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>cls<span class="sc">}</span><span class="ss">'</span>, <span class="op">**</span>kwargs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p>This wrapper will allow us to define HTML components with Basecoat styling without redundantly stating what that component is.</p>
 <p>Before:</p>
 <div id="9fe29f38" class="cell" data-time_run="2026-01-22T00:34:01.645789+00:00">
@@ -842,12 +837,12 @@ htmx.onLoad(hljs.highlightAll);</script><script>
     }" allow="accelerometer; autoplay; camera; clipboard-read; clipboard-write; display-capture; encrypted-media; fullscreen; gamepad; geolocation; gyroscope; hid; identity-credentials-get; idle-detection; magnetometer; microphone; midi; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; serial; usb; web-share; xr-spatial-tracking"></iframe> 
 </div>
 </div>
-<div id="2e0f1420" class="cell" data-time_run="2026-01-22T00:34:01.661349+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>mk_comp(<span class="st">'Button'</span>, <span class="st">'btn'</span>)</span>
+<p>::: {#2e0f1420 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.661349+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>mk_comp(<span class="st">'Button'</span>, <span class="st">'btn'</span>)</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>mk_comp(<span class="st">'Input'</span>, <span class="st">'input'</span>)</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>mk_comp(<span class="st">'Textarea'</span>, <span class="st">'textarea'</span>)</span>
 <span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>mk_comp(<span class="st">'Label'</span>, <span class="st">'label'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p>After:</p>
 <div id="1f3f4ef0" class="cell" data-time_run="2026-01-22T00:34:01.666016+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>prev(Button(<span class="st">'🔘'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -938,10 +933,10 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <section id="input-box" class="level3">
 <h3 class="anchored" data-anchor-id="input-box">Input Box</h3>
 <p>The input area that will be used for entering messages to the dialog.</p>
-<div id="ae807178" class="cell" data-time_run="2026-01-22T00:34:01.687299+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Inp(<span class="bu">type</span><span class="op">=</span><span class="st">'text'</span>, placeholder<span class="op">=</span><span class="st">'输入内容···'</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'inp'</span>, oob<span class="op">=</span><span class="va">False</span>, <span class="op">**</span>kwargs): </span>
+<p>::: {#ae807178 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.687299+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb60" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Inp(<span class="bu">type</span><span class="op">=</span><span class="st">'text'</span>, placeholder<span class="op">=</span><span class="st">'输入内容···'</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'inp'</span>, oob<span class="op">=</span><span class="va">False</span>, <span class="op">**</span>kwargs): </span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Textarea(<span class="bu">type</span><span class="op">=</span><span class="st">'text'</span>, rows<span class="op">=</span><span class="dv">1</span>, placeholder<span class="op">=</span>placeholder, <span class="bu">id</span><span class="op">=</span><span class="bu">id</span>, cls<span class="op">=</span><span class="st">'font-mono'</span>, <span class="op">**</span>(<span class="bu">dict</span>(hx_swap_oob<span class="op">=</span><span class="st">'true'</span>) <span class="cf">if</span> oob <span class="cf">else</span> {}), <span class="op">**</span>kwargs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="5c85740e" class="cell" data-time_run="2026-01-22T00:34:01.692045+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>prev(Inp())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1043,9 +1038,9 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <div id="ca673239" class="cell" data-time_run="2026-01-22T00:34:01.717199+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>fake_session <span class="op">=</span> {<span class="st">'userid'</span>:<span class="dv">1</span>, <span class="st">'current_dialog'</span>:<span class="dv">1</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="7eba2cc7" class="cell" data-time_run="2026-01-22T00:34:01.725230+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_chat(session): <span class="cf">return</span> user_chats[(session[<span class="st">'userid'</span>], session[<span class="st">'current_dialog'</span>])]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#7eba2cc7 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.725230+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb68" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_chat(session): <span class="cf">return</span> user_chats[(session[<span class="st">'userid'</span>], session[<span class="st">'current_dialog'</span>])]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="cdf98500" class="cell" data-time_run="2026-01-22T00:34:01.729644+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb69" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>get_chat(fake_session)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1053,9 +1048,9 @@ htmx.onLoad(hljs.highlightAll);</script><script>
  &lt;IPython.terminal.interactiveshell.TerminalInteractiveShell at 0x70ee225f31a0&gt;)</code></pre>
 </div>
 </div>
-<div id="649b261d" class="cell" data-time_run="2026-01-22T00:34:01.734433+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sync_hist(session, hist): dialogs.update(uid<span class="op">=</span>session[<span class="st">'userid'</span>], dialog_num<span class="op">=</span>session[<span class="st">'current_dialog'</span>], messages<span class="op">=</span>json.dumps([h.model_dump() <span class="cf">if</span> <span class="bu">hasattr</span>(h, <span class="st">'model_dump'</span>) <span class="cf">else</span> h <span class="cf">for</span> h <span class="kw">in</span> hist]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#649b261d .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:01.734433+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sync_hist(session, hist): dialogs.update(uid<span class="op">=</span>session[<span class="st">'userid'</span>], dialog_num<span class="op">=</span>session[<span class="st">'current_dialog'</span>], messages<span class="op">=</span>json.dumps([h.model_dump() <span class="cf">if</span> <span class="bu">hasattr</span>(h, <span class="st">'model_dump'</span>) <span class="cf">else</span> h <span class="cf">for</span> h <span class="kw">in</span> hist]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="d862c7c5" class="cell" data-time_run="2026-01-22T00:34:01.741455+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> Chat(<span class="st">'moonshot/kimi-k2-0711-preview'</span>, sp<span class="op">=</span>sp)</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>c(<span class="st">'你是谁？'</span>)<span class="op">;</span> c.hist</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1078,11 +1073,11 @@ htmx.onLoad(hljs.highlightAll);</script><script>
   'provider_specific_fields': {'refusal': None}}]</code></pre>
 </div>
 </div>
-<div id="c862e101" class="cell" data-time_run="2026-01-22T00:34:02.717276+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_reply(inp, out, color, name<span class="op">=</span><span class="st">'inp'</span>, placeholder<span class="op">=</span><span class="st">'输入内容···'</span>): <span class="cf">return</span> Inp(oob<span class="op">=</span><span class="va">True</span>, name<span class="op">=</span>name, placeholder<span class="op">=</span>placeholder, onkeydown<span class="op">=</span><span class="st">"if(event.shiftKey &amp;&amp; event.key==='Enter') { event.preventDefault(); this.form.requestSubmit(); }"</span>), Div(cls<span class="op">=</span><span class="st">'space-y-0.5'</span>)(</span>
+<p>::: {#c862e101 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:02.717276+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb77" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mk_reply(inp, out, color, name<span class="op">=</span><span class="st">'inp'</span>, placeholder<span class="op">=</span><span class="st">'输入内容···'</span>): <span class="cf">return</span> Inp(oob<span class="op">=</span><span class="va">True</span>, name<span class="op">=</span>name, placeholder<span class="op">=</span>placeholder, onkeydown<span class="op">=</span><span class="st">"if(event.shiftKey &amp;&amp; event.key==='Enter') { event.preventDefault(); this.form.requestSubmit(); }"</span>), Div(cls<span class="op">=</span><span class="st">'space-y-0.5'</span>)(</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>    Bubble(inp, color), </span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>    Bubble(out, color, <span class="st">'r'</span>) <span class="cf">if</span> out <span class="cf">else</span> <span class="va">None</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="f03287fe" class="cell" data-time_run="2026-01-22T00:34:02.722413+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>prev(mk_reply(<span class="st">'呵呵'</span>, <span class="st">'哈哈'</span>, <span class="st">'prompt'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1135,10 +1130,10 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <pre data-code-line-numbers=""><code>'嗨！有什么我可以帮你的吗？'</code></pre>
 </div>
 </div>
-<div id="744b0ef0" class="cell" data-time_run="2026-01-22T00:34:03.555060+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_hist(hist, <span class="bu">type</span>, content<span class="op">=</span><span class="st">''</span>, role<span class="op">=</span><span class="st">'user'</span>):</span>
+<p>::: {#744b0ef0 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:03.555060+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb81" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_hist(hist, <span class="bu">type</span>, content<span class="op">=</span><span class="st">''</span>, role<span class="op">=</span><span class="st">'user'</span>):</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    hist.append(<span class="bu">dict</span>(role<span class="op">=</span>role, content<span class="op">=</span>content, <span class="bu">type</span><span class="op">=</span><span class="bu">type</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p>I’ve added a <code>type</code> key to allow me to know in what style to render the message (blue for <code>'code'</code>, red for <code>'prompt'</code>, and green for <code>'note'</code>) when I load them.</p>
 <div id="6155227b" class="cell" data-time_run="2026-01-22T00:34:03.559630+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>add_hist(c.hist, <span class="st">'note'</span>, content<span class="op">=</span><span class="st">'这只是一张便条'</span>)</span>
@@ -1151,8 +1146,8 @@ htmx.onLoad(hljs.highlightAll);</script><script>
  {'role': 'user', 'content': '这只是一张便条', 'type': 'note'}]</code></pre>
 </div>
 </div>
-<div id="e8fb36a9" class="cell" data-time_run="2026-01-22T00:34:03.565395+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<p>::: {#e8fb36a9 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:03.565395+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb84" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ask_llm(qry:<span class="bu">str</span>, session):</span>
 <span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>    c,sh <span class="op">=</span> get_chat(session)</span>
@@ -1162,17 +1157,17 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>    c.hist[<span class="op">-</span><span class="dv">1</span>][<span class="st">'type'</span>] <span class="op">=</span> <span class="st">'prompt'</span></span>
 <span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>    sync_hist(session, c.hist)</span>
 <span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mk_reply(qry, content, <span class="st">'prompt'</span>, <span class="st">'qry'</span>, t(<span class="st">'ask_model'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="0903d3d5" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>prev(<span class="st">'/ask_llm?qry=你好'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="../images/31_solveit_in_solveit/2.png" class="img-fluid"></p>
 <p><code>ask_llm</code>, alongside quering the model, stores the conversation with a <code>type</code> marker for rendering and syncs the history to the database.</p>
-<div id="a3bcde66" class="cell" data-time_run="2026-01-22T00:34:03.574612+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(inp):</span>
+<p>::: {#a3bcde66 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:03.574612+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(inp):</span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Div(Div(<span class="bu">id</span><span class="op">=</span><span class="st">'msgs'</span>),</span>
 <span id="cb86-3"><a href="#cb86-3" aria-hidden="true" tabindex="-1"></a>    Form(hx_post<span class="op">=</span>ask_llm, hx_target<span class="op">=</span><span class="st">'#msgs'</span>, hx_swap<span class="op">=</span><span class="st">'beforeend'</span>, cls<span class="op">=</span><span class="st">'flex items-center space-x-2'</span>)(inp, Button(<span class="st">'提交'</span>, <span class="bu">type</span><span class="op">=</span><span class="st">'submit'</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="d4a24dcc" class="cell" data-time_run="2026-01-22T00:34:03.580061+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb87" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>prev(test(Inp(<span class="bu">id</span><span class="op">=</span><span class="st">'qry'</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1249,13 +1244,13 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 </div>
 </div>
 <p><code>get_shell</code> relies on IPython under the hood.</p>
-<div id="0f20abdc" class="cell" data-time_run="2026-01-22T00:34:23.268921+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ex(code, sh):</span>
+<p>::: {#0f20abdc .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:23.268921+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb94" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ex(code, sh):</span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> sh.run_cell(code)</span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> res.result <span class="cf">if</span> res.result <span class="cf">else</span> res.stdout</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="3cd307bc" class="cell" data-time_run="2026-01-22T00:34:23.654002+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>:::</p>
+<p>::: {#3cd307bc .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:23.654002+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb95" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ex_code(code:<span class="bu">str</span>, session):</span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>    c,sh <span class="op">=</span> get_chat(session)</span>
 <span id="cb95-4"><a href="#cb95-4" aria-hidden="true" tabindex="-1"></a>    add_hist(c.hist, <span class="st">'code'</span>, <span class="ss">f'[INTERPRETER INPUT]</span><span class="ch">\n</span><span class="ss">```py</span><span class="ch">\n</span><span class="sc">{</span>code<span class="sc">}</span><span class="ch">\n</span><span class="ss">```'</span>)</span>
@@ -1263,7 +1258,7 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb95-6"><a href="#cb95-6" aria-hidden="true" tabindex="-1"></a>    add_hist(c.hist, <span class="st">'code'</span>, <span class="ss">f'[INTERPRETER OUTPUT]</span><span class="ch">\n</span><span class="ss">```py</span><span class="ch">\n</span><span class="sc">{</span>res<span class="sc">}</span><span class="ch">\n</span><span class="ss">```'</span>, role<span class="op">=</span><span class="st">'assistant'</span>)</span>
 <span id="cb95-7"><a href="#cb95-7" aria-hidden="true" tabindex="-1"></a>    sync_hist(session, c.hist)</span>
 <span id="cb95-8"><a href="#cb95-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mk_reply(inp<span class="op">=</span><span class="ss">f'```py</span><span class="ch">\n</span><span class="sc">{</span>code<span class="sc">}</span><span class="ch">\n</span><span class="ss">```'</span>, out<span class="op">=</span> <span class="ss">f'```py</span><span class="ch">\n</span><span class="sc">{</span>res<span class="sc">}</span><span class="ch">\n</span><span class="ss">```'</span>, color<span class="op">=</span><span class="st">'code'</span>, name<span class="op">=</span><span class="st">'code'</span>, placeholder<span class="op">=</span>t(<span class="st">'your_code'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p><code>ex_code</code> similarly also stores the conversation with a <code>type</code> marker and syncs with the database. A special <code>'[INTERPRETER INPUT/OUTPUT]'</code> marker is also added as indicators for the LLM.</p>
 <div id="db08322b" class="cell" data-time_run="2026-01-22T00:34:24.700819+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb96" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>prev(Div(</span>
@@ -1313,14 +1308,14 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 </section>
 <section id="note-route" class="level3">
 <h3 class="anchored" data-anchor-id="note-route">Note Route</h3>
-<div id="a591691c" class="cell" data-time_run="2026-01-22T00:34:34.562110+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#a591691c .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:34.562110+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb97" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_note(note:<span class="bu">str</span>, session):</span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>    c,sh <span class="op">=</span> get_chat(session)</span>
 <span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a>    add_hist(c.hist, <span class="st">'note'</span>, content<span class="op">=</span>note,)</span>
 <span id="cb97-5"><a href="#cb97-5" aria-hidden="true" tabindex="-1"></a>    sync_hist(session, c.hist)</span>
 <span id="cb97-6"><a href="#cb97-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> mk_reply(note, <span class="st">''</span>, <span class="st">'note'</span>, <span class="st">'note'</span>, t(<span class="st">'any_thoughts'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="97613b2b" class="cell" data-time_run="2026-01-22T00:34:35.127191+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb98" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test(inp):</span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Div(Div(<span class="bu">id</span><span class="op">=</span><span class="st">'msgs'</span>),</span>
@@ -1372,10 +1367,10 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <section id="editor-component" class="level3">
 <h3 class="anchored" data-anchor-id="editor-component">Editor Component</h3>
 <p>Three editor components for the different message types. Each editor is a form that posts to its corresponding route (ex_code, ask_llm, or add_note) and appends the result to the message area.</p>
-<div id="3da6f419" class="cell" data-time_run="2026-01-22T00:34:55.717291+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#3da6f419 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:34:55.717291+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb100" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> code_editor(session): <span class="cf">return</span> Form(hx_post<span class="op">=</span>ex_code, hx_target<span class="op">=</span><span class="st">'#msgs'</span>, hx_swap<span class="op">=</span><span class="st">'beforeend'</span>, cls<span class="op">=</span><span class="st">'flex items-stretch space-x-2'</span>)(Inp(placeholder<span class="op">=</span>t(<span class="st">'enter_code'</span>, session), name<span class="op">=</span><span class="st">'code'</span>, onkeydown<span class="op">=</span><span class="st">"if(event.shiftKey &amp;&amp; event.key==='Enter') { event.preventDefault(); this.form.requestSubmit(); }"</span>), Button(t(<span class="st">'submit'</span>, session), <span class="bu">type</span><span class="op">=</span><span class="st">'submit'</span>, cls<span class="op">=</span><span class="st">'self-stretch h-auto'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p>The editor routes need the session cookie for translations because each editor is loaded in a separate request. Since <code>ContextVar</code> resets with each new request, we need to re-set the language from the session at the start of each request.</p>
 <div id="ab710ded" class="cell" data-time_run="2026-01-22T00:34:57.364902+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb101" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>prev(Div(Div(<span class="bu">id</span><span class="op">=</span><span class="st">'msgs'</span>),Div(hx_get<span class="op">=</span>code_editor, hx_trigger<span class="op">=</span><span class="st">'load'</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1420,18 +1415,18 @@ htmx.onLoad(hljs.highlightAll);</script><script>
     }" allow="accelerometer; autoplay; camera; clipboard-read; clipboard-write; display-capture; encrypted-media; fullscreen; gamepad; geolocation; gyroscope; hid; identity-credentials-get; idle-detection; magnetometer; microphone; midi; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; serial; usb; web-share; xr-spatial-tracking"></iframe> 
 </div>
 </div>
-<div id="e85cd35e" class="cell" data-time_run="2026-01-22T00:35:18.553389+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#e85cd35e .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:35:18.553389+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb102" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> llm_editor(session): <span class="cf">return</span> Form(hx_post<span class="op">=</span>ask_llm, hx_target<span class="op">=</span><span class="st">'#msgs'</span>, hx_swap<span class="op">=</span><span class="st">'beforeend'</span>, cls<span class="op">=</span><span class="st">'flex items-center space-x-2'</span>)(Inp(placeholder<span class="op">=</span>t(<span class="st">'ask_model'</span>, session), name<span class="op">=</span><span class="st">'qry'</span>, onkeydown<span class="op">=</span><span class="st">"if(event.shiftKey &amp;&amp; event.key==='Enter') { event.preventDefault(); this.form.requestSubmit(); }"</span>), Button(t(<span class="st">'submit'</span>, session), <span class="bu">type</span><span class="op">=</span><span class="st">'submit'</span>, cls<span class="op">=</span><span class="st">'self-stretch h-auto'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="84f3f0c8" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb103" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>prev(llm_editor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><img src="../images/31_solveit_in_solveit/3.png" class="img-fluid"></p>
-<div id="3f0d14d8" class="cell" data-time_run="2026-01-22T00:35:37.352665+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#3f0d14d8 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:35:37.352665+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> note_editor(session): <span class="cf">return</span> Form(hx_post<span class="op">=</span>add_note, hx_target<span class="op">=</span><span class="st">'#msgs'</span>, hx_swap<span class="op">=</span><span class="st">'beforeend'</span>, cls<span class="op">=</span><span class="st">'flex items-center space-x-2'</span>)(Inp(placeholder<span class="op">=</span>t(<span class="st">'any_thoughts'</span>, session), name<span class="op">=</span><span class="st">'note'</span>, onkeydown<span class="op">=</span><span class="st">"if(event.shiftKey &amp;&amp; event.key==='Enter') { event.preventDefault(); this.form.requestSubmit(); }"</span>), Button(t(<span class="st">'submit'</span>, session), <span class="bu">type</span><span class="op">=</span><span class="st">'submit'</span>, cls<span class="op">=</span><span class="st">'self-stretch h-auto'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="3ce84ce7" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb105" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>prev(note_editor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1446,9 +1441,9 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <section id="tabs" class="level3">
 <h3 class="anchored" data-anchor-id="tabs">Tabs</h3>
 <p>A tabbed navigation bar that lets users switch between the three editor types—code, prompt, and note. Each tab triggers an HTMX request to load the corresponding editor form into the editor container.</p>
-<div id="e2b96dec" class="cell" data-time_run="2026-01-22T00:39:32.407645+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Tab(title, <span class="bu">id</span>, hx_post, <span class="op">**</span>kwargs): <span class="cf">return</span> fc.Button(title, <span class="bu">id</span><span class="op">=</span><span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">-tab'</span>, <span class="bu">type</span><span class="op">=</span><span class="st">'button'</span>, role<span class="op">=</span><span class="st">'tab'</span>, hx_post<span class="op">=</span>hx_post, hx_target<span class="op">=</span><span class="st">'#editor'</span>, hx_swap<span class="op">=</span><span class="st">'innerHTML'</span>, <span class="op">**</span>kwargs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#e2b96dec .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:39:32.407645+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb108" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Tab(title, <span class="bu">id</span>, hx_post, <span class="op">**</span>kwargs): <span class="cf">return</span> fc.Button(title, <span class="bu">id</span><span class="op">=</span><span class="ss">f'</span><span class="sc">{</span><span class="bu">id</span><span class="sc">}</span><span class="ss">-tab'</span>, <span class="bu">type</span><span class="op">=</span><span class="st">'button'</span>, role<span class="op">=</span><span class="st">'tab'</span>, hx_post<span class="op">=</span>hx_post, hx_target<span class="op">=</span><span class="st">'#editor'</span>, hx_swap<span class="op">=</span><span class="st">'innerHTML'</span>, <span class="op">**</span>kwargs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="3d564e72" class="cell" data-time_run="2026-01-22T00:39:35.982976+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb109" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a>prev(Nav(Tab(<span class="st">'标签'</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'test'</span>, hx_post<span class="op">=</span><span class="va">None</span>), cls<span class="op">=</span><span class="st">'w-full'</span>, role<span class="op">=</span><span class="st">'tablist'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1490,15 +1485,15 @@ htmx.onLoad(hljs.highlightAll);</script><script>
     }" allow="accelerometer; autoplay; camera; clipboard-read; clipboard-write; display-capture; encrypted-media; fullscreen; gamepad; geolocation; gyroscope; hid; identity-credentials-get; idle-detection; magnetometer; microphone; midi; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; serial; usb; web-share; xr-spatial-tracking"></iframe> 
 </div>
 </div>
-<div id="355bf665" class="cell" data-time_run="2026-01-22T00:39:37.560871+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> TabBar(cls<span class="op">=</span><span class="st">''</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs): </span>
+<p>::: {#355bf665 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:39:37.560871+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb110" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> TabBar(cls<span class="op">=</span><span class="st">''</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs): </span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Nav(</span>
 <span id="cb110-3"><a href="#cb110-3" aria-hidden="true" tabindex="-1"></a>        Tab(t(<span class="st">'code'</span>), <span class="bu">id</span><span class="op">=</span><span class="st">'code'</span>, hx_post<span class="op">=</span>code_editor),</span>
 <span id="cb110-4"><a href="#cb110-4" aria-hidden="true" tabindex="-1"></a>        Tab(t(<span class="st">'prompt'</span>), <span class="bu">id</span><span class="op">=</span><span class="st">'qry'</span>, hx_post<span class="op">=</span>llm_editor),</span>
 <span id="cb110-5"><a href="#cb110-5" aria-hidden="true" tabindex="-1"></a>        Tab(t(<span class="st">'note'</span>), <span class="bu">id</span><span class="op">=</span><span class="st">'note'</span>, hx_post<span class="op">=</span>note_editor),</span>
 <span id="cb110-6"><a href="#cb110-6" aria-hidden="true" tabindex="-1"></a>        cls<span class="op">=</span><span class="ss">f'w-full </span><span class="sc">{</span>cls<span class="sc">}</span><span class="ss">'</span>, role<span class="op">=</span><span class="st">'tablist'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs</span>
 <span id="cb110-7"><a href="#cb110-7" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="eb8c9010" class="cell" data-time_run="2026-01-22T00:39:39.897658+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb111" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1" aria-hidden="true" tabindex="-1"></a>prev(Div(TabBar(), Div(<span class="bu">id</span><span class="op">=</span><span class="st">'editor'</span>), cls<span class="op">=</span><span class="st">'tabs w-full'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1546,15 +1541,15 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 </section>
 <section id="render-existing-messages" class="level3">
 <h3 class="anchored" data-anchor-id="render-existing-messages">Render Existing Messages</h3>
-<div id="764bf26a" class="cell" data-time_run="2026-01-22T00:39:42.067948+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#764bf26a .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:39:42.067948+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_messages(session):</span>
 <span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a>    c,sh <span class="op">=</span> get_chat(session)</span>
 <span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> c.hist:</span>
 <span id="cb112-5"><a href="#cb112-5" aria-hidden="true" tabindex="-1"></a>        role <span class="op">=</span> i.get(<span class="st">'role'</span>) <span class="cf">if</span> <span class="bu">isinstance</span>(i, <span class="bu">dict</span>) <span class="cf">else</span> i.role</span>
 <span id="cb112-6"><a href="#cb112-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> role<span class="op">==</span><span class="st">'user'</span>:      <span class="cf">yield</span> Div(Bubble(i[<span class="st">'content'</span>].replace(<span class="st">'[INTERPRETER INPUT]</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">''</span>), i[<span class="st">'type'</span>]), cls<span class="op">=</span><span class="st">'space-y-0.5'</span>)</span>
 <span id="cb112-7"><a href="#cb112-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> role<span class="op">==</span><span class="st">'assistant'</span>: <span class="cf">yield</span> Div(Bubble(i[<span class="st">'content'</span>].replace(<span class="st">'[INTERPRETER OUTPUT]</span><span class="ch">\n</span><span class="st">'</span>, <span class="st">''</span>), i[<span class="st">'type'</span>], <span class="st">'r'</span>), cls<span class="op">=</span><span class="st">'space-y-0.5'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="a3420fbb" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb113" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a>prev(<span class="ss">f'/load_messages'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1563,24 +1558,24 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <section id="dialog" class="level3">
 <h3 class="anchored" data-anchor-id="dialog">Dialog</h3>
 <p>The dialog component ties everything together—a title bar that supports inline editing, a message display area that loads existing conversation history, and the tabbed editor for adding new messages. Clicking a dialog name makes it editable, and saving updates the database immediately.</p>
-<div id="64ce33d2" class="cell" data-time_run="2026-01-22T00:40:04.037914+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#64ce33d2 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:40:04.037914+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb114" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb114-2"><a href="#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> edit_dname(session):</span>
 <span id="cb114-3"><a href="#cb114-3" aria-hidden="true" tabindex="-1"></a>    dname <span class="op">=</span> dialogs[(session[<span class="st">'userid'</span>], session[<span class="st">'current_dialog'</span>])].name</span>
 <span id="cb114-4"><a href="#cb114-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Form(<span class="bu">id</span><span class="op">=</span><span class="st">'dname'</span>, hx_post<span class="op">=</span>save_dname, hx_target<span class="op">=</span><span class="st">'#dname'</span>, hx_swap<span class="op">=</span><span class="st">'outerHTML'</span>)(</span>
 <span id="cb114-5"><a href="#cb114-5" aria-hidden="true" tabindex="-1"></a>        Input(value<span class="op">=</span>dname, name<span class="op">=</span><span class="st">'newname'</span>, autofocus<span class="op">=</span><span class="va">True</span>, onfocus<span class="op">=</span><span class="st">'this.select()'</span>, required<span class="op">=</span><span class="va">True</span>, cls<span class="op">=</span><span class="st">'text-2xl font-bold outline-none'</span>),</span>
 <span id="cb114-6"><a href="#cb114-6" aria-hidden="true" tabindex="-1"></a>        Button(t(<span class="st">'save'</span>, session), <span class="bu">type</span><span class="op">=</span><span class="st">'submit'</span>)</span>
 <span id="cb114-7"><a href="#cb114-7" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="9d6ae097" class="cell" data-time_run="2026-01-22T00:40:04.608020+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span> </span>
+<p>:::</p>
+<p>::: {#9d6ae097 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:40:04.608020+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb115" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span> </span>
 <span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_dname(session, newname:<span class="bu">str</span>):</span>
 <span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>    dialogs.update(uid<span class="op">=</span>session[<span class="st">'userid'</span>], dialog_num<span class="op">=</span>session[<span class="st">'current_dialog'</span>], name<span class="op">=</span>newname)</span>
 <span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> DialogTitle(newname)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="dfb739b4" class="cell" data-time_run="2026-01-22T00:40:05.386759+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DialogTitle(name): <span class="cf">return</span> H1(name, cls<span class="op">=</span><span class="st">'text-2xl font-bold'</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'dname'</span>, hx_get<span class="op">=</span>edit_dname, hx_target<span class="op">=</span><span class="st">'#dname'</span>, hx_swap<span class="op">=</span><span class="st">'outerHTML'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
+<p>::: {#dfb739b4 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:40:05.386759+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb116" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DialogTitle(name): <span class="cf">return</span> H1(name, cls<span class="op">=</span><span class="st">'text-2xl font-bold'</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'dname'</span>, hx_get<span class="op">=</span>edit_dname, hx_target<span class="op">=</span><span class="st">'#dname'</span>, hx_swap<span class="op">=</span><span class="st">'outerHTML'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="fb800175" class="cell" data-time_run="2026-01-22T00:40:09.509853+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb117" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a>prev(DialogTitle(<span class="st">'对话'</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1621,8 +1616,8 @@ htmx.onLoad(hljs.highlightAll);</script><script>
     }" allow="accelerometer; autoplay; camera; clipboard-read; clipboard-write; display-capture; encrypted-media; fullscreen; gamepad; geolocation; gyroscope; hid; identity-credentials-get; idle-detection; magnetometer; microphone; midi; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; serial; usb; web-share; xr-spatial-tracking"></iframe> 
 </div>
 </div>
-<div id="5f7ef951" class="cell" data-time_run="2026-01-22T00:40:10.636548+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#5f7ef951 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:40:10.636548+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb118" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dialog(dnum:<span class="bu">int</span>, session): </span>
 <span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>    session[<span class="st">'current_dialog'</span>] <span class="op">=</span> dnum</span>
 <span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Div(</span>
@@ -1632,7 +1627,7 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb118-8"><a href="#cb118-8" aria-hidden="true" tabindex="-1"></a>        Div(<span class="bu">id</span><span class="op">=</span><span class="st">'editor'</span>),</span>
 <span id="cb118-9"><a href="#cb118-9" aria-hidden="true" tabindex="-1"></a>        cls<span class="op">=</span><span class="st">'tabs w-full'</span></span>
 <span id="cb118-10"><a href="#cb118-10" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="aec9fe41" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb119" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a>prev(<span class="st">'dialog?dnum=1'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1640,13 +1635,13 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 </section>
 <section id="delete-dialog" class="level3">
 <h3 class="anchored" data-anchor-id="delete-dialog">Delete Dialog</h3>
-<div id="493dcf03" class="cell" data-time_run="2026-01-22T00:40:29.905945+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#493dcf03 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:40:29.905945+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb120" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> delete_dialog(session, dnum:<span class="bu">int</span>):</span>
 <span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a>    uid <span class="op">=</span> session.get(<span class="st">'userid'</span>)</span>
 <span id="cb120-4"><a href="#cb120-4" aria-hidden="true" tabindex="-1"></a>    dialogs.delete((uid, dnum))</span>
 <span id="cb120-5"><a href="#cb120-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">del</span> user_chats[(uid, dnum)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="c90ef6df" class="cell" data-time_run="2026-01-22T00:40:30.470264+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb121" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb121-1"><a href="#cb121-1" aria-hidden="true" tabindex="-1"></a>fake_session</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1686,9 +1681,9 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <section id="restore-dialog" class="level3">
 <h3 class="anchored" data-anchor-id="restore-dialog">Restore Dialog</h3>
 <p>The restore session feature allows users to recover their data if the server restarts or they switch devices. Users enter their unique restore code (generated at account creation), which looks up their account in the database. If found, it restores their session by setting the user ID, loading their first dialog, and redirecting to the main page. A destructive alert displays if the restore code is invalid.</p>
-<div id="b7ebe597" class="cell" data-time_run="2026-01-22T00:40:39.407474+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>insolveit <span class="op">=</span> <span class="st">'IN_SOLVEIT'</span> <span class="kw">in</span> os.environ</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#b7ebe597 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:40:39.407474+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>insolveit <span class="op">=</span> <span class="st">'IN_SOLVEIT'</span> <span class="kw">in</span> os.environ</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="10d3508c" class="cell" data-time_run="2026-01-22T00:40:40.224216+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb133" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb133-1"><a href="#cb133-1" aria-hidden="true" tabindex="-1"></a>insolveit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1696,8 +1691,8 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 </div>
 </div>
 <p>I’ve created the <code>insolveit</code> check to determine whether the app is running in my SolveIt instance or whether as a deployed app.</p>
-<div id="7c59ce58" class="cell" data-time_run="2026-01-22T00:40:41.808713+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#7c59ce58 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:40:41.808713+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb135" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb135-1"><a href="#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb135-2"><a href="#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> restore_session(restore_code:<span class="bu">str</span>, session):</span>
 <span id="cb135-3"><a href="#cb135-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (u<span class="op">:=</span>first(users(<span class="st">'restore_code=?'</span>, [restore_code]))):</span>
 <span id="cb135-4"><a href="#cb135-4" aria-hidden="true" tabindex="-1"></a>        session[<span class="st">'userid'</span>] <span class="op">=</span> u.<span class="bu">id</span></span>
@@ -1709,7 +1704,7 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb135-10"><a href="#cb135-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb135-11"><a href="#cb135-11" aria-hidden="true" tabindex="-1"></a>    session[<span class="st">'userid'</span>] <span class="op">=</span> first(users(<span class="st">'restore_code=?'</span>, [restore_code])).<span class="bu">id</span></span>
 <span id="cb135-12"><a href="#cb135-12" aria-hidden="true" tabindex="-1"></a>    setsession(session)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="55d6f5c1" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>prev(<span class="st">'/restore_session?restore_code=haha'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1800,8 +1795,8 @@ htmx.onLoad(hljs.highlightAll);</script><script>
     }" allow="accelerometer; autoplay; camera; clipboard-read; clipboard-write; display-capture; encrypted-media; fullscreen; gamepad; geolocation; gyroscope; hid; identity-credentials-get; idle-detection; magnetometer; microphone; midi; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; serial; usb; web-share; xr-spatial-tracking"></iframe> 
 </div>
 </div>
-<div id="b997e64f" class="cell" data-time_run="2026-01-22T00:42:07.092837+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> RestoreForm(session, <span class="bu">id</span><span class="op">=</span><span class="st">'restore-form'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
+<p>::: {#b997e64f .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:42:07.092837+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb145" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb145-1"><a href="#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> RestoreForm(session, <span class="bu">id</span><span class="op">=</span><span class="st">'restore-form'</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs):</span>
 <span id="cb145-2"><a href="#cb145-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Form(hx_post<span class="op">=</span>restore_session, hx_target<span class="op">=</span><span class="st">'#alert-box'</span>, cls<span class="op">=</span><span class="st">'flex items-end gap-2'</span>, <span class="bu">id</span><span class="op">=</span><span class="bu">id</span>, <span class="op">*</span>args, <span class="op">**</span>kwargs)(</span>
 <span id="cb145-3"><a href="#cb145-3" aria-hidden="true" tabindex="-1"></a>        Div(</span>
 <span id="cb145-4"><a href="#cb145-4" aria-hidden="true" tabindex="-1"></a>            Label(t(<span class="st">'restore_code'</span>), <span class="st">' · '</span>, users[session[<span class="st">'userid'</span>]].restore_code, fr<span class="op">=</span><span class="st">'restore_code'</span>, cls<span class="op">=</span><span class="st">'mb-2'</span>),</span>
@@ -1809,7 +1804,7 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb145-6"><a href="#cb145-6" aria-hidden="true" tabindex="-1"></a>        ),</span>
 <span id="cb145-7"><a href="#cb145-7" aria-hidden="true" tabindex="-1"></a>        Button(t(<span class="st">'submit'</span>), <span class="bu">type</span><span class="op">=</span><span class="st">'submit'</span>)</span>
 <span id="cb145-8"><a href="#cb145-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="d3f6971a" class="cell" data-time_run="2026-01-22T00:42:10.211228+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb146" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb146-1"><a href="#cb146-1" aria-hidden="true" tabindex="-1"></a>prev(RestoreForm(fake_session))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1856,16 +1851,16 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <section id="dialog-list" class="level3">
 <h3 class="anchored" data-anchor-id="dialog-list">Dialog List</h3>
 <p>The dialog list component displays all dialogs belonging to the current user. The <code>display_dialogs</code> route fetches all user dialogs from the database and includes a “new dialog” card that triggers dialog creation. The restore code form is also embedded here, allowing users to recover their session from a different device.</p>
-<div id="7fde0067" class="cell" data-time_run="2026-01-22T00:42:13.946257+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#7fde0067 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:42:13.946257+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb147" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb147-1"><a href="#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb147-2"><a href="#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> current_dialog(session): <span class="cf">return</span> dialog(session.get(<span class="st">'current_dialog'</span>), session)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div id="d1206a9d" class="cell" data-time_run="2026-01-22T00:42:14.672987+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DialogCard(d): <span class="cf">return</span> Div(<span class="bu">id</span><span class="op">=</span><span class="ss">f'dialog-</span><span class="sc">{</span>d<span class="sc">.</span>uid<span class="sc">}{</span>d<span class="sc">.</span>dialog_num<span class="sc">}</span><span class="ss">'</span>, cls<span class="op">=</span><span class="st">'card p-4 hover:bg-gray-100 flex flex-row justify-between items-center'</span>)(</span>
+<p>:::</p>
+<p>::: {#d1206a9d .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:42:14.672987+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb148" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb148-1"><a href="#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> DialogCard(d): <span class="cf">return</span> Div(<span class="bu">id</span><span class="op">=</span><span class="ss">f'dialog-</span><span class="sc">{</span>d<span class="sc">.</span>uid<span class="sc">}{</span>d<span class="sc">.</span>dialog_num<span class="sc">}</span><span class="ss">'</span>, cls<span class="op">=</span><span class="st">'card p-4 hover:bg-gray-100 flex flex-row justify-between items-center'</span>)(</span>
 <span id="cb148-2"><a href="#cb148-2" aria-hidden="true" tabindex="-1"></a>    Span(hx_get<span class="op">=</span>dialog.to(dnum<span class="op">=</span>d.dialog_num), hx_target<span class="op">=</span><span class="st">'#content'</span>, cls<span class="op">=</span><span class="st">'cursor-pointer'</span>)(<span class="st">'💬 '</span>, d.name), </span>
 <span id="cb148-3"><a href="#cb148-3" aria-hidden="true" tabindex="-1"></a>    Button(t(<span class="st">'delete'</span>), var<span class="op">=</span><span class="st">'destructive'</span>, hx_post<span class="op">=</span>delete_dialog.to(dnum<span class="op">=</span>d.dialog_num), hx_swap<span class="op">=</span><span class="st">'delete'</span>, hx_target<span class="op">=</span><span class="ss">f'#dialog-</span><span class="sc">{</span>d<span class="sc">.</span>uid<span class="sc">}{</span>d<span class="sc">.</span>dialog_num<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb148-4"><a href="#cb148-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="abb01407" class="cell" data-time_run="2026-01-22T00:42:17.474620+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb149" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb149-1"><a href="#cb149-1" aria-hidden="true" tabindex="-1"></a>prev(DialogCard(first(dialogs())))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="0">
@@ -1907,8 +1902,8 @@ htmx.onLoad(hljs.highlightAll);</script><script>
     }" allow="accelerometer; autoplay; camera; clipboard-read; clipboard-write; display-capture; encrypted-media; fullscreen; gamepad; geolocation; gyroscope; hid; identity-credentials-get; idle-detection; magnetometer; microphone; midi; payment; picture-in-picture; publickey-credentials-get; screen-wake-lock; serial; usb; web-share; xr-spatial-tracking"></iframe> 
 </div>
 </div>
-<div id="4151e92e" class="cell" data-time_run="2026-01-22T00:42:23.354678+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#4151e92e .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:42:23.354678+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb150" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb150-1"><a href="#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb150-2"><a href="#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> display_dialogs(session):</span>
 <span id="cb150-3"><a href="#cb150-3" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> L(dialogs(<span class="st">'uid=?'</span>, [session.get(<span class="st">'userid'</span>)]))</span>
 <span id="cb150-4"><a href="#cb150-4" aria-hidden="true" tabindex="-1"></a>    ds <span class="op">=</span> ds.<span class="bu">map</span>(<span class="kw">lambda</span> d: DialogCard(d))</span>
@@ -1918,7 +1913,7 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb150-8"><a href="#cb150-8" aria-hidden="true" tabindex="-1"></a>        Div(<span class="st">'➕'</span>, Span(t(<span class="st">'new_dialog'</span>, session), <span class="bu">id</span><span class="op">=</span><span class="st">'new-dialog-text'</span>), cls<span class="op">=</span><span class="st">'card p-4 hover:bg-gray-100 cursor-pointer border-2 border-dashed flex flex-row items-center gap-2'</span>, hx_post<span class="op">=</span>create_dialog, hx_target<span class="op">=</span><span class="st">'#content'</span>),</span>
 <span id="cb150-9"><a href="#cb150-9" aria-hidden="true" tabindex="-1"></a>        Div(<span class="op">*</span>ds, cls<span class="op">=</span><span class="st">'flex flex-col gap-2 max-h-64 overflow-y-auto'</span>)</span>
 <span id="cb150-10"><a href="#cb150-10" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="a5483063" class="cell" data-time_run="2026-01-22T00:42:27.709041+00:00">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb151" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb151-1"><a href="#cb151-1" aria-hidden="true" tabindex="-1"></a>prev(Div(</span>
 <span id="cb151-2"><a href="#cb151-2" aria-hidden="true" tabindex="-1"></a>    Div(<span class="bu">id</span><span class="op">=</span><span class="st">'content'</span>)(</span>
@@ -1984,8 +1979,8 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 </section>
 <section id="main-page" class="level3">
 <h3 class="anchored" data-anchor-id="main-page">Main Page</h3>
-<div id="886bc7d5" class="cell" data-time_run="2026-01-22T00:42:30.692188+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
+<p>::: {#886bc7d5 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:42:30.692188+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb152" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb152-1"><a href="#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span></span>
 <span id="cb152-2"><a href="#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> toggle_lang(session):</span>
 <span id="cb152-3"><a href="#cb152-3" aria-hidden="true" tabindex="-1"></a>    lang <span class="op">=</span> <span class="st">'zh'</span> <span class="cf">if</span> session.get(<span class="st">'lang'</span>) <span class="op">==</span> <span class="st">'en'</span> <span class="cf">else</span> <span class="st">'en'</span></span>
 <span id="cb152-4"><a href="#cb152-4" aria-hidden="true" tabindex="-1"></a>    current_lang.<span class="bu">set</span>(lang)</span>
@@ -2002,10 +1997,10 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb152-15"><a href="#cb152-15" aria-hidden="true" tabindex="-1"></a>        H1(t(<span class="st">'all_dialogs'</span>), cls<span class="op">=</span><span class="st">'text-2xl font-bold'</span>, <span class="bu">id</span><span class="op">=</span><span class="st">'all-dialogs-title'</span>, hx_swap_oob<span class="op">=</span><span class="st">'true'</span>),</span>
 <span id="cb152-16"><a href="#cb152-16" aria-hidden="true" tabindex="-1"></a>        Span(t(<span class="st">'new_dialog'</span>), <span class="bu">id</span><span class="op">=</span><span class="st">'new-dialog-text'</span>, hx_swap_oob<span class="op">=</span><span class="st">'true'</span>)</span>
 <span id="cb152-17"><a href="#cb152-17" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <p>This route allows users to switch between Chinese and English with OOB swaps to update all translatable text across the page simultaneously.</p>
-<div id="e98d1f46" class="cell" data-time_run="2026-01-22T00:42:32.887451+00:00">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span>(<span class="st">'/main'</span> <span class="cf">if</span> insolveit <span class="cf">else</span> <span class="st">'/'</span>)</span>
+<p>::: {#e98d1f46 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’ time_run=‘2026-01-22T00:42:32.887451+00:00’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb153" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb153-1"><a href="#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="at">@rt</span>(<span class="st">'/main'</span> <span class="cf">if</span> insolveit <span class="cf">else</span> <span class="st">'/'</span>)</span>
 <span id="cb153-2"><a href="#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main(session):</span>
 <span id="cb153-3"><a href="#cb153-3" aria-hidden="true" tabindex="-1"></a>    setsession(session)</span>
 <span id="cb153-4"><a href="#cb153-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Div(<span class="bu">id</span><span class="op">=</span><span class="st">'body'</span>, cls<span class="op">=</span><span class="st">'card p-8 max-w-4xl mx-auto my-4'</span>)(</span>
@@ -2021,7 +2016,7 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 <span id="cb153-14"><a href="#cb153-14" aria-hidden="true" tabindex="-1"></a>        ),</span>
 <span id="cb153-15"><a href="#cb153-15" aria-hidden="true" tabindex="-1"></a>        Footer(t(<span class="st">'footer'</span>), <span class="bu">id</span><span class="op">=</span><span class="st">'footer'</span>, cls<span class="op">=</span><span class="st">'text-sm text-gray-400'</span>)</span>
 <span id="cb153-16"><a href="#cb153-16" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>:::</p>
 <div id="fe1e1311" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb154" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb154-1"><a href="#cb154-1" aria-hidden="true" tabindex="-1"></a>prev(<span class="st">'/main'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -2029,9 +2024,9 @@ htmx.onLoad(hljs.highlightAll);</script><script>
 </section>
 <section id="deploy" class="level3">
 <h3 class="anchored" data-anchor-id="deploy">Deploy</h3>
-<div id="b05651d9" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> insolveit: serve()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<p>::: {#b05651d9 .cell 0=‘e’ 1=‘x’ 2=‘p’ 3=‘o’ 4=‘r’ 5=‘t’}</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb155" data-code-line-numbers=""><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb155-1"><a href="#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> insolveit: serve()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>:::</p>
 <div id="ce0a150b" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb156" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb156-1"><a href="#cb156-1" aria-hidden="true" tabindex="-1"></a>Path(<span class="st">'requirements.txt'</span>).write_text(<span class="st">'''</span><span class="op">\</span></span>
 <span id="cb156-2"><a href="#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="st">python-fasthtml</span></span>

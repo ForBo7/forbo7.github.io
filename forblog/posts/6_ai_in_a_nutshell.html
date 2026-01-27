@@ -198,6 +198,7 @@ window.Quarto = {
 <p class="subtitle lead">This nutshell contains very little math!</p>
   <div class="quarto-categories">
     <div class="quarto-category">Creating Models</div>
+    <div class="quarto-category">fastai</div>
   </div>
   </div>
 
@@ -280,7 +281,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="simple-case-quadratic-function">Simple Case: Quadratic Function</h2>
 <p><em>Gasp!</em> A quadratic?? What’s this nonsense!</p>
 <p>A quadratic is a very simple equation. When shown on a graph, it looks like this.</p>
-<div id="8fc36543" class="cell" data-execution_count="5">
+<div id="8fc36543" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -318,7 +319,7 @@ window.Quarto = {
 <p>We’ll break this down by going over the very simple example.</p>
 <p>Let’s say we have the following data points that describe, say, the speed of an object with respect to time. We want to predict what the speed of an object would be outside these data points.</p>
 <p>The horizontal axis is time and the vertical axis is the object’s speed.</p>
-<div id="f959959d-cd81-4531-ae30-04bbcbfcd1ce" class="cell" data-tags="[]" data-execution_count="7">
+<div id="f959959d-cd81-4531-ae30-04bbcbfcd1ce" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -330,7 +331,7 @@ window.Quarto = {
 <p>We can see that the data looks like the quadratic function shown above! Therefore, we could use the quadratic to predict what the speed of the object would be after 2.0 s and before -2.0 s.</p>
 <p>A quadratic equation includes three numbers which we will call <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>. These three numbers affect or control how our quadratic function will end up looking. <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> are our <strong>parameters</strong>.</p>
 <p>Let’s let <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> all equal <span class="math inline">\(1\)</span> to begin with.</p>
-<div id="f7175b28-a8b7-42da-9717-0c35c891724c" class="cell" data-execution_count="8">
+<div id="f7175b28-a8b7-42da-9717-0c35c891724c" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -341,7 +342,7 @@ window.Quarto = {
 </div>
 <p>Hmm, not a very good fit.</p>
 <p>Let’s try another set of values for the parameters: <span class="math inline">\(2\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(1.5\)</span>.</p>
-<div id="bea84315-2cbf-46a5-b908-ac315bcde997" class="cell" data-tags="[]" data-execution_count="9">
+<div id="bea84315-2cbf-46a5-b908-ac315bcde997" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -352,7 +353,7 @@ window.Quarto = {
 </div>
 <p>Looking much better now!</p>
 <p>Let’s see what <span class="math inline">\(2\)</span>, <span class="math inline">\(0\)</span>, and <span class="math inline">\(1.5\)</span> gives us.</p>
-<div id="56db2757-accb-4bbf-9a4b-6bc5c78bc26c" class="cell" data-execution_count="10">
+<div id="56db2757-accb-4bbf-9a4b-6bc5c78bc26c" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -366,7 +367,7 @@ window.Quarto = {
 <p>There are many different ways loss can be calculated. The way we will be doing it is known as <strong>mean absolute error (MAE)</strong>. In simple terms, it tells us how far off each prediction is from the actual value. For example, if we have a MAE of 1, this means that, on average, each prediction we make is 1 unit off from the real value.</p>
 <p>In our case, a MAE of 1 would mean that each prediction is on average 1 m/s off from the real value.</p>
 <p>Let’s repeat what we did above, but this time, we’ll also see what the MAE is.</p>
-<div id="76e029bd" class="cell" data-execution_count="12">
+<div id="76e029bd" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -376,7 +377,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Again, this means that on average, each prediction we will make is 2.61 m/s off from the real value.</p>
-<div id="676b9af7" class="cell" data-execution_count="13">
+<div id="676b9af7" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -386,7 +387,7 @@ window.Quarto = {
 </div>
 </div>
 <p>That’s a big jump!</p>
-<div id="6b25e46c" class="cell" data-execution_count="14">
+<div id="6b25e46c" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -423,7 +424,7 @@ window.Quarto = {
 </div>
 <p>Let’s give <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span> an arbitrary set of parameters <span class="math inline">\(1.1\)</span>, <span class="math inline">\(1.1\)</span>, and <span class="math inline">\(1.1\)</span>.</p>
 <p>Now let’s create a quadratic with this set of parameters and calculate its mean absolute error.</p>
-<div id="bb00c846" class="cell" data-execution_count="16">
+<div id="bb00c846" class="cell">
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -475,7 +476,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Lets see this tangibly.</p>
-<div id="59621e10" class="cell" data-execution_count="17">
+<div id="59621e10" class="cell">
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -494,7 +495,7 @@ window.Quarto = {
 </div>
 <p>Okay, let’s break this down. The gradient for the first parameter <span class="math inline">\(a\)</span> is <span class="math inline">\(-1.35\)</span>. This tells us that if we increase the parameter <span class="math inline">\(a\)</span> by <span class="math inline">\(1\)</span>, our loss will decrease by <span class="math inline">\(-1.35\)</span>. Similary, if we increase the parameter <span class="math inline">\(b\)</span> by <span class="math inline">\(1\)</span>, this will result in the loss being decreased by <span class="math inline">\(-0.03\)</span>. The same logic holds for <span class="math inline">\(c\)</span>.</p>
 <p>Let’s now update the parameters. Remember, the current set of parameters, their gradients, and the learning rate all update the current set of parameters to new values.</p>
-<div id="e650f22a" class="cell" data-execution_count="18">
+<div id="e650f22a" class="cell">
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -512,7 +513,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We can now repeat the process as many times as desired. Let’s do it 4 times.</p>
-<div id="8435fb11" class="cell" data-execution_count="19">
+<div id="8435fb11" class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Pass: 0; Loss: 2.4010409560416095
 Pass: 1; Loss: 1.9847692009423128
@@ -544,7 +545,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 <p>And there you go! An even better fitting quadratic!</p>
 <p>Let’s see what the object’s speed is at 1 second.</p>
-<div id="680a267b" class="cell" data-execution_count="20">
+<div id="680a267b" class="cell">
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -563,7 +564,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 <p>That roughly seems right!</p>
 <p>Let’s see what the object’s speed would be at 3 seconds.</p>
-<div id="651f8feb" class="cell" data-execution_count="21">
+<div id="651f8feb" class="cell">
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -614,7 +615,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 <p>The ReLU takes any value that is less than 0, and converts to 0.</p>
 <p>Let’s see this.</p>
 <p>Take the following line. It has both positive and negative values on the vertical axis.</p>
-<div id="11928802" class="cell" data-execution_count="22">
+<div id="11928802" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -624,7 +625,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 </div>
 <p>When we use a ReLU, all negative values are converted to zero.</p>
-<div id="a280f3aa" class="cell" data-execution_count="23">
+<div id="a280f3aa" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -634,7 +635,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 </div>
 <p>Let’s return to our original data.</p>
-<div id="e0c3728b" class="cell" data-execution_count="24">
+<div id="e0c3728b" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -644,7 +645,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 </div>
 <p>Now a single ReLU won’t work as seen below.</p>
-<div id="abe007b3" class="cell" data-execution_count="25">
+<div id="abe007b3" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -654,7 +655,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 </div>
 <p>Even after we try to fit it.</p>
-<div id="d721709d" class="cell" data-execution_count="26">
+<div id="d721709d" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -664,7 +665,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 </div>
 <p>But look at what happens when two ReLUs are, literally, added together!</p>
-<div id="6268423d" class="cell" data-execution_count="27">
+<div id="6268423d" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -684,7 +685,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 - Seed 10: 45 passes; lr=0.1
 - Seed 33; 50 passes; lr=0.05
 - Seed 38, 196 passes; lr=0.01 -->
-<div id="dba7b121" class="cell" data-execution_count="31">
+<div id="dba7b121" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -695,7 +696,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 <p>You can see here how the function is adapting to the shape of the data.</p>
 <p>With some extra experimentation, I was able to get the loss down to 1.08!</p>
-<div id="56738df9" class="cell" data-execution_count="32">
+<div id="56738df9" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -706,7 +707,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 <p>That said, it’s not too much of a difference when compared to two ReLUs.</p>
 <p>What if we add 5 more to the mix, for a total of 8?</p>
-<div id="24319274" class="cell" data-execution_count="35">
+<div id="24319274" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -717,7 +718,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 </div>
 <p>Nice! The MAE has gone below 1!</p>
 <p>It’s even beat the quadratic function from before! With some expermimenting, I had managed to get the quadratic’s loss down to 1.03.</p>
-<div id="6a4d960f" class="cell" data-execution_count="36">
+<div id="6a4d960f" class="cell">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -729,7 +730,7 @@ Pass: 3; Loss: 1.171195547258246</code></pre>
 <!-- - Seed 16; 36 passes; lr=0.1
 - Seed 42; 37 passes; lr=0.5 -->
 <p>Let’s use the model that has 8 ReLUs to predict what the object’s velocity would be at 1 second.</p>
-<div id="25348510" class="cell" data-execution_count="39">
+<div id="25348510" class="cell">
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
