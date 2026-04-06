@@ -14,8 +14,349 @@
 <title>ForBo7 // Salman Naqvi</title>
 <link>https://forbo7.github.io/forblog/</link>
 </image>
-<generator>quarto-1.8.27</generator>
-<lastBuildDate>Tue, 27 Jan 2026 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.9.36</generator>
+<lastBuildDate>Mon, 06 Apr 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Working with Bytes in Python</title>
+  <dc:creator>Salman Naqvi</dc:creator>
+  <link>https://forbo7.github.io/forblog/posts/34_working_with_bytes.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://forbo7.github.io/forblog/images/34_working_with_bytes/thumbnail.png" class="img-fluid"></p>
+<p>Instantiate a buffer in memory.</p>
+<div id="377027eb" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> io <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> BytesIO</span>
+<span id="cb1-2">buf <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> BytesIO()<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">;</span> buf</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre data-code-line-numbers=""><code>&lt;_io.BytesIO at 0x7e185d719350&gt;</code></pre>
+</div>
+</div>
+<p>Now you can’t directly write data to this buffer.</p>
+<div id="20064b95" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">buf.write(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'This is some data'</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[24]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> buf.write(<span class="ansi-yellow-fg">'This is some data'</span>)
+
+<span class="ansi-red-fg">TypeError</span>: a bytes-like object is required, not 'str'</pre>
+</div>
+</div>
+</div>
+<p>You need a bytes-like object.</p>
+<div id="9281f68f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">buf.write(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">b'This is some data'</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre data-code-line-numbers=""><code>17</code></pre>
+</div>
+</div>
+<p>17 bytes have been written to memory, which we can confirm here.</p>
+<div id="38609f9f" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">len</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">b'This is some data'</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre data-code-line-numbers=""><code>17</code></pre>
+</div>
+</div>
+<div id="571b75b5" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">type</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">b'This is some data'</span>), <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">type</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'This is some data'</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="78">
+<pre data-code-line-numbers=""><code>(bytes, str)</code></pre>
+</div>
+</div>
+<div id="b7f53a9d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">buf.getvalue()</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre data-code-line-numbers=""><code>b'This is some data'</code></pre>
+</div>
+</div>
+<p>Behind the scenes, the data is stored as binary. However, when printed out, if the byte is a printable character, Python directly renders it out.</p>
+<p>We can view the bytes as hexadecimal.</p>
+<div id="32e4caf9" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1">buf.getvalue().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">hex</span>()</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre data-code-line-numbers=""><code>'5468697320697320736f6d652064617461'</code></pre>
+</div>
+</div>
+<div id="8edeb785" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> textwrap <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> wrap</span>
+<span id="cb14-2">h <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> buf.getvalue().<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">hex</span>()</span>
+<span id="cb14-3">wrap(h, width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="67">
+<pre data-code-line-numbers=""><code>['54',
+ '68',
+ '69',
+ '73',
+ '20',
+ '69',
+ '73',
+ '20',
+ '73',
+ '6f',
+ '6d',
+ '65',
+ '20',
+ '64',
+ '61',
+ '74',
+ '61']</code></pre>
+</div>
+</div>
+<div id="42b6752c" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">?<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">chr</span></span></code></pre></div></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" data-code-line-numbers="" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">chr</span>(</span>
+<span id="cb17-2">    i</span>
+<span id="cb17-3">):</span></code></pre></div></div>
+<pre data-code-line-numbers=""><code>Return a Unicode string of one character with ordinal i; 0 &lt;= i &lt;= 0x10ffff.</code></pre>
+<p><strong>Type:</strong> builtin_function_or_method</p>
+</div>
+</div>
+<div id="b9dc643a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">''</span>.join(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">chr</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">int</span>(v, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span>)) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> v <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> wrap(h, width<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>))</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre data-code-line-numbers=""><code>'This is some data'</code></pre>
+</div>
+</div>
+<p>Or as ASCII encoding.</p>
+<div id="36d0a0cf" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(buf.getvalue())</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre data-code-line-numbers=""><code>[84, 104, 105, 115, 32, 105, 115, 32, 115, 111, 109, 101, 32, 100, 97, 116, 97]</code></pre>
+</div>
+</div>
+<div id="73e040dd" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">''</span>.join(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">chr</span>(v) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> v <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> buf.getvalue())</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre data-code-line-numbers=""><code>'This is some data'</code></pre>
+</div>
+</div>
+<p>Hex escape format.</p>
+<div id="67adda5b" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">''</span>.join(<span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f'</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\\</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">x</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>b<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:02x}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> b <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> buf.getvalue())</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre data-code-line-numbers=""><code>'\\x54\\x68\\x69\\x73\\x20\\x69\\x73\\x20\\x73\\x6f\\x6d\\x65\\x20\\x64\\x61\\x74\\x61'</code></pre>
+</div>
+</div>
+<p>Or binary, how it’s actually stored in memory.</p>
+<div id="54c6aa2a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span>(buf.getvalue()[<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>])</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="74">
+<pre data-code-line-numbers=""><code>'0b1010100'</code></pre>
+</div>
+</div>
+<div id="3a64f524" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">''</span>.join(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">bin</span>(v) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> v <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> buf.getvalue())</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre data-code-line-numbers=""><code>'0b10101000b11010000b11010010b11100110b1000000b11010010b11100110b1000000b11100110b11011110b11011010b11001010b1000000b11001000b11000010b11101000b1100001'</code></pre>
+</div>
+</div>
+<div id="49eaf47d" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">type</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">b'text'</span>), <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">type</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">'text'</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre data-code-line-numbers=""><code>(bytes, str)</code></pre>
+</div>
+</div>
+<p>Apart from <code>.getvalue()</code>, we can also treat buffer as a list with a pointer, and read the contents being pointed at onward.</p>
+<div id="0de963aa" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1">buf.read()</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<pre data-code-line-numbers=""><code>b''</code></pre>
+</div>
+</div>
+<p>An empty string was returned. This is because the pointer is currently at the end of the list. We can seek back to the beginning of the list.</p>
+<div id="32fc67f8" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1">buf.seek(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre data-code-line-numbers=""><code>0</code></pre>
+</div>
+</div>
+<div id="18087c96" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1">buf.read()</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="85">
+<pre data-code-line-numbers=""><code>b'This is some data'</code></pre>
+</div>
+</div>
+<div id="4463b6c7" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1">buf.read()</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre data-code-line-numbers=""><code>b''</code></pre>
+</div>
+</div>
+<p>Let’s seek to the fourth byte.</p>
+<div id="99149025" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1">buf.seek(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>)</span>
+<span id="cb41-2">buf.read()</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="87">
+<pre data-code-line-numbers=""><code>b' is some data'</code></pre>
+</div>
+</div>
+<p>We can see that the fifth byte is indeed blank space.</p>
+<div id="e272528a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">map</span>(<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">chr</span>, buf.getvalue()))</span></code></pre></div></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre data-code-line-numbers=""><code>['T',
+ 'h',
+ 'i',
+ 's',
+ ' ',
+ 'i',
+ 's',
+ ' ',
+ 's',
+ 'o',
+ 'm',
+ 'e',
+ ' ',
+ 'd',
+ 'a',
+ 't',
+ 'a']</code></pre>
+</div>
+</div>
+<hr>
+<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
+
+
+
+<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
+  <category>Programming</category>
+  <category>Python</category>
+  <guid>https://forbo7.github.io/forblog/posts/34_working_with_bytes.html</guid>
+  <pubDate>Mon, 06 Apr 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://forbo7.github.io/forblog/images/34_working_with_bytes/thumbnail.png" medium="image" type="image/png" height="81" width="144"/>
+</item>
 <item>
   <title>Tunneling from SolveIt to your Machine</title>
   <dc:creator>Salman Naqvi</dc:creator>
@@ -108,7 +449,7 @@ background-color: null;
 font-style: inherit;">"echo Connection successful!"</span></span></code></pre></div></div>
 <p>If you are running this command outside a Jupyter Notebook or a SolveIt Dialog, you can omit the <code>-o StrictHostKeyChecking=no</code> parameter. This parameter allows us to bypass the prompt that asks us to verify the connection.</p>
 <p>fastcore has a <code>run_cmd</code> function we can use to abstract how we run commands. We could also use it to produce a tool the LLM can use.</p>
-<div id="c0610c88" class="cell" data-time_run="2026-01-27T06:47:28.916768+00:00">
+<div id="c0610c88" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> fastcore.<span class="bu" style="color: null;
@@ -18279,7 +18620,9 @@ font-style: inherit;">'https://images.unsplash.com/photo-1630839437035-dac17da58
 <div class="cell-output cell-output-stdout">
 <pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  188k  100  188k    0     0  4829k      0 --:--:-- --:--:-- --:--:-- 4829k</code></pre>
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  188k  100  188k    0     0  4829k      0 --:--:-- --:--:-- --:--:-- 4829k</code></pre>
 </div>
 </div>
 <div id="c4b67776" class="cell">
@@ -18938,7 +19281,9 @@ font-style: inherit;">=</span> decompress(lat)</span>
 <div class="cell-output cell-output-stdout">
 <pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  188k  100  188k    0     0  5232k      0 --:--:-- --:--:-- --:--:-- 5381k</code></pre>
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  188k  100  188k    0     0  5232k      0 --:--:-- --:--:-- --:--:-- 5381k</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
@@ -18993,7 +19338,9 @@ font-style: inherit;">512</span>))</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  515k  100  515k    0     0  10.7M      0 --:--:-- --:--:-- --:--:-- 10.7M</code></pre>
+
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+100  515k  100  515k    0     0  10.7M      0 --:--:-- --:--:-- --:--:-- 10.7M</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
@@ -19791,285 +20138,6 @@ font-style: inherit;">0</span>]</span></code></pre></div></div>
   <guid>https://forbo7.github.io/forblog/posts/15_un_successfully_implementing_diffedit.html</guid>
   <pubDate>Mon, 29 May 2023 00:00:00 GMT</pubDate>
   <media:content url="https://forbo7.github.io/forblog/images/15_un_successfully_implementing_diffedit/thumbnail.png" medium="image" type="image/png" height="144" width="144"/>
-</item>
-<item>
-  <title>Iterators and Generators</title>
-  <dc:creator>Salman Naqvi</dc:creator>
-  <link>https://forbo7.github.io/forblog/posts/14_iterators_and_generators.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<blockquote class="blockquote">
-<p>This notebook follows the <a href="https://docs.fast.ai/dev/style.html">fastai style guide</a>.</p>
-</blockquote>
-<p><img src="https://forbo7.github.io/forblog/images/14_iterators_and_generators/thumbnail.jpg" class="img-fluid" alt="A small red gasoline generator."></p>
-<div class="callout callout-style-simple callout-warning">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-body-container">
-<p>This bits and bobs is explained in terms of my explorations and experimentations. Therefore, explanations and descriptions below may not necessarily be accurate.</p>
-</div>
-</div>
-</div>
-<section id="iter" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="iter"><code>iter</code></h2>
-<p><code>iter</code> creates what’s known as an iterator. It is a type of iterable.</p>
-<p>An iterable is anything that can be looped through (e.g., a list or a string).</p>
-<p><code>iter</code> essentially allows you to loop through an iterable without using a <code>for</code> loop. It gives you finer and more granuler control over when you loop, and how how much you loop.</p>
-
-<div class="no-row-height column-margin column-container"><div id="a25a2127" class="cell">
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">Docstring:</span>
-
-iter(iterable) -&gt; iterator
-
-iter(callable, sentinel) -&gt; iterator
-
-
-
-Get an iterator from an object.  In the first form, the argument must
-
-supply its own iterator, or be a sequence.
-
-In the second form, the callable is called until it returns the sentinel.
-
-<span class="ansi-red-fg">Type:</span>      builtin_function_or_method</pre>
-</div>
-</div>
-</div></div><div id="f8898928" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">l <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">list</span>(<span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>))<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> l</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]</code></pre>
-</div>
-</div>
-<div id="856fc5eb" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">it <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">iter</span>(l)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> it</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>&lt;list_iterator at 0x11e29a6e0&gt;</code></pre>
-</div>
-</div>
-<div id="4e28efd3" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">next</span>(it)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>0</code></pre>
-</div>
-</div>
-<div id="ec86e4f9" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">next</span>(it)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>1</code></pre>
-</div>
-</div>
-<div id="c8d156cd" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">next</span>(it)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>2</code></pre>
-</div>
-</div>
-</section>
-<section id="islice" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="islice"><code>islice</code></h2>
-<p><code>islice</code> is a type of iterator that returns <img src="https://latex.codecogs.com/png.latex?x"> items from an iterable at a time.</p>
-
-<div class="no-row-height column-margin column-container"><div id="f370b111" class="cell">
-<div class="cell-output cell-output-stdout">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">Init signature:</span> islice<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">/</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-red-fg">Docstring:</span>     
-
-islice(iterable, stop) --&gt; islice object
-
-islice(iterable, start, stop[, step]) --&gt; islice object
-
-
-
-Return an iterator whose next() method returns selected values from an
-
-iterable.  If start is specified, will skip all preceding elements;
-
-otherwise, start defaults to zero.  Step defaults to one.  If
-
-specified as another value, step determines how many values are
-
-skipped between successive calls.  Works like a slice() on a list
-
-but returns an iterator.
-
-<span class="ansi-red-fg">Type:</span>           type
-
-<span class="ansi-red-fg">Subclasses:</span>     </pre>
-</div>
-</div>
-</div></div><div id="729b911d" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">from</span> itertools <span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> islice</span>
-<span id="cb11-2">it <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">iter</span>(l)</span>
-<span id="cb11-3"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">list</span>(islice(it, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>))</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>[0, 1, 2, 3, 4]</code></pre>
-</div>
-</div>
-<div id="8b17f138" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">list</span>(islice(it, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>))</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>[5, 6, 7, 8, 9]</code></pre>
-</div>
-</div>
-<div id="30dc8fe8" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">list</span>(islice(it, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>))</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>[]</code></pre>
-</div>
-</div>
-</section>
-<section id="yield" class="level2">
-<h2 class="anchored" data-anchor-id="yield"><code>yield</code></h2>
-<p><code>yield</code> is a substitute for <code>return</code> in a function or method. When <code>yield</code> is used, the function is known as a generator.</p>
-<p><code>yield</code> essentially allows you to perform multiple returns, and also allows you to treat a function as an iterator.</p>
-<section id="multiple-returns" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-returns">Multiple Returns</h3>
-<p>To demonstrate multiple returns, let’s create a function that chops a list up into smaller lists.</p>
-<div id="8abb1906" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">def</span> chunks(l, step):</span>
-<span id="cb17-2">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">range</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span>, <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">len</span>(l), step): <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">yield</span> l[i:i<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span>step]</span></code></pre></div></div>
-</div>
-<div id="dabf452d" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">list</span>(chunks(l, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>))</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
-<pre><code>[[0, 1, 2, 3, 4], [5, 6, 7, 8, 9]]</code></pre>
-</div>
-</div>
-</section>
-<section id="function-as-an-iterator" class="level3">
-<h3 class="anchored" data-anchor-id="function-as-an-iterator">Function as an Iterator</h3>
-<div id="fba35d0d" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">l_iter <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> chunks(l, <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">;</span> l_iter</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>&lt;generator object chunks at 0x11e2a8cf0&gt;</code></pre>
-</div>
-</div>
-<div id="0c026654" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">next</span>(l_iter)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>[0, 1, 2, 3, 4]</code></pre>
-</div>
-</div>
-<div id="baa920b6" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">next</span>(l_iter)</span></code></pre></div></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>[5, 6, 7, 8, 9]</code></pre>
-</div>
-</div>
-<div id="4a582613" class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">next</span>(l_iter)</span></code></pre></div></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">StopIteration</span>                             Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[17], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> next(l_iter)
-
-<span class="ansi-red-fg">StopIteration</span>: </pre>
-</div>
-</div>
-</div>
-<hr>
-<p>If you have any comments, questions, suggestions, feedback, criticisms, or corrections, please do post them down in the comment section below!</p>
-
-
-</section>
-</section>
-
-<a onclick="window.scrollTo(0, 0); return false;" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a> ]]></description>
-  <category>Python</category>
-  <category>Bits and Bobs</category>
-  <category>fastai</category>
-  <guid>https://forbo7.github.io/forblog/posts/14_iterators_and_generators.html</guid>
-  <pubDate>Wed, 03 May 2023 00:00:00 GMT</pubDate>
-  <media:content url="https://forbo7.github.io/forblog/images/14_iterators_and_generators/thumbnail.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
