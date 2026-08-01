@@ -47,14 +47,11 @@ back-to-top-navigation: false
 <meta http-equiv="refresh" content="0; url=https://snqv.dev/">
 <link rel="canonical" href="https://snqv.dev/">
 <title>Moved to new site</title>
-</head>
-<body>
 <p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev/">click here</a>.</p>
 <script>
 // JavaScript redirect (backup for browsers ignoring meta refresh)
 window.location.href = "https://snqv.dev/" + window.location.pathname + window.location.search;
 </script>
-</body>
 
 
 :::{#about-forbo7 .animate__animated .animate__zoomInDown}
