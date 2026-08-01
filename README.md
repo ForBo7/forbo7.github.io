@@ -1,5 +1,7 @@
 # The website of ForBo7 // Salman Naqvi!
 
+> This project is now archived and has been shifted to Solveblog. View the new blog at [snqv.dev](snqv.dev)
+
 It's a 3-in-1 site: it's personal, it has my blog, and it shows my works!
 
 ## Features
