@@ -110,17 +110,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<!-- Instant redirect -->
+<!-- Auto Redirect to new landing page -->
 <meta http-equiv="refresh" content="0; url=https://snqv.dev">
 <link rel="canonical" href="https://snqv.dev">
 <script>
-// JavaScript redirect (backup for browsers ignoring meta refresh)
-const newBase = "https://snqv.dev";
-const excludePaths = ["/forblog"];
+const targetLanding = "https://snqv.dev";
+const excludePrefix = "/forblog";
 const currentPath = window.location.pathname;
 
-if (!excludePaths.includes(currentPath)) {
-  window.location.href = newBase + currentPath;
+// If path starts with excluded prefix → do nothing
+if (!currentPath.startsWith(excludePrefix)) {
+  window.location.href = targetLanding;
 }
 </script>
 <noscript>

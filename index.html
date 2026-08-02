@@ -134,17 +134,17 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
-<!-- Instant redirect -->
+<!-- Auto Redirect to new landing page -->
 <meta http-equiv="refresh" content="0; url=https://snqv.dev">
 <link rel="canonical" href="https://snqv.dev">
 <script>
-// JavaScript redirect (backup for browsers ignoring meta refresh)
-const newBase = "https://snqv.dev";
-const excludePaths = ["/forblog"];
+const targetLanding = "https://snqv.dev";
+const excludePrefix = "/forblog";
 const currentPath = window.location.pathname;
 
-if (!excludePaths.includes(currentPath)) {
-  window.location.href = newBase + currentPath;
+// If path starts with excluded prefix → do nothing
+if (!currentPath.startsWith(excludePrefix)) {
+  window.location.href = targetLanding;
 }
 </script>
 <noscript>
@@ -364,7 +364,7 @@ Description
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-categories="V2ViJTIwRGV2ZWxvcG1lbnQ=" data-listing-date-sort="1765497600000" data-listing-file-modified-sort="1785657722674" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="GET vs POST Requests" data-listing-filename-sort="2025-12-11-A.qmd">
+<tr data-index="0" data-categories="V2ViJTIwRGV2ZWxvcG1lbnQ=" data-listing-date-sort="1765497600000" data-listing-file-modified-sort="1785658420616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="47" data-listing-title-sort="GET vs POST Requests" data-listing-filename-sort="2025-12-11-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-12-11-A.html" class="title listing-title">GET vs POST Requests</a>
 </td>
@@ -377,7 +377,7 @@ Description
 
 </tr>
 
-<tr data-index="1" data-categories="UHJvZ3JhbW1pbmclMkNQeXRob24lMkNBZHZlbnQlMjBvZiUyMENvZGUlMkNNYXRoZW1hdGljcw==" data-listing-date-sort="1765152000000" data-listing-file-modified-sort="1785657722674" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="101" data-listing-title-sort="Interesting Bits from AoC 2025 Day 1" data-listing-filename-sort="2025-12-08-A.qmd">
+<tr data-index="1" data-categories="UHJvZ3JhbW1pbmclMkNQeXRob24lMkNBZHZlbnQlMjBvZiUyMENvZGUlMkNNYXRoZW1hdGljcw==" data-listing-date-sort="1765152000000" data-listing-file-modified-sort="1785658420616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="101" data-listing-title-sort="Interesting Bits from AoC 2025 Day 1" data-listing-filename-sort="2025-12-08-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-12-08-A.html" class="title listing-title">Interesting Bits from AoC 2025 Day 1</a>
 </td>
@@ -390,7 +390,7 @@ Description
 
 </tr>
 
-<tr data-index="2" data-categories="UHJvZ3JhbW1pbmclMkNQeXRob24=" data-listing-date-sort="1764633600000" data-listing-file-modified-sort="1785657722674" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="89" data-listing-title-sort="The Intracices of the Python Modulo Operator" data-listing-filename-sort="2025-12-02-A.qmd">
+<tr data-index="2" data-categories="UHJvZ3JhbW1pbmclMkNQeXRob24=" data-listing-date-sort="1764633600000" data-listing-file-modified-sort="1785658420616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="89" data-listing-title-sort="The Intracices of the Python Modulo Operator" data-listing-filename-sort="2025-12-02-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-12-02-A.html" class="title listing-title">The Intracices of the Python Modulo Operator</a>
 </td>
@@ -403,7 +403,7 @@ Description
 
 </tr>
 
-<tr data-index="3" data-categories="U2hlbGw=" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1785657722674" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="166" data-listing-title-sort="Nifty Shell Tools" data-listing-filename-sort="2025-07-15-B.qmd">
+<tr data-index="3" data-categories="U2hlbGw=" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1785658420616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="166" data-listing-title-sort="Nifty Shell Tools" data-listing-filename-sort="2025-07-15-B.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-07-15-B.html" class="title listing-title">Nifty Shell Tools</a>
 </td>
@@ -416,7 +416,7 @@ Description
 
 </tr>
 
-<tr data-index="4" data-categories="U2hlbGwlMkNQcm9ncmFtbWluZw==" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1785657722674" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="223" data-listing-title-sort="Nuances in Shell Scripting" data-listing-filename-sort="2025-07-15-A.qmd">
+<tr data-index="4" data-categories="U2hlbGwlMkNQcm9ncmFtbWluZw==" data-listing-date-sort="1752537600000" data-listing-file-modified-sort="1785658420616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="223" data-listing-title-sort="Nuances in Shell Scripting" data-listing-filename-sort="2025-07-15-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-07-15-A.html" class="title listing-title">Nuances in Shell Scripting</a>
 </td>
@@ -429,7 +429,7 @@ Description
 
 </tr>
 
-<tr data-index="5" data-categories="U2hlbGwlMkNQeXRob24=" data-listing-date-sort="1751673600000" data-listing-file-modified-sort="1785657722674" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="390" data-listing-title-sort="Shell hooks, uv, and Conda." data-listing-filename-sort="2025-07-05-A.qmd">
+<tr data-index="5" data-categories="U2hlbGwlMkNQeXRob24=" data-listing-date-sort="1751673600000" data-listing-file-modified-sort="1785658420616" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="390" data-listing-title-sort="Shell hooks, uv, and Conda." data-listing-filename-sort="2025-07-05-A.qmd">
 <td>
 <a href="./bitsandbobs/posts/2025-07-05-A.html" class="title listing-title">Shell hooks, uv, and Conda.</a>
 </td>
@@ -452,7 +452,7 @@ Description
 <p>Click <a href="./forblog/index.html">here</a> to check out the latest on the ForBlog.</p>
 <div id="listing-landing-posts" class="quarto-listing quarto-listing-container-default">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="SFRNTCUyQ0RpZmZ1c2lvbiUyQ0FuYWx5emluZyUyME1vZGVscw==" data-listing-date-sort="1776384000000" data-listing-file-modified-sort="1785657723084" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="249">
+<div class="quarto-post image-right" data-index="0" data-categories="SFRNTCUyQ0RpZmZ1c2lvbiUyQ0FuYWx5emluZyUyME1vZGVscw==" data-listing-date-sort="1776384000000" data-listing-file-modified-sort="1785658421033" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="249">
 <div class="thumbnail"><a href="./forblog/posts/35_vae_visualizer.html" class="no-external">
 
 <img loading="lazy" src="./forblog/images/35_vae_visualizer/thumbnail.png" class="thumbnail-image">
@@ -480,7 +480,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="UHJvZ3JhbW1pbmclMkNQeXRob24=" data-listing-date-sort="1775433600000" data-listing-file-modified-sort="1785657723081" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153">
+<div class="quarto-post image-right" data-index="1" data-categories="UHJvZ3JhbW1pbmclMkNQeXRob24=" data-listing-date-sort="1775433600000" data-listing-file-modified-sort="1785658421030" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="153">
 <div class="thumbnail"><a href="./forblog/posts/34_working_with_bytes.html" class="no-external">
 
 <img loading="lazy" src="./forblog/images/34_working_with_bytes/thumbnail.png" class="thumbnail-image">
@@ -508,7 +508,7 @@ Salman Naqvi
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="TExNcyUyQ0FnZW50cyUyQ1NvbHZlSXQlMkNTaGVsbA==" data-listing-date-sort="1769472000000" data-listing-file-modified-sort="1785657723081" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="530">
+<div class="quarto-post image-right" data-index="2" data-categories="TExNcyUyQ0FnZW50cyUyQ1NvbHZlSXQlMkNTaGVsbA==" data-listing-date-sort="1769472000000" data-listing-file-modified-sort="1785658421030" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="530">
 <div class="thumbnail"><a href="./forblog/posts/33_tunneling_from_solveit_to_your_machine.html" class="no-external">
 
 <img loading="lazy" src="./forblog/images/33_tunneling_from_solveit_to_your_machine/thumbnail.png" class="thumbnail-image">

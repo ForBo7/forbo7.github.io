@@ -8,7 +8,7 @@
 
 <meta name="description" content="Celebrate your accomplishment! ">
 
-<title>quarto-inputd2ce07946a10c640 – ForBo7 // Salman Naqvi</title>
+<title>quarto-inputd6d73fbda446e76b – ForBo7 // Salman Naqvi</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -76,17 +76,17 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<!-- Instant redirect -->
+<!-- Auto Redirect to new landing page -->
 <meta http-equiv="refresh" content="0; url=https://snqv.dev">
 <link rel="canonical" href="https://snqv.dev">
 <script>
-// JavaScript redirect (backup for browsers ignoring meta refresh)
-const newBase = "https://snqv.dev";
-const excludePaths = ["/forblog"];
+const targetLanding = "https://snqv.dev";
+const excludePrefix = "/forblog";
 const currentPath = window.location.pathname;
 
-if (!excludePaths.includes(currentPath)) {
-  window.location.href = newBase + currentPath;
+// If path starts with excluded prefix → do nothing
+if (!currentPath.startsWith(excludePrefix)) {
+  window.location.href = targetLanding;
 }
 </script>
 <noscript>
