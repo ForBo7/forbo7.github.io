@@ -49,13 +49,8 @@ back-to-top-navigation: false
 <title>Moved to new site</title>
 <p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev">click here</a>.</p>
 <script>
-const newBase = "https://snqv.dev";
-const excludePaths = ["/forblog"];
-const currentPath = window.location.pathname;
-
-if (!excludePaths.includes(currentPath)) {
-  window.location.href = newBase + currentPath;
-}
+// JavaScript redirect (backup for browsers ignoring meta refresh)
+window.location.href = "https://snqv.dev" + window.location.pathname + window.location.search;
 </script>
 
 :::{#about-forbo7 .animate__animated .animate__zoomInDown}
