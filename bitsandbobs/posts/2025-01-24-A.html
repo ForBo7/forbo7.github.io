@@ -76,10 +76,21 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<!-- Instant redirect -->
+<meta http-equiv="refresh" content="0; url=https://snqv.dev">
+<link rel="canonical" href="https://snqv.dev">
+<script>
+// JavaScript redirect (backup for browsers ignoring meta refresh)
+const newBase = "https://snqv.dev";
+const excludePaths = ["/forblog"];
+const currentPath = window.location.pathname;
 
-
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Retrieval Augmented Generation in a nutshell. – ForBo7 // Salman Naqvi">
+if (!excludePaths.includes(currentPath)) {
+  window.location.href = newBase + currentPath;
+}
+</script>
+<noscript>
+</noscript><meta property="og:title" content="Retrieval Augmented Generation in a nutshell. – ForBo7 // Salman Naqvi">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/bitsandbobs/posts/cover.png">
 <meta property="og:site_name" content="ForBo7 // Salman Naqvi">
@@ -89,9 +100,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="twitter:creator" content="@ForBo7">
 <meta name="twitter:site" content="@ForBo7">
 <meta name="twitter:card" content="summary_large_image">
-</head>
+</head><body class="nav-fixed fullcontent quarto-light"><p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev">click here</a>.</p>
 
-<body class="nav-fixed fullcontent quarto-light">
+
+
+<link rel="stylesheet" href="../../styles.css">
+
+
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">

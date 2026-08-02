@@ -112,6 +112,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<!-- Instant redirect -->
+<meta http-equiv="refresh" content="0; url=https://snqv.dev">
+<link rel="canonical" href="https://snqv.dev">
+<script>
+// JavaScript redirect (backup for browsers ignoring meta refresh)
+const newBase = "https://snqv.dev";
+const excludePaths = ["/forblog"];
+const currentPath = window.location.pathname;
+
+if (!excludePaths.includes(currentPath)) {
+  window.location.href = newBase + currentPath;
+}
+</script>
+<noscript>
+</noscript><meta property="og:title" content="Implementing a Neural Network from Scratch – ForBo7 // Salman Naqvi">
+<meta property="og:description" content="First I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.">
+<meta property="og:image" content="https://forbo7.github.io/forblog/images/20_model_from_scratch/thumbnail.jpeg">
+<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:title" content="ForBo7 // Salman Naqvi">
+<meta name="twitter:description" content="First I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.">
+<meta name="twitter:image" content="https://forbo7.github.io/forblog/images/20_model_from_scratch/thumbnail.jpeg">
+<meta name="twitter:creator" content="@ForBo7">
+<meta name="twitter:site" content="@ForBo7">
+<meta name="twitter:card" content="summary_large_image">
+</head><body class="nav-fixed quarto-light"><p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev">click here</a>.</p>
+
 <meta name="mermaid-theme" content="neutral">
 <script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
@@ -148,19 +174,9 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Implementing a Neural Network from Scratch – ForBo7 // Salman Naqvi">
-<meta property="og:description" content="First I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.">
-<meta property="og:image" content="https://forbo7.github.io/forblog/images/20_model_from_scratch/thumbnail.jpeg">
-<meta property="og:site_name" content="ForBo7 // Salman Naqvi">
-<meta name="twitter:title" content="ForBo7 // Salman Naqvi">
-<meta name="twitter:description" content="First I implement from scratch. Then I progressively reimplement with PyTorch. It is simpler than you think.">
-<meta name="twitter:image" content="https://forbo7.github.io/forblog/images/20_model_from_scratch/thumbnail.jpeg">
-<meta name="twitter:creator" content="@ForBo7">
-<meta name="twitter:site" content="@ForBo7">
-<meta name="twitter:card" content="summary_large_image">
-</head>
 
-<body class="nav-fixed quarto-light">
+
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">

@@ -111,14 +111,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+<!-- Instant redirect -->
+<meta http-equiv="refresh" content="0; url=https://snqv.dev">
+<link rel="canonical" href="https://snqv.dev">
+<script>
+// JavaScript redirect (backup for browsers ignoring meta refresh)
+const newBase = "https://snqv.dev";
+const excludePaths = ["/forblog"];
+const currentPath = window.location.pathname;
 
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
-<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
-
-
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Detecting Floods for Disaster Relief – ForBo7 // Salman Naqvi">
+if (!excludePaths.includes(currentPath)) {
+  window.location.href = newBase + currentPath;
+}
+</script>
+<noscript>
+</noscript><meta property="og:title" content="Detecting Floods for Disaster Relief – ForBo7 // Salman Naqvi">
 <meta property="og:description" content="How good are you at detecting floods?">
 <meta property="og:image" content="https://forbo7.github.io/forblog/images/5_detecting_floods_for_disaster_relief/thumbnail.png">
 <meta property="og:site_name" content="ForBo7 // Salman Naqvi">
@@ -132,9 +139,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="1024">
 <meta name="twitter:image-width" content="1024">
-</head>
+</head><body class="nav-fixed quarto-light"><p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev">click here</a>.</p>
 
-<body class="nav-fixed quarto-light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+
+
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">

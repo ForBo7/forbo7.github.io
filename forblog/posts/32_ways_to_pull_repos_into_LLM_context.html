@@ -112,10 +112,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<!-- Instant redirect -->
+<meta http-equiv="refresh" content="0; url=https://snqv.dev">
+<link rel="canonical" href="https://snqv.dev">
+<script>
+// JavaScript redirect (backup for browsers ignoring meta refresh)
+const newBase = "https://snqv.dev";
+const excludePaths = ["/forblog"];
+const currentPath = window.location.pathname;
 
-
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Ways to Pull Repos into LLM Context – ForBo7 // Salman Naqvi">
+if (!excludePaths.includes(currentPath)) {
+  window.location.href = newBase + currentPath;
+}
+</script>
+<noscript>
+</noscript><meta property="og:title" content="Ways to Pull Repos into LLM Context – ForBo7 // Salman Naqvi">
 <meta property="og:description" content="Ways to let LLMs know about a GitHub repo or a local repo.">
 <meta property="og:image" content="https://forbo7.github.io/forblog/images/32_ways_to_pull_repos_into_LLM_context/thumbnail.png">
 <meta property="og:site_name" content="ForBo7 // Salman Naqvi">
@@ -129,9 +140,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="1535">
 <meta name="twitter:image-width" content="2730">
-</head>
+</head><body class="nav-fixed quarto-light"><p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev">click here</a>.</p>
 
-<body class="nav-fixed quarto-light">
+
+
+<link rel="stylesheet" href="../../styles.css">
+
+
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
