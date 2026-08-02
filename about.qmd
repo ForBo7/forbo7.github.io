@@ -22,16 +22,6 @@ comments: false
 page-layout: full
 ---
 
-<!-- Instant redirect -->
-<meta http-equiv="refresh" content="0; url=https://snqv.dev/about">
-<link rel="canonical" href="https://snqv.dev/about">
-<title>Moved to new site</title>
-<p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev/about">click here</a>.</p>
-<script>
-// JavaScript redirect (backup for browsers ignoring meta refresh)
-window.location.href = "https://snqv.dev/about" + window.location.pathname + window.location.search;
-</script>
-
 :::{.animate__animated .animate__slideInRight .animate__faster}
 *AI researcher bridging theory with practice in vision-language models, embodied AI systems, and diffusion models. Strong background in distributed training, model optimization, and leveraging AI tools to enhance development workflows. Currently pursuing B.Sc. in AI & EdTech at EdUHK as a full scholarship recipient.*
 :::
