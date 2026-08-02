@@ -75,21 +75,20 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
-<!-- Auto Redirect to new landing page -->
-<meta http-equiv="refresh" content="0; url=https://snqv.dev">
 <link rel="canonical" href="https://snqv.dev">
 <script>
-const targetLanding = "https://snqv.dev";
-const excludePrefix = "/forblog";
-const currentPath = window.location.pathname;
+  const targetLanding = "https://snqv.dev";
+  const excludePrefix = "/forblog";
+  // Normalize path: remove trailing slashes for consistent matching
+  const currentPath = window.location.pathname.replace(/\/+$/, "");
 
-// If path starts with excluded prefix → do nothing
-if (!currentPath.startsWith(excludePrefix)) {
-  window.location.href = targetLanding;
-}
+  // Only redirect if path does NOT start with the excluded prefix
+  if (!currentPath.startsWith(excludePrefix)) {
+    window.location.href = targetLanding;
+  }
 </script>
 <noscript>
-</noscript><meta property="og:title" content="Cognitive Map – ForBo7 // Salman Naqvi">
+  </noscript><meta property="og:title" content="Cognitive Map – ForBo7 // Salman Naqvi">
 <meta property="og:description" content="The world of ForBo7!">
 <meta property="og:image" content="https://forbo7.github.io/dictionary/terms/cover.png">
 <meta property="og:site_name" content="ForBo7 // Salman Naqvi">
