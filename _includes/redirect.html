@@ -1,0 +1,16 @@
+<!-- Instant redirect -->
+<meta http-equiv="refresh" content="0; url=https://snqv.dev">
+<link rel="canonical" href="https://snqv.dev">
+<script>
+// JavaScript redirect (backup for browsers ignoring meta refresh)
+const newBase = "https://snqv.dev";
+const excludePaths = ["/forblog"];
+const currentPath = window.location.pathname;
+
+if (!excludePaths.includes(currentPath)) {
+  window.location.href = newBase + currentPath;
+}
+</script>
+<noscript>
+<p>Site moved. If you are not redirected automatically, <a href="https://snqv.dev">click here</a>.</p>
+</noscript>
